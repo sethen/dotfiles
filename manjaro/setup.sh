@@ -17,6 +17,7 @@ yaourt -S base-devel --noconfirm
 yaourt_install_if_package_not_exists "arc-gtk-theme"
 yaourt_install_if_package_not_exists "curl"
 yaourt_install_if_package_not_exists "ccze"
+yaourt_install_if_package_not_exists "etcher"
 yaourt_install_if_package_not_exists "git"
 yaourt_install_if_package_not_exists "gnome-shell-extension-desk-changer-git"
 yaourt_install_if_package_not_exists "go"
