@@ -18,11 +18,11 @@ dconf write /org/gnome/desktop/datetime/automatic-timezone true
 
 # dash to dock preferences
 dconf write /org/gnome/shell/extensions/dash-to-dock/apply-custom-theme false
-dconf write /org/gnome/shell/extensions/dash-to-dock/background-opacity 0.2
+dconf write /org/gnome/shell/extensions/dash-to-dock/background-opacity 0.4
 dconf write /org/gnome/shell/extensions/dash-to-dock/custom-background-color true
 dconf write /org/gnome/shell/extensions/dash-to-dock/dock-position "'BOTTOM'"
 dconf write /org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size 48
-dconf write /org/gnome/shell/favorite-apps "['org.gnome.Nautilus.desktop', 'pamac-manager.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Evolution.desktop', 'gparted.desktop', 'org.gnome.Screenshot.desktop', 'google-chrome.desktop', 'spotify.desktop', 'steam.desktop', 'org.gnome.Terminal.desktop', 'transmission-gtk.desktop', 'visual-studio-code.desktop', 'vlc.desktop', 'gnome-control-center.desktop']"
+dconf write /org/gnome/shell/favorite-apps "['org.gnome.Nautilus.desktop', 'pamac-manager.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Evolution.desktop', 'gparted.desktop', 'org.gnome.Screenshot.desktop', 'firefox.desktop', 'google-chrome.desktop', 'spotify.desktop', 'steam.desktop', 'gnome-system-monitor.desktop', 'org.gnome.Terminal.desktop', 'transmission-gtk.desktop', 'visual-studio-code.desktop', 'vlc.desktop', 'gnome-control-center.desktop']"
 dconf write /org/gnome/shell/extensions/dash-to-dock/extend-height false
 dconf write /org/gnome/shell/extensions/dash-to-dock/running-indicator-style "'DOTS'"
 dconf write /org/gnome/shell/extensions/dash-to-dock/show-show-apps-button false

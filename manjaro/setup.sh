@@ -8,7 +8,6 @@ pacman_remove_if_package_exists "hexchat"
 pacman_remove_if_package_exists "libreoffice-fresh"
 pacman_remove_if_package_exists "lollypop"
 pacman_remove_if_package_exists "ms-office-online"
-pacman_remove_if_package_exists "firefox"
 
 success_message "installing packages"
 
