@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+if ! pacman -Qi $1 &> /dev/null; then
+    sudo pacman -S $1 --noconfirm
+fi

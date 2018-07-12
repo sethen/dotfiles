@@ -1,0 +1,10 @@
+[user]
+	name = Sethen Maleno
+	email = sethenm@gmail.com
+[github]
+	user = sethen
+[core]
+	editor = code -w
+	excludesfile = /home/sethen/.gitignore_global
+[push]
+	default = simple
