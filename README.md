@@ -2,7 +2,7 @@ These are my dotfiles for setting up my environment from nothing. Take and use a
 
 # Quickstart
 
-To run these dotfiles quickly just source the `run.sh` file.
+To run these dotfiles quickly just execute the `init.sh` file.
 
 # Environments
 

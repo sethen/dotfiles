@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-export ZSH_DIRECTORY_PATH=${0:a:h}
-
 if [[ -e "${ZSH_DIRECTORY_PATH}/.zsh_functions" ]]; then
     ln -sfv "${ZSH_DIRECTORY_PATH}/.zsh_functions" ~
 fi
