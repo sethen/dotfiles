@@ -9,6 +9,7 @@ To run these dotfiles quickly just execute the `init.sh` file.
 These dotfiles detect which environment they are in and run the appropriate commands.  The environments tested are:
 
 * Manjaro Gnome 17.11.1
+* Ubuntu 18.04
 
 # Colors
 
