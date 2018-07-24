@@ -8,13 +8,13 @@ dconf write /org/gnome/shell/extensions/arc-menu/custom-menu-button-icon-size 18
 dconf write /org/gnome/shell/extensions/arc-menu/enable-menu-button-arrow false
 dconf write /org/gnome/shell/extensions/arc-menu/custom-menu-button-icon "'/usr/share/icons/manjaro/green/green.svg'"
 
-
 # date and time on top bar preferences
 dconf write /org/gnome/desktop/calendar/show-weekdate true
 dconf write /org/gnome/desktop/interface/clock-show-date true
 dconf write /org/gnome/desktop/interface/clock-show-seconds true
 dconf write /org/gnome/desktop/interface/clock-format "'12h'"
 dconf write /org/gnome/desktop/datetime/automatic-timezone true
+dconf write /org/gnome/desktop/interface/show-battery-percentage true
 
 # dash to dock preferences
 dconf write /org/gnome/shell/extensions/dash-to-dock/apply-custom-theme false

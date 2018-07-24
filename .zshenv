@@ -1,5 +1,6 @@
 fpath=( ~/.zsh_functions "${fpath[@]}" )
 
+autoload -Uz apt_get_install_if_package_not_exists
 autoload -Uz error_message
 autoload -Uz information_message
 autoload -Uz pacman_install_if_package_not_exists
