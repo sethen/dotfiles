@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+# Manjaro Linux
+
+# Listing
+alias llf="ls -la --color"

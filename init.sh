@@ -8,7 +8,7 @@ export BASH_DIRECTORY_PATH=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)
 
 ZSH=$(which zsh)
 MANJARO=$(uname -a | grep MANJARO)
-UBUNTU=$(uname -a | grep Ubuntu)
+UBUNTU=$(cat /etc/lsb-release | grep Ubuntu)
 
 if [ -n "$MANJARO" ]; then
 	export OS='manjaro'
