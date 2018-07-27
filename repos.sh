@@ -25,15 +25,15 @@ fi
 # Has to be cloned if manjaro OS since it's relied on by desk changer
 
 if [[ ! -d "./wallpapers" && $OS == 'manjaro' ]]; then
-    success_message "Cloning wallpapers repo"
+	success_message "Cloning wallpapers repo"
 
-    git clone git@github.com:sethen/wallpapers.git
+	git clone git@github.com:sethen/wallpapers.git
 elif [[ ! -d "./wallpapers" ]]; then
-    read "WALLPAPERS?Clone wallpapers repo? [Y/N] "
+	read "WALLPAPERS?Clone wallpapers repo? [Y/N] "
 
-    if [[ $WALLPAPERS =~ '[Yy]' ]]; then
-        success_message "Cloning wallpapers repo"
+	if [[ $WALLPAPERS =~ '[Yy]' ]]; then
+		success_message "Cloning wallpapers repo"
 
-        git clone git@github.com:sethen/wallpapers.git
-    fi
+		git clone git@github.com:sethen/wallpapers.git
+	fi
 fi
