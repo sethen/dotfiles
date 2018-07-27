@@ -16,7 +16,7 @@ dconf write /org/gnome/shell/extensions/dash-to-dock/background-opacity 0.4
 dconf write /org/gnome/shell/extensions/dash-to-dock/custom-background-color true
 dconf write /org/gnome/shell/extensions/dash-to-dock/dock-position "'BOTTOM'"
 dconf write /org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size 48
-dconf write /org/gnome/shell/favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Calendar.desktop', 'gparted.desktop', 'org.gnome.Screenshot.desktop', 'firefox.desktop', 'google-chrome.desktop', 'spotify_spotify.desktop', 'steam.desktop', 'org.gnome.Terminal.desktop', 'transmission-gtk.desktop', 'code.desktop', 'vlc.desktop', 'gnome-control-center.desktop', 'org.gnome.tweaks.desktop' ]"
+dconf write /org/gnome/shell/favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Calendar.desktop', 'gparted.desktop', 'org.gnome.Screenshot.desktop', 'firefox.desktop', 'google-chrome.desktop', 'spotify_spotify.desktop', 'steam.desktop', 'org.gnome.Terminal.desktop', 'transmission-gtk.desktop', 'vscode_vscode.desktop', 'vlc.desktop', 'gnome-control-center.desktop' ]"
 dconf write /org/gnome/shell/extensions/dash-to-dock/extend-height false
 dconf write /org/gnome/shell/extensions/dash-to-dock/running-indicator-style "'DOTS'"
 dconf write /org/gnome/shell/extensions/dash-to-dock/show-show-apps-button true
@@ -45,6 +45,5 @@ dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6
 
 # theme preferences
 dconf write /org/gnome/desktop/interface/gtk-theme "'Arc'"
-dconf write /org/gnome/desktop/interface/icon-theme "'Arc-Maia'"
-dconf write /org/gnome/shell/extensions/user-theme/name "'Arc-Dark'"
+dconf write /org/gnome/desktop/interface/icon-theme "'Moka'"
 dconf write /org/gnome/desktop/interface/cursor-theme "'DMZ-Black'"

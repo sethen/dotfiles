@@ -12,6 +12,7 @@ sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable
 success_message "adding apt repositories"
 
 sudo add-apt-repository ppa:teejee2008/ppa -y
+sudo add-apt-repository ppa:moka/daily -y
 
 success_message "running nodejs setup"
 
@@ -28,6 +29,7 @@ apt_get_install_if_package_not_exists "chrome-gnome-shell"
 apt_get_install_if_package_not_exists "curl"
 apt_get_install_if_package_not_exists "ccze"
 apt_get_install_if_package_not_exists "code"
+apt_get_install_if_package_not_exists "git"
 apt_get_install_if_package_not_exists "gnome-calculator"
 apt_get_install_if_package_not_exists "gnome-shell-extensions"
 apt_get_install_if_package_not_exists "gnome-shell-extension-weather"
@@ -35,6 +37,7 @@ apt_get_install_if_package_not_exists "gnome-tweaks"
 apt_get_install_if_package_not_exists "google-chrome-stable"
 apt_get_install_if_package_not_exists "gparted"
 apt_get_install_if_package_not_exists "flatpak"
+apt_get_install_if_package_not_exists "moka-icon-theme"
 apt_get_install_if_package_not_exists "steam"
 apt_get_install_if_package_not_exists "ukuu"
 apt_get_install_if_package_not_exists "vlc"
