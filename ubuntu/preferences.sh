@@ -2,6 +2,10 @@
 
 information_message "running preferences"
 
+# arc menu preferences
+dconf write /org/gnome/shell/extensions/arc-menu/menu-button-icon "'System_Icon'"
+dconf write /org/gnome/shell/extensions/arc-menu/custom-menu-button-icon-size 10.0
+
 # date and time on top bar preferences
 dconf write /org/gnome/desktop/calendar/show-weekdate true
 dconf write /org/gnome/desktop/interface/clock-show-date true
@@ -16,7 +20,7 @@ dconf write /org/gnome/shell/extensions/dash-to-dock/background-opacity 0.4
 dconf write /org/gnome/shell/extensions/dash-to-dock/custom-background-color true
 dconf write /org/gnome/shell/extensions/dash-to-dock/dock-position "'BOTTOM'"
 dconf write /org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size 48
-dconf write /org/gnome/shell/favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Calendar.desktop', 'gparted.desktop', 'org.gnome.Screenshot.desktop', 'firefox.desktop', 'google-chrome.desktop', 'spotify.desktop', 'steam.desktop', 'org.gnome.Terminal.desktop', 'transmission-gtk.desktop', 'code.desktop', 'vlc.desktop', 'gnome-control-center.desktop' ]"
+dconf write /org/gnome/shell/favorite-apps "[ 'org.gnome.Nautilus.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Calendar.desktop', 'gparted.desktop', 'org.gnome.Screenshot.desktop', 'firefox.desktop', 'google-chrome.desktop', 'spotify.desktop', 'steam.desktop', 'org.gnome.Terminal.desktop', 'transmission-gtk.desktop', 'code.desktop', 'vlc.desktop', 'gnome-control-center.desktop' ]"
 dconf write /org/gnome/shell/extensions/dash-to-dock/extend-height false
 dconf write /org/gnome/shell/extensions/dash-to-dock/running-indicator-style "'DOTS'"
 dconf write /org/gnome/shell/extensions/dash-to-dock/show-show-apps-button true
@@ -27,7 +31,7 @@ dconf write /org/gnome/shell/extensions/dash-to-dock/pressure-threshold 0.0
 dconf write /org/gnome/shell/extensions/dash-to-dock/dock-fixed false
 
 # extensions preferences
-dconf write /org/gnome/shell/enabled-extensions "[ 'dash-to-dock@micxgx.gmail.com', 'openweather-extension@jenslody.de', 'user-theme@gnome-shell-extensions.gcampax.github.com' ]"
+dconf write /org/gnome/shell/enabled-extensions "[ 'arc-menu@linxgem33.com', 'dash-to-dock@micxgx.gmail.com', 'openweather-extension@jenslody.de', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'desk-changer@eric.gach.gmail.com' ]"
 
 # desktop preferences
 dconf write /org/gnome/desktop/screensaver/picture-uri "'file:////home/${USER}/Developer/wallpapers/e4944k_4svi-buzz-andersen.jpg'"

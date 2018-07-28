@@ -34,6 +34,11 @@ if ! dpkg --get-selections | grep "nodejs" &> /dev/null; then
     curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 fi
 
+success_message "installing gnome extensions manager"
+
+sudo wget -O /usr/local/bin/gnomeshell-extension-manage "https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/ubuntugnome/gnomeshell-extension-manage"
+sudo chmod +x /usr/local/bin/gnomeshell-extension-manage
+
 success_message "updating repositories"
 
 sudo apt-get update
@@ -60,3 +65,7 @@ apt_get_install_if_package_not_exists "steam"
 apt_get_install_if_package_not_exists "ukuu"
 apt_get_install_if_package_not_exists "vlc"
 apt_get_install_if_package_not_exists "wget"
+
+success_message "installing gnome extensions"
+
+gnomeshell-extension-manage --install --extension-id 1228 --version 3.28 --user &> /dev/null
