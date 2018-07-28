@@ -23,7 +23,7 @@ dconf write /org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size 48
 dconf write /org/gnome/shell/favorite-apps "[ 'org.gnome.Nautilus.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Calendar.desktop', 'gparted.desktop', 'org.gnome.Screenshot.desktop', 'firefox.desktop', 'google-chrome.desktop', 'spotify.desktop', 'steam.desktop', 'org.gnome.Terminal.desktop', 'transmission-gtk.desktop', 'code.desktop', 'vlc.desktop', 'gnome-control-center.desktop' ]"
 dconf write /org/gnome/shell/extensions/dash-to-dock/extend-height false
 dconf write /org/gnome/shell/extensions/dash-to-dock/running-indicator-style "'DOTS'"
-dconf write /org/gnome/shell/extensions/dash-to-dock/show-show-apps-button true
+dconf write /org/gnome/shell/extensions/dash-to-dock/show-show-apps-button false
 dconf write /org/gnome/shell/extensions/dash-to-dock/transparency-mode "'FIXED'"
 dconf write /org/gnome/shell/extensions/dash-to-dock/custom-theme-shrink true
 dconf write /org/gnome/shell/extensions/dash-to-dock/require-pressure-to-show true
