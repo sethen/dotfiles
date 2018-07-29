@@ -5,6 +5,7 @@ information_message "running preferences"
 # arc menu preferences
 dconf write /org/gnome/shell/extensions/arc-menu/menu-button-icon "'System_Icon'"
 dconf write /org/gnome/shell/extensions/arc-menu/custom-menu-button-icon-size 10.0
+dconf write /org/gnome/shell/extensions/arc-menu/enable-menu-button-arrow false
 
 # date and time on top bar preferences
 dconf write /org/gnome/desktop/calendar/show-weekdate true
