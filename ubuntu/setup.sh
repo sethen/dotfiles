@@ -59,14 +59,9 @@ apt_get_install_if_package_not_exists "gnome-tweaks"
 apt_get_install_if_package_not_exists "gparted"
 apt_get_install_if_package_not_exists "flatpak"
 apt_get_install_if_package_not_exists "nodejs"
+apt_get_install_if_package_not_exists "npm"
 apt_get_install_if_package_not_exists "moka-icon-theme"
 apt_get_install_if_package_not_exists "steam"
 apt_get_install_if_package_not_exists "ukuu"
 apt_get_install_if_package_not_exists "vlc"
 apt_get_install_if_package_not_exists "wget"
-
-if ! dpkg --get-selections | grep "nodejs" &> /dev/null; then
-    success_message "running nodejs setup"
-
-    curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-fi
