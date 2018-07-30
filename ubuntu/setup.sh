@@ -25,17 +25,11 @@ if ! type gnomeshell-extension-manage &>/dev/null; then
     gnomeshell-extension-manage --install --extension-id 1228 --version 3.28 --user &> /dev/null
 fi
 
-success_message "updating apt packages"
-
-sudo apt-get update
-
 if ! type code &>/dev/null; then
     success_message "installing visual-studio-code"
 
     wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-
-    sudo apt-get install code -y
 fi
 
 if ! dpkg --get-selections | grep "google-chrome-stable" &> /dev/null; then
@@ -43,8 +37,6 @@ if ! dpkg --get-selections | grep "google-chrome-stable" &> /dev/null; then
 
     wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
     sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
-
-    sudo apt-get install google-chrome-stable -y
 fi
 
 if ! dpkg --get-selections | grep "spotify-client" &> /dev/null; then
@@ -52,9 +44,11 @@ if ! dpkg --get-selections | grep "spotify-client" &> /dev/null; then
 
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
     sudo sh -c 'echo "deb http://repository.spotify.com stable non-free" > /etc/apt/sources.list.d/spotify.list'
-
-    sudo apt-get install spotify-client
 fi
+
+success_message "updating apt packages"
+
+sudo apt-get update -y
 
 apt_get_install_if_package_not_exists "arc-theme"
 apt_get_install_if_package_not_exists "curl"
@@ -64,12 +58,20 @@ apt_get_install_if_package_not_exists "gnome-calculator"
 apt_get_install_if_package_not_exists "gnome-shell-extensions"
 apt_get_install_if_package_not_exists "gnome-shell-extension-weather"
 apt_get_install_if_package_not_exists "gnome-tweaks"
+apt_get_install_if_package_not_exists "google-chrome-stable"
 apt_get_install_if_package_not_exists "gparted"
 apt_get_install_if_package_not_exists "flatpak"
 apt_get_install_if_package_not_exists "nodejs"
 apt_get_install_if_package_not_exists "npm"
 apt_get_install_if_package_not_exists "moka-icon-theme"
+apt_get_install_if_package_not_exists "spotify-client"
 apt_get_install_if_package_not_exists "steam"
 apt_get_install_if_package_not_exists "ukuu"
 apt_get_install_if_package_not_exists "vlc"
 apt_get_install_if_package_not_exists "wget"
+
+if ! type code &>/dev/null; then
+    sudo apt-get install code -y
+fi
+
+sudo apt-get upgrade -y
