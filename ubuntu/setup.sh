@@ -2,13 +2,15 @@
 
 information_message "running setup"
 
-success_message "adding apt repositories"
-
 if ! dpkg --get-selections | grep "ukuu" &> /dev/null; then
+    success_message "adding ukuu repository"
+
     sudo add-apt-repository ppa:teejee2008/ppa -y
 fi
 
 if ! dpkg --get-selections | grep "moka-icon-theme" &> /dev/null; then
+    success_message "adding moka-icon-theme repository"
+
     sudo add-apt-repository ppa:moka/daily -y
 fi
 
@@ -23,11 +25,13 @@ if ! type gnomeshell-extension-manage &>/dev/null; then
     gnomeshell-extension-manage --install --extension-id 1228 --version 3.28 --user &> /dev/null
 fi
 
-success_message "installing apt packages"
+success_message "updating apt packages"
 
 sudo apt-get update
 
 if ! type code &>/dev/null; then
+    success_message "installing visual-studio-code"
+
     wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 
@@ -35,6 +39,8 @@ if ! type code &>/dev/null; then
 fi
 
 if ! dpkg --get-selections | grep "google-chrome-stable" &> /dev/null; then
+    success_message "installing google-chrome-stable"
+
     wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
     sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
 
@@ -42,6 +48,8 @@ if ! dpkg --get-selections | grep "google-chrome-stable" &> /dev/null; then
 fi
 
 if ! dpkg --get-selections | grep "spotify-client" &> /dev/null; then
+    success_message "installing spotify-client"
+
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
     sudo sh -c 'echo "deb http://repository.spotify.com stable non-free" > /etc/apt/sources.list.d/spotify.list'
 

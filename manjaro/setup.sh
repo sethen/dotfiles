@@ -11,8 +11,9 @@ pacman_remove_if_package_exists "ms-office-online"
 
 success_message "installing packages"
 
-pacman_install_if_package_not_exists "yaourt"
 yaourt -S base-devel --noconfirm
+
+pacman_install_if_package_not_exists "yaourt"
 yaourt_install_if_package_not_exists "arc-gtk-theme"
 yaourt_install_if_package_not_exists "curl"
 yaourt_install_if_package_not_exists "ccze"
