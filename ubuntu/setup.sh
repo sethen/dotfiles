@@ -50,6 +50,11 @@ success_message "updating apt packages"
 
 sudo apt-get update -y
 
+if ! dpkg --get-selections | grep "nodejs" &> /dev/null; then
+    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+fi
+
 apt_get_install_if_package_not_exists "arc-theme"
 apt_get_install_if_package_not_exists "curl"
 apt_get_install_if_package_not_exists "ccze"
@@ -61,8 +66,6 @@ apt_get_install_if_package_not_exists "gnome-tweaks"
 apt_get_install_if_package_not_exists "google-chrome-stable"
 apt_get_install_if_package_not_exists "gparted"
 apt_get_install_if_package_not_exists "flatpak"
-apt_get_install_if_package_not_exists "nodejs"
-apt_get_install_if_package_not_exists "npm"
 apt_get_install_if_package_not_exists "moka-icon-theme"
 apt_get_install_if_package_not_exists "spotify-client"
 apt_get_install_if_package_not_exists "steam"
