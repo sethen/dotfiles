@@ -17,6 +17,7 @@ dconf write /org/gnome/desktop/interface/show-battery-percentage true
 
 # dash to dock preferences
 dconf write /org/gnome/shell/extensions/dash-to-dock/apply-custom-theme false
+dconf write /org/gnome/shell/extensions/dash-to-dock/custom-theme-customize-running-dots true
 dconf write /org/gnome/shell/extensions/dash-to-dock/background-opacity 0.4
 dconf write /org/gnome/shell/extensions/dash-to-dock/custom-background-color true
 dconf write /org/gnome/shell/extensions/dash-to-dock/dock-position "'BOTTOM'"
