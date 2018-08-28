@@ -54,6 +54,8 @@ if ! ls -la ~/.local/share/applications | grep "appimagekit-Etcher.desktop" &> /
 	wget https://github.com/resin-io/etcher/releases/download/v1.4.4/etcher-electron-1.4.4-linux-x64.zip
 	unzip etcher-electron-1.4.4-linux-x64
 	./etcher-electron-1.4.4-x86_64.AppImage
+
+	rm -rf ./etcher-electron-1.4.4-x86_64.AppImage ./etcher-electron-1.4.4-x86_64.zip
 fi
 
 success_message "updating apt packages"
