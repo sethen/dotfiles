@@ -3,57 +3,57 @@
 information_message "running setup"
 
 if ! dpkg --get-selections | grep "ukuu" &> /dev/null; then
-    success_message "adding ukuu repository"
+	success_message "adding ukuu repository"
 
-    sudo add-apt-repository ppa:teejee2008/ppa -y
+	sudo add-apt-repository ppa:teejee2008/ppa -y
 fi
 
 if ! dpkg --get-selections | grep "moka-icon-theme" &> /dev/null; then
-    success_message "adding moka-icon-theme repository"
+	success_message "adding moka-icon-theme repository"
 
-    sudo add-apt-repository ppa:moka/daily -y
+	sudo add-apt-repository ppa:moka/daily -y
 fi
 
 if ! type gnomeshell-extension-manage &>/dev/null; then
-    success_message "installing gnome extensions manager"
+	success_message "installing gnome extensions manager"
 
-    sudo wget -O /usr/local/bin/gnomeshell-extension-manage "https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/ubuntugnome/gnomeshell-extension-manage"
-    sudo chmod +x /usr/local/bin/gnomeshell-extension-manage
+	sudo wget -O /usr/local/bin/gnomeshell-extension-manage "https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/ubuntugnome/gnomeshell-extension-manage"
+	sudo chmod +x /usr/local/bin/gnomeshell-extension-manage
 
-    success_message "installing gnome extensions"
+	success_message "installing gnome extensions"
 
-    gnomeshell-extension-manage --install --extension-id 307 --version 3.28 --user &> /dev/null
-    gnomeshell-extension-manage --install --extension-id 1228 --version 3.28 --user &> /dev/null
-    gnomeshell-extension-manage --install --extension-id 1131 --version 3.28 --user &> /dev/null
+	gnomeshell-extension-manage --install --extension-id 307 --version 3.28 --user &> /dev/null
+	gnomeshell-extension-manage --install --extension-id 1228 --version 3.28 --user &> /dev/null
+	gnomeshell-extension-manage --install --extension-id 1131 --version 3.28 --user &> /dev/null
 fi
 
 if ! type code &>/dev/null; then
-    success_message "installing visual-studio-code"
+	success_message "installing visual-studio-code"
 
-    wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+	wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+	sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 fi
 
 if ! dpkg --get-selections | grep "google-chrome-stable" &> /dev/null; then
-    success_message "installing google-chrome-stable"
+	success_message "installing google-chrome-stable"
 
-    wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-    sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
+	wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+	sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
 fi
 
 if ! dpkg --get-selections | grep "spotify-client" &> /dev/null; then
-    success_message "installing spotify-client"
+	success_message "installing spotify-client"
 
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
-    sudo sh -c 'echo "deb http://repository.spotify.com stable non-free" > /etc/apt/sources.list.d/spotify.list'
+	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
+	sudo sh -c 'echo "deb http://repository.spotify.com stable non-free" > /etc/apt/sources.list.d/spotify.list'
 fi
 
 if ! ls -la ~/.local/share/applications | grep "appimagekit-Etcher.desktop" &> /dev/null; then
-    success_message "installing etcher"
+	success_message "installing etcher"
 
-    wget https://github.com/resin-io/etcher/releases/download/v1.4.4/etcher-electron-1.4.4-linux-x64.zip
-    unzip etcher-electron-1.4.4-linux-x64
-    ./etcher-electron-1.4.4-x86_64.AppImage
+	wget https://github.com/resin-io/etcher/releases/download/v1.4.4/etcher-electron-1.4.4-linux-x64.zip
+	unzip etcher-electron-1.4.4-linux-x64
+	./etcher-electron-1.4.4-x86_64.AppImage
 fi
 
 success_message "updating apt packages"
@@ -61,8 +61,8 @@ success_message "updating apt packages"
 sudo apt-get update -y
 
 if ! dpkg --get-selections | grep "nodejs" &> /dev/null; then
-    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-    sudo apt-get install -y nodejs
+	curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+	sudo apt-get install -y nodejs
 fi
 
 apt_get_install_if_package_not_exists "arc-theme"
@@ -84,7 +84,7 @@ apt_get_install_if_package_not_exists "vlc"
 apt_get_install_if_package_not_exists "wget"
 
 if ! type code &>/dev/null; then
-    sudo apt-get install code -y
+	sudo apt-get install code -y
 fi
 
 sudo apt-get upgrade -y
