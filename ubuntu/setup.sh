@@ -48,6 +48,14 @@ if ! dpkg --get-selections | grep "spotify-client" &> /dev/null; then
     sudo sh -c 'echo "deb http://repository.spotify.com stable non-free" > /etc/apt/sources.list.d/spotify.list'
 fi
 
+if ! ls -la ~/.local/share/applications | grep "appimagekit-Etcher.desktop" &> /dev/null; then
+    success_message "installing etcher"
+
+    wget https://github.com/resin-io/etcher/releases/download/v1.4.4/etcher-electron-1.4.4-linux-x64.zip
+    unzip etcher-electron-1.4.4-linux-x64
+    ./etcher-electron-1.4.4-x86_64.AppImage
+fi
+
 success_message "updating apt packages"
 
 sudo apt-get update -y
