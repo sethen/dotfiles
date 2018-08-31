@@ -33,6 +33,12 @@ dconf write /org/gnome/shell/extensions/dash-to-dock/pressure-threshold 0.0
 dconf write /org/gnome/shell/extensions/dash-to-dock/dock-fixed false
 dconf write /org/gnome/shell/extensions/dash-to-dock/background-color "'#000000'"
 
+# dynamic panel transparency preferences
+dconf write /org/gnome/shell/extensions/dynamic-panel-transparency/enable-opacity true
+dconf write /org/gnome/shell/extensions/dynamic-panel-transparency/remove-panel-styling true
+dconf write /org/gnome/shell/extensions/dynamic-panel-transparency/maximized-opacity 127
+dconf write /org/gnome/shell/extensions/dynamic-panel-transparency/unmaximized-opacity 127
+
 # extensions preferences
 dconf write /org/gnome/shell/enabled-extensions "[ 'arc-menu@linxgem33.com', 'dash-to-dock@micxgx.gmail.com', 'openweather-extension@jenslody.de', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'desk-changer@eric.gach.gmail.com' ]"
 
@@ -53,7 +59,6 @@ dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6
 dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-theme-colors false
 dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-theme-transparency false
 dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-transparent-background true
-
 
 # theme preferences
 dconf write /org/gnome/desktop/interface/gtk-theme "'Arc'"

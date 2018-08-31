@@ -25,6 +25,7 @@ if ! type gnomeshell-extension-manage &>/dev/null; then
 	gnomeshell-extension-manage --install --extension-id 307 --version 3.28 --user &> /dev/null
 	gnomeshell-extension-manage --install --extension-id 1228 --version 3.28 --user &> /dev/null
 	gnomeshell-extension-manage --install --extension-id 1131 --version 3.28 --user &> /dev/null
+	gnomeshell-extension-manage --install --extension-id 1011 --version 3.26 --user &> /dev/null
 fi
 
 if ! type code &>/dev/null; then
