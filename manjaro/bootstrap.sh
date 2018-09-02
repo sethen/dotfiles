@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-information_message "running bootstrap"
+information_message "running bootstrap for ${OS}"
 
 if [[ ! -d ~/.fonts ]]; then
 	success_message "copying fonts"

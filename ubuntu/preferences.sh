@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-information_message "running preferences"
+information_message "running preferences for ${OS}"
 
 # arc menu preferences
 dconf write /org/gnome/shell/extensions/arc-menu/menu-button-icon "'System_Icon'"

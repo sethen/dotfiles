@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-information_message "running setup"
+information_message "running setup for ${OS}"
 
 if ! dpkg --get-selections | grep "ukuu" &> /dev/null; then
 	success_message "adding ukuu repository"

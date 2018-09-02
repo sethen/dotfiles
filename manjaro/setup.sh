@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-information_message "running setup"
+information_message "running setup for ${OS}"
 success_message "removing pre-installed packages"
 
 pacman_remove_if_package_exists "empathy"
