@@ -49,6 +49,14 @@ if ! dpkg --get-selections | grep "spotify-client" &> /dev/null; then
 	sudo sh -c 'echo "deb http://repository.spotify.com stable non-free" > /etc/apt/sources.list.d/spotify.list'
 fi
 
+if ! dpkg --get-selections | grep "mailspring" &> /dev/null; then
+	success_message "installing mailspring"
+
+	wget -O mailspring.deb 'https://updates.getmailspring.com/download?platform=linuxDeb'
+	sudo dpkg -i mailspring.deb
+	rm -rf mailspring*
+fi
+
 if ! ls -la ~/.local/share/applications | grep "appimagekit-Etcher.desktop" &> /dev/null; then
 	success_message "installing etcher"
 
@@ -56,8 +64,10 @@ if ! ls -la ~/.local/share/applications | grep "appimagekit-Etcher.desktop" &> /
 	unzip etcher-electron-1.4.4-linux-x64
 	./etcher-electron-1.4.4-x86_64.AppImage
 
-	rm -rf ./etcher-electron-1.4.4-x86_64.AppImage ./etcher-electron-1.4.4-x86_64.zip
+	rm -rf ./etcher-electron-1.4.4*
 fi
+
+sudo apt-get install -f
 
 success_message "updating apt packages"
 
