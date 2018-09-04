@@ -55,6 +55,8 @@ if ! dpkg --get-selections | grep "mailspring" &> /dev/null; then
 	wget -O mailspring.deb 'https://updates.getmailspring.com/download?platform=linuxDeb'
 	sudo dpkg -i mailspring.deb
 	rm -rf mailspring*
+
+	echo "Icon=thunderbird" | sudo tee -a "/usr/share/applications/mailspring.desktop"
 fi
 
 if ! ls -la ~/.local/share/applications | grep "appimagekit-Etcher.desktop" &> /dev/null; then
