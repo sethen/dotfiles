@@ -16,6 +16,12 @@ if [[ -e "${ZSH_DIRECTORY_PATH}/.gitignore_global" ]]; then
 	ln -sfv "${ZSH_DIRECTORY_PATH}/.gitignore_global" ~
 fi
 
+if [[ ! -e ${VISUAL_STUDIO_CODE_DIRECTORY} || ! -e "${VISUAL_STUDIO_CODE_DIRECTORY}/settings.json" ]]; then
+	mkdir -p ${VISUAL_STUDIO_CODE_DIRECTORY}
+
+	ln -sfv "${ZSH_DIRECTORY_PATH}/visual-studio-code/settings.json" ${VISUAL_STUDIO_CODE_DIRECTORY}
+fi
+
 if [[ -e "${ZSH_DIRECTORY_PATH}/.aliases" ]]; then
 	success_message "building ${ALIASES_FILE} file"
 
