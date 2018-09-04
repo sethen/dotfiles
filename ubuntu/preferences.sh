@@ -42,6 +42,10 @@ dconf write /org/gnome/shell/extensions/dynamic-panel-transparency/unmaximized-o
 # extensions preferences
 dconf write /org/gnome/shell/enabled-extensions "[ 'arc-menu@linxgem33.com', 'dash-to-dock@micxgx.gmail.com', 'openweather-extension@jenslody.de', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'desk-changer@eric.gach.gmail.com' ]"
 
+# desk changer preferences
+dconf write /org/gnome/shell/extensions/desk-changer/profiles "{'default': [('file:///home/${USER}/Developer/wallpapers', true)]}"
+dconf write /org/gnome/shell/extensions/desk-changer/rotation "'disabled'"
+
 # desktop preferences
 dconf write /org/gnome/desktop/screensaver/picture-uri "'file:////home/${USER}/Developer/wallpapers/e4944k_4svi-buzz-andersen.jpg'"
 dconf write /org/gnome/nautilus/desktop/trash-icon-visible false

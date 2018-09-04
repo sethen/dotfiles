@@ -38,4 +38,3 @@ echo "thanks for using sethen's dotfiles for ${OS}"
 echo ""
 
 "${BASH_DIRECTORY_PATH}/terminate.sh"
-echo ""

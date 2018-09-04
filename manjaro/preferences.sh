@@ -33,7 +33,7 @@ dconf write /org/gnome/shell/extensions/dash-to-dock/pressure-threshold 0.0
 dconf write /org/gnome/shell/extensions/dash-to-dock/dock-fixed false
 
 # desk changer preferences
-dconf write /org/gnome/shell/extensions/desk-changer/profiles "{'default': [('file:///home/${USER}/Developer/wallpapers', false)]}"
+dconf write /org/gnome/shell/extensions/desk-changer/profiles "{'default': [('file:///home/${USER}/Developer/wallpapers', true)]}"
 dconf write /org/gnome/shell/extensions/desk-changer/rotation "'disabled'"
 
 # desktop preferences

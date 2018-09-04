@@ -90,3 +90,4 @@ if ! type code &>/dev/null; then
 fi
 
 sudo apt-get upgrade -y
+sudo apt-get autoremove -y
