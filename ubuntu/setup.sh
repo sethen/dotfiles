@@ -2,6 +2,12 @@
 
 information_message "running setup for ${OS}"
 
+if snap list | grep "gnome-calculator" &> /dev/null; then
+	success_message "removing snap gnome-calculator"
+
+	sudo snap remove gnome-calculator
+fi
+
 if ! dpkg --get-selections | grep "ukuu" &> /dev/null; then
 	success_message "adding ukuu repository"
 
@@ -84,6 +90,7 @@ apt_get_install_if_package_not_exists "arc-theme"
 apt_get_install_if_package_not_exists "curl"
 apt_get_install_if_package_not_exists "ccze"
 apt_get_install_if_package_not_exists "git"
+apt_get_install_if_package_not_exists "gnome-calculator"
 apt_get_install_if_package_not_exists "gnome-shell-extensions"
 apt_get_install_if_package_not_exists "gnome-shell-extension-weather"
 apt_get_install_if_package_not_exists "gnome-tweaks"
