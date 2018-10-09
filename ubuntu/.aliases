@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-# Manjaro Linux
+# Ubuntu
 
 # Listing
 alias llf="ls -la --color"

@@ -8,6 +8,11 @@ if snap list | grep "gnome-calculator" &> /dev/null; then
 	sudo snap remove gnome-calculator
 fi
 
+if snap list | grep "gnome-system-monitor" &> /dev/null; then
+	echo "Icon=gnome-monitor" | sudo tee -a "/var/lib/snapd/desktop/applications/gnome-system-monitor_gnome-system-monitor.desktop"
+fi
+
+
 if ! dpkg --get-selections | grep "ukuu" &> /dev/null; then
 	success_message "adding ukuu repository"
 
@@ -99,6 +104,7 @@ apt_get_install_if_package_not_exists "gparted"
 apt_get_install_if_package_not_exists "flatpak"
 apt_get_install_if_package_not_exists "npm"
 apt_get_install_if_package_not_exists "moka-icon-theme"
+apt_get_install_if_package_not_exists "pcsxr"
 apt_get_install_if_package_not_exists "spotify-client"
 apt_get_install_if_package_not_exists "steam"
 apt_get_install_if_package_not_exists "ukuu"

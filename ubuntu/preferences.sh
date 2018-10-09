@@ -14,6 +14,10 @@ dconf write /org/gnome/desktop/interface/clock-show-seconds true
 dconf write /org/gnome/desktop/interface/clock-format "'12h'"
 dconf write /org/gnome/desktop/datetime/automatic-timezone true
 dconf write /org/gnome/desktop/interface/show-battery-percentage true
+dconf write /org/gnome/settings-daemon/plugins/color/night-light-enabled true
+dconf write /org/gnome/settings-daemon/plugins/color/night-light-schedule-automatic false
+dconf write /org/gnome/settings-daemon/plugins/color/night-light-schedule-from 20.0
+dconf write /org/gnome/settings-daemon/plugins/color/night-light-schedule-to 6.0
 
 # dash to dock preferences
 dconf write /org/gnome/shell/extensions/dash-to-dock/apply-custom-theme false
@@ -47,10 +51,10 @@ dconf write /org/gnome/shell/extensions/desk-changer/profiles "{'default': [('fi
 dconf write /org/gnome/shell/extensions/desk-changer/rotation "'disabled'"
 
 # desktop preferences
-dconf write /org/gnome/desktop/screensaver/picture-uri "'file:////home/${USER}/Developer/wallpapers/e4944k_4svi-buzz-andersen.jpg'"
+dconf write /org/gnome/desktop/screensaver/picture-uri "'file:////home/${USER}/Developer/wallpapers/earth/e4944k_4svi-buzz-andersen.jpg'"
 dconf write /org/gnome/nautilus/desktop/trash-icon-visible false
 
-# icon preferences 
+# icon preferences
 dconf write /org/gnome/nautilus/icon-view/default-zoom-level "'standard'"
 
 # openweather preferences
