@@ -2,6 +2,12 @@
 
 information_message "running setup for ${OS}"
 
+if [[ -a "/usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com" ]]; then
+	success_message "removing default ubuntu gnome dock"
+
+	sudo rm -rf /usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com
+fi
+
 if snap list | grep "gnome-calculator" &> /dev/null; then
 	success_message "removing snap gnome-calculator"
 
@@ -11,7 +17,6 @@ fi
 if snap list | grep "gnome-system-monitor" &> /dev/null; then
 	echo "Icon=gnome-monitor" | sudo tee -a "/var/lib/snapd/desktop/applications/gnome-system-monitor_gnome-system-monitor.desktop"
 fi
-
 
 if ! dpkg --get-selections | grep "ukuu" &> /dev/null; then
 	success_message "adding ukuu repository"
