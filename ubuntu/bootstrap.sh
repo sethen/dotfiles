@@ -10,6 +10,12 @@ if [[ ! -d ~/.fonts ]]; then
 	cp -r "${ZSH_DIRECTORY_PATH}/fonts/." ~/.fonts
 fi
 
+if [[ ! -d ~/Applications ]]; then
+	success_message "making Applications directory"
+
+	mkdir ~/Applications
+fi
+
 if [[ ! -e "/var/lib/AccountsService/icons/${USER}" ]]; then
 	success_message "copying avatar"
 

@@ -75,14 +75,23 @@ if ! dpkg --get-selections | grep "mailspring" &> /dev/null; then
 	echo "Icon=thunderbird" | sudo tee -a "/usr/share/applications/mailspring.desktop"
 fi
 
+if ! ls -la ~/.local/share/applications | grep "appimagekit-bitwarden.desktop" &> /dev/null; then
+	success_message "installing bit warden"
+
+	wget -O ~/Applications/bitwarden.AppImage "https://vault.bitwarden.com/download/?app=desktop&platform=linux"
+	chmod +x ~/Applications/bitwarden.AppImage
+	~/Applications/bitwarden.AppImage
+
+	echo "Icon=lastpass" | sudo tee -a ~/.local/share/applications/appimagekit-bitwarden.desktop
+fi
+
 if ! ls -la ~/.local/share/applications | grep "appimagekit-Etcher.desktop" &> /dev/null; then
 	success_message "installing etcher"
 
-	wget https://github.com/resin-io/etcher/releases/download/v1.4.4/etcher-electron-1.4.4-linux-x64.zip
-	unzip etcher-electron-1.4.4-linux-x64
-	./etcher-electron-1.4.4-x86_64.AppImage
-
-	rm -rf ./etcher-electron-1.4.4*
+	wget -O ~/Applications/etcher-electron-1.4.4-linux-x64.zip "https://github.com/resin-io/etcher/releases/download/v1.4.4/etcher-electron-1.4.4-linux-x64.zip"
+	unzip ~/Applications/etcher-electron-1.4.4-linux-x64.zip -d ~/Applications
+	~/Applications/etcher-electron-1.4.4-x86_64.AppImage
+	rm -rf ~/Applications/etcher-electron-1.4.4-linux-x64.zip
 fi
 
 sudo apt-get install -f
