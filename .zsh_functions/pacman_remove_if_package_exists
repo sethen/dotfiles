@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 if pacman -Qi $1 &> /dev/null; then
-    print -P "${1} found, removing..."
+	print -P "${1} found, removing..."
 
-    sudo pacman -R $1 --noconfirm
+	sudo pacman -R $1 --noconfirm
 fi

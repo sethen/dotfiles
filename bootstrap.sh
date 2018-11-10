@@ -16,6 +16,16 @@ if [[ -e "${ZSH_DIRECTORY_PATH}/.gitignore_global" ]]; then
 	ln -sfv "${ZSH_DIRECTORY_PATH}/.gitignore_global" ~
 fi
 
+if [[ -e "${ZSH_DIRECTORY_PATH}/init.vim" ]]; then
+	NVIM_DIRECTORY=~/.config/nvim
+
+	if [[ ! -e $NVIM_DIRECTORY ]]; then
+		mkdir $NVIM_DIRECTORY
+	fi
+
+	ln -sfv "${ZSH_DIRECTORY_PATH}/init.vim" $NVIM_DIRECTORY
+fi
+
 if [[ ! -e ${VISUAL_STUDIO_CODE_DIRECTORY} || ! -e "${VISUAL_STUDIO_CODE_DIRECTORY}/settings.json" ]]; then
 	mkdir -p ${VISUAL_STUDIO_CODE_DIRECTORY}
 

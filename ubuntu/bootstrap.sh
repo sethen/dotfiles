@@ -2,12 +2,14 @@
 
 information_message "running bootstrap for ${OS}"
 
-if [[ ! -d ~/.fonts ]]; then
+FONT_DIRECTORY=~/.fonts
+
+if [[ ! -d $FONT_DIRECTORY ]]; then
 	success_message "copying fonts"
 
-	mkdir ~/.fonts
+	mkdir $FONT_DIRECTORY 
 
-	cp -r "${ZSH_DIRECTORY_PATH}/fonts/." ~/.fonts
+	cp -r "${ZSH_DIRECTORY_PATH}/fonts/." $FONT_DIRECTORY 
 fi
 
 if [[ ! -d ~/Applications ]]; then
