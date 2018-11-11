@@ -15,7 +15,12 @@ if [[ -n $(snap list | grep "gnome-calculator") ]]; then
 fi
 
 if [[ -n $(snap list | grep "gnome-system-monitor") ]]; then
-	echo "Icon=gnome-monitor" | sudo tee -a "/var/lib/snapd/desktop/applications/gnome-system-monitor_gnome-system-monitor.desktop"
+	DESKTOP_FILE="/var/lib/snapd/desktop/applications/gnome-system-monitor_gnome-system-monitor.desktop"
+	ICON_TEXT="Icon=gnome-monitor"
+
+	if [[ ! -n $(cat $DESKTOP_FILE | grep $ICON_TEXT) ]]; then
+		echo "\n$ICON_TEXT" | sudo tee -a $DESKTOP_FILE
+	fi
 fi
 
 if [[ ! -n $(dpkg --get-selections | grep "ukuu") ]]; then
@@ -48,27 +53,27 @@ if [[ ! -n $(type code) ]]; then
 	success_message "installing visual-studio-code"
 
 	wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-	sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+	sudo sh -c "echo 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main' > /etc/apt/sources.list.d/vscode.list"
 fi
 
 if [[ ! -n $(dpkg --get-selections | grep "google-chrome-stable") ]]; then
 	success_message "installing google-chrome-stable"
 
 	wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-	sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
+	sudo sh -c "echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' > /etc/apt/sources.list.d/google-chrome.list"
 fi
 
 if [[ ! -n $(dpkg --get-selections | grep "spotify-client") ]]; then
 	success_message "installing spotify-client"
 
 	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
-	sudo sh -c 'echo "deb http://repository.spotify.com stable non-free" > /etc/apt/sources.list.d/spotify.list'
+	sudo sh -c "echo 'deb http://repository.spotify.com stable non-free' > /etc/apt/sources.list.d/spotify.list"
 fi
 
 if [[ ! -n $(dpkg --get-selections | grep "mailspring") ]]; then
 	success_message "installing mailspring"
 
-	wget -O mailspring.deb 'https://updates.getmailspring.com/download?platform=linuxDeb'
+	wget -O mailspring.deb "https://updates.getmailspring.com/download?platform=linuxDeb"
 	sudo dpkg -i mailspring.deb
 	rm -rf mailspring*
 
@@ -130,7 +135,7 @@ echo ""
 read "UPDATEANDUPGRADE?would you like to update and upgrade your packages? [Y/N] "
 echo ""
 
-if [[ $UPDATEANDUPGRADE =~ '[Yy]' ]]; then
+if [[ $UPDATEANDUPGRADE =~ "[Yy]" ]]; then
 	success_message "updating apt packages"
 
 	sudo apt update -y

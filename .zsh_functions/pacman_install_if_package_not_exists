@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-if ! pacman -Qi $1 &> /dev/null; then
-    success_message "installing ${1}"
-
-    sudo pacman -S $1 --noconfirm
-fi

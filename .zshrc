@@ -1,9 +1,13 @@
+for local_function_file in ~/.zsh/functions/local/*; do
+	source $local_function_file
+done
+
 source ~/.aliases
 
 export GOPATH=$HOME/Developer/go
 export PATH=~/.npm-global/bin:$GOPATH/bin:$PATH
 
-PROMPT_INFO=$(echo "%F{6}%n%f:%F{2}%m%f in %F{3}%~%f ")
+PROMPT_INFO=$(prompt_info)
 RPROMPT_INFO=$(echo "%F{5}@%D{%L:%M:%S}%f")
 
 PROMPT="${PROMPT_INFO}"

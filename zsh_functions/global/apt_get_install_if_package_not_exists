@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-if ! dpkg --get-selections | grep $1 &> /dev/null; then
+if [[ ! -n $(dpkg --get-selections | grep $1) ]]; then
 	success_message "installing ${1}"
 
 	sudo apt-get install $1 -y
