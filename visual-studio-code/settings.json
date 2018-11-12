@@ -2,5 +2,6 @@
 	"editor.fontFamily": "Input Mono",
 	"editor.renderIndentGuides": true,
 	"editor.renderWhitespace": "all",
-	"typescript.updateImportsOnFileMove.enabled": "always"
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"window.zoomLevel": 1
 }

@@ -7,11 +7,8 @@ source ~/.aliases
 export GOPATH=$HOME/Developer/go
 export PATH=~/.npm-global/bin:$GOPATH/bin:$PATH
 
-PROMPT_INFO=$(prompt_info)
-RPROMPT_INFO=$(echo "%F{5}@%D{%L:%M:%S}%f")
-
-PROMPT="${PROMPT_INFO}"
-RPROMPT="${RPROMPT_INFO}"
+PROMPT='$(prompt_info)'
+RPROMPT='$(rprompt_info)'
 
 HISTFILE=~/.zsh_history
 SAVEHIST=1000
