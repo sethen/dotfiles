@@ -9,10 +9,10 @@ if [[ -e $ZSH_DIRECTORY_ZSH_FUNCTIONS ]]; then
 
 	if [[ -d $HOME_ZSH_FUNCTIONS_DIRECTORY ]]; then
 		rm -rf $HOME_ZSH_FUNCTIONS_DIRECTORY
-		mkdir -p $GLOBAL_HOME_ZSH_FUNCTIONS_DIRECTORY
-		mkdir -p $LOCAL_HOME_ZSH_FUNCTIONS_DIRECTORY
-
 	fi
+
+	mkdir -p $GLOBAL_HOME_ZSH_FUNCTIONS_DIRECTORY
+	mkdir -p $LOCAL_HOME_ZSH_FUNCTIONS_DIRECTORY
 
 	GLOBAL_DOTFILES_ZSH_FUNCTIONS_DIRECTORY=$ZSH_DIRECTORY_ZSH_FUNCTIONS/global
 	LOCAL_DOTFILES_ZSH_FUNCTIONS_DIRECTORY=$ZSH_DIRECTORY_ZSH_FUNCTIONS/local
@@ -26,8 +26,8 @@ if [[ -e $ZSH_DIRECTORY_ZSH_FUNCTIONS ]]; then
 	done
 fi
 
-if [[ -e "${ZSH_DIRECTORY_PATH}/.zshenv" ]]; then
-	ln -sfv "${ZSH_DIRECTORY_PATH}/.zshenv" ~ && source ~/.zshenv
+if [[ -e "${ZSH_DIRECTORY_PATH}/${OS}/.zshenv" ]]; then
+	ln -sfv "${ZSH_DIRECTORY_PATH}/${OS}/.zshenv" ~ && source ~/.zshenv
 fi
 
 if [[ -e "${ZSH_DIRECTORY_PATH}/.gitconfig" ]]; then

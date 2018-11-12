@@ -3,7 +3,7 @@
 cd ${DEVELOPER_DIRECTORY}
 
 if [[ ! -d "./markdown-include" ]]; then
-	read "MARKDOWN_INCLUDE?clone markdown-include repo? [Y/N] "
+	read "MARKDOWN_INCLUDE?clone markdown-include repo? [Yy/Nn] "
 
 	if [[ $MARKDOWN_INCLUDE =~ '[Yy]' ]]; then
 		success_message "cloning markdown-include repo"
@@ -13,7 +13,7 @@ if [[ ! -d "./markdown-include" ]]; then
 fi
 
 if [[ ! -d "./otaclock" ]]; then
-	read "OTACLOCK?clone otaclock repo? [Y/N] "
+	read "OTACLOCK?clone otaclock repo? [Yy/Nn] "
 
 	if [[ $OTACLOCK =~ '[Yy]' ]]; then
 		success_message "cloning otaclock repo"
@@ -30,7 +30,7 @@ if [[ ! -d "./wallpapers" ]]; then
 
 		git clone git@github.com:sethen/wallpapers.git
 	else 
-		read "WALLPAPERS?clone wallpapers repo? [Y/N] "
+		read "WALLPAPERS?clone wallpapers repo? [Yy/Nn] "
 
 		if [[ $WALLPAPERS =~ '[Yy]' ]]; then
 			success_message "cloning wallpapers repo"

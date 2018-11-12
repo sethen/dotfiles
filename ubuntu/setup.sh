@@ -132,7 +132,7 @@ if [[ ! -n $(type code) ]]; then
 fi
 
 echo ""
-read "UPDATEANDUPGRADE?would you like to update and upgrade your packages? [Y/N] "
+read "UPDATEANDUPGRADE?would you like to update and upgrade your packages? [Yy/Nn] "
 echo ""
 
 if [[ $UPDATEANDUPGRADE =~ "[Yy]" ]]; then
