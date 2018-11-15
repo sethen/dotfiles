@@ -23,6 +23,12 @@ if [[ -n $(snap list | grep "gnome-system-monitor") ]]; then
 	fi
 fi
 
+if [[ ! -n $(dpkg --get-selections | grep "neovim") ]]; then
+	success_message "adding neovim repository"
+
+	sudo apt-add-repository ppa:neovim-ppa/stable -y
+fi
+
 if [[ ! -n $(dpkg --get-selections | grep "ukuu") ]]; then
 	success_message "adding ukuu repository"
 
