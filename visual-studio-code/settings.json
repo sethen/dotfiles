@@ -1,5 +1,5 @@
 {
-	"editor.fontFamily": "Input Mono",
+	"editor.fontFamily": "SFMono Nerd Font",
 	"editor.renderIndentGuides": true,
 	"editor.renderWhitespace": "all",
 	"typescript.updateImportsOnFileMove.enabled": "always",

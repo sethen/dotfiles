@@ -2,10 +2,70 @@
 
 information_message "running setup for ${OS}"
 
-if [[ -a "/usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com" ]]; then
-	success_message "removing default ubuntu gnome dock"
+if [[ ! -n $(dpkg --get-selections | grep "google-chrome-stable") ]]; then
+	success_message "installing google-chrome-stable"
 
-	sudo rm -rf /usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com
+	wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+	sudo sh -c "echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' > /etc/apt/sources.list.d/google-chrome.list"
+fi
+
+if [[ ! -n $(dpkg --get-selections | grep "mailspring") ]]; then
+	success_message "installing mailspring"
+
+	wget -O mailspring.deb "https://updates.getmailspring.com/download?platform=linuxDeb"
+	sudo dpkg -i mailspring.deb
+	rm -rf mailspring*
+
+	echo "Icon=thunderbird" | sudo tee -a "/usr/share/applications/mailspring.desktop"
+fi
+
+if [[ ! -n $(dpkg --get-selections | grep "moka-icon-theme") ]]; then
+	success_message "adding moka-icon-theme repository"
+
+	sudo add-apt-repository ppa:moka/daily -y
+fi
+
+if [[ ! -n $(dpkg --get-selections | grep "neovim") ]]; then
+	success_message "adding neovim repository"
+
+	sudo apt-add-repository ppa:neovim-ppa/stable -y
+fi
+
+if [[ ! -n $(dpkg --get-selections | grep "nodejs") ]]; then
+	curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+	sudo apt-get install -y nodejs
+fi
+
+if [[ ! -n $(dpkg --get-selections | grep "spotify-client") ]]; then
+	success_message "installing spotify-client"
+
+	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
+	sudo sh -c "echo 'deb http://repository.spotify.com stable non-free' > /etc/apt/sources.list.d/spotify.list"
+fi
+
+if [[ ! -n $(dpkg --get-selections | grep "ukuu") ]]; then
+	success_message "adding ukuu repository"
+
+	sudo add-apt-repository ppa:teejee2008/ppa -y
+fi
+
+if [[ ! -n $(ls -la ~/.local/share/applications | grep "appimagekit-bitwarden.desktop") ]]; then
+	success_message "installing bit warden"
+
+	wget -O ~/Applications/bitwarden.AppImage "https://vault.bitwarden.com/download/?app=desktop&platform=linux"
+	chmod +x ~/Applications/bitwarden.AppImage
+	~/Applications/bitwarden.AppImage
+
+	echo "Icon=lastpass" | sudo tee -a ~/.local/share/applications/appimagekit-bitwarden.desktop
+fi
+
+if [[ ! -n $(ls -la ~/.local/share/applications | grep "appimagekit-Etcher.desktop") ]]; then
+	success_message "installing etcher"
+
+	wget -O ~/Applications/etcher-electron-1.4.4-linux-x64.zip "https://github.com/resin-io/etcher/releases/download/v1.4.4/etcher-electron-1.4.4-linux-x64.zip"
+	unzip ~/Applications/etcher-electron-1.4.4-linux-x64.zip -d ~/Applications
+	~/Applications/etcher-electron-1.4.4-x86_64.AppImage
+	rm -rf ~/Applications/etcher-electron-1.4.4-linux-x64.zip
 fi
 
 if [[ -n $(snap list | grep "gnome-calculator") ]]; then
@@ -21,24 +81,6 @@ if [[ -n $(snap list | grep "gnome-system-monitor") ]]; then
 	if [[ ! -n $(cat $DESKTOP_FILE | grep $ICON_TEXT) ]]; then
 		echo "\n$ICON_TEXT" | sudo tee -a $DESKTOP_FILE
 	fi
-fi
-
-if [[ ! -n $(dpkg --get-selections | grep "neovim") ]]; then
-	success_message "adding neovim repository"
-
-	sudo apt-add-repository ppa:neovim-ppa/stable -y
-fi
-
-if [[ ! -n $(dpkg --get-selections | grep "ukuu") ]]; then
-	success_message "adding ukuu repository"
-
-	sudo add-apt-repository ppa:teejee2008/ppa -y
-fi
-
-if [[ ! -n $(dpkg --get-selections | grep "moka-icon-theme") ]]; then
-	success_message "adding moka-icon-theme repository"
-
-	sudo add-apt-repository ppa:moka/daily -y
 fi
 
 if [[ ! -n $(type gnomeshell-extension-manage) ]]; then
@@ -62,55 +104,13 @@ if [[ ! -n $(type code) ]]; then
 	sudo sh -c "echo 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main' > /etc/apt/sources.list.d/vscode.list"
 fi
 
-if [[ ! -n $(dpkg --get-selections | grep "google-chrome-stable") ]]; then
-	success_message "installing google-chrome-stable"
+if [[ -a "/usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com" ]]; then
+	success_message "removing default ubuntu gnome dock"
 
-	wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-	sudo sh -c "echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' > /etc/apt/sources.list.d/google-chrome.list"
-fi
-
-if [[ ! -n $(dpkg --get-selections | grep "spotify-client") ]]; then
-	success_message "installing spotify-client"
-
-	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
-	sudo sh -c "echo 'deb http://repository.spotify.com stable non-free' > /etc/apt/sources.list.d/spotify.list"
-fi
-
-if [[ ! -n $(dpkg --get-selections | grep "mailspring") ]]; then
-	success_message "installing mailspring"
-
-	wget -O mailspring.deb "https://updates.getmailspring.com/download?platform=linuxDeb"
-	sudo dpkg -i mailspring.deb
-	rm -rf mailspring*
-
-	echo "Icon=thunderbird" | sudo tee -a "/usr/share/applications/mailspring.desktop"
-fi
-
-if [[ ! -n $(ls -la ~/.local/share/applications | grep "appimagekit-bitwarden.desktop") ]]; then
-	success_message "installing bit warden"
-
-	wget -O ~/Applications/bitwarden.AppImage "https://vault.bitwarden.com/download/?app=desktop&platform=linux"
-	chmod +x ~/Applications/bitwarden.AppImage
-	~/Applications/bitwarden.AppImage
-
-	echo "Icon=lastpass" | sudo tee -a ~/.local/share/applications/appimagekit-bitwarden.desktop
-fi
-
-if [[ ! -n $(ls -la ~/.local/share/applications | grep "appimagekit-Etcher.desktop") ]]; then
-	success_message "installing etcher"
-
-	wget -O ~/Applications/etcher-electron-1.4.4-linux-x64.zip "https://github.com/resin-io/etcher/releases/download/v1.4.4/etcher-electron-1.4.4-linux-x64.zip"
-	unzip ~/Applications/etcher-electron-1.4.4-linux-x64.zip -d ~/Applications
-	~/Applications/etcher-electron-1.4.4-x86_64.AppImage
-	rm -rf ~/Applications/etcher-electron-1.4.4-linux-x64.zip
+	sudo rm -rf /usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com
 fi
 
 sudo apt-get install -f
-
-if [[ ! -n $(dpkg --get-selections | grep "nodejs") ]]; then
-	curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-	sudo apt-get install -y nodejs
-fi
 
 apt_get_install_if_package_not_exists "arc-theme"
 apt_get_install_if_package_not_exists "curl"
