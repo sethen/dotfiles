@@ -17,6 +17,7 @@ let g:airline_theme='material'
 let g:go_version_warning = 0
 let g:material_style='dark'
 let g:signify_realtime = 1
+let NERDTreeShowHidden=1
 
 " options
 colorscheme vim-material            " color scheme
@@ -35,6 +36,9 @@ set updatetime=1
 syntax on
 
 " overrides
+highlight CursorColumn guibg=#212121
+highlight CursorLine guibg=#212121
+highlight Directory guifg=#CFCFCF
 highlight Normal guibg=#2E3436
 highlight SignifySignAdd cterm=bold guibg=#2E3436 guifg=#C3E88D
 highlight SignifySignDelete cterm=bold guibg=#2E3436 guifg=#FF5370

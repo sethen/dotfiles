@@ -20,7 +20,7 @@ function rprompt_info() {
 		fi
 
 		GIT_FILES_TRACKING_INFO="%K{1}%F{15} ${GIT_FILES_TRACKING%\/*} %f%k"
-		GIT_INFO="%K{8}%F{15} $(git_sha) %k%K{0}%F{15} $(git_branch_name) %f%k"
+		GIT_INFO="%K{7}%F{15} $(git_sha) %k%K{0}%F{15} $(git_branch_name) %f%k"
 
 		if [[ -n $GIT_FILES_TRACKING ]]; then
 			echo "$GIT_FILES_TRACKING_INFO$GIT_INFO"
