@@ -48,6 +48,10 @@ if [[ -e "${ZSH_DIRECTORY_PATH}/init.vim" ]]; then
 	ln -sfv "${ZSH_DIRECTORY_PATH}/init.vim" $NVIM_DIRECTORY
 fi
 
+if [[ -e "${ZSH_DIRECTORY_PATH}/.tmux.conf" ]]; then
+	ln -sfv "${ZSH_DIRECTORY_PATH}/.tmux.conf" ~
+fi
+
 if [[ ! -e ${VISUAL_STUDIO_CODE_DIRECTORY} || ! -e "${VISUAL_STUDIO_CODE_DIRECTORY}/settings.json" ]]; then
 	mkdir -p ${VISUAL_STUDIO_CODE_DIRECTORY}
 
