@@ -68,6 +68,14 @@ if [[ ! -n $(ls -la ~/.local/share/applications | grep "appimagekit-Etcher.deskt
 	rm -rf ~/Applications/etcher-electron-1.4.4-linux-x64.zip
 fi
 
+NEOVIM_AUTOLOAD_DIRECTORY=~/.local/share/nvim/site/autoload
+
+if [[ ! -d $NEOVIM_AUTOLOAD_DIRECTORY ]]; then
+	success_message "installing vim plug"
+
+	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+
 if [[ -n $(snap list | grep "gnome-calculator") ]]; then
 	success_message "removing snap gnome-calculator"
 
