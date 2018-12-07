@@ -1,5 +1,14 @@
 #!/bin/zsh
 
+NPM_DIRECTORY=~/.npm-global
+
+if [[ ! -d $NPM_DIRECTORY ]]; then
+	success_message "configuring npm global modules"
+
+	mkdir $NPM_DIRECTORY
+	npm config set prefix $NPM_DIRECTORY
+fi
+
 read "REBOOT?would you like to reboot the system? [Yy/Nn] "
 
 if [[ $REBOOT =~ '[Yy]' ]]; then

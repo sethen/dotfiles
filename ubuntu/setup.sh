@@ -121,8 +121,9 @@ fi
 sudo apt-get install -f
 
 apt_get_install_if_package_not_exists "arc-theme"
-apt_get_install_if_package_not_exists "curl"
 apt_get_install_if_package_not_exists "ccze"
+apt_get_install_if_package_not_exists "cmake"
+apt_get_install_if_package_not_exists "curl"
 apt_get_install_if_package_not_exists "git"
 apt_get_install_if_package_not_exists "gnome-calculator"
 apt_get_install_if_package_not_exists "gnome-shell-extensions"

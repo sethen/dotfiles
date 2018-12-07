@@ -19,3 +19,5 @@ setopt NO_BEEP
 setopt PROMPT_SUBST
 
 cd ~/Developer
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

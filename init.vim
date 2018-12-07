@@ -10,6 +10,7 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'valloric/youcompleteme', { 'do': './install.py' }
 Plug 'vim-airline/vim-airline'
 call plug#end()
 
