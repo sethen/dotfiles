@@ -20,6 +20,7 @@ elif [ -n "$UBUNTU" ]; then
 	export OS='ubuntu'
 
 	if [ -z ${ZSH} ]; then
+		sudo apt-get install curl -y
 		sudo apt-get install zsh -y
 	fi
 else
