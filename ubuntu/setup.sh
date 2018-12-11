@@ -91,7 +91,7 @@ if [[ -n $(snap list | grep "gnome-system-monitor") ]]; then
 	fi
 fi
 
-if [[ ! -n $(type gnomeshell-extension-manage) ]]; then
+if ! type "gnomeshell-extension-manage" > /dev/null; then
 	success_message "installing gnome extensions manager"
 
 	sudo wget -O /usr/local/bin/gnomeshell-extension-manage "https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/ubuntugnome/gnomeshell-extension-manage"
@@ -105,11 +105,13 @@ if [[ ! -n $(type gnomeshell-extension-manage) ]]; then
 	gnomeshell-extension-manage --install --extension-id 1011 --version 3.26 --user &> /dev/null
 fi
 
-if [[ ! -n $(type code) ]]; then
+if ! type "code" > /dev/null; then
 	success_message "installing visual-studio-code"
 
 	wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 	sudo sh -c "echo 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main' > /etc/apt/sources.list.d/vscode.list"
+
+	sudo apt-get install code -y
 fi
 
 if [[ -a "/usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com" ]]; then
@@ -143,10 +145,6 @@ apt_get_install_if_package_not_exists "ukuu"
 apt_get_install_if_package_not_exists "virtualenv"
 apt_get_install_if_package_not_exists "vlc"
 apt_get_install_if_package_not_exists "wget"
-
-if [[ ! -n $(type code) ]]; then
-	sudo apt-get install code -y
-fi
 
 echo ""
 read "UPDATEANDUPGRADE?would you like to update and upgrade your packages? [Yy/Nn] "
