@@ -76,4 +76,4 @@ dconf write /org/gnome/desktop/interface/icon-theme "'Moka'"
 dconf write /org/gnome/desktop/interface/cursor-theme "'DMZ-Black'"
 dconf write /org/gnome/shell/extensions/user-theme/name "'Arc-Dark'"
 
-sed -i -- 's/python/python3/g' ~/.local/share/gnome-shell/extensions/desk-changer@eric.gach.gmail.com/desk-changer-daemon.py
+sed -i -- 's/python$/python3/g' ~/.local/share/gnome-shell/extensions/desk-changer@eric.gach.gmail.com/desk-changer-daemon.py
