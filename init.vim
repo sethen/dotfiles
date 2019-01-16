@@ -21,13 +21,14 @@ call plug#end()
 " global internal variables
 let g:airline_theme = 'material'
 let g:go_version_warning = 0
-let NERDTreeShowHidden= 1
-let g:material_style='dark'
+let NERDTreeShowHidden = 1
+let g:material_style ='dark'
 let g:pymode_python = 'python3'
 let g:signify_realtime = 1
-let g:UltiSnipsExpandTrigger = '<C-l>'
-let g:UltiSnipsJumpForwardTrigger = '<C-L>'
-let g:UltiSnipsJumpBackwardTrigger = '<C-h>'
+let g:UltiSnipsExpandTrigger = "<c-j>"
+let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
+let g:UltiSnipsListSnippets = "<c-k>"
 
 " options
 colorscheme vim-material            " set color scheme

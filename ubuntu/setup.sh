@@ -9,6 +9,14 @@ if [[ ! -n $(dpkg --get-selections | grep "google-chrome-stable") ]]; then
 	sudo sh -c "echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' > /etc/apt/sources.list.d/google-chrome.list"
 fi
 
+if [[ ! -n $(dpkg --get-selections | grep "insomnia") ]]; then
+	success_message "installing insomnia"
+
+	sudo sh -c "echo 'deb https://dl.bintray.com/getinsomnia/Insomnia /' > /etc/apt/sources.list.d/insomnia.list"
+
+	wget -qO - https://insomnia.rest/keys/debian-public.key.asc | sudo apt-key add -
+fi
+
 if [[ ! -n $(dpkg --get-selections | grep "mailspring") ]]; then
 	success_message "installing mailspring"
 
@@ -134,6 +142,7 @@ apt_get_install_if_package_not_exists "google-chrome-stable"
 apt_get_install_if_package_not_exists "gparted"
 apt_get_install_if_package_not_exists "default-jre"
 apt_get_install_if_package_not_exists "flatpak"
+apt_get_install_if_package_not_exists "insomnia"
 apt_get_install_if_package_not_exists "neovim"
 apt_get_install_if_package_not_exists "nginx"
 apt_get_install_if_package_not_exists "moka-icon-theme"
