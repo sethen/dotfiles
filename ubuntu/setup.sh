@@ -3,14 +3,14 @@
 information_message "running setup for ${OS}"
 
 if [[ ! -n $(dpkg --get-selections | grep "google-chrome-stable") ]]; then
-	success_message "installing google-chrome-stable"
+	success_message "adding google-chrome-stable"
 
 	wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 	sudo sh -c "echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' > /etc/apt/sources.list.d/google-chrome.list"
 fi
 
 if [[ ! -n $(dpkg --get-selections | grep "insomnia") ]]; then
-	success_message "installing insomnia"
+	success_message "adding insomnia"
 
 	sudo sh -c "echo 'deb https://dl.bintray.com/getinsomnia/Insomnia /' > /etc/apt/sources.list.d/insomnia.list"
 
@@ -18,7 +18,7 @@ if [[ ! -n $(dpkg --get-selections | grep "insomnia") ]]; then
 fi
 
 if [[ ! -n $(dpkg --get-selections | grep "mailspring") ]]; then
-	success_message "installing mailspring"
+	success_message "adding mailspring"
 
 	wget -O mailspring.deb "https://updates.getmailspring.com/download?platform=linuxDeb"
 	sudo dpkg -i mailspring.deb
@@ -45,14 +45,14 @@ if [[ ! -n $(dpkg --get-selections | grep "nodejs") ]]; then
 fi
 
 if [[ ! -n $(dpkg --get-selections | grep "spotify-client") ]]; then
-	success_message "installing spotify-client"
+	success_message "adding spotify-client"
 
 	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
 	sudo sh -c "echo 'deb http://repository.spotify.com stable non-free' > /etc/apt/sources.list.d/spotify.list"
 fi
 
 if [[ ! -n $(dpkg --get-selections | grep "ukuu") ]]; then
-	success_message "adding ukuu repository"
+	success_message "adding ukuu"
 
 	sudo add-apt-repository ppa:teejee2008/ppa -y
 fi
@@ -128,6 +128,9 @@ if [[ -a "/usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com" ]]; then
 	sudo rm -rf /usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com
 fi
 
+success_message "updating packages"
+
+sudo apt update -y
 sudo apt-get install -f
 
 apt_get_install_if_package_not_exists "arc-theme"
@@ -160,14 +163,10 @@ apt_get_install_if_package_not_exists "vlc"
 apt_get_install_if_package_not_exists "wget"
 
 echo ""
-read "UPDATEANDUPGRADE?would you like to update and upgrade your packages? [Yy/Nn] "
+read "UPGRADE?would you like to upgrade your packages? [Yy/Nn] "
 echo ""
 
-if [[ $UPDATEANDUPGRADE =~ "[Yy]" ]]; then
-	success_message "updating apt packages"
-
-	sudo apt update -y
-
+if [[ $UPGRADE =~ "[Yy]" ]]; then
 	success_message "upgrading apt packages"
 
 	sudo apt upgrade -y
