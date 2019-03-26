@@ -14,13 +14,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 	Plug 'herringtondarkholme/yats.vim'
 	Plug 'hzchirs/vim-material'
-		let g:material_style ='dark'
-		set background=dark                            " set theme color to dark
+		let material_style ='dark'
+		set background=dark
 
 	Plug 'itchyny/lightline.vim'
-		let g:lightline = {
-			\ 'colorscheme': 'wombat',
-			\ }
+		let lightline = {
+		\	'colorscheme': 'material',
+		\}
 
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
@@ -28,21 +28,34 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'scrooloose/nerdtree'
 		let DevIconsEnableFoldersOpenClose = 1
 		let DevIconsEnableFolderExtensionPatternMatching = 1
-		let NERDTreeDirArrowExpandable = "\u00a0"
-		let NERDTreeDirArrowCollapsible = "\u00a0"
-		let NERDTreeDisableExactMatchHighlight = 1
-		let NERDTreeDisablePatternMatchHighlight = 1
-		let NERDTreeShowHidden = 1
-		let NERDTreeSyntaxDisableDefaultExtensions = 1
-		let NERDTreeSyntaxEnabledExtensions = ['bmp', 'c', 'cpp', 'css', 'erb', 'go', 'html', 'jpg', 'js', 'json', 'jsx', 'less', 'markdown', 'md', 'png', 'py', 'rb', 'scss', 'sh', 'sql', 'ts', 'tsx', 'vim']
+		let g:NERDTreeDirArrowExpandable = "\u00a0"
+		let g:NERDTreeDirArrowCollapsible = "\u00a0"
+		let g:NERDTreeDisableExactMatchHighlight = 1
+		let g:NERDTreeDisablePatternMatchHighlight = 1
+		let g:NERDTreeShowHidden = 1
+		let g:NERDTreeSyntaxDisableDefaultExtensions = 1
+		let g:NERDTreeSyntaxEnabledExtensions = ['bmp', 'c', 'cpp', 'css', 'erb', 'go', 'html', 'jpg', 'js', 'json', 'jsx', 'less', 'markdown', 'md', 'png', 'py', 'rb', 'scss', 'sh', 'sql', 'ts', 'tsx', 'vim']
 		let WebDevIconsUnicodeDecorateFolderNodes = 1
 
 	Plug 'terryma/vim-multiple-cursors'
 	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+	Plug 'xuyuanp/nerdtree-git-plugin'
+		let g:NERDTreeIndicatorMapCustom = {
+		\	'Modified'  : '✹',
+		\	'Staged'    : '✚',
+		\	'Untracked' : '✭',
+		\	'Renamed'   : '➜',
+		\	'Unmerged'  : '═',
+		\	'Deleted'   : '✖',
+		\	'Dirty'     : '✗',
+		\	'Clean'     : '✔︎',
+		\	'Ignored'   : '☒',
+		\	'Unknown'   : '?'
+		\}
 	Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
-colorscheme vim-material                               " set color scheme
+colorscheme vim-material
 highlight CursorLineNr guifg=#FFCB6B
 highlight SignifySignAdd cterm=bold guibg=#263238 guifg=#C3E88D
 highlight SignifySignDelete cterm=bold guibg=#263238 guifg=#FF5370
