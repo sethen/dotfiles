@@ -4,7 +4,7 @@
 [github]
 	user = sethen
 [core]
-	editor = code -w
+	editor = nvim
 	excludesfile = /home/sethen/.gitignore_global
 [push]
 	default = simple
