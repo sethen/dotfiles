@@ -19,7 +19,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 	Plug 'itchyny/lightline.vim'
 		let lightline = {
-		\	'colorscheme': 'material',
+		\	'colorscheme': 'lightline_material',
 		\}
 
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -37,8 +37,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 		let g:NERDTreeSyntaxEnabledExtensions = ['bmp', 'c', 'cpp', 'css', 'erb', 'go', 'html', 'jpg', 'js', 'json', 'jsx', 'less', 'markdown', 'md', 'png', 'py', 'rb', 'scss', 'sh', 'sql', 'ts', 'tsx', 'vim']
 		let WebDevIconsUnicodeDecorateFolderNodes = 1
 
-	Plug 'terryma/vim-multiple-cursors'
 	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+	Plug 'valloric/youcompleteme', { 'do': './install.py' }
 	Plug 'xuyuanp/nerdtree-git-plugin'
 		let g:NERDTreeIndicatorMapCustom = {
 		\	'Modified'  : '✹',

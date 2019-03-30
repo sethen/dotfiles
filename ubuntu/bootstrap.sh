@@ -28,10 +28,3 @@ if [[ ! -d ~/Applications ]]; then
 
 	mkdir ~/Applications
 fi
-
-if [[ ! -e "/var/lib/AccountsService/icons/${USER}" ]]; then
-	success_message "copying avatar"
-
-	sudo cp "${ZSH_DIRECTORY_PATH}/avatars/anime-sethen.png" "/var/lib/AccountsService/icons/${USER}"
-	echo "Icon=/var/lib/AccountsService/icons/${USER}" | sudo tee -a "/var/lib/AccountsService/users/${USER}"
-fi

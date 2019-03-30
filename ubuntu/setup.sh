@@ -2,6 +2,13 @@
 
 information_message "running setup for ${OS}"
 
+if [[ ! -e "/var/lib/AccountsService/icons/${USER}" ]]; then
+	success_message "copying avatar"
+
+	sudo cp "${ZSH_DIRECTORY_PATH}/avatars/anime-sethen.png" "/var/lib/AccountsService/icons/${USER}"
+	echo "Icon=/var/lib/AccountsService/icons/${USER}" | sudo tee -a "/var/lib/AccountsService/users/${USER}"
+fi
+
 if [[ ! -n $(dpkg --get-selections | grep "google-chrome-stable") ]]; then
 	success_message "adding google-chrome-stable"
 
@@ -76,6 +83,7 @@ if [[ ! -n $(ls -la ~/.local/share/applications | grep "appimagekit-Etcher.deskt
 	rm -rf ~/Applications/etcher-electron-1.4.4-linux-x64.zip
 fi
 
+LIGHTLINE_AUTOLOAD_DIRECTORY=~/.local/share/nvim/plugged/lightline.vim/autoload/lightline/colorscheme
 NEOVIM_AUTOLOAD_DIRECTORY=~/.local/share/nvim/site/autoload
 
 if [[ ! -d $NEOVIM_AUTOLOAD_DIRECTORY ]]; then
@@ -83,6 +91,16 @@ if [[ ! -d $NEOVIM_AUTOLOAD_DIRECTORY ]]; then
 
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
+
+if [[ ! -d $LIGHTLINE_AUTOLOAD_DIRECTORY ]]; then
+	success_message "making lightline directories"
+
+	mkdir -p $LIGHTLINE_AUTOLOAD_DIRECTORY
+fi
+
+success_message "copying lightline theme"
+
+cp $ZSH_DIRECTORY_PATH/themes/lightline_material.vim $LIGHTLINE_AUTOLOAD_DIRECTORY
 
 if [[ -n $(snap list | grep "gnome-calculator") ]]; then
 	success_message "removing snap gnome-calculator"
