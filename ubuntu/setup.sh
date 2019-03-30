@@ -89,18 +89,16 @@ NEOVIM_AUTOLOAD_DIRECTORY=~/.local/share/nvim/site/autoload
 if [[ ! -d $NEOVIM_AUTOLOAD_DIRECTORY ]]; then
 	success_message "installing vim plug"
 
-	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	curl -fLo $NEOVIM_AUTOLOAD_DIRECTORY/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
-if [[ ! -d $LIGHTLINE_AUTOLOAD_DIRECTORY ]]; then
-	success_message "making lightline directories"
+success_message "install vim-plug plugins"
 
-	mkdir -p $LIGHTLINE_AUTOLOAD_DIRECTORY
-fi
+nvim +'PlugInstall --sync' +qa
 
 success_message "copying lightline theme"
 
-cp $ZSH_DIRECTORY_PATH/themes/lightline_material.vim $LIGHTLINE_AUTOLOAD_DIRECTORY
+ln -sfv $ZSH_DIRECTORY_PATH/themes/lightline_material.vim $LIGHTLINE_AUTOLOAD_DIRECTORY
 
 if [[ -n $(snap list | grep "gnome-calculator") ]]; then
 	success_message "removing snap gnome-calculator"
