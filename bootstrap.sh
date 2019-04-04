@@ -38,6 +38,10 @@ if [[ -e "${ZSH_DIRECTORY_PATH}/.gitignore_global" ]]; then
 	ln -sfv "${ZSH_DIRECTORY_PATH}/.gitignore_global" ~
 fi
 
+if [[ -e "${ZSH_DIRECTORY_PATH}/.ignore" ]]; then
+	ln -sfv "${ZSH_DIRECTORY_PATH}/.ignore" ~
+fi
+
 if [[ -e "${ZSH_DIRECTORY_PATH}/init.vim" ]]; then
 	NVIM_DIRECTORY=~/.config/nvim
 

@@ -19,9 +19,8 @@ fi
 if [[ ! -n $(dpkg --get-selections | grep "insomnia") ]]; then
 	success_message "adding insomnia"
 
-	sudo sh -c "echo 'deb https://dl.bintray.com/getinsomnia/Insomnia /' > /etc/apt/sources.list.d/insomnia.list"
-
 	wget -qO - https://insomnia.rest/keys/debian-public.key.asc | sudo apt-key add -
+	sudo sh -c "echo 'deb https://dl.bintray.com/getinsomnia/Insomnia /' > /etc/apt/sources.list.d/insomnia.list"
 fi
 
 if [[ ! -n $(dpkg --get-selections | grep "mailspring") ]]; then
@@ -81,6 +80,15 @@ if [[ ! -n $(ls -la ~/.local/share/applications | grep "appimagekit-Etcher.deskt
 	unzip ~/Applications/etcher-electron-1.4.4-linux-x64.zip -d ~/Applications
 	~/Applications/etcher-electron-1.4.4-x86_64.AppImage
 	rm -rf ~/Applications/etcher-electron-1.4.4-linux-x64.zip
+fi
+
+if [[ ! -a /usr/bin/rg ]]; then
+	success_message "installing ripgrep"
+
+	curl -LO "https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep-0.10.0-x86_64-unknown-linux-musl.tar.gz"
+	tar xf ripgrep-0.10.0-*.tar.gz
+	sudo cp ripgrep-0.10.0-*/rg /usr/bin/rg
+	rm -rf ripgrep-0.10.0-*
 fi
 
 LIGHTLINE_AUTOLOAD_DIRECTORY=~/.local/share/nvim/plugged/lightline.vim/autoload/lightline/colorscheme
