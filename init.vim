@@ -14,11 +14,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 	Plug 'herringtondarkholme/yats.vim'
 	Plug 'hzchirs/vim-material'
-		let material_style ='dark'
+		let g:material_style ='dark'
 		set background=dark
 
 	Plug 'itchyny/lightline.vim'
-		let lightline = {
+		let g:lightline = {
 		\	'colorscheme': 'lightline_material',
 		\}
 
@@ -26,8 +26,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'junegunn/fzf.vim'
 	Plug 'mhinz/vim-signify'
 	Plug 'scrooloose/nerdtree'
-		let DevIconsEnableFoldersOpenClose = 1
-		let DevIconsEnableFolderExtensionPatternMatching = 1
+		let g:DevIconsEnableFoldersOpenClose = 1
+		let g:DevIconsEnableFolderExtensionPatternMatching = 1
 		let g:NERDTreeMinimalUI = 1
 		let g:NERDTreeDirArrowExpandable = "\u00a0"
 		let g:NERDTreeDirArrowCollapsible = "\u00a0"
@@ -36,7 +36,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 		let g:NERDTreeShowHidden = 1
 		let g:NERDTreeSyntaxDisableDefaultExtensions = 1
 		let g:NERDTreeSyntaxEnabledExtensions = ['bmp', 'c', 'cpp', 'css', 'erb', 'go', 'html', 'jpg', 'js', 'json', 'jsx', 'less', 'markdown', 'md', 'png', 'py', 'rb', 'scss', 'sh', 'sql', 'ts', 'tsx', 'vim']
-		let WebDevIconsUnicodeDecorateFolderNodes = 1
+		let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
 	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 	Plug 'valloric/youcompleteme', { 'do': './install.py' }
