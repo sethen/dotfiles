@@ -57,10 +57,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 call plug#end()
 
 colorscheme vim-material
+highlight CursorColumn guibg=#000a12
+highlight CursorLine guibg=#000a12
 highlight CursorLineNr guifg=#FFCB6B
 highlight SignifySignAdd cterm=bold guibg=#263238 guifg=#C3E88D
 highlight SignifySignDelete cterm=bold guibg=#263238 guifg=#FF5370
 highlight SignifySignChange cterm=bold guibg=#263238  guifg=#FFCB6B
 highlight SignColumn guibg=NONE gui=NONE guibg=NONE gui=NONE
 highlight VertSplit ctermbg=NONE guibg=NONE
-
+highlight Visual guibg=#4f5b62
