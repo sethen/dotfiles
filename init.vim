@@ -28,6 +28,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'scrooloose/nerdtree'
 		let DevIconsEnableFoldersOpenClose = 1
 		let DevIconsEnableFolderExtensionPatternMatching = 1
+		let g:NERDTreeMinimalUI = 1
 		let g:NERDTreeDirArrowExpandable = "\u00a0"
 		let g:NERDTreeDirArrowCollapsible = "\u00a0"
 		let g:NERDTreeDisableExactMatchHighlight = 1
