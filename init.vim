@@ -26,6 +26,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'junegunn/fzf.vim'
 	Plug 'mhinz/vim-signify'
 	Plug 'scrooloose/nerdtree'
+		let g:DevIconsDefaultFolderOpenSymbol = "\uf115"
 		let g:DevIconsEnableFoldersOpenClose = 1
 		let g:DevIconsEnableFolderExtensionPatternMatching = 1
 		let g:NERDTreeMinimalUI = 1
@@ -37,21 +38,22 @@ call plug#begin('~/.local/share/nvim/plugged')
 		let g:NERDTreeSyntaxDisableDefaultExtensions = 1
 		let g:NERDTreeSyntaxEnabledExtensions = ['bmp', 'c', 'cpp', 'css', 'erb', 'go', 'html', 'jpg', 'js', 'json', 'jsx', 'less', 'markdown', 'md', 'png', 'py', 'rb', 'scss', 'sh', 'sql', 'ts', 'tsx', 'vim']
 		let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+		let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = "\uf07b"
 
 	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 	Plug 'valloric/youcompleteme', { 'do': './install.py' }
 	Plug 'xuyuanp/nerdtree-git-plugin'
 		let g:NERDTreeIndicatorMapCustom = {
-		\	'Modified'  : '✹',
-		\	'Staged'    : '✚',
-		\	'Untracked' : '✭',
-		\	'Renamed'   : '➜',
-		\	'Unmerged'  : '═',
-		\	'Deleted'   : '✖',
-		\	'Dirty'     : '✗',
-		\	'Clean'     : '✔︎',
-		\	'Ignored'   : '☒',
-		\	'Unknown'   : '?'
+		\	'Modified'  : "\uf069",
+		\	'Staged'    : "\uf067",
+		\	'Untracked' : "\uf005",
+		\	'Renamed'   : "\uf061",
+		\	'Unmerged'  : "\ue279",
+		\	'Deleted'   : "\uf737",
+		\	'Dirty'     : "\uf00d",
+		\	'Clean'     : "\uf00c",
+		\	'Ignored'   : "\uf070",
+		\	'Unknown'   : "\uf128"
 		\}
 	Plug 'ryanoasis/vim-devicons'
 call plug#end()
