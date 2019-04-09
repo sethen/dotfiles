@@ -40,11 +40,11 @@ dconf write /org/gnome/shell/extensions/dash-to-dock/background-color "'#000000'
 # dynamic panel transparency preferences
 dconf write /org/gnome/shell/extensions/dynamic-panel-transparency/enable-opacity true
 dconf write /org/gnome/shell/extensions/dynamic-panel-transparency/remove-panel-styling true
-dconf write /org/gnome/shell/extensions/dynamic-panel-transparency/maximized-opacity 127
-dconf write /org/gnome/shell/extensions/dynamic-panel-transparency/unmaximized-opacity 127
+dconf write /org/gnome/shell/extensions/dynamic-panel-transparency/maximized-opacity 204
+dconf write /org/gnome/shell/extensions/dynamic-panel-transparency/unmaximized-opacity 204 
 
 # extensions preferences
-dconf write /org/gnome/shell/enabled-extensions "[ 'arc-menu@linxgem33.com', 'dash-to-dock@micxgx.gmail.com', 'openweather-extension@jenslody.de', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'desk-changer@eric.gach.gmail.com' ]"
+dconf write /org/gnome/shell/enabled-extensions "[ 'arc-menu@linxgem33.com', 'dash-to-dock@micxgx.gmail.com', 'openweather-extension@jenslody.de', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'desk-changer@eric.gach.gmail.com', 'dynamic-panel-transparency@rockon999.github.io' ]"
 
 # desk changer preferences
 dconf write /org/gnome/shell/extensions/desk-changer/profiles "{'default': [('file:///home/${USER}/Developer/wallpapers', true)]}"
