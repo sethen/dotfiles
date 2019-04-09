@@ -68,9 +68,9 @@ call plug#end()
 
 colorscheme vim-material
 highlight CursorLine guibg=#212121
+highlight NERDTreeFlags guifg=#c792ea
 highlight SignColumn guibg=NONE gui=NONE guibg=NONE gui=NONE
 highlight SignifySignAdd cterm=bold guibg=#263238 guifg=#C3E88D
 highlight SignifySignDelete cterm=bold guibg=#263238 guifg=#FF5370
 highlight SignifySignChange cterm=bold guibg=#263238  guifg=#FFCB6B
 highlight VertSplit ctermbg=NONE guibg=NONE
-highlight! link NERDTreeFlags NERDTreeDir
