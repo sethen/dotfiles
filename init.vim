@@ -1,32 +1,41 @@
 call plug#begin('~/.local/share/nvim/plugged')
-	set cursorcolumn                                   " set vertical line on where cursor currently is
-	set cursorline                                     " set horizontal line on where cursor currently is
-	set number relativenumber                          " set line number to relative
-	set list                                           " set white space characters to be shown
-	set listchars=eol:↲,space:·,tab:»\                 " set white space character symbols
-	set shiftwidth=4                                   " set tab to insert 4 spaces
-	set shortmess=I                                    " set no message prompt on startup
-	set showbreak=↪\                                   " set line break character symbol
-	set tabstop=4                                      " set tab use 4 spaces width
-	set termguicolors                                  " set 24-bit color support
-	set updatetime=750                                 " set time for swap to write
-	syntax on                                          " set syntax highlighting
+	set background=dark
+	" set horizontal line on where cursor currently is
+	set cursorline
+	" set line number to relative
+	set number relativenumber
+	" set white space characters to be shown
+	set list
+	" set white space character symbols
+	set listchars=eol:↲,space:·,tab:»\ 
+	" set tab to insert 4 spaces
+	set shiftwidth=4
+	" set no message prompt on startup
+	set shortmess=I
+	" set line break character symbol
+	set showbreak=↪\
+	" set tab use 4 spaces width
+	set tabstop=4
+	" set 24-bit color support
+	set termguicolors
+	" set time for swap to write
+	set updatetime=750
+	" set syntax highlighting
+	syntax on
 
+	" install typescript syntax highlight
 	Plug 'herringtondarkholme/yats.vim'
 	Plug 'hzchirs/vim-material'
-		let g:material_style ='dark'
-		set background=dark
-
+		let g:material_style='dark'
 	Plug 'itchyny/lightline.vim'
 		let g:lightline = {
-		\	'colorscheme': 'lightline_material',
+		\	'colorscheme': 'material',
 		\}
-
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
 	Plug 'mhinz/vim-signify'
 	Plug 'scrooloose/nerdtree'
-		let g:DevIconsDefaultFolderOpenSymbol = "\uf115"
+		let g:DevIconsDefaultFolderOpenSymbol = "\uf07c"
 		let g:DevIconsEnableFoldersOpenClose = 1
 		let g:DevIconsEnableFolderExtensionPatternMatching = 1
 		let g:NERDTreeMinimalUI = 1
@@ -39,7 +48,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 		let g:NERDTreeSyntaxEnabledExtensions = ['bmp', 'c', 'cpp', 'css', 'erb', 'go', 'html', 'jpg', 'js', 'json', 'jsx', 'less', 'markdown', 'md', 'png', 'py', 'rb', 'scss', 'sh', 'sql', 'ts', 'tsx', 'vim']
 		let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 		let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = "\uf07b"
-
 	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 	Plug 'valloric/youcompleteme', { 'do': './install.py' }
 	Plug 'xuyuanp/nerdtree-git-plugin'
@@ -59,12 +67,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 call plug#end()
 
 colorscheme vim-material
-highlight CursorColumn guibg=#000a12
-highlight CursorLine guibg=#000a12
-highlight CursorLineNr guifg=#FFCB6B
+highlight CursorLine guibg=#212121
+highlight SignColumn guibg=NONE gui=NONE guibg=NONE gui=NONE
 highlight SignifySignAdd cterm=bold guibg=#263238 guifg=#C3E88D
 highlight SignifySignDelete cterm=bold guibg=#263238 guifg=#FF5370
 highlight SignifySignChange cterm=bold guibg=#263238  guifg=#FFCB6B
-highlight SignColumn guibg=NONE gui=NONE guibg=NONE gui=NONE
 highlight VertSplit ctermbg=NONE guibg=NONE
-highlight Visual guibg=#4f5b62
+highlight! link NERDTreeFlags NERDTreeDir

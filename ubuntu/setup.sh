@@ -104,10 +104,6 @@ success_message "install vim-plug plugins"
 
 nvim +'PlugInstall --sync' +qa
 
-success_message "copying lightline theme"
-
-ln -sfv $ZSH_DIRECTORY_PATH/themes/lightline_material.vim $LIGHTLINE_AUTOLOAD_DIRECTORY
-
 if [[ -n $(snap list | grep "gnome-calculator") ]]; then
 	success_message "removing snap gnome-calculator"
 

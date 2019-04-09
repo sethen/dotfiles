@@ -22,7 +22,7 @@ function rprompt_info() {
 		GIT_INFO="%K{8} $(git_branch_name):$(git_sha) %k"
 
 		if [[ -n $GIT_FILES_TRACKING ]]; then
-			echo "$GIT_INFO$GIT_FILES_TRACKING"
+			echo "$GIT_FILES_TRACKING$GIT_INFO"
 		else
 			echo "$GIT_INFO"
 		fi
