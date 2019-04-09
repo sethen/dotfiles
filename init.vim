@@ -35,7 +35,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'junegunn/fzf.vim'
 	Plug 'mhinz/vim-signify'
 	Plug 'scrooloose/nerdtree'
-		let g:DevIconsDefaultFolderOpenSymbol = "\uf07c"
+		let g:DevIconsDefaultFolderOpenSymbol = "\uf115"
 		let g:DevIconsEnableFoldersOpenClose = 1
 		let g:DevIconsEnableFolderExtensionPatternMatching = 1
 		let g:NERDTreeMinimalUI = 1
