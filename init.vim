@@ -34,6 +34,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
 	Plug 'mhinz/vim-signify'
+	Plug 'mhinz/vim-startify'
 	Plug 'scrooloose/nerdtree'
 		let g:DevIconsDefaultFolderOpenSymbol = "\uf115"
 		let g:DevIconsEnableFoldersOpenClose = 1
