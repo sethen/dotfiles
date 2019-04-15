@@ -10,27 +10,31 @@ if [[ ! -e "/var/lib/AccountsService/icons/${USER}" ]]; then
 fi
 
 if [[ ! -n $(dpkg --get-selections | grep "google-chrome-stable") ]]; then
-	success_message "adding google-chrome-stable"
+	success_message "adding google-chrome-stable repository"
 
 	wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 	sudo sh -c "echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' > /etc/apt/sources.list.d/google-chrome.list"
 fi
 
 if [[ ! -n $(dpkg --get-selections | grep "insomnia") ]]; then
-	success_message "adding insomnia"
+	success_message "adding insomnia repository"
 
 	wget -qO - https://insomnia.rest/keys/debian-public.key.asc | sudo apt-key add -
 	sudo sh -c "echo 'deb https://dl.bintray.com/getinsomnia/Insomnia /' > /etc/apt/sources.list.d/insomnia.list"
 fi
 
-if [[ ! -n $(dpkg --get-selections | grep "mailspring") ]]; then
-	success_message "adding mailspring"
+if [[ ! -n $(dpkg --get-selections | grep "spotify-client") ]]; then
+	success_message "adding spotify-client repository"
 
-	wget -O mailspring.deb "https://updates.getmailspring.com/download?platform=linuxDeb"
-	sudo dpkg -i mailspring.deb
-	rm -rf mailspring*
+	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
+	sudo sh -c "echo 'deb http://repository.spotify.com stable non-free' > /etc/apt/sources.list.d/spotify.list"
+fi
 
-	echo "Icon=thunderbird" | sudo tee -a "/usr/share/applications/mailspring.desktop"
+if [[ ! -n $(dpkg --get-selections | grep "docker") ]]; then
+	success_message "adding docker repository"
+
+	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+	sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 fi
 
 if [[ ! -n $(dpkg --get-selections | grep "moka-icon-theme") ]]; then
@@ -45,22 +49,17 @@ if [[ ! -n $(dpkg --get-selections | grep "neovim") ]]; then
 	sudo apt-add-repository ppa:neovim-ppa/stable -y
 fi
 
-if [[ ! -n $(dpkg --get-selections | grep "nodejs") ]]; then
-	curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
-	sudo apt-get install -y nodejs
-fi
-
-if [[ ! -n $(dpkg --get-selections | grep "spotify-client") ]]; then
-	success_message "adding spotify-client"
-
-	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
-	sudo sh -c "echo 'deb http://repository.spotify.com stable non-free' > /etc/apt/sources.list.d/spotify.list"
-fi
-
 if [[ ! -n $(dpkg --get-selections | grep "ukuu") ]]; then
-	success_message "adding ukuu"
+	success_message "adding ukuu repository"
 
 	sudo add-apt-repository ppa:teejee2008/ppa -y
+fi
+
+if ! type "code" > /dev/null; then
+	success_message "installing visual-studio-code repository"
+
+	wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+	sudo sh -c "echo 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main' > /etc/apt/sources.list.d/vscode.list"
 fi
 
 if [[ ! -n $(ls -la ~/.local/share/applications | grep "appimagekit-bitwarden.desktop") ]]; then
@@ -80,6 +79,21 @@ if [[ ! -n $(ls -la ~/.local/share/applications | grep "appimagekit-Etcher.deskt
 	unzip ~/Applications/etcher-electron-1.4.4-linux-x64.zip -d ~/Applications
 	~/Applications/etcher-electron-1.4.4-x86_64.AppImage
 	rm -rf ~/Applications/etcher-electron-1.4.4-linux-x64.zip
+fi
+
+if [[ ! -n $(dpkg --get-selections | grep "mailspring") ]]; then
+	success_message "adding mailspring"
+
+	wget -O mailspring.deb "https://updates.getmailspring.com/download?platform=linuxDeb"
+	sudo dpkg -i mailspring.deb
+	rm -rf mailspring*
+
+	echo "Icon=thunderbird" | sudo tee -a "/usr/share/applications/mailspring.desktop"
+fi
+
+if [[ ! -n $(dpkg --get-selections | grep "nodejs") ]]; then
+	curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
+	sudo apt-get install -y nodejs
 fi
 
 if [[ ! -a /usr/bin/rg ]]; then
@@ -104,12 +118,6 @@ success_message "install vim-plug plugins"
 
 nvim +'PlugInstall --sync' +qa
 
-if [[ -n $(snap list | grep "gnome-calculator") ]]; then
-	success_message "removing snap gnome-calculator"
-
-	sudo snap remove gnome-calculator
-fi
-
 if [[ -n $(snap list | grep "gnome-system-monitor") ]]; then
 	DESKTOP_FILE="/var/lib/snapd/desktop/applications/gnome-system-monitor_gnome-system-monitor.desktop"
 	ICON_TEXT="Icon=gnome-monitor"
@@ -133,19 +141,16 @@ if ! type "gnomeshell-extension-manage" > /dev/null; then
 	gnomeshell-extension-manage --install --extension-id 1011 --version 3.26 --user &> /dev/null
 fi
 
-if ! type "code" > /dev/null; then
-	success_message "installing visual-studio-code"
-
-	wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-	sudo sh -c "echo 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main' > /etc/apt/sources.list.d/vscode.list"
-
-	sudo apt-get install code -y
-fi
-
 if [[ -a "/usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com" ]]; then
 	success_message "removing default ubuntu gnome dock"
 
 	sudo rm -rf /usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com
+fi
+
+if [[ -n $(snap list | grep "gnome-calculator") ]]; then
+	success_message "removing snap gnome-calculator"
+
+	sudo snap remove gnome-calculator
 fi
 
 success_message "updating packages"
@@ -165,6 +170,8 @@ apt_get_install_if_package_not_exists "google-chrome-stable"
 apt_get_install_if_package_not_exists "gparted"
 apt_get_install_if_package_not_exists "gpick"
 apt_get_install_if_package_not_exists "default-jre"
+apt_get_install_if_package_not_exists "docker-ce"
+apt_get_install_if_package_not_exists "docker-ce-cli"
 apt_get_install_if_package_not_exists "flatpak"
 apt_get_install_if_package_not_exists "insomnia"
 apt_get_install_if_package_not_exists "neovim"

@@ -35,6 +35,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'junegunn/fzf.vim'
 	Plug 'mhinz/vim-signify'
 	Plug 'mhinz/vim-startify'
+	Plug 'quramy/tsuquyomi'
 	Plug 'scrooloose/nerdtree'
 		let g:DevIconsDefaultFolderOpenSymbol = "\uf115"
 		let g:DevIconsEnableFoldersOpenClose = 1
@@ -50,6 +51,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 		let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 		let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = "\uf07b"
 	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+	Plug 'tpope/vim-surround'
 	Plug 'valloric/youcompleteme', { 'do': './install.py' }
 	Plug 'xuyuanp/nerdtree-git-plugin'
 		let g:NERDTreeIndicatorMapCustom = {
@@ -75,3 +77,5 @@ highlight SignifySignAdd cterm=bold guibg=#263238 guifg=#C3E88D
 highlight SignifySignDelete cterm=bold guibg=#263238 guifg=#FF5370
 highlight SignifySignChange cterm=bold guibg=#263238  guifg=#FFCB6B
 highlight VertSplit ctermbg=NONE guibg=NONE
+
+set grepprg=rg\ --no-heading\ --vimgrep
