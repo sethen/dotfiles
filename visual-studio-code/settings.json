@@ -3,5 +3,6 @@
 	"editor.renderIndentGuides": true,
 	"editor.renderWhitespace": "all",
 	"typescript.updateImportsOnFileMove.enabled": "always",
-	"window.zoomLevel": 1
+	"window.zoomLevel": 1,
+	"breadcrumbs.enabled": true
 }

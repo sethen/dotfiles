@@ -50,6 +50,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 		let g:NERDTreeSyntaxEnabledExtensions = ['bmp', 'c', 'cpp', 'css', 'erb', 'go', 'html', 'jpg', 'js', 'json', 'jsx', 'less', 'markdown', 'md', 'png', 'py', 'rb', 'scss', 'sh', 'sql', 'ts', 'tsx', 'vim']
 		let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 		let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = "\uf07b"
+	Plug 'shougo/vimproc.vim', { 'do' : 'make' }
 	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 	Plug 'tpope/vim-surround'
 	Plug 'valloric/youcompleteme', { 'do': './install.py' }
@@ -78,4 +79,6 @@ highlight SignifySignDelete cterm=bold guibg=#263238 guifg=#FF5370
 highlight SignifySignChange cterm=bold guibg=#263238  guifg=#FFCB6B
 highlight VertSplit ctermbg=NONE guibg=NONE
 
-set grepprg=rg\ --no-heading\ --vimgrep
+if executable('rg')
+	set grepprg=rg\ --no-heading\ --vimgrep
+endif
