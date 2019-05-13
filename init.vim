@@ -2,10 +2,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 	set background=dark
 	" set horizontal line on where cursor currently is
 	set cursorline
-	" set line number to relative
-	set number relativenumber
+	" set hidden to abandon buffers
+	set hidden
 	" set white space characters to be shown
 	set list
+	" set line number to relative
+	set number relativenumber
 	" set white space character symbols
 	set listchars=eol:↲,space:·,tab:»\ 
 	" set tab to insert 4 spaces
@@ -37,6 +39,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'mhinz/vim-startify'
 	Plug 'quramy/tsuquyomi'
 	Plug 'scrooloose/nerdtree'
+		augroup nerdtreehidecwd
+			autocmd!
+			autocmd FileType nerdtree setlocal conceallevel=3 | syntax match NERDTreeDirSlash #/$# containedin=NERDTreeDir conceal contained
+		augroup end
 		let g:DevIconsDefaultFolderOpenSymbol = "\uf115"
 		let g:DevIconsEnableFoldersOpenClose = 1
 		let g:DevIconsEnableFolderExtensionPatternMatching = 1
@@ -52,6 +58,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 		let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = "\uf07b"
 	Plug 'shougo/vimproc.vim', { 'do' : 'make' }
 	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-surround'
 	Plug 'valloric/youcompleteme', { 'do': './install.py' }
 	Plug 'xuyuanp/nerdtree-git-plugin'

@@ -40,7 +40,7 @@ fi
 if [[ ! -n $(dpkg --get-selections | grep "moka-icon-theme") ]]; then
 	success_message "adding moka-icon-theme repository"
 
-	sudo add-apt-repository ppa:moka/daily -y
+	sudo add-apt-repository -u ppa:snwh/ppa
 fi
 
 if [[ ! -n $(dpkg --get-selections | grep "neovim") ]]; then
