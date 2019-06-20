@@ -3,5 +3,5 @@
 if ! pacman -Qi $1 &> /dev/null; then
 	success_message "installing ${1}"
 
-	yaourt -S $1 --noconfirm
+	yay -S $1 --noconfirm
 fi

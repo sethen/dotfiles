@@ -201,3 +201,5 @@ if [[ $UPGRADE =~ "[Yy]" ]]; then
 	sudo apt upgrade -y
 	sudo apt autoremove -y
 fi
+
+sudo sed -i -- 's/python$/python3/g' /usr/share/gnome-shell/extensions/desk-changer@eric.gach.gmail.com/desk-changer-daemon.py

@@ -16,6 +16,8 @@ if [ -n "$MANJARO" ]; then
 	if [ -z ${ZSH} ]; then
 		sudo pacman -S zsh --noconfirm
 	fi
+
+	chsh -s /bin/zsh
 elif [ -n "$UBUNTU" ]; then
 	export OS='ubuntu'
 
@@ -23,14 +25,14 @@ elif [ -n "$UBUNTU" ]; then
 		sudo apt-get install curl -y
 		sudo apt-get install zsh -y
 	fi
+
+	chsh -s $(which zsh)
 else
 	echo "operating system not recognized"
 
 	sleep 3
 	exit 1
 fi
-
-chsh -s $(which zsh)
 
 "${BASH_DIRECTORY_PATH}/run.sh"
 

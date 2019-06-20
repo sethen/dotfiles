@@ -8,4 +8,3 @@ alias llf="ls -la --color"
 # Utilities
 alias pacrmv="pacman -Rns $(pacman -Qtdq) --noconfirm"
 alias pbcopy="xsel --clipboard --input"
-alias yaoup="yaourt -Syu --aur --noconfirm --color && sudo pacman -Rs $(pacman -Qtdq) --noconfirm"
