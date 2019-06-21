@@ -62,14 +62,18 @@ if ! type "code" > /dev/null; then
 	sudo sh -c "echo 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main' > /etc/apt/sources.list.d/vscode.list"
 fi
 
-if [[ ! -n $(ls -la ~/.local/share/applications | grep "appimagekit-bitwarden.desktop") ]]; then
+LOCAL_SHARE_APPLICATIONS=~/.local/share/applications
+USR_SHARE_APPLICATIONS=/usr/share/applications
+BITWARDEN=$LOCAL_SHARE_APPLICATIONS/appimagekit-bitwarden.desktop
+
+if [[ ! -a $BITWARDEN ]]; then
 	success_message "installing bit warden"
 
 	wget -O ~/Applications/bitwarden.AppImage "https://vault.bitwarden.com/download/?app=desktop&platform=linux"
 	chmod +x ~/Applications/bitwarden.AppImage
 	~/Applications/bitwarden.AppImage
 
-	echo "Icon=lastpass" | sudo tee -a ~/.local/share/applications/appimagekit-bitwarden.desktop
+	sudo sed -i -- 's/Icon=appimagekit-bitwarden/Icon=lastpass/g' $BITWARDEN
 fi
 
 if [[ ! -n $(ls -la ~/.local/share/applications | grep "appimagekit-Etcher.desktop") ]]; then
@@ -82,13 +86,13 @@ if [[ ! -n $(ls -la ~/.local/share/applications | grep "appimagekit-Etcher.deskt
 fi
 
 if [[ ! -n $(dpkg --get-selections | grep "mailspring") ]]; then
-	success_message "adding mailspring"
+	success_message "installing mailspring"
 
 	wget -O mailspring.deb "https://updates.getmailspring.com/download?platform=linuxDeb"
 	sudo dpkg -i mailspring.deb
 	rm -rf mailspring*
 
-	echo "Icon=thunderbird" | sudo tee -a "/usr/share/applications/mailspring.desktop"
+	sudo sed -i -- 's/Icon=mailspring/Icon=thunderbird/g' $USR_SHARE_APPLICATIONS/mailspring.desktop
 fi
 
 if [[ ! -n $(dpkg --get-selections | grep "nodejs") ]]; then
@@ -105,6 +109,14 @@ if [[ ! -a /usr/bin/rg ]]; then
 	rm -rf ripgrep-0.10.0-*
 fi
 
+GNOME_SYSTEM_MONITOR=/var/lib/snapd/desktop/applications/gnome-system-monitor_gnome-system-monitor.desktop
+
+if [[ -a $GNOME_SYSTEM_MONITOR ]]; then
+	success_message "changing gnome monitor icon"
+
+	sudo sed -i -- 's/Icon=\/snap\/gnome-system-monitor\/91\/meta\/gui\/org.gnome.SystemMonitor.svg/Icon=gnome-system-monitor/g' $GNOME_SYSTEM_MONITOR
+fi
+
 LIGHTLINE_AUTOLOAD_DIRECTORY=~/.local/share/nvim/plugged/lightline.vim/autoload/lightline/colorscheme
 NEOVIM_AUTOLOAD_DIRECTORY=~/.local/share/nvim/site/autoload
 
@@ -117,15 +129,6 @@ fi
 success_message "install vim-plug plugins"
 
 nvim +'PlugInstall --sync' +qa
-
-if [[ -n $(snap list | grep "gnome-system-monitor") ]]; then
-	DESKTOP_FILE="/var/lib/snapd/desktop/applications/gnome-system-monitor_gnome-system-monitor.desktop"
-	ICON_TEXT="Icon=gnome-monitor"
-
-	if [[ ! -n $(cat $DESKTOP_FILE | grep $ICON_TEXT) ]]; then
-		echo "\n$ICON_TEXT" | sudo tee -a $DESKTOP_FILE
-	fi
-fi
 
 if ! type "gnomeshell-extension-manage" > /dev/null; then
 	success_message "installing gnome extensions manager"
@@ -202,4 +205,4 @@ if [[ $UPGRADE =~ "[Yy]" ]]; then
 	sudo apt autoremove -y
 fi
 
-sudo sed -i -- 's/python$/python3/g' /usr/share/gnome-shell/extensions/desk-changer@eric.gach.gmail.com/desk-changer-daemon.py
+sudo sed -i -- 's/python$/python3/g' ~/.local/share/gnome-shell/extensions/desk-changer@eric.gach.gmail.com/desk-changer-daemon.py

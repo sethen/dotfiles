@@ -10,13 +10,6 @@ if [[ ! -e "/var/lib/AccountsService/icons/${USER}" ]]; then
 fi
 
 USR_SHARE_APPLICATIONS=/usr/share/applications
-BITWARDEN=$USR_SHARE_APPLICATIONS/bitwarden.desktop
-
-if [[ -a $BITWARDEN ]]; then
-	success_message "updating settings icon"
-
-	sudo sed -i -- 's/Icon=bitwarden/Icon=lastpass/g' $BITWARDEN
-fi
 
 GNOME_CONTROL_CENTER=$USR_SHARE_APPLICATIONS/gnome-control-center.desktop
 
@@ -34,13 +27,6 @@ if [[ -a $GNOME_SYSTEM_MONITOR ]]; then
 	sudo sed -i -- 's/Icon=org.gnome.SystemMonitor/Icon=gnome-monitor/g' $GNOME_SYSTEM_MONITOR
 fi
 
-MAILSPRING=$USR_SHARE_APPLICATIONS/mailspring.desktop
-
-if [[ -a $MAILSPRING ]]; then
-	success_message "updating mailspring icon"
-
-	sudo sed -i -- 's/Icon=mailspring/Icon=thunderbird/g' $MAILSPRING
-fi
 
 TERMINAL=$USR_SHARE_APPLICATIONS/org.gnome.Terminal.desktop
 
@@ -68,6 +54,7 @@ fi
 
 pacman_install_if_package_not_exists "yay"
 yay_install_if_package_not_exists "arc-gtk-theme"
+yay_install_if_package_not_exists "bitwarden"
 yay_install_if_package_not_exists "curl"
 yay_install_if_package_not_exists "ccze"
 yay_install_if_package_not_exists "etcher"
@@ -86,6 +73,22 @@ yay_install_if_package_not_exists "spotify"
 yay_install_if_package_not_exists "telegram-desktop"
 yay_install_if_package_not_exists "visual-studio-code-bin"
 yay_install_if_package_not_exists "vlc"
+
+BITWARDEN=$USR_SHARE_APPLICATIONS/bitwarden.desktop
+
+if [[ -a $BITWARDEN ]]; then
+	success_message "updating settings icon"
+
+	sudo sed -i -- 's/Icon=bitwarden/Icon=lastpass/g' $BITWARDEN
+fi
+
+MAILSPRING=$USR_SHARE_APPLICATIONS/mailspring.desktop
+
+if [[ -a $MAILSPRING ]]; then
+	success_message "updating mailspring icon"
+
+	sudo sed -i -- 's/Icon=mailspring/Icon=thunderbird/g' $MAILSPRING
+fi
 
 if [[ ! -n $(pip3 list | grep neovim) ]]; then
 	pip3 install --user neovim
