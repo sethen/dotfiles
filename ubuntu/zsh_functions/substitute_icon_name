@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+success_message "changing icon for $2"
+
+sudo sed -iE "s/Icon=[a-zA-Z0-9./]\+$/Icon=${1}/g" $2

@@ -6,7 +6,7 @@ if [[ ! -e "/var/lib/AccountsService/icons/${USER}" ]]; then
 	success_message "copying avatar"
 
 	sudo cp "${ZSH_DIRECTORY_PATH}/avatars/anime-sethen.png" "/var/lib/AccountsService/icons/${USER}"
-	echo "Icon=/var/lib/AccountsService/icons/${USER}" | sudo tee -a "/var/lib/AccountsService/users/${USER}"
+	substitute_icon_name "/var/lib/AccountsService/icons/${USER}" /var/lib/AccountsService/users/${USER}
 fi
 
 USR_SHARE_APPLICATIONS=/usr/share/applications
@@ -14,26 +14,20 @@ USR_SHARE_APPLICATIONS=/usr/share/applications
 GNOME_CONTROL_CENTER=$USR_SHARE_APPLICATIONS/gnome-control-center.desktop
 
 if [[ -a $GNOME_CONTROL_CENTER ]]; then
-	success_message "updating settings icon"
-
-	sudo sed -i -- 's/Icon=org.gnome.Settings/Icon=system-settings/g' $GNOME_CONTROL_CENTER
+	substitute_icon_name "system-settings" $GNOME_CONTROL_CENTER
 fi
 
 GNOME_SYSTEM_MONITOR=$USR_SHARE_APPLICATIONS/gnome-system-monitor.desktop
 
 if [[ -a $GNOME_SYSTEM_MONITOR ]]; then
-	success_message "updating system monitor icon"
-
-	sudo sed -i -- 's/Icon=org.gnome.SystemMonitor/Icon=gnome-monitor/g' $GNOME_SYSTEM_MONITOR
+	substitute_icon_name "gnome-monitor" $GNOME_SYSTEM_MONITOR
 fi
 
 
 TERMINAL=$USR_SHARE_APPLICATIONS/org.gnome.Terminal.desktop
 
 if [[ -a $TERMINAL ]]; then
-	success_message "updating terminal icon"
-
-	sudo sed -i -- 's/Icon=org.gnome.Terminal/Icon=utilities-terminal/g' $TERMINAL
+	substitute_icon_name "utilities-terminal" $TERMINAL
 fi
 
 success_message "removing pre-installed packages"
@@ -77,17 +71,13 @@ yay_install_if_package_not_exists "vlc"
 BITWARDEN=$USR_SHARE_APPLICATIONS/bitwarden.desktop
 
 if [[ -a $BITWARDEN ]]; then
-	success_message "updating settings icon"
-
-	sudo sed -i -- 's/Icon=bitwarden/Icon=lastpass/g' $BITWARDEN
+	substitute_icon_name "lastpass" $BITWARDEN
 fi
 
 MAILSPRING=$USR_SHARE_APPLICATIONS/mailspring.desktop
 
 if [[ -a $MAILSPRING ]]; then
-	success_message "updating mailspring icon"
-
-	sudo sed -i -- 's/Icon=mailspring/Icon=thunderbird/g' $MAILSPRING
+	substitute_icon_name "thunderbird" $MAILSPRING
 fi
 
 if [[ ! -n $(pip3 list | grep neovim) ]]; then

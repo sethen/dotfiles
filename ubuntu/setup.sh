@@ -6,7 +6,7 @@ if [[ ! -e "/var/lib/AccountsService/icons/${USER}" ]]; then
 	success_message "copying avatar"
 
 	sudo cp "${ZSH_DIRECTORY_PATH}/avatars/anime-sethen.png" "/var/lib/AccountsService/icons/${USER}"
-	echo "Icon=/var/lib/AccountsService/icons/${USER}" | sudo tee -a "/var/lib/AccountsService/users/${USER}"
+	substitute_icon_name "/var/lib/AccountsService/icons/${USER}" /var/lib/AccountsService/users/${USER}
 fi
 
 if [[ ! -n $(dpkg --get-selections | grep "google-chrome-stable") ]]; then
@@ -73,7 +73,15 @@ if [[ ! -a $BITWARDEN ]]; then
 	chmod +x ~/Applications/bitwarden.AppImage
 	~/Applications/bitwarden.AppImage
 
-	sudo sed -i -- 's/Icon=appimagekit-bitwarden/Icon=lastpass/g' $BITWARDEN
+	substitute_icon_name "lastpass" $BITWARDEN
+else
+	substitute_icon_name "lastpass" $BITWARDEN
+fi
+
+GNOME_SYSTEM_MONITOR=/var/lib/snapd/desktop/applications/gnome-system-monitor_gnome-system-monitor.desktop
+
+if [[ -a $GNOME_SYSTEM_MONITOR ]]; then
+	substitute_icon_name "gnome-system-monitor" $GNOME_SYSTEM_MONITOR
 fi
 
 if [[ ! -n $(ls -la ~/.local/share/applications | grep "appimagekit-Etcher.desktop") ]]; then
@@ -85,14 +93,27 @@ if [[ ! -n $(ls -la ~/.local/share/applications | grep "appimagekit-Etcher.deskt
 	rm -rf ~/Applications/etcher-electron-1.4.4-linux-x64.zip
 fi
 
-if [[ ! -n $(dpkg --get-selections | grep "mailspring") ]]; then
+MAILSPRING=$USR_SHARE_APPLICATIONS/mailspring.desktop
+
+if [[ ! -a $MAILSPRING ]]; then
 	success_message "installing mailspring"
 
 	wget -O mailspring.deb "https://updates.getmailspring.com/download?platform=linuxDeb"
 	sudo dpkg -i mailspring.deb
 	rm -rf mailspring*
 
-	sudo sed -i -- 's/Icon=mailspring/Icon=thunderbird/g' $USR_SHARE_APPLICATIONS/mailspring.desktop
+	substitute_icon_name "thunderbird" $MAILSPRING
+else
+	substitute_icon_name "thunderbird" $MAILSPRING
+fi
+
+LIGHTLINE_AUTOLOAD_DIRECTORY=~/.local/share/nvim/plugged/lightline.vim/autoload/lightline/colorscheme
+NEOVIM_AUTOLOAD_DIRECTORY=~/.local/share/nvim/site/autoload
+
+if [[ ! -d $NEOVIM_AUTOLOAD_DIRECTORY ]]; then
+	success_message "installing vim plug"
+
+	curl -fLo $NEOVIM_AUTOLOAD_DIRECTORY/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
 if [[ ! -n $(dpkg --get-selections | grep "nodejs") ]]; then
@@ -107,23 +128,6 @@ if [[ ! -a /usr/bin/rg ]]; then
 	tar xf ripgrep-0.10.0-*.tar.gz
 	sudo cp ripgrep-0.10.0-*/rg /usr/bin/rg
 	rm -rf ripgrep-0.10.0-*
-fi
-
-GNOME_SYSTEM_MONITOR=/var/lib/snapd/desktop/applications/gnome-system-monitor_gnome-system-monitor.desktop
-
-if [[ -a $GNOME_SYSTEM_MONITOR ]]; then
-	success_message "changing gnome monitor icon"
-
-	sudo sed -i -- 's/Icon=\/snap\/gnome-system-monitor\/91\/meta\/gui\/org.gnome.SystemMonitor.svg/Icon=gnome-system-monitor/g' $GNOME_SYSTEM_MONITOR
-fi
-
-LIGHTLINE_AUTOLOAD_DIRECTORY=~/.local/share/nvim/plugged/lightline.vim/autoload/lightline/colorscheme
-NEOVIM_AUTOLOAD_DIRECTORY=~/.local/share/nvim/site/autoload
-
-if [[ ! -d $NEOVIM_AUTOLOAD_DIRECTORY ]]; then
-	success_message "installing vim plug"
-
-	curl -fLo $NEOVIM_AUTOLOAD_DIRECTORY/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
 success_message "install vim-plug plugins"
