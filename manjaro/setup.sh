@@ -84,6 +84,15 @@ if [[ ! -n $(pip3 list | grep neovim) ]]; then
 	pip3 install --user neovim
 fi
 
+if ! type "rustc" > /dev/null; then
+	success_message "installing rust"
+
+	curl https://sh.rustup.rs -sSf | sh
+
+	rustup component add rust-src
+	rustup component add rust-docs
+fi
+
 nvim +'PlugInstall --sync' +qa
 
 sudo sed -i -- 's/python$/python3/g' /usr/share/gnome-shell/extensions/desk-changer@eric.gach.gmail.com/desk-changer-daemon.py

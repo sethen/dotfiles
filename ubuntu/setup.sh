@@ -55,11 +55,12 @@ if [[ ! -n $(dpkg --get-selections | grep "ukuu") ]]; then
 	sudo add-apt-repository ppa:teejee2008/ppa -y
 fi
 
-if ! type "code" > /dev/null; then
-	success_message "installing visual-studio-code repository"
 
-	wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-	sudo sh -c "echo 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main' > /etc/apt/sources.list.d/vscode.list"
+if ! type "mono" > /dev/null; then
+	success_message "adding mono repository"
+
+	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+	sudo sh -c "echo 'deb https://download.mono-project.com/repo/ubuntu stable-bionic main' > /etc/apt/sources.list.d/mono-official-stable.list"
 fi
 
 LOCAL_SHARE_APPLICATIONS=~/.local/share/applications
@@ -72,17 +73,8 @@ if [[ ! -a $BITWARDEN ]]; then
 	wget -O ~/Applications/bitwarden.AppImage "https://vault.bitwarden.com/download/?app=desktop&platform=linux"
 	chmod +x ~/Applications/bitwarden.AppImage
 	~/Applications/bitwarden.AppImage
-
-	substitute_icon_name "lastpass" $BITWARDEN
-else
-	substitute_icon_name "lastpass" $BITWARDEN
 fi
 
-GNOME_SYSTEM_MONITOR=/var/lib/snapd/desktop/applications/gnome-system-monitor_gnome-system-monitor.desktop
-
-if [[ -a $GNOME_SYSTEM_MONITOR ]]; then
-	substitute_icon_name "gnome-system-monitor" $GNOME_SYSTEM_MONITOR
-fi
 
 if [[ ! -n $(ls -la ~/.local/share/applications | grep "appimagekit-Etcher.desktop") ]]; then
 	success_message "installing etcher"
@@ -101,13 +93,12 @@ if [[ ! -a $MAILSPRING ]]; then
 	wget -O mailspring.deb "https://updates.getmailspring.com/download?platform=linuxDeb"
 	sudo dpkg -i mailspring.deb
 	rm -rf mailspring*
-
-	substitute_icon_name "thunderbird" $MAILSPRING
-else
-	substitute_icon_name "thunderbird" $MAILSPRING
 fi
 
-LIGHTLINE_AUTOLOAD_DIRECTORY=~/.local/share/nvim/plugged/lightline.vim/autoload/lightline/colorscheme
+substitute_icon_name "gnome-system-monitor" /var/lib/snapd/desktop/applications/gnome-system-monitor_gnome-system-monitor.desktop 
+substitute_icon_name "lastpass" $BITWARDEN
+substitute_icon_name "thunderbird" $MAILSPRING
+
 NEOVIM_AUTOLOAD_DIRECTORY=~/.local/share/nvim/site/autoload
 
 if [[ ! -d $NEOVIM_AUTOLOAD_DIRECTORY ]]; then
@@ -128,6 +119,26 @@ if [[ ! -a /usr/bin/rg ]]; then
 	tar xf ripgrep-0.10.0-*.tar.gz
 	sudo cp ripgrep-0.10.0-*/rg /usr/bin/rg
 	rm -rf ripgrep-0.10.0-*
+fi
+
+if ! type "rustc" > /dev/null; then
+	success_message "installing rust"
+
+	curl https://sh.rustup.rs -sSf | sh
+
+	rustup component add rust-src
+	rustup component add rust-docs
+fi
+
+if ! type "code" > /dev/null; then
+	success_message "adding visual-studio-code repository"
+
+	wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+	sudo sh -c "echo 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main' > /etc/apt/sources.list.d/vscode.list"
+
+	success_message "installing visual-studio-code"
+
+	sudo apt install code -y
 fi
 
 success_message "install vim-plug plugins"
@@ -184,6 +195,8 @@ apt_get_install_if_package_not_exists "insomnia"
 apt_get_install_if_package_not_exists "neovim"
 apt_get_install_if_package_not_exists "nginx"
 apt_get_install_if_package_not_exists "moka-icon-theme"
+apt_get_install_if_package_not_exists "mono-devel"
+apt_get_install_if_package_not_exists "mono-complete"
 apt_get_install_if_package_not_exists "pcsxr"
 apt_get_install_if_package_not_exists "python3"
 apt_get_install_if_package_not_exists "python3-pip"

@@ -8,6 +8,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 	set list
 	" set line number to relative
 	set number relativenumber
+	" set autocompletion for supported files
+	filetype plugin on
+	set omnifunc=syntaxcomplete#Complete
 	" set white space character symbols
 	set listchars=eol:↲,space:·,tab:»\ 
 	" set tab to insert 4 spaces
@@ -49,18 +52,16 @@ call plug#begin('~/.local/share/nvim/plugged')
 		let g:NERDTreeMinimalUI = 1
 		let g:NERDTreeDirArrowExpandable = "\u00a0"
 		let g:NERDTreeDirArrowCollapsible = "\u00a0"
-		let g:NERDTreeDisableExactMatchHighlight = 1
-		let g:NERDTreeDisablePatternMatchHighlight = 1
+		let g:NERDTreeHighlightCursorline = 0
 		let g:NERDTreeShowHidden = 1
-		let g:NERDTreeSyntaxDisableDefaultExtensions = 1
-		let g:NERDTreeSyntaxEnabledExtensions = ['bmp', 'c', 'cpp', 'css', 'erb', 'go', 'html', 'jpg', 'js', 'json', 'jsx', 'less', 'markdown', 'md', 'png', 'py', 'rb', 'scss', 'sh', 'sql', 'ts', 'tsx', 'vim']
 		let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 		let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = "\uf07b"
 	Plug 'shougo/vimproc.vim', { 'do' : 'make' }
 	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-surround'
-	Plug 'valloric/youcompleteme', { 'do': './install.py' }
+	Plug 'valloric/youcompleteme', { 'do': './install.py --all' }
+		let g:ycm_rust_src_path = $RUST_SRC_PATH
 	Plug 'xuyuanp/nerdtree-git-plugin'
 		let g:NERDTreeIndicatorMapCustom = {
 		\	'Modified'  : "\uf069",
