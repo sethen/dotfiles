@@ -1,6 +1,19 @@
 #!/bin/zsh
 
-information_message "running preferences for ${OS}"
+header_message "running preferences for ${OS}"
+
+if [[ ! -e "/var/lib/AccountsService/icons/${USER}" ]]; then
+	success_message "copying avatar"
+
+	sudo cp "${ZSH_DIRECTORY_PATH}/avatars/anime-sethen.png" "/var/lib/AccountsService/icons/${USER}"
+	substitute_icon_name "/var/lib/AccountsService/icons/${USER}" /var/lib/AccountsService/users/${USER}
+fi
+
+substitute_icon_name "lastpass" $USR_SHARE_APPLICATIONS/bitwarden.desktop 
+substitute_icon_name "thunderbird" $USR_SHARE_APPLICATIONS/mailspring.desktop
+substitute_icon_name "system-settings" $USR_SHARE_APPLICATIONS/gnome-control-center.desktop
+substitute_icon_name "gnome-monitor" $USR_SHARE_APPLICATIONS/gnome-system-monitor.desktop
+substitute_icon_name "utilities-terminal" $USR_SHARE_APPLICATIONS/org.gnome.Terminal.desktop
 
 # arc menu preferences
 dconf write /org/gnome/shell/extensions/arc-menu/menu-button-icon "'System_Icon'"

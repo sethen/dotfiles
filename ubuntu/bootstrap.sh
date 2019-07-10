@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-information_message "running bootstrap for ${OS}"
+header_message "running bootstrap for ${OS}"
 
 ZSH_DIRECTORY_OS_ZSH_FUNCTIONS=$ZSH_DIRECTORY_PATH/$OS/zsh_functions
 
@@ -13,10 +13,13 @@ if [[ -e $ZSH_DIRECTORY_OS_ZSH_FUNCTIONS ]]; then
 	done
 fi
 
+apt_get_install_if_package_not_exists "curl"
+apt_get_install_if_package_not_exists "wget"
+
 FONT_DIRECTORY=~/.fonts
 
 if [[ ! -d $FONT_DIRECTORY ]]; then
-	success_message "copying fonts"
+	information_message "copying fonts"
 
 	mkdir $FONT_DIRECTORY 
 
@@ -24,7 +27,7 @@ if [[ ! -d $FONT_DIRECTORY ]]; then
 fi
 
 if [[ ! -d ~/Applications ]]; then
-	success_message "making Applications directory"
+	information_message "making Applications directory"
 
 	mkdir ~/Applications
 fi

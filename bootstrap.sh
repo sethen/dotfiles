@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+header_message "running bootstrap"
+
 ZSH_DIRECTORY_ZSH_FUNCTIONS=$ZSH_DIRECTORY_PATH/zsh_functions
 
 if [[ -e $ZSH_DIRECTORY_ZSH_FUNCTIONS ]]; then
@@ -63,7 +65,7 @@ if [[ ! -e ${VISUAL_STUDIO_CODE_DIRECTORY} || ! -e "${VISUAL_STUDIO_CODE_DIRECTO
 fi
 
 if [[ -e "${ZSH_DIRECTORY_PATH}/.aliases" ]]; then
-	success_message "building ${ALIASES_FILE} file"
+	information_message "building ${ALIASES_FILE} file"
 
 	if [[ -a ${ALIASES_FILE} ]]; then
 		rm ${ALIASES_FILE}
@@ -84,7 +86,7 @@ if [[ -e "${ZSH_DIRECTORY_PATH}/.zshrc" ]]; then
 fi
 
 if [[ ! -a ~/.ssh/id_rsa.pub ]]; then
-	success_message "creating private/public keys"
+	information_message "creating private/public keys"
 
 	ssh-keygen -t rsa -C "sethenm@gmail.com"
 	ssh-add

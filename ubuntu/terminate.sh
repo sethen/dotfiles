@@ -1,5 +1,5 @@
 #!/bin/zsh
 
-information_message "running terminate for ${OS}"
+header_message "running terminate for ${OS}"
 
 sudo update-grub

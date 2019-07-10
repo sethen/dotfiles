@@ -4,11 +4,10 @@ echo ""
 echo "welcome to sethen's dotfiles"
 echo ""
 
-export BASH_DIRECTORY_PATH=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)
-
-ZSH=$(which zsh)
+BASH_DIRECTORY_PATH=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)
 MANJARO=$(uname -a | grep MANJARO)
 UBUNTU=$(cat /etc/lsb-release | grep Ubuntu)
+ZSH=$(which zsh)
 
 if [ -n "$MANJARO" ]; then
 	export OS='manjaro'
@@ -22,7 +21,6 @@ elif [ -n "$UBUNTU" ]; then
 	export OS='ubuntu'
 
 	if [ -z ${ZSH} ]; then
-		sudo apt-get install curl -y
 		sudo apt-get install zsh -y
 	fi
 
@@ -39,5 +37,3 @@ fi
 echo ""
 echo "thanks for using sethen's dotfiles for ${OS}"
 echo ""
-
-"${BASH_DIRECTORY_PATH}/terminate.sh"

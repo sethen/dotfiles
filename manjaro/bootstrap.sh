@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-information_message "running bootstrap for ${OS}"
+header_message "running bootstrap for ${OS}"
 
 ZSH_DIRECTORY_OS_ZSH_FUNCTIONS=$ZSH_DIRECTORY_PATH/$OS/zsh_functions
 

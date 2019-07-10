@@ -61,7 +61,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-surround'
 	Plug 'valloric/youcompleteme', { 'do': './install.py --all' }
-		let g:ycm_rust_src_path = $RUST_SRC_PATH
+		let g:ycm_log_level='debug'
+		let g:rust_src_path = $RUST_SRC_PATH
 	Plug 'xuyuanp/nerdtree-git-plugin'
 		let g:NERDTreeIndicatorMapCustom = {
 		\	'Modified'  : "\uf069",
