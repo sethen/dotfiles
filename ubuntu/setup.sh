@@ -53,7 +53,7 @@ ${INSTALL_DIRECTORY_PATH}/nginx.sh
 ${INSTALL_DIRECTORY_PATH}/nodejs.sh
 ${INSTALL_DIRECTORY_PATH}/python3.sh
 ${INSTALL_DIRECTORY_PATH}/ripgrep.sh
-${INSTALL_DIRECTORY_PATH}/rust.sh
+${INSTALL_DIRECTORY_PATH}/rvm.sh
 ${INSTALL_DIRECTORY_PATH}/samba.sh
 ${INSTALL_DIRECTORY_PATH}/spotify.sh
 ${INSTALL_DIRECTORY_PATH}/telegram.sh
@@ -63,6 +63,8 @@ ${INSTALL_DIRECTORY_PATH}/vim-plug.sh
 ${INSTALL_DIRECTORY_PATH}/virtualenv.sh
 ${INSTALL_DIRECTORY_PATH}/visual-studio-code.sh
 ${INSTALL_DIRECTORY_PATH}/vlc.sh
+
+${OS_INSTALL_DIRECTORY_PATH}/rust.sh
 
 echo ""
 read "INSTALL_VIM_PLUG_PLUGINS?would you like to install vim-plug plugins? [Yy/Nn] "

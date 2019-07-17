@@ -10,7 +10,7 @@ if [[ ! -d $NPM_DIRECTORY ]]; then
 	mkdir $NPM_DIRECTORY
 	npm config set prefix $NPM_DIRECTORY
 
-	# necessary for youcompleteme to work in neovim
+	npm install -g neovim
 	npm install -g typescript
 fi
 

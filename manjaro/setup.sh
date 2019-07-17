@@ -28,12 +28,13 @@ ${INSTALL_DIRECTORY_PATH}/neovim.sh
 ${INSTALL_DIRECTORY_PATH}/npm.sh
 ${INSTALL_DIRECTORY_PATH}/postgresql.sh
 ${INSTALL_DIRECTORY_PATH}/python-pip.sh
-${INSTALL_DIRECTORY_PATH}/rust.sh
 ${INSTALL_DIRECTORY_PATH}/samba.sh
 ${INSTALL_DIRECTORY_PATH}/spotify.sh
 ${INSTALL_DIRECTORY_PATH}/telegram.sh
 ${INSTALL_DIRECTORY_PATH}/visual-studio-code.sh
 ${INSTALL_DIRECTORY_PATH}/vlc.sh
+
+${OS_INSTALL_DIRECTORY_PATH}/rust.sh
 
 if [[ ! -n $(pip3 list | grep neovim) ]]; then
 	pip3 install --user neovim
