@@ -13,17 +13,12 @@ if [[ -e $ZSH_DIRECTORY_OS_ZSH_FUNCTIONS ]]; then
 	done
 fi
 
-apt_get_install_if_package_not_exists "curl"
-apt_get_install_if_package_not_exists "wget"
-
-FONT_DIRECTORY=~/.fonts
-
-if [[ ! -d $FONT_DIRECTORY ]]; then
+if [[ ! -d $FONTS_DIRECTORY ]]; then
 	information_message "copying fonts"
 
-	mkdir $FONT_DIRECTORY 
+	mkdir $FONTS_DIRECTORY
 
-	cp -r "${ZSH_DIRECTORY_PATH}/fonts/." $FONT_DIRECTORY 
+	cp -r "${ZSH_DIRECTORY_PATH}/fonts/." $FONTS_DIRECTORY
 fi
 
 if [[ ! -d ~/Applications ]]; then
@@ -31,3 +26,6 @@ if [[ ! -d ~/Applications ]]; then
 
 	mkdir ~/Applications
 fi
+
+apt_get_install_if_package_not_exists "curl"
+apt_get_install_if_package_not_exists "wget"

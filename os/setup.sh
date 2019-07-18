@@ -1,8 +1,8 @@
 #!/bin/zsh
 
-header_message "running terminate"
+header_message "running setup for os"
 
-NPM_DIRECTORY=~/.npm-global
+${GLOBAL_OS_INSTALL_DIRECTORY_PATH}/rust.sh
 
 if [[ ! -d $NPM_DIRECTORY ]]; then
 	information_message "configuring npm global modules"
@@ -52,13 +52,4 @@ if [[ ! -d "./wallpapers" ]]; then
 			git clone git@github.com:sethen/wallpapers.git
 		fi
 	fi
-fi
-
-read "REBOOT?would you like to reboot the system? [Yy/Nn] "
-
-if [[ $REBOOT =~ '[Yy]' ]]; then
-	success_message "rebooting..."
-
-	sleep 5
-	reboot
 fi
