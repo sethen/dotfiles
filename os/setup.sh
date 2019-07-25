@@ -2,7 +2,7 @@
 
 header_message "running setup for os"
 
-${GLOBAL_OS_INSTALL_DIRECTORY_PATH}/rust.sh
+${OS_INSTALL}/rust.sh
 
 if [[ ! -d $NPM_DIRECTORY ]]; then
 	information_message "configuring npm global modules"

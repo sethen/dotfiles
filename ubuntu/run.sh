@@ -1,13 +1,14 @@
 #!/bin/zsh
 
+export APPLICATIONS=~/Applications
 export FONTS_DIRECTORY=~/.fonts
 export LOCAL_SHARE_APPLICATIONS=~/.local/share/applications
-export OS_REPOSITORIES_DIRECTORY_PATH=${OS_DIRECTORY_PATH}/repositories
+export OS_REPOSITORIES=${SPECIFIC_OS}/repositories
 export USR_SHARE_APPLICATIONS=/usr/share/applications
 export BITWARDEN=$LOCAL_SHARE_APPLICATIONS/appimagekit-bitwarden.desktop
 export MAILSPRING=$USR_SHARE_APPLICATIONS/mailspring.desktop
 
-${OS_DIRECTORY_PATH}/bootstrap.sh
-${OS_DIRECTORY_PATH}/setup.sh
-${OS_DIRECTORY_PATH}/preferences.sh
-${OS_DIRECTORY_PATH}/terminate.sh
+${SPECIFIC_OS}/bootstrap.sh
+${SPECIFIC_OS}/setup.sh
+${SPECIFIC_OS}/preferences.sh
+${SPECIFIC_OS}/terminate.sh

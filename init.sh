@@ -4,13 +4,13 @@ echo ""
 echo "welcome to sethen's dotfiles"
 echo ""
 
-BASH_DIRECTORY_PATH=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)
+PRESENT_WORKING_DIRECTORY=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)
 MANJARO=$(uname -a | grep MANJARO)
 UBUNTU=$(cat /etc/lsb-release | grep Ubuntu)
 ZSH=$(which zsh)
 
 if [ -n "$MANJARO" ]; then
-	export OS='manjaro'
+	export DISTRO='manjaro'
 
 	if [ -z ${ZSH} ]; then
 		sudo pacman -S zsh --noconfirm
@@ -18,7 +18,7 @@ if [ -n "$MANJARO" ]; then
 
 	chsh -s /bin/zsh
 elif [ -n "$UBUNTU" ]; then
-	export OS='ubuntu'
+	export DISTRO='ubuntu'
 
 	if [ -z ${ZSH} ]; then
 		sudo apt-get install zsh -y
@@ -32,8 +32,8 @@ else
 	exit 1
 fi
 
-"${BASH_DIRECTORY_PATH}/run.sh"
+"${PRESENT_WORKING_DIRECTORY}/os/run.sh"
 
 echo ""
-echo "thanks for using sethen's dotfiles for ${OS}"
+echo "thanks for using sethen's dotfiles for ${DISTRO}"
 echo ""

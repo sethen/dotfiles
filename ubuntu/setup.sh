@@ -1,25 +1,25 @@
 #!/bin/zsh
 
-header_message "running setup for ${OS}"
+header_message "running setup for ${DISTRO}"
 
 information_message "uninstalling packages"
 
-${OS_UNINSTALL_DIRECTORY_PATH}/gnome-calculator.sh
-${OS_UNINSTALL_DIRECTORY_PATH}/ubuntu-gnome-dock.sh
+${SPECIFIC_OS_UNINSTALL}/gnome-calculator.sh
+${SPECIFIC_OS_UNINSTALL}/ubuntu-gnome-dock.sh
 
 information_message "adding repositories"
 
-${OS_REPOSITORIES_DIRECTORY_PATH}/docker.sh
-${OS_REPOSITORIES_DIRECTORY_PATH}/golang.sh
-${OS_REPOSITORIES_DIRECTORY_PATH}/google-chrome.sh
-${OS_REPOSITORIES_DIRECTORY_PATH}/insomnia.sh
-${OS_REPOSITORIES_DIRECTORY_PATH}/moka-icon-theme.sh
-${OS_REPOSITORIES_DIRECTORY_PATH}/mono.sh
-${OS_REPOSITORIES_DIRECTORY_PATH}/neovim.sh
-${OS_REPOSITORIES_DIRECTORY_PATH}/rvm.sh
-${OS_REPOSITORIES_DIRECTORY_PATH}/spotify.sh
-${OS_REPOSITORIES_DIRECTORY_PATH}/ukuu.sh
-${OS_REPOSITORIES_DIRECTORY_PATH}/visual-studio-code.sh
+${SPECIFIC_OS_REPOSITORIES}/docker.sh
+${SPECIFIC_OS_REPOSITORIES}/golang.sh
+${SPECIFIC_OS_REPOSITORIES}/google-chrome.sh
+${SPECIFIC_OS_REPOSITORIES}/insomnia.sh
+${SPECIFIC_OS_REPOSITORIES}/moka-icon-theme.sh
+${SPECIFIC_OS_REPOSITORIES}/mono.sh
+${SPECIFIC_OS_REPOSITORIES}/neovim.sh
+${SPECIFIC_OS_REPOSITORIES}/rvm.sh
+${SPECIFIC_OS_REPOSITORIES}/spotify.sh
+${SPECIFIC_OS_REPOSITORIES}/ukuu.sh
+${SPECIFIC_OS_REPOSITORIES}/visual-studio-code.sh
 
 information_message "updating packages"
 
@@ -28,42 +28,42 @@ sudo apt-get install -f
 
 information_message "installing packages"
 
-${OS_INSTALL_DIRECTORY_PATH}/arc-theme.sh
-${OS_INSTALL_DIRECTORY_PATH}/bitwarden.sh
-${OS_INSTALL_DIRECTORY_PATH}/ccze.sh
-${OS_INSTALL_DIRECTORY_PATH}/cmake.sh
-${OS_INSTALL_DIRECTORY_PATH}/docker.sh
-${OS_INSTALL_DIRECTORY_PATH}/etcher.sh
-${OS_INSTALL_DIRECTORY_PATH}/git.sh
-${OS_INSTALL_DIRECTORY_PATH}/gnome-calculator.sh
-${OS_INSTALL_DIRECTORY_PATH}/gnome-shell-extension-weather.sh
-${OS_INSTALL_DIRECTORY_PATH}/gnome-shell-extensions.sh
-${OS_INSTALL_DIRECTORY_PATH}/gnomeshell-extension-manage.sh
-${OS_INSTALL_DIRECTORY_PATH}/gnome-tweaks.sh
-${OS_INSTALL_DIRECTORY_PATH}/golang.sh
-${OS_INSTALL_DIRECTORY_PATH}/google-chrome.sh
-${OS_INSTALL_DIRECTORY_PATH}/gparted.sh
-${OS_INSTALL_DIRECTORY_PATH}/gpick.sh
-${OS_INSTALL_DIRECTORY_PATH}/insomnia.sh
-${OS_INSTALL_DIRECTORY_PATH}/jre.sh
-${OS_INSTALL_DIRECTORY_PATH}/mailspring.sh
-${OS_INSTALL_DIRECTORY_PATH}/moka-icon-theme.sh
-${OS_INSTALL_DIRECTORY_PATH}/mono.sh
-${OS_INSTALL_DIRECTORY_PATH}/neovim.sh
-${OS_INSTALL_DIRECTORY_PATH}/nginx.sh
-${OS_INSTALL_DIRECTORY_PATH}/nodejs.sh
-${OS_INSTALL_DIRECTORY_PATH}/python3.sh
-${OS_INSTALL_DIRECTORY_PATH}/ripgrep.sh
-${OS_INSTALL_DIRECTORY_PATH}/rvm.sh
-${OS_INSTALL_DIRECTORY_PATH}/samba.sh
-${OS_INSTALL_DIRECTORY_PATH}/spotify.sh
-${OS_INSTALL_DIRECTORY_PATH}/telegram.sh
-${OS_INSTALL_DIRECTORY_PATH}/tmux.sh
-${OS_INSTALL_DIRECTORY_PATH}/ukuu.sh
-${OS_INSTALL_DIRECTORY_PATH}/vim-plug.sh
-${OS_INSTALL_DIRECTORY_PATH}/virtualenv.sh
-${OS_INSTALL_DIRECTORY_PATH}/visual-studio-code.sh
-${OS_INSTALL_DIRECTORY_PATH}/vlc.sh
+${SPECIFIC_OS_INSTALL}/arc-theme.sh
+${SPECIFIC_OS_INSTALL}/bitwarden.sh
+${SPECIFIC_OS_INSTALL}/ccze.sh
+${SPECIFIC_OS_INSTALL}/cmake.sh
+${SPECIFIC_OS_INSTALL}/docker.sh
+${SPECIFIC_OS_INSTALL}/etcher.sh
+${SPECIFIC_OS_INSTALL}/git.sh
+${SPECIFIC_OS_INSTALL}/gnome-calculator.sh
+${SPECIFIC_OS_INSTALL}/gnome-shell-extension-weather.sh
+${SPECIFIC_OS_INSTALL}/gnome-shell-extensions.sh
+${SPECIFIC_OS_INSTALL}/gnomeshell-extension-manage.sh
+${SPECIFIC_OS_INSTALL}/gnome-tweaks.sh
+${SPECIFIC_OS_INSTALL}/golang.sh
+${SPECIFIC_OS_INSTALL}/google-chrome.sh
+${SPECIFIC_OS_INSTALL}/gparted.sh
+${SPECIFIC_OS_INSTALL}/gpick.sh
+${SPECIFIC_OS_INSTALL}/insomnia.sh
+${SPECIFIC_OS_INSTALL}/jre.sh
+${SPECIFIC_OS_INSTALL}/mailspring.sh
+${SPECIFIC_OS_INSTALL}/moka-icon-theme.sh
+${SPECIFIC_OS_INSTALL}/mono.sh
+${SPECIFIC_OS_INSTALL}/neovim.sh
+${SPECIFIC_OS_INSTALL}/nginx.sh
+${SPECIFIC_OS_INSTALL}/nodejs.sh
+${SPECIFIC_OS_INSTALL}/python3.sh
+${SPECIFIC_OS_INSTALL}/ripgrep.sh
+${SPECIFIC_OS_INSTALL}/rvm.sh
+${SPECIFIC_OS_INSTALL}/samba.sh
+${SPECIFIC_OS_INSTALL}/spotify.sh
+${SPECIFIC_OS_INSTALL}/telegram.sh
+${SPECIFIC_OS_INSTALL}/tmux.sh
+${SPECIFIC_OS_INSTALL}/ukuu.sh
+${SPECIFIC_OS_INSTALL}/vim-plug.sh
+${SPECIFIC_OS_INSTALL}/virtualenv.sh
+${SPECIFIC_OS_INSTALL}/visual-studio-code.sh
+${SPECIFIC_OS_INSTALL}/vlc.sh
 
 echo ""
 read "INSTALL_VIM_PLUG_PLUGINS?would you like to install vim-plug plugins? [Yy/Nn] "

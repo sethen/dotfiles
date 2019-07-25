@@ -1,38 +1,38 @@
 #!/bin/zsh
 
-header_message "running setup for ${OS}"
+header_message "running setup for ${DISTRO}"
 
 information_message "uninstalling packages"
 
-${OS_UNINSTALL_DIRECTORY_PATH}/empathy.sh
-${OS_UNINSTALL_DIRECTORY_PATH}/hexchat.sh
-${OS_UNINSTALL_DIRECTORY_PATH}/libreoffice.sh
-${OS_UNINSTALL_DIRECTORY_PATH}/lollypop.sh
-${OS_UNINSTALL_DIRECTORY_PATH}/ms-office.sh
+${SPECIFIC_OS_UNINSTALL}/empathy.sh
+${SPECIFIC_OS_UNINSTALL}/hexchat.sh
+${SPECIFIC_OS_UNINSTALL}/libreoffice.sh
+${SPECIFIC_OS_UNINSTALL}/lollypop.sh
+${SPECIFIC_OS_UNINSTALL}/ms-office.sh
 
 information_message "installing packages"
 
-${OS_INSTALL_DIRECTORY_PATH}/base-devel.sh
-${OS_INSTALL_DIRECTORY_PATH}/yay.sh
-${OS_INSTALL_DIRECTORY_PATH}/ark-gtk-theme.sh
-${OS_INSTALL_DIRECTORY_PATH}/bitwarden.sh
-${OS_INSTALL_DIRECTORY_PATH}/ccze.sh
-${OS_INSTALL_DIRECTORY_PATH}/curl.sh
-${OS_INSTALL_DIRECTORY_PATH}/etcher.sh
-${OS_INSTALL_DIRECTORY_PATH}/git.sh
-${OS_INSTALL_DIRECTORY_PATH}/golang.sh
-${OS_INSTALL_DIRECTORY_PATH}/google-chrome.sh
-${OS_INSTALL_DIRECTORY_PATH}/gpick.sh
-${OS_INSTALL_DIRECTORY_PATH}/mailspring.sh
-${OS_INSTALL_DIRECTORY_PATH}/neovim.sh
-${OS_INSTALL_DIRECTORY_PATH}/npm.sh
-${OS_INSTALL_DIRECTORY_PATH}/postgresql.sh
-${OS_INSTALL_DIRECTORY_PATH}/python-pip.sh
-${OS_INSTALL_DIRECTORY_PATH}/samba.sh
-${OS_INSTALL_DIRECTORY_PATH}/spotify.sh
-${OS_INSTALL_DIRECTORY_PATH}/telegram.sh
-${OS_INSTALL_DIRECTORY_PATH}/visual-studio-code.sh
-${OS_INSTALL_DIRECTORY_PATH}/vlc.sh
+${SPECIFIC_OS_INSTALL}/base-devel.sh
+${SPECIFIC_OS_INSTALL}/yay.sh
+${SPECIFIC_OS_INSTALL}/ark-gtk-theme.sh
+${SPECIFIC_OS_INSTALL}/bitwarden.sh
+${SPECIFIC_OS_INSTALL}/ccze.sh
+${SPECIFIC_OS_INSTALL}/curl.sh
+${SPECIFIC_OS_INSTALL}/etcher.sh
+${SPECIFIC_OS_INSTALL}/git.sh
+${SPECIFIC_OS_INSTALL}/golang.sh
+${SPECIFIC_OS_INSTALL}/google-chrome.sh
+${SPECIFIC_OS_INSTALL}/gpick.sh
+${SPECIFIC_OS_INSTALL}/mailspring.sh
+${SPECIFIC_OS_INSTALL}/neovim.sh
+${SPECIFIC_OS_INSTALL}/npm.sh
+${SPECIFIC_OS_INSTALL}/postgresql.sh
+${SPECIFIC_OS_INSTALL}/python-pip.sh
+${SPECIFIC_OS_INSTALL}/samba.sh
+${SPECIFIC_OS_INSTALL}/spotify.sh
+${SPECIFIC_OS_INSTALL}/telegram.sh
+${SPECIFIC_OS_INSTALL}/visual-studio-code.sh
+${SPECIFIC_OS_INSTALL}/vlc.sh
 
 if [[ ! -n $(pip3 list | grep neovim) ]]; then
 	pip3 install --user neovim

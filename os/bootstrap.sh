@@ -2,90 +2,66 @@
 
 header_message "running bootstrap for os"
 
-ZSH_DIRECTORY_ZSH_FUNCTIONS=$ZSH_DIRECTORY_PATH/zsh_functions
+GITCONFIG=$OS/.gitconfig
 
-if [[ -e $ZSH_DIRECTORY_ZSH_FUNCTIONS ]]; then
-	HOME_ZSH_FUNCTIONS_DIRECTORY=~/.zsh/functions
-	GLOBAL_HOME_ZSH_FUNCTIONS_DIRECTORY=$HOME_ZSH_FUNCTIONS_DIRECTORY/global
-	LOCAL_HOME_ZSH_FUNCTIONS_DIRECTORY=$HOME_ZSH_FUNCTIONS_DIRECTORY/local
-
-	if [[ -d $HOME_ZSH_FUNCTIONS_DIRECTORY ]]; then
-		rm -rf $HOME_ZSH_FUNCTIONS_DIRECTORY
-	fi
-
-	mkdir -p $GLOBAL_HOME_ZSH_FUNCTIONS_DIRECTORY
-	mkdir -p $LOCAL_HOME_ZSH_FUNCTIONS_DIRECTORY
-
-	GLOBAL_DOTFILES_ZSH_FUNCTIONS_DIRECTORY=$ZSH_DIRECTORY_ZSH_FUNCTIONS/global
-	LOCAL_DOTFILES_ZSH_FUNCTIONS_DIRECTORY=$ZSH_DIRECTORY_ZSH_FUNCTIONS/local
-
-	for global_function_file in $GLOBAL_DOTFILES_ZSH_FUNCTIONS_DIRECTORY/*; do
-		ln -sfv $global_function_file $GLOBAL_HOME_ZSH_FUNCTIONS_DIRECTORY
-	done
-
-	for local_function_file in $LOCAL_DOTFILES_ZSH_FUNCTIONS_DIRECTORY/*; do
-		ln -sfv $local_function_file $LOCAL_HOME_ZSH_FUNCTIONS_DIRECTORY
-	done
+if [[ -e $GITCONFIG ]]; then
+	ln -sfv $GITCONFIG ~
 fi
 
-if [[ -e "${ZSH_DIRECTORY_PATH}/${OS}/.zshenv" ]]; then
-	ln -sfv "${ZSH_DIRECTORY_PATH}/${OS}/.zshenv" ~ && source ~/.zshenv
+GITIGNORE_GLOBAL=$OS/.gitignore_global
+
+if [[ -e $GITIGNORE_GLOBAL ]]; then
+	ln -sfv $GITIGNORE_GLOBAL ~
 fi
 
-if [[ -e "${ZSH_DIRECTORY_PATH}/.gitconfig" ]]; then
-	ln -sfv "${ZSH_DIRECTORY_PATH}/.gitconfig" ~
+IGNORE=$OS/.ignore
+
+if [[ -e $IGNORE ]]; then
+	ln -sfv $IGNORE ~
 fi
 
-if [[ -e "${ZSH_DIRECTORY_PATH}/.gitignore_global" ]]; then
-	ln -sfv "${ZSH_DIRECTORY_PATH}/.gitignore_global" ~
-fi
+INITVIM=$OS/init.vim
 
-if [[ -e "${ZSH_DIRECTORY_PATH}/.ignore" ]]; then
-	ln -sfv "${ZSH_DIRECTORY_PATH}/.ignore" ~
-fi
-
-if [[ -e "${ZSH_DIRECTORY_PATH}/init.vim" ]]; then
+if [[ -e $INITVIM ]]; then
 	NVIM_DIRECTORY=~/.config/nvim
 
 	if [[ ! -e $NVIM_DIRECTORY ]]; then
 		mkdir $NVIM_DIRECTORY
 	fi
 
-	ln -sfv "${ZSH_DIRECTORY_PATH}/init.vim" $NVIM_DIRECTORY
+	ln -sfv $INITVIM $NVIM_DIRECTORY
 fi
 
-if [[ -e "${ZSH_DIRECTORY_PATH}/.tmux.conf" ]]; then
-	ln -sfv "${ZSH_DIRECTORY_PATH}/.tmux.conf" ~
+TMUXCONF=$OS/.tmux.conf
+
+if [[ -e $TMUXCONF ]]; then
+	ln -sfv $TMUXCONF ~
 fi
 
-if [[ ! -e ${VISUAL_STUDIO_CODE_DIRECTORY} || ! -e "${VISUAL_STUDIO_CODE_DIRECTORY}/settings.json" ]]; then
-	mkdir -p ${VISUAL_STUDIO_CODE_DIRECTORY}
+if [[ -e $OS_ALIASES ]]; then
+	information_message "building aliases file"
 
-	ln -sfv "${ZSH_DIRECTORY_PATH}/visual-studio-code/settings.json" ${VISUAL_STUDIO_CODE_DIRECTORY}
-fi
+	if [[ -a $USER_ALIASES ]]; then
+		rm $USER_ALIASES
 
-if [[ -e "${ZSH_DIRECTORY_PATH}/.aliases" ]]; then
-	information_message "building ${ALIASES_FILE} file"
-
-	if [[ -a ${ALIASES_FILE} ]]; then
-		rm ${ALIASES_FILE}
-
-		touch ${ALIASES_FILE}
+		touch $USER_ALIASES
 	fi
 
-	cat ${ZSH_DIRECTORY_PATH}/.aliases > ${ALIASES_FILE}
+	cat $OS_ALIASES > $USER_ALIASES
 
-	echo "\n" >> ${ALIASES_FILE}
+	echo "\n" >> $USER_ALIASES
 
-	cat ${ZSH_DIRECTORY_PATH}/${OS}/.aliases >> ${ALIASES_FILE}
+	cat $SPECIFIC_OS_ALIASES >> $USER_ALIASES
+fi
+
+ZSHRC=$OS/.zshrc
+
+if [[ -e $ZSHRC ]]; then
+	ln -sfv $ZSHRC ~ && source ~/.zshrc
 fi
 
 if [[ ! -e ${DEVELOPER_DIRECTORY} ]]; then
 	mkdir ${DEVELOPER_DIRECTORY}
-fi
-
-if [[ -e "${ZSH_DIRECTORY_PATH}/.zshrc" ]]; then
-	ln -sfv "${ZSH_DIRECTORY_PATH}/.zshrc" ~ && source ~/.zshrc
 fi
 
 if [[ ! -a ~/.ssh/id_rsa.pub ]]; then
@@ -94,4 +70,3 @@ if [[ ! -a ~/.ssh/id_rsa.pub ]]; then
 	ssh-keygen -t rsa -C "sethenm@gmail.com"
 	ssh-add
 fi
-

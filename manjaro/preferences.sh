@@ -1,11 +1,11 @@
 #!/bin/zsh
 
-header_message "running preferences for ${OS}"
+header_message "running preferences for ${DISTRO}"
 
 if [[ ! -e "/var/lib/AccountsService/icons/${USER}" ]]; then
 	success_message "copying avatar"
 
-	sudo cp "${ZSH_DIRECTORY_PATH}/avatars/anime-sethen.png" "/var/lib/AccountsService/icons/${USER}"
+	sudo cp "${OS_AVATARS}/anime-sethen.png" "/var/lib/AccountsService/icons/${USER}"
 	substitute_icon_name "/var/lib/AccountsService/icons/${USER}" /var/lib/AccountsService/users/${USER}
 fi
 

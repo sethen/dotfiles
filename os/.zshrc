@@ -1,7 +1,3 @@
-for local_function_file in ~/.zsh/functions/local/*; do
-	source $local_function_file
-done
-
 source ~/.aliases
 
 export CARGO_PATH=~/.cargo/bin
