@@ -1,4 +1,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
+	" sets auto indentation
+	set autoindent
+	" sets background to dark
 	set background=dark
 	" set horizontal line on where cursor currently is
 	set cursorline
@@ -29,6 +32,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	syntax on
 
 	" install typescript syntax highlight
+	Plug 'godlygeek/tabular'
 	Plug 'herringtondarkholme/yats.vim'
 	Plug 'hzchirs/vim-material'
 		let g:material_style='dark'
@@ -38,8 +42,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 		\}
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
+	Plug 'honza/vim-snippets'
 	Plug 'mhinz/vim-signify'
 	Plug 'mhinz/vim-startify'
+	Plug 'plasticboy/vim-markdown'
 	Plug 'quramy/tsuquyomi'
 	Plug 'scrooloose/nerdtree'
 		augroup nerdtreehidecwd
@@ -57,6 +63,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 		let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 		let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = "\uf07b"
 	Plug 'shougo/vimproc.vim', { 'do' : 'make' }
+	Plug 'sirver/ultisnips'
+		let g:UltiSnipsExpandTrigger='<c-j>'
+		let g:UltiSnipsJumpForwardTrigger='<c-j>'
+		let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+		let g:UltiSnipsListSnippets='<c-h>'
 	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-surround'
