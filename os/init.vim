@@ -4,9 +4,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 	" sets background to dark
 	set background=dark
 	" set horizontal line on where cursor currently is
-	set cursorline
-	" set hidden to abandon buffers
-	set hidden
+	set cursorline " set hidden to abandon buffers set hidden
+	" set highlighting of searches
+	set hlsearch
 	" set white space characters to be shown
 	set list
 	" set line number to relative
@@ -92,10 +92,11 @@ call plug#end()
 colorscheme vim-material
 highlight CursorLine guibg=#212121
 highlight NERDTreeFlags guifg=#c792ea
+highlight Search gui=bold guibg=#263238 guifg=#FFFFFF
 highlight SignColumn guibg=NONE gui=NONE guibg=NONE gui=NONE
-highlight SignifySignAdd cterm=bold guibg=#263238 guifg=#C3E88D
-highlight SignifySignDelete cterm=bold guibg=#263238 guifg=#FF5370
-highlight SignifySignChange cterm=bold guibg=#263238  guifg=#FFCB6B
+highlight SignifySignAdd gui=bold guibg=#263238 guifg=#C3E88D
+highlight SignifySignDelete gui=bold guibg=#263238 guifg=#FF5370
+highlight SignifySignChange gui=bold guibg=#263238 guifg=#FFCB6B
 highlight VertSplit ctermbg=NONE guibg=NONE
 
 if executable('rg')
