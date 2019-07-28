@@ -91,8 +91,8 @@ call plug#end()
 
 colorscheme vim-material
 highlight CursorLine guibg=#212121
-highlight NERDTreeFlags guifg=#c792ea
-highlight Search gui=bold guibg=#263238 guifg=#FFFFFF
+highlight NERDTreeFlags guifg=#C792EA
+highlight Search gui=bold guibg=#FFCB6B guifg=#000000
 highlight SignColumn guibg=NONE gui=NONE guibg=NONE gui=NONE
 highlight SignifySignAdd gui=bold guibg=#263238 guifg=#C3E88D
 highlight SignifySignDelete gui=bold guibg=#263238 guifg=#FF5370
