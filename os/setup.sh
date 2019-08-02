@@ -3,6 +3,7 @@
 header_message "running setup for os"
 
 ${OS_INSTALL}/rust.sh
+${OS_INSTALL}/solargraph.sh
 
 if [[ ! -d $NPM_DIRECTORY ]]; then
 	information_message "configuring npm global modules"

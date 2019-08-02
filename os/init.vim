@@ -73,6 +73,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'tpope/vim-surround'
 	Plug 'valloric/youcompleteme', { 'do': './install.py --all' }
 		let g:rust_src_path = $RUST_SRC_PATH
+		let g:ycm_language_server = [
+			\   {
+			\     'name': 'ruby',
+			\     'cmdline': [ expand( '$HOME/.rvm/gems/ruby-2.6.3/bin/solargraph' ), 'stdio' ],
+			\     'filetypes': [ 'ruby' ]
+			\   }
+			\ ]
 	Plug 'xuyuanp/nerdtree-git-plugin'
 		let g:NERDTreeIndicatorMapCustom = {
 		\	'Modified'  : "\uf069",
