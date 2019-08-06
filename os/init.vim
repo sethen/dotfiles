@@ -1,8 +1,12 @@
 call plug#begin('~/.local/share/nvim/plugged')
-	" sets auto indentation
+	" set auto indentation
 	set autoindent
-	" sets background to dark
+	" set background to dark
 	set background=dark
+	" set clipboard copy
+	set clipboard+=unnamedplus
+	" set command height
+	set cmdheight=2
 	" set horizontal line on where cursor currently is
 	set cursorline " set hidden to abandon buffers set hidden
 	" set highlighting of searches
@@ -11,9 +15,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 	set list
 	" set line number to relative
 	set number relativenumber
-	" set autocompletion for supported files
-	filetype plugin on
-	set omnifunc=syntaxcomplete#Complete
 	" set white space character symbols
 	set listchars=eol:↲,space:·,tab:»\ 
 	" set tab to insert 4 spaces
@@ -31,22 +32,66 @@ call plug#begin('~/.local/share/nvim/plugged')
 	" set syntax highlighting
 	syntax on
 
-	" install typescript syntax highlight
+	" install text filtering and alignment
 	Plug 'godlygeek/tabular'
+	" install typescript syntax highlighting
 	Plug 'herringtondarkholme/yats.vim'
+	" install material theme
 	Plug 'hzchirs/vim-material'
-		let g:material_style='dark'
+		let g:material_style = 'dark'
+	" install lightline bottom status bar
 	Plug 'itchyny/lightline.vim'
 		let g:lightline = {
 		\	'colorscheme': 'material',
 		\}
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+	" install fuzzy search for vim
 	Plug 'junegunn/fzf.vim'
+	" install vim snippets for ultisnips
 	Plug 'honza/vim-snippets'
+	" install auto-completion framework
+	Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+		let g:coc_global_extensions = [
+		\	'coc-css',
+		\	'coc-html',
+		\	'coc-json',
+		\	'coc-python',
+		\	'coc-rls',
+		\	'coc-snippets',
+		\	'coc-solargraph',
+		\	'coc-tsserver'
+		\]
+
+		inoremap <silent><expr> <TAB>
+			\ pumvisible() ? "\<C-n>" :
+			\ <SID>check_back_space() ? "\<TAB>" :
+			\ coc#refresh()
+		inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+		nmap <silent> gd <Plug>(coc-definition)
+		nmap <silent> gy <Plug>(coc-type-definition)
+		nmap <silent> gi <Plug>(coc-implementation)
+		nmap <silent> gr <Plug>(coc-references)
+		nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+		function! s:check_back_space() abort
+			let col = col('.') - 1
+			return !col || getline('.')[col - 1]  =~# '\s'
+		endfunction
+
+		function! s:show_documentation()
+			if &filetype == 'vim'
+				execute 'h '.expand('<cword>')
+			else
+				call CocAction('doHover')
+			endif
+		endfunction
+	" install git changes sidebar
 	Plug 'mhinz/vim-signify'
+	" install start screen for vim
 	Plug 'mhinz/vim-startify'
+	" install markdown commands
 	Plug 'plasticboy/vim-markdown'
-	Plug 'quramy/tsuquyomi'
+	" install nerdtree tree explorer
 	Plug 'scrooloose/nerdtree'
 		augroup nerdtreehidecwd
 			autocmd!
@@ -62,24 +107,24 @@ call plug#begin('~/.local/share/nvim/plugged')
 		let g:NERDTreeShowHidden = 1
 		let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 		let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = "\uf07b"
+	" install echdoc support for coc
+	Plug 'shougo/echodoc'
+		let g:echodoc_enable_at_startup = 1
+		let g:echodoc#type = 'floating'
 	Plug 'shougo/vimproc.vim', { 'do' : 'make' }
+	" install ultisnips for templating
 	Plug 'sirver/ultisnips'
-		let g:UltiSnipsExpandTrigger='<c-j>'
-		let g:UltiSnipsJumpForwardTrigger='<c-j>'
-		let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-		let g:UltiSnipsListSnippets='<c-h>'
+		let g:UltiSnipsExpandTrigger = '<c-j>'
+		let g:UltiSnipsJumpForwardTrigger = '<c-j>'
+		let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
+		let g:UltiSnipsListSnippets = '<c-h>'
+	" install syntax highlighting for files in nerdtree
 	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+	" install vim support for commenting
 	Plug 'tpope/vim-commentary'
+	" install bracket surrounding support
 	Plug 'tpope/vim-surround'
-	Plug 'valloric/youcompleteme', { 'do': './install.py --all' }
-		let g:rust_src_path = $RUST_SRC_PATH
-		let g:ycm_language_server = [
-			\   {
-			\     'name': 'ruby',
-			\     'cmdline': [ expand( '$HOME/.rvm/gems/ruby-2.6.3/bin/solargraph' ), 'stdio' ],
-			\     'filetypes': [ 'ruby' ]
-			\   }
-			\ ]
+	" install nerdtree git status
 	Plug 'xuyuanp/nerdtree-git-plugin'
 		let g:NERDTreeIndicatorMapCustom = {
 		\	'Modified'  : "\uf069",
@@ -93,19 +138,36 @@ call plug#begin('~/.local/share/nvim/plugged')
 		\	'Ignored'   : "\uf070",
 		\	'Unknown'   : "\uf128"
 		\}
+	" install devicons for directories and files
 	Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 colorscheme vim-material
 highlight CursorLine guibg=#212121
+highlight link EchoDocFloat Pmenu
 highlight NERDTreeFlags guifg=#C792EA
 highlight Search gui=bold guibg=#FFCB6B guifg=#000000
-highlight SignColumn guibg=NONE gui=NONE guibg=NONE gui=NONE
-highlight SignifySignAdd gui=bold guibg=#263238 guifg=#C3E88D
-highlight SignifySignDelete gui=bold guibg=#263238 guifg=#FF5370
-highlight SignifySignChange gui=bold guibg=#263238 guifg=#FFCB6B
+highlight SignColumn guibg=NONE gui=NONE guibg=#263238 gui=NONE
+highlight DiffAdd gui=bold guibg=#263238 guifg=#C3E88D
+highlight DiffChange gui=bold guibg=#263238 guifg=#FFCB6B
+highlight DiffDelete gui=bold guibg=#263238 guifg=#FF5370
 highlight VertSplit ctermbg=NONE guibg=NONE
+
+augroup FileTypeIndentation
+	autocmd FileType css setlocal tabstop=4 shiftwidth=4
+	autocmd FileType json setlocal expandtab tabstop=2 shiftwidth=2
+	autocmd FileType go setlocal tabstop=4 shiftwidth=4
+	autocmd FileType javascript setlocal tabstop=4 shiftwidth=4
+	autocmd FileType html setlocal tabstop=4 shiftwidth=4
+	autocmd FileType less setlocal tabstop=4 shiftwidth=4
+	autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4
+	autocmd FileType ruby setlocal expandtab tabstop=2 shiftwidth=2
+	autocmd FileType rust setlocal expandtab tabstop=4 shiftwidth=4
+	autocmd FileType scss setlocal tabstop=4 shiftwidth=4
+	autocmd FileType typescript setlocal tabstop=4 shiftwidth=4
+augroup end
 
 if executable('rg')
 	set grepprg=rg\ --no-heading\ --vimgrep
 endif
+
