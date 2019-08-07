@@ -1,4 +1,17 @@
 call plug#begin('~/.local/share/nvim/plugged')
+	" abbreviations
+	abbr adn and
+	abbr calss class
+	abbr cosnt const
+	abbr cotns const
+	abbr conts const
+	abbr eles else
+	abbr fro for
+	abbr functoin function
+	abbr funtcion function
+	abbr teh the
+	abbr vra var
+
 	" set auto indentation
 	set autoindent
 	" set background to dark
@@ -17,14 +30,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 	set number relativenumber
 	" set white space character symbols
 	set listchars=eol:↲,space:·,tab:»\ 
-	" set tab to insert 4 spaces
-	set shiftwidth=4
 	" set no message prompt on startup
 	set shortmess=I
 	" set line break character symbol
 	set showbreak=↪\
-	" set tab use 4 spaces width
-	set tabstop=4
 	" set 24-bit color support
 	set termguicolors
 	" set time for swap to write
@@ -42,8 +51,48 @@ call plug#begin('~/.local/share/nvim/plugged')
 	" install lightline bottom status bar
 	Plug 'itchyny/lightline.vim'
 		let g:lightline = {
-		\	'colorscheme': 'material',
-		\}
+			\	'active': {
+			\		'left': [
+			\			[ 'mode', 'paste' ],
+			\			[ 'filesynbolandname', 'gitbranch' ],
+			\		],
+			\		'right':[
+			\			[ 'lineinfo', 'percent' ],
+			\			[],
+			\			[ 'gitblame', 'cocstatus', 'coccurrentfunction', 'fileencoding' ],
+			\		],
+			\	},
+			\	'component_function': {
+			\		'coccurrentfunction': 'CocCurrentFunction',
+			\		'cocstatus': 'coc#status',
+			\		'fileencoding': 'FileEncoding',
+			\		'filesynbolandname': 'FileSymbolAndName',
+			\		'filetypesymbol': 'FileTypeSymbol',
+			\		'gitblame': 'GitBlame',
+			\		'gitbranch': 'GitBranch',
+			\	},
+			\	"colorscheme": "material"
+			\}
+
+		function! CocCurrentFunction()
+			return get(b:, 'coc_current_function', '')
+		endfunction
+
+		function! FileSymbolAndName()
+			return WebDevIconsGetFileTypeSymbol() . ' ' . expand('%')
+		endfunction
+
+		function! FileEncoding()
+			return &fileencoding == 'utf-8' ? '' : &fileencoding
+		endfunction
+
+		function! GitBlame()
+			return winwidth(0) > 70 ? get(b:, 'coc_git_blame', '') : ''
+		endfunction
+
+		function! GitBranch()
+			return (exists('*fugitive#head') ? "\uE725" . ' ' . fugitive#head() : '')
+		endfunction
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	" install fuzzy search for vim
 	Plug 'junegunn/fzf.vim'
@@ -63,9 +112,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 		\]
 
 		inoremap <silent><expr> <TAB>
-			\ pumvisible() ? "\<C-n>" :
-			\ <SID>check_back_space() ? "\<TAB>" :
-			\ coc#refresh()
+		\	pumvisible() ? "\<C-n>" :
+		\	<SID>check_back_space() ? "\<TAB>" :
+		\	coc#refresh()
 		inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 		nmap <silent> gd <Plug>(coc-definition)
 		nmap <silent> gy <Plug>(coc-type-definition)
@@ -120,6 +169,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 		let g:UltiSnipsListSnippets = '<c-h>'
 	" install syntax highlighting for files in nerdtree
 	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+	Plug 'tpope/vim-fugitive'
 	" install vim support for commenting
 	Plug 'tpope/vim-commentary'
 	" install bracket surrounding support
@@ -161,13 +211,13 @@ augroup FileTypeIndentation
 	autocmd FileType html setlocal tabstop=4 shiftwidth=4
 	autocmd FileType less setlocal tabstop=4 shiftwidth=4
 	autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4
-	autocmd FileType ruby setlocal expandtab tabstop=2 shiftwidth=2
+	autocmd FileType ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 	autocmd FileType rust setlocal expandtab tabstop=4 shiftwidth=4
 	autocmd FileType scss setlocal tabstop=4 shiftwidth=4
 	autocmd FileType typescript setlocal tabstop=4 shiftwidth=4
+	autocmd FileType vim setlocal tabstop=4 shiftwidth=4
 augroup end
 
 if executable('rg')
 	set grepprg=rg\ --no-heading\ --vimgrep
 endif
-
