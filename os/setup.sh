@@ -3,6 +3,7 @@
 header_message "running setup for os"
 
 ${OS_INSTALL}/go-langserver.sh
+${OS_INSTALL}/jedi.sh
 ${OS_INSTALL}/rust.sh
 ${OS_INSTALL}/solargraph.sh
 

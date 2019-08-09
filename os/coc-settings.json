@@ -12,5 +12,6 @@
       }
     }
   },
+  "python.pythonPath": "/usr/bin/python3",
   "suggest.echodocSupport": true
 }
