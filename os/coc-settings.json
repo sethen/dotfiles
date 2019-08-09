@@ -1,16 +1,18 @@
 {
-  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "git.addGlameToBufferVar": true,
   "languageserver": {
     "golang": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "filetypes": ["go"]
+      "command": "go-langserver",
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "gocodeCompletionEnabled": true,
+        "diagnosticsEnabled": true,
+        "lintTool": "golint"
+      }
     }
   },
   "python.jediEnabled": false,
   "python.pythonPath": "/usr/bin/python3",
   "solargraph.completion": true,
-  "solargraph.hover": true,
-  "suggest.echodocSupport": true
+  "solargraph.hover": true
 }

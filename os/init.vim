@@ -115,10 +115,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 					call CocAction('doHover')
 				endif
 			endfunction
-		" install echdoc support for coc
-		Plug 'shougo/echodoc'
-			let g:echodoc_enable_at_startup = 1
-			let g:echodoc#type = 'floating'
 		" install ultisnips for templating
 		Plug 'sirver/ultisnips'
 			let g:UltiSnipsExpandTrigger = '<c-j>'
