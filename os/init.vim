@@ -229,7 +229,14 @@ call plug#begin('~/.local/share/nvim/plugged')
 			endfunction
 
 			function! GitBranch()
-				return (exists('*fugitive#head') ? "\uE725" . ' ' . fugitive#head() : '')
+				let filename = expand('%')
+				let gitbranch = fugitive#head()
+
+				if filename =~ 'NERD_tree' || filename == '' || gitbranch == ''
+					return ''
+				endif
+
+				return "\uE725" . ' ' . gitbranch
 			endfunction
 	" }}}
 	" text {{{
