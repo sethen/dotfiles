@@ -253,6 +253,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 			let g:material_style = 'dark'
 		" install devicons for directories and files
 		Plug 'ryanoasis/vim-devicons'
+		" install nerdtree support for devicons
+		Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 	" }}}
 	" typescript {{{
 		" install typescript syntax highlighting

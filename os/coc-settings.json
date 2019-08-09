@@ -3,15 +3,14 @@
   "git.addGlameToBufferVar": true,
   "languageserver": {
     "golang": {
-      "command": "go-langserver",
-      "filetypes": ["go"],
-      "initializationOptions": {
-        "gocodeCompletionEnabled": true,
-        "diagnosticsEnabled": true,
-        "lintTool": "golint"
-      }
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "filetypes": ["go"]
     }
   },
+  "python.jediEnabled": false,
   "python.pythonPath": "/usr/bin/python3",
+  "solargraph.completion": true,
+  "solargraph.hover": true,
   "suggest.echodocSupport": true
 }
