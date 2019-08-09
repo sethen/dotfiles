@@ -7,6 +7,7 @@ export DEVELOPER_DIRECTORY=~/Developer
 export OS=${0:a:h}
 export DOTFILES=${0:a:h:h}
 export NPM_DIRECTORY=~/.npm-global
+export NVIM_DIRECTORY=~/.config/nvim
 
 # user
 export USER_ALIASES=~/.aliases

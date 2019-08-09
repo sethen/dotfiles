@@ -1,0 +1,16 @@
+{
+  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
+  "git.addGlameToBufferVar": true,
+  "languageserver": {
+    "golang": {
+      "command": "go-langserver",
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "gocodeCompletionEnabled": true,
+        "diagnosticsEnabled": true,
+        "lintTool": "golint"
+      }
+    }
+  },
+  "suggest.echodocSupport": true
+}

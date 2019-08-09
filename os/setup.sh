@@ -16,6 +16,12 @@ if [[ ! -d $NPM_DIRECTORY ]]; then
 	npm install -g typescript
 fi
 
+COC_SETTINGS=${OS}/coc-settings.json
+
+if [[ -e $COC_SETTINGS ]]; then
+	ln -sfv $COC_SETTINGS $NVIM_DIRECTORY
+fi
+
 cd ${DEVELOPER_DIRECTORY}
 
 if [[ ! -d "./markdown-include" ]]; then

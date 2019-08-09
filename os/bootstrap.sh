@@ -23,8 +23,6 @@ fi
 INITVIM=$OS/init.vim
 
 if [[ -e $INITVIM ]]; then
-	NVIM_DIRECTORY=~/.config/nvim
-
 	if [[ ! -e $NVIM_DIRECTORY ]]; then
 		mkdir $NVIM_DIRECTORY
 	fi
