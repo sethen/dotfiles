@@ -13,51 +13,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 		abbr teh the
 		abbr vra var
 	" }}}
-	" options {{{
-		" set read file when it is changed outside of nvim
-		set autoread
-		" set auto indentation
-		set autoindent
-		" set background to dark
-		set background=dark
-		" set indent for overflowing words
-		set breakindent
-		" set indent options for overflowing words
-		set breakindentopt=sbr
-		" set clipboard copy
-		set clipboard=unnamedplus
-		" set command height
-		set cmdheight=2
-		" set horizontal line on where cursor currently is
-		set cursorline
-		" set foldmethod to marker
-		set foldmethod=marker
-		" set highlighting of searches
-		set hlsearch
-		" set white space characters to be shown
-		set list
-		" set line number to relative
-		set number relativenumber
-		" set white space character symbols
-		set listchars=eol:↲,space:·,tab:»\ 
-		" set editing as if the tabs are 4 characters wide
-		set softtabstop=4
-		" set number of spaces to use for indentation"
-		set shiftwidth=4
-		" set no message prompt on startup
-		set shortmess=I
-		" set line break character symbol
-		set showbreak=↪\
-		" set the visiable width of tabs
-		set tabstop=4
-		" set 24-bit color support
-		set termguicolors
-		" set time for swap to write
-		set updatetime=750
-		" set syntax highlighting
-		syntax on
-	" }}}
-	" spaces and tabs {{{
+	" file type indentations {{{
 		augroup FileTypeIndentation
 			autocmd FileType css setlocal tabstop=4 shiftwidth=4
 			autocmd FileType json setlocal expandtab tabstop=2 shiftwidth=2
@@ -73,6 +29,70 @@ call plug#begin('~/.local/share/nvim/plugged')
 			autocmd FileType vim setlocal tabstop=4 shiftwidth=4
 		augroup end
 	" }}}
+	" options {{{
+		" set read file when it is changed outside of nvim
+		set autoread
+		" set auto indentation
+		set autoindent
+		" set background to dark
+		set background=dark
+		" set indent for overflowing words
+		set breakindent
+		" set indent options for overflowing words
+		set breakindentopt=sbr
+		" set clipboard copy
+		set clipboard=unnamedplus
+		" set horizontal line on where cursor currently is
+		set cursorline
+		" set foldmethod to marker
+		set foldmethod=marker
+		" set highlighting of searches
+		set hlsearch
+		" set case insensitive searching
+		set ignorecase
+		" set live effects of commands
+		set inccommand=nosplit
+		" set wrapping of long lines
+		set linebreak
+		" set white space characters to be shown
+		set list
+		" set white space character symbols
+		set listchars=eol:↲,space:·,tab:»\ 
+		" set folds to be open
+		set nofoldenable
+		" set line number
+		set number
+		" set opacity for pop up menu
+		set pumblend=15
+		" set relative number for line number
+		set relativenumber
+		" set number of spaces to use for indentation"
+		set shiftwidth=4
+		" set no message prompt on startup
+		set shortmess=I
+		" set line break character symbol
+		set showbreak=↪\
+		" set showing matches for like brackets
+		set showmatch
+		" set editing as if the tabs are 4 characters wide
+		set softtabstop=4
+		" set :split to always split below
+		set splitbelow
+		" set :vsplit to always split right
+		set splitright
+		" set the visiable width of tabs
+		set tabstop=4
+		" set 24-bit color support
+		set termguicolors
+		" set time for swap to write
+		set updatetime=750
+		" set menu cycle for file name completion
+		set wildmenu
+		" set opacity for floating window
+		set winblend=15
+		" set syntax highlighting
+		syntax on
+	" }}}
 " }}}
 
 " plugins {{{
@@ -83,8 +103,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 		Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 			let g:coc_global_extensions = [
 			\	'coc-css',
+			\	'coc-git',
 			\	'coc-html',
 			\	'coc-json',
+			\	'coc-pairs',
 			\	'coc-python',
 			\	'coc-rls',
 			\	'coc-snippets',
@@ -92,23 +114,22 @@ call plug#begin('~/.local/share/nvim/plugged')
 			\	'coc-tsserver'
 			\]
 
+			" tab through autocomplete results
 			inoremap <silent><expr> <TAB>
 			\	pumvisible() ? "\<C-n>" :
-			\	<SID>check_back_space() ? "\<TAB>" :
+			\	<SID>CheckBackSpace() ? "\<TAB>" :
 			\	coc#refresh()
+			" shift-tab back through autocomplete results
 			inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-			nmap <silent> gd <Plug>(coc-definition)
-			nmap <silent> gy <Plug>(coc-type-definition)
-			nmap <silent> gi <Plug>(coc-implementation)
-			nmap <silent> gr <Plug>(coc-references)
-			nnoremap <silent> K :call <SID>show_documentation()<CR>
+			" K for specific documentation
+			nnoremap <silent> K :call <SID>ShowDocumentation()<CR>
 
-			function! s:check_back_space() abort
+			function! s:CheckBackSpace() abort
 				let col = col('.') - 1
 				return !col || getline('.')[col - 1]  =~# '\s'
 			endfunction
 
-			function! s:show_documentation()
+			function! s:ShowDocumentation()
 				if &filetype == 'vim'
 					execute 'h '.expand('<cword>')
 				else
@@ -149,6 +170,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	" navigation {{{
 		" install start screen for vim
 		Plug 'mhinz/vim-startify'
+			let g:startify_custom_header = []
 		" install nerdtree tree explorer
 		Plug 'scrooloose/nerdtree'
 			augroup nerdtreehidecwd
@@ -166,8 +188,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 			let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 			let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = "\uf07b"
 	" }}}
+	" ruby {{{
+	" install end completion
+	Plug 'tpope/vim-endwise'
+	" }}}
 	" search {{{
-		" install fzf"
+		" install fzf
 		Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 		" install fuzzy search for vim
 		Plug 'junegunn/fzf.vim'
@@ -176,64 +202,131 @@ call plug#begin('~/.local/share/nvim/plugged')
 		" install lightline status bar
 		Plug 'itchyny/lightline.vim'
 			let g:lightline = {
+			\	'colorscheme': 'material',
+			\	'component_function': {
+			\		'fileencoding': 'LightlineEncoding',
+			\		'filename': 'LightlineFileName',
+			\		'gitblame': 'LightlineCocGitBlame',
+			\		'gitbranch': 'LightlineGitBranch',
+			\		'lineinfo': 'LightlineLineInfo',
+			\		'mode': 'LightlineMode',
+			\		'readonly': 'LightlineReadOnly'
+			\	},
 			\	'active': {
 			\		'left': [
-			\			[ 'mode', 'paste' ],
-			\			[ 'filesynbolandname', 'gitbranch' ],
+			\			[ 'mode' ],
+			\			[ 'filename', 'gitbranch', 'readonly' ],
 			\		],
-			\		'right':[
-			\			[ 'lineinfo', 'percent' ],
+			\		'right': [
+			\			[ 'percent' ],
 			\			[],
-			\			[ 'gitblame', 'cocstatus', 'coccurrentfunction', 'fileencoding' ],
+			\			[ 'gitblame', 'fileencoding' ],
 			\		],
 			\	},
-			\	'component_function': {
-			\		'coccurrentfunction': 'CocCurrentFunction',
-			\		'cocstatus': 'coc#status',
-			\		'fileencoding': 'FileEncoding',
-			\		'filesynbolandname': 'FileSymbolAndName',
-			\		'gitblame': 'GitBlame',
-			\		'gitbranch': 'GitBranch',
-			\	},
-			\	"colorscheme": "material"
+			\	'inactive': {
+			\		'left': [
+			\			[ 'mode' ],
+			\			[ 'filename', 'gitbranch' ],
+			\		],
+			\		'right': [
+			\			[ 'percent' ],
+			\		]
+			\	}
 			\}
 
-			function! CocCurrentFunction()
-				return get(b:, 'coc_current_function', '')
-			endfunction
+		function IsHelpFileType()
+			let l:filetype = &ft
 
-			function! FileSymbolAndName()
-				let filename = expand('%')
+			return l:filetype =~ 'help' ? 1 : 0
+		endfunction
 
-				if filename =~ 'NERD_tree'
-					return ''
-				endif
+		function IsNERDTreeFileType()
+			let l:filetype = &ft
 
-				if filename == ''
-					return WebDevIconsGetFileTypeSymbol()
-				endif
+			return l:filetype =~ 'nerdtree' ? 1 : 0
+		endfunction
 
-				return WebDevIconsGetFileTypeSymbol() . ' ' . expand('%')
-			endfunction
+		function IsStartifyFileType()
+			let l:filetype = &ft
 
-			function! FileEncoding()
-				return &fileencoding == 'utf-8' ? '' : &fileencoding
-			endfunction
+			return l:filetype =~ 'startify' ? 1 : 0
+		endfunction
 
-			function! GitBlame()
-				return winwidth(0) > 70 ? get(b:, 'coc_git_blame', '') : ''
-			endfunction
+		function! IsIgnoringStatus()
+			return IsHelpFileType() || IsNERDTreeFileType() || IsStartifyFileType()
+		endfunction
 
-			function! GitBranch()
-				let filename = expand('%')
-				let gitbranch = fugitive#head()
+		function! LightlineCocGitBlame()
+			if IsIgnoringStatus()
+				return ''
+			endif
 
-				if filename =~ 'NERD_tree' || filename == '' || gitbranch == ''
-					return ''
-				endif
+			return winwidth(0) > 70 ? get(b:, 'coc_git_blame', '') : ''
+		endfunction
 
-				return "\uE725" . ' ' . gitbranch
-			endfunction
+		function! LightlineEncoding()
+			if IsIgnoringStatus()
+				return ''
+			endif
+			return &fileencoding == 'utf-8' ? '' : &fileencoding
+		endfunction
+
+		function! LightlineFileName()
+			if IsIgnoringStatus()
+				return WebDevIconsGetFileTypeSymbol(). ' ' . &ft
+			endif
+
+			let l:filename = expand('%t')
+
+			if l:filename == ''
+				return WebDevIconsGetFileTypeSymbol() . ' [No Name]' . LightlineModified()
+			endif
+
+			return WebDevIconsGetFileTypeSymbol() . ' ' . l:filename . LightlineModified()
+		endfunction
+
+		function! LightlineGitBranch()
+			let l:filename = expand('%t')
+			let l:gitbranch = fugitive#head()
+
+			if IsIgnoringStatus() || l:filename == '' || l:gitbranch == ''
+				return ''
+			endif
+
+			return "\uE725" . ' ' . l:gitbranch
+		endfunction
+
+		function! LightlineMode()
+			if IsIgnoringStatus()
+				return ''
+			endif
+
+			return lightline#mode()
+		endfunction
+
+		function! LightlineModified()
+			if IsIgnoringStatus()
+				return ''
+			endif
+
+			if !&modifiable
+				return ' -'
+			endif
+
+			if &modified
+				return ' +'
+			endif
+
+			return ''
+		endfunction
+
+		function! LightlineReadOnly()
+			if IsIgnoringStatus()
+				return ''
+			endif
+
+			return &readonly ? 'ro' : ''
+		endfunction
 	" }}}
 	" text {{{
 		" install text filtering and alignment
@@ -262,13 +355,18 @@ call plug#end()
 " colors {{{
 	colorscheme vim-material
 	highlight CursorLine guibg=#212121
-	highlight link EchoDocFloat Pmenu
-	highlight NERDTreeFlags guifg=#C792EA
-	highlight Search gui=bold guibg=#FFCB6B guifg=#000000
-	highlight SignColumn guibg=NONE gui=NONE guibg=#263238 gui=NONE
 	highlight DiffAdd gui=bold guibg=#263238 guifg=#C3E88D
 	highlight DiffChange gui=bold guibg=#263238 guifg=#FFCB6B
 	highlight DiffDelete gui=bold guibg=#263238 guifg=#FF5370
+	highlight link EchoDocFloat Pmenu
+	highlight NERDTreeFlags guifg=#C792EA
+	highlight PmenuSel blend=15
+	highlight Search gui=bold guibg=#FFCB6B guifg=#000000
+	highlight SignColumn gui=NONE guibg=#263238
+	" colors are reversed here
+	highlight StatusLine guifg=#263238 guibg=#FFFFFF
+	" colors are reversed here
+	highlight StatusLineNC guifg=#263238 guibg=#FFFFFF
 	highlight VertSplit ctermbg=NONE guibg=NONE
 " }}}
 
