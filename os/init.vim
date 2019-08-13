@@ -13,21 +13,29 @@ call plug#begin('~/.local/share/nvim/plugged')
 		abbr teh the
 		abbr vra var
 	" }}}
-	" file type indentations {{{
-		augroup FileTypeIndentation
-			autocmd FileType css setlocal tabstop=4 shiftwidth=4
-			autocmd FileType json setlocal expandtab tabstop=2 shiftwidth=2
-			autocmd FileType go setlocal tabstop=4 shiftwidth=4
-			autocmd FileType javascript setlocal tabstop=4 shiftwidth=4
-			autocmd FileType html setlocal tabstop=4 shiftwidth=4
-			autocmd FileType less setlocal tabstop=4 shiftwidth=4
-			autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4
-			autocmd FileType ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-			autocmd FileType rust setlocal expandtab tabstop=4 shiftwidth=4
-			autocmd FileType scss setlocal tabstop=4 shiftwidth=4
-			autocmd FileType typescript setlocal tabstop=4 shiftwidth=4
-			autocmd FileType vim setlocal tabstop=4 shiftwidth=4
-		augroup end
+	" autogroups {{{
+		" file type indentations {{{
+			augroup FileTypeIndentation
+				autocmd FileType css setlocal tabstop=4 shiftwidth=4
+				autocmd FileType json setlocal expandtab tabstop=2 shiftwidth=2
+				autocmd FileType go setlocal tabstop=4 shiftwidth=4
+				autocmd FileType javascript setlocal tabstop=4 shiftwidth=4
+				autocmd FileType html setlocal tabstop=4 shiftwidth=4
+				autocmd FileType less setlocal tabstop=4 shiftwidth=4
+				autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4
+				autocmd FileType ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+				autocmd FileType rust setlocal expandtab tabstop=4 shiftwidth=4
+				autocmd FileType scss setlocal tabstop=4 shiftwidth=4
+				autocmd FileType typescript setlocal tabstop=4 shiftwidth=4
+				autocmd FileType vim setlocal tabstop=4 shiftwidth=4
+			augroup end
+		" }}}
+		" spell check {{{
+			augroup SpellCheck
+				autocmd FileType gitcommit setlocal spell
+				autocmd FileType markdown setlocal spell
+			augroup end
+		" }}}
 	" }}}
 	" options {{{
 		" set read file when it is changed outside of nvim
@@ -60,12 +68,18 @@ call plug#begin('~/.local/share/nvim/plugged')
 		set listchars=eol:↲,space:·,tab:»\ 
 		" set folds to be open
 		set nofoldenable
+		" set ignore modelines
+		set nomodeline
 		" set line number
 		set number
 		" set opacity for pop up menu
 		set pumblend=15
 		" set relative number for line number
 		set relativenumber
+		" set number of lines to show above/below cursor
+		set scrolloff=20
+		" set to round to nearest multiple of shiftwidth
+		set shiftround
 		" set number of spaces to use for indentation"
 		set shiftwidth=4
 		" set no message prompt on startup
@@ -74,6 +88,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 		set showbreak=↪\
 		" set showing matches for like brackets
 		set showmatch
+		" set searching to case sensitive when query contains uppercase
+		set smartcase
 		" set editing as if the tabs are 4 characters wide
 		set softtabstop=4
 		" set :split to always split below
@@ -203,12 +219,14 @@ call plug#begin('~/.local/share/nvim/plugged')
 		Plug 'itchyny/lightline.vim'
 			let g:lightline = {
 			\	'colorscheme': 'material',
+			\	'component_expand': {
+			\		'lineinfo': 'LightlineLineInfo'
+			\	},
 			\	'component_function': {
 			\		'fileencoding': 'LightlineEncoding',
 			\		'filename': 'LightlineFileName',
 			\		'gitblame': 'LightlineCocGitBlame',
 			\		'gitbranch': 'LightlineGitBranch',
-			\		'lineinfo': 'LightlineLineInfo',
 			\		'mode': 'LightlineMode',
 			\		'readonly': 'LightlineReadOnly'
 			\	},
@@ -218,7 +236,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 			\			[ 'filename', 'gitbranch', 'readonly' ],
 			\		],
 			\		'right': [
-			\			[ 'percent' ],
+			\			[ 'lineinfo', 'percent' ],
 			\			[],
 			\			[ 'gitblame', 'fileencoding' ],
 			\		],
@@ -229,7 +247,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 			\			[ 'filename', 'gitbranch' ],
 			\		],
 			\		'right': [
-			\			[ 'percent' ],
+			\			[ 'lineinfo', 'percent' ],
 			\		]
 			\	}
 			\}
@@ -294,6 +312,14 @@ call plug#begin('~/.local/share/nvim/plugged')
 			endif
 
 			return "\uE725" . ' ' . l:gitbranch
+		endfunction
+
+		function! LightlineLineInfo()
+			if IsIgnoringStatus()
+				return ''
+			endif
+
+			return '%3l:%-2v'
 		endfunction
 
 		function! LightlineMode()
