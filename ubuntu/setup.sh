@@ -64,6 +64,7 @@ ${SPECIFIC_OS_INSTALL}/vim-plug.sh
 ${SPECIFIC_OS_INSTALL}/virtualenv.sh
 ${SPECIFIC_OS_INSTALL}/visual-studio-code.sh
 ${SPECIFIC_OS_INSTALL}/vlc.sh
+${SPECIFIC_OS_INSTALL}/xsel.sh
 
 echo ""
 read "INSTALL_VIM_PLUG_PLUGINS?would you like to install vim-plug plugins? [Yy/Nn] "

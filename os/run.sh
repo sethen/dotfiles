@@ -19,6 +19,7 @@ export OS_ALIASES=${OS}/.aliases
 export OS_AVATARS=${OS}/avatars
 export OS_FONTS=${OS}/fonts
 export OS_INSTALL=${OS}/install
+export OS_SCRIPTS=${OS}/scripts
 export OS_ZSHENV=${OS}/.zshenv
 export OS_ZSH_FUNCTIONS=${OS}/zsh_functions
 

@@ -219,14 +219,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 		Plug 'itchyny/lightline.vim'
 			let g:lightline = {
 			\	'colorscheme': 'material',
-			\	'component_expand': {
-			\		'lineinfo': 'LightlineLineInfo'
-			\	},
 			\	'component_function': {
 			\		'fileencoding': 'LightlineEncoding',
 			\		'filename': 'LightlineFileName',
 			\		'gitblame': 'LightlineCocGitBlame',
 			\		'gitbranch': 'LightlineGitBranch',
+			\		'lineinfo': 'LightlineLineInfo',
 			\		'mode': 'LightlineMode',
 			\		'readonly': 'LightlineReadOnly'
 			\	},
@@ -319,7 +317,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 				return ''
 			endif
 
-			return '%3l:%-2v'
+			return printf('%d:%-2d', line('.'), col('.'))
 		endfunction
 
 		function! LightlineMode()
