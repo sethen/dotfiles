@@ -1,4 +1,5 @@
 source ~/.aliases
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export CARGO_PATH=~/.cargo/bin
 export GOPATH=$HOME/Developer/go

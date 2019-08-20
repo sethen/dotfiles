@@ -7,6 +7,7 @@ ${OS_INSTALL}/gopls.sh
 ${OS_INSTALL}/jedi.sh
 ${OS_INSTALL}/rust.sh
 ${OS_INSTALL}/solargraph.sh
+${OS_INSTALL}/zsh-autosuggestions.sh
 
 if [[ ! -d $NPM_DIRECTORY ]]; then
 	information_message "configuring npm global modules"
