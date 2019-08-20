@@ -164,6 +164,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 		Plug 'mhinz/vim-signify'
 		" install git wrapper
 		Plug 'tpope/vim-fugitive'
+		" install ruby on rails tools
+		Plug 'tpope/vim-rails'
 		" install nerdtree git status
 		Plug 'xuyuanp/nerdtree-git-plugin'
 			let g:NERDTreeIndicatorMapCustom = {

@@ -19,6 +19,7 @@ ${SPECIFIC_OS_REPOSITORIES}/neovim.sh
 ${SPECIFIC_OS_REPOSITORIES}/rvm.sh
 ${SPECIFIC_OS_REPOSITORIES}/spotify.sh
 ${SPECIFIC_OS_REPOSITORIES}/ukuu.sh
+${SPECIFIC_OS_REPOSITORIES}/yarn.sh
 ${SPECIFIC_OS_REPOSITORIES}/visual-studio-code.sh
 
 information_message "updating packages"
@@ -65,6 +66,7 @@ ${SPECIFIC_OS_INSTALL}/virtualenv.sh
 ${SPECIFIC_OS_INSTALL}/visual-studio-code.sh
 ${SPECIFIC_OS_INSTALL}/vlc.sh
 ${SPECIFIC_OS_INSTALL}/xsel.sh
+${SPECIFIC_OS_INSTALL}/yarn.sh
 
 echo ""
 read "INSTALL_VIM_PLUG_PLUGINS?would you like to install vim-plug plugins? [Yy/Nn] "
