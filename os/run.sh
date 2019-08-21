@@ -11,6 +11,7 @@ export NVIM_DIRECTORY=~/.config/nvim
 
 # user
 export USER_ALIASES=~/.aliases
+export USER_RBENV=~/.rbenv
 export USER_ZSHENV=~/.zshenv
 export USER_ZSH=~/.zsh
 export USER_ZSH_FUNCTIONS=${USER_ZSH}/functions

@@ -5,6 +5,8 @@ header_message "running setup for os"
 ${OS_INSTALL}/go-langserver.sh
 ${OS_INSTALL}/gopls.sh
 ${OS_INSTALL}/jedi.sh
+${OS_INSTALL}/rbenv.sh
+${OS_INSTALL}/rails.sh
 ${OS_INSTALL}/rust.sh
 ${OS_INSTALL}/solargraph.sh
 ${OS_INSTALL}/zsh-autosuggestions.sh

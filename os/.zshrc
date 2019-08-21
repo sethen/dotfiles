@@ -1,25 +1,37 @@
+# source .aliases, fzf and other completions
 source ~/.aliases
+source ~/.fzf.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# set global variables
 export CARGO_PATH=~/.cargo/bin
 export GOPATH=$HOME/Developer/go
+export HISTFILE=~/.zsh_history
 export NPM_GLOBAL_PATH=~/.npm-global/bin
+export SAVEHIST=1000
 export RUBY_VERSION=2.6.1
-export RUBY_PATH=~/.rvm/gems/ruby-${RUBY_VERSION}/bin
+export RUBY_PATH=~/.rbenv/bin
 export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
 export PATH=$RUBY_PATH:$CARGO_PATH:$NPM_GLOBAL_PATH:$GOPATH/bin:$PATH
 
+# set right and left prompts
 PROMPT='$(prompt_info)'
 RPROMPT='$(rprompt_info)'
 
-HISTFILE=~/.zsh_history
-SAVEHIST=1000
-
+# set options
 setopt AUTOCD
 setopt CORRECT
 setopt NO_BEEP
 setopt PROMPT_SUBST
 
-cd ~/Developer
+# set styles
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:descriptions' format '%F{3}%B%d%b%f'
+zstyle ':completion:*:manuals' separate-sections true
+zstyle ':completion:*' menu select=2
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# set rbenv
+eval "$(rbenv init -)"
+
+# start in Developer directory
+cd ~/Developer

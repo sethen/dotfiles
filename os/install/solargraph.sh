@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-if type "rvm" > /dev/null && ! type "solargraph" > /dev/null; then
+if type "rbenv" > /dev/null && ! type "solargraph" > /dev/null; then
 	information_message "installing solargraph gem"
 
 	gem install solargraph
