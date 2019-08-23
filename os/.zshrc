@@ -12,6 +12,7 @@ export SAVEHIST=1000
 export RUBY_VERSION=2.6.1
 export RUBY_PATH=~/.rbenv/bin
 export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
+export TERM=xterm-256color
 export PATH=$RUBY_PATH:$CARGO_PATH:$NPM_GLOBAL_PATH:$GOPATH/bin:$PATH
 
 # set right and left prompts

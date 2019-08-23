@@ -70,6 +70,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 		set nofoldenable
 		" set ignore modelines
 		set nomodeline
+		" set no swap files
+		set noswapfile
 		" set line number
 		set number
 		" set opacity for pop up menu
@@ -100,6 +102,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 		set tabstop=4
 		" set 24-bit color support
 		set termguicolors
+		" set undo directory for persistent undo
+		call mkdir("~/.nvim/undodir", "p", 0700)
+		set undodir=~/.nvim/undodir
+		" set persistent undo
+		set undofile
 		" set time for swap to write
 		set updatetime=750
 		" set menu cycle for file name completion
