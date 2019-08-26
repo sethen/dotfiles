@@ -1,4 +1,6 @@
 {
+  "diagnostic.displayByAle": true,
+  "diagnostic.enable": false,
   "git.addGlameToBufferVar": true,
   "languageserver": {
     "golang": {
@@ -6,8 +8,7 @@
       "filetypes": ["go"],
       "initializationOptions": {
         "gocodeCompletionEnabled": true,
-        "diagnosticsEnabled": true,
-        "lintTool": "golint"
+        "diagnosticsEnabled": true
       }
     }
   },

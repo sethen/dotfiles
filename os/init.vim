@@ -65,7 +65,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 		" set white space characters to be shown
 		set list
 		" set white space character symbols
-		set listchars=eol:↲,space:·,tab:»\ 
+		set listchars=tab:»\ ,space:·\,eol:¬
 		" set folds to be open
 		set nofoldenable
 		" set ignore modelines
@@ -131,6 +131,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 			\	'coc-json',
 			\	'coc-pairs',
 			\	'coc-python',
+			\	'coc-omnisharp',
 			\	'coc-rls',
 			\	'coc-snippets',
 			\	'coc-solargraph',
@@ -171,8 +172,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 		Plug 'mhinz/vim-signify'
 		" install git wrapper
 		Plug 'tpope/vim-fugitive'
-		" install ruby on rails tools
-		Plug 'tpope/vim-rails'
 		" install nerdtree git status
 		Plug 'xuyuanp/nerdtree-git-plugin'
 			let g:NERDTreeIndicatorMapCustom = {
@@ -187,6 +186,18 @@ call plug#begin('~/.local/share/nvim/plugged')
 			\	'Ignored'   : "\uf070",
 			\	'Unknown'   : "\uf128"
 			\}
+	" }}}
+	" lint {{{
+		Plug 'w0rp/ale'
+			let g:ale_fixers = {
+			\	'*': [ 'remove_trailing_lines', 'trim_whitespace' ],
+			\	'go': [ 'gofmt', 'goimports' ],
+			\	'typescript': [ 'tslint' ],
+			\}
+			let g:ale_fix_on_save = 1
+			let g:ale_open_list = 'on_save'
+			nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+			nmap <silent> <C-j> <Plug>(ale_next_wrap)
 	" }}}
 	" markdown {{{
 		" install markdown keymap support
@@ -214,8 +225,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 			let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = "\uf07b"
 	" }}}
 	" ruby {{{
-	" install end completion
-	Plug 'tpope/vim-endwise'
+		" install end completion
+		Plug 'tpope/vim-endwise'
 	" }}}
 	" search {{{
 		" install fzf
@@ -277,8 +288,14 @@ call plug#begin('~/.local/share/nvim/plugged')
 			return l:filetype =~ 'startify' ? 1 : 0
 		endfunction
 
+		function IsQuickFixFileType()
+			let l:filetype = &ft
+
+			return l:filetype =~ 'qf' ? 1 : 0
+		endfunction
+
 		function! IsIgnoringStatus()
-			return IsHelpFileType() || IsNERDTreeFileType() || IsStartifyFileType()
+			return IsHelpFileType() || IsNERDTreeFileType() || IsStartifyFileType() || IsQuickFixFileType()
 		endfunction
 
 		function! LightlineCocGitBlame()
@@ -293,11 +310,16 @@ call plug#begin('~/.local/share/nvim/plugged')
 			if IsIgnoringStatus()
 				return ''
 			endif
+
 			return &fileencoding == 'utf-8' ? '' : &fileencoding
 		endfunction
 
 		function! LightlineFileName()
-			if IsIgnoringStatus()
+			if IsQuickFixFileType()
+				return WebDevIconsGetFileTypeSymbol() . ' quickfix'
+			endif
+
+			if IsHelpFileType() || IsNERDTreeFileType() || IsStartifyFileType()
 				return WebDevIconsGetFileTypeSymbol(). ' ' . &ft
 			endif
 
@@ -378,15 +400,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 		" install nerdtree support for devicons
 		Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 	" }}}
-	" typescript {{{
-		" install typescript syntax highlighting
-		Plug 'herringtondarkholme/yats.vim'
-	" }}}
 " }}}
 call plug#end()
 
 " colors {{{
 	colorscheme vim-material
+	highlight ALEErrorSign guifg=#F07178
+	highlight ALEWarningSign guifg=#FFCB6B
 	highlight CursorLine guibg=#212121
 	highlight DiffAdd gui=bold guibg=#263238 guifg=#C3E88D
 	highlight DiffChange gui=bold guibg=#263238 guifg=#FFCB6B
