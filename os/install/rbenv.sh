@@ -13,6 +13,8 @@ if [[ ! -d $USER_RBENV ]]; then
 
 	information_message "installing and setting ruby version ${RUBY_VERSION}"
 
+	source ~/.zshrc
+
 	rbenv install ${RUBY_VERSION}
 	rbenv global ${RUBY_VERSION}
 else

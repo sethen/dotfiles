@@ -3,6 +3,7 @@
 header_message "running setup for os"
 
 ${OS_INSTALL}/go-langserver.sh
+${OS_INSTALL}/goimports.sh
 ${OS_INSTALL}/gopls.sh
 ${OS_INSTALL}/jedi.sh
 ${OS_INSTALL}/rbenv.sh
@@ -56,7 +57,7 @@ if [[ ! -d "./wallpapers" ]]; then
 		information_message "cloning wallpapers repo"
 
 		git clone git@github.com:sethen/wallpapers.git
-	else 
+	else
 		read "WALLPAPERS?clone wallpapers repo? [Yy/Nn] "
 
 		if [[ $WALLPAPERS =~ '[Yy]' ]]; then
