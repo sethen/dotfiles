@@ -24,7 +24,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 		" spell check {{{
 			augroup SpellCheck
 				autocmd!
-				autocmd BufRead,BufNewFile *.md setlocal spell
+				autocmd BufRead,BufNewFile *.md,*.txt setlocal spell
 				autocmd FileType gitcommit setlocal spell
 			augroup end
 		" }}}

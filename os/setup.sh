@@ -10,7 +10,17 @@ ${OS_INSTALL}/rbenv.sh
 ${OS_INSTALL}/rails.sh
 ${OS_INSTALL}/rust.sh
 ${OS_INSTALL}/solargraph.sh
+${OS_INSTALL}/vim-plug.sh
 ${OS_INSTALL}/zsh-autosuggestions.sh
+
+echo ""
+read "INSTALL_VIM_PLUG_PLUGINS?would you like to install vim-plug plugins? [Yy/Nn] "
+
+if [[ $INSTALL_VIM_PLUG_PLUGINS =~ "[Yy]" ]]; then
+	information_message "installing vim-plug plugins"
+
+	nvim +'PlugInstall --sync' +qa
+fi
 
 if [[ ! -d $NPM_DIRECTORY ]]; then
 	information_message "configuring npm global modules"

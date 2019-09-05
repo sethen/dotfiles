@@ -59,21 +59,11 @@ ${SPECIFIC_OS_INSTALL}/spotify.sh
 ${SPECIFIC_OS_INSTALL}/telegram.sh
 ${SPECIFIC_OS_INSTALL}/tmux.sh
 ${SPECIFIC_OS_INSTALL}/ukuu.sh
-${SPECIFIC_OS_INSTALL}/vim-plug.sh
 ${SPECIFIC_OS_INSTALL}/virtualenv.sh
 ${SPECIFIC_OS_INSTALL}/visual-studio-code.sh
 ${SPECIFIC_OS_INSTALL}/vlc.sh
 ${SPECIFIC_OS_INSTALL}/xsel.sh
 ${SPECIFIC_OS_INSTALL}/yarn.sh
-
-echo ""
-read "INSTALL_VIM_PLUG_PLUGINS?would you like to install vim-plug plugins? [Yy/Nn] "
-
-if [[ $INSTALL_VIM_PLUG_PLUGINS =~ "[Yy]" ]]; then
-	information_message "installing vim-plug plugins"
-
-	nvim +'PlugInstall --sync' +qa
-fi
 
 read "UPGRADE?would you like to upgrade your existing packages? [Yy/Nn] "
 
