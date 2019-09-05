@@ -16,31 +16,44 @@ call plug#begin('~/.local/share/nvim/plugged')
 	" autogroups {{{
 		" file types {{{
 			augroup FileTypes
+				autocmd!
+				autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 				autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
-			augroup end
-		" }}}
-		" file type indentations {{{
-			augroup FileTypeIndentation
-				autocmd FileType css setlocal tabstop=4 shiftwidth=4
-				autocmd FileType json setlocal expandtab tabstop=2 shiftwidth=2
-				autocmd FileType go setlocal tabstop=4 shiftwidth=4
-				autocmd FileType javascript setlocal tabstop=4 shiftwidth=4
-				autocmd FileType html setlocal tabstop=4 shiftwidth=4
-				autocmd FileType less setlocal tabstop=4 shiftwidth=4
-				autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4
-				autocmd FileType ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-				autocmd FileType rust setlocal expandtab tabstop=4 shiftwidth=4
-				autocmd FileType scss setlocal tabstop=4 shiftwidth=4
-				autocmd FileType typescript setlocal tabstop=4 shiftwidth=4
-				autocmd FileType vim setlocal tabstop=4 shiftwidth=4
 			augroup end
 		" }}}
 		" spell check {{{
 			augroup SpellCheck
+				autocmd!
+				autocmd BufRead,BufNewFile *.md setlocal spell
 				autocmd FileType gitcommit setlocal spell
-				autocmd FileType markdown setlocal spell
 			augroup end
 		" }}}
+	" }}}
+	" functions {{{
+		function! IsHelpFileType()
+			return 'help' =~ &ft
+		endfunction
+
+		function! IsNERDTreeFileType()
+			return 'nerdtree' =~ &ft
+		endfunction
+
+		function! IsStartifyFileType()
+			return 'startify' =~ &ft
+		endfunction
+
+		function! IsQuickFixFileType()
+			return 'qf' =~ &ft
+		endfunction
+
+		function! IsIgnoringStatus()
+			return '/^help|nerdtree|startify|qf/' =~ &ft
+		endfunction
+	" }}}
+	" key mappings {{{
+		let mapleader = "-"
+		" type -ev normal (non-recursive) to open init.vim
+		nnoremap <leader>ev :split $MYVIMRC<cr>
 	" }}}
 	" options {{{
 		" set read file when it is changed outside of nvim
@@ -55,6 +68,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 		set breakindentopt=sbr
 		" set clipboard copy
 		set clipboard=unnamedplus
+		" set spell check complete in insert mode
+		set complete+=kspell
 		" set horizontal line on where cursor currently is
 		set cursorline
 		" set foldmethod to marker
@@ -125,6 +140,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " plugins {{{
 	" autocompletion {{{
+		" install end auto-completion
+		Plug 'tpope/vim-endwise'
 		" install vim snippets for ultisnips
 		Plug 'honza/vim-snippets'
 		" install coc auto-completion framework
@@ -135,7 +152,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 			\	'coc-html',
 			\	'coc-json',
 			\	'coc-pairs',
-			\	'coc-python',
 			\	'coc-omnisharp',
 			\	'coc-rls',
 			\	'coc-snippets',
@@ -143,18 +159,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 			\	'coc-tsserver'
 			\]
 
-			" tab through autocomplete results
-			inoremap <silent><expr> <TAB>
-			\	pumvisible() ? "\<C-n>" :
-			\	<SID>CheckBackSpace() ? "\<TAB>" :
-			\	coc#refresh()
-			" shift-tab back through autocomplete results
-			inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-			" K for specific documentation
-			nnoremap <silent> K :call <SID>ShowDocumentation()<CR>
-
 			function! s:CheckBackSpace() abort
 				let col = col('.') - 1
+
 				return !col || getline('.')[col - 1]  =~# '\s'
 			endfunction
 
@@ -165,12 +172,17 @@ call plug#begin('~/.local/share/nvim/plugged')
 					call CocAction('doHover')
 				endif
 			endfunction
-		" install ultisnips for templating
-		Plug 'sirver/ultisnips'
-			let g:UltiSnipsExpandTrigger = '<c-j>'
-			let g:UltiSnipsJumpForwardTrigger = '<c-j>'
-			let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
-			let g:UltiSnipsListSnippets = '<c-h>'
+
+			" type ctrl+j when pop up menu is visible for both expand and jumping for snippets
+			imap <C-j> <Plug>(coc-snippets-expand-jump)
+			" type ctrl+j when pop up menu is visible to expand autocompletion
+			inoremap <expr> <C-j> pumvisible() ? "\<C-y>" : "\<C-j>"
+			" type tab when pop up menu is visible to cycle through autocomplete results
+			inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>CheckBackSpace() ? "\<TAB>" : coc#refresh()
+			" type shift+tab when pop up menu is visible cycle back through autocomplete results
+			inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+			" type H in normal for docs when hovered over
+			nnoremap <silent> H :call <SID>ShowDocumentation()<CR>
 	" }}}
 	" git {{{
 		" install git sidebar
@@ -192,6 +204,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 			\	'Unknown'   : "\uf128"
 			\}
 	" }}}
+	" javascript {{{
+		" install javascript syntax highlighting
+		Plug 'pangloss/vim-javascript'
+	" }}}
 	" jsx {{{
 		" install jsx syntax highlighting
 		Plug 'maxmellon/vim-jsx-pretty'
@@ -204,10 +220,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 			\}
 			let g:ale_fix_on_save = 1
 			let g:ale_open_list = 'on_save'
-			let g:ale_set_loclist = 0
-			let g:ale_set_quickfix = 1
-			nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+
+			" type control+j in normal to move forward (down) through errors
 			nmap <silent> <C-j> <Plug>(ale_next_wrap)
+			" type control+k in normal to move back (up) through errors
+			nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 	" }}}
 	" markdown {{{
 		" install markdown keymap support
@@ -233,10 +250,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 			let g:NERDTreeShowHidden = 1
 			let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 			let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = "\uf07b"
-	" }}}
-	" ruby {{{
-		" install end completion
-		Plug 'tpope/vim-endwise'
 	" }}}
 	" search {{{
 		" install fzf
@@ -279,34 +292,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 			\		]
 			\	}
 			\}
-
-		function IsHelpFileType()
-			let l:filetype = &ft
-
-			return l:filetype =~ 'help' ? 1 : 0
-		endfunction
-
-		function IsNERDTreeFileType()
-			let l:filetype = &ft
-
-			return l:filetype =~ 'nerdtree' ? 1 : 0
-		endfunction
-
-		function IsStartifyFileType()
-			let l:filetype = &ft
-
-			return l:filetype =~ 'startify' ? 1 : 0
-		endfunction
-
-		function IsQuickFixFileType()
-			let l:filetype = &ft
-
-			return l:filetype =~ 'qf' ? 1 : 0
-		endfunction
-
-		function! IsIgnoringStatus()
-			return IsHelpFileType() || IsNERDTreeFileType() || IsStartifyFileType() || IsQuickFixFileType()
-		endfunction
 
 		function! LightlineCocGitBlame()
 			if IsIgnoringStatus()
