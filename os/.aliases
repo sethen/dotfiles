@@ -1,9 +1,9 @@
 #!/bin/zsh
 
 # Change directory
-alias ..="cd .. && llf"
-alias ...="cd ../.. && llf"
-alias ....="cd ../../.. && llf"
+alias ..="cd .. && ls -la --color"
+alias ...="cd ../.. && ls -la --color"
+alias ....="cd ../../.. && ls -la --color"
 
 # Git
 alias g="git"

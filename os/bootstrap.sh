@@ -4,26 +4,26 @@ header_message "running bootstrap for os"
 
 GITCONFIG=$OS/.gitconfig
 
-if [[ -e $GITCONFIG ]]; then
+if [[ -a $GITCONFIG ]]; then
 	ln -sfv $GITCONFIG ~
 fi
 
 GITIGNORE_GLOBAL=$OS/.gitignore_global
 
-if [[ -e $GITIGNORE_GLOBAL ]]; then
+if [[ -a $GITIGNORE_GLOBAL ]]; then
 	ln -sfv $GITIGNORE_GLOBAL ~
 fi
 
 IGNORE=$OS/.ignore
 
-if [[ -e $IGNORE ]]; then
+if [[ -a $IGNORE ]]; then
 	ln -sfv $IGNORE ~
 fi
 
 INITVIM=$OS/init.vim
 
-if [[ -e $INITVIM ]]; then
-	if [[ ! -e $NVIM_DIRECTORY ]]; then
+if [[ -a $INITVIM ]]; then
+	if [[ ! -a $NVIM_DIRECTORY ]]; then
 		mkdir $NVIM_DIRECTORY
 	fi
 
@@ -32,33 +32,34 @@ fi
 
 TMUXCONF=$OS/.tmux.conf
 
-if [[ -e $TMUXCONF ]]; then
+if [[ -a $TMUXCONF ]]; then
 	ln -sfv $TMUXCONF ~
 fi
 
-if [[ -e $OS_ALIASES ]]; then
+if [[ -a $OS_ALIASES ]]; then
 	information_message "building aliases file"
 
 	if [[ -a $HOME_ALIASES ]]; then
 		rm $HOME_ALIASES
-
 		touch $HOME_ALIASES
 	fi
 
 	cat $OS_ALIASES > $HOME_ALIASES
 
-	echo "\n" >> $HOME_ALIASES
+	if [[ -a $SPECIFIC_OS_ALIASES ]]; then
+		echo "\n" >> $HOME_ALIASES
 
-	cat $SPECIFIC_OS_ALIASES >> $HOME_ALIASES
+		cat $SPECIFIC_OS_ALIASES >> $HOME_ALIASES
+	fi
 fi
 
 ZSHRC=$OS/.zshrc
 
-if [[ -e $ZSHRC ]]; then
+if [[ -a $ZSHRC ]]; then
 	ln -sfv $ZSHRC ~ && source ~/.zshrc
 fi
 
-if [[ ! -e ${DEVELOPER_DIRECTORY} ]]; then
+if [[ ! -a ${DEVELOPER_DIRECTORY} ]]; then
 	mkdir ${DEVELOPER_DIRECTORY}
 fi
 
