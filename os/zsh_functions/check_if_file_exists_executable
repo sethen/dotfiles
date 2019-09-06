@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+FILENAME=$(echo $1)
+
+if [[ -e $1 ]]; then
+	if [[ -x $1 ]]; then
+		$1
+	else
+		error_message "${FILENAME:t} is not executable"
+	fi
+else
+	error_message "${FILENAME:t} is not found"
+fi

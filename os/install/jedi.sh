@@ -1,9 +1,13 @@
 #!/bin/zsh
 
-if [[ ! -n $(pip3 list --format=columns | grep jedi) ]]; then
-	information_message "installing jedi"
+if type 'pip3' > /dev/null; then
+	if [[ ! -n $(pip3 list --format=columns | grep jedi) ]]; then
+		information_message 'installing jedi'
 
-	pip3 install jedi
+		pip3 install jedi
+	else
+		success_message 'jedi is already installed'
+	fi
 else
-	success_message "jedi is already installed"
+	error_message 'pip3 is not installed therefore jedi can not be installed'
 fi

@@ -2,20 +2,20 @@
 
 export USER=$(whoami)
 
-# directory locations
+# directories
 export DEVELOPER_DIRECTORY=~/Developer
 export OS=${0:a:h}
 export DOTFILES=${0:a:h:h}
 export NPM_DIRECTORY=~/.npm-global
 export NVIM_DIRECTORY=~/.config/nvim
 
-# user
-export USER_ALIASES=~/.aliases
-export USER_RBENV=~/.rbenv
-export USER_ZSHENV=~/.zshenv
-export USER_ZSH=~/.zsh
-export USER_ZSH_FUNCTIONS=${USER_ZSH}/functions
-export USER_ZSH_AUTO_SUGGESTIONS=${USER_ZSH}/zsh-autosuggestions
+# home
+export HOME_ALIASES=~/.aliases
+export HOME_RBENV=~/.rbenv
+export HOME_ZSHENV=~/.zshenv
+export HOME_ZSH=~/.zsh
+export HOME_ZSH_FUNCTIONS=${HOME_ZSH}/functions
+export HOME_ZSH_AUTO_SUGGESTIONS=${HOME_ZSH}/zsh-autosuggestions
 
 # os
 export OS_ALIASES=${OS}/.aliases
@@ -35,35 +35,41 @@ export SPECIFIC_OS_UNINSTALL=${SPECIFIC_OS}/uninstall
 export SPECIFIC_OS_ZSHENV=${SPECIFIC_OS}/.zshenv
 export SPECIFIC_OS_ZSH_FUNCTIONS=${SPECIFIC_OS}/zsh_functions
 
-
-if [[ -e $OS_ZSHENV && $SPECIFIC_OS_ZSHENV ]]; then
-	if [[ -a $USER_ZSHENV ]]; then
-		rm $USER_ZSHENV
-
-		touch $USER_ZSHENV
-	fi
-
-	rm -rf $USER_ZSH_FUNCTIONS
-	mkdir -p $USER_ZSH_FUNCTIONS
-
-	for general_os_zsh_function in $OS_ZSH_FUNCTIONS/*; do
-		ln -sfv $general_os_zsh_function $USER_ZSH_FUNCTIONS
-	done
-
-	for specific_os_zsh_function in $SPECIFIC_OS_ZSH_FUNCTIONS/*; do
-		ln -sfv $specific_os_zsh_function $USER_ZSH_FUNCTIONS
-	done
-
-	cat $OS_ZSHENV > $USER_ZSHENV
-
-	echo "\n" >> $USER_ZSHENV
-
-	cat $SPECIFIC_OS_ZSHENV >> $USER_ZSHENV
-
-	source $USER_ZSHENV
+if [[ -d $HOME_ZSH_FUNCTIONS ]]; then
+	rm -rf $HOME_ZSH_FUNCTIONS
+	mkdir -p $HOME_ZSH_FUNCTIONS
 fi
 
-${OS}/bootstrap.sh
-${SPECIFIC_OS}/run.sh
-${OS}/setup.sh
-${OS}/terminate.sh
+if [[ -d $OS_ZSH_FUNCTIONS ]]; then
+	for general_os_zsh_function in $OS_ZSH_FUNCTIONS/*; do
+		ln -sfv $general_os_zsh_function $HOME_ZSH_FUNCTIONS
+	done
+fi
+
+if [[ -d $SPECIFIC_OS_ZSH_FUNCTIONS ]]; then
+	for specific_os_zsh_function in $SPECIFIC_OS_ZSH_FUNCTIONS/*; do
+		ln -sfv $specific_os_zsh_function $HOME_ZSH_FUNCTIONS
+	done
+fi
+
+if [[ -a $OS_ZSHENV ]]; then
+	if [[ -a $HOME_ZSHENV ]]; then
+		rm $HOME_ZSHENV
+		touch $HOME_ZSHENV
+	fi
+
+	cat $OS_ZSHENV > $HOME_ZSHENV
+
+	if [[ -a $SPECIFIC_OS_ZSHENV ]]; then
+		echo "\n" >> $HOME_ZSHENV
+
+		cat $SPECIFIC_OS_ZSHENV >> $HOME_ZSHENV
+
+		source $HOME_ZSHENV
+	fi
+fi
+
+check_if_file_exists_executable ${OS}/bootstrap.sh
+check_if_file_exists_executable ${SPECIFIC_OS}/run.sh
+check_if_file_exists_executable ${OS}/setup.sh
+check_if_file_exists_executable ${OS}/terminate.sh

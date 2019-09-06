@@ -4,35 +4,35 @@ header_message "running setup for ${DISTRO}"
 
 information_message "uninstalling packages"
 
-${SPECIFIC_OS_UNINSTALL}/empathy.sh
-${SPECIFIC_OS_UNINSTALL}/hexchat.sh
-${SPECIFIC_OS_UNINSTALL}/libreoffice.sh
-${SPECIFIC_OS_UNINSTALL}/lollypop.sh
-${SPECIFIC_OS_UNINSTALL}/ms-office.sh
+check_if_file_exists_executable ${SPECIFIC_OS_UNINSTALL}/empathy.sh
+check_if_file_exists_executable ${SPECIFIC_OS_UNINSTALL}/hexchat.sh
+check_if_file_exists_executable ${SPECIFIC_OS_UNINSTALL}/libreoffice.sh
+check_if_file_exists_executable ${SPECIFIC_OS_UNINSTALL}/lollypop.sh
+check_if_file_exists_executable ${SPECIFIC_OS_UNINSTALL}/ms-office.sh
 
 information_message "installing packages"
 
-${SPECIFIC_OS_INSTALL}/base-devel.sh
-${SPECIFIC_OS_INSTALL}/yay.sh
-${SPECIFIC_OS_INSTALL}/ark-gtk-theme.sh
-${SPECIFIC_OS_INSTALL}/bitwarden.sh
-${SPECIFIC_OS_INSTALL}/ccze.sh
-${SPECIFIC_OS_INSTALL}/curl.sh
-${SPECIFIC_OS_INSTALL}/etcher.sh
-${SPECIFIC_OS_INSTALL}/git.sh
-${SPECIFIC_OS_INSTALL}/golang.sh
-${SPECIFIC_OS_INSTALL}/google-chrome.sh
-${SPECIFIC_OS_INSTALL}/gpick.sh
-${SPECIFIC_OS_INSTALL}/mailspring.sh
-${SPECIFIC_OS_INSTALL}/neovim.sh
-${SPECIFIC_OS_INSTALL}/npm.sh
-${SPECIFIC_OS_INSTALL}/postgresql.sh
-${SPECIFIC_OS_INSTALL}/python-pip.sh
-${SPECIFIC_OS_INSTALL}/samba.sh
-${SPECIFIC_OS_INSTALL}/spotify.sh
-${SPECIFIC_OS_INSTALL}/telegram.sh
-${SPECIFIC_OS_INSTALL}/visual-studio-code.sh
-${SPECIFIC_OS_INSTALL}/vlc.sh
+check_if_file_exists_executable ${SPECIFIC_OS_INSTALL}/base-devel.sh
+check_if_file_exists_executable ${SPECIFIC_OS_INSTALL}/yay.sh
+check_if_file_exists_executable ${SPECIFIC_OS_INSTALL}/ark-gtk-theme.sh
+check_if_file_exists_executable ${SPECIFIC_OS_INSTALL}/bitwarden.sh
+check_if_file_exists_executable ${SPECIFIC_OS_INSTALL}/ccze.sh
+check_if_file_exists_executable ${SPECIFIC_OS_INSTALL}/curl.sh
+check_if_file_exists_executable ${SPECIFIC_OS_INSTALL}/etcher.sh
+check_if_file_exists_executable ${SPECIFIC_OS_INSTALL}/git.sh
+check_if_file_exists_executable ${SPECIFIC_OS_INSTALL}/golang.sh
+check_if_file_exists_executable ${SPECIFIC_OS_INSTALL}/google-chrome.sh
+check_if_file_exists_executable ${SPECIFIC_OS_INSTALL}/gpick.sh
+check_if_file_exists_executable ${SPECIFIC_OS_INSTALL}/mailspring.sh
+check_if_file_exists_executable ${SPECIFIC_OS_INSTALL}/neovim.sh
+check_if_file_exists_executable ${SPECIFIC_OS_INSTALL}/npm.sh
+check_if_file_exists_executable ${SPECIFIC_OS_INSTALL}/postgresql.sh
+check_if_file_exists_executable ${SPECIFIC_OS_INSTALL}/python-pip.sh
+check_if_file_exists_executable ${SPECIFIC_OS_INSTALL}/samba.sh
+check_if_file_exists_executable ${SPECIFIC_OS_INSTALL}/spotify.sh
+check_if_file_exists_executable ${SPECIFIC_OS_INSTALL}/telegram.sh
+check_if_file_exists_executable ${SPECIFIC_OS_INSTALL}/visual-studio-code.sh
+check_if_file_exists_executable ${SPECIFIC_OS_INSTALL}/vlc.sh
 
 if [[ ! -n $(pip3 list | grep neovim) ]]; then
 	pip3 install --user neovim

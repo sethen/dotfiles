@@ -1,15 +1,15 @@
 #!/bin/zsh
 
-if [[ ! -d $USER_RBENV ]]; then
+if [[ ! -d $HOME_RBENV ]]; then
 	information_message "installing rbenv"
 
-	git clone https://github.com/rbenv/rbenv.git $USER_RBENV
-	${USER_RBENV}/bin/rbenv init
+	git clone https://github.com/rbenv/rbenv.git $HOME_RBENV
+	${HOME_RBENV}/bin/rbenv init
 
 	information_message "installing rbenv install plugin"
 
-	mkdir -p ${USER_RBENV}/plugins
-	git clone https://github.com/rbenv/ruby-build.git ${USER_RBENV}/plugins/ruby-build
+	mkdir -p ${HOME_RBENV}/plugins
+	git clone https://github.com/rbenv/ruby-build.git ${HOME_RBENV}/plugins/ruby-build
 
 	information_message "installing and setting ruby version ${RUBY_VERSION}"
 

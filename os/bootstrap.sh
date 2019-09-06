@@ -39,17 +39,17 @@ fi
 if [[ -e $OS_ALIASES ]]; then
 	information_message "building aliases file"
 
-	if [[ -a $USER_ALIASES ]]; then
-		rm $USER_ALIASES
+	if [[ -a $HOME_ALIASES ]]; then
+		rm $HOME_ALIASES
 
-		touch $USER_ALIASES
+		touch $HOME_ALIASES
 	fi
 
-	cat $OS_ALIASES > $USER_ALIASES
+	cat $OS_ALIASES > $HOME_ALIASES
 
-	echo "\n" >> $USER_ALIASES
+	echo "\n" >> $HOME_ALIASES
 
-	cat $SPECIFIC_OS_ALIASES >> $USER_ALIASES
+	cat $SPECIFIC_OS_ALIASES >> $HOME_ALIASES
 fi
 
 ZSHRC=$OS/.zshrc

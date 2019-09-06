@@ -1,6 +1,7 @@
 fpath=( ~/.zsh/functions "${fpath[@]}" )
 
 autoload -Uz compinit && compinit
+autoload -Uz check_if_file_exists_executable
 autoload -Uz error_message
 autoload -Uz git_branch_name
 autoload -Uz git_modified_files_count

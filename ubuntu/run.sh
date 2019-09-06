@@ -7,7 +7,7 @@ export USR_SHARE_APPLICATIONS=/usr/share/applications
 export BITWARDEN=${LOCAL_SHARE_APPLICATIONS}/appimagekit-bitwarden.desktop
 export MAILSPRING=${USR_SHARE_APPLICATIONS}/mailspring.desktop
 
-${SPECIFIC_OS}/bootstrap.sh
-${SPECIFIC_OS}/setup.sh
-${SPECIFIC_OS}/preferences.sh
-${SPECIFIC_OS}/terminate.sh
+check_if_file_exists_executable ${SPECIFIC_OS}/bootstrap.sh
+check_if_file_exists_executable ${SPECIFIC_OS}/setup.sh
+check_if_file_exists_executable ${SPECIFIC_OS}/preferences.sh
+check_if_file_exists_executable ${SPECIFIC_OS}/terminate.sh
