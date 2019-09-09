@@ -8,6 +8,7 @@ To run these dotfiles quickly just execute the `init.sh` file.
 
 These dotfiles detect which environment they are in and run the appropriate commands.  The environments tested are:
 
+* macOS Mojave
 * Manjaro Gnome 18.0.4
 * Ubuntu 18.04
 

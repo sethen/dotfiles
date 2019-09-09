@@ -1,0 +1,4 @@
+# macOS
+
+# Listing
+alias llf="ls -la -G"

@@ -23,8 +23,8 @@ fi
 INITVIM=$OS/init.vim
 
 if [[ -a $INITVIM ]]; then
-	if [[ ! -a $NVIM_DIRECTORY ]]; then
-		mkdir $NVIM_DIRECTORY
+	if [[ ! -d $NVIM_DIRECTORY ]]; then
+		mkdir -p $NVIM_DIRECTORY
 	fi
 
 	ln -sfv $INITVIM $NVIM_DIRECTORY

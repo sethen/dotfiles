@@ -35,10 +35,8 @@ export SPECIFIC_OS_UNINSTALL=${SPECIFIC_OS}/uninstall
 export SPECIFIC_OS_ZSHENV=${SPECIFIC_OS}/.zshenv
 export SPECIFIC_OS_ZSH_FUNCTIONS=${SPECIFIC_OS}/zsh_functions
 
-if [[ -d $HOME_ZSH_FUNCTIONS ]]; then
-	rm -rf $HOME_ZSH_FUNCTIONS
-	mkdir -p $HOME_ZSH_FUNCTIONS
-fi
+rm -rf $HOME_ZSH_FUNCTIONS
+mkdir -p $HOME_ZSH_FUNCTIONS
 
 if [[ -d $OS_ZSH_FUNCTIONS ]]; then
 	for general_os_zsh_function in $OS_ZSH_FUNCTIONS/*; do
