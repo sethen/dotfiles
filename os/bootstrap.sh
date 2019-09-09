@@ -2,25 +2,18 @@
 
 header_message "running bootstrap for os"
 
-GITCONFIG=$OS/.gitconfig
-
 if [[ -a $GITCONFIG ]]; then
 	ln -sfv $GITCONFIG ~
 fi
 
-GITIGNORE_GLOBAL=$OS/.gitignore_global
 
 if [[ -a $GITIGNORE_GLOBAL ]]; then
 	ln -sfv $GITIGNORE_GLOBAL ~
 fi
 
-IGNORE=$OS/.ignore
-
 if [[ -a $IGNORE ]]; then
 	ln -sfv $IGNORE ~
 fi
-
-INITVIM=$OS/init.vim
 
 if [[ -a $INITVIM ]]; then
 	if [[ ! -d $NVIM_DIRECTORY ]]; then
@@ -29,8 +22,6 @@ if [[ -a $INITVIM ]]; then
 
 	ln -sfv $INITVIM $NVIM_DIRECTORY
 fi
-
-TMUXCONF=$OS/.tmux.conf
 
 if [[ -a $TMUXCONF ]]; then
 	ln -sfv $TMUXCONF ~
@@ -52,8 +43,6 @@ if [[ -a $OS_ALIASES ]]; then
 		cat $SPECIFIC_OS_ALIASES >> $HOME_ALIASES
 	fi
 fi
-
-ZSHRC=$OS/.zshrc
 
 if [[ -a $ZSHRC ]]; then
 	ln -sfv $ZSHRC ~ && source ~/.zshrc

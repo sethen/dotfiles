@@ -35,6 +35,14 @@ export SPECIFIC_OS_UNINSTALL=${SPECIFIC_OS}/uninstall
 export SPECIFIC_OS_ZSHENV=${SPECIFIC_OS}/.zshenv
 export SPECIFIC_OS_ZSH_FUNCTIONS=${SPECIFIC_OS}/zsh_functions
 
+# files
+export GITCONFIG=$OS/.gitconfig
+export GITIGNORE_GLOBAL=$OS/.gitignore_global
+export IGNORE=$OS/.ignore
+export INITVIM=$OS/init.vim
+export TMUXCONF=$OS/.tmux.conf
+export ZSHRC=$OS/.zshrc
+
 rm -rf $HOME_ZSH_FUNCTIONS
 mkdir -p $HOME_ZSH_FUNCTIONS
 
