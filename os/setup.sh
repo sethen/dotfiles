@@ -2,6 +2,7 @@
 
 header_message "running setup for os"
 
+check_if_file_exists_executable ${OS_INSTALL}/dockerfile-langserver.sh
 check_if_file_exists_executable ${OS_INSTALL}/go-langserver.sh
 check_if_file_exists_executable ${OS_INSTALL}/goimports.sh
 check_if_file_exists_executable ${OS_INSTALL}/gopls.sh

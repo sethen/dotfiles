@@ -1,19 +1,24 @@
 {
-  "diagnostic.displayByAle": true,
-  "diagnostic.enable": false,
-  "git.addGlameToBufferVar": true,
-  "languageserver": {
-    "golang": {
-      "command": "go-langserver",
-      "filetypes": ["go"],
-      "initializationOptions": {
-        "gocodeCompletionEnabled": true,
-        "diagnosticsEnabled": true
-      }
-    }
-  },
-  "python.jediEnabled": false,
-  "python.pythonPath": "/usr/bin/python3",
-  "solargraph.completion": true,
-  "solargraph.hover": true
+	"diagnostic.displayByAle": true,
+	"diagnostic.enable": false,
+	"git.addGlameToBufferVar": true,
+	"languageserver": {
+		"dockerfile": {
+			"command": "docker-langserver",
+			"filetypes": ["dockerfile"],
+			"args": ["--stdio"]
+		},
+		"golang": {
+			"command": "go-langserver",
+			"filetypes": ["go"],
+			"initializationOptions": {
+				"gocodeCompletionEnabled": true,
+				"diagnosticsEnabled": true
+			}
+		}
+	},
+	"python.jediEnabled": false,
+	"python.pythonPath": "/usr/bin/python3",
+	"solargraph.completion": true,
+	"solargraph.hover": true
 }

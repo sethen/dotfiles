@@ -219,7 +219,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 			\	'go': [ 'gofmt', 'goimports' ],
 			\}
 			let g:ale_fix_on_save = 1
-			let g:ale_open_list = 'on_save'
 
 			" type control+j in normal to move forward (down) through errors
 			nmap <silent> <C-j> <Plug>(ale_next_wrap)

@@ -9,5 +9,5 @@ if type 'go' > /dev/null; then
 		success_message 'go-langserver already installed'
 	fi
 else
-	error_message 'go is not installed therefore go-lanserver can not be installed'
+	error_message 'go is not installed therefore go-langserver can not be installed'
 fi
