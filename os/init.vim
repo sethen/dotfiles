@@ -21,6 +21,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 				autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
 			augroup end
 		" }}}
+		augroup FileTypeAutoIndent
+			autocmd!
+			autocmd BufWritePre,BufWinEnter *.html,*.js,*.json,*.less,*.py,*.rb,*.scss,*.ts,*.tsx silent :normal gg=G``
+		augroup end
 		" spell check {{{
 			augroup SpellCheck
 				autocmd!
@@ -233,6 +237,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 		" install start screen for vim
 		Plug 'mhinz/vim-startify'
 			let g:startify_custom_header = []
+			let g:startify_change_to_dir = 0
 		" install nerdtree tree explorer
 		Plug 'scrooloose/nerdtree'
 			augroup nerdtreehidecwd
