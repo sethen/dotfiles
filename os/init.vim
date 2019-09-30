@@ -35,19 +35,19 @@ call plug#begin('~/.local/share/nvim/plugged')
 	" }}}
 	" functions {{{
 		function! IsHelpFileType()
-			return 'help' =~ &ft
+			return &ft =~ 'help'
 		endfunction
 
 		function! IsNERDTreeFileType()
-			return 'nerdtree' =~ &ft
+			return &ft =~ 'nerdtree'
 		endfunction
 
 		function! IsStartifyFileType()
-			return 'startify' =~ &ft
+			return &ft =~ 'startify'
 		endfunction
 
 		function! IsQuickFixFileType()
-			return 'qf' =~ &ft
+			return &ft =~ 'qf'
 		endfunction
 
 		function! IsIgnoringStatus()
@@ -314,18 +314,18 @@ call plug#begin('~/.local/share/nvim/plugged')
 		endfunction
 
 		function! LightlineFileName()
+			let l:filename = expand('%t')
+
+			if l:filename == '' && &ft == ''
+				return WebDevIconsGetFileTypeSymbol() . ' [No Name]' . LightlineModified()
+			endif
+
 			if IsQuickFixFileType()
 				return WebDevIconsGetFileTypeSymbol() . ' quickfix'
 			endif
 
 			if IsHelpFileType() || IsNERDTreeFileType() || IsStartifyFileType()
 				return WebDevIconsGetFileTypeSymbol(). ' ' . &ft
-			endif
-
-			let l:filename = expand('%t')
-
-			if l:filename == ''
-				return WebDevIconsGetFileTypeSymbol() . ' [No Name]' . LightlineModified()
 			endif
 
 			return WebDevIconsGetFileTypeSymbol() . ' ' . l:filename . LightlineModified()
