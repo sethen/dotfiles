@@ -1,7 +1,7 @@
 {
 	"diagnostic.displayByAle": true,
 	"diagnostic.enable": false,
-	"git.addGlameToBufferVar": true,
+	"git.addGBlameToBufferVar": true,
 	"languageserver": {
 		"dockerfile": {
 			"command": "docker-langserver",
