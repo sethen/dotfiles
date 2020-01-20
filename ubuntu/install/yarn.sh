@@ -1,3 +1,3 @@
 #!/bin/zsh
 
-apt_get_install_if_package_not_exists "yarn"
+apt_get_install_if_package_not_exists yarn

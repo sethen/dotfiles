@@ -1,15 +1,17 @@
 #!/bin/zsh
 
-if [[ ! -a /usr/bin/rg ]]; then
-	information_message "installing ripgrep"
+USR_BIN_RG=/usr/bin/rg
 
-	RIPGREP=ripgrep_0.10.0-*
-	URL="https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep-0.10.0-x86_64-unknown-linux-musl.tar.gz"
+if [[ ! -a $USR_BIN_RG ]]; then
+	information_message 'installing ripgrep'
 
-	curl -LO $URL
-	tar xf ${RIPGREP}.tar.gz
-	sudo cp ${RIPGREP}/rg /usr/bin/rg
-	rm -rf ${RIPGREP}
+	FILENAME=ripgrep-$RIPGREP_VERSION-x86_64-unknown-linux-musl
+	FILENAME_TAR=$FILENAME.tar.gz
+
+	curl -LO https://github.com/BurntSushi/ripgrep/releases/download/$RIPGREP_VERSION/$FILENAME_TAR
+
+	tar xf $PRESENT_WORKING_DIRECTORY/$FILENAME_TAR
+	sudo cp $FILENAME/rg $USR_BIN_RG && rm -rf $PRESENT_WORKING_DIRECTORY/$FILENAME*
 else
-	success_message "ripgrep already installed"
+	success_message 'ripgrep already installed'
 fi

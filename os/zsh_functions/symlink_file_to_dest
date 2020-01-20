@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+if [[ -a $1 ]]; then
+	ln -sfv $1 $2
+fi

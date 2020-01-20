@@ -1,22 +1,14 @@
 #!/bin/zsh
 
-header_message "running preferences for ${DISTRO}"
-
-if [[ ! -e "/var/lib/AccountsService/icons/${USER}" ]]; then
-	information_message "copying avatar"
-
-	sudo cp "${OS_AVATARS}/anime-sethen.png" "/var/lib/AccountsService/icons/${USER}"
-	substitute_icon_name "/var/lib/AccountsService/icons/${USER}" /var/lib/AccountsService/users/${USER}
-fi
-
-substitute_icon_name "gnome-system-monitor" /var/lib/snapd/desktop/applications/gnome-system-monitor_gnome-system-monitor.desktop
-substitute_icon_name "lastpass" $LOCAL_SHARE_APPLICATIONS/appimagekit-bitwarden.desktop
-substitute_icon_name "thunderbird" $MAILSPRING
+header_message 'ubuntu preferences'
 
 # arc menu preferences
 dconf write /org/gnome/shell/extensions/arc-menu/menu-button-icon "'System_Icon'"
 dconf write /org/gnome/shell/extensions/arc-menu/custom-menu-button-icon-size 10.0
 dconf write /org/gnome/shell/extensions/arc-menu/enable-menu-button-arrow false
+
+# calculator preferences
+dconf write /org/gnome/calculator/show-thousands true
 
 # date and time on top bar preferences
 dconf write /org/gnome/desktop/calendar/show-weekdate true
@@ -37,7 +29,7 @@ dconf write /org/gnome/shell/extensions/dash-to-dock/background-opacity 0.4
 dconf write /org/gnome/shell/extensions/dash-to-dock/custom-background-color true
 dconf write /org/gnome/shell/extensions/dash-to-dock/dock-position "'BOTTOM'"
 dconf write /org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size 48
-dconf write /org/gnome/shell/favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'appimagekit-bitwarden.desktop', 'org.gnome.Calculator.desktop', 'gpick.desktop', 'org.gnome.Calendar.desktop', 'gparted.desktop', 'mailspring.desktop', 'telegramdesktop.desktop', 'org.gnome.Screenshot.desktop', 'firefox.desktop', 'google-chrome.desktop', 'spotify.desktop', 'gnome-system-monitor_gnome-system-monitor.desktop', 'org.gnome.Terminal.desktop', 'transmission-gtk.desktop', 'vlc.desktop', 'gnome-control-center.desktop']"
+dconf write /org/gnome/shell/favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'appimagekit-bitwarden.desktop', 'org.gnome.Calculator.desktop', 'gpick.desktop', 'org.gnome.Calendar.desktop', 'gparted.desktop', 'mailspring.desktop', 'telegramdesktop.desktop', 'org.gnome.Screenshot.desktop', 'firefox.desktop', 'google-chrome.desktop', 'spotify.desktop', 'org.gnome.Terminal.desktop', 'transmission-gtk.desktop', 'vlc.desktop', 'gnome-control-center.desktop']"
 dconf write /org/gnome/shell/extensions/dash-to-dock/extend-height false
 dconf write /org/gnome/shell/extensions/dash-to-dock/running-indicator-style "'DOTS'"
 dconf write /org/gnome/shell/extensions/dash-to-dock/show-show-apps-button false
@@ -53,17 +45,17 @@ dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6
 dconf write /org/gnome/shell/extensions/dynamic-panel-transparency/enable-opacity true
 dconf write /org/gnome/shell/extensions/dynamic-panel-transparency/remove-panel-styling true
 dconf write /org/gnome/shell/extensions/dynamic-panel-transparency/maximized-opacity 204
-dconf write /org/gnome/shell/extensions/dynamic-panel-transparency/unmaximized-opacity 204 
+dconf write /org/gnome/shell/extensions/dynamic-panel-transparency/unmaximized-opacity 204
 
 # extensions preferences
-dconf write /org/gnome/shell/enabled-extensions "[ 'arc-menu@linxgem33.com', 'dash-to-dock@micxgx.gmail.com', 'openweather-extension@jenslody.de', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'desk-changer@eric.gach.gmail.com', 'dynamic-panel-transparency@rockon999.github.io' ]"
+dconf write /org/gnome/shell/enabled-extensions "['arc-menu@linxgem33.com', 'dash-to-dock@micxgx.gmail.com', 'openweather-extension@jenslody.de', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'desk-changer@eric.gach.gmail.com', 'dynamic-panel-transparency@rockon999.github.io', 'system-monitor@paradoxxx.zero.gmail.com']"
 
 # desk changer preferences
-dconf write /org/gnome/shell/extensions/desk-changer/profiles "{'default': [('file:///home/${USER}/Developer/wallpapers', true)]}"
+dconf write /org/gnome/shell/extensions/desk-changer/profiles "{'default': [('file:///home/$USER/Developer/wallpapers', true)]}"
 dconf write /org/gnome/shell/extensions/desk-changer/rotation "'disabled'"
 
 # desktop preferences
-dconf write /org/gnome/desktop/screensaver/picture-uri "'file:////home/${USER}/Developer/wallpapers/earth/e4944k_4svi-buzz-andersen.jpg'"
+dconf write /org/gnome/desktop/screensaver/picture-uri "'file:////home/$USER/Developer/wallpapers/earth/e4944k_4svi-buzz-andersen.jpg'"
 dconf write /org/gnome/nautilus/desktop/trash-icon-visible false
 
 # icon preferences
@@ -72,6 +64,18 @@ dconf write /org/gnome/nautilus/icon-view/default-zoom-level "'standard'"
 # openweather preferences
 dconf write /org/gnome/shell/extensions/openweather/city "'33.9550905,-83.3881868>Athens, Athens - Clarke County, Georgia, 30609, United States of America >-1'"
 dconf write /org/gnome/shell/extensions/openweather/position-in-panel "'center'"
+
+# system monitor extension preferences
+dconf write /org/gnome/shell/extensions/system-monitor/icon-display false
+dconf write /org/gnome/shell/extensions/system-monitor/background "'#00000000'"
+dconf write /org/gnome/shell/extensions/system-monitor/cpu-display true
+dconf write /org/gnome/shell/extensions/system-monitor/cpu-graph-width 20
+dconf write /org/gnome/shell/extensions/system-monitor/cpu-show-text true
+dconf write /org/gnome/shell/extensions/system-monitor/cpu-style "'both'"
+dconf write /org/gnome/shell/extensions/system-monitor/memory-display true
+dconf write /org/gnome/shell/extensions/system-monitor/memory-graph-width 20
+dconf write /org/gnome/shell/extensions/system-monitor/memory-show-text true
+dconf write /org/gnome/shell/extensions/system-monitor/memory-style "'both'"
 
 # terminal preferences
 dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/background-color "'rgb(38,50,56)'"

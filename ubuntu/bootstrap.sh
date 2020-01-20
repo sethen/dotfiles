@@ -1,20 +1,34 @@
 #!/bin/zsh
 
-header_message "running bootstrap for ${DISTRO}"
+header_message 'ubuntu bootstrap'
+
+UBUNTU_ALIASES=$PRESENT_WORKING_DIRECTORY/ubuntu/.aliases
+UBUNTU_ZSH_FUNCTIONS=$PRESENT_WORKING_DIRECTORY/ubuntu/zsh_functions
+
+if [[ -a $UBUNTU_ALIASES ]]; then
+	echo "\n" >> ~/.aliases
+	cat $UBUNTU_ALIASES >> ~/.aliases
+fi
+
+if [[ -d $UBUNTU_ZSH_FUNCTIONS ]]; then
+	for os_zsh_function in $UBUNTU_ZSH_FUNCTIONS/*; do
+		ln -sfv $os_zsh_function $HOME_ZSH_FUNCTIONS
+
+		FILENAME=$os_zsh_function:t
+
+		echo "autoload -Uz $FILENAME" >> $HOME_ZSHENV
+	done
+fi
+
+FONTS_DIRECTORY=~/.fonts
 
 if [[ ! -d $FONTS_DIRECTORY ]]; then
-	information_message "copying fonts"
-
 	mkdir $FONTS_DIRECTORY
-
-	cp -r $OS_FONTS/. $FONTS_DIRECTORY
 fi
 
-if [[ ! -d $APPLICATIONS ]]; then
-	information_message "making Applications directory"
+information_message 'copying fonts'
 
-	mkdir $APPLICATIONS
-fi
+cp -r $PRESENT_WORKING_DIRECTORY/os/fonts/. $FONTS_DIRECTORY
 
-apt_get_install_if_package_not_exists "curl"
-apt_get_install_if_package_not_exists "wget"
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/curl.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/git.sh

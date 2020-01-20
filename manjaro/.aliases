@@ -1,8 +1,0 @@
-# Manjaro
-
-# Listing
-alias llf="ls -la --color"
-
-# Utilities
-alias pacrmv="pacman -Rns $(pacman -Qtdq) --noconfirm"
-alias pbcopy="xsel --clipboard --input"

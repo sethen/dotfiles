@@ -160,6 +160,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 			\	'coc-rls',
 			\	'coc-snippets',
 			\	'coc-solargraph',
+			\	'coc-tabnine',
 			\	'coc-tsserver'
 			\]
 

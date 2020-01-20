@@ -1,4 +1,0 @@
-autoload -Uz pacman_install_if_package_not_exists
-autoload -Uz pacman_remove_if_package_exists
-autoload -Uz substitute_icon_name
-autoload -Uz yay_install_if_package_not_exists

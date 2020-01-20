@@ -1,60 +1,61 @@
 #!/bin/zsh
 
-header_message "running bootstrap for os"
+OS_ALIASES=$PRESENT_WORKING_DIRECTORY/os/.aliases
+OS_ZSH_FUNCTIONS=$PRESENT_WORKING_DIRECTORY/os/zsh_functions
+OS_ZSHENV=$PRESENT_WORKING_DIRECTORY/os/.zshenv
 
-if [[ -a $GITCONFIG ]]; then
-	ln -sfv $GITCONFIG ~
+if [[ -d $HOME_ZSH_FUNCTIONS ]]; then
+	rm -rf $HOME_ZSH_FUNCTIONS
 fi
 
+mkdir -p $HOME_ZSH_FUNCTIONS
 
-if [[ -a $GITIGNORE_GLOBAL ]]; then
-	ln -sfv $GITIGNORE_GLOBAL ~
+if [[ -a $OS_ZSHENV ]]; then
+	cp -f $OS_ZSHENV ~
+
+	echo "\n# os zsh_functions\n" >> $HOME_ZSHENV
+else
+	echo "$PRESENT_WORKING_DIRECTORY/os/.zshenv is not found"
 fi
 
-if [[ -a $IGNORE ]]; then
-	ln -sfv $IGNORE ~
+if [[ -d $OS_ZSH_FUNCTIONS ]]; then
+	for os_zsh_function in $OS_ZSH_FUNCTIONS/*; do
+		ln -sfv $os_zsh_function $HOME_ZSH_FUNCTIONS
+
+		FILENAME=$os_zsh_function:t
+
+		echo "autoload -Uz $FILENAME" >> $HOME_ZSHENV
+	done
+
+	source ~/.zshenv
 fi
 
-if [[ -a $INITVIM ]]; then
-	if [[ ! -d $NVIM_DIRECTORY ]]; then
-		mkdir -p $NVIM_DIRECTORY
-	fi
+header_message 'os bootstrap'
 
-	ln -sfv $INITVIM $NVIM_DIRECTORY
+if [[ ! -d $DEVELOPER ]]; then
+	mkdir -p $DEVELOPER
 fi
 
-if [[ -a $TMUXCONF ]]; then
-	ln -sfv $TMUXCONF ~
+if [[ ! -d $HOME_CONFIG_NVIM ]]; then
+	mkdir -p $HOME_CONFIG_NVIM
 fi
 
-if [[ -a $OS_ALIASES ]]; then
-	information_message "building aliases file"
+symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/coc-settings.json $HOME_CONFIG_NVIM
+symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/init.vim $HOME_CONFIG_NVIM
+symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.gitconfig ~
+symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.gitignore_global ~
+symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.tmux.conf ~
+symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.zshrc ~
 
-	if [[ -a $HOME_ALIASES ]]; then
-		rm $HOME_ALIASES
-		touch $HOME_ALIASES
-	fi
-
-	cat $OS_ALIASES > $HOME_ALIASES
-
-	if [[ -a $SPECIFIC_OS_ALIASES ]]; then
-		echo "\n" >> $HOME_ALIASES
-
-		cat $SPECIFIC_OS_ALIASES >> $HOME_ALIASES
-	fi
+if [[ -a $HOME_ALIASES ]]; then
+	rm $HOME_ALIASES
 fi
 
-if [[ -a $ZSHRC ]]; then
-	ln -sfv $ZSHRC ~ && source ~/.zshrc
-fi
-
-if [[ ! -a ${DEVELOPER_DIRECTORY} ]]; then
-	mkdir ${DEVELOPER_DIRECTORY}
-fi
+cp -f $OS_ALIASES ~
 
 if [[ ! -a ~/.ssh/id_rsa.pub ]]; then
-	information_message "creating private/public keys"
+	information_message 'creating private/public keys'
 
-	ssh-keygen -t rsa -C "sethenm@gmail.com"
+	ssh-keygen -t rsa -C 'sethenm@gmail.com'
 	ssh-add
 fi

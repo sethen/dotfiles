@@ -5,6 +5,6 @@
 	user = sethen
 [core]
 	editor = nvim
-	excludesfile = /home/sethen/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [push]
 	default = simple

@@ -1,2 +1,0 @@
-autoload -Uz apt_get_install_if_package_not_exists
-autoload -Uz substitute_icon_name

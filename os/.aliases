@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-# Git
+# git
 alias g="git"
 alias ga="g add"
 alias gaa="ga --all"

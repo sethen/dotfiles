@@ -1,9 +1,0 @@
-#!/bin/zsh
-
-if [[ ! -n $(brew cask list | grep -w $1) ]]; then
-	information_message "installing ${1}"
-
-	brew cask install $1
-else
-	success_message "${1} is already installed"
-fi
