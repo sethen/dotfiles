@@ -41,7 +41,6 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gparte
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gpick.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/insomnia.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/jre.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/lolcat.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/moka-icon-theme.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/neovim.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/nginx.sh
@@ -63,6 +62,9 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/rbenv.
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/rails.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/ripgrep.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/solargraph.sh
+
+# lolcat has a dependency of ruby gems
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/lolcat.sh
 
 echo ''
 read 'UPGRADE?would you like to upgrade your existing packages? [Yy/Nn] '

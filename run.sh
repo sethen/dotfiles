@@ -37,6 +37,7 @@ $PRESENT_WORKING_DIRECTORY/os/bootstrap.sh
 $PRESENT_WORKING_DIRECTORY/$DISTRO/bootstrap.sh
 $PRESENT_WORKING_DIRECTORY/os/setup.sh
 $PRESENT_WORKING_DIRECTORY/$DISTRO/setup.sh
+$PRESENT_WORKING_DIRECTORY/os/preferences.sh
 $PRESENT_WORKING_DIRECTORY/$DISTRO/preferences.sh
 
 read "REBOOT?would you like to reboot the system? [Yy/Nn] "

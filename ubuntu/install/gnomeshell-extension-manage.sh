@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 if ! type gnomeshell-extension-manage > /dev/null; then
-	information_message "installing gnomeshell-extension-manage"
+	information-message "installing gnomeshell-extension-manage"
 
 	sudo wget -O /usr/local/bin/gnomeshell-extension-manage https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/ubuntugnome/gnomeshell-extension-manage
 	sudo chmod +x /usr/local/bin/gnomeshell-extension-manage
