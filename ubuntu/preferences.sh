@@ -76,6 +76,7 @@ dconf write /org/gnome/shell/extensions/system-monitor/memory-display true
 dconf write /org/gnome/shell/extensions/system-monitor/memory-graph-width 20
 dconf write /org/gnome/shell/extensions/system-monitor/memory-show-text true
 dconf write /org/gnome/shell/extensions/system-monitor/memory-style "'both'"
+dconf write /org/gnome/shell/extensions/system-monitor/net-display false
 
 # terminal preferences
 dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/background-color "'rgb(38,50,56)'"
