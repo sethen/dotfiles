@@ -10,7 +10,7 @@ if ! type lolcat > /dev/null; then
 	unzip $ZIP_DIRECTORY
 
 	cd $BIN_DIRECTORY
-	gem install lolcat
+	$HOME_RBENV_VERSION_BIN/gem install lolcat
 
 	cd $PRESENT_WORKING_DIRECTORY
 	rm -rf $PRESENT_WORKING_DIRECTORY/lolcat*
