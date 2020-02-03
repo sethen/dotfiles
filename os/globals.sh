@@ -18,3 +18,4 @@ export HOME_ZSHRC=~/.zshrc
 
 # user
 export DEVELOPER=~/Developer
+export DEVELOPER_GO=~/Developer/go

@@ -47,6 +47,14 @@ if [[ -d $CARGO_BIN ]]; then
 	export PATH=$CARGO_BIN:$PATH
 fi
 
+DEVELOPER_GO=~/Developer/go
+GO_BIN=/usr/bin/go
+
+if [[ -a $GO_BIN && -d $DEVELOPER_GO ]]; then
+	export GOPATH=$DEVELOPER_GO
+	export PATH=$DEVELOPER_GO:$DEVELOPER_GO/bin:$PATH
+fi
+
 # set rbenv for ruby in PATH if found
 RBENV_BIN=~/.rbenv/bin
 
