@@ -41,6 +41,7 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gparte
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gpick.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/insomnia.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/jre.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/kazam.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/moka-icon-theme.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/neovim.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/nginx.sh
