@@ -2,7 +2,11 @@
 
 export PRESENT_WORKING_DIRECTORY="$(cd "$(dirname "$0")"; pwd)"
 
-source $PRESENT_WORKING_DIRECTORY/os/globals.sh
+GLOBALS=$PRESENT_WORKING_DIRECTORY/os/globals.sh
+
+# symlink globals to home and source
+ln -sfv $GLOBALS ~
+source $GLOBALS
 
 # change shell to zsh
 SHELL=$(echo $SHELL)

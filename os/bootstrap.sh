@@ -27,7 +27,7 @@ if [[ -d $OS_ZSH_FUNCTIONS ]]; then
 		echo "autoload -Uz $FILENAME" >> $HOME_ZSHENV
 	done
 
-	source ~/.zshenv
+	source $HOME_ZSHENV
 fi
 
 header_message 'os bootstrap'
