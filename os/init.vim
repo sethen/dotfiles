@@ -59,6 +59,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 		" type -ev normal (non-recursive) to open init.vim
 		nnoremap <leader>ev :split $MYVIMRC<cr>
 	" }}}
+	" neovim {{{
+		let g:python_host_prog = '/usr/bin/python'
+		let g:python3_host_prog = '/usr/bin/python3'
+	" }}}
 	" options {{{
 		" set read file when it is changed outside of nvim
 		set autoread
@@ -150,13 +154,18 @@ call plug#begin('~/.local/share/nvim/plugged')
 		Plug 'honza/vim-snippets'
 		" install coc auto-completion framework
 		Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+			augroup CocGroup
+				autocmd!
+				autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+			augroup end
+
 			let g:coc_global_extensions = [
 			\	'coc-css',
 			\	'coc-git',
 			\	'coc-html',
 			\	'coc-json',
 			\	'coc-pairs',
-			\	'coc-omnisharp',
+			\	'coc-python',
 			\	'coc-rls',
 			\	'coc-snippets',
 			\	'coc-solargraph',
@@ -188,6 +197,15 @@ call plug#begin('~/.local/share/nvim/plugged')
 			inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 			" type H in normal for docs when hovered over
 			nnoremap <silent> H :call <SID>ShowDocumentation()<CR>
+			" type gd to go to code definition
+			nmap <silent> gy <Plug>(coc-type-definition)
+			nmap <silent> gi <Plug>(coc-implementation)
+			nmap <silent> gr <Plug>(coc-references)
+			nmap <silent> gd <Plug>(coc-definition)
+	" }}}
+	" c# {{{
+		Plug 'omnisharp/omnisharp-vim'
+			let g:OmniSharp_server_stdio = 1
 	" }}}
 	" git {{{
 		" install git sidebar
@@ -219,6 +237,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 	" }}}
 	" lint {{{
 		Plug 'w0rp/ale'
+			let g:ale_linters = {
+			\ 'cs': [ 'OmniSharp' ]
+			\}
 			let g:ale_fixers = {
 			\	'*': [ 'remove_trailing_lines', 'trim_whitespace' ],
 			\	'go': [ 'gofmt', 'goimports' ],
@@ -241,10 +262,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 			let g:startify_change_to_dir = 0
 		" install nerdtree tree explorer
 		Plug 'scrooloose/nerdtree'
-			augroup nerdtreehidecwd
+			augroup NERDTreeGroup
 				autocmd!
 				autocmd FileType nerdtree setlocal conceallevel=3 | syntax match NERDTreeDirSlash #/$# containedin=NERDTreeDir conceal contained
 			augroup end
+
 			let g:DevIconsDefaultFolderOpenSymbol = "\uf115"
 			let g:DevIconsEnableFoldersOpenClose = 1
 			let g:DevIconsEnableFolderExtensionPatternMatching = 1

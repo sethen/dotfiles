@@ -4,6 +4,7 @@ GLOBALS=~/globals.sh
 [ -f $GLOBALS ] && source $GLOBALS
 
 # set variables
+export EDITOR=nvim
 export HISTFILE=~/.zsh_history
 export SAVEHIST=1000
 
@@ -44,8 +45,20 @@ if [[ -a $GO_BIN && -d $DEVELOPER_GO ]]; then
 	export PATH=$DEVELOPER_GO:$DEVELOPER_GO/bin:$PATH
 fi
 
+# set dotnet in PATH if found
+if [[ -d $HOME_DOTNET ]]; then
+	export PATH=$HOME_DOTNET:$PATH
+fi
+
+# set npm-packages in PATH if found
+if [[ -d $HOME_NPM_PACKAGES && -d $HOME_NPM_PACKAGES_BIN ]]; then
+	export PATH=$HOME_NPM_PACKAGES_BIN:$PATH
+fi
+
 # set rbenv for ruby in PATH if found
 if [[ -d $HOME_RBENV_BIN ]]; then
 	export PATH=$HOME_RBENV_BIN:$PATH
 	eval "$(rbenv init -)"
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

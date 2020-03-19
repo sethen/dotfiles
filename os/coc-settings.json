@@ -1,4 +1,5 @@
 {
+	"coc.preferences.jumpCommand": "split",
 	"diagnostic.displayByAle": true,
 	"diagnostic.enable": false,
 	"git.addGBlameToBufferVar": true,
@@ -9,16 +10,15 @@
 			"args": ["--stdio"]
 		},
 		"golang": {
-			"command": "go-langserver",
-			"filetypes": ["go"],
-			"initializationOptions": {
-				"gocodeCompletionEnabled": true,
-				"diagnosticsEnabled": true
-			}
+			"command": "gopls",
+			"rootPatterns": ["go.mod"],
+			"disableWorkspaceFolders": true,
+			"filetypes": ["go"]
 		}
 	},
 	"python.jediEnabled": false,
 	"python.pythonPath": "/usr/bin/python3",
+	"solargraph.commandPath": "/home/sethen/.rbenv/shims/solargraph",
 	"solargraph.completion": true,
 	"solargraph.hover": true
 }

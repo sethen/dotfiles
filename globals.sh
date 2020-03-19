@@ -15,6 +15,7 @@ export ZSH_AUTOSUGGESTIONS=~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 export HOME_ALIASES=~/.aliases
 export HOME_CARGO_BIN=~/.cargo/bin
 export HOME_CONFIG_NVIM=~/.config/nvim
+export HOME_NPM_PACKAGES=~/.npm-packages
 export HOME_RBENV=~/.rbenv
 export HOME_RBENV_BIN=$HOME_RBENV/bin
 export HOME_RBENV_PLUGINS=$HOME_RBENV/plugins

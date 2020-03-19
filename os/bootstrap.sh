@@ -40,18 +40,23 @@ if [[ ! -d $HOME_CONFIG_NVIM ]]; then
 	mkdir -p $HOME_CONFIG_NVIM
 fi
 
-symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/coc-settings.json $HOME_CONFIG_NVIM
-symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/init.vim $HOME_CONFIG_NVIM
-symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.gitconfig ~
-symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.gitignore_global ~
-symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.tmux.conf ~
-symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.zshrc ~
+if [[ ! -d $HOME_NPM_PACKAGES ]]; then
+	mkdir -p $HOME_NPM_PACKAGES
+fi
 
 if [[ -a $HOME_ALIASES ]]; then
 	rm $HOME_ALIASES
 fi
 
 cp -f $OS_ALIASES ~
+
+symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/coc-settings.json $HOME_CONFIG_NVIM
+symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/init.vim $HOME_CONFIG_NVIM
+symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.gitconfig ~
+symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.gitignore_global ~
+symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.npmrc ~
+symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.tmux.conf ~
+symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.zshrc ~
 
 if [[ ! -a ~/.ssh/id_rsa.pub ]]; then
 	information_message 'creating private/public keys'

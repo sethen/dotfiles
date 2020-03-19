@@ -71,11 +71,11 @@ dconf write /org/gnome/shell/extensions/system-monitor/background "'#00000000'"
 dconf write /org/gnome/shell/extensions/system-monitor/cpu-display true
 dconf write /org/gnome/shell/extensions/system-monitor/cpu-graph-width 20
 dconf write /org/gnome/shell/extensions/system-monitor/cpu-show-text true
-dconf write /org/gnome/shell/extensions/system-monitor/cpu-style "'both'"
+dconf write /org/gnome/shell/extensions/system-monitor/cpu-style "'digit'"
 dconf write /org/gnome/shell/extensions/system-monitor/memory-display true
 dconf write /org/gnome/shell/extensions/system-monitor/memory-graph-width 20
 dconf write /org/gnome/shell/extensions/system-monitor/memory-show-text true
-dconf write /org/gnome/shell/extensions/system-monitor/memory-style "'both'"
+dconf write /org/gnome/shell/extensions/system-monitor/memory-style "'digit'"
 dconf write /org/gnome/shell/extensions/system-monitor/net-display false
 
 # terminal preferences
