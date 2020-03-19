@@ -1,5 +1,7 @@
 These are my dotfiles for setting up my environment from nothing. Take and use anything you want.
 
+![screenshot](./images/screenshot.png)
+
 # Quickstart
 
 To run these dotfiles quickly just execute the `run.sh` file.
