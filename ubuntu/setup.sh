@@ -28,6 +28,7 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/cmake.
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/cowsay.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/docker.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/fortune.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gdebi.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gnome-calculator.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gnome-shell-extension-weather.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gnome-shell-extensions.sh
@@ -56,6 +57,7 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/visual
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/vlc.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/xsel.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/yarn.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/zoom.sh
 
 # nodejs install order matters here
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/nodejs.sh
