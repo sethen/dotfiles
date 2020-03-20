@@ -164,6 +164,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 			\	'coc-git',
 			\	'coc-html',
 			\	'coc-json',
+			\	'coc-omnisharp',
 			\	'coc-pairs',
 			\	'coc-python',
 			\	'coc-rls',
@@ -202,10 +203,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 			nmap <silent> gi <Plug>(coc-implementation)
 			nmap <silent> gr <Plug>(coc-references)
 			nmap <silent> gd <Plug>(coc-definition)
-	" }}}
-	" c# {{{
-		Plug 'omnisharp/omnisharp-vim'
-			let g:OmniSharp_server_stdio = 1
 	" }}}
 	" git {{{
 		" install git sidebar
