@@ -23,7 +23,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 		" }}}
 		augroup FileTypeAutoIndent
 			autocmd!
-			autocmd BufWritePre,BufWinEnter *.html,*.js,*.json,*.less,*.py,*.rb,*.scss,*.ts,*.tsx silent :normal gg=G``
+			autocmd BufWritePre,BufWinEnter *.cs,*.html,*.js,*.json,*.less,*.py,*.rb,*.scss,*.ts,*.tsx silent :normal gg=G``
 		augroup end
 		" spell check {{{
 			augroup SpellCheck
@@ -56,6 +56,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	" }}}
 	" key mappings {{{
 		let mapleader = "-"
+		let maplocalleader = "-"
 		" type -ev normal (non-recursive) to open init.vim
 		nnoremap <leader>ev :split $MYVIMRC<cr>
 	" }}}
@@ -103,7 +104,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 		" set line number
 		set number
 		" set opacity for pop up menu
-		set pumblend=15
+		set pumblend=10
 		" set relative number for line number
 		set relativenumber
 		" set number of lines to show above/below cursor
@@ -164,7 +165,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 			\	'coc-git',
 			\	'coc-html',
 			\	'coc-json',
-			\	'coc-omnisharp',
 			\	'coc-pairs',
 			\	'coc-python',
 			\	'coc-rls',
@@ -204,6 +204,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 			nmap <silent> gr <Plug>(coc-references)
 			nmap <silent> gd <Plug>(coc-definition)
 	" }}}
+	" c# {{{
+		Plug 'omnisharp/omnisharp-vim'
+			let g:OmniSharp_server_stdio = 1
+		Plug 'nickspoons/vim-sharpenup'
+	" }}}
 	" git {{{
 		" install git sidebar
 		Plug 'mhinz/vim-signify'
@@ -212,16 +217,16 @@ call plug#begin('~/.local/share/nvim/plugged')
 		" install nerdtree git status
 		Plug 'xuyuanp/nerdtree-git-plugin'
 			let g:NERDTreeIndicatorMapCustom = {
-			\	'Modified'  : "\uf069",
-			\	'Staged'    : "\uf067",
-			\	'Untracked' : "\uf005",
-			\	'Renamed'   : "\uf061",
-			\	'Unmerged'  : "\ue279",
-			\	'Deleted'   : "\uf737",
-			\	'Dirty'     : "\uf00d",
-			\	'Clean'     : "\uf00c",
-			\	'Ignored'   : "\uf070",
-			\	'Unknown'   : "\uf128"
+			\	'Modified' : "\uf069",
+			\	'Staged'   : "\uf067",
+			\	'Untracked': "\uf005",
+			\	'Renamed'  : "\uf061",
+			\	'Unmerged' : "\ue279",
+			\	'Deleted'  : "\uf737",
+			\	'Dirty'    : "\uf00d",
+			\	'Clean'    : "\uf00c",
+			\	'Ignored'  : "\uf070",
+			\	'Unknown'  : "\uf128"
 			\}
 	" }}}
 	" javascript {{{
@@ -235,11 +240,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 	" lint {{{
 		Plug 'w0rp/ale'
 			let g:ale_linters = {
-			\ 'cs': [ 'OmniSharp' ]
+			\	'cs': [ 'OmniSharp' ]
 			\}
 			let g:ale_fixers = {
 			\	'*': [ 'remove_trailing_lines', 'trim_whitespace' ],
-			\	'go': [ 'gofmt', 'goimports' ],
+			\	'go': [ 'gofmt', 'goimports' ]
 			\}
 			let g:ale_fix_on_save = 1
 
@@ -293,7 +298,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 			\		'gitbranch': 'LightlineGitBranch',
 			\		'lineinfo': 'LightlineLineInfo',
 			\		'mode': 'LightlineMode',
-			\		'readonly': 'LightlineReadOnly'
+			\		'readonly': 'LightlineReadOnly',
 			\	},
 			\	'active': {
 			\		'left': [
@@ -436,7 +441,6 @@ call plug#end()
 	highlight DiffDelete gui=bold guibg=#263238 guifg=#FF5370
 	highlight link EchoDocFloat Pmenu
 	highlight NERDTreeFlags guifg=#C792EA
-	highlight PmenuSel blend=15
 	highlight Search gui=bold guibg=#FFCB6B guifg=#000000
 	highlight SignColumn gui=NONE guibg=#263238
 	" colors are reversed here
