@@ -11,7 +11,6 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/i
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/moka-icon-theme.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/neovim.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/spotify.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/ukuu.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/yarn.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/visual-studio-code.sh
 
@@ -52,7 +51,6 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/samba.
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/spotify.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/telegram.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/tmux.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/ukuu.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/vim-plug.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/virtualenv.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/visual-studio-code.sh
