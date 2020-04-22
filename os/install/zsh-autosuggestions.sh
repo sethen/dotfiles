@@ -1,11 +1,9 @@
 #!/bin/zsh
 
-HOME_ZSH_AUTO_SUGGESTIONS=~/.zsh/zsh-autosuggestions
-
-if [[ ! -d $HOME_ZSH_AUTO_SUGGESTIONS ]]; then
+if [[ ! -a $ZSH_AUTOSUGGESTIONS ]]; then
 	information_message 'installing zsh-autosuggestions'
 
-	git clone https://github.com/zsh-users/zsh-autosuggestions $HOME_ZSH_AUTO_SUGGESTIONS
+	git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_AUTOSUGGESTIONS_DIRECTORY
 else
 	success_message 'zsh-autosuggestions already installed'
 fi

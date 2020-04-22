@@ -4,54 +4,58 @@ OS_ALIASES=$PRESENT_WORKING_DIRECTORY/os/.aliases
 OS_ZSH_FUNCTIONS=$PRESENT_WORKING_DIRECTORY/os/zsh_functions
 OS_ZSHENV=$PRESENT_WORKING_DIRECTORY/os/.zshenv
 
-if [[ -d $HOME_ZSH_FUNCTIONS ]]; then
-	rm -rf $HOME_ZSH_FUNCTIONS
+if [[ -d $ZSH_FUNCTIONS_DIRECTORY ]]; then
+	rm -rf $ZSH_FUNCTIONS_DIRECTORY
 fi
 
-mkdir -p $HOME_ZSH_FUNCTIONS
+mkdir -p $ZSH_FUNCTIONS_DIRECTORY
 
 if [[ -a $OS_ZSHENV ]]; then
 	cp -f $OS_ZSHENV ~
 
-	echo "\n# os zsh_functions\n" >> $HOME_ZSHENV
+	echo "\n# os zsh_functions\n" >> $ZSHENV
 else
 	echo "$PRESENT_WORKING_DIRECTORY/os/.zshenv is not found"
 fi
 
 if [[ -d $OS_ZSH_FUNCTIONS ]]; then
 	for os_zsh_function in $OS_ZSH_FUNCTIONS/*; do
-		ln -sfv $os_zsh_function $HOME_ZSH_FUNCTIONS
+		ln -sfv $os_zsh_function $ZSH_FUNCTIONS_DIRECTORY
 
 		FILENAME=$os_zsh_function:t
 
-		echo "autoload -Uz $FILENAME" >> $HOME_ZSHENV
+		echo "autoload -Uz $FILENAME" >> $ZSHENV
 	done
 
-	source $HOME_ZSHENV
+	source $ZSHENV
 fi
 
 header_message 'os bootstrap'
 
-if [[ ! -d $DEVELOPER ]]; then
-	mkdir -p $DEVELOPER
+if [[ ! -d $DEVELOPER_DIRECTORY ]]; then
+	mkdir -p $DEVELOPER_DIRECTORY
 fi
 
-if [[ ! -d $HOME_CONFIG_NVIM ]]; then
-	mkdir -p $HOME_CONFIG_NVIM
+if [[ ! -d $CONFIG_NVIM_DIRECTORY ]]; then
+	mkdir -p $CONFIG_NVIM_DIRECTORY
 fi
 
-if [[ ! -d $HOME_NPM_PACKAGES ]]; then
-	mkdir -p $HOME_NPM_PACKAGES
+if [[ ! -d $NPM_PACKAGES_DIRECTORY ]]; then
+	mkdir -p $NPM_PACKAGES_DIRECTORY
 fi
 
-if [[ -a $HOME_ALIASES ]]; then
-	rm $HOME_ALIASES
+if [[ ! -d $TMUX_PLUGINS_DIRECTORY ]]; then
+	mkdir -p $TMUX_PLUGINS_DIRECTORY
+fi
+
+if [[ -a $ALIASES ]]; then
+	rm $ALIASES
 fi
 
 cp -f $OS_ALIASES ~
 
-symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/coc-settings.json $HOME_CONFIG_NVIM
-symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/init.vim $HOME_CONFIG_NVIM
+symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/coc-settings.json $CONFIG_NVIM_DIRECTORY
+symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/init.vim $CONFIG_NVIM_DIRECTORY
 symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.gitconfig ~
 symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.gitignore_global ~
 symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.npmrc ~

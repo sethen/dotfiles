@@ -7,25 +7,26 @@ export RUBY_VERSION=2.6.1
 # binaries
 export GO_BIN=/usr/bin/go
 
+# directories
+export CARGO_BIN_DIRECTORY=~/.cargo/bin
+export CONFIG_NVIM_DIRECTORY=~/.config/nvim
+export DEVELOPER_DIRECTORY=~/Developer
+export DEVELOPER_GO_DIRECTORY=~/Developer/go
+export DOTNET_DIRECTORY=~/dotnet
+export NPM_PACKAGES_DIRECTORY=~/.npm-packages
+export NPM_PACKAGES_BIN_DIRECTORY=$NPM_PACKAGES_DIRECTORY/bin
+export RBENV_DIRECTORY=~/.rbenv
+export RBENV_BIN_DIRECTORY=$RBENV_DIRECTORY/bin
+export RBENV_PLUGINS_DIRECTORY=$RBENV_DIRECTORY/plugins
+export RBENV_VERSION_BIN_DIRECTORY=$RBENV_DIRECTORY/versions/$RUBY_VERSION/bin
+export TMUX_PLUGINS_DIRECTORY=~/.tmux/plugins
+export ZSH_AUTOSUGGESTIONS_DIRECTORY=~/.zsh/zsh-autosuggestions
+export ZSH_FUNCTIONS_DIRECTORY=~/.zsh/functions
+
 # files
+export ALIASES=~/.aliases
 export FZF=~/.fzf.zsh
-export ZSH_AUTOSUGGESTIONS=~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# home
-export HOME_ALIASES=~/.aliases
-export HOME_CARGO_BIN=~/.cargo/bin
-export HOME_CONFIG_NVIM=~/.config/nvim
-export HOME_DOTNET=~/dotnet
-export HOME_NPM_PACKAGES=~/.npm-packages
-export HOME_NPM_PACKAGES_BIN=$HOME_NPM_PACKAGES/bin
-export HOME_RBENV=~/.rbenv
-export HOME_RBENV_BIN=$HOME_RBENV/bin
-export HOME_RBENV_PLUGINS=$HOME_RBENV/plugins
-export HOME_RBENV_VERSION_BIN=$HOME_RBENV/versions/$RUBY_VERSION/bin
-export HOME_ZSH_FUNCTIONS=~/.zsh/functions
-export HOME_ZSHENV=~/.zshenv
-export HOME_ZSHRC=~/.zshrc
-
-# user
-export DEVELOPER=~/Developer
-export DEVELOPER_GO=~/Developer/go
+export TPM=$TMUX_PLUGINS_DIRECTORY/tpm
+export ZSH_AUTOSUGGESTIONS=$ZSH_AUTOSUGGESTIONS_DIRECTORY/zsh-autosuggestions.zsh
+export ZSHENV=~/.zshenv
+export ZSHRC=~/.zshrc

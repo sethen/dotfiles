@@ -1,7 +1,5 @@
 #!/bin/zsh
-
 header_message 'ubuntu setup'
-
 information_message 'adding repositories'
 
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/docker.sh
@@ -68,6 +66,7 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/rbenv.
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/neovim-ruby-host.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/rails.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/ripgrep.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/tmuxinator.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/solargraph.sh
 
 # lolcat has a dependency of ruby gems

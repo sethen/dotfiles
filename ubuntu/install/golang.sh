@@ -1,11 +1,11 @@
 #!/bin/zsh
 
 function make_go_path_directory() {
-	if [ ! -d $DEVELOPER_GO ]; then
-		mkdir $DEVELOPER_GO
-		mkdir $DEVELOPER_GO/bin
-		mkdir $DEVELOPER_GO/pkg
-		mkdir $DEVELOPER_GO/src
+	if [ ! -d $DEVELOPER_GO_DIRECTORY ]; then
+		mkdir $DEVELOPER_GO_DIRECTORY
+		mkdir $DEVELOPER_GO_DIRECTORY/bin
+		mkdir $DEVELOPER_GO_DIRECTORY/pkg
+		mkdir $DEVELOPER_GO_DIRECTORY/src
 
 		source ~/.zshrc
 	fi

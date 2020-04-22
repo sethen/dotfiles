@@ -286,6 +286,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 		" install fuzzy search for vim
 		Plug 'junegunn/fzf.vim'
 	" }}}
+	" session {{{
+		" install vim-obsession
+		Plug 'tpope/vim-obsession'"
+	" }}}
 	" status {{{
 		" install lightline status bar
 		Plug 'itchyny/lightline.vim'

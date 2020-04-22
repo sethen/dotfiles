@@ -1,10 +1,10 @@
 #!/bin/zsh
 
-if [[ -d $HOME_RBENV_VERSION_BIN ]]; then
-	if [[ ! -a $HOME_RBENV_VERSION_BIN/neovim-ruby-host ]]; then
+if [[ -d $RBENV_VERSION_BIN_DIRECTORY ]]; then
+	if [[ ! -a $RBENV_VERSION_BIN_DIRECTORY/neovim-ruby-host ]]; then
 		information_message 'installing neovim-ruby-host'
 
-		$HOME_RBENV_VERSION_BIN/gem install neovim
+		$RBENV_VERSION_BIN_DIRECTORY/gem install neovim
 	else
 		success_message 'neovim-ruby-host already installed'
 	fi

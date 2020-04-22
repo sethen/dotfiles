@@ -12,11 +12,11 @@ fi
 
 if [[ -d $UBUNTU_ZSH_FUNCTIONS ]]; then
 	for os_zsh_function in $UBUNTU_ZSH_FUNCTIONS/*; do
-		ln -sfv $os_zsh_function $HOME_ZSH_FUNCTIONS
+		ln -sfv $os_zsh_function $ZSH_FUNCTIONS_DIRECTORY
 
 		FILENAME=$os_zsh_function:t
 
-		echo "autoload -Uz $FILENAME" >> $HOME_ZSHENV
+		echo "autoload -Uz $FILENAME" >> $ZSHENV
 	done
 fi
 
