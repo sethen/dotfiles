@@ -3,22 +3,43 @@
 	"diagnostic.displayByAle": true,
 	"diagnostic.enable": false,
 	"git.addGBlameToBufferVar": true,
+	"coc.preferences.formatOnSaveFiletypes": [
+		"css",
+		"html",
+		"javascript",
+		"javascriptreact",
+		"json",
+		"python",
+		"ruby",
+		"sass",
+		"typescript",
+		"typescriptreact"
+	],
 	"languageserver": {
 		"dockerfile": {
 			"command": "docker-langserver",
-			"filetypes": ["dockerfile"],
-			"args": ["--stdio"]
+			"filetypes": [
+				"dockerfile"
+			],
+			"args": [
+				"--stdio"
+			]
 		},
 		"golang": {
 			"command": "gopls",
-			"rootPatterns": ["go.mod"],
+			"rootPatterns": [
+				"go.mod"
+			],
 			"disableWorkspaceFolders": true,
-			"filetypes": ["go"]
+			"filetypes": [
+				"go"
+			]
 		}
 	},
 	"python.jediEnabled": false,
 	"python.pythonPath": "/usr/bin/python3",
 	"solargraph.commandPath": "/home/sethen/.rbenv/shims/solargraph",
 	"solargraph.completion": true,
-	"solargraph.hover": true
+	"solargraph.hover": true,
+	"tsserver.npm": "/usr/bin/npm"
 }

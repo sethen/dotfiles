@@ -60,3 +60,5 @@ if [[ -d $RBENV_BIN_DIRECTORY ]]; then
 	export PATH=$RBENV_BIN_DIRECTORY:$PATH
 	eval "$(rbenv init -)"
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

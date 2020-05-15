@@ -21,10 +21,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 				autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
 			augroup end
 		" }}}
-		augroup FileTypeAutoIndent
-			autocmd!
-			autocmd BufWritePre,BufWinEnter *.cs,*.html,*.js,*.json,*.less,*.py,*.rb,*.scss,*.ts,*.tsx silent :normal gg=G``
-		augroup end
 		" spell check {{{
 			augroup SpellCheck
 				autocmd!
@@ -427,10 +423,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 		Plug 'ryanoasis/vim-devicons'
 		" install nerdtree support for devicons
 		Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-	" }}}
-	" typescript {{{
-		" install typescript syntax highlighting
-		Plug 'leafgarland/typescript-vim', { 'for': [ 'typescript', 'typescript.tsx' ]}
 	" }}}
 " }}}
 call plug#end()
