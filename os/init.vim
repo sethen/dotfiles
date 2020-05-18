@@ -275,6 +275,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 			let g:NERDTreeShowHidden = 1
 			let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 			let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = "\uf07b"
+		Plug 'philrunninger/nerdtree-visual-selection'
 	" }}}
 	" search {{{
 		" install fzf
