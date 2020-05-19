@@ -3,6 +3,7 @@
 # versions
 export RIPGREP_VERSION=11.0.2
 export RUBY_VERSION=2.6.1
+export TMUX_VERSION=3.0
 
 # binaries
 export GO_BIN=/usr/bin/go
@@ -20,6 +21,7 @@ export RBENV_BIN_DIRECTORY=$RBENV_DIRECTORY/bin
 export RBENV_PLUGINS_DIRECTORY=$RBENV_DIRECTORY/plugins
 export RBENV_VERSION_BIN_DIRECTORY=$RBENV_DIRECTORY/versions/$RUBY_VERSION/bin
 export TMUX_PLUGINS_DIRECTORY=~/.tmux/plugins
+export VIM_PLUG_DIRECTORY=~/.local/share/nvim/plugged
 export ZSH_AUTOSUGGESTIONS_DIRECTORY=~/.zsh/zsh-autosuggestions
 export ZSH_FUNCTIONS_DIRECTORY=~/.zsh/functions
 

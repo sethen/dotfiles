@@ -69,6 +69,9 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/ripgre
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/tmuxinator.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/solargraph.sh
 
+# typescript
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/typescript.sh
+
 # lolcat has a dependency of ruby gems
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/lolcat.sh
 
@@ -84,10 +87,20 @@ if [[ $UPGRADE =~ '[Yy]' ]]; then
 	echo ''
 fi
 
+if [[ ! -d $VIM_PLUG_DIRECTORY ]]; then
 read 'INSTALL_VIM_PLUG_PLUGINS?would you like to install vim-plug plugins? [Yy/Nn] '
 
-if [[ $INSTALL_VIM_PLUG_PLUGINS =~ '[Yy]' ]]; then
-	information_message 'installing vim-plug plugins'
+	if [[ $INSTALL_VIM_PLUG_PLUGINS =~ '[Yy]' ]]; then
+		information_message 'installing vim-plug plugins'
 
-	nvim +'PlugInstall --sync' +qa
+		nvim +'PlugInstall --sync' +qa
+	fi
+else
+	read 'UPDATE_VIM_PLUG_PLUGINS?would you like to update vim-plug plugins? [Yy/Nn] '
+
+	if [[ $UPDATE_VIM_PLUG_PLUGINS =~ '[Yy]' ]]; then
+		information_message 'updating vim-plug plugins'
+
+		nvim +'PlugUpdate --sync' +qa
+	fi
 fi

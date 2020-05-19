@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 if [[ -d $NPM_PACKAGES_DIRECTORY ]]; then
-	if [[ ! -a $NPM_PACKAGES_BIN_DIRECTORY/typescript ]]; then
+	if [[ ! -a $NPM_PACKAGES_BIN_DIRECTORY/tsc ]]; then
 		information_message 'installing typescript'
 
 		npm install -g typescript
