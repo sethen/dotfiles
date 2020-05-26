@@ -161,6 +161,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 			\	'coc-git',
 			\	'coc-html',
 			\	'coc-json',
+			\	'coc-omnisharp',
 			\	'coc-pairs',
 			\	'coc-python',
 			\	'coc-rls',
