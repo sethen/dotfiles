@@ -41,7 +41,6 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/moka-i
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/neovim.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/nginx.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/mysql-server.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/mysql-workbench.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/samba.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/spotify.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/telegram.sh
