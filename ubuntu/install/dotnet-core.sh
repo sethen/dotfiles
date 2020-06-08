@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-if [[ ! -n $(dpkg --get-selections | grep -w dotnet-core-$DOTNET_CORE_VERSION) ]]; then
+if [[ ! -n $(dpkg --get-selections | grep -w dotnet-sdk-$DOTNET_CORE_VERSION) ]]; then
 	information_message "installing dotnet-core"
 
 	MICROSOFT_DEB=packages-microsoft-prod.deb
