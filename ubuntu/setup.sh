@@ -3,11 +3,8 @@ header_message 'ubuntu setup'
 information_message 'adding repositories'
 
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/docker.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/golang.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/google-chrome.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/insomnia.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/moka-icon-theme.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/neovim.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/spotify.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/yarn.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/visual-studio-code.sh
@@ -59,6 +56,7 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/zoom.s
 
 # nodejs install order matters here
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/nodejs.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/npm.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/neovim-node-host.sh
 
 # rbenv and ruby install order matters here
