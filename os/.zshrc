@@ -46,8 +46,8 @@ if [[ -a $GO_BIN && -d $DEVELOPER_GO_DIRECTORY ]]; then
 fi
 
 # set dotnet in PATH if found
-if [[ -d $DOTNET_DIRECTORY ]]; then
-	export PATH=$DOTNET_DIRECTORY:$PATH
+if [[ -d $DOTNET_DIRECTORY && $DOTNET_TOOLS_DIRECTORY ]]; then
+	export PATH=$DOTNET_TOOLS_DIRECTORY:$PATH
 fi
 
 # set npm-packages in PATH if found
@@ -61,4 +61,5 @@ if [[ -d $RBENV_BIN_DIRECTORY ]]; then
 	eval "$(rbenv init -)"
 fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# set for buku
+export PATH=~/.local/bin:$PATH

@@ -61,6 +61,10 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/nodejs
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/npm.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/neovim-node-host.sh
 
+# python3 install order matters here
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/python3.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/buku.sh
+
 # rbenv and ruby install order matters here
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/rbenv.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/neovim-ruby-host.sh
