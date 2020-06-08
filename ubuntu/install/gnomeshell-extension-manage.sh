@@ -12,10 +12,11 @@ if ! type gnomeshell-extension-manage > /dev/null; then
 
 	information_message 'installing gnome extensions'
 
-	gnomeshell-extension-manage --install --extension-id 120 --version 3.26 --user &> /dev/null
-	gnomeshell-extension-manage --install --extension-id 307 --version 3.28 --user &> /dev/null
-	gnomeshell-extension-manage --install --extension-id 1228 --version 3.28 --user &> /dev/null
-	gnomeshell-extension-manage --install --extension-id 1131 --version 3.28 --user &> /dev/null
+	gnomeshell-extension-manage --install --extension-id 120 --version 3.36 --user &> /dev/null
+	gnomeshell-extension-manage --install --extension-id 307 --version 3.36 --user &> /dev/null
+	gnomeshell-extension-manage --install --extension-id 750 --version 3.36 --user &> /dev/null
+	gnomeshell-extension-manage --install --extension-id 1131 --version 3.36 --user &> /dev/null
+	gnomeshell-extension-manage --install --extension-id 1228 --version 3.36 --user &> /dev/null
 else
 	success_message 'gnomeshell-extension-manage already installed'
 fi
