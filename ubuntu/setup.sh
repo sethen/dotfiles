@@ -26,11 +26,9 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/dotnet
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/fortune.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gdebi.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gnome-calculator.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gnome-shell-extension-weather.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gnome-shell-extensions.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gnomeshell-extension-manage.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gnome-tweaks.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gnomeshell-extension-manage.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/golang.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gopls.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/google-chrome.sh
