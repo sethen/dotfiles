@@ -168,7 +168,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 			\	'coc-snippets',
 			\	'coc-solargraph',
 			\	'coc-tabnine',
-			\	'coc-tsserver'
+			\	'coc-tsserver',
+			\	'coc-xml'
 			\]
 
 			function! s:CheckBackSpace() abort

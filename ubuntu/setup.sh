@@ -35,7 +35,6 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/google
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gparted.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gpick.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/insomnia.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/jre.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/kazam.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/mdadm.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/moka-icon-theme.sh
@@ -53,6 +52,10 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/vlc.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/xsel.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/yarn.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/zoom.sh
+
+# java install order matters here
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/jre.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/jdk.sh
 
 # nodejs install order matters here
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/nodejs.sh

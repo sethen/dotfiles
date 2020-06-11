@@ -45,5 +45,6 @@
 	"tsserver.npm": "/usr/bin/npm",
 	"typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
 	"typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-	"typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true
+	"typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+	"xml.java.home": "/usr/lib/jvm/default-java/"
 }
