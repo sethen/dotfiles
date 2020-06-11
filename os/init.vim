@@ -283,6 +283,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 		Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 		" install fuzzy search for vim
 		Plug 'junegunn/fzf.vim'
+			command! -bang -nargs=* Rg
+			\ call fzf#vim#grep(
+			\ 'rg --column --hidden --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+			\ fzf#vim#with_preview(), <bang>0)
 	" }}}
 	" session {{{
 		" install vim-obsession
@@ -447,7 +451,3 @@ call plug#end()
 	highlight StatusLineNC guifg=#263238 guibg=#FFFFFF
 	highlight VertSplit ctermbg=NONE guibg=NONE
 " }}}
-
-if executable('rg')
-	set grepprg=rg\ --no-heading\ --vimgrep
-endif
