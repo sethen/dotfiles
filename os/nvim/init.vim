@@ -254,6 +254,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	" markdown {{{
 		" install markdown keymap support
 		Plug 'plasticboy/vim-markdown'
+		Plug 'suan/vim-instant-markdown'
 	" }}}
 	" navigation {{{
 		" install start screen for vim

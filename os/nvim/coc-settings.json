@@ -12,7 +12,6 @@
 		"typescript",
 		"typescriptreact"
 	],
-	"coc.preferences.formatOnType": true,
 	"diagnostic.displayByAle": true,
 	"diagnostic.enable": true,
 	"git.addGBlameToBufferVar": true,
@@ -43,6 +42,9 @@
 	"solargraph.completion": true,
 	"solargraph.hover": true,
 	"tsserver.npm": "/usr/bin/npm",
+	"javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+	"javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+	"javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
 	"typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
 	"typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
 	"typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,

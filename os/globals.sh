@@ -11,7 +11,8 @@ export GO_BIN=/usr/bin/go
 
 # directories
 export CARGO_BIN_DIRECTORY=~/.cargo/bin
-export CONFIG_NVIM_DIRECTORY=~/.config/nvim
+export CONFIG_DIRECTORY=~/.config
+export CONFIG_NVIM_DIRECTORY=${CONFIG_DIRECTORY}/nvim
 export DEVELOPER_DIRECTORY=~/Developer
 export DEVELOPER_GO_DIRECTORY=~/Developer/go
 export DOTNET_DIRECTORY=~/.dotnet

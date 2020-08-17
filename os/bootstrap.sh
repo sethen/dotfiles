@@ -32,12 +32,18 @@ fi
 
 header_message 'os bootstrap'
 
-if [[ ! -d $DEVELOPER_DIRECTORY ]]; then
-	mkdir -p $DEVELOPER_DIRECTORY
+if [[ -a $ALIASES ]]; then
+	rm $ALIASES
 fi
 
-if [[ ! -d $CONFIG_NVIM_DIRECTORY ]]; then
-	mkdir -p $CONFIG_NVIM_DIRECTORY
+cp -f $OS_ALIASES ~
+
+if [[ -d $CONFIG_NVIM_DIRECTORY ]]; then
+	rm -rf $CONFIG_NVIM_DIRECTORY
+fi
+
+if [[ ! -d $DEVELOPER_DIRECTORY ]]; then
+	mkdir -p $DEVELOPER_DIRECTORY
 fi
 
 if [[ ! -d $NPM_PACKAGES_DIRECTORY ]]; then
@@ -48,14 +54,7 @@ if [[ ! -d $TMUX_PLUGINS_DIRECTORY ]]; then
 	mkdir -p $TMUX_PLUGINS_DIRECTORY
 fi
 
-if [[ -a $ALIASES ]]; then
-	rm $ALIASES
-fi
-
-cp -f $OS_ALIASES ~
-
-symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/coc-settings.json $CONFIG_NVIM_DIRECTORY
-symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/init.vim $CONFIG_NVIM_DIRECTORY
+symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/nvim $CONFIG_DIRECTORY
 symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.gitconfig ~
 symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.gitignore_global ~
 symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.npmrc ~
