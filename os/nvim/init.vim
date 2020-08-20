@@ -1,9 +1,15 @@
 call plug#begin('~/.local/share/nvim/plugged')
     " options {{{
+        " set clipboard support
+        set clipboard+=unnamedplus
         " set horizontal line on where cursor currently is
         set cursorline
         " set fold method to marker
         set foldmethod=marker
+        " set highlighting of searches
+        set hlsearch
+        " set case insensitive searching
+        set ignorecase
         " set wrapping of long lines
         set linebreak
         " set white space characters to be shown
@@ -12,6 +18,8 @@ call plug#begin('~/.local/share/nvim/plugged')
         set listchars=tab:»\ ,space:·,nbsp:␣,eol:¬,trail:·
         " set folds to be open
         set nofoldenable
+        " set no swap files
+        set noswapfile
         " set line number
         set number
         " set relative number for line number
@@ -20,7 +28,11 @@ call plug#begin('~/.local/share/nvim/plugged')
         set showbreak=↪\
         " set 24-bit color support
         set termguicolors
-
+        " set undo directory for persistent undo
+        let undo_directory = '.nvim_tmp/undodir'
+        call mkdir(undo_directory, "p", 0700)
+        set undodir=undo_directory
+        " turn on syntax highlighting
         syntax on
     " }}}
 
@@ -31,7 +43,10 @@ call plug#begin('~/.local/share/nvim/plugged')
                 let g:coc_global_extensions = [
                     \ 'coc-json',
                     \ 'coc-html',
+                    \ 'coc-pairs',
+                    \ 'coc-rls',
                     \ 'coc-solargraph',
+                    \ 'coc-tabnine',
                     \ 'coc-tsserver',
                     \ 'coc-yaml'
                     \ ]
@@ -58,6 +73,11 @@ call plug#begin('~/.local/share/nvim/plugged')
             Plug 'editorconfig/editorconfig-vim'
         " }}}
 
+        " git {{{
+            " install vim-signify for tracking git changes
+            Plug 'mhinz/vim-signify'
+        " }}}
+
         " javascript {{{
             " install vim-javascript for javascript syntax highlighting
             Plug 'pangloss/vim-javascript'
@@ -65,8 +85,11 @@ call plug#begin('~/.local/share/nvim/plugged')
             Plug 'maxmellon/vim-jsx-pretty'
         "}}}
 
-        " git {{{
-            Plug 'mhinz/vim-signify'
+        " search {{{
+            " install fzf for searching files
+            Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+            " install fzf.vim for fzf tools in vim
+            Plug 'junegunn/fzf.vim'
         " }}}
 
         " status {{{
