@@ -1,39 +1,29 @@
 {
 	"coc.preferences.formatOnSaveFiletypes": [
+		"css",
 		"go",
 		"html",
-		"javascript.jsx",
 		"javascript",
 		"javascriptreact",
 		"json",
 		"ruby",
-		"typescript.tsx",
+		"rust",
+		"scss",
 		"typescript",
-		"typescriptreact",
-		"yaml"
+		"typescriptreact"
 	],
-	"javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
-	"javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-	"javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
 	"languageserver": {
 		"golang": {
 			"command": "gopls",
-			"rootPatterns": [
-				"go.mod"
-			],
+			"rootPatterns": ["go.mod"],
 			"disableWorkspaceFolders": true,
-			"filetypes": [
-				"go"
-			]
+			"filetypes": ["go"]
 		}
 	},
-	"solargraph.autoformat": true,
+	"prettier.eslintIntegration": true,
+	"prettier.useTabs": true,
 	"solargraph.commandPath": "/home/sethen/.rbenv/shims/solargraph",
 	"solargraph.completion": true,
 	"solargraph.formatting": true,
-	"tsserver.npm": "/usr/bin/npm",
-	"typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
-	"typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-	"typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
-	"yaml.format.enable": true
+	"tsserver.npm": "/usr/bin/npm"
 }
