@@ -1,5 +1,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 	" options {{{
+		" set filetype specific plugins
+		filetype plugin on
 		" set auto indentation
 		set autoindent
 		" set clipboard support
@@ -48,6 +50,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 	" }}}
 
 	" plugins {{{
+		" comments {{{
+			Plug 'scrooloose/nerdcommenter'
+		" }}}"
+
 		" completion {{{
 			" install coc.nvim for language servers
 			Plug 'neoclide/coc.nvim', { 'branch': 'release' }
