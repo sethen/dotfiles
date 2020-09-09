@@ -63,6 +63,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 					\ 'coc-html',
 					\ 'coc-json',
 					\ 'coc-pairs',
+					\ 'coc-prettier',
 					\ 'coc-solargraph',
 					\ 'coc-rls',
 					\ 'coc-tsserver',
