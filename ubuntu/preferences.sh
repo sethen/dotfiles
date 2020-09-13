@@ -65,6 +65,9 @@ dconf write /org/gnome/nautilus/icon-view/default-zoom-level "'standard'"
 dconf write /org/gnome/shell/extensions/openweather/city "'33.9550905,-83.3881868>Athens, Athens - Clarke County, Georgia, 30609, United States of America >-1'"
 dconf write /org/gnome/shell/extensions/openweather/position-in-panel "'center'"
 
+# mousepad preferences
+dconf write /org/gnome/desktop/peripherals/touchpad/tap-to-click false
+
 # system monitor extension preferences
 dconf write /org/gnome/shell/extensions/system-monitor/icon-display false
 dconf write /org/gnome/shell/extensions/system-monitor/background "'#00000000'"
