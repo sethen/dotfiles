@@ -59,15 +59,14 @@ call plug#begin('~/.local/share/nvim/plugged')
 			Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 				let g:coc_global_extensions = [
 					\ 'coc-css',
-					\ 'coc-eslint',
 					\ 'coc-html',
 					\ 'coc-json',
 					\ 'coc-pairs',
-					\ 'coc-prettier',
 					\ 'coc-solargraph',
 					\ 'coc-rls',
 					\ 'coc-tsserver',
-					\ 'coc-vimlsp'
+					\ 'coc-vimlsp',
+					\ 'coc-yaml'
 					\ ]
 			" }}}
 

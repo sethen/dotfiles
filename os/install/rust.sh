@@ -5,8 +5,7 @@ if ! type rustc > /dev/null; then
 
 	curl https://sh.rustup.rs -sSf | sh
 
-	$CARGO_BIN_DIRECTORY/rustup component add rust-src
-	$CARGO_BIN_DIRECTORY/rustup component add rust-docs
+	$CARGO_BIN_DIRECTORY/rustup component add rls rust-analysis rust-docs rust-src
 else
 	success_message 'rust already installed'
 fi
