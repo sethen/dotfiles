@@ -10,28 +10,22 @@
 		"rust",
 		"scss",
 		"typescript",
-		"typescriptreact"
+		"typescriptreact",
+		"yaml"
 	],
 	"eslint.autoFixOnSave": true,
 	"languageserver": {
 		"golang": {
 			"command": "gopls",
-			"rootPatterns": ["go.mod"],
+			"rootPatterns": [
+				"go.mod"
+			],
 			"disableWorkspaceFolders": true,
-			"filetypes": ["go"]
+			"filetypes": [
+				"go"
+			]
 		}
 	},
-	"prettier.endOfLine": "lf",
-	"prettier.arrowParens": "always",
-	"prettier.bracketSpacing": true,
-	"prettier.jsxBracketSameLine": true,
-	"prettier.jsxSingleQuote": true,
-	"prettier.printWidth": 80,
-	"prettier.semi": true,
-	"prettier.singleQuote": true,
-	"prettier.tabWidth": 4,
-	"prettier.trailingComma": "none",
-	"prettier.useTabs": true,
 	"solargraph.commandPath": "/home/sethen/.rbenv/shims/solargraph",
 	"solargraph.completion": true,
 	"solargraph.formatting": true,

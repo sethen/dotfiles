@@ -28,6 +28,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 		set number
 		" set relative number for line number
 		set relativenumber
+		" set number of lines to show above/below cursor
+		set scrolloff=20
 		" set how wide an indentation is supposed to span, 0 for replicating tabstop
 		set softtabstop=0
 		" set the width used for shifting commands, 0 for replicating tabstop
@@ -59,6 +61,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 			Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 				let g:coc_global_extensions = [
 					\ 'coc-css',
+					\ 'coc-eslint',
 					\ 'coc-html',
 					\ 'coc-json',
 					\ 'coc-pairs',
@@ -73,6 +76,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 		" directory {{{
 			" install vim-startify for initial navigation
 			Plug 'mhinz/vim-startify'
+				let g:startify_custom_header = []
+				let g:startify_change_to_dir = 0
 			" install nerdtree from directory browsing
 			Plug 'scrooloose/nerdtree'
 				let g:NERDTreeDirArrowExpandable = "\u00a0"
@@ -109,19 +114,19 @@ call plug#begin('~/.local/share/nvim/plugged')
 			" install lightline.vim for status bar
 			Plug 'itchyny/lightline.vim'
 				let g:lightline = {
-					\    'colorscheme': 'material',
-					\    'active': {
-					\        'left': [
-					\             [ 'mode', 'paste' ],
-					\             [ 'readonly', 'absolutepath', 'modified' ]
-					\        ],
-					\    }
+					\ 'colorscheme': 'material',
+					\ 'active': {
+					\   'left':
+					\     [
+					\       [ 'mode', 'paste' ],
+					\       [ 'readonly', 'absolutepath', 'modified' ]
+					\     ],
+					\   }
 					\ }
 		" }}}
 
 		" themes {{{
 			" install material.vim for theme
-			Plug 'arcticicestudio/nord-vim'
 			Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 		" }}}
 
