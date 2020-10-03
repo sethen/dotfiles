@@ -17,15 +17,12 @@
 	"languageserver": {
 		"golang": {
 			"command": "gopls",
-			"rootPatterns": [
-				"go.mod"
-			],
+			"rootPatterns": ["go.mod"],
 			"disableWorkspaceFolders": true,
-			"filetypes": [
-				"go"
-			]
+			"filetypes": ["go"]
 		}
 	},
+	"prettier.eslintIntegration": true,
 	"solargraph.commandPath": "/home/sethen/.rbenv/shims/solargraph",
 	"solargraph.completion": true,
 	"solargraph.formatting": true,
