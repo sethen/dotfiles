@@ -17,6 +17,12 @@ command! -bang -nargs=* Rg
 " use <Ctrl-b> to show buffers in FZF
 nnoremap <silent> <leader>b :call FZFSmartOpen(":Buffers")<CR>
 
+" use <Ctrl-bc> to show buffer commits in FZF
+nnoremap <silent> <leader>gbc :call FZFSmartOpen(":BCommits")<CR>
+
+" use <Ctrl-c> to show commits in FZF
+nnoremap <silent> <leader>gc :call FZFSmartOpen(":Commits")<CR>
+
 " use <Ctrl-f> to show files in FZF
 nnoremap <silent> <leader>f :call FZFSmartOpen(":Files")<CR>
 
