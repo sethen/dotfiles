@@ -13,7 +13,6 @@ if ! type gnomeshell-extension-manage > /dev/null; then
 	information_message 'installing gnome extensions'
 
 	gnomeshell-extension-manage --install --extension-id 120 --version 3.36 --user &> /dev/null
-	gnomeshell-extension-manage --install --extension-id 307 --version 3.36 --user &> /dev/null
 	gnomeshell-extension-manage --install --extension-id 750 --version 3.36 --user &> /dev/null
 	gnomeshell-extension-manage --install --extension-id 1131 --version 3.36 --user &> /dev/null
 	gnomeshell-extension-manage --install --extension-id 1228 --version 3.36 --user &> /dev/null

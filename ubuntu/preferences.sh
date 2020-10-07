@@ -93,7 +93,7 @@ dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6
 dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/login-shell false
 
 # theme preferences
-dconf write /org/gnome/desktop/interface/gtk-theme "'Arc'"
+dconf write /org/gnome/desktop/interface/gtk-theme "'Arc-Darker'"
 dconf write /org/gnome/desktop/interface/icon-theme "'Moka'"
 dconf write /org/gnome/desktop/interface/cursor-theme "'DMZ-Black'"
 dconf write /org/gnome/shell/extensions/user-theme/name "''"
