@@ -65,9 +65,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 					\ 'coc-html',
 					\ 'coc-json',
 					\ 'coc-pairs',
-					\ 'coc-prettier',
 					\ 'coc-solargraph',
 					\ 'coc-rls',
+					\ 'coc-snippets',
+					\ 'coc-tabnine',
 					\ 'coc-tsserver',
 					\ 'coc-vimlsp',
 					\ 'coc-yaml'
@@ -95,6 +96,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 		" git {{{
 			" install vim-signify for tracking git changes
 			Plug 'mhinz/vim-signify'
+			" install fugitive for git commands in vim
+			Plug 'tpope/vim-fugitive'
 			" }}}
 
 		" javascript {{{
