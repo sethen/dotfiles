@@ -73,7 +73,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 					\ 'coc-vimlsp',
 					\ 'coc-yaml'
 					\ ]
-			" }}}
+			" install endwise for function completion
+			Plug 'tpope/vim-endwise'
+		" }}}
 
 		" directory {{{
 			" install vim-startify for initial navigation
@@ -98,7 +100,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 			Plug 'mhinz/vim-signify'
 			" install fugitive for git commands in vim
 			Plug 'tpope/vim-fugitive'
-			" }}}
+		" }}}
 
 		" javascript {{{
 			" install vim-javascript for javascript syntax highlighting
