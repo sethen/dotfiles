@@ -1,4 +1,8 @@
 call plug#begin('~/.local/share/nvim/plugged')
+	if !isdirectory("/tmp/.nvim-undo")
+		call mkdir("/tmp/.nvim-undo", "", 0700)
+	endif
+
 	" options {{{
 		" set filetype specific plugins
 		filetype plugin on
@@ -40,13 +44,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 		set tabstop=4
 		" set 24-bit color support
 		set termguicolors
-		" set persistent undo
-		if !isdirectory("/tmp/.nvim-undo")
-			call mkdir("/tmp/.nvim-undo", "", 0700)
-		endif
-
+		" set undo directory
 		set undodir=/tmp/.nvim-undo
+		" set undo file for automatic saves
 		set undofile
+		" set update time for swap
+		set updatetime=500
 		" turn on syntax highlighting
 		syntax on
 	" }}}
