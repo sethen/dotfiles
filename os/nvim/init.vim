@@ -134,6 +134,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 					\ }
 		" }}}
 
+		" tags {{{
+			" install tagbar for displaying tags
+			Plug 'majutsushi/tagbar'
+		" }}}
+
 		" themes {{{
 			" install material.vim for theme
 			Plug 'kaicataldo/material.vim', { 'branch': 'main' }
