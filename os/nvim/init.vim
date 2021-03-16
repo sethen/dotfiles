@@ -91,6 +91,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 				let g:NERDTreeDirArrowCollapsible = "\u00a0"
 				let g:NERDTreeMinimalUI = 1
 				let g:NERDTreeShowHidden = 1
+			" install nerdtree-visual-selection for multi selection in nerdtree
+			Plug 'philrunninger/nerdtree-visual-selection'
 			" install vim-devicons for file types in nerdtree
 			Plug 'ryanoasis/vim-devicons'
 				let g:DevIconsEnableFoldersOpenClose = 1
