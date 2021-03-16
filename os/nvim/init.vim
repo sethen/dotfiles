@@ -16,8 +16,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 		set foldmethod=marker
 		" set highlighting of searches
 		set hlsearch
-		" set case insensitive searching
-		set ignorecase
 		" set wrapping of long lines
 		set linebreak
 		" set white space characters to be shown
@@ -42,6 +40,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 		set showbreak=↪\
 		" set the width of displayed tabs
 		set tabstop=4
+		" set smartcase for searching
+		set smartcase
 		" set 24-bit color support
 		set termguicolors
 		" set undo directory

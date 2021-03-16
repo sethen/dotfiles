@@ -5,14 +5,15 @@ information_message 'adding repositories'
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/docker.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/google-chrome.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/insomnia.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/spotify.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/yarn.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/visual-studio-code.sh
 
 information_message 'updating packages'
 
 sudo apt update -y
-sudo apt-get install -f
+
+information_message 'removing packages'
+
+sudo apt autoremove -y
 
 information_message 'installing packages'
 
@@ -23,6 +24,7 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/cmake.
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/cowsay.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/docker.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/dotnet-core.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/exuberant-ctags.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/fortune.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gdebi.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gnome-calculator.sh
@@ -50,7 +52,6 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/virtua
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/visual-studio-code.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/vlc.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/xsel.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/yarn.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/zoom.sh
 
 # java install order matters here

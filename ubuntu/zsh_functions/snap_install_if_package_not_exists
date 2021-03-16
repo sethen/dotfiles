@@ -1,9 +1,10 @@
 #!/bin/zsh
 
-if [[ ! -n $(dpkg --get-selections | grep -w $1) ]]; then
+if [[ ! -n $(snap list | grep -w $1) ]]; then
 	information_message "installing ${1}"
 
-	sudo apt-get install $1 -y
+	sudo snap install $1 -y
 else
 	success_message "${1} is already installed"
 fi
+
