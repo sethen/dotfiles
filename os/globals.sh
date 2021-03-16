@@ -34,3 +34,6 @@ export TPM=$TMUX_PLUGINS_DIRECTORY/tpm
 export ZSH_AUTOSUGGESTIONS=$ZSH_AUTOSUGGESTIONS_DIRECTORY/zsh-autosuggestions.zsh
 export ZSHENV=~/.zshenv
 export ZSHRC=~/.zshrc
+
+# environment variables
+export NPM_CONFIG_PREFIX=$NPM_PACKAGES_DIRECTORY
