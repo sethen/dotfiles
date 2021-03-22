@@ -3,6 +3,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 		call mkdir("/tmp/.nvim-undo", "", 0700)
 	endif
 
+	" mappings {{{
+		nnoremap <leader>ev :split $MYVIMRC<cr>
+		nnoremap <leader>sv :source $MYVIMRC<cr>
+	" }}}
+
 	" options {{{
 		" set filetype specific plugins
 		filetype plugin on
@@ -65,6 +70,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 				let g:coc_global_extensions = [
 					\ 'coc-css',
 					\ 'coc-eslint',
+					\ 'coc-highlight',
 					\ 'coc-html',
 					\ 'coc-json',
 					\ 'coc-pairs',
@@ -154,8 +160,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 call plug#end()
 
 colorscheme material
-highlight CocErrorHighlight gui=bold guibg=#212121 guifg=#ff5370
 highlight CocErrorSign gui=bold guibg=#212121 guifg=#ff5370
+highlight CocHighlightText gui=bold guibg=white guifg=black
 highlight CocInfoHighlight gui=bold guibg=#212121 guifg=#ffcb6b
 highlight CocInfoSign gui=bold guibg=#212121 guifg=#ffcb6b
 highlight CursorLine guibg=#212121

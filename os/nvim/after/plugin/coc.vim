@@ -4,11 +4,8 @@ function! CheckBackSpace()
 	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" use <TAB> to go forward through autocomplete options
-inoremap <silent><expr> <TAB> pumvisible() ? "\<C-N>" : CheckBackSpace() ? "\<TAB>" : coc#refresh()
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" use <SHIFT+TAB> to go backward through autocomplete results
-inoremap <expr> <S-TAB> pumvisible() ? "\<C-P>" : "\<C-H>"
-
-" use <CTRL+J> to confirm completion 
-inoremap <expr> <C-J> pumvisible() ? "\<C-Y>" : "\<CR>"
+inoremap <silent><expr> <tab> pumvisible() ? "\<c-n>" : CheckBackSpace() ? "\<tab>" : coc#refresh()
+inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<c-h>"
+nmap <leader>rn <Plug>(coc-rename)
