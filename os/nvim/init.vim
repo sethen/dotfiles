@@ -75,6 +75,23 @@ call plug#begin('~/.local/share/nvim/plugged')
 			Plug 'neovim/nvim-lspconfig'
 			" install autocomplete
 			Plug 'nvim-lua/completion-nvim'
+			let g:completion_customize_lsp_label = {
+				\ 'Buffers': ' Buffers',
+				\ 'Class': ' Class',
+				\ 'Enum': ' Enum',
+				\ 'Field': 'ﰠ Field',
+				\ 'Folder': ' Directory',
+				\ 'Function': ' Function',
+				\ 'Interface': ' Interface',
+				\ 'Keyword': ' Keyword',
+				\ 'Method': ' Method',
+				\ 'Module': ' Module',
+				\ 'Operator': ' Operator',
+				\ 'Reference': ' Reference',
+				\ 'Snippet': ' Snipper',
+				\ 'Text': 'ﮜ Text',
+				\ 'Variable': ' Variable'
+			\}
 			" install function completion
 			Plug 'tpope/vim-endwise'
 		" }}}
