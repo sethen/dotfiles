@@ -60,6 +60,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 	" }}}
 
 	" plugins {{{
+		" colors {{{
+			" install vim-hexokinase for color highlighting
+			Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+				let g:Hexokinase_highlighters = ['backgroundfull']
+		" }}}
+
 		" comments {{{
 			Plug 'scrooloose/nerdcommenter'
 		" }}}"
@@ -84,7 +90,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 					\ 'coc-tsserver',
 					\ 'coc-vimlsp',
 					\ 'coc-yaml'
-					\ ]
+					\]
 			" install endwise for function completion
 			Plug 'tpope/vim-endwise'
 		" }}}
@@ -144,15 +150,14 @@ call plug#begin('~/.local/share/nvim/plugged')
 			" install lightline.vim for status bar
 			Plug 'itchyny/lightline.vim'
 				let g:lightline = {
-					\ 'colorscheme': 'material',
-					\ 'active': {
-					\   'left':
-					\     [
-					\       [ 'mode', 'paste' ],
-					\       [ 'readonly', 'absolutepath', 'modified' ]
-					\     ],
-					\   }
-					\ }
+				\  'colorscheme': 'material',
+				\  'active': {
+				\    'left': [
+				\      [ 'mode', 'paste' ],
+				\      [ 'readonly', 'absolutepath', 'modified' ]
+				\    ],
+				\  }
+				\}
 		" }}}
 
 		" themes {{{
