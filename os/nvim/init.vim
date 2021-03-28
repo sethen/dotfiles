@@ -65,6 +65,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 		" }}}"
 
 		" completion {{{
+			" install for pair completion
+			Plug 'jiangmiao/auto-pairs'
+				let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''", '<':'>'}
 			" install coc.nvim for language servers
 			Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 				let g:coc_global_extensions = [
@@ -113,6 +116,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 			Plug 'tpope/vim-fugitive'
 		" }}}
 
+		" go {{{
+			" install for golang tools
+			Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+		" }}}
+
 		" javascript {{{
 			" install vim-javascript for javascript syntax highlighting
 			Plug 'pangloss/vim-javascript'
@@ -126,6 +134,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 			" install fzf.vim for fzf tools in vim
 			Plug 'junegunn/fzf.vim'
 		" }}}
+
+		" {{{
+			" install for emmet support
+			Plug 'mattn/emmet-vim'
+		" }}}"
 
 		" status {{{
 			" install lightline.vim for status bar
