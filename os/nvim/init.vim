@@ -135,10 +135,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 		"}}}
 
 		" search {{{
-			" install fzf for searching files
-			Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-			" install fzf.vim for fzf tools in vim
-			Plug 'junegunn/fzf.vim'
+			" install for telescope
+			Plug 'nvim-telescope/telescope.nvim'
 		" }}}
 
 		" {{{
@@ -168,6 +166,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 		" typescript {{{
 			" install yats.vim for typescript syntax highlighting
 			Plug 'herringtondarkholme/yats.vim'
+		" }}}
+
+		" utilites {{{
+			" needed for telescope
+			Plug 'nvim-lua/popup.nvim'
+			Plug 'nvim-lua/plenary.nvim'
 		" }}}
 	" }}}
 call plug#end()
