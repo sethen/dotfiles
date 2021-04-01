@@ -4,6 +4,9 @@ if [[ ! -n $(dpkg --get-selections | grep -w $1) ]]; then
 	information_message "installing ${1}"
 
 	sudo apt-get install $1 -y
+
+	# do anything you want after install
+	$2
 else
 	success_message "${1} is already installed"
 fi

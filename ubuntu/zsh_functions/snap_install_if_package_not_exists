@@ -3,7 +3,7 @@
 if [[ ! -n $(snap list | grep -w $1) ]]; then
 	information_message "installing ${1}"
 
-	sudo snap install $1 -y
+	sudo snap install $1
 else
 	success_message "${1} is already installed"
 fi
