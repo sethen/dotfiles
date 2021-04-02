@@ -108,6 +108,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 				let g:NERDTreeShowHidden = 1
 			" install nerdtree-visual-selection for multi selection in nerdtree
 			Plug 'philrunninger/nerdtree-visual-selection'
+			" install vim-devicons for file types in telescope
+			Plug 'kyazdani42/nvim-web-devicons'
 			" install vim-devicons for file types in nerdtree
 			Plug 'ryanoasis/vim-devicons'
 				let g:DevIconsEnableFoldersOpenClose = 1
