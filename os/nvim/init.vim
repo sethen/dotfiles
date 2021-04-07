@@ -105,6 +105,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 				let g:NERDTreeDirArrowExpandable = "\u00a0"
 				let g:NERDTreeDirArrowCollapsible = "\u00a0"
 				let g:NERDTreeMinimalUI = 1
+				let g:NERDTreeCascadeSingleChildDir = 0
 				let g:NERDTreeShowHidden = 1
 			" install nerdtree-visual-selection for multi selection in nerdtree
 			Plug 'philrunninger/nerdtree-visual-selection'
@@ -187,7 +188,7 @@ highlight CursorLine guibg=#212121
 highlight CursorLineNr gui=bold guibg=#212121 guifg=#89ddff
 highlight Folded gui=bold guibg=#212121 guifg=#546e7a
 highlight LineNr guifg=#546e7a
-highlight SignifySignAdd gui=BOLD guibg=#212121 guifg=#c3e88d
-highlight SignifySignChange gui=BOLD guibg=#212121 guifg=#ffcb6b
-highlight SignifySignDelete gui=BOLD guibg=#212121 guifg=#ff5370
+highlight SignifySignAdd gui=bold guibg=#212121 guifg=#c3e88d
+highlight SignifySignChange gui=bold guibg=#212121 guifg=#ffcb6b
+highlight SignifySignDelete gui=bold guibg=#212121 guifg=#ff5370
 highlight VertSplit guifg=#263238
