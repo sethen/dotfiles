@@ -73,7 +73,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 		" completion {{{
 			" install for pair completion
 			Plug 'jiangmiao/auto-pairs'
-				let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''", '<':'>'}
 			" install coc.nvim for language servers
 			Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 				let g:coc_global_extensions = [
