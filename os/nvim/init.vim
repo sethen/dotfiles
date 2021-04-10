@@ -4,6 +4,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 	endif
 
 	" mappings {{{
+		nnoremap <expr><silent> <leader><leader> bufwinnr("fern") == 1 ? ':FernDo close -drawer -stay<CR>' : ':Fern . -drawer<CR>'
+		nnoremap <leader>tc :Fern . -drawer -toggle<cr>
 		nnoremap <leader>ev :split $MYVIMRC<cr>
 		nnoremap <leader>sv :source $MYVIMRC<cr>
 	" }}}
