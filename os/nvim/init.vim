@@ -99,28 +99,25 @@ call plug#begin('~/.local/share/nvim/plugged')
 			Plug 'mhinz/vim-startify'
 				let g:startify_custom_header = []
 				let g:startify_change_to_dir = 0
-			" install nerdtree from directory browsing
-			Plug 'scrooloose/nerdtree'
-				let g:NERDTreeDirArrowExpandable = "\u00a0"
-				let g:NERDTreeDirArrowCollapsible = "\u00a0"
-				let g:NERDTreeMinimalUI = 1
-				let g:NERDTreeCascadeSingleChildDir = 0
-				let g:NERDTreeShowHidden = 1
-			" install nerdtree-visual-selection for multi selection in nerdtree
-			Plug 'philrunninger/nerdtree-visual-selection'
-			" install vim-devicons for file types in telescope
+			" install for directory tree navigation
+			Plug 'lambdalisue/fern.vim'
+			" install for git status in fern
+			Plug 'lambdalisue/fern-git-status.vim'
+			" install for rendering nerdfont icons in fern
+			Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+			" install for coloring nerdfont icons in fern
+			Plug 'lambdalisue/glyph-palette.vim'
+				let g:fern#renderer = 'nerdfont'
+			" install for nerdfont support in fern
+			Plug 'lambdalisue/nerdfont.vim'
+			" install for file types in telescope
 			Plug 'kyazdani42/nvim-web-devicons'
-			" install vim-devicons for file types in nerdtree
-			Plug 'ryanoasis/vim-devicons'
-				let g:DevIconsEnableFoldersOpenClose = 1
-			" install vim-nerdtree-syntax-highlight to add color to vim-devicons
-			Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 		" }}}
 
 		" git {{{
-			" install vim-signify for tracking git changes
+			" install for tracking git changes
 			Plug 'mhinz/vim-signify'
-			" install fugitive for git commands in vim
+			" install for git commands in vim
 			Plug 'tpope/vim-fugitive'
 		" }}}
 
@@ -185,6 +182,8 @@ highlight CocInfoHighlight gui=bold guibg=#212121 guifg=#ffcb6b
 highlight CocInfoSign gui=bold guibg=#212121 guifg=#ffcb6b
 highlight CursorLine guibg=#212121
 highlight CursorLineNr gui=bold guibg=#212121 guifg=#89ddff
+highlight FernGitStatusIndex guifg=#c3e88d
+highlight FernGitStatusWorktree guifg=#ff5370
 highlight Folded gui=bold guibg=#212121 guifg=#546e7a
 highlight LineNr guifg=#546e7a
 highlight SignifySignAdd gui=bold guibg=#212121 guifg=#c3e88d
