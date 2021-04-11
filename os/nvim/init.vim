@@ -96,6 +96,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 		" }}}
 
 		" git {{{
+			" install for showing blame on lines
+			Plug 'apzelos/blamer.nvim'
+				let g:blamer_enabled = 1
 			" install for tracking git changes
 			Plug 'mhinz/vim-signify'
 			" install for git commands in vim

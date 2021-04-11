@@ -1,3 +1,7 @@
+function! IsVimPlugFileType()
+	return &ft =~ 'vim-plug'
+endfunction
+
 function! IsHelpFileType()
 	return &ft =~ 'help'
 endfunction
@@ -15,15 +19,7 @@ function! IsQuickFixFileType()
 endfunction
 
 function! IsIgnoringStatus()
-	return IsHelpFileType() || IsFernFileType() || IsStartifyFileType() || IsQuickFixFileType()
-endfunction
-
-function! LightlineCocGitBlame()
-	if IsIgnoringStatus()
-		return ''
-	endif
-
-	return winwidth(0) > 70 ? get(b:, 'coc_git_blame', '') : ''
+	return IsHelpFileType() || IsFernFileType() || IsStartifyFileType() || IsQuickFixFileType() || IsVimPlugFileType()
 endfunction
 
 function! LightlineEncoding()
@@ -31,18 +27,30 @@ function! LightlineEncoding()
 		return ''
 	endif
 
-	return &fileencoding == 'utf-8' ? '' : &fileencoding
+	return &fileencoding
+endfunction
+
+function! LightlineFileType()
+	if IsIgnoringStatus()
+		return ''
+	endif
+
+	return WebDevIconsGetFileTypeSymbol() . ' ' . &ft
 endfunction
 
 function! LightlineFileName()
-	let l:filename = expand('%t')
+	let l:filename = expand('%:t')
 
 	if l:filename == '' && &ft == ''
-		return WebDevIconsGetFileTypeSymbol() . ' [No Name]' . LightlineModified()
+		return '[No Name]' . LightlineModified()
 	endif
 
+	if IsVimPlugFileType()
+		return "\uF595" . ' ' . &ft
+	end
+
 	if IsQuickFixFileType()
-		return WebDevIconsGetFileTypeSymbol() . ' quickfix'
+		return "\uF976" . ' ' . &ft
 	endif
 
 	if IsFernFileType()
@@ -50,14 +58,14 @@ function! LightlineFileName()
 	endif
 
 	if IsHelpFileType()
-		return "\uF595" . ' ' . &ft
+		return "\uFAD9" . ' ' . &ft
 	endif
 
 	if IsStartifyFileType()
 		return "\uF73C" . ' ' . &ft
 	endif
 
-	return WebDevIconsGetFileTypeSymbol() . ' ' . l:filename . LightlineModified()
+	return l:filename . LightlineModified()
 endfunction
 
 function! LightlineGitBranch()
@@ -116,7 +124,7 @@ let g:lightline = {
 \  'component_function': {
 \    'fileencoding': 'LightlineEncoding',
 \    'filename': 'LightlineFileName',
-\    'gitblame': 'LightlineCocGitBlame',
+\    'filetype': 'LightlineFileType',
 \    'gitbranch': 'LightlineGitBranch',
 \    'lineinfo': 'LightlineLineInfo',
 \    'mode': 'LightlineMode',
@@ -125,12 +133,12 @@ let g:lightline = {
 \  'active': {
 \    'left': [
 \      [ 'mode' ],
-\      [ 'filename', 'gitbranch', 'readonly' ],
+\      [ 'gitbranch', 'filename', 'readonly' ]
 \    ],
 \    'right': [
 \      [ 'lineinfo', 'percent' ],
 \      [],
-\      [ 'gitblame', 'fileencoding' ],
+\      [ 'filetype', 'fileencoding' ]
 \    ],
 \  },
 \  'inactive': {
