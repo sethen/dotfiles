@@ -15,7 +15,7 @@ function! IsQuickFixFileType()
 endfunction
 
 function! IsIgnoringStatus()
-	return '/^help|fern|startify|qf/' =~ &ft
+	return IsHelpFileType() || IsFernFileType() || IsStartifyFileType() || IsQuickFixFileType()
 endfunction
 
 function! LightlineCocGitBlame()
@@ -45,8 +45,16 @@ function! LightlineFileName()
 		return WebDevIconsGetFileTypeSymbol() . ' quickfix'
 	endif
 
-	if IsHelpFileType() || IsFernFileType() || IsStartifyFileType()
-		return WebDevIconsGetFileTypeSymbol(). ' ' . &ft
+	if IsFernFileType()
+		return "\uF829" . ' ' . &ft
+	endif
+
+	if IsHelpFileType()
+		return "\uF595" . ' ' . &ft
+	endif
+
+	if IsStartifyFileType()
+		return "\uF73C" . ' ' . &ft
 	endif
 
 	return WebDevIconsGetFileTypeSymbol() . ' ' . l:filename . LightlineModified()
