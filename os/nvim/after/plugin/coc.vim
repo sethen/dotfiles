@@ -1,3 +1,19 @@
+let g:coc_global_extensions = [
+\  'coc-css',
+\  'coc-eslint',
+\  'coc-highlight',
+\  'coc-html',
+\  'coc-json',
+\  'coc-pairs',
+\  'coc-solargraph',
+\  'coc-rls',
+\  'coc-snippets',
+\  'coc-tabnine',
+\  'coc-tsserver',
+\  'coc-vimlsp',
+\  'coc-yaml'
+\]
+
 function! CheckBackSpace()
 	let col = col('.') - 1
 
@@ -13,3 +29,4 @@ nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>gy <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gr <Plug>(coc-references)
+

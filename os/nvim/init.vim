@@ -65,7 +65,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 		" colors {{{
 			" install vim-hexokinase for color highlighting
 			Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
-				let g:Hexokinase_highlighters = ['backgroundfull']
 		" }}}
 
 		" comments {{{
@@ -77,21 +76,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 			Plug 'jiangmiao/auto-pairs'
 			" install coc.nvim for language servers
 			Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-				let g:coc_global_extensions = [
-					\ 'coc-css',
-					\ 'coc-eslint',
-					\ 'coc-highlight',
-					\ 'coc-html',
-					\ 'coc-json',
-					\ 'coc-pairs',
-					\ 'coc-solargraph',
-					\ 'coc-rls',
-					\ 'coc-snippets',
-					\ 'coc-tabnine',
-					\ 'coc-tsserver',
-					\ 'coc-vimlsp',
-					\ 'coc-yaml'
-					\]
 			" install endwise for function completion
 			Plug 'tpope/vim-endwise'
 		" }}}
@@ -99,8 +83,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 		" directory {{{
 			" install vim-startify for initial navigation
 			Plug 'mhinz/vim-startify'
-				let g:startify_custom_header = []
-				let g:startify_change_to_dir = 0
 			" install for directory tree navigation
 			Plug 'lambdalisue/fern.vim'
 			" install for git status in fern
@@ -109,11 +91,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 			Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 			" install for coloring nerdfont icons in fern
 			Plug 'lambdalisue/glyph-palette.vim'
-				let g:fern#renderer = 'nerdfont'
 			" install for nerdfont support in fern
 			Plug 'lambdalisue/nerdfont.vim'
-			" install for file types in telescope
-			Plug 'kyazdani42/nvim-web-devicons'
 		" }}}
 
 		" git {{{
@@ -126,6 +105,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 		" go {{{
 			" install for golang tools
 			Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+		" }}}
+
+		" icons {{{
+			" install for lightline icons
+			Plug 'ryanoasis/vim-devicons'
+			" install for file type icons in telescope
+			Plug 'kyazdani42/nvim-web-devicons'
 		" }}}
 
 		" javascript {{{
@@ -148,15 +134,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 		" status {{{
 			" install lightline.vim for status bar
 			Plug 'itchyny/lightline.vim'
-				let g:lightline = {
-				\  'colorscheme': 'material',
-				\  'active': {
-				\    'left': [
-				\      [ 'mode', 'paste' ],
-				\      [ 'readonly', 'absolutepath', 'modified' ]
-				\    ],
-				\  }
-				\}
 		" }}}
 
 		" themes {{{
