@@ -1,21 +1,21 @@
-function! IsVimPlugFileType()
-	return &ft =~ 'vim-plug'
+function! IsFernFileType()
+	return &ft =~ 'fern'
 endfunction
 
 function! IsHelpFileType()
 	return &ft =~ 'help'
 endfunction
 
-function! IsFernFileType()
-	return &ft =~ 'fern'
+function! IsQuickFixFileType()
+	return &ft =~ 'qf'
 endfunction
 
 function! IsStartifyFileType()
 	return &ft =~ 'startify'
 endfunction
 
-function! IsQuickFixFileType()
-	return &ft =~ 'qf'
+function! IsVimPlugFileType()
+	return &ft =~ 'vim-plug'
 endfunction
 
 function! IsIgnoringStatus()
@@ -28,6 +28,14 @@ function! LightlineEncoding()
 	endif
 
 	return &fileencoding
+endfunction
+
+function! LightlineFileformat()
+	if IsIgnoringStatus()
+		return ''
+	endif
+
+	return &ff
 endfunction
 
 function! LightlineFileType()
@@ -47,7 +55,7 @@ function! LightlineFileName()
 
 	if IsVimPlugFileType()
 		return "\uF595" . ' ' . &ft
-	end
+	endif
 
 	if IsQuickFixFileType()
 		return "\uF976" . ' ' . &ft
@@ -124,6 +132,7 @@ let g:lightline = {
 \  'component_function': {
 \    'fileencoding': 'LightlineEncoding',
 \    'filename': 'LightlineFileName',
+\    'fileformat': 'LightlineFileformat',
 \    'filetype': 'LightlineFileType',
 \    'gitbranch': 'LightlineGitBranch',
 \    'lineinfo': 'LightlineLineInfo',
@@ -138,7 +147,7 @@ let g:lightline = {
 \    'right': [
 \      [ 'lineinfo', 'percent' ],
 \      [],
-\      [ 'filetype', 'fileencoding' ]
+\      [ 'filetype', 'fileencoding', 'fileformat' ]
 \    ],
 \  },
 \  'inactive': {

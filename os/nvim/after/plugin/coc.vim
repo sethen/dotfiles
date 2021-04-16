@@ -3,6 +3,7 @@ let g:coc_global_extensions = [
 \  'coc-eslint',
 \  'coc-highlight',
 \  'coc-html',
+\  'coc-lua',
 \  'coc-json',
 \  'coc-pairs',
 \  'coc-solargraph',
