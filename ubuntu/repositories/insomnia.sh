@@ -3,11 +3,7 @@
 if [[ ! -n $(dpkg --get-selections | grep insomnia) ]]; then
 	information_message 'adding insomnia repository'
 
-	sudo sh -c "echo 'deb https://dl.bintray.com/getinsomnia/Insomnia /' > /etc/apt/sources.list.d/insomnia.list"
-
-	information_message 'adding insomnia key'
-
-	wget -qO - https://insomnia.rest/keys/debian-public.key.asc | sudo apt-key add -
+	echo "deb [trusted=yes arch=amd64] https://download.konghq.com/insomnia-ubuntu/ default all" | sudo tee -a /etc/apt/sources.list.d/insomnia.list
 else
-	success_message 'insomnia key and repository already added'
+	success_message 'insomnia repository already added'
 fi

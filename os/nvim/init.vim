@@ -85,6 +85,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 			Plug 'mhinz/vim-startify'
 			" install for directory tree navigation
 			Plug 'lambdalisue/fern.vim'
+				let g:fern#default_hidden = 1
 			" install for git status in fern
 			Plug 'lambdalisue/fern-git-status.vim'
 			" install for rendering nerdfont icons in fern
