@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+if [[ -v $NEOVIM_NIGHTLY ]]; then
+	information_message "please run dotfiles first"
+else
+	information_message "removing previous neovim nightly"
+
+	rm $NEOVIM_NIGHTLY
+
+	information_message "installing neovim nightly"
+
+	wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage -P $DEVELOPER_DIRECTORY
+	chmod u+x $NEOVIM_NIGHTLY
+fi
