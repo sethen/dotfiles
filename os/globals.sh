@@ -1,9 +1,9 @@
 #!/bin/zsh
 
 # versions
-export DOTNET_CORE_VERSION=3.1
+export DOTNET_CORE_VERSION=5.0
 export RIPGREP_VERSION=11.0.2
-export RUBY_VERSION=2.6.1
+export RUBY_VERSION=3.0.1
 
 # binaries
 export GO_BIN=/usr/bin/go
