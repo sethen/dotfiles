@@ -1,5 +1,5 @@
-function! IsFernFileType()
-	return &ft =~ 'fern'
+function! IsNerdTreeFileType()
+	return &ft =~ 'nerdtree'
 endfunction
 
 function! IsHelpFileType()
@@ -14,12 +14,12 @@ function! IsStartifyFileType()
 	return &ft =~ 'startify'
 endfunction
 
-function! IsVimPlugFileType()
-	return &ft =~ 'vim-plug'
+function! IsPackerFileType()
+	return &ft =~ 'packer'
 endfunction
 
 function! IsIgnoringStatus()
-	return IsHelpFileType() || IsFernFileType() || IsStartifyFileType() || IsQuickFixFileType() || IsVimPlugFileType()
+	return IsHelpFileType() || IsNerdTreeFileType() || IsStartifyFileType() || IsQuickFixFileType() || IsPackerFileType()
 endfunction
 
 function! LightlineEncoding()
@@ -53,7 +53,7 @@ function! LightlineFileName()
 		return '[No Name]' . LightlineModified()
 	endif
 
-	if IsVimPlugFileType()
+	if IsPackerFileType()
 		return "\uF595" . ' ' . &ft
 	endif
 
@@ -61,8 +61,8 @@ function! LightlineFileName()
 		return "\uF976" . ' ' . &ft
 	endif
 
-	if IsFernFileType()
-		return "\uF829" . ' ' . &ft
+	if IsNerdTreeFileType()
+		return "\uf752" . ' ' . &ft
 	endif
 
 	if IsHelpFileType()
