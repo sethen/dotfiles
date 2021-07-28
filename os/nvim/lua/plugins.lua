@@ -5,7 +5,10 @@ return require('packer').startup(function()
 
 	-- colors
 	-- install for color highlighting
-	use { 'rrethy/vim-hexokinase', run = 'make hexokinase' }
+	use {
+		'rrethy/vim-hexokinase',
+		run = 'make hexokinase'
+	}
 
 	-- completion
 	-- install for autocompletion
@@ -49,6 +52,12 @@ return require('packer').startup(function()
 		'scrooloose/nerdtree',
 		requires = { 'philrunninger/nerdtree-visual-selection' }
 	}
+
+	-- search
+	-- install for fzf
+	use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
+	-- install for fzf mappings
+	use 'junegunn/fzf.vim'
 
 	-- status
 	-- install for status bar support
