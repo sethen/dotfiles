@@ -77,6 +77,14 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sethen/.local/share/nvim/site/pack/packer/start/emmet-vim"
   },
+  fzf = {
+    loaded = true,
+    path = "/home/sethen/.local/share/nvim/site/pack/packer/start/fzf"
+  },
+  ["fzf.vim"] = {
+    loaded = true,
+    path = "/home/sethen/.local/share/nvim/site/pack/packer/start/fzf.vim"
+  },
   ["lightline.vim"] = {
     loaded = true,
     path = "/home/sethen/.local/share/nvim/site/pack/packer/start/lightline.vim"
@@ -92,6 +100,10 @@ _G.packer_plugins = {
   nerdtree = {
     loaded = true,
     path = "/home/sethen/.local/share/nvim/site/pack/packer/start/nerdtree"
+  },
+  ["nerdtree-visual-selection"] = {
+    loaded = true,
+    path = "/home/sethen/.local/share/nvim/site/pack/packer/start/nerdtree-visual-selection"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -120,6 +132,10 @@ _G.packer_plugins = {
   ["vim-jsx-pretty"] = {
     loaded = true,
     path = "/home/sethen/.local/share/nvim/site/pack/packer/start/vim-jsx-pretty"
+  },
+  ["vim-nerdtree-syntax-highlight"] = {
+    loaded = true,
+    path = "/home/sethen/.local/share/nvim/site/pack/packer/start/vim-nerdtree-syntax-highlight"
   },
   ["vim-signify"] = {
     loaded = true,

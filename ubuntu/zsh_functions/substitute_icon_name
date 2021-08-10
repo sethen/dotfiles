@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-information_message "changing icon for $2"
-
-sudo sed -iE "s/Icon=.\+/Icon=${1}/g" $2

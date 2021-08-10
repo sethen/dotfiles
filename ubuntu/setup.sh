@@ -93,20 +93,12 @@ if [[ $UPGRADE =~ '[Yy]' ]]; then
 	echo ''
 fi
 
-if [[ ! -d $VIM_PLUG_DIRECTORY ]]; then
-read 'INSTALL_VIM_PLUG_PLUGINS?would you like to install vim-plug plugins? [Yy/Nn] '
+read 'INSTALL_NEOVIM_NIGHTLY?would you like to install neovim nightly? [Yy/Nn] '
 
-	if [[ $INSTALL_VIM_PLUG_PLUGINS =~ '[Yy]' ]]; then
-		information_message 'installing vim-plug plugins'
+if [[ $UPGRADE =~ '[Yy]' ]]; then
+	information_message 'installing neovim nightly'
 
-		nvim +'PlugInstall --sync' +qa
-	fi
-else
-	read 'UPDATE_VIM_PLUG_PLUGINS?would you like to update vim-plug plugins? [Yy/Nn] '
+	install_neovim_nightly
 
-	if [[ $UPDATE_VIM_PLUG_PLUGINS =~ '[Yy]' ]]; then
-		information_message 'updating vim-plug plugins'
-
-		nvim +'PlugUpdate --sync' +qa
-	fi
+	echo ''
 fi
