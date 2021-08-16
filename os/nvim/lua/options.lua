@@ -33,7 +33,7 @@ opt.smartcase = true
 -- set how wide an indentation is supposed to span, 0 for replicating tabstop
 opt.softtabstop = 0
 -- set no swap files
-opt.swapfile = true
+opt.swapfile = false
 -- set the width of displayed tabs
 opt.tabstop = 4
 -- set 24-bit color support
