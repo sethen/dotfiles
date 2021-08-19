@@ -6,6 +6,8 @@ opt.autoindent = true
 opt.clipboard = "unnamedplus"
 -- set horizontal line on where cursor currently is
 opt.cursorline = true
+-- set fill characters
+opt.fcs = "eob: "
 -- set folds to be open
 opt.foldenable = true
 -- set fold method to marker
