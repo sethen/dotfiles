@@ -61,7 +61,7 @@ return require('packer').startup(function()
 
 	-- status
 	-- install for status bar support
-	use 'itchyny/lightline.vim'
+	use { 'glepnir/galaxyline.nvim' , branch = 'main'}
 
 	-- themes
 	-- install for material theme
