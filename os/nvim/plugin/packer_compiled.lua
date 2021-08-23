@@ -85,9 +85,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sethen/.local/share/nvim/site/pack/packer/start/fzf.vim"
   },
-  ["lightline.vim"] = {
+  ["galaxyline.nvim"] = {
     loaded = true,
-    path = "/home/sethen/.local/share/nvim/site/pack/packer/start/lightline.vim"
+    path = "/home/sethen/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
   },
   ["material.vim"] = {
     loaded = true,

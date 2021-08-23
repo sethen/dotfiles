@@ -1,10 +1,11 @@
 local colors = {
 	black = '#000000',
 	blue = '#89ddff',
+	blue2 = '#546e7a',
 	grey = '#212121',
+	grey2 = '#2e3c43',
+	grey3 = '#263238',
 	green = '#c3e88d',
-	pale_grey = '#263238',
-	pale_blue = '#546e7a',
 	purple = '#c792ea',
 	orange = '#f78c6c',
 	red = '#ff5370',
