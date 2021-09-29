@@ -85,33 +85,25 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sethen/.local/share/nvim/site/pack/packer/start/fzf.vim"
   },
-  ["galaxyline.nvim"] = {
+  ["lualine.nvim"] = {
     loaded = true,
-    path = "/home/sethen/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
+    path = "/home/sethen/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
   ["material.vim"] = {
     loaded = true,
     path = "/home/sethen/.local/share/nvim/site/pack/packer/start/material.vim"
   },
-  ["nerdfont.vim"] = {
+  ["nvim-tree.lua"] = {
     loaded = true,
-    path = "/home/sethen/.local/share/nvim/site/pack/packer/start/nerdfont.vim"
+    path = "/home/sethen/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
   },
-  nerdtree = {
+  ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/home/sethen/.local/share/nvim/site/pack/packer/start/nerdtree"
-  },
-  ["nerdtree-visual-selection"] = {
-    loaded = true,
-    path = "/home/sethen/.local/share/nvim/site/pack/packer/start/nerdtree-visual-selection"
+    path = "/home/sethen/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/sethen/.local/share/nvim/site/pack/packer/start/packer.nvim"
-  },
-  ["vim-devicons"] = {
-    loaded = true,
-    path = "/home/sethen/.local/share/nvim/site/pack/packer/start/vim-devicons"
   },
   ["vim-fugitive"] = {
     loaded = true,
@@ -132,10 +124,6 @@ _G.packer_plugins = {
   ["vim-jsx-pretty"] = {
     loaded = true,
     path = "/home/sethen/.local/share/nvim/site/pack/packer/start/vim-jsx-pretty"
-  },
-  ["vim-nerdtree-syntax-highlight"] = {
-    loaded = true,
-    path = "/home/sethen/.local/share/nvim/site/pack/packer/start/vim-nerdtree-syntax-highlight"
   },
   ["vim-signify"] = {
     loaded = true,

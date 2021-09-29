@@ -54,8 +54,16 @@ if [[ ! -d $TMUX_PLUGINS_DIRECTORY ]]; then
 	mkdir -p $TMUX_PLUGINS_DIRECTORY
 fi
 
+if [[ ! -d $EMACS_DIRECTORY ]]; then
+	mkdir -p $EMACS_DIRECTORY
+fi
+
 symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/nvim $CONFIG_DIRECTORY
-symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.editorconfig ~
+
+for file in $PRESENT_WORKING_DIRECTORY/os/.emacs.d/*; do
+	symlink_file_to_dest $file $EMACS_DIRECTORY
+done
+
 symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.gitconfig ~
 symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.gitignore_global ~
 symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.npmrc ~
