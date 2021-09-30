@@ -1,8 +1,7 @@
 ;;; sethen-editor.el --- Editor settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
-;; Maintainer: sethen
-;; Version: version
+;; Maintainer: sethen ;; Version: version
 ;; Package-Requires: (dependencies)
 ;; Homepage: homepage
 ;; Keywords: keywords
@@ -36,16 +35,16 @@
   "Enable line numbers mode!"
   (display-line-numbers-mode t))
 
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type 'relative
+	  whitespace-display-mappings '((space-mark ?\  [?\u00B7])
+									(newline-mark ?\n [?¬ ?\n])
+									(tab-mark ?\t [?\u00BB ?\t])))
+(setq-default tab-width 4)
 
 (add-hook 'prog-mode-hook 'sethen/enable-line-numbers-mode)
 (add-hook 'text-mode-hook 'sethen/enable-line-numbers-mode)
 
-(setq-default tab-width 4)
-
-(setq whitespace-display-mappings '((space-mark ?\  [?\u00B7])
-									(newline-mark ?\n [?¬ ?\n])
-									(tab-mark ?\t [?\u00BB ?\t])))
+(electric-pair-mode 1)
 
 (provide 'sethen-editor)
 

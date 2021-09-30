@@ -19,7 +19,6 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
 ;;; Commentary:
 
 ;;; Code:
@@ -27,6 +26,9 @@
 (require 'use-package)
 
 (use-package company
+  :bind (:map company-active-map
+			  ("C-j" . 'company-select-next)
+			  ("C-k" . 'company-select-previous))
   :commands
   (global-company-mode)
   :config

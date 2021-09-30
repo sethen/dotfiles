@@ -44,87 +44,88 @@
 	:config
 	(progn
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'alert-urgent-face) :extensions ("appimage" "dll" "sln"))
+	   :icon (propertize " " 'face 'alert-urgent-face) :extensions ("appimage" "dll" "sln"))
 	  (treemacs-create-icon
-	   :icon " " :extensions ("conf"))
+	   :icon " " :extensions ("conf"))
 	  (treemacs-create-icon
-	   :icon " " :extensions ("cs"))
+	   :icon " " :extensions ("cs"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'purple) :extensions ("css" "less" "sass" "scss"))
+	   :icon (propertize " " 'face 'purple) :extensions ("css" "less" "sass" "scss"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'blue2) :extensions (dir-closed root-closed))
+	   :icon (propertize " " 'face 'blue2) :extensions (dir-closed root-closed))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'blue2) :extensions (dir-open root-open))
+	   :icon (propertize " " 'face 'blue2) :extensions (dir-open root-open))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'blue3) :extensions ("diff"))
+	   :icon (propertize " " 'face 'blue3) :extensions ("diff"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'blue3) :extensions ("dockerfile" "dockerignore"))
+	   :icon (propertize " " 'face 'blue3) :extensions ("dockerfile" "dockerignore"))
 	  (treemacs-create-icon
-	   :icon " " :extensions ("otf" "ttf" "woff"))
+	   :icon " " :extensions ("otf" "ttf" "woff"))
 	  (treemacs-create-icon
-	   :icon " " :extensions ("editorconfig"))
+	   :icon " " :extensions ("editorconfig"))
 	  (treemacs-create-icon
-	   :icon " " :extensions ("bmp" "png" "jpg" "svg"))
+	   :icon " " :extensions ("bmp" "png" "jpg" "svg"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'purple) :extensions ("el"))
+	   :icon (propertize " " 'face 'purple) :extensions ("el"))
 	  (treemacs-create-icon
-	   :icon " " :extensions ("fish" "sh" "zsh"))
+	   :icon " " :extensions ("fish" "sh" "zsh"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'red1) :extensions ("git" "gitignore" "gitignore_global" "gitconfig"))
+	   :icon (propertize "" 'face 'red1) :extensions ("git" "gitignore" "gitignore_global" "gitconfig"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'orange) :extensions ("html"))
+	   :icon (propertize " " 'face 'orange) :extensions ("html"))
 	  (treemacs-create-icon
-	   :icon " " :extensions ("info" "log"))
+	   :icon " " :extensions ("info" "log"))
 	  (treemacs-create-icon
-	   :icon " " :extensions ("license"))
+	   :icon " " :extensions ("license"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'blue1) :extensions ("lua"))
+	   :icon (propertize " " 'face 'blue1) :extensions ("lua"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'green) :extensions ("nginx.conf"))
+	   :icon (propertize " " 'face 'green) :extensions ("nginx.conf"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'red2) :extensions ("package.json" "package-lock.json"))
+	   :icon (propertize " " 'face 'red2) :extensions ("package.json" "package-lock.json"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'blue3) :extensions ("php"))
+	   :icon (propertize " " 'face 'blue2) :extensions ("py"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'yellow) :extensions ("go"))
+	   :icon (propertize " " 'face 'blue3) :extensions ("php"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'yellow) :extensions ("js"))
+	   :icon (propertize " " 'face 'yellow) :extensions ("go"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'green) :extensions ("json"))
+	   :icon (propertize " " 'face 'yellow) :extensions ("js"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'yellow) :extensions ("jsx"))
+	   :icon (propertize " " 'face 'green) :extensions ("json"))
 	  (treemacs-create-icon
-	   :icon " " :extensions ("md"))
+	   :icon (propertize " " 'face 'yellow) :extensions ("jsx" "tsx"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'green) :extensions ("node" "node_modules"))
+	   :icon " " :extensions ("md"))
 	  (treemacs-create-icon
-	   :icon " " :extensions ("rs"))
+	   :icon (propertize " " 'face 'green) :extensions ("node" "node_modules"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'red1) :extensions ("rb"))
+	   :icon " " :extensions ("rs"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'blue1) :extensions ("toml"))
+	   :icon (propertize " " 'face 'red1) :extensions ("rb"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'blue1) :extensions ("ts" "tsbuildinfo"))
+	   :icon (propertize " " 'face 'blue1) :extensions ("toml"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'blue1) :extensions ("tsx"))
+	   :icon (propertize " " 'face 'blue1) :extensions ("ts" "tsbuildinfo"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'yellow) :extensions ("yarn"))
+	   :icon (propertize " " 'face 'yellow) :extensions ("yarn"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'red2) :extensions ("yml" "yaml"))
+	   :icon (propertize " " 'face 'red2) :extensions ("yml" "yaml"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'green) :extensions ("vim"))
+	   :icon (propertize " " 'face 'green) :extensions ("vim"))
 	  (treemacs-create-icon
-	   :icon " " :extensions (".aliases" "ps1" ".zshenv" ".zshrc" "xml")
+	   :icon " " :extensions (".aliases" "ps1" ".zshenv" ".zshrc" "xml")
 	  (treemacs-create-icon
-	   :icon " " :extensions ("zip"))
+	   :icon " " :extensions ("zip"))
 	  (treemacs-create-icon
-	   :icon " " :extensions (fallback))
+	   :icon " " :extensions (fallback))
 	  ))))
 
 (use-package treemacs
   :commands
   (dir-closed dir-open fallback treemacs-create-icon treemacs-modify-theme)
   :config
+  (setq treemacs-width 30)
   (sethen/treemacs-theme))
 
 (provide 'sethen-treemacs)
