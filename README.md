@@ -1,10 +1,10 @@
 These are my dotfiles for setting up my environment from nothing. Take and use anything you want.
 
-![screenshot](./images/screenshot.png)
+![screenshot](./images/emacs.png)
 
 # Quickstart
 
-To run these dotfiles quickly just execute the `run.sh` file.
+To run these dotfiles quickly just execute the `run.sh` file.  Neovim files exist but are no longer used.  This repository uses Emacs.
 
 # Environments
 
@@ -14,7 +14,7 @@ These dotfiles detect which environment they are in and run the appropriate comm
 
 # Colors
 
-The colors I use for my various terminal environments are found in the Material Vim Theme.  The hex and RGB values are:
+The colors I use for my various terminal environments are found in the Doom Material theme for Emacs.  The hex and RGB values are:
 
 * BLUE: hex `#82aaff`, rgb `(130,170,255)`
 * PALE_BLUE: hex `#89ddff`, rgb `(137,221,255)`
