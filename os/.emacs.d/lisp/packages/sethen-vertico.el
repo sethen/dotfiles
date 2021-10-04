@@ -30,9 +30,9 @@
 (use-package vertico
   :bind
   (:map vertico-map
-		("C-l" . 'vertico-insert)
-		("C-j" . 'vertico-next)
-		("C-k" . 'vertico-previous))
+		("M-j" . 'vertico-next)
+		("M-k" . 'vertico-previous)
+		("M-l" . 'vertico-insert))
   :commands
   (vertico-insert vertico-mode vertico-next vertico-previous)
   :init

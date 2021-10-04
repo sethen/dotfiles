@@ -1,4 +1,4 @@
-;;; sethen-js-mode-hook.el --- JS Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-highlight-mode.el --- Highlight Mode settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -25,18 +25,8 @@
 
 ;;; Code:
 
-(require 'lsp)
+(global-hl-line-mode)
 
-(defvar company-backends)
+(provide 'sethen-highlight-mode)
 
-(defun sethen/js-mode-hook()
-  "JS Mode hook settings!"
-  (add-hook 'before-save-hook 'lsp-eslint-apply-all-fixes nil 'local)
-  (lsp-deferred)
-  (set (make-local-variable 'company-backends) '((:separate company-yasnippet company-capf) company-keywords)))
-
-(add-hook 'js-mode-hook 'sethen/js-mode-hook)
-
-(provide 'sethen-js-mode-hook)
-
-;;; sethen-js-mode-hook.el ends here
+;;; sethen-highlight-mode.el ends here

@@ -31,6 +31,7 @@
 
 (defun sethen/typescript-mode-hook ()
   "TypeScript Mode hook settings!"
+  (add-hook 'before-save-hook 'lsp-eslint-apply-all-fixes nil 'local)
   (lsp-deferred)
   (set (make-local-variable 'company-backends) '(company-capf company-keywords)))
 

@@ -1,5 +1,3 @@
-(require 'use-package)
-
 ;;; sethen-lsp-ui.el --- LSP UI settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
@@ -32,7 +30,7 @@
 (use-package lsp-ui
   :config
   (setq lsp-completion-provider :none)
-  (setq lsp-completion-show-detail t)
+  (setq lsp-completion-show-detail nil)
   (setq lsp-completion-show-kind t)
   (setq lsp-signature-render-documentation t)
   (setq lsp-ui-doc-position 'at-point)

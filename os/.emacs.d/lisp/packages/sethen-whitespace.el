@@ -1,10 +1,7 @@
-;;; sethen-editor.el --- Editor settings -*- lexical-binding: t -*-
+;;; sethen-whitespace.el --- Whitespace settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
-;; Maintainer: sethen ;; Version: version
-;; Package-Requires: (dependencies)
-;; Homepage: homepage
-;; Keywords: keywords
+;; Maintainer: sethen
 
 
 ;; This file is not part of GNU Emacs
@@ -30,22 +27,17 @@
 
 (defvar display-line-numbers-type)
 (defvar whitespace-display-mappings)
+(defvar whitespace-style)
 
-(defun sethen/enable-line-numbers-mode ()
-  "Enable line numbers mode!"
-  (display-line-numbers-mode t))
+(global-whitespace-mode)
 
+(setq whitespace-style (delete 'lines whitespace-style))
+(setq whitespace-style (delete 'line-tails whitespace-style))
 (setq display-line-numbers-type 'relative
 	  whitespace-display-mappings '((space-mark ?\  [?\u00B7])
 									(newline-mark ?\n [?¬ ?\n])
 									(tab-mark ?\t [?\u00BB ?\t])))
-(setq-default tab-width 4)
 
-(add-hook 'prog-mode-hook 'sethen/enable-line-numbers-mode)
-(add-hook 'text-mode-hook 'sethen/enable-line-numbers-mode)
+(provide 'sethen-whitespace)
 
-(electric-pair-mode 1)
-
-(provide 'sethen-editor)
-
-;;; sethen-editor.el ends here
+;;; sethen-whitespace.el ends here

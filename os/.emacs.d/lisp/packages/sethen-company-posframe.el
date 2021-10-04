@@ -1,4 +1,4 @@
-;;; sethen-js-mode-hook.el --- JS Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-company-posframe.el --- Company Posframe settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -19,24 +19,18 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
 ;;; Commentary:
-
 
 ;;; Code:
 
-(require 'lsp)
+(require 'use-package)
 
-(defvar company-backends)
+(use-package company-posframe
+  :commands
+  (company-posframe-mode)
+  :init
+  (company-posframe-mode 1))
 
-(defun sethen/js-mode-hook()
-  "JS Mode hook settings!"
-  (add-hook 'before-save-hook 'lsp-eslint-apply-all-fixes nil 'local)
-  (lsp-deferred)
-  (set (make-local-variable 'company-backends) '((:separate company-yasnippet company-capf) company-keywords)))
+(provide 'sethen-company-posframe)
 
-(add-hook 'js-mode-hook 'sethen/js-mode-hook)
-
-(provide 'sethen-js-mode-hook)
-
-;;; sethen-js-mode-hook.el ends here
+;;; sethen-company-posframe.el ends here

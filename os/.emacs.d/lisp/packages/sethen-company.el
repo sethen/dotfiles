@@ -27,9 +27,9 @@
 
 (use-package company
   :bind (:map company-active-map
-			  ("C-j" . 'company-select-next)
-			  ("C-k" . 'company-select-previous)
-			  ("C-l" . 'company-complete))
+			  ("M-j" . 'company-select-next)
+			  ("M-k" . 'company-select-previous)
+			  ("M-l" . 'company-complete))
   :commands
   (global-company-mode)
   :config

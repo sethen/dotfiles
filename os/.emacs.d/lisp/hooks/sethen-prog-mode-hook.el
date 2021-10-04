@@ -1,4 +1,4 @@
-;;; sethen-js-mode-hook.el --- JS Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-prog-mode-hook.el --- Prog Mode hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -25,18 +25,12 @@
 
 ;;; Code:
 
-(require 'lsp)
+(defun sethen/prog-mode-hook ()
+  "Prod Mode hook settings!"
+  (display-line-numbers-mode t))
 
-(defvar company-backends)
+(add-hook 'prog-mode-hook 'sethen/prog-mode-hook)
 
-(defun sethen/js-mode-hook()
-  "JS Mode hook settings!"
-  (add-hook 'before-save-hook 'lsp-eslint-apply-all-fixes nil 'local)
-  (lsp-deferred)
-  (set (make-local-variable 'company-backends) '((:separate company-yasnippet company-capf) company-keywords)))
+(provide 'sethen-prog-mode-hook)
 
-(add-hook 'js-mode-hook 'sethen/js-mode-hook)
-
-(provide 'sethen-js-mode-hook)
-
-;;; sethen-js-mode-hook.el ends here
+;;; sethen-prog-mode-hook.el ends here

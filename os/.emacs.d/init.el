@@ -36,18 +36,22 @@
 (require 'sethen-use-package)
 (require 'sethen-user-interface)
 (require 'sethen-fonts)
-(require 'sethen-editor)
 
 (require 'sethen-themes)
 
 ;; auto-complete
 (require 'sethen-company)
+(require 'sethen-company-posframe)
 
 ;; colors
 (require 'sethen-rainbow-mode)
 
 ;; diagnostics
 (require 'sethen-flycheck)
+
+;; formatting
+(require 'sethen-electric-pair-mode)
+(require 'sethen-indentation)
 
 ;; git
 (require 'sethen-git-gutter)
@@ -60,11 +64,12 @@
 (require 'sethen-web-mode)
 
 ;; navigation
-(require 'sethen-vertico)
-(require 'sethen-orderless)
 (require 'sethen-consult)
+(require 'sethen-highlight-mode)
+(require 'sethen-orderless)
 (require 'sethen-treemacs)
 (require 'sethen-treemacs-evil)
+(require 'sethen-vertico)
 
 ;; snippets
 (require 'sethen-yasnippet)
@@ -76,11 +81,16 @@
 ;; vim
 (require 'sethen-evil)
 
+;; whitespace
+(require 'sethen-whitespace)
+
 ;; hooks
 (require 'sethen-css-mode-hook)
 (require 'sethen-emacs-lisp-mode-hook)
 (require 'sethen-js-mode-hook)
 (require 'sethen-lsp-mode-hook)
+(require 'sethen-prog-mode-hook)
+(require 'sethen-text-mode-hook)
 (require 'sethen-typescript-mode-hook)
 (require 'sethen-web-mode-hook)
 

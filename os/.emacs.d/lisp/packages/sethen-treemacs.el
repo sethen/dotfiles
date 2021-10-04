@@ -126,6 +126,7 @@
   (dir-closed dir-open fallback treemacs-create-icon treemacs-modify-theme)
   :config
   (setq treemacs-width 30)
+  (setf treemacs-window-background-color (cons "#1c262b" "#263238"))
   (sethen/treemacs-theme))
 
 (provide 'sethen-treemacs)
