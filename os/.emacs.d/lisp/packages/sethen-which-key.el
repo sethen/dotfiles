@@ -1,7 +1,11 @@
-;;; sethen-repositories.el --- Repositories settings -*- lexical-binding: t -*-
+;;; sethen-which-key.el --- Which Key settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
+;; Version: version
+;; Package-Requires: (dependencies)
+;; Homepage: homepage
+;; Keywords: keywords
 
 
 ;; This file is not part of GNU Emacs
@@ -25,22 +29,14 @@
 
 ;;; Code:
 
-(require 'package)
-
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-
-(package-initialize)
-
-(unless package-archive-contents
-  (package-refresh-contents))
-
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
 (require 'use-package)
 
-(setq use-package-always-ensure t)
+(use-package which-key
+  :commands
+  (which-key-mode)
+  :init
+  (which-key-mode))
 
-(provide 'sethen-repositories)
+(provide 'sethen-which-key)
 
-;;; sethen-repositories.el ends here
+;;; sethen-which-key.el ends here

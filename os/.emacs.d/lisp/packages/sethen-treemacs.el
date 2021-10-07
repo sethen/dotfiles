@@ -114,18 +114,19 @@
 	  (treemacs-create-icon
 	   :icon (propertize " " 'face 'green) :extensions ("vim"))
 	  (treemacs-create-icon
-	   :icon " " :extensions (".aliases" "ps1" ".zshenv" ".zshrc" "xml")
+	   :icon " " :extensions (".aliases" "ps1" ".zshenv" ".zshrc" "xml"))
 	  (treemacs-create-icon
 	   :icon " " :extensions ("zip"))
 	  (treemacs-create-icon
 	   :icon " " :extensions (fallback))
-	  ))))
+	  )))
 
 (use-package treemacs
   :commands
   (dir-closed dir-open fallback treemacs-create-icon treemacs-modify-theme)
   :config
-  (setq treemacs-width 30)
+  (setq treemacs-width 30
+		treemacs-file-event-delay 0)
   (setf treemacs-window-background-color (cons "#1c262b" "#263238"))
   (treemacs-indent-guide-mode)
   (sethen/treemacs-theme))

@@ -36,7 +36,6 @@
 (require 'sethen-use-package)
 (require 'sethen-user-interface)
 (require 'sethen-fonts)
-
 (require 'sethen-themes)
 
 ;; auto-complete
@@ -55,6 +54,7 @@
 
 ;; git
 (require 'sethen-git-gutter)
+(require 'sethen-magit)
 
 ;; lsp
 (require 'sethen-lsp-mode)
@@ -70,10 +70,17 @@
 (require 'sethen-treemacs)
 (require 'sethen-treemacs-evil)
 (require 'sethen-vertico)
+(require 'sethen-which-key)
+
+;; numbers
+(require 'sethen-literate-calc-mode)
 
 ;; snippets
 (require 'sethen-yasnippet)
 (require 'sethen-yasnippet-snippets)
+
+;; syntax
+(require 'sethen-rainbow-delimiters)
 
 ;; typescript
 (require 'sethen-typescript-mode)
@@ -89,6 +96,7 @@
 (require 'sethen-emacs-lisp-mode-hook)
 (require 'sethen-js-mode-hook)
 (require 'sethen-lsp-mode-hook)
+(require 'sethen-markdown-mode-hook)
 (require 'sethen-prog-mode-hook)
 (require 'sethen-text-mode-hook)
 (require 'sethen-typescript-mode-hook)

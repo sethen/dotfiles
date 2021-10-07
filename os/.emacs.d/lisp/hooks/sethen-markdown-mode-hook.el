@@ -1,4 +1,4 @@
-;;; sethen-repositories.el --- Repositories settings -*- lexical-binding: t -*-
+;;; sethen-markdown-mode-hook.el --- Markdown Mode hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -25,22 +25,14 @@
 
 ;;; Code:
 
-(require 'package)
+(require 'literate-calc-mode)
 
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(defun sethen/markdown-mode-hook()
+  "Markdown Mode hook settings!"
+  (literate-calc-minor-mode))
 
-(package-initialize)
+(add-hook 'markdown-mode-hook 'sethen/markdown-mode-hook)
 
-(unless package-archive-contents
-  (package-refresh-contents))
+(provide 'sethen-markdown-mode-hook)
 
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
-(require 'use-package)
-
-(setq use-package-always-ensure t)
-
-(provide 'sethen-repositories)
-
-;;; sethen-repositories.el ends here
+;;; sethen-markdown-mode-hook.el ends here

@@ -1,4 +1,4 @@
-;;; sethen-repositories.el --- Repositories settings -*- lexical-binding: t -*-
+;;; sethen-literate-calc-mode.el --- Literate Calc Mode settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -25,22 +25,10 @@
 
 ;;; Code:
 
-(require 'package)
-
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-
-(package-initialize)
-
-(unless package-archive-contents
-  (package-refresh-contents))
-
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
 (require 'use-package)
 
-(setq use-package-always-ensure t)
+(use-package literate-calc-mode)
 
-(provide 'sethen-repositories)
+(provide 'sethen-literate-calc-mode)
 
-;;; sethen-repositories.el ends here
+;;; sethen-literate-calc-mode.el ends here

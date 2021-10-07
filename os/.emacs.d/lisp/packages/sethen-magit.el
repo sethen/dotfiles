@@ -1,4 +1,4 @@
-;;; sethen-repositories.el --- Repositories settings -*- lexical-binding: t -*-
+;;; sethen-magit.el --- Magit settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -25,22 +25,17 @@
 
 ;;; Code:
 
-(require 'package)
-
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-
-(package-initialize)
-
-(unless package-archive-contents
-  (package-refresh-contents))
-
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
 (require 'use-package)
 
-(setq use-package-always-ensure t)
+(use-package magit
+  :bind
+  ("M-l" . 'magit-section-toggle)
+  ("M-j" . 'magit-next-line)
+  ("M-k" . 'magit-previous-line)
+  :commands
+  (magit-next-line magit-previous-line magit-section-toggle))
 
-(provide 'sethen-repositories)
 
-;;; sethen-repositories.el ends here
+(provide 'sethen-magit)
+
+;;; sethen-magit.el ends here

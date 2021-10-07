@@ -25,10 +25,13 @@
 
 ;;; Code:
 
+(require 'rainbow-delimiters)
+
 (defvar company-backends)
 
 (defun sethen/emacs-lisp-mode-hook()
   "Emacs Lisp Mode hook settings!"
+  (rainbow-delimiters-mode)
   (set (make-local-variable 'company-backends) '((:separate company-yasnippet company-capf) company-keywords)))
 
 (add-hook 'emacs-lisp-mode-hook 'sethen/emacs-lisp-mode-hook)

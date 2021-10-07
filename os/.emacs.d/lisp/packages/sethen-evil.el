@@ -26,6 +26,8 @@
 ;;; Code:
 
 
+(require 'consult)
+(require 'treemacs)
 (require 'use-package)
 
 (use-package evil
@@ -41,6 +43,7 @@
   (evil-define-key 'normal 'global (kbd "<leader>dv") 'describe-variable)
   (evil-define-key 'normal 'global (kbd "<leader>l") 'consult-line)
   (evil-define-key 'normal 'global (kbd "<leader>m") 'consult-man)
+  (evil-define-key 'normal 'global (kbd "<leader>g") 'magit-status)
   (evil-define-key 'normal 'global (kbd "<leader>pd") 'package-delete)
   (evil-define-key 'normal 'global (kbd "<leader>rg") 'consult-ripgrep)
   (evil-define-key 'normal 'global (kbd "<leader>t") 'treemacs)

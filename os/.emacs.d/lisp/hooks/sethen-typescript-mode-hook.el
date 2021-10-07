@@ -26,6 +26,7 @@
 ;;; Code:
 
 (require 'lsp)
+(require 'rainbow-delimiters)
 
 (defvar company-backends)
 
@@ -33,6 +34,7 @@
   "TypeScript Mode hook settings!"
   (add-hook 'before-save-hook 'lsp-eslint-apply-all-fixes nil 'local)
   (lsp-deferred)
+  (rainbow-delimiters-mode)
   (set (make-local-variable 'company-backends) '(company-capf company-keywords)))
 
 (add-hook 'typescript-mode-hook 'sethen/typescript-mode-hook)
