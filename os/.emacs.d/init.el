@@ -25,8 +25,8 @@
 
 ;;; Code:
 
-(add-to-list 'load-path (concat user-emacs-directory "/lisp/packages"))
 (add-to-list 'load-path (concat user-emacs-directory "/lisp/hooks"))
+(add-to-list 'load-path (concat user-emacs-directory "/lisp/packages"))
 (add-to-list 'load-path (concat user-emacs-directory "/lisp/utilities"))
 
 (setq custom-file (concat user-emacs-directory "emacs-custom.el"))
@@ -44,6 +44,9 @@
 
 ;; colors
 (require 'sethen-rainbow-mode)
+
+;; dashboard
+(require 'sethen-dashboard)
 
 ;; diagnostics
 (require 'sethen-flycheck)
