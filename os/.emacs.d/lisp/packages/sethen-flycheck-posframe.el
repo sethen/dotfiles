@@ -1,4 +1,4 @@
-;;; sethen-consult.el --- Consult settings -*- lexical-binding: t -*-
+;;; sethen-flycheck-posframe.el --- Flycheck Posframe settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -25,17 +25,18 @@
 
 ;;; Code:
 
+
+(require 'company)
+(require 'flycheck)
 (require 'use-package)
 
-(use-package consult
+(use-package flycheck-posframe
+  :after flycheck
   :config
-  (setq consult-project-root-function
-		(lambda ()
-		  (when-let (project (project-current))
-			(car (project-roots project)))))
-  :commands
-  (project-roots))
+  (add-to-list 'flycheck-posframe-inhibit-functions #'(lambda () company-backend))
+  :defines (flycheck-posframe-inhbit-functions)
+  :hook (flycheck-mode . flycheck-posframe-mode))
 
-(provide 'sethen-consult)
+(provide 'sethen-flycheck-posframe)
 
-;;; sethen-consult.el ends here
+;;; sethen-flycheck-posframe.el ends here

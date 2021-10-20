@@ -50,6 +50,7 @@
 
 ;; diagnostics
 (require 'sethen-flycheck)
+(require 'sethen-flycheck-posframe)
 
 ;; formatting
 (require 'sethen-electric-pair-mode)

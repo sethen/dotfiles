@@ -29,16 +29,15 @@
 
 (use-package lsp-ui
   :config
-  (setq lsp-completion-provider :none)
-  (setq lsp-completion-show-detail nil)
-  (setq lsp-completion-show-kind t)
-  (setq lsp-signature-render-documentation t)
-  (setq lsp-ui-doc-position 'at-point)
-  (setq lsp-ui-sideline-show-code-actions nil)
-  (setq lsp-ui-sideline-show-diagnostics t)
-  (setq lsp-ui-sideline-show-hover nil)
+  (setq lsp-completion-provider :none
+		lsp-completion-show-detail nil
+		lsp-completion-show-kind t
+		lsp-headerline-arrow ""
+		lsp-signature-render-documentation t
+		lsp-ui-doc-position 'at-point
+		lsp-ui-sideline-enable nil)
   :defines
-  (lsp-completion-provider lsp-completion-show-detail lsp-completion-show-kind))
+  (lsp-completion-provider lsp-completion-show-detail lsp-completion-show-kind lsp-headerline-arrow))
 
 (provide 'sethen-lsp-ui)
 
