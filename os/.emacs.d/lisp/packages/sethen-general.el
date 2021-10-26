@@ -1,4 +1,4 @@
-;;; sethen-css-mode-hook.el --- CSS Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-general.el --- General settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -25,19 +25,25 @@
 
 ;;; Code:
 
-(require 'lsp)
-(require 'rainbow-delimiters)
+(require 'use-package)
 
-(defvar company-backends)
+(use-package general
+  :commands
+  (general-define-key)
+  :init
+  (general-define-key
+   :prefix "C-c"
+   "cb" 'consult-buffer
+   "cf" 'consult-find
+   "cl" 'consult-line
+   "cm" 'consult-man
+   "df" 'describe-function
+   "dp" 'describe-package
+   "dv" 'describe-variable
+   "mg" 'magit-status
+   "pd" 'package-delete
+   "rg" 'consult-ripgrep
+   "t" 'treemacs))
 
-(defun sethen/css-mode-hook()
-  "CSS Mode hook settings!"
-  (lsp-deferred)
-  (rainbow-delimiters-mode)
-  (setq-local company-backends '((:separate company-yasnippet company-capf company-css company-files))))
-
-(add-hook 'css-mode-hook 'sethen/css-mode-hook)
-
-(provide 'sethen-css-mode-hook)
-
-;;; sethen-css-mode-hook.el ends here
+(provide 'sethen-general)
+;;; sethen-general.el ends here

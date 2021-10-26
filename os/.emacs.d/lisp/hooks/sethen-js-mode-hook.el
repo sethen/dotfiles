@@ -26,6 +26,7 @@
 ;;; Code:
 
 (require 'lsp)
+(require 'rainbow-delimiters)
 
 (defvar company-backends)
 
@@ -33,7 +34,8 @@
   "JS Mode hook settings!"
   (add-hook 'before-save-hook 'lsp-eslint-apply-all-fixes nil 'local)
   (lsp-deferred)
-  (set (make-local-variable 'company-backends) '((:separate company-yasnippet company-capf) company-keywords)))
+  (rainbow-delimiters-mode)
+  (setq-local company-backends '((:separate company-yasnippet company-capf company-keywords company-files))))
 
 (add-hook 'js-mode-hook 'sethen/js-mode-hook)
 

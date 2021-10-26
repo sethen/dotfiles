@@ -1,4 +1,4 @@
-;;; sethen-css-mode-hook.el --- CSS Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-minibuffer-setup-hook.el ---  Minibuffer Setup Mode hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -25,19 +25,12 @@
 
 ;;; Code:
 
-(require 'lsp)
-(require 'rainbow-delimiters)
+(defun sethen/minibuffer-setup-hook()
+  "Minibuffer Setup Mode hook settings!"
+  (setq-local completion-styles `(orderless)))
 
-(defvar company-backends)
+(add-hook 'minibuffer-setup-hook 'sethen/minibuffer-setup-hook)
 
-(defun sethen/css-mode-hook()
-  "CSS Mode hook settings!"
-  (lsp-deferred)
-  (rainbow-delimiters-mode)
-  (setq-local company-backends '((:separate company-yasnippet company-capf company-css company-files))))
+(provide 'sethen-minibuffer-setup-hook)
 
-(add-hook 'css-mode-hook 'sethen/css-mode-hook)
-
-(provide 'sethen-css-mode-hook)
-
-;;; sethen-css-mode-hook.el ends here
+;;; sethen-minibuffer-setup-hook.el ends here

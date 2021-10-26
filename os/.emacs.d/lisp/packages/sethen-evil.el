@@ -34,19 +34,7 @@
   :commands
   (evil-define-key* evil-mode evil-set-leader)
   :config
-  (evil-set-leader 'normal "\\")
   (setq evil-search-module 'evil-search)
-  (evil-define-key 'normal 'global (kbd "<leader>cb") 'consult-buffer)
-  (evil-define-key 'normal 'global (kbd "<leader>cf") 'consult-find)
-  (evil-define-key 'normal 'global (kbd "<leader>cl") 'consult-line)
-  (evil-define-key 'normal 'global (kbd "<leader>df") 'describe-function)
-  (evil-define-key 'normal 'global (kbd "<leader>dp") 'describe-package)
-  (evil-define-key 'normal 'global (kbd "<leader>dv") 'describe-variable)
-  (evil-define-key 'normal 'global (kbd "<leader>ma") 'consult-man)
-  (evil-define-key 'normal 'global (kbd "<leader>mg") 'magit-status)
-  (evil-define-key 'normal 'global (kbd "<leader>pd") 'package-delete)
-  (evil-define-key 'normal 'global (kbd "<leader>rg") 'consult-ripgrep)
-  (evil-define-key 'normal 'global (kbd "<leader>t")  'treemacs)
   :defines
   (evil-search-module)
   :init

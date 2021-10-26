@@ -37,6 +37,7 @@
 (require 'sethen-user-interface)
 (require 'sethen-fonts)
 (require 'sethen-themes)
+(require 'sethen-general)
 
 ;; auto-complete
 (require 'sethen-company)
@@ -101,6 +102,8 @@
 (require 'sethen-js-mode-hook)
 (require 'sethen-lsp-mode-hook)
 (require 'sethen-markdown-mode-hook)
+(require 'sethen-minibuffer-setup-hook)
+(require 'sethen-typescript-mode-hook)
 (require 'sethen-prog-mode-hook)
 (require 'sethen-text-mode-hook)
 (require 'sethen-typescript-mode-hook)

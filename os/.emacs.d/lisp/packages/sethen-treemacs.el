@@ -123,7 +123,7 @@
 
 (use-package treemacs
   :commands
-  (dir-closed dir-open fallback treemacs-create-icon treemacs-modify-theme)
+  (dir-closed dir-open fallback treemacs-create-icon treemacs-indent-guide-mode treemacs-modify-theme)
   :config
   (setq treemacs-width 30
 		treemacs-file-event-delay 0)

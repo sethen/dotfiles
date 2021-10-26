@@ -28,8 +28,8 @@
 (require 'use-package)
 
 (use-package orderless
-  :custom
-  (completion-styles '(orderless)))
+  :init
+  (icomplete-mode))
 
 (provide 'sethen-orderless)
 

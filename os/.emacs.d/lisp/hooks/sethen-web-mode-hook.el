@@ -31,8 +31,9 @@
 
 (defun sethen/web-mode-hook ()
   "Web Mode hook settings!"
-  (lsp-deferred)
-  (set (make-local-variable 'company-backends) '((:separate company-yasnippet company-capf) company-keywords)))
+  (lsp-deferred))
+  (setq-local company-backends '((:separate company-yasnippet company-capf company-keywords company-files)))
+
 
 (add-hook 'web-mode-hook 'sethen/web-mode-hook)
 
