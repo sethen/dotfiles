@@ -25,7 +25,6 @@
 
 ;;; Code:
 
-
 (require 'use-package)
 
 (use-package flycheck

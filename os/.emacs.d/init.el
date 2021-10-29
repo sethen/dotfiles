@@ -27,7 +27,6 @@
 
 (add-to-list 'load-path (concat user-emacs-directory "/lisp/hooks"))
 (add-to-list 'load-path (concat user-emacs-directory "/lisp/packages"))
-(add-to-list 'load-path (concat user-emacs-directory "/lisp/utilities"))
 
 (setq custom-file (concat user-emacs-directory "emacs-custom.el"))
 
@@ -41,7 +40,7 @@
 
 ;; auto-complete
 (require 'sethen-company)
-(require 'sethen-company-posframe)
+;;(require 'sethen-company-posframe)
 
 ;; colors
 (require 'sethen-rainbow-mode)

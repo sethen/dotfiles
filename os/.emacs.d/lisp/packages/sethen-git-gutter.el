@@ -22,7 +22,6 @@
 
 ;;; Commentary:
 
-;; commentary
 
 ;;; Code:
 

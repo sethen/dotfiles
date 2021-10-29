@@ -31,6 +31,7 @@
 
 (defun sethen/web-mode-hook ()
   "Web Mode hook settings!"
+  (add-hook 'before-save-hook 'lsp-eslint-apply-all-fixes nil 'local)
   (lsp-deferred))
   (setq-local company-backends '((:separate company-yasnippet company-capf company-keywords company-files)))
 

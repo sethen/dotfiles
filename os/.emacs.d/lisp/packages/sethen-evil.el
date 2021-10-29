@@ -25,7 +25,6 @@
 
 ;;; Code:
 
-
 (require 'consult)
 (require 'treemacs)
 (require 'use-package)

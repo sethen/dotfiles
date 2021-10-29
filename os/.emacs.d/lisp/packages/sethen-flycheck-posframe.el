@@ -25,7 +25,6 @@
 
 ;;; Code:
 
-
 (require 'company)
 (require 'flycheck)
 (require 'use-package)
