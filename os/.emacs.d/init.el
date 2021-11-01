@@ -40,7 +40,7 @@
 
 ;; auto-complete
 (require 'sethen-company)
-;;(require 'sethen-company-posframe)
+(require 'sethen-company-posframe)
 
 ;; colors
 (require 'sethen-rainbow-mode)

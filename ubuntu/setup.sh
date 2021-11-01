@@ -3,6 +3,7 @@ header_message 'ubuntu setup'
 information_message 'adding repositories'
 
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/docker.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/emacs-snapshot.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/google-chrome.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/insomnia.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/visual-studio-code.sh
@@ -24,6 +25,7 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/cmake.
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/cowsay.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/docker.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/dotnet-core.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/emacs-snapshot.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/exuberant-ctags.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/fortune.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gdebi.sh
@@ -40,7 +42,6 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/insomn
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/kazam.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/mdadm.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/moka-icon-theme.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/neovim.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/nginx.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/mysql-server.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/samba.sh
@@ -61,7 +62,6 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/jdk.sh
 
 # nodejs install order matters here
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/nodejs.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/neovim-node-host.sh
 
 # python3 install order matters here
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/python3.sh
@@ -69,7 +69,6 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/buku.s
 
 # rbenv and ruby install order matters here
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/rbenv.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/neovim-ruby-host.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/rails.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/ripgrep.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/tmuxinator.sh
@@ -89,16 +88,4 @@ if [[ $UPGRADE =~ '[Yy]' ]]; then
 
 	sudo apt upgrade -y
 	sudo apt autoremove -y
-
-	echo ''
-fi
-
-read 'INSTALL_NEOVIM_NIGHTLY?would you like to install neovim nightly? [Yy/Nn] '
-
-if [[ $UPGRADE =~ '[Yy]' ]]; then
-	information_message 'installing neovim nightly'
-
-	install_neovim_nightly
-
-	echo ''
 fi
