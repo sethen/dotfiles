@@ -34,7 +34,7 @@
   "CSS Mode hook settings!"
   (lsp-deferred)
   (rainbow-delimiters-mode)
-  (setq-local company-backends '((:separate company-yasnippet company-capf company-css company-files))))
+  (setq-local company-backends '(company-capf company-css company-files company-yasnippet)))
 
 (add-hook 'css-mode-hook 'sethen/css-mode-hook)
 

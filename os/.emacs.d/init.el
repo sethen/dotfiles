@@ -25,6 +25,7 @@
 
 ;;; Code:
 
+(add-to-list 'load-path (concat user-emacs-directory "/lisp/global"))
 (add-to-list 'load-path (concat user-emacs-directory "/lisp/hooks"))
 (add-to-list 'load-path (concat user-emacs-directory "/lisp/packages"))
 
@@ -36,6 +37,11 @@
 (require 'sethen-user-interface)
 (require 'sethen-fonts)
 (require 'sethen-themes)
+
+;; global
+(require 'sethen-modeline)
+
+;; global keybindings
 (require 'sethen-general)
 
 ;; auto-complete
@@ -78,6 +84,9 @@
 
 ;; numbers
 (require 'sethen-literate-calc-mode)
+
+;; music
+(require 'sethen-smudge)
 
 ;; snippets
 (require 'sethen-yasnippet)

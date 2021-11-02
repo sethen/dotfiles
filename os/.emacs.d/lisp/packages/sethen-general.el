@@ -41,8 +41,11 @@
    "dp" 'describe-package
    "dv" 'describe-variable
    "mg" 'magit-status
+   "nt" 'smudge-controller-next-track
    "pd" 'package-delete
+   "pt" 'smudge-controller-previous-track
    "rg" 'consult-ripgrep
+   "ss" 'smudge-controller-toggle-shuffle
    "t" 'treemacs))
 
 (provide 'sethen-general)

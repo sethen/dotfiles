@@ -1,4 +1,4 @@
-;;; sethen-web-mode-hook.el --- Web Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-smudge.el --- Smudge settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -25,19 +25,16 @@
 
 ;;; Code:
 
-(require 'lsp)
+(require 'use-package)
 
-(defvar company-backends)
+(use-package smudge
+  :defines
+  (smudge-oauth2-client-id smudge-oauth2-client-secret)
+  :config
+  (setq smudge-oauth2-client-id "c9e3d73df8c54cf3800b407eb890cf51"
+		smudge-oauth2-client-secret "b85462351a62458bab1b84bf380e3ecd"
+		smudge-transport 'connect))
 
-(defun sethen/web-mode-hook ()
-  "Web Mode hook settings!"
-  (add-hook 'before-save-hook 'lsp-eslint-apply-all-fixes nil 'local)
-  (lsp-deferred))
-  (setq-local company-backends '(company-capf company-keywords company-files company-yasnippet))
+(provide 'sethen-smudge)
 
-
-(add-hook 'web-mode-hook 'sethen/web-mode-hook)
-
-(provide 'sethen-web-mode-hook)
-
-;;; sethen-web-mode-hook.el ends here
+;;; sethen-smudge.el ends here

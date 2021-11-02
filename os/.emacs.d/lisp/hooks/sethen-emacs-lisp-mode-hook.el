@@ -32,7 +32,7 @@
 (defun sethen/emacs-lisp-mode-hook()
   "Emacs Lisp Mode hook settings!"
   (rainbow-delimiters-mode)
-  (setq-local company-backends '((:separate company-yasnippet company-capf company-keywords company-files))))
+  (setq-local company-backends '(company-capf company-keywords company-files company-yasnippet)))
 
 (add-hook 'emacs-lisp-mode-hook 'sethen/emacs-lisp-mode-hook)
 

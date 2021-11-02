@@ -35,7 +35,7 @@
   (add-hook 'before-save-hook 'lsp-eslint-apply-all-fixes nil 'local)
   (lsp-deferred)
   (rainbow-delimiters-mode)
-  (setq-local company-backends '((:separate company-yasnippet company-capf company-keywords company-files))))
+  (setq-local company-backends '(company-capf company-keywords company-files company-yasnippet)))
 
 (add-hook 'js-mode-hook 'sethen/js-mode-hook)
 
