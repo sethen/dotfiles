@@ -1,4 +1,4 @@
-;;; sethen-fonts.el --- Fonts settings -*- lexical-binding: t -*-
+;;; sethen-modeline.el --- Modeline settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -23,10 +23,15 @@
 ;;; Commentary:
 
 
-;;; Code:
+;;; code:
 
-(set-face-attribute 'default nil :font "SF Mono-12" :weight 'normal :slant 'normal)
+(require 'sethen-modeline-lib)
 
-(provide 'sethen-fonts)
+(setq-default mode-line-format '((:eval (sethen-get-evil-state))
+								 (:eval (sethen-get-buffer-name))
+								 (:eval (sethen-get-percentage-of-buffer))
+								 ))
 
-;;; sethen-fonts.el ends here
+(provide 'sethen-modeline)
+
+;;; sethen-modeline.el ends here

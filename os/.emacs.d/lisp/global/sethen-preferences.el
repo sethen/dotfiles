@@ -1,4 +1,4 @@
-;;; sethen-global.el --- Global settings -*- lexical-binding: t -*-
+;;; sethen-preferences.el --- Preferences -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -28,6 +28,6 @@
 (setq make-backup-files nil)
 (setq scroll-margin 20)
 
-(provide 'sethen-global)
+(provide 'sethen-preferences)
 
-;;; sethen-global.el ends here
+;;; sethen-preferences.el ends here

@@ -25,24 +25,24 @@
 
 ;;; Code:
 
+(add-to-list 'load-path (concat user-emacs-directory "/lisp/constants"))
 (add-to-list 'load-path (concat user-emacs-directory "/lisp/global"))
 (add-to-list 'load-path (concat user-emacs-directory "/lisp/hooks"))
+(add-to-list 'load-path (concat user-emacs-directory "/lisp/lib"))
 (add-to-list 'load-path (concat user-emacs-directory "/lisp/packages"))
 
 (setq custom-file (concat user-emacs-directory "emacs-custom.el"))
 
-(require 'sethen-repositories)
-(require 'sethen-global)
-(require 'sethen-use-package)
-(require 'sethen-user-interface)
-(require 'sethen-fonts)
-(require 'sethen-themes)
-
 ;; global
-(require 'sethen-modeline)
+(require 'sethen-repositories)
+(require 'sethen-use-package)
 
-;; global keybindings
-(require 'sethen-general)
+(require 'sethen-fonts)
+(require 'sethen-modeline)
+(require 'sethen-preferences)
+(require 'sethen-themes)
+(require 'sethen-user-interface)
+
 
 ;; auto-complete
 (require 'sethen-company)
@@ -65,6 +65,9 @@
 ;; git
 (require 'sethen-git-gutter)
 (require 'sethen-magit)
+
+;; keybindings
+(require 'sethen-general)
 
 ;; lsp
 (require 'sethen-lsp-mode)
