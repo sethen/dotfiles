@@ -25,7 +25,7 @@
 
 ;;; Code:
 
-(set-face-attribute 'default nil :font "SFMono-12" :weight 'normal :slant 'normal)
+(set-face-attribute 'default nil :font "Liga SFMono-12" :weight 'normal :slant 'normal)
 
 (provide 'sethen-fonts)
 

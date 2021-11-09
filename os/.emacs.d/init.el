@@ -43,7 +43,6 @@
 (require 'sethen-themes)
 (require 'sethen-user-interface)
 
-
 ;; auto-complete
 (require 'sethen-company)
 (require 'sethen-company-posframe)
@@ -61,6 +60,7 @@
 ;; formatting
 (require 'sethen-electric-pair-mode)
 (require 'sethen-indentation)
+(require 'sethen-ligatures)
 
 ;; git
 (require 'sethen-git-gutter)
@@ -120,4 +120,4 @@
 (require 'sethen-typescript-mode-hook)
 (require 'sethen-web-mode-hook)
 
-;;; init.el ends here
+;; init.el ends here

@@ -26,25 +26,17 @@
 ;;; Code:
 
 (require 'lsp)
+(require 'ligature)
 (require 'rainbow-delimiters)
 
 (defvar company-backends)
 
-(defun sethen-typescript-prettify-symbols ()
-  "docstring"
-  (setq prettify-symbols-alist '(("=>" . ?⇒)
-								 ("/=" . ?≠)
-								 ("!==" . ?≠)
-								 ("===" . ?≡)
-								 ("<=" . ?≤)
-								 (">=" . ?≥))))
-
 (defun sethen/typescript-mode-hook ()
   "TypeScript Mode hook settings!"
   (add-hook 'before-save-hook 'lsp-eslint-apply-all-fixes nil 'local)
+  (ligature-mode)
   (lsp-deferred)
   (rainbow-delimiters-mode)
-  (sethen-typescript-prettify-symbols)
   (setq-local company-backends '(company-capf company-keywords company-files)))
 
 (add-hook 'typescript-mode-hook 'sethen/typescript-mode-hook)

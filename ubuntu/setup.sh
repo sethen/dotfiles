@@ -25,6 +25,7 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/cmake.
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/cowsay.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/docker.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/dotnet-core.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/emacs-ligature.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/emacs-snapshot.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/exuberant-ctags.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/fortune.sh

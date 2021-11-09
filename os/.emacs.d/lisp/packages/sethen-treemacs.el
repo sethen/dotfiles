@@ -64,7 +64,7 @@
 	  (treemacs-create-icon
 	   :icon " " :extensions ("otf" "ttf" "woff"))
 	  (treemacs-create-icon
-	   :icon " " :extensions ("editorconfig"))
+	   :icon " " :extensions ("editorconfig" "makefile"))
 	  (treemacs-create-icon
 	   :icon " " :extensions ("bmp" "png" "jpg" "svg"))
 	  (treemacs-create-icon
@@ -72,7 +72,7 @@
 	  (treemacs-create-icon
 	   :icon " " :extensions ("fish" "sh" "zsh"))
 	  (treemacs-create-icon
-	   :icon (propertize "" 'face 'red-one-icon) :extensions ("git" "gitignore" "gitignore_global" "gitconfig"))
+	   :icon (propertize "" 'face 'red-one-icon) :extensions ("git" "gitignore" "gitignore_global" "gitconfig" "gitmodules"))
 	  (treemacs-create-icon
 	   :icon (propertize " " 'face 'orange) :extensions ("html"))
 	  (treemacs-create-icon
