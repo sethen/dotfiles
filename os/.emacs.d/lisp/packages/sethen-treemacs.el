@@ -48,7 +48,9 @@
 	  (treemacs-create-icon
 	   :icon (propertize " " 'face 'alert-urgent-face) :extensions ("appimage" "dll" "sln"))
 	  (treemacs-create-icon
-	   :icon " " :extensions ("conf"))
+	   :icon " " :extensions ("cargo.toml" "cargo.lock"))
+	  (treemacs-create-icon
+	   :icon " " :extensions ("conf" "config"))
 	  (treemacs-create-icon
 	   :icon " " :extensions ("cs"))
 	  (treemacs-create-icon
@@ -60,7 +62,7 @@
 	  (treemacs-create-icon
 	   :icon (propertize " " 'face 'blue-three-icon) :extensions ("diff"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'blue-three-icon) :extensions ("dockerfile" "dockerignore"))
+	   :icon (propertize " " 'face 'blue-three-icon) :extensions ("dockerfile" "dockerignore" "docker-compose.yml"))
 	  (treemacs-create-icon
 	   :icon " " :extensions ("otf" "ttf" "woff"))
 	  (treemacs-create-icon

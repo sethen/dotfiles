@@ -45,6 +45,7 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/mdadm.
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/moka-icon-theme.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/nginx.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/mysql-server.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/rust-analyzer.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/samba.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/spotify.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/telegram.sh
@@ -67,6 +68,7 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/nodejs
 # python3 install order matters here
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/python3.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/buku.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/python-lsp-server.sh
 
 # rbenv and ruby install order matters here
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/rbenv.sh

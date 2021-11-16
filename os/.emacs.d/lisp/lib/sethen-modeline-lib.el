@@ -23,7 +23,6 @@
 
 ;;; Code:
 
-(require 'evil)
 (require 'material-colors)
 (require 'sethen-global-lib)
 

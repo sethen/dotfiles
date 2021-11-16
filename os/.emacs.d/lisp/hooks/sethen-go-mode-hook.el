@@ -1,10 +1,10 @@
-;;; sethen-fonts.el --- Fonts settings -*- lexical-binding: t -*-
+;;; sethen-go-mode-hook.el --- Go Mode hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
 
 
-;; This file is not part of GNU Emacs
+;; This file is not part of GNU Go
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -25,8 +25,19 @@
 
 ;;; Code:
 
-(set-face-attribute 'default nil :font "Liga SFMono-11" :weight 'normal :slant 'normal)
+(require 'lsp)
+(require 'rainbow-delimiters)
 
-(provide 'sethen-fonts)
+(defvar company-backends)
 
-;;; sethen-fonts.el ends here
+(defun sethen/go-mode-hook()
+  "Go Mode hook settings!"
+  (lsp-deferred)
+  (rainbow-delimiters-mode)
+  (setq-local company-backends '(company-capf company-keywords company-files company-yasnippet)))
+
+(add-hook 'go-mode-hook 'sethen/go-mode-hook)
+
+(provide 'sethen-go-mode-hook)
+
+;;; sethen-go-mode-hook.el ends here

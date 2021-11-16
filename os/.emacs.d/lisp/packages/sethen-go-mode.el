@@ -1,4 +1,4 @@
-;;; sethen-lsp-mode.el --- LSP Mode settings -*- lexical-binding: t -*-
+;;; sethen-go-mode.el --- Go Mode settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -27,27 +27,8 @@
 
 (require 'use-package)
 
-(use-package lsp-mode
-  :config
-  (lsp-ensure-server 'css-ls)
-  (lsp-ensure-server 'dockerfile-ls)
-  (lsp-ensure-server 'eslint)
-  (lsp-ensure-server 'html-ls)
-  (lsp-ensure-server 'json-ls)
-  (lsp-ensure-server 'lua-language-server)
-  (lsp-ensure-server 'omnisharp)
-  (lsp-ensure-server 'rust-analyzer)
-  (lsp-ensure-server 'ts-ls)
-  (lsp-ensure-server 'yamlls)
-  (setq gc-cons-threshold 100000000)
-  (setq lsp-eslint-auto-fix-on-save t)
-  (setq lsp-idle-delay 0.500)
-  (setq read-process-output-max (* 1024 1024))
-  :commands
-  (lsp-ensure-server)
-  :defines
-  lsp-eslint-auto-fix-on-save)
+(use-package go-mode)
 
-(provide 'sethen-lsp-mode)
+(provide 'sethen-go-mode)
 
-;;; sethen-lsp-mode.el ends here
+;;; sethen-go-mode.el ends here

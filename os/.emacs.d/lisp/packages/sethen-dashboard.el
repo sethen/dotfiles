@@ -25,7 +25,6 @@
 
 ;;; Code:
 
-(require 'evil)
 (require 'use-package)
 
 (use-package dashboard

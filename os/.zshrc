@@ -42,7 +42,12 @@ fi
 # set go in PATH if found
 if [[ -a $GO_BIN && -d $DEVELOPER_GO_DIRECTORY ]]; then
 	export GOPATH=$DEVELOPER_GO_DIRECTORY
-	export PATH=$DEVELOPER_GO_DIRECTORY:$DEVELOPER_GO_DIRECTORY/bin:$PATH
+	export PATH=$DEVELOPER_GO_DIRECTORY/bin:$PATH
+fi
+
+# set gopls in PATH if found
+if [[ -a $GOPLS && -d $DEVELOPER_GO_DIRECTORY ]]; then
+	export PATH=$GOPLS:$PATH
 fi
 
 # set dotnet in PATH if found

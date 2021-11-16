@@ -50,6 +50,9 @@
 ;; colors
 (require 'sethen-rainbow-mode)
 
+;; csharp
+(require 'sethen-csharp-mode)
+
 ;; dashboard
 (require 'sethen-dashboard)
 
@@ -73,6 +76,9 @@
 (require 'sethen-lsp-mode)
 (require 'sethen-lsp-ui)
 
+;; go
+(require 'sethen-go-mode)
+
 ;; modes
 (require 'sethen-web-mode)
 
@@ -91,6 +97,12 @@
 ;; music
 (require 'sethen-smudge)
 
+;; rust
+(require 'sethen-rust-mode)
+
+;; shell
+(require 'sethen-exec-path-from-shell)
+
 ;; snippets
 (require 'sethen-yasnippet)
 (require 'sethen-yasnippet-snippets)
@@ -107,13 +119,20 @@
 ;; whitespace
 (require 'sethen-whitespace)
 
+;; yaml
+(require 'sethen-yaml-mode)
+
 ;; hooks
+(require 'sethen-csharp-mode-hook)
 (require 'sethen-css-mode-hook)
 (require 'sethen-emacs-lisp-mode-hook)
 (require 'sethen-js-mode-hook)
 (require 'sethen-lsp-mode-hook)
+(require 'sethen-go-mode-hook)
 (require 'sethen-markdown-mode-hook)
 (require 'sethen-minibuffer-setup-hook)
+(require 'sethen-python-mode-hook)
+(require 'sethen-rust-mode-hook)
 (require 'sethen-typescript-mode-hook)
 (require 'sethen-prog-mode-hook)
 (require 'sethen-text-mode-hook)
