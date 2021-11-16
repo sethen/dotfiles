@@ -34,7 +34,7 @@
 		lsp-completion-show-kind t
 		lsp-headerline-arrow ""
 		lsp-signature-render-documentation t
-		lsp-ui-doc-position 'at-point
+		lsp-ui-doc-position 'bottom
 		lsp-ui-sideline-enable nil)
   :defines
   (lsp-completion-provider lsp-completion-show-detail lsp-completion-show-kind lsp-headerline-arrow))
