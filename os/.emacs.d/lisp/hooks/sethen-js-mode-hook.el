@@ -25,6 +25,7 @@
 
 ;;; Code:
 
+(require 'ligature)
 (require 'lsp)
 (require 'rainbow-delimiters)
 
@@ -33,6 +34,7 @@
 (defun sethen/js-mode-hook()
   "JS Mode hook settings!"
   (add-hook 'before-save-hook 'lsp-eslint-apply-all-fixes nil 'local)
+  (ligature-mode)
   (lsp-deferred)
   (rainbow-delimiters-mode)
   (setq-local company-backends '(company-capf company-keywords company-files company-yasnippet)))

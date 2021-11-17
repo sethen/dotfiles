@@ -25,12 +25,14 @@
 
 ;;; Code:
 
+(require 'ligature)
 (require 'rainbow-delimiters)
 
 (defvar company-backends)
 
 (defun sethen/emacs-lisp-mode-hook()
   "Emacs Lisp Mode hook settings!"
+  (ligature-mode)
   (rainbow-delimiters-mode)
   (setq-local company-backends '(company-capf company-keywords company-files company-yasnippet)))
 

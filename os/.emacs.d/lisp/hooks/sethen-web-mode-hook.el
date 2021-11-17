@@ -25,6 +25,7 @@
 
 ;;; Code:
 
+(require 'ligature)
 (require 'lsp)
 
 (defvar company-backends)
@@ -32,6 +33,7 @@
 (defun sethen/web-mode-hook ()
   "Web Mode hook settings!"
   (add-hook 'before-save-hook 'lsp-eslint-apply-all-fixes nil 'local)
+  (ligature-mode)
   (lsp-deferred))
   (setq-local company-backends '(company-capf company-keywords company-files company-yasnippet))
 

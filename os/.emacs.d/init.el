@@ -60,6 +60,9 @@
 (require 'sethen-flycheck)
 (require 'sethen-flycheck-posframe)
 
+;; docker
+(require 'sethen-dockerfile-mode)
+
 ;; formatting
 (require 'sethen-electric-pair-mode)
 (require 'sethen-indentation)

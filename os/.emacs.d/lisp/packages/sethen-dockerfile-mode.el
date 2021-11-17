@@ -1,4 +1,4 @@
-;;; sethen-global-lib.el --- Global lib -*- lexical-binding: t -*-
+;;; sethen-dockerfile-mode.el --- Dockerfile Mode Settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -25,30 +25,10 @@
 
 ;;; Code:
 
-(defun sethen-is-buffer-name (buf)
-  "Is current buffer?"
-  (if (string= (buffer-name) buf)
-	  t
-	nil))
+(require 'use-package)
 
-(defun sethen-is-buffer-name-dashboard ()
-  "Is buffer name dashboard"
-  (sethen-is-buffer-name "*dashboard*"))
+(use-package dockerfile-mode)
 
-(defun sethen-is-buffer-name-help ()
-  "Is current buffer help"
-  (sethen-is-buffer-name "*Help*"))
+(provide 'sethen-dockerfile-mode)
 
-(defun sethen-is-buffer-name-scratch ()
-  "Is current buffer scratch"
-  (sethen-is-buffer-name "*scratch*"))
-
-(defun sethen-is-buffer-name-ignored ()
-  "Is current buffer ignored"
-  (or (sethen-is-buffer-name-dashboard)
-	  (sethen-is-buffer-name-help)
-	  (sethen-is-buffer-name-scratch)))
-
-(provide 'sethen-global-lib)
-
-;;; sethen-global-lib.el ends here
+;;; sethen-dockerfile-mode.el ends here

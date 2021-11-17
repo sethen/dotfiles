@@ -27,14 +27,7 @@
 
 (require 'use-package)
 
-(use-package consult
-  :config
-  (setq consult-project-root-function
-		(lambda ()
-		  (when-let (project (project-current))
-			(car (project-roots project)))))
-  :commands
-  (project-roots))
+(use-package consult)
 
 (provide 'sethen-consult)
 

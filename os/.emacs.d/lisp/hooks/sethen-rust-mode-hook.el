@@ -25,6 +25,7 @@
 
 ;;; Code:
 
+(require 'ligature)
 (require 'lsp)
 (require 'rainbow-delimiters)
 
@@ -32,6 +33,7 @@
 
 (defun sethen/rust-mode-hook()
   "Rust Mode hook settings!"
+  (ligature-mode)
   (lsp-deferred)
   (rainbow-delimiters-mode)
   (setq-local company-backends '(company-capf company-keywords company-files company-yasnippet)))

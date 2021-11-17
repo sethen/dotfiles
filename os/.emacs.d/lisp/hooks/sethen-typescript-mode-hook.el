@@ -25,8 +25,8 @@
 
 ;;; Code:
 
-(require 'lsp)
 (require 'ligature)
+(require 'lsp)
 (require 'rainbow-delimiters)
 
 (defvar company-backends)
