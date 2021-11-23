@@ -40,7 +40,7 @@
 		dashboard-set-footer nil
 		dashboard-set-init-info t
 		dashboard-set-navigator t
-		dashboard-startup-banner "~/.emacs.d/images/ok.png"
+		dashboard-startup-banner "~/.emacs.d/images/opm.gif"
 		dashboard-navigator-buttons
 		`(;; line1
 		  (("\ue965" "GitHub" "Sethen's GitHub" (lambda (&rest _) (browse-url "https://www.github.com/sethen")))

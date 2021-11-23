@@ -37,9 +37,9 @@
    "cf" 'consult-find
    "cl" 'consult-line
    "cm" 'consult-man
-   "df" 'describe-function
    "dp" 'describe-package
-   "dv" 'describe-variable
+   "hf" 'helpful-function
+   "hv" 'helpful-variable
    "mg" 'magit-status
    "nt" 'smudge-controller-next-track
    "pd" 'package-delete

@@ -63,6 +63,9 @@
 ;; docker
 (require 'sethen-dockerfile-mode)
 
+;; docs
+(require 'sethen-helpful)
+
 ;; formatting
 (require 'sethen-electric-pair-mode)
 (require 'sethen-indentation)
@@ -81,6 +84,7 @@
 
 ;; go
 (require 'sethen-go-mode)
+
 
 ;; modes
 (require 'sethen-web-mode)

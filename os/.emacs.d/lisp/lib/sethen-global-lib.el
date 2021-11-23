@@ -1,4 +1,4 @@
-;;; sethen-consult.el --- Consult settings -*- lexical-binding: t -*-
+;;; sethen-global-lib.el --- Global lib -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -25,18 +25,30 @@
 
 ;;; Code:
 
-(require 'use-package)
+(defun sethen-is-buffer-name (buf)
+  "Is current buffer?"
+  (if (string= (buffer-name) buf)
+	  t
+	nil))
 
-(use-package consult
-  :config
-  (setq consult-find-args "find .")
-  (setq consult-project-root-function
-		(lambda ()
-		  (when-let (project (project-current))
-			(car (project-roots project)))))
-  :commands
-  (project-roots))
+(defun sethen-is-buffer-name-dashboard ()
+  "Is buffer name dashboard?"
+  (sethen-is-buffer-name "*dashboard*"))
 
-(provide 'sethen-consult)
+(defun sethen-is-buffer-name-help ()
+  "Is current buffer help?"
+  (sethen-is-buffer-name "*Help*"))
 
-;;; sethen-consult.el ends here
+(defun sethen-is-buffer-name-scratch ()
+  "Is current buffer scratch?"
+  (sethen-is-buffer-name "*scratch*"))
+
+(defun sethen-is-buffer-name-ignored ()
+  "Is current buffer ignored?"
+  (or (sethen-is-buffer-name-dashboard)
+	  (sethen-is-buffer-name-help)
+	  (sethen-is-buffer-name-scratch)))
+
+(provide 'sethen-global-lib)
+
+;;; sethen-global-lib.el ends here

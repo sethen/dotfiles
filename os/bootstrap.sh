@@ -38,10 +38,6 @@ fi
 
 cp -f $OS_ALIASES ~
 
-if [[ -d $CONFIG_NVIM_DIRECTORY ]]; then
-	rm -rf $CONFIG_NVIM_DIRECTORY
-fi
-
 if [[ ! -d $DEVELOPER_DIRECTORY ]]; then
 	mkdir -p $DEVELOPER_DIRECTORY
 fi
@@ -57,8 +53,6 @@ fi
 if [[ ! -d $EMACS_DIRECTORY ]]; then
 	mkdir -p $EMACS_DIRECTORY
 fi
-
-symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/nvim $CONFIG_DIRECTORY
 
 for file in $PRESENT_WORKING_DIRECTORY/os/.emacs.d/*; do
 	symlink_file_to_dest $file $EMACS_DIRECTORY

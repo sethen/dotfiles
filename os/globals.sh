@@ -9,6 +9,11 @@ export DEVELOPER_GO_DIRECTORY=$DEVELOPER_DIRECTORY/go
 export GO_BIN=/usr/bin/go
 export GOPLS=$DEVELOPER_GO_DIRECTORY/bin/gopls
 
+# docker
+export DOCKER_DIRECTORY=~/.docker
+export DOCKER_CLI_PLUGINS_DIRECTORY=$DOCKER_DIRECTORY/cli-plugins
+export DOCKER_COMPOSE_VERSION=2.0.1
+
 # dotnet core
 export DOTNET_DIRECTORY=~/.dotnet
 export DOTNET_CORE_VERSION=5.0

@@ -1,4 +1,4 @@
-;;; sethen-consult.el --- Consult settings -*- lexical-binding: t -*-
+;;; sethen-helpful.el --- Sethen Helpful settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -27,16 +27,8 @@
 
 (require 'use-package)
 
-(use-package consult
-  :config
-  (setq consult-find-args "find .")
-  (setq consult-project-root-function
-		(lambda ()
-		  (when-let (project (project-current))
-			(car (project-roots project)))))
-  :commands
-  (project-roots))
+(use-package helpful)
 
-(provide 'sethen-consult)
+(provide 'sethen-helpful)
 
-;;; sethen-consult.el ends here
+;;; sethen-helpful.el ends here

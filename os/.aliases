@@ -40,6 +40,3 @@ alias grbi="grb -i"
 alias gra="gr add"
 alias grs="gr show"
 alias grso="grs origin"
-
-# neovim
-alias nvim=~/Developer/nvim.appimage

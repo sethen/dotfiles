@@ -24,6 +24,7 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/ccze.s
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/cmake.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/cowsay.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/docker.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/docker-compose.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/dotnet-core.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/emacs-ligature.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/emacs-snapshot.sh
@@ -51,7 +52,6 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/spotif
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/telegram.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/tmux.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/trash-cli.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/vim-plug.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/virtualenv.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/visual-studio-code.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/vlc.sh

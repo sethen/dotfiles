@@ -4,7 +4,7 @@ These are my dotfiles for setting up my environment from nothing. Take and use a
 
 # Quickstart
 
-To run these dotfiles quickly just execute the `run.sh` file.  Neovim files exist but are no longer used.  This repository uses Emacs.
+To run these dotfiles quickly just execute the `run.sh` file.  This repository uses Emacs.
 
 # Environments
 
