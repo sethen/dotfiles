@@ -69,6 +69,7 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/jdk.sh
 
 # nodejs install order matters here
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/nodejs.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/npm.sh
 
 # python3 install order matters here
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/python3.sh
