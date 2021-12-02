@@ -4,6 +4,7 @@ information_message 'adding repositories'
 
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/docker.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/emacs-snapshot.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/github-cli.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/google-chrome.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/insomnia.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/visual-studio-code.sh
@@ -18,6 +19,10 @@ sudo apt autoremove -y
 
 information_message 'installing packages'
 
+# install github-cli and add ssh key first
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/github-cli.sh
+
+# install other packages
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/arc-theme.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/aws.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/ccze.sh

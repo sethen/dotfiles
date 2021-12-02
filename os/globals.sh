@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 # directories
+export APT_SOURCES_DIRECTORY=/etc/apt/sources.list.d
 export CONFIG_DIRECTORY=~/.config
 export DEVELOPER_DIRECTORY=~/Developer
 

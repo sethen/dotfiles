@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-if ! type code > /dev/null; then
+if [[ ! -a $APT_SOURCES_DIRECTORY/vscode.list ]]; then
 	information_message 'adding visual-studio-code key'
 
 	wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -

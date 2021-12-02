@@ -63,10 +63,3 @@ symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.gitignore_global ~
 symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.npmrc ~
 symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.tmux.conf ~
 symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.zshrc ~
-
-if [[ ! -a ~/.ssh/id_rsa.pub ]]; then
-	information_message 'creating private/public keys'
-
-	ssh-keygen -t rsa -C 'sethenm@gmail.com'
-	ssh-add
-fi
