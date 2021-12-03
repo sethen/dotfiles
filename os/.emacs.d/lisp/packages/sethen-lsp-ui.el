@@ -33,6 +33,7 @@
 		lsp-completion-show-detail nil
 		lsp-completion-show-kind t
 		lsp-headerline-arrow ""
+		lsp-keep-workspace-alive nil
 		lsp-signature-render-documentation t
 		lsp-ui-doc-position 'bottom
 		lsp-ui-sideline-enable nil)
