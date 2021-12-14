@@ -25,7 +25,7 @@ export EMACS_DIRECTORY=~/.emacs.d
 export EMACS_LIGATURE_DIRECTORY=$DEVELOPER_DIRECTORY/ligature.el
 
 # node
-export NODE_VERSION=17.x
+export NODE_VERSION=16.x
 
 # npm
 export NPM_PACKAGES_DIRECTORY=~/.npm-packages
