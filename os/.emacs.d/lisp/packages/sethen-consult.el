@@ -29,8 +29,9 @@
 
 (use-package consult
   :config
-  (setq consult-find-args "find .")
-  (setq consult-project-root-function
+  (setq consult-ripgrep-args "rg --hidden --null --line-buffered --color=never --max-columns=1000 --path-separator /\
+   --smart-case --no-heading --line-number ."
+		consult-project-root-function
 		(lambda ()
 		  (when-let (project (project-current))
 			(car (project-roots project)))))
