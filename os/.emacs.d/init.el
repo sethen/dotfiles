@@ -65,6 +65,7 @@
 
 ;; docs
 (require 'sethen-helpful)
+(require 'sethen-marginalia)
 
 ;; formatting
 (require 'sethen-electric-pair-mode)
@@ -84,7 +85,6 @@
 
 ;; go
 (require 'sethen-go-mode)
-
 
 ;; modes
 (require 'sethen-web-mode)
