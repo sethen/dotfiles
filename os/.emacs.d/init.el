@@ -77,6 +77,7 @@
 (require 'sethen-magit)
 
 ;; keybindings
+(require 'sethen-embark)
 (require 'sethen-general)
 
 ;; lsp
