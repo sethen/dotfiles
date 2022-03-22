@@ -92,6 +92,7 @@
 
 ;; navigation
 (require 'sethen-consult)
+(require 'sethen-embark-consult)
 (require 'sethen-highlight-mode)
 (require 'sethen-orderless)
 (require 'sethen-treemacs)

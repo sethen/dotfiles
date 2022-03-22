@@ -1,4 +1,4 @@
-;;; sethen-general.el --- General settings -*- lexical-binding: t -*-
+;;; sethen-embark-consult.el --- Embark Consult Settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -27,30 +27,12 @@
 
 (require 'use-package)
 
-(use-package general
-  :commands
-  (general-define-key)
-  :init
-  (general-define-key
-   :prefix "C-c"
-   "cb" 'consult-buffer
-   "cf" 'consult-find
-   "cl" 'consult-line
-   "cm" 'consult-man
-   "df" 'describe-function
-   "dp" 'describe-package
-   "dv" 'describe-variable
-   "ea" 'embark-act
-   "eb" 'embark-bindings
-   "hf" 'helpful-function
-   "hv" 'helpful-variable
-   "mg" 'magit-status
-   "nt" 'smudge-controller-next-track
-   "pd" 'package-delete
-   "pt" 'smudge-controller-previous-track
-   "rg" 'consult-ripgrep
-   "ss" 'smudge-controller-toggle-shuffle
-   "t" 'treemacs))
+(use-package embark-consult
+  :after (embark consult)
+  :demand t
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
 
-(provide 'sethen-general)
-;;; sethen-general.el ends here
+(provide 'sethen-embark-consult)
+
+;;; sethen-embark-consult.el ends here

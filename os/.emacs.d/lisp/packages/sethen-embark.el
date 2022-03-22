@@ -29,9 +29,13 @@
 
 (use-package embark
   :commands
-  (embark-prefix-help-command)
-   :init
-  (setq prefix-help-command #'embark-prefix-help-command))
+  (embark-completing-read-prompter embark-prefix-help-command)
+  :init
+  (setq embark-prompter #'embark-completing-read-prompter
+		embark-indicators
+		'(embark-minimal-indicator
+		  embark-highlight-indicator
+		  embark-isearch-highlight-indicator)))
 
 (provide 'sethen-embark)
 

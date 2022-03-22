@@ -46,11 +46,11 @@
 	:config
 	(progn
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'alert-urgent-face) :extensions ("appimage" "dll" "sln"))
+	   :icon (propertize " ") :extensions ("appimage" "dll" "sln"))
 	  (treemacs-create-icon
 	   :icon " " :extensions ("cargo.toml" "cargo.lock"))
 	  (treemacs-create-icon
-	   :icon " " :extensions ("conf" "config"))
+	   :icon " " :extensions ("conf" "config" "envrc"))
 	  (treemacs-create-icon
 	   :icon " " :extensions ("cs"))
 	  (treemacs-create-icon
@@ -106,13 +106,15 @@
 	  (treemacs-create-icon
 	   :icon " " :extensions ("rs"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'red-one-icon) :extensions ("rb"))
+	   :icon (propertize " " 'face 'yellow) :extensions ("sql"))
+	  (treemacs-create-icon
+	   :icon (propertize " " 'face 'red-one-icon) :extensions ("gemfile" "gemfile.lock" "rakefile" "rb"))
 	  (treemacs-create-icon
 	   :icon (propertize " " 'face 'blue-one-icon) :extensions ("toml"))
 	  (treemacs-create-icon
 	   :icon (propertize " " 'face 'blue-one-icon) :extensions ("ts" "tsbuildinfo"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'yellow) :extensions ("yarn"))
+	   :icon (propertize " " 'face 'yellow) :extensions (".yarnrc" "yarn.lock" "yarn"))
 	  (treemacs-create-icon
 	   :icon (propertize " " 'face 'red-two-icon) :extensions ("yml" "yaml"))
 	  (treemacs-create-icon
@@ -121,6 +123,8 @@
 	   :icon " " :extensions (".aliases" "ps1" ".zshenv" ".zshrc" "xml"))
 	  (treemacs-create-icon
 	   :icon " " :extensions ("zip"))
+	  (treemacs-create-icon
+	   :icon " " :extensions ("pdf"))
 	  (treemacs-create-icon
 	   :icon " " :extensions (fallback))
 	  )))
