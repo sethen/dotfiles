@@ -10,7 +10,7 @@ To run these dotfiles quickly just execute the `run.sh` file.  This repository u
 
 These dotfiles detect which environment they are in and run the appropriate commands.  The environments tested are:
 
-* Ubuntu 20.04 LTS (older versions not tested or supported)
+* Ubuntu 22.04 LTS (older versions not tested or supported)
 
 # Colors
 

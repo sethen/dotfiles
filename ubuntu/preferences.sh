@@ -48,7 +48,7 @@ dconf write /org/gnome/shell/extensions/dynamic-panel-transparency/maximized-opa
 dconf write /org/gnome/shell/extensions/dynamic-panel-transparency/unmaximized-opacity 204
 
 # extensions preferences
-dconf write /org/gnome/shell/enabled-extensions "['arc-menu@linxgem33.com', 'dash-to-dock@micxgx.gmail.com', 'openweather-extension@jenslody.de', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'desk-changer@eric.gach.gmail.com', 'dynamic-panel-transparency@rockon999.github.io', 'system-monitor@paradoxxx.zero.gmail.com']"
+dconf write /org/gnome/shell/enabled-extensions "['apps-menu@gnome-shell-extensions.gcampax.github.com', 'openweather-extension@jenslody.de', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com']"
 
 # desk changer preferences
 dconf write /org/gnome/shell/extensions/desk-changer/profiles "{'default': [('file:///home/$USER/Developer/wallpapers', true)]}"
@@ -56,6 +56,7 @@ dconf write /org/gnome/shell/extensions/desk-changer/rotation "'disabled'"
 
 # desktop preferences
 dconf write /org/gnome/desktop/screensaver/picture-uri "'file:////home/$USER/Developer/wallpapers/earth/e4944k_4svi-buzz-andersen.jpg'"
+dconf write /org/gnome/nautilus/preferences/default-folder-viewer "'list-view'"
 dconf write /org/gnome/nautilus/desktop/trash-icon-visible false
 
 # icon preferences
@@ -93,7 +94,7 @@ dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6
 dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/login-shell false
 
 # theme preferences
-dconf write /org/gnome/desktop/interface/gtk-theme "'Arc-Darker'"
+dconf write /org/gnome/desktop/interface/gtk-theme "'Yaru-blue'"
 dconf write /org/gnome/desktop/interface/icon-theme "'Moka'"
 dconf write /org/gnome/desktop/interface/cursor-theme "'DMZ-Black'"
 dconf write /org/gnome/shell/extensions/user-theme/name "''"
