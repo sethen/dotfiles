@@ -25,6 +25,9 @@
 
 ;;; Code:
 
+(global-auto-revert-mode 1)
+(save-place-mode 1)
+
 (setq make-backup-files nil)
 (setq scroll-margin 20)
 

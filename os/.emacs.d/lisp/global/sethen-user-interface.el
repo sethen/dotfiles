@@ -31,6 +31,7 @@
 (tool-bar-mode -1)
 
 (setq inhibit-startup-screen -1)
+(setq use-dialog-box nil)
 (setq visible-bell t)
 
 (provide 'sethen-user-interface)
