@@ -1,4 +1,4 @@
-;;; sethen-user-interface.el --- User Interface settings -*- lexical-binding: t -*-
+;;; sethen-dockerfile-mode.el --- Dockerfile Mode Settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -25,16 +25,12 @@
 
 ;;; Code:
 
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(tab-bar-mode -1)
-(tool-bar-mode -1)
+(require 'use-package)
 
-(setq column-number-mode 1
-	  inhibit-startup-screen -1
-	  use-dialog-box nil
-	  visible-bell t)
+(use-package doom-modeline
+  :commands (doom-modeline-mode)
+  :init (doom-modeline-mode 1))
 
-(provide 'sethen-user-interface)
+(provide 'sethen-doom-modeline)
 
-;;; sethen-user-interface.el ends here
+;;; sethen-doom-modeline.el ends here

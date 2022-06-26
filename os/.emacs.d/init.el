@@ -38,7 +38,6 @@
 (require 'sethen-use-package)
 
 (require 'sethen-fonts)
-(require 'sethen-modeline)
 (require 'sethen-preferences)
 (require 'sethen-themes)
 (require 'sethen-user-interface)
@@ -102,6 +101,9 @@
 
 ;; numbers
 (require 'sethen-literate-calc-mode)
+
+;; modeline
+(require 'sethen-doom-modeline)
 
 ;; music
 (require 'sethen-smudge)
