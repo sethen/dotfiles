@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-if [[ ! -a $APT_SOURCES_DIRECTORY/ubuntu-elisp-ubuntu-ppa-focal.list ]]; then
+if [[ ! -a $APT_SOURCES_DIRECTORY/ubuntu-elisp-ubuntu-ppa-jammy.list ]]; then
 	information_message 'adding emacs-snapshot repository'
 
 	sudo add-apt-repository ppa:ubuntu-elisp/ppa
