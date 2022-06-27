@@ -143,6 +143,7 @@
 (require 'sethen-markdown-mode-hook)
 (require 'sethen-minibuffer-setup-hook)
 (require 'sethen-python-mode-hook)
+(require 'sethen-ruby-mode-hook)
 (require 'sethen-rust-mode-hook)
 (require 'sethen-typescript-mode-hook)
 (require 'sethen-prog-mode-hook)

@@ -42,7 +42,7 @@ export RBENV_VERSION_BIN_DIRECTORY=$RBENV_DIRECTORY/versions/$RUBY_VERSION/bin
 export RIPGREP_VERSION=11.0.2
 
 # ruby
-export RUBY_VERSION=3.0.1
+export RUBY_VERSION=3.1.2
 
 # rust
 export CARGO_BIN_DIRECTORY=~/.cargo/bin

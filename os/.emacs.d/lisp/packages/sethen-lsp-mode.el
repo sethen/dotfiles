@@ -39,10 +39,10 @@
   (lsp-ensure-server 'rust-analyzer)
   (lsp-ensure-server 'ts-ls)
   (lsp-ensure-server 'yamlls)
-  (setq gc-cons-threshold 100000000)
-  (setq lsp-eslint-auto-fix-on-save t)
-  (setq lsp-idle-delay 0.500)
-  (setq read-process-output-max (* 1024 1024))
+  (setq gc-cons-threshold 100000000
+		lsp-eslint-auto-fix-on-save t
+		lsp-idle-delay 0.500
+		read-process-output-max (* 1024 1024))
   :commands
   (lsp-ensure-server)
   :defines
