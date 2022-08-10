@@ -3,7 +3,7 @@ header_message 'ubuntu setup'
 information_message 'adding repositories'
 
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/docker.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/emacs-snapshot.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/emacs.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/github-cli.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/google-chrome.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/repositories/insomnia.sh
@@ -32,11 +32,10 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/docker
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/docker-compose.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/dotnet-core.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/emacs-ligature.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/emacs-snapshot.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/emacs.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/exuberant-ctags.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/fortune.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gdebi.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gnome-calculator.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gnome-shell-extensions.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gnomeshell-extension-manage.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/gnome-tweaks.sh
@@ -55,7 +54,6 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/rust-a
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/samba.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/spotify.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/telegram.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/tmux.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/trash-cli.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/virtualenv.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/visual-studio-code.sh
@@ -79,7 +77,6 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/python
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/rbenv.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/rails.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/ripgrep.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/tmuxinator.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/solargraph.sh
 
 # typescript
