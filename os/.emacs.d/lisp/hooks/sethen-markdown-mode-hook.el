@@ -30,8 +30,7 @@
 
 (defun sethen/markdown-mode-hook()
   "Markdown Mode hook settings!"
-  (literate-calc-minor-mode)
-  (rainbow-mode))
+  (literate-calc-minor-mode))
 
 (add-hook 'markdown-mode-hook 'sethen/markdown-mode-hook)
 

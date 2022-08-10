@@ -30,6 +30,7 @@
 (use-package rainbow-mode
   :commands
   (rainbow-mode)
+  :hook prog-mode markdown-mode
   :init
   (rainbow-mode 1))
 
