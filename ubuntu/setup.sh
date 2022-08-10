@@ -29,7 +29,6 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/ccze.s
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/cmake.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/cowsay.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/docker.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/docker-compose.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/dotnet-core.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/emacs-ligature.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/install/emacs.sh

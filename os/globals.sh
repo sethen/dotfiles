@@ -1,9 +1,11 @@
 #!/bin/zsh
 
 # directories
-export APT_SOURCES_DIRECTORY=/etc/apt/sources.list.d
+export ETC_APT_DIRECTORY=/etc/apt/
+export ETC_APT_SOURCES_DIRECTORY=$ETC_APT_DIRECTORY/sources.list.d
 export CONFIG_DIRECTORY=~/.config
 export DEVELOPER_DIRECTORY=~/Developer
+export ETC_APT_KEYRINGS_DIRECTORY=$ETC_APT_DIRECTORY/keyrings
 
 # go
 export DEVELOPER_GO_DIRECTORY=$DEVELOPER_DIRECTORY/go
@@ -13,7 +15,6 @@ export GOPLS=$DEVELOPER_GO_DIRECTORY/bin/gopls
 # docker
 export DOCKER_DIRECTORY=~/.docker
 export DOCKER_CLI_PLUGINS_DIRECTORY=$DOCKER_DIRECTORY/cli-plugins
-export DOCKER_COMPOSE_VERSION=2.0.1
 
 # dotnet core
 export DOTNET_DIRECTORY=~/.dotnet

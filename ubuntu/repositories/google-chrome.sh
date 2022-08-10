@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-if [[ ! -a $APT_SOURCES_DIRECTORY/google-chrome.list ]]; then
+if [[ ! -a $ETC_APT_SOURCES_DIRECTORY/google-chrome.list ]]; then
 	information_message 'adding google-chrome-stable key'
 
 	wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
