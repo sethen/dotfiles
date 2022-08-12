@@ -64,6 +64,8 @@
 	  (treemacs-create-icon
 	   :icon (propertize " " 'face 'blue-three-icon) :extensions ("dockerfile" "dockerignore" "docker-compose.yml"))
 	  (treemacs-create-icon
+	   :icon (propertize " " 'face 'purple) :extensions (".eslint" ".eslintignore"))
+	  (treemacs-create-icon
 	   :icon " " :extensions ("otf" "ttf" "woff"))
 	  (treemacs-create-icon
 	   :icon " " :extensions ("editorconfig" "makefile"))
@@ -105,6 +107,8 @@
 	   :icon (propertize " " 'face 'green) :extensions ("node" "node_modules"))
 	  (treemacs-create-icon
 	   :icon " " :extensions ("rs"))
+	  (treemacs-create-icon
+	   :icon (propertize " " 'face 'orange) :extensions ("swift"))
 	  (treemacs-create-icon
 	   :icon (propertize " " 'face 'yellow) :extensions ("sql"))
 	  (treemacs-create-icon
