@@ -50,23 +50,12 @@ if [[ -a $GOPLS && -d $DEVELOPER_GO_DIRECTORY ]]; then
 	export PATH=$GOPLS:$PATH
 fi
 
-# set dotnet in PATH if found
-if [[ -d $DOTNET_DIRECTORY && $DOTNET_TOOLS_DIRECTORY ]]; then
-	export PATH=$DOTNET_TOOLS_DIRECTORY:$PATH
-fi
-
 # set npm-packages in PATH if found
 if [[ -d $NPM_PACKAGES_DIRECTORY && -d $NPM_PACKAGES_BIN_DIRECTORY ]]; then
 	export PATH=$NPM_PACKAGES_BIN_DIRECTORY:$PATH
 fi
 
-# set rbenv for ruby in PATH if found
-if [[ -d $RBENV_BIN_DIRECTORY ]]; then
-	export PATH=$RBENV_BIN_DIRECTORY:$PATH
-	eval "$(rbenv init -)"
-fi
-
 # set for buku
-export PATH=~/.local/bin:$PATH
+export PATH=~/.local/bin:/home/linuxbrew/.linuxbrew/bin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

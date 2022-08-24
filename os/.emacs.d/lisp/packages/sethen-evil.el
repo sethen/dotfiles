@@ -29,12 +29,12 @@
 (require 'treemacs)
 (require 'use-package)
 
+
 (use-package evil
   :commands
   (evil-define-key* evil-mode evil-set-leader)
-  :config
-  (setq evil-search-module 'evil-search
-		evil-undo-system 'undo-redo)
+  :config (setq evil-search-module 'evil-search)
+  :custom (evil-undo-system 'undo-redo)
   :defines
   (evil-search-module)
   :init

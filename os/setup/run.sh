@@ -1,0 +1,26 @@
+#!/bin/zsh
+
+header_message 'os setup'
+
+# login to github first
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/github-cli.sh
+
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/ccze.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/chruby.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/cowsay.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/docker.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/fortune.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/golang.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/gopls.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/lolcat.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/mysql.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/nginx.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/nodejs.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/ripgrep.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/rust-analyzer.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/rust.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/samba.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/solargraph.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/typescript.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/virtualenv.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/zsh-autosuggestions.sh
