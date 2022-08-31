@@ -70,6 +70,7 @@
 (require 'sethen-electric-pair-mode)
 (require 'sethen-indentation)
 (require 'sethen-ligatures)
+(require 'sethen-hl-block-mode)
 
 ;; git
 (require 'sethen-git-gutter)
