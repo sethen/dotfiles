@@ -27,6 +27,7 @@
 
 (require 'ligature)
 (require 'lsp)
+(require 'rainbow-delimiters)
 
 (defvar company-backends)
 
@@ -34,9 +35,9 @@
   "Web Mode hook settings!"
   (add-hook 'before-save-hook 'lsp-eslint-apply-all-fixes nil 'local)
   (ligature-mode)
-  (lsp-deferred))
-  (setq-local company-backends '(company-capf company-keywords company-files company-yasnippet))
-
+  (lsp-deferred)
+  (rainbow-delimiters-mode))
+  (setq-local company-backends '(company-capf company-keywords company-files))
 
 (add-hook 'web-mode-hook 'sethen/web-mode-hook)
 
