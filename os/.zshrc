@@ -4,7 +4,6 @@ GLOBALS=~/globals.sh
 [ -f $GLOBALS ] && source $GLOBALS
 
 # set variables
-export EDITOR=nvim
 export HISTFILE=~/.zsh_history
 export SAVEHIST=1000
 
@@ -31,7 +30,6 @@ fi
 
 # source if found
 [ -f $ALIASES ] && source $ALIASES
-[ -f $FZF ] && source $FZF
 [ -f $ZSH_AUTOSUGGESTIONS ] && source $ZSH_AUTOSUGGESTIONS
 
 # set rust in PATH if found
@@ -55,7 +53,7 @@ if [[ -d $NPM_PACKAGES_DIRECTORY && -d $NPM_PACKAGES_BIN_DIRECTORY ]]; then
 	export PATH=$NPM_PACKAGES_BIN_DIRECTORY:$PATH
 fi
 
-# set for buku
+# set for homebrew
 export PATH=~/.local/bin:/home/linuxbrew/.linuxbrew/bin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
