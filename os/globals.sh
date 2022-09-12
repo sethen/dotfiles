@@ -42,6 +42,5 @@ export ZSH_AUTOSUGGESTIONS=$ZSH_AUTOSUGGESTIONS_DIRECTORY/zsh-autosuggestions.zs
 
 # files
 export ALIASES=~/.aliases
-export FZF=~/.fzf.zsh
 export ZSHENV=~/.zshenv
 export ZSHRC=~/.zshrc

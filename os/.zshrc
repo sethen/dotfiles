@@ -4,6 +4,7 @@ GLOBALS=~/globals.sh
 [ -f $GLOBALS ] && source $GLOBALS
 
 # set variables
+export EDITOR=nvim
 export HISTFILE=~/.zsh_history
 export SAVEHIST=1000
 
@@ -55,5 +56,3 @@ fi
 
 # set for homebrew
 export PATH=~/.local/bin:/home/linuxbrew/.linuxbrew/bin:$PATH
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
