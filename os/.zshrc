@@ -4,7 +4,6 @@ GLOBALS=~/globals.sh
 [ -f $GLOBALS ] && source $GLOBALS
 
 # set variables
-export EDITOR=nvim
 export HISTFILE=~/.zsh_history
 export SAVEHIST=1000
 
