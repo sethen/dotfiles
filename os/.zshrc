@@ -37,10 +37,10 @@ if [[ -d $CARGO_BIN_DIRECTORY ]]; then
 	export PATH=$CARGO_BIN_DIRECTORY:$PATH
 fi
 
-# set go in PATH if found
-if [[ -a $GO_BIN && -d $DEVELOPER_GO_DIRECTORY ]]; then
-	export GOPATH=$DEVELOPER_GO_DIRECTORY
-	export PATH=$DEVELOPER_GO_DIRECTORY/bin:$PATH
+# set up chruby if found
+if [[ -a $CHRUBY_FILE ]]; then
+	source $CHRUBY_FILE
+	chruby 3.1.0
 fi
 
 # set gopls in PATH if found

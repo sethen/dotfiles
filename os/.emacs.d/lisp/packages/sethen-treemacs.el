@@ -50,7 +50,7 @@
 	  (treemacs-create-icon
 	   :icon " " :extensions ("cargo.toml" "cargo.lock"))
 	  (treemacs-create-icon
-	   :icon " " :extensions ("conf" "config" "envrc"))
+	   :icon " " :extensions ("conf" "config" "envrc" "pro" "properties" "settings"))
 	  (treemacs-create-icon
 	   :icon " " :extensions ("cs"))
 	  (treemacs-create-icon
@@ -74,11 +74,13 @@
 	  (treemacs-create-icon
 	   :icon (propertize " " 'face 'purple) :extensions ("el"))
 	  (treemacs-create-icon
-	   :icon " " :extensions ("fish" "sh" "zsh"))
+	   :icon " " :extensions ("bat" "fish" "sh" "zsh"))
 	  (treemacs-create-icon
 	   :icon (propertize " " 'face 'red-one-icon) :extensions ("git" "gitignore" "gitignore_global" "gitconfig" "gitmodules"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'orange) :extensions ("html"))
+	   :icon (propertize " " 'face 'purple) :extensions ("gradle"))
+	  (treemacs-create-icon
+	   :icon (propertize " " 'face 'orange) :extensions ("erb" "html"))
 	  (treemacs-create-icon
 	   :icon " " :extensions ("info" "log"))
 	  (treemacs-create-icon
@@ -96,6 +98,8 @@
 	  (treemacs-create-icon
 	   :icon (propertize " " 'face 'yellow) :extensions ("go"))
 	  (treemacs-create-icon
+	   :icon (propertize " " 'face 'purple) :extensions ("jar" "java"))
+	  (treemacs-create-icon
 	   :icon (propertize " " 'face 'yellow) :extensions ("js"))
 	  (treemacs-create-icon
 	   :icon (propertize " " 'face 'green) :extensions ("json"))
@@ -112,7 +116,7 @@
 	  (treemacs-create-icon
 	   :icon (propertize " " 'face 'yellow) :extensions ("sql"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'red-one-icon) :extensions ("gemfile" "gemfile.lock" "rakefile" "rb"))
+	   :icon (propertize " " 'face 'red-one-icon) :extensions ("gemfile" "gemfile.lock" "rake" "rakefile" "rb"))
 	  (treemacs-create-icon
 	   :icon (propertize " " 'face 'blue-one-icon) :extensions ("toml"))
 	  (treemacs-create-icon

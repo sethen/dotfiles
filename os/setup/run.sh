@@ -17,6 +17,7 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/mys
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/nginx.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/nodejs.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/ripgrep.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/ruby.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/rust-analyzer.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/rust.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/samba.sh
