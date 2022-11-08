@@ -45,8 +45,11 @@
   (treemacs-modify-theme "Default"
 	:config
 	(progn
+
 	  (treemacs-create-icon
 	   :icon (propertize " ") :extensions ("appimage" "dll" "sln"))
+	  (treemacs-create-icon
+	   :icon (propertize " " 'face 'yellow) :extensions (".babelrc"))
 	  (treemacs-create-icon
 	   :icon " " :extensions ("cargo.toml" "cargo.lock"))
 	  (treemacs-create-icon
@@ -76,7 +79,7 @@
 	  (treemacs-create-icon
 	   :icon " " :extensions ("bat" "fish" "sh" "zsh"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'red-one-icon) :extensions ("git" "gitignore" "gitignore_global" "gitconfig" "gitmodules"))
+	   :icon (propertize " " 'face 'red-one-icon) :extensions ("git" "gitattributes" "gitignore" "gitignore_global" "gitconfig" "gitmodules"))
 	  (treemacs-create-icon
 	   :icon (propertize " " 'face 'purple) :extensions ("gradle"))
 	  (treemacs-create-icon
@@ -108,7 +111,7 @@
 	  (treemacs-create-icon
 	   :icon " " :extensions ("md"))
 	  (treemacs-create-icon
-	   :icon (propertize " " 'face 'green) :extensions ("node" "node_modules"))
+	   :icon (propertize " " 'face 'green) :extensions (".npmrc" "node" "node_modules"))
 	  (treemacs-create-icon
 	   :icon " " :extensions ("rs"))
 	  (treemacs-create-icon
