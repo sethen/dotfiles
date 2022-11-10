@@ -35,6 +35,7 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/mdadm.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/moka-icon-theme.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/spotify.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/virtualbox.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/visual-studio-code.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/vlc.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/zoom.sh

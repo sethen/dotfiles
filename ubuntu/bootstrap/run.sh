@@ -32,6 +32,7 @@ information_message 'copying fonts'
 
 cp -r $PRESENT_WORKING_DIRECTORY/os/media/fonts/. $FONTS_DIRECTORY
 
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/bootstrap/packages/build-essential.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/bootstrap/packages/curl.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/bootstrap/packages/git.sh
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/bootstrap/packages/wget.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/bootstrap/packages/brew.sh

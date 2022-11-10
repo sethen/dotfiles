@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-which -s brew
-
 if [[ $? != 0 ]] ; then
 	information_message "installing brew"
 

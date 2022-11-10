@@ -59,5 +59,3 @@ symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.gitignore_global ~
 symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.npmrc ~
 symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.tmux.conf ~
 symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.zshrc ~
-
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/bootstrap/packages/brew.sh
