@@ -1,3 +1,3 @@
 #!/bin/zsh
 
-brew_install_if_package_not_exists insomnia
+apt_get_install_if_package_not_exists insomnia

@@ -5,7 +5,6 @@ header_message 'os setup'
 # login to github first
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/github-cli.sh
 
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/ccze.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/chruby.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/cowsay.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/os/setup/packages/docker.sh
