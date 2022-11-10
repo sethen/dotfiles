@@ -1,12 +1,12 @@
 #!/bin/zsh
 
 if brew list $1 &>/dev/null; then
+	success_message "${1} is already installed"
+else
 	information_message "installing ${1}"
 
 	brew install $1
 
 	# do anything you want after install
 	$2
-else
-	success_message "${1} is already installed"
 fi
