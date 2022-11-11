@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-brew_install_if_package_not_exists gh
+apt_get_install_if_package_not_exists gh
 
 local id_pub=$(ls ~/.ssh/id_*.pub)
 
