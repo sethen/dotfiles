@@ -5,7 +5,7 @@ if brew list $1 &>/dev/null; then
 else
 	information_message "installing ${1}"
 
-	brew install $1
+	/home/linuxbrew/.linuxbrew/bin/brew install $1
 
 	# do anything you want after install
 	$2
