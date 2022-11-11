@@ -32,26 +32,10 @@ fi
 [ -f $ALIASES ] && source $ALIASES
 [ -f $ZSH_AUTOSUGGESTIONS ] && source $ZSH_AUTOSUGGESTIONS
 
-# set rust in PATH if found
-if [[ -d $CARGO_BIN_DIRECTORY ]]; then
-	export PATH=$CARGO_BIN_DIRECTORY:$PATH
-fi
-
-# set up chruby if found
-if [[ -a $CHRUBY_FILE ]]; then
-	source $CHRUBY_FILE
-	chruby 3.1.0
-fi
-
-# set gopls in PATH if found
-if [[ -a $GOPLS && -d $DEVELOPER_GO_DIRECTORY ]]; then
-	export PATH=$GOPLS:$PATH
-fi
-
 # set npm-packages in PATH if found
 if [[ -d $NPM_PACKAGES_DIRECTORY && -d $NPM_PACKAGES_BIN_DIRECTORY ]]; then
 	export PATH=$NPM_PACKAGES_BIN_DIRECTORY:$PATH
 fi
 
-# set for homebrew
-export PATH=~/.local/bin:/home/linuxbrew/.linuxbrew/bin:$PATH
+# set emacs plists
+export LSP_USE_PLISTS=true
