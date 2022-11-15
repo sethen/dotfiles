@@ -73,7 +73,7 @@
 	  (treemacs-create-icon
 	   :icon " " :extensions ("editorconfig" "makefile"))
 	  (treemacs-create-icon
-	   :icon " " :extensions ("bmp" "png" "jpg" "svg"))
+	   :icon " " :extensions ("bmp" "gif" "png" "jpg" "svg"))
 	  (treemacs-create-icon
 	   :icon (propertize " " 'face 'purple) :extensions ("el"))
 	  (treemacs-create-icon
