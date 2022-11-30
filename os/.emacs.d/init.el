@@ -37,9 +37,9 @@
 (require 'sethen-repositories)
 (require 'sethen-use-package)
 
+(require 'sethen-themes)
 (require 'sethen-fonts)
 (require 'sethen-preferences)
-(require 'sethen-themes)
 (require 'sethen-user-interface)
 
 ;; auto-complete
