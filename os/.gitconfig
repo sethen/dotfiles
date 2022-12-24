@@ -1,4 +1,5 @@
 [core]
+	editor = emacsclient -c -a ''
 	excludesfile = ~/.gitignore_global
 [github]
 	user = sethen
