@@ -1,9 +1,9 @@
+[core]
+	excludesfile = ~/.gitignore_global
+[github]
+	user = sethen
+[push]
+	default = simple
 [user]
 	name = Sethen Maleno
 	email = sethen@github.com
-[github]
-	user = sethen
-[core]
-	excludesfile = ~/.gitignore_global
-[push]
-	default = simple

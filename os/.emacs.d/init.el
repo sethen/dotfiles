@@ -66,6 +66,10 @@
 (require 'sethen-helpful)
 (require 'sethen-marginalia)
 
+;; evil
+(require 'sethen-evil)
+(require 'sethen-evil-collection)
+
 ;; formatting
 (require 'sethen-electric-pair-mode)
 (require 'sethen-indentation)
@@ -124,9 +128,6 @@
 
 ;; typescript
 (require 'sethen-typescript-mode)
-
-;; vim
-(require 'sethen-evil)
 
 ;; whitespace
 (require 'sethen-whitespace)
