@@ -25,19 +25,18 @@
 
 ;;; Code:
 
-(require 'consult)
-(require 'treemacs)
 (require 'use-package)
-
 
 (use-package evil
   :commands
   (evil-define-key* evil-mode evil-set-leader)
-  :config (setq evil-search-module 'evil-search)
+  :config
+  (setq evil-search-module 'evil-search)
   :custom (evil-undo-system 'undo-redo)
   :defines
   (evil-search-module)
   :init
+  (setq evil-want-keybinding nil)
   (evil-mode 1))
 
 (provide 'sethen-evil)

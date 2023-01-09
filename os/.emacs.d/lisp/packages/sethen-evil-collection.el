@@ -25,14 +25,11 @@
 
 ;;; Code:
 
-(require 'consult)
-(require 'treemacs)
 (require 'use-package)
-
 
 (use-package evil-collection
   :after evil
-  :init
+  :config
   (evil-collection-init))
 
 (provide 'sethen-evil-collection)
