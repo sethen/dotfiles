@@ -12,7 +12,6 @@ setopt PROMPT_SUBST
 # set global variables
 export HISTFILE=~/.zsh_history
 export SAVEHIST=1000
-export LSP_USE_PLISTS=true
 
 # set right and left prompts
 PROMPT='$(prompt_info)'
@@ -45,4 +44,3 @@ if (( $+commands[go] )); then
 	export GOPATH=$DEVELOPER_DIRECTORY/go
 	export PATH="${PATH}:${GOPATH}/bin"
 fi
-

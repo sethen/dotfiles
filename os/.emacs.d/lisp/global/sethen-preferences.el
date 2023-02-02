@@ -29,8 +29,7 @@
 (save-place-mode 1)
 
 (setq make-backup-files nil
-	  scroll-margin 20
-	  lsp-use-plists t)
+	  scroll-margin 20)
 
 (provide 'sethen-preferences)
 
