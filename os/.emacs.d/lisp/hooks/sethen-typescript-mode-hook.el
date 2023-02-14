@@ -37,7 +37,7 @@
   (ligature-mode)
   (lsp-deferred)
   (rainbow-delimiters-mode)
-  (setq-local company-backends '(company-capf company-keywords company-files)))
+  (setq-local company-backends '(company-capf company-keywords company-files company-yasnippet)))
 
 (add-hook 'typescript-mode-hook 'sethen/typescript-mode-hook)
 

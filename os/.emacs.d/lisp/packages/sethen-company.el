@@ -25,16 +25,25 @@
 
 ;;; Code:
 
+(require 'yasnippet)
 (require 'use-package)
 
 (use-package company
-  :bind (:map company-active-map
-			  ("M-j" . 'company-select-next)
-			  ("M-k" . 'company-select-previous)
-			  ("M-l" . 'company-complete-selection)
-			  ("M-n" . 'company-other-backend))
+  :bind (
+    :map company-active-map
+		 ("M-j" . 'company-select-next)
+		 ("M-k" . 'company-select-previous)
+		 ("M-l" . 'company-complete-selection)
+		 ("M-n" . 'company-other-backend)
+	 :map yas-keymap
+		 ("M-l" . 'yas-next-field-or-maybe-expand))
   :commands
-  (company-complete-selection company-other-backend company-select-next company-select-previous global-company-mode)
+  (company-complete-selection
+   company-other-backend
+   company-select-next
+   company-select-previous
+   global-company-mode
+   yas-next-field-or-maybe-expand)
   :config
   (setq company-idle-delay 0
 		company-minimum-prefix-length 1)
