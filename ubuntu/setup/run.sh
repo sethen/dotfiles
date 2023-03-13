@@ -27,6 +27,7 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/gnome-shell-extensions.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/gnome-tweaks.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/gnomeshell-extension-manage.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/go.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/google-chrome.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/gparted.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/gpick.sh

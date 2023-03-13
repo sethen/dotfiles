@@ -38,9 +38,9 @@ if [[ -d $NPM_PACKAGES_DIRECTORY && -d $NPM_PACKAGES_BIN_DIRECTORY ]]; then
 fi
 
 # set golang specific options and in PATH if found
-if (( $+commands[go] )); then
-	go env -w GO111MODULE=off
+if [[ -d /usr/local/go ]]; then
+	export PATH=$PATH:/usr/local/go/bin
+	export PATH=$PATH:$GOPATH/bin
 
-	export GOPATH=$DEVELOPER_DIRECTORY/go
-	export PATH="${PATH}:${GOPATH}/bin"
+	go env -w GO111MODULE=off
 fi
