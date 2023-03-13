@@ -39,8 +39,9 @@ fi
 
 # set golang specific options and in PATH if found
 if [[ -d /usr/local/go ]]; then
+	export GOPATH=/home/$USER/go
 	export PATH=$PATH:/usr/local/go/bin
 	export PATH=$PATH:$GOPATH/bin
 
-	go env -w GO111MODULE=off
+	go env -w GO111MODULE=on
 fi
