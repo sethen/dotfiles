@@ -42,6 +42,11 @@
 (require 'sethen-preferences)
 (require 'sethen-user-interface)
 
+;; snippets
+;; needs to be installed first for company
+(require 'sethen-yasnippet)
+(require 'sethen-yasnippet-snippets)
+
 ;; auto-complete
 (require 'sethen-company)
 (require 'sethen-company-posframe)
@@ -119,10 +124,6 @@
 ;; shell
 (require 'sethen-exec-path-from-shell)
 
-;; snippets
-(require 'sethen-yasnippet)
-(require 'sethen-yasnippet-snippets)
-
 ;; syntax
 (require 'sethen-rainbow-delimiters)
 
@@ -153,4 +154,6 @@
 (require 'sethen-typescript-mode-hook)
 (require 'sethen-web-mode-hook)
 
-;; init.el ends here
+(provide 'init)
+
+;;; init.el ends here
