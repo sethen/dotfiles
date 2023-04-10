@@ -38,10 +38,15 @@ if [[ -d $NPM_PACKAGES_DIRECTORY && -d $NPM_PACKAGES_BIN_DIRECTORY ]]; then
 fi
 
 # set golang specific options and in PATH if found
-if [[ -d /usr/local/go ]]; then
+if [[ -d $GO_USR_LOCAL ]]; then
 	export GOPATH=/home/$USER/go
-	export PATH=$PATH:/usr/local/go/bin
+	export PATH=$PATH:$GO_USR_LOCAL_BIN
 	export PATH=$PATH:$GOPATH/bin
 
 	go env -w GO111MODULE=on
+fi
+
+# set rust specific options and in PATH if found
+if [[ -d $CARGO_BIN ]]; then
+	export PATH=$PATH:$CARGO_BIN
 fi

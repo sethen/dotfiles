@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# rust
+export CARGO_BIN=~/.cargo/bin
+
 # directories
 export ETC_APT_DIRECTORY=/etc/apt/
 export ETC_APT_SOURCES_DIRECTORY=$ETC_APT_DIRECTORY/sources.list.d
@@ -14,6 +17,8 @@ export EMACS_VERSION=28.2
 export EMACS_DOWNLOAD_DIRECTORY=emacs-$EMACS_VERSION
 
 #go
+export GO_USR_LOCAL=/usr/local/go
+export GO_USR_LOCAL_BIN=$GO_USR_LOCAL/bin
 export GO_VERSION=1.20.2
 export GO_DOWNLOAD_DIRECTORY=go-$GO_VERSION
 export GO_PATH=$DEVELOPER_DIRECTORY/go
