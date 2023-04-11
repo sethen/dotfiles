@@ -5,5 +5,5 @@ if [[ ! -a $ZSH_AUTOSUGGESTIONS ]]; then
 
 	git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_AUTOSUGGESTIONS_DIRECTORY
 else
-	success_message 'zsh-autosuggestions already installed'
+	success_message 'zsh-autosuggestions installed'
 fi

@@ -9,5 +9,5 @@ if [[ ! -n $(dpkg --get-selections | grep -w zoom) ]]; then
 	sudo apt install ./$ZOOM_AMD64 -y
 	rm -rf ./$ZOOM_AMD64
 else
-	success_message 'zoom already installed'
+	success_message 'zoom installed'
 fi

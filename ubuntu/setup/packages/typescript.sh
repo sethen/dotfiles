@@ -6,7 +6,7 @@ if [[ -d $NPM_PACKAGES_DIRECTORY ]]; then
 
 		npm install -g typescript typescript-language-server
 	else
-		success_message 'typescript already installed'
+		success_message 'typescript installed'
 	fi
 else
 	error_message 'npm does not exist'

@@ -7,5 +7,5 @@ if [[ ! -n $(dpkg --get-selections | grep nodejs) ]]; then
 
 	sudo apt-get install -y nodejs
 else
-	success_message 'nodejs already installed'
+	success_message 'nodejs installed'
 fi

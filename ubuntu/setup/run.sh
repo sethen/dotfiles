@@ -53,6 +53,10 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/go.sh
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/gopls.sh
 
+# ruby
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/chruby.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/ruby-install.sh
+
 # rust
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/rust.sh
 

@@ -14,5 +14,5 @@ if typeset -f gnomeshell-extension-manage > /dev/null; then
 
 	gnomeshell-extension-manage --install --extension-id 750 --version 3.36 --user &> /dev/null
 else
-	success_message 'gnomeshell-extension-manage already installed'
+	success_message 'gnomeshell-extension-manage installed'
 fi

@@ -32,6 +32,11 @@ if [[ -d $DEVELOPER_DIRECTORY ]]; then
 	cd $DEVELOPER_DIRECTORY
 fi
 
+# source chruby
+if [[ -f $CHRUBY_SHELL_FILE ]]; then
+	source $CHRUBY_SHELL_FILE
+fi
+
 # set npm-packages in PATH if found
 if [[ -d $NPM_PACKAGES_DIRECTORY && -d $NPM_PACKAGES_BIN_DIRECTORY ]]; then
 	export PATH=$NPM_PACKAGES_BIN_DIRECTORY:$PATH

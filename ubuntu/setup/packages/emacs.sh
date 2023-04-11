@@ -1,15 +1,15 @@
 #!/bin/zsh
 
 if (( $+commands[emacs] )); then
-	success_message "emacs installed"
+	success_message 'emacs installed'
 else
-	information_message "installing emacs"
+	information_message 'installing emacs'
 
 	sudo apt build-dep emacs
 	sudo apt install gcc-12 libgccjit0 libgccjit-12-dev -y
 
-	sudo wget -O ~/$EMACS_DOWNLOAD_DIRECTORY.tar.gz http://mirror.keystealth.org/gnu/emacs/$EMACS_DOWNLOAD_DIRECTORY.tar.gz
-	sudo tar -xvf ~/$EMACS_DOWNLOAD_DIRECTORY.tar.gz -C ~
+	wget -O ~/$EMACS_DOWNLOAD_DIRECTORY.tar.gz http://mirror.keystealth.org/gnu/emacs/$EMACS_DOWNLOAD_DIRECTORY.tar.gz
+	tar -xvf ~/$EMACS_DOWNLOAD_DIRECTORY.tar.gz -C ~
 
 	cd ~/$EMACS_DOWNLOAD_DIRECTORY
 

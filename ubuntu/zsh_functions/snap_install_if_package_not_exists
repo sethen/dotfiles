@@ -5,6 +5,6 @@ if [[ ! -n $(snap list | grep -w $1) ]]; then
 
 	sudo snap install $1
 else
-	success_message "${1} is already installed"
+	success_message "${1} is installed"
 fi
 

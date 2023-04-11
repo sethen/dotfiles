@@ -8,5 +8,5 @@ if [[ ! -n $(dpkg --get-selections | grep -w $1) ]]; then
 	# do anything you want after install
 	$2
 else
-	success_message "${1} is already installed"
+	success_message "${1} installed"
 fi
