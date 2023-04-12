@@ -33,9 +33,11 @@ export NPM_CONFIG_PREFIX=$NPM_PACKAGES_DIRECTORY
 # ruby
 export CHRUBY_VERSION=0.3.9
 export CHRUBY_DOWNLOAD_DIRECTORY=chruby-$CHRUBY_VERSION
-export CHRUBY_SHELL_FILE=/usr/local/share/chruby/chruby.sh
+export CHRUBY_USR_LOCAL_DIRECTORY=/usr/local/share/chruby
+export CHRUBY_SHELL_FILE=$CHRUBY_USR_LOCAL_DIRECTORY/chruby.sh
 export RUBY_INSTALL_VERSION=0.9.0
 export RUBY_INSTALL_DOWNLOAD_DIRECTORY=ruby-install-$RUBY_INSTALL_VERSION
+export RUBY_VERSION=3.2.2
 
 # zsh
 export ZSH_AUTOSUGGESTIONS_DIRECTORY=~/.zsh/zsh-autosuggestions
