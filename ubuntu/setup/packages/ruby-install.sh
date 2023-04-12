@@ -14,7 +14,4 @@ else
 
 	rm -rf ~/$RUBY_INSTALL_DOWNLOAD_DIRECTORY
 	rm -rf ~/$RUBY_INSTALL_DOWNLOAD_DIRECTORY.tar.gz
-
-	ruby-install ruby $RUBY_VERSION
-	chruby $RUBY_VERSION
 fi

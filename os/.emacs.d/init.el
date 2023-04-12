@@ -136,22 +136,53 @@
 ;; yaml
 (require 'sethen-yaml-mode)
 
-;; hooks
+;; csharp
 (require 'sethen-csharp-mode-hook)
+
+;; css
 (require 'sethen-css-mode-hook)
+
+;; emacs lisp
 (require 'sethen-emacs-lisp-mode-hook)
+
+;; javascript
 (require 'sethen-js-mode-hook)
+
+;; lsp mode
 (require 'sethen-lsp-mode-hook)
+
+;; golang
 (require 'sethen-go-mode-hook)
+
+;; markdown
 (require 'sethen-markdown-mode-hook)
+
+;; minibuffer
 (require 'sethen-minibuffer-setup-hook)
+
+;; python
 (require 'sethen-python-mode-hook)
+
+;; ruby
 (require 'sethen-ruby-mode-hook)
+(require 'sethen-chruby)
+
+;; rust
 (require 'sethen-rust-mode-hook)
+
+;; typescript
 (require 'sethen-typescript-mode-hook)
+
+;; prog mode
 (require 'sethen-prog-mode-hook)
+
+;; text mode
 (require 'sethen-text-mode-hook)
+
+;; typescript
 (require 'sethen-typescript-mode-hook)
+
+;; web mode
 (require 'sethen-web-mode-hook)
 
 (provide 'init)

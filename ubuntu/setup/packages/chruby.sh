@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-if [[ -d $CHRUBY_USR_LOCAL_DIRECTORY ]]; then
+if [[ -f $CHRUBY_SHELL_FILE ]]; then
 	success_message 'chruby installed'
 else
 	information_message 'installing chruby'

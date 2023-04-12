@@ -32,9 +32,10 @@ if [[ -d $DEVELOPER_DIRECTORY ]]; then
 	cd $DEVELOPER_DIRECTORY
 fi
 
-# source chruby
+# source chruby and switch to ruby version
 if [[ -f $CHRUBY_SHELL_FILE ]]; then
 	source $CHRUBY_SHELL_FILE
+	chruby ruby $RUBY_VERSION
 fi
 
 # set npm-packages in PATH if found
