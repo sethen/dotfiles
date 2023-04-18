@@ -33,7 +33,7 @@ if [[ -d $DEVELOPER_DIRECTORY ]]; then
 fi
 
 # source chruby and switch to ruby version
-if [[ -f $CHRUBY_SHELL_FILE ]]; then
+if [[ -f $CHRUBY_SHELL_FILE && -f $RUBY_BIN ]]; then
 	source $CHRUBY_SHELL_FILE
 	chruby ruby $RUBY_VERSION
 fi

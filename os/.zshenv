@@ -41,6 +41,8 @@ export RUBY_INSTALL_DOWNLOAD_DIRECTORY=ruby-install-$RUBY_INSTALL_VERSION
 
 # ruby
 export RUBY_VERSION=3.2.2
+export RUBY_BIN=~/.rubies/ruby-$RUBY_VERSION/bin/ruby
+export RUBY_GEM_BIN=~/.rubies/ruby-$RUBY_VERSION/bin/gem
 
 # zsh
 export ZSH_AUTOSUGGESTIONS_DIRECTORY=~/.zsh/zsh-autosuggestions

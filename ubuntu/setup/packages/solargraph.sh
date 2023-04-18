@@ -3,7 +3,11 @@
 if (( $+commands[solargraph] )); then
 	success_message 'solargraph installed'
 else
-	information_message 'installing solargraph'
+	if [[ -f $RUBY_GEM_BIN ]]; then
+		information_message 'installing solargraph'
 
-	gem install solargraph
+		$RUBY_GEM_BIN install solargraph
+	else
+		error_message 'ruby not installed'
+	fi
 fi
