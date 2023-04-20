@@ -22,6 +22,7 @@ export GO_BIN_DIRECTORY=~/go/bin
 export GO_VERSION=1.20.2
 export GO_USR_LOCAL_BIN_DIRECTORY=/usr/local/go/bin
 export GO_DOWNLOAD_DIRECTORY=go-$GO_VERSION
+export GO_BIN=$GO_USR_LOCAL_BIN_DIRECTORY/go
 
 # node
 export NODE_VERSION=18.x

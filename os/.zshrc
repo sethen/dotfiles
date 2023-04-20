@@ -44,7 +44,7 @@ if [[ -d $NPM_PACKAGES_DIRECTORY && -d $NPM_PACKAGES_BIN_DIRECTORY ]]; then
 fi
 
 # set golang specific options and in PATH if found
-if [[ -d $GO_USR_LOCAL_BIN_DIRECTORY ]]; then
+if [[ -d $GO_USR_LOCAL_BIN_DIRECTORY && -f $GO_BIN ]]; then
 	export PATH=$PATH:$GO_USR_LOCAL_BIN_DIRECTORY
 	export PATH=$PATH:$GO_BIN_DIRECTORY
 fi

@@ -3,10 +3,10 @@
 if (( $+commands[gopls] )); then
 	success_message 'gopls installed'
 else
-	if [[ -f /usr/local/go/bin/go ]]; then
+	if [[ -f $GO_BIN ]]; then
 		information_message 'installing gopls'
 
-		/usr/local/go/bin/go install golang.org/x/tools/gopls@latest
+		$GO_BIN install golang.org/x/tools/gopls@latest
 	else
 		error_message 'golang binary not found'
 	fi
