@@ -25,16 +25,19 @@
 
 ;;; Code:
 
-(defface material-blue-one `((t (:foreground "#80cbc4"))) "Material blue one color!" :group 'material-colors)
-(defface material-blue-two `((t (:foreground "#82aaff"))) "Material blue two color!" :group 'material-colors)
-(defface material-blue-three `((t (:foreground "#89ddff"))) "Material blue three color!" :group 'material-colors)
-(defface material-green `((t (:foreground "#c3e88d"))) "Material green color!" :group 'material-colors)
-(defface material-orange `((t (:foreground "#f78c6c"))) "Material orange color!" :group 'material-colors)
-(defface material-purple `((t (:foreground "#c792ea"))) "Material purple color!" :group 'material-colors)
-(defface material-red-one `((t (:foreground "#f07178"))) "Material red one color!" :group 'material-colors)
-(defface material-red-two `((t (:foreground "#ff5370"))) "Material red two color!" :group 'material-colors)
-(defface material-yellow `((t (:foreground "#ffcb6b"))) "Material yellow color!" :group 'material-colors)
-(defface white `((t (:foreground "#ffffff"))) "White color!" :group 'material-colors)
+(defconst material-blue-one "#80cbc4")
+(defconst material-blue-two "#82aaff")
+(defconst material-blue-three "#89ddff")
+(defconst material-green "#c3e88d")
+(defconst material-grey-one "#1c262b")
+(defconst material-grey-two "#263238")
+(defconst material-grey-three "#314549")
+(defconst material-orange "#f78c6c")
+(defconst material-purple "#c792ea")
+(defconst material-red-one "#f07178")
+(defconst material-red-two "#ff5370")
+(defconst material-yellow "#ffcb6b")
+(defconst material-white "#ffffff")
 
 (provide 'material-colors)
 

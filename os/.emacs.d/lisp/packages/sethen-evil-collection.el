@@ -29,6 +29,7 @@
 
 (use-package evil-collection
   :after evil
+  :commands (evil-collection-init)
   :config
   (evil-collection-init))
 
