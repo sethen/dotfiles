@@ -29,6 +29,7 @@
 
 (use-package doom-modeline
   :commands (doom-modeline-mode)
+  :config (setq doom-modeline-icon nil)
   :init (doom-modeline-mode 1))
 
 (provide 'sethen-doom-modeline)
