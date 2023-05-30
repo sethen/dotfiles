@@ -44,7 +44,8 @@
    "eb" 'embark-bindings
    "hf" 'helpful-function
    "hv" 'helpful-variable
-   "mg" 'magit-status
+   "im" 'consult-imenu
+   "mg" 'magit
    "nt" 'smudge-controller-next-track
    "pd" 'package-delete
    "pt" 'smudge-controller-previous-track

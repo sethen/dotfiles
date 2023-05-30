@@ -1,4 +1,4 @@
-;;; sethen-user-interface.el --- User Interface settings -*- lexical-binding: t -*-
+;;; sethen-melpa.el --- Melpa settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -25,16 +25,22 @@
 
 ;;; Code:
 
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(tab-bar-mode -1)
-(tool-bar-mode -1)
+(require 'package)
 
-(setq column-number-mode 1
-	  inhibit-startup-screen -1
-	  use-dialog-box nil
-	  visible-bell t)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 
-(provide 'sethen-user-interface)
+(package-initialize)
 
-;;; sethen-user-interface.el ends here
+(unless package-archive-contents
+  (package-refresh-contents))
+
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
+(require 'use-package)
+
+(setq use-package-always-ensure t)
+
+(provide 'sethen-melpa)
+
+;;; sethen-melpa.el ends here

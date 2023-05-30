@@ -48,7 +48,8 @@
   (setq company-idle-delay 0
 		company-minimum-prefix-length 1)
   :init
-  (global-company-mode))
+  (global-company-mode)
+  :requires (yasnippet))
 
 (provide 'sethen-company)
 

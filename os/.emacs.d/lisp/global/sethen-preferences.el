@@ -26,6 +26,7 @@
 ;;; Code:
 
 (global-auto-revert-mode 1)
+(global-hl-line-mode)
 (save-place-mode 1)
 
 (setq make-backup-files nil

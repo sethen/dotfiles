@@ -25,164 +25,109 @@
 
 ;;; Code:
 
+;;; Directories:
 (add-to-list 'load-path (concat user-emacs-directory "/lisp/constants"))
 (add-to-list 'load-path (concat user-emacs-directory "/lisp/global"))
 (add-to-list 'load-path (concat user-emacs-directory "/lisp/hooks"))
 (add-to-list 'load-path (concat user-emacs-directory "/lisp/lib"))
 (add-to-list 'load-path (concat user-emacs-directory "/lisp/packages"))
 
+;;; Custom File:
 (setq custom-file (concat user-emacs-directory "emacs-custom.el"))
 
-;; global
-(require 'sethen-repositories)
+;;; Global Packages:
+(require 'sethen-melpa)
 (require 'sethen-use-package)
-
-(require 'sethen-themes)
+(require 'sethen-electric-pair-mode)
 (require 'sethen-fonts)
+(require 'sethen-gui)
+(require 'sethen-indentation)
 (require 'sethen-preferences)
-(require 'sethen-user-interface)
+(require 'sethen-themes)
+(require 'sethen-whitespace)
 
-;; snippets
-;; needs to be installed first for company
+;;; Auto Complete:
 (require 'sethen-yasnippet)
 (require 'sethen-yasnippet-snippets)
-
-;; auto-complete
 (require 'sethen-company)
 (require 'sethen-company-posframe)
 
-;; colors
+;; Code UI:
+(require 'sethen-ligatures)
+(require 'sethen-hl-block-mode)
 (require 'sethen-rainbow-mode)
+(require 'sethen-rainbow-delimiters)
 
-;; csharp
-(require 'sethen-csharp-mode)
-
-;; dashboard
-(require 'sethen-dashboard)
-
-;; diagnostics
+;;; Diagnostics:
 (require 'sethen-flycheck)
 (require 'sethen-flycheck-posframe)
 
-;; docker
-(require 'sethen-dockerfile-mode)
-
-;; docs
+;;; Documentation:
 (require 'sethen-helpful)
 (require 'sethen-marginalia)
 
-;; evil
-(require 'sethen-evil)
-(require 'sethen-evil-collection)
-
-;; formatting
-(require 'sethen-electric-pair-mode)
-(require 'sethen-indentation)
-(require 'sethen-ligatures)
-(require 'sethen-hl-block-mode)
-
-;; git
-(require 'sethen-git-gutter)
-(require 'sethen-magit)
-
-;; keybindings
-(require 'sethen-embark)
-(require 'sethen-general)
-
-;; lsp
-(require 'sethen-lsp-mode)
-(require 'sethen-lsp-ui)
-
-;; go
-(require 'sethen-go-mode)
-
-;; modes
-(require 'sethen-web-mode)
-
-;; navigation
+;;; Emacs UI:
 (require 'sethen-consult)
+(require 'sethen-dashboard)
+(require 'sethen-doom-modeline)
 (require 'sethen-embark-consult)
-(require 'sethen-highlight-mode)
 (require 'sethen-orderless)
 (require 'sethen-treemacs)
 (require 'sethen-treemacs-evil)
 (require 'sethen-vertico)
 (require 'sethen-which-key)
 
-;; numbers
-(require 'sethen-literate-calc-mode)
+;; Git:
+(require 'sethen-git-gutter)
+(require 'sethen-magit)
 
-;; modeline
-(require 'sethen-doom-modeline)
+;;; Languages:
+(require 'sethen-csharp-mode)
+(require 'sethen-dockerfile-mode)
+(require 'sethen-go-mode)
+(require 'sethen-rust-mode)
+(require 'sethen-typescript-mode)
+(require 'sethen-yaml-mode)
+(require 'sethen-web-mode)
 
-;; music
+;; Language Server:
+(require 'sethen-lsp-mode)
+(require 'sethen-lsp-ui)
+
+;; Keybindings:
+(require 'sethen-embark)
+(require 'sethen-general)
+
+;;; Music:
 (require 'sethen-smudge)
 
-;; rust
-(require 'sethen-rust-mode)
+;; Numbers:
+(require 'sethen-literate-calc-mode)
 
-;; shell
+;;; Shell:
 (require 'sethen-exec-path-from-shell)
 
-;; syntax
-(require 'sethen-rainbow-delimiters)
+;;; Vim:
+(require 'sethen-evil)
+(require 'sethen-evil-collection)
 
-;; typescript
-(require 'sethen-typescript-mode)
-
-;; whitespace
-(require 'sethen-whitespace)
-
-;; yaml
-(require 'sethen-yaml-mode)
-
-;; csharp
+;;; Hooks:
 (require 'sethen-csharp-mode-hook)
-
-;; css
 (require 'sethen-css-mode-hook)
-
-;; emacs lisp
 (require 'sethen-emacs-lisp-mode-hook)
-
-;; javascript
 (require 'sethen-js-mode-hook)
-
-;; lsp mode
 (require 'sethen-lsp-mode-hook)
-
-;; golang
 (require 'sethen-go-mode-hook)
-
-;; markdown
 (require 'sethen-markdown-mode-hook)
-
-;; minibuffer
 (require 'sethen-minibuffer-setup-hook)
-
-;; python
 (require 'sethen-python-mode-hook)
-
-;; ruby
 (require 'sethen-ruby-mode-hook)
 (require 'sethen-chruby)
-
-;; rust
 (require 'sethen-rust-mode-hook)
-
-;; typescript
 (require 'sethen-typescript-mode-hook)
-
-;; prog mode
 (require 'sethen-prog-mode-hook)
-
-;; text mode
 (require 'sethen-text-mode-hook)
-
-;; typescript
 (require 'sethen-typescript-mode-hook)
-
-;; web mode
 (require 'sethen-web-mode-hook)
 
 (provide 'init)

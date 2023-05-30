@@ -1,4 +1,4 @@
-;;; sethen-repositories.el --- Repositories settings -*- lexical-binding: t -*-
+;;; sethen-gui.el --- GUI settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -25,22 +25,16 @@
 
 ;;; Code:
 
-(require 'package)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tab-bar-mode -1)
+(tool-bar-mode -1)
 
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(setq column-number-mode 1
+	  inhibit-startup-screen -1
+	  use-dialog-box nil
+	  visible-bell t)
 
-(package-initialize)
+(provide 'sethen-gui)
 
-(unless package-archive-contents
-  (package-refresh-contents))
-
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
-(require 'use-package)
-
-(setq use-package-always-ensure t)
-
-(provide 'sethen-repositories)
-
-;;; sethen-repositories.el ends here
+;;; sethen-gui.el ends here
