@@ -104,6 +104,9 @@
 ;; Numbers:
 (require 'sethen-literate-calc-mode)
 
+;;; Replace:
+(require 'sethen-wgrep)
+
 ;;; Shell:
 (require 'sethen-exec-path-from-shell)
 
