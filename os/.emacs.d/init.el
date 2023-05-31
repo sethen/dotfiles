@@ -42,7 +42,6 @@
 (require 'sethen-fonts)
 (require 'sethen-gui)
 (require 'sethen-indentation)
-(require 'sethen-preferences)
 (require 'sethen-themes)
 (require 'sethen-whitespace)
 
@@ -132,6 +131,9 @@
 (require 'sethen-text-mode-hook)
 (require 'sethen-typescript-mode-hook)
 (require 'sethen-web-mode-hook)
+
+;; Preferences:
+(require 'sethen-preferences)
 
 (provide 'init)
 

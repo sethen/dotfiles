@@ -25,12 +25,18 @@
 
 ;;; Code:
 
+(require 'material-colors)
+
 (global-auto-revert-mode 1)
 (global-hl-line-mode)
 (save-place-mode 1)
 
 (setq make-backup-files nil
 	  scroll-margin 20)
+
+(set-face-attribute 'line-number nil :slant 'normal)
+(set-face-attribute 'line-number-current-line nil :foreground material-yellow :slant 'normal :weight 'bold)
+
 
 (provide 'sethen-preferences)
 
