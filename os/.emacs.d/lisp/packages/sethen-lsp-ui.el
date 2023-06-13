@@ -30,13 +30,14 @@
 (use-package lsp-ui
   :config
   (setq lsp-completion-provider :none
-		lsp-completion-show-detail nil
-		lsp-completion-show-kind t
-		lsp-headerline-arrow ""
-		lsp-keep-workspace-alive nil
-		lsp-signature-render-documentation t
-		lsp-ui-doc-position 'bottom
-		lsp-ui-sideline-enable nil)
+	lsp-completion-show-detail nil
+	lsp-completion-show-kind t
+	lsp-headerline-arrow ""
+	lsp-keep-workspace-alive nil
+	lsp-ui-doc-position 'at-point
+	lsp-ui-doc-show-with-cursor t
+	lsp-ui-doc-enable t
+	lsp-ui-sideline-enable nil)
   :defines
   (lsp-completion-provider lsp-completion-show-detail lsp-completion-show-kind lsp-headerline-arrow))
 
