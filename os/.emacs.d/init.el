@@ -37,7 +37,6 @@
 
 ;;; Global Packages:
 (require 'sethen-melpa)
-(require 'sethen-use-package)
 (require 'sethen-electric-pair-mode)
 (require 'sethen-fonts)
 (require 'sethen-gui)
