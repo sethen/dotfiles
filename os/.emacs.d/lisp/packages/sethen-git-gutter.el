@@ -28,10 +28,8 @@
 (require 'use-package)
 
 (use-package git-gutter
-  :commands
-  (global-git-gutter-mode)
-  :init
-  (global-git-gutter-mode t))
+  :commands (global-git-gutter-mode)
+  :init (global-git-gutter-mode t))
 
 (provide 'sethen-git-gutter)
 

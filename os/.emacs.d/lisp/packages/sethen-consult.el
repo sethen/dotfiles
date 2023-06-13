@@ -35,8 +35,7 @@
 		(lambda ()
 		  (when-let (project (project-current))
 			(car (project-roots project)))))
-  :commands
-  (project-roots))
+  :commands (project-roots))
 
 (provide 'sethen-consult)
 

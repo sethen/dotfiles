@@ -30,7 +30,7 @@
 (require 'use-package)
 
 (use-package flycheck-posframe
-  :after flycheck
+  :after (company flycheck)
   :config
   (add-to-list 'flycheck-posframe-inhibit-functions #'(lambda () company-backend))
   :defines (flycheck-posframe-inhbit-functions)

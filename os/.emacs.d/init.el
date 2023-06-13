@@ -36,11 +36,10 @@
 (setq custom-file (concat user-emacs-directory "emacs-custom.el"))
 
 ;;; Global Packages:
-(require 'sethen-melpa)
+(require 'sethen-package)
 (require 'sethen-electric-pair-mode)
 (require 'sethen-fonts)
 (require 'sethen-gui)
-(require 'sethen-indentation)
 (require 'sethen-themes)
 (require 'sethen-whitespace)
 

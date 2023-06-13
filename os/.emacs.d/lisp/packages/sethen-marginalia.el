@@ -30,10 +30,8 @@
 (use-package marginalia
   :bind (:map minibuffer-local-map
 			  ("M-A" . marginalia-cycle))
-  :commands
-  (marginalia-mode)
-  :init
-  (marginalia-mode))
+  :commands (marginalia-mode)
+  :init (marginalia-mode))
 
 (provide 'sethen-marginalia)
 

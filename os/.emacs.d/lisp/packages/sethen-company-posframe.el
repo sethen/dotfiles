@@ -28,10 +28,9 @@
 (require 'use-package)
 
 (use-package company-posframe
-  :commands
-  (company-posframe-mode)
-  :init
-  (company-posframe-mode 1))
+  :after (company yasnippet yasnippet-snippets)
+  :commands (company-posframe-mode)
+  :init (company-posframe-mode 1))
 
 (provide 'sethen-company-posframe)
 

@@ -28,8 +28,7 @@
 (require 'use-package)
 
 (use-package orderless
-  :init
-  (icomplete-mode))
+  :init (icomplete-mode))
 
 (provide 'sethen-orderless)
 

@@ -45,8 +45,7 @@
 		`(;; line1
 		  (("\ue965" "GitHub" "Sethen's GitHub" (lambda (&rest _) (browse-url "https://www.github.com/sethen")))
 		   ("\ue9b0" "Melpa" "Melpa Package Repository" (lambda (&rest _) (browse-url "https://melpa.org/#/"))))))
-  :init
-  (dashboard-setup-startup-hook))
+  :init (dashboard-setup-startup-hook))
 
 (provide 'sethen-dashboard)
 

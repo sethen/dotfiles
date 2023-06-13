@@ -28,10 +28,8 @@
 (require 'use-package)
 
 (use-package yasnippet
-  :commands
-  (yas-global-mode)
-  :init
-  (yas-global-mode 1))
+  :commands (yas-global-mode)
+  :init (yas-global-mode 1))
 
 (provide 'sethen-yasnippet)
 

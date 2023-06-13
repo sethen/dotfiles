@@ -28,13 +28,12 @@
 (require 'use-package)
 
 (use-package evil
-  :commands
-  (evil-define-key* evil-mode evil-set-leader)
+  :commands (evil-define-key* evil-mode evil-set-leader)
   :config
-  (setq evil-search-module 'evil-search)
+  (setq evil-search-module 'evil-search
+		evil-want-keybinding nil)
   :custom (evil-undo-system 'undo-redo)
-  :defines
-  (evil-search-module)
+  :defines (evil-search-module)
   :init
   (setq evil-want-keybinding nil)
   (evil-mode 1))

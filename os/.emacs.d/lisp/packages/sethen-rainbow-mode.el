@@ -28,11 +28,8 @@
 (require 'use-package)
 
 (use-package rainbow-mode
-  :commands
-  (rainbow-mode)
-  :hook prog-mode markdown-mode
-  :init
-  (rainbow-mode 1))
+  :commands (rainbow-mode)
+  :init (rainbow-mode 1))
 
 (provide 'sethen-rainbow-mode)
 

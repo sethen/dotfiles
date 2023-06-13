@@ -28,8 +28,7 @@
 (require 'use-package)
 
 (use-package typescript-mode
-  :mode
-  "\\.ts\\'")
+  :mode "\\.ts\\'")
 
 (provide 'sethen-typescript-mode)
 

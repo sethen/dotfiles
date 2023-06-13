@@ -28,8 +28,7 @@
 (require 'use-package)
 
 (use-package general
-  :commands
-  (general-define-key)
+  :commands (general-define-key)
   :init
   (general-define-key
    :prefix "C-c"

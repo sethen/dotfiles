@@ -30,8 +30,8 @@
 (use-package doom-themes
   :config
   (load-theme 'doom-material t)
-  (setq doom-themes-enable-bold nil)
-  (setq doom-themes-enable-italic nil))
+  (setq doom-themes-enable-bold nil
+		doom-themes-enable-italic nil))
 
 (provide 'sethen-themes)
 

@@ -28,8 +28,7 @@
 (require 'use-package)
 
 (use-package embark
-  :commands
-  (embark-completing-read-prompter embark-prefix-help-command)
+  :commands (embark-completing-read-prompter embark-prefix-help-command)
   :init
   (setq embark-prompter #'embark-completing-read-prompter
 		embark-indicators

@@ -29,6 +29,7 @@
 (require 'use-package)
 
 (use-package company
+  :after (yasnippet yasnippet-snippets)
   :bind (
     :map company-active-map
 		 ("M-j" . 'company-select-next)
@@ -47,9 +48,7 @@
   :config
   (setq company-idle-delay 0
 		company-minimum-prefix-length 1)
-  :init
-  (global-company-mode)
-  :requires (yasnippet))
+  :init (global-company-mode))
 
 (provide 'sethen-company)
 

@@ -32,8 +32,7 @@
 (require 'use-package)
 
 (use-package ligature
-  :commands
-  (global-ligature-mode ligature-set-ligatures)
+  :commands (global-ligature-mode ligature-set-ligatures)
   :config
   (ligature-set-ligatures 'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
 									   ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
