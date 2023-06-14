@@ -34,7 +34,7 @@
 	lsp-completion-show-kind t
 	lsp-headerline-arrow ""
 	lsp-keep-workspace-alive nil
-	lsp-ui-doc-position 'at-point
+	lsp-ui-doc-position 'normal
 	lsp-ui-doc-show-with-cursor t
 	lsp-ui-doc-enable t
 	lsp-ui-sideline-enable nil)
