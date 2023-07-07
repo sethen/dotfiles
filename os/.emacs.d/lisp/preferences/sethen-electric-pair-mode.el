@@ -1,4 +1,4 @@
-;;; sethen-use-package.el --- Use Package settings -*- lexical-binding: t -*-
+;;; sethen-electric-pair-mode.el --- Electric Pair Mode settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,17 +22,12 @@
 
 ;;; Commentary:
 
-;; Use Package package for installing use-package macro 
+;; Electric Pair Mode for matching delimiters
 
 ;;; Code:
 
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
+(electric-pair-mode)
 
-(require 'use-package)
+(provide 'sethen-electric-pair-mode)
 
-(setq use-package-always-ensure t)
-
-(provide 'sethen-use-package)
-
-;;; sethen-use-package.el ends here
+;;; sethen-electric-pair-mode.el ends here

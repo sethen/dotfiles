@@ -1,4 +1,4 @@
-;;; sethen-use-package.el --- Use Package settings -*- lexical-binding: t -*-
+;;; sethen-fonts.el --- Fonts settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,17 +22,12 @@
 
 ;;; Commentary:
 
-;; Use Package package for installing use-package macro 
+;; Fonts preferences
 
 ;;; Code:
 
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
+(set-face-attribute 'default nil :font "Liga SFMono-11" :weight 'normal :slant 'normal)
 
-(require 'use-package)
+(provide 'sethen-fonts)
 
-(setq use-package-always-ensure t)
-
-(provide 'sethen-use-package)
-
-;;; sethen-use-package.el ends here
+;;; sethen-fonts.el ends here

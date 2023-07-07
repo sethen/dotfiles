@@ -1,4 +1,4 @@
-;;; sethen-use-package.el --- Use Package settings -*- lexical-binding: t -*-
+;;; sethen-doom-themes.el --- Doom Themes settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,17 +22,18 @@
 
 ;;; Commentary:
 
-;; Use Package package for installing use-package macro 
+;; Doom Themes package for various themes
 
 ;;; Code:
 
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
 (require 'use-package)
 
-(setq use-package-always-ensure t)
+(use-package doom-themes
+  :config
+  (load-theme 'doom-material t)
+  (setq doom-themes-enable-bold nil
+	doom-themes-enable-italic nil))
 
-(provide 'sethen-use-package)
+(provide 'sethen-doom-themes)
 
-;;; sethen-use-package.el ends here
+;;; sethen-doom-themes.el ends here

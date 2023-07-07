@@ -1,4 +1,4 @@
-;;; sethen-use-package.el --- Use Package settings -*- lexical-binding: t -*-
+;;; sethen-line-numbers.el --- Line Numbers settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,17 +22,13 @@
 
 ;;; Commentary:
 
-;; Use Package package for installing use-package macro 
+;; Line Numbers preferences
 
 ;;; Code:
 
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
+(set-face-attribute 'line-number nil :weight 'normal :slant 'normal)
+(set-face-attribute 'line-number-current-line nil :foreground "#ffcb6b" :weight 'bold :slant 'normal)
 
-(require 'use-package)
+(provide 'sethen-line-numbers)
 
-(setq use-package-always-ensure t)
-
-(provide 'sethen-use-package)
-
-;;; sethen-use-package.el ends here
+;;; sethen-line-numbers.el ends here
