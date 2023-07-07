@@ -1,4 +1,4 @@
-;;; sethen-gui.el --- GUI settings -*- lexical-binding: t -*-
+;;; sethen-rust-mode.el --- Rust Mode settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,20 +22,15 @@
 
 ;;; Commentary:
 
-;; GUI preferences
+;; Rust Mode package for rust major mode
+
 
 ;;; Code:
 
-(menu-bar-mode 0)
-(scroll-bar-mode 0)
-(tab-bar-mode 0)
-(tool-bar-mode 0)
+(require 'use-package)
 
-(setq column-number-mode 1
-      inhibit-startup-screen 0
-      use-dialog-box nil
-      visible-bell 1)
+(use-package rust-mode)
 
-(provide 'sethen-gui)
+(provide 'sethen-rust-mode)
 
-;;; sethen-gui.el ends here
+;;; sethen-rust-mode.el ends here

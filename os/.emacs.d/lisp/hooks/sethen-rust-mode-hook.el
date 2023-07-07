@@ -1,4 +1,4 @@
-;;; sethen-gui.el --- GUI settings -*- lexical-binding: t -*-
+;;; sethen-rust-mode-hook.el --- Rust Mode hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,20 +22,18 @@
 
 ;;; Commentary:
 
-;; GUI preferences
+;; Rust Mode Hook for rust
 
 ;;; Code:
 
-(menu-bar-mode 0)
-(scroll-bar-mode 0)
-(tab-bar-mode 0)
-(tool-bar-mode 0)
+(require 'tree-sitter)
 
-(setq column-number-mode 1
-      inhibit-startup-screen 0
-      use-dialog-box nil
-      visible-bell 1)
+(defun sethen-rust-mode-hook ()
+  "Prod Mode hook settings!"
+  (tree-sitter-hl-mode))
 
-(provide 'sethen-gui)
+(add-hook 'rust-mode-hook 'sethen-rust-mode-hook)
 
-;;; sethen-gui.el ends here
+(provide 'sethen-rust-mode-hook)
+
+;;; sethen-rust-mode-hook.el ends here

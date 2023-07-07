@@ -44,6 +44,9 @@
 (require 'sethen-treemacs-evil)
 (require 'sethen-which-key)
 
+;; Rust
+(require 'sethen-rust-mode)
+
 ;; Symbols
 (require 'sethen-ligature)
 
@@ -69,5 +72,6 @@
 (require 'sethen-prog-mode-hook)
 (require 'sethen-python-mode-hook)
 (require 'sethen-ruby-mode-hook)
+(require 'sethen-rust-mode-hook)
 
 (provide 'sethen-init)
