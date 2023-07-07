@@ -1,4 +1,4 @@
-;;; sethen-prog-mode-hook.el --- Prog Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-tree-sitter-langs.el --- Tree Sitter Langs settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,21 +22,14 @@
 
 ;;; Commentary:
 
-;; Prog Mode hook
+;; Tree Sitter Langs package for language grammars
 
 ;;; Code:
 
-(require 'rainbow-delimiters)
-(require 'rainbow-mode)
+(require 'use-package)
 
-(defun sethen-prog-mode-hook ()
-  "Prod Mode hook settings!"
-  (display-line-numbers-mode)
-  (rainbow-delimiters-mode)
-  (rainbow-mode))
+(use-package tree-sitter-langs)
 
-(add-hook 'prog-mode-hook 'sethen-prog-mode-hook)
+(provide 'sethen-tree-sitter-langs)
 
-(provide 'sethen-prog-mode-hook)
-
-;;; sethen-prog-mode-hook.el ends here
+;;; sethen-tree-sitter-langs.el ends here

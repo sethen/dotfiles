@@ -1,4 +1,4 @@
-;;; sethen-prog-mode-hook.el --- Prog Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-js-mode-hook.el --- JS Mode hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,21 +22,18 @@
 
 ;;; Commentary:
 
-;; Prog Mode hook
+;; JS Mode Hook for javascript
 
 ;;; Code:
 
-(require 'rainbow-delimiters)
-(require 'rainbow-mode)
+(require 'tree-sitter)
 
-(defun sethen-prog-mode-hook ()
+(defun sethen-js-mode-hook ()
   "Prod Mode hook settings!"
-  (display-line-numbers-mode)
-  (rainbow-delimiters-mode)
-  (rainbow-mode))
+  (tree-sitter-hl-mode))
 
-(add-hook 'prog-mode-hook 'sethen-prog-mode-hook)
+(add-hook 'js-mode-hook 'sethen-js-mode-hook)
 
-(provide 'sethen-prog-mode-hook)
+(provide 'sethen-js-mode-hook)
 
-;;; sethen-prog-mode-hook.el ends here
+;;; sethen-js-mode-hook.el ends here

@@ -44,6 +44,10 @@
 ;; Symbols
 (require 'sethen-ligature)
 
+;; Syntax
+(require 'sethen-tree-sitter)
+(require 'sethen-tree-sitter-langs)
+
 ;; Themes
 (require 'sethen-doom-modeline)
 (require 'sethen-doom-themes)
@@ -56,6 +60,7 @@
 (require 'sethen-whitespace)
 
 ;; Hooks
+(require 'sethen-js-mode-hook)
 (require 'sethen-prog-mode-hook)
 
 (provide 'sethen-init)
