@@ -1,4 +1,4 @@
-;;; sethen-js-mode-hook.el --- JS Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-company.el --- Company settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,20 +22,29 @@
 
 ;;; Commentary:
 
-;; JS Mode Hook for javascript
+;; Company package for auto completion
 
 ;;; Code:
 
-(require 'lsp-mode)
-(require 'tree-sitter)
+(require 'use-package)
 
-(defun sethen-js-mode-hook ()
-  "Prod Mode hook settings!"
-  (lsp-mode)
-  (tree-sitter-hl-mode))
+(use-package company
+  :bind (:map company-active-map
+	 ("M-j" . 'company-select-next)
+	 ("M-k" . 'company-select-previous)
+	 ("M-l" . 'company-complete-selection)
+	 ("M-n" . 'company-other-backend))
+  :commands
+  (company-complete-selection
+   company-other-backend
+   company-select-next
+   company-select-previous
+   global-company-mode)
+  :config
+  (setq company-idle-delay 0
+	company-minimum-prefix-length 1)
+  :init (global-company-mode))
 
-(add-hook 'js-mode-hook 'sethen-js-mode-hook)
+(provide 'sethen-company)
 
-(provide 'sethen-js-mode-hook)
-
-;;; sethen-js-mode-hook.el ends here
+;;; sethen-company.el ends here

@@ -17,6 +17,13 @@
 
 ;;; Additional Setup
 
+;; Auto Completion
+(require 'sethen-company)
+(require 'sethen-company-posframe)
+
+;; Buffer
+(require 'sethen-buffer)
+
 ;; Colors
 (require 'sethen-rainbow-mode)
 (require 'sethen-rainbow-delimiters)
@@ -27,11 +34,20 @@
 ;; Documentation
 (require 'sethen-marginalia)
 
+;; Environment
+(require 'sethen-exec-path-from-shell)
+
+;; File
+(require 'sethen-file)
+
 ;; Git
 (require 'sethen-git-gutter)
 
 ;; Go
 (require 'sethen-go-mode)
+
+;; LSP
+(require 'sethen-lsp-mode)
 
 ;; Navigation
 (require 'sethen-orderless)
@@ -43,6 +59,9 @@
 (require 'sethen-evil-collection)
 (require 'sethen-treemacs-evil)
 (require 'sethen-which-key)
+
+;; Ruby
+(require 'sethen-chruby)
 
 ;; Rust
 (require 'sethen-rust-mode)

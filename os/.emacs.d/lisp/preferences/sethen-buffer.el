@@ -1,10 +1,10 @@
-;;; sethen-js-mode-hook.el --- JS Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-buffer.el --- Buffer settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
 
 
-;; This file is not part of GNU Emacs
+;; This buffer is not part of GNU Emacs
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -22,20 +22,13 @@
 
 ;;; Commentary:
 
-;; JS Mode Hook for javascript
+;; Buffer preferences
 
 ;;; Code:
 
-(require 'lsp-mode)
-(require 'tree-sitter)
+(global-hl-line-mode)
+(save-place-mode)
 
-(defun sethen-js-mode-hook ()
-  "Prod Mode hook settings!"
-  (lsp-mode)
-  (tree-sitter-hl-mode))
+(provide 'sethen-buffer)
 
-(add-hook 'js-mode-hook 'sethen-js-mode-hook)
-
-(provide 'sethen-js-mode-hook)
-
-;;; sethen-js-mode-hook.el ends here
+;;; sethen-buffer.el ends here

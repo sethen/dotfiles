@@ -1,4 +1,4 @@
-;;; sethen-js-mode-hook.el --- JS Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-file.el --- File settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,20 +22,14 @@
 
 ;;; Commentary:
 
-;; JS Mode Hook for javascript
+;; File preferences
 
 ;;; Code:
 
-(require 'lsp-mode)
-(require 'tree-sitter)
+(global-auto-revert-mode)
 
-(defun sethen-js-mode-hook ()
-  "Prod Mode hook settings!"
-  (lsp-mode)
-  (tree-sitter-hl-mode))
+(setq make-backup-files nil)
 
-(add-hook 'js-mode-hook 'sethen-js-mode-hook)
+(provide 'sethen-file)
 
-(provide 'sethen-js-mode-hook)
-
-;;; sethen-js-mode-hook.el ends here
+;;; sethen-file.el ends here

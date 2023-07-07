@@ -1,4 +1,4 @@
-;;; sethen-js-mode-hook.el --- JS Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-exec-path-from-shell.el --- Exec Path From Shell settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,20 +22,16 @@
 
 ;;; Commentary:
 
-;; JS Mode Hook for javascript
+;; Exec Path From Shell package to read environment variables
 
 ;;; Code:
 
-(require 'lsp-mode)
-(require 'tree-sitter)
+(require 'use-package)
 
-(defun sethen-js-mode-hook ()
-  "Prod Mode hook settings!"
-  (lsp-mode)
-  (tree-sitter-hl-mode))
+(use-package exec-path-from-shell
+  :commands (exec-path-from-shell-initialize)
+  :init (exec-path-from-shell-initialize))
 
-(add-hook 'js-mode-hook 'sethen-js-mode-hook)
+(provide 'sethen-exec-path-from-shell)
 
-(provide 'sethen-js-mode-hook)
-
-;;; sethen-js-mode-hook.el ends here
+;;; sethen-exec-path-from-shell.el ends here

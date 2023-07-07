@@ -1,4 +1,4 @@
-;;; sethen-js-mode-hook.el --- JS Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-lsp-mode.el --- LSP Mode settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,20 +22,31 @@
 
 ;;; Commentary:
 
-;; JS Mode Hook for javascript
+;; LSP Mode package for lsp
 
 ;;; Code:
 
-(require 'lsp-mode)
-(require 'tree-sitter)
+(require 'use-package)
 
-(defun sethen-js-mode-hook ()
-  "Prod Mode hook settings!"
-  (lsp-mode)
-  (tree-sitter-hl-mode))
+(use-package lsp-mode
+  :config
+  (setq gc-cons-threshold 100000000
+	lsp-eslint-auto-fix-on-save t
+	lsp-idle-delay 0.500
+	read-process-output-max (* 1024 1024))
+  (lsp-ensure-server 'css-ls)
+  (lsp-ensure-server 'dockerfile-ls)
+  (lsp-ensure-server 'eslint)
+  (lsp-ensure-server 'html-ls)
+  (lsp-ensure-server 'json-ls)
+  (lsp-ensure-server 'lua-language-server)
+  (lsp-ensure-server 'omnisharp)
+  (lsp-ensure-server 'rust-analyzer)
+  (lsp-ensure-server 'ts-ls)
+  (lsp-ensure-server 'yamlls)
+  :commands (lsp-ensure-server)
+  :defines (lsp-eslint-auto-fix-on-save))
 
-(add-hook 'js-mode-hook 'sethen-js-mode-hook)
+(provide 'sethen-lsp-mode)
 
-(provide 'sethen-js-mode-hook)
-
-;;; sethen-js-mode-hook.el ends here
+;;; sethen-lsp-mode.el ends here

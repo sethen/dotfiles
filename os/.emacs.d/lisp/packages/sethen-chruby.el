@@ -1,4 +1,4 @@
-;;; sethen-js-mode-hook.el --- JS Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-chruby.el --- Chruby settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,20 +22,18 @@
 
 ;;; Commentary:
 
-;; JS Mode Hook for javascript
+;; Chruby package to handle ruby installs
 
 ;;; Code:
 
-(require 'lsp-mode)
-(require 'tree-sitter)
+(require 'exec-path-from-shell)
+(require 'use-package)
 
-(defun sethen-js-mode-hook ()
-  "Prod Mode hook settings!"
-  (lsp-mode)
-  (tree-sitter-hl-mode))
+(use-package chruby
+  :commands (chruby)
+  :config (exec-path-from-shell-copy-env "RUBY_VERSION")
+  :init (chruby (concat "ruby-" (getenv "RUBY_VERSION"))))
 
-(add-hook 'js-mode-hook 'sethen-js-mode-hook)
+(provide 'sethen-chruby)
 
-(provide 'sethen-js-mode-hook)
-
-;;; sethen-js-mode-hook.el ends here
+;;; sethen-chruby.el ends here

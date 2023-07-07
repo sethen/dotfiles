@@ -26,10 +26,12 @@
 
 ;;; Code:
 
+(require 'lsp)
 (require 'tree-sitter)
 
 (defun sethen-css-mode-hook ()
   "Prod Mode hook settings!"
+  (lsp-deferred)
   (tree-sitter-hl-mode))
 
 (add-hook 'css-mode-hook 'sethen-css-mode-hook)

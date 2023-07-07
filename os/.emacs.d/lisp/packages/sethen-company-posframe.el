@@ -1,4 +1,4 @@
-;;; sethen-js-mode-hook.el --- JS Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-company-posframe.el --- Company Posframe settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,20 +22,17 @@
 
 ;;; Commentary:
 
-;; JS Mode Hook for javascript
+;; Company Posframe package to let company use child frame
 
 ;;; Code:
 
-(require 'lsp-mode)
-(require 'tree-sitter)
+(require 'use-package)
 
-(defun sethen-js-mode-hook ()
-  "Prod Mode hook settings!"
-  (lsp-mode)
-  (tree-sitter-hl-mode))
+(use-package company-posframe
+  :after (company)
+  :commands (company-posframe-mode)
+  :init (company-posframe-mode))
 
-(add-hook 'js-mode-hook 'sethen-js-mode-hook)
+(provide 'sethen-company-posframe)
 
-(provide 'sethen-js-mode-hook)
-
-;;; sethen-js-mode-hook.el ends here
+;;; sethen-company-posframe.el ends here

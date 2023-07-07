@@ -26,10 +26,12 @@
 
 ;;; Code:
 
+(require 'lsp)
 (require 'tree-sitter)
 
 (defun sethen-ruby-mode-hook ()
   "Prod Mode hook settings!"
+  (lsp-deferred)
   (tree-sitter-hl-mode))
 
 (add-hook 'ruby-mode-hook 'sethen-ruby-mode-hook)
