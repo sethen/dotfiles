@@ -41,6 +41,9 @@
 (require 'sethen-treemacs-evil)
 (require 'sethen-which-key)
 
+;; Symbols
+(require 'sethen-ligature)
+
 ;; Themes
 (require 'sethen-doom-modeline)
 (require 'sethen-doom-themes)

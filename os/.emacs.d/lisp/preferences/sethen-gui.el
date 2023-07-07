@@ -26,14 +26,14 @@
 
 ;;; Code:
 
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(tab-bar-mode -1)
-(tool-bar-mode -1)
+(menu-bar-mode 0)
+(scroll-bar-mode 0)
+(tab-bar-mode 0)
+(tool-bar-mode 0)
 
 (setq column-number-mode 1
-      inhibit-startup-screen -1
-      use-dialog-box -1
+      inhibit-startup-screen 0
+      use-dialog-box 1
       visible-bell 1)
 
 (provide 'sethen-gui)
