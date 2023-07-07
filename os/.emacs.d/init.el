@@ -24,7 +24,14 @@
 ;; Dashboard
 (require 'sethen-dashboard)
 
+;; Documentation
+(require 'sethen-marginalia)
+
+;; Git
+(require 'sethen-git-gutter)
+
 ;; Navigation
+(require 'sethen-orderless)
 (require 'sethen-treemacs)
 (require 'sethen-vertico)
 
