@@ -30,6 +30,9 @@
 ;; Git
 (require 'sethen-git-gutter)
 
+;; Go
+(require 'sethen-go-mode)
+
 ;; Navigation
 (require 'sethen-orderless)
 (require 'sethen-treemacs)
@@ -61,6 +64,7 @@
 
 ;; Hooks
 (require 'sethen-css-mode-hook)
+(require 'sethen-go-mode-hook)
 (require 'sethen-js-mode-hook)
 (require 'sethen-prog-mode-hook)
 (require 'sethen-python-mode-hook)

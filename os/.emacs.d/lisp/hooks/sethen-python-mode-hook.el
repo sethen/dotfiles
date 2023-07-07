@@ -22,7 +22,7 @@
 
 ;;; Commentary:
 
-;; Python Mode Hook for javascript
+;; Python Mode Hook for python
 
 ;;; Code:
 

@@ -1,4 +1,4 @@
-;;; sethen-ruby-mode-hook.el --- Ruby Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-go-mode-hook.el --- Go Mode hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,18 +22,18 @@
 
 ;;; Commentary:
 
-;; Ruby Mode Hook for ruby
+;; Go Mode Hook for golang
 
 ;;; Code:
 
 (require 'tree-sitter)
 
-(defun sethen-ruby-mode-hook ()
+(defun sethen-go-mode-hook ()
   "Prod Mode hook settings!"
   (tree-sitter-hl-mode))
 
-(add-hook 'ruby-mode-hook 'sethen-ruby-mode-hook)
+(add-hook 'go-mode-hook 'sethen-go-mode-hook)
 
-(provide 'sethen-ruby-mode-hook)
+(provide 'sethen-go-mode-hook)
 
-;;; sethen-ruby-mode-hook.el ends here
+;;; sethen-go-mode-hook.el ends here

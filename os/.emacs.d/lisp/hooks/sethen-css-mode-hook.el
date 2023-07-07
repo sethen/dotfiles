@@ -22,7 +22,7 @@
 
 ;;; Commentary:
 
-;; CSS Mode Hook for javascript
+;; CSS Mode Hook for css
 
 ;;; Code:
 
