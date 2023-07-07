@@ -48,6 +48,7 @@
 
 ;; LSP
 (require 'sethen-lsp-mode)
+(require 'sethen-lsp-ui)
 
 ;; Navigation
 (require 'sethen-orderless)
@@ -84,6 +85,7 @@
 (require 'sethen-electric-pair-mode)
 (require 'sethen-fonts)
 (require 'sethen-gui)
+(require 'sethen-indentation)
 (require 'sethen-line-numbers)
 (require 'sethen-whitespace)
 

@@ -205,7 +205,6 @@
       (treemacs-create-icon
        :icon (propertize " " 'face '((:foreground "#c3e88d")))
        :extensions ("vim"))
-
       (treemacs-create-icon
        :icon " "
        :extensions (".aliases" "ps1" ".zshenv" ".zshrc" "xml"))

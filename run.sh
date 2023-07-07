@@ -21,11 +21,7 @@ fi
 
 # determine operating system distro
 if type uname > /dev/null; then
-	if [[ -n `uname -a | grep 'Darwin'` ]]; then
-		export DISTRO='darwin'
-	elif [[ -n `uname -a | grep 'MANJARO'` ]]; then
-		export DISTRO='manjaro'
-	elif [[ -n `uname -a | grep 'Ubuntu'` ]]; then
+	if [[ -n `uname -a | grep 'Ubuntu'` ]]; then
 		export DISTRO='ubuntu'
 	else
 		echo 'operating system not recognized'
