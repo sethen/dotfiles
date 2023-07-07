@@ -64,5 +64,6 @@
 (require 'sethen-js-mode-hook)
 (require 'sethen-prog-mode-hook)
 (require 'sethen-python-mode-hook)
+(require 'sethen-ruby-mode-hook)
 
 (provide 'sethen-init)
