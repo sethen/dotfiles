@@ -60,6 +60,7 @@
 (require 'sethen-whitespace)
 
 ;; Hooks
+(require 'sethen-css-mode-hook)
 (require 'sethen-js-mode-hook)
 (require 'sethen-prog-mode-hook)
 (require 'sethen-python-mode-hook)
