@@ -1,4 +1,4 @@
-;;; sethen-line-numbers.el --- Line Numbers settings -*- lexical-binding: t -*-
+;;; sethen-rainbow-delimiters.el --- Rainbow Delimiters settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,15 +22,16 @@
 
 ;;; Commentary:
 
-;; Line Numbers preferences
+;; Rainbow Delimiters for visualizing hex codes
 
 ;;; Code:
 
-(set-face-attribute 'line-number nil :weight 'normal :slant 'normal)
-(set-face-attribute 'line-number-current-line nil :foreground "#ffcb6b" :weight 'bold :slant 'normal)
+(require 'use-package)
 
-(setq display-line-numbers-type 'relative)
+(use-package rainbow-delimiters
+  :commands (rainbow-delimiters-mode)
+  :init (rainbow-delimiters-mode))
 
-(provide 'sethen-line-numbers)
+(provide 'sethen-rainbow-delimiters)
 
-;;; sethen-line-numbers.el ends here
+;;; sethen-rainbow-delimiters.el ends here

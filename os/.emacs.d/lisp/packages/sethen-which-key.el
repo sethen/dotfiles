@@ -1,4 +1,4 @@
-;;; sethen-line-numbers.el --- Line Numbers settings -*- lexical-binding: t -*-
+;;; sethen-which-key.el --- Which Key settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,15 +22,16 @@
 
 ;;; Commentary:
 
-;; Line Numbers preferences
+;; Which Key package for visual key maps
 
 ;;; Code:
 
-(set-face-attribute 'line-number nil :weight 'normal :slant 'normal)
-(set-face-attribute 'line-number-current-line nil :foreground "#ffcb6b" :weight 'bold :slant 'normal)
+(require 'use-package)
 
-(setq display-line-numbers-type 'relative)
+(use-package which-key
+  :commands (which-key-mode)
+  :init (which-key-mode))
 
-(provide 'sethen-line-numbers)
+(provide 'sethen-which-key)
 
-;;; sethen-line-numbers.el ends here
+;;; sethen-which-key.el ends here

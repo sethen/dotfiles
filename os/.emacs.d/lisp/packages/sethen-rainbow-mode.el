@@ -1,4 +1,4 @@
-;;; sethen-line-numbers.el --- Line Numbers settings -*- lexical-binding: t -*-
+;;; sethen-rainbow-mode.el --- Rainbow Mode settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,15 +22,16 @@
 
 ;;; Commentary:
 
-;; Line Numbers preferences
+;; Rainbow Mode for visualizing hex codes
 
 ;;; Code:
 
-(set-face-attribute 'line-number nil :weight 'normal :slant 'normal)
-(set-face-attribute 'line-number-current-line nil :foreground "#ffcb6b" :weight 'bold :slant 'normal)
+(require 'use-package)
 
-(setq display-line-numbers-type 'relative)
+(use-package rainbow-mode
+  :commands (rainbow-mode)
+  :init (rainbow-mode 1))
 
-(provide 'sethen-line-numbers)
+(provide 'sethen-rainbow-mode)
 
-;;; sethen-line-numbers.el ends here
+;;; sethen-rainbow-mode.el ends here

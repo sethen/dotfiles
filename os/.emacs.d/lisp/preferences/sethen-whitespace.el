@@ -1,4 +1,4 @@
-;;; sethen-line-numbers.el --- Line Numbers settings -*- lexical-binding: t -*-
+;;; sethen-whitespace.el --- Whitespace settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,15 +22,18 @@
 
 ;;; Commentary:
 
-;; Line Numbers preferences
+;; Whitespace preferences
 
 ;;; Code:
 
-(set-face-attribute 'line-number nil :weight 'normal :slant 'normal)
-(set-face-attribute 'line-number-current-line nil :foreground "#ffcb6b" :weight 'bold :slant 'normal)
+(global-whitespace-mode)
 
-(setq display-line-numbers-type 'relative)
+(setq whitespace-style (delete 'lines whitespace-style)
+      whitespace-style (delete 'line-tails whitespace-style)
+      whitespace-display-mappings '((space-mark ?\  [?\u00B7])
+				    (newline-mark ?\n [?¬ ?\n])
+				    (tab-mark ?\t [?\u00BB ?\t])))
 
-(provide 'sethen-line-numbers)
+(provide 'sethen-whitespace)
 
-;;; sethen-line-numbers.el ends here
+;;; sethen-whitespace.el ends here

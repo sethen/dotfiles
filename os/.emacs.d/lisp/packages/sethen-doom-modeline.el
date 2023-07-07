@@ -1,4 +1,4 @@
-;;; sethen-line-numbers.el --- Line Numbers settings -*- lexical-binding: t -*-
+;;; sethen-doom-modeline.el --- Doom Modeline settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,15 +22,17 @@
 
 ;;; Commentary:
 
-;; Line Numbers preferences
+;; Doom Modeline package for doom modeline
 
 ;;; Code:
 
-(set-face-attribute 'line-number nil :weight 'normal :slant 'normal)
-(set-face-attribute 'line-number-current-line nil :foreground "#ffcb6b" :weight 'bold :slant 'normal)
+(require 'use-package)
 
-(setq display-line-numbers-type 'relative)
+(use-package doom-modeline
+  :commands (doom-modeline-mode)
+  :config (setq doom-modeline-icon nil)
+  :init (doom-modeline-mode))
 
-(provide 'sethen-line-numbers)
+(provide 'sethen-doom-modeline)
 
-;;; sethen-line-numbers.el ends here
+;;; sethen-doom-modeline.el ends here

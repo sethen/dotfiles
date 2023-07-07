@@ -1,4 +1,4 @@
-;;; sethen-line-numbers.el --- Line Numbers settings -*- lexical-binding: t -*-
+;;; sethen-prog-mode-hook.el --- Prog Mode hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,15 +22,21 @@
 
 ;;; Commentary:
 
-;; Line Numbers preferences
+;; Prog Mode hook
 
 ;;; Code:
 
-(set-face-attribute 'line-number nil :weight 'normal :slant 'normal)
-(set-face-attribute 'line-number-current-line nil :foreground "#ffcb6b" :weight 'bold :slant 'normal)
+(require 'rainbow-delimiters)
+(require 'rainbow-mode)
 
-(setq display-line-numbers-type 'relative)
+(defun sethen/prog-mode-hook ()
+  "Prod Mode hook settings!"
+  (display-line-numbers-mode)
+  (rainbow-delimiters-mode)
+  (rainbow-mode))
 
-(provide 'sethen-line-numbers)
+(add-hook 'prog-mode-hook 'sethen/prog-mode-hook)
 
-;;; sethen-line-numbers.el ends here
+(provide 'sethen-prog-mode-hook)
+
+;;; sethen-prog-mode-hook.el ends here

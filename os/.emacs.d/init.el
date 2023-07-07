@@ -1,6 +1,7 @@
 ;;; Initial Setup
 
 ;; Load Path
+(add-to-list 'load-path (concat user-emacs-directory "lisp/hooks"))
 (add-to-list 'load-path (concat user-emacs-directory "lisp/packages"))
 (add-to-list 'load-path (concat user-emacs-directory "lisp/preferences"))
 (add-to-list 'load-path (concat user-emacs-directory "lisp/repositories"))
@@ -14,22 +15,37 @@
 ;; Macros
 (require 'sethen-use-package)
 
-;; Preferences
-(require 'sethen-electric-pair-mode)
-(require 'sethen-fonts)
-(require 'sethen-line-numbers)
-
 ;;; Additional Setup
+
+;; Colors
+(require 'sethen-rainbow-mode)
+(require 'sethen-rainbow-delimiters)
+
+;; Dashboard
+(require 'sethen-dashboard)
 
 ;; Navigation
 (require 'sethen-treemacs)
+(require 'sethen-vertico)
 
 ;; Key Bindings
 (require 'sethen-evil)
 (require 'sethen-evil-collection)
 (require 'sethen-treemacs-evil)
+(require 'sethen-which-key)
 
 ;; Themes
+(require 'sethen-doom-modeline)
 (require 'sethen-doom-themes)
+
+;; Preferences
+(require 'sethen-electric-pair-mode)
+(require 'sethen-fonts)
+(require 'sethen-gui)
+(require 'sethen-line-numbers)
+(require 'sethen-whitespace)
+
+;; Hooks
+(require 'sethen-prog-mode-hook)
 
 (provide 'sethen-init)

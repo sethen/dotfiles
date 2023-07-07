@@ -1,4 +1,4 @@
-;;; sethen-line-numbers.el --- Line Numbers settings -*- lexical-binding: t -*-
+;;; sethen-gui.el --- GUI settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,15 +22,20 @@
 
 ;;; Commentary:
 
-;; Line Numbers preferences
+;; GUI preferences
 
 ;;; Code:
 
-(set-face-attribute 'line-number nil :weight 'normal :slant 'normal)
-(set-face-attribute 'line-number-current-line nil :foreground "#ffcb6b" :weight 'bold :slant 'normal)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tab-bar-mode -1)
+(tool-bar-mode -1)
 
-(setq display-line-numbers-type 'relative)
+(setq column-number-mode 1
+      inhibit-startup-screen -1
+      use-dialog-box -1
+      visible-bell 1)
 
-(provide 'sethen-line-numbers)
+(provide 'sethen-gui)
 
-;;; sethen-line-numbers.el ends here
+;;; sethen-gui.el ends here

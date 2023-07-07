@@ -1,4 +1,4 @@
-;;; sethen-line-numbers.el --- Line Numbers settings -*- lexical-binding: t -*-
+;;; sethen-vertico.el --- Vertico settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,15 +22,21 @@
 
 ;;; Commentary:
 
-;; Line Numbers preferences
+;; Vertico package for vertical mini buffer
 
 ;;; Code:
 
-(set-face-attribute 'line-number nil :weight 'normal :slant 'normal)
-(set-face-attribute 'line-number-current-line nil :foreground "#ffcb6b" :weight 'bold :slant 'normal)
+(require 'use-package)
 
-(setq display-line-numbers-type 'relative)
+(use-package vertico
+  :bind (:map vertico-map
+	      ("M-j" . 'vertico-next)
+	      ("M-k" . 'vertico-previous)
+	      ("M-l" . 'vertico-insert))
+  :commands
+  (vertico-insert vertico-mode vertico-next vertico-previous)
+  :init (vertico-mode))
 
-(provide 'sethen-line-numbers)
+(provide 'sethen-vertico)
 
-;;; sethen-line-numbers.el ends here
+;;; sethen-vertico.el ends here
