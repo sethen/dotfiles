@@ -1,4 +1,4 @@
-;;; sethen-prog-mode-hook.el --- Prog Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-sh-mode-hook.el --- Sh Mode hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,23 +22,18 @@
 
 ;;; Commentary:
 
-;; Prog Mode hook
+;; Sh Mode Hook for shell scripts
 
 ;;; Code:
 
-(require 'ligature)
-(require 'rainbow-delimiters)
-(require 'rainbow-mode)
+(require 'tree-sitter)
 
-(defun sethen-prog-mode-hook ()
+(defun sethen-sh-mode-hook ()
   "Prod Mode hook settings!"
-  (display-line-numbers-mode)
-  (global-ligature-mode)
-  (rainbow-delimiters-mode)
-  (rainbow-mode))
+  (tree-sitter-hl-mode))
 
-(add-hook 'prog-mode-hook 'sethen-prog-mode-hook)
+(add-hook 'sh-mode-hook 'sethen-sh-mode-hook)
 
-(provide 'sethen-prog-mode-hook)
+(provide 'sethen-sh-mode-hook)
 
-;;; sethen-prog-mode-hook.el ends here
+;;; sethen-sh-mode-hook.el ends here

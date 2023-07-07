@@ -76,6 +76,7 @@
 (require 'sethen-python-mode-hook)
 (require 'sethen-ruby-mode-hook)
 (require 'sethen-rust-mode-hook)
+(require 'sethen-sh-mode-hook)
 (require 'sethen-typescript-mode-hook)
 
 (provide 'sethen-init)
