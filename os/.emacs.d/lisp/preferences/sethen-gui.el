@@ -33,7 +33,7 @@
 
 (setq column-number-mode 1
       inhibit-startup-screen 0
-      use-dialog-box 1
+      use-dialog-box 0
       visible-bell 1)
 
 (provide 'sethen-gui)
