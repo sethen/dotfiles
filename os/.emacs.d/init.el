@@ -42,6 +42,7 @@
 
 ;; Git
 (require 'sethen-git-gutter)
+(require 'sethen-git-modes)
 
 ;; Go
 (require 'sethen-go-mode)

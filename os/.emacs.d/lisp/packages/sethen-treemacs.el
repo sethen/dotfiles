@@ -39,7 +39,7 @@
     (progn
       (treemacs-create-icon
        :icon (propertize " ")
-       :extensions ("appimage" "dll" "sln"))
+       :extensions ("appimage" "dll" "sln" "so"))
       (treemacs-create-icon
        :icon (propertize " " 'face '((:foreground "#ffcb6b")))
        :extensions (".babelrc"))
@@ -215,9 +215,12 @@
        :icon " "
        :extensions ("pdf"))
       (treemacs-create-icon
+       :icon " "
+       :extensions ("lock"))
+      (treemacs-create-icon
        :icon " "
        :extensions (fallback)))))
 
-  (provide 'sethen-treemacs)
+(provide 'sethen-treemacs)
 
 ;;; sethen-treemacs.el ends here
