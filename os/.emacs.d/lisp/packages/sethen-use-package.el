@@ -1,10 +1,10 @@
-;;; sethen-csharp-mode-hook.el --- Csharp Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-use-package.el --- Use Package settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
 
 
-;; This file is not part of GNU Csharp
+;; This file is not part of GNU Emacs
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -22,24 +22,17 @@
 
 ;;; Commentary:
 
+;; Use Package package for installing use-package macro 
 
 ;;; Code:
 
-(require 'ligature)
-(require 'lsp)
-(require 'rainbow-delimiters)
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
 
-(defvar company-backends)
+(require 'use-package)
 
-(defun sethen/csharp-mode-hook()
-  "Csharp Mode hook settings!"
-  (ligature-mode)
-  (lsp-deferred)
-  (rainbow-delimiters-mode)
-  (setq-local company-backends '(company-capf company-keywords company-files company-yasnippet)))
+(setq use-package-always-ensure t)
 
-(add-hook 'csharp-mode-hook 'sethen/csharp-mode-hook)
+(provide 'sethen-package)
 
-(provide 'sethen-csharp-mode-hook)
-
-;;; sethen-csharp-mode-hook.el ends here
+;;; sethen-use-package.el ends here

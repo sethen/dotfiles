@@ -1,4 +1,4 @@
-;;; sethen-evil-collection.el --- Evil-Collection settings -*- lexical-binding: t -*-
+;;; sethen-evil-collection.el --- Evil Collection settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,13 +22,14 @@
 
 ;;; Commentary:
 
+;; Evil Collection package for various Vim keybindings in other packages
 
 ;;; Code:
 
 (require 'use-package)
 
 (use-package evil-collection
-  :after (evil)
+  :requires (evil)
   :commands (evil-collection-init)
   :init (evil-collection-init))
 

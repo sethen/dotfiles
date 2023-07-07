@@ -22,14 +22,14 @@
 
 ;;; Commentary:
 
+;; Treemacs Evil package for Vim keybindings in Treemacs
 
 ;;; Code:
 
 (require 'use-package)
 
 (use-package treemacs-evil
-  :after (evil treemacs))
-
+  :requires (evil treemacs))
 
 (provide 'sethen-treemacs-evil)
 

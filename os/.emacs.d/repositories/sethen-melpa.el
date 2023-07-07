@@ -1,4 +1,4 @@
-;;; sethen-package.el --- Package settings -*- lexical-binding: t -*-
+;;; sethen-melpa.el --- Melpa settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,6 +22,7 @@
 
 ;;; Commentary:
 
+;; Melpa repository for melpa packages
 
 ;;; Code:
 
@@ -34,13 +35,6 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
+(provide 'sethen-melpa)
 
-(require 'use-package)
-
-(setq use-package-always-ensure t)
-
-(provide 'sethen-package)
-
-;;; sethen-package.el ends here
+;;; sethen-melpa.el ends here
