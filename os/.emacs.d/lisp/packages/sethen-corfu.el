@@ -1,4 +1,4 @@
-;;; sethen-company-posframe.el --- Company Posframe settings -*- lexical-binding: t -*-
+;;; sethen-corfu.el --- Corfu settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,17 +22,24 @@
 
 ;;; Commentary:
 
-;; Company Posframe package to let company use child frame
+;; Corfu  package for autocompletion
 
 ;;; Code:
 
 (require 'use-package)
 
-(use-package company-posframe
-  :after (company)
-  :commands (company-posframe-mode)
-  :init (company-posframe-mode))
+(use-package corfu
+  :config
+  (setq corfu-auto t
+        corfu-auto-delay 0
+        corfu-auto-prefix 0
+		corfu-separator ?\s)
+  :custom
+  (corfu-preselect 'prompt)
+  :init
+  (corfu-popupinfo-mode)
+  (global-corfu-mode))
 
-(provide 'sethen-company-posframe)
+(provide 'sethen-corfu)
 
-;;; sethen-company-posframe.el ends here
+;;; sethen-corfu.el ends here

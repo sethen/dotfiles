@@ -32,7 +32,7 @@
   :config
   (load-theme 'doom-material t)
   (setq doom-themes-enable-bold nil
-	doom-themes-enable-italic nil))
+		doom-themes-enable-italic nil))
 
 (provide 'sethen-doom-themes)
 

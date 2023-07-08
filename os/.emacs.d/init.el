@@ -18,8 +18,7 @@
 ;;; Additional Setup
 
 ;; Auto Completion
-(require 'sethen-company)
-(require 'sethen-company-posframe)
+(require 'sethen-corfu)
 
 ;; Buffer
 (require 'sethen-buffer)

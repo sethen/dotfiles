@@ -22,7 +22,7 @@
 
 ;;; Commentary:
 
-;; Use Package package for installing use-package macro 
+;; Use Package package for installing use-package macro
 
 ;;; Code:
 
