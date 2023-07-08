@@ -31,6 +31,9 @@
 ;; Dashboard
 (require 'sethen-dashboard)
 
+;; Docker
+(require 'sethen-dockerfile-mode)
+
 ;; Documentation
 (require 'sethen-marginalia)
 
@@ -43,9 +46,13 @@
 ;; Git
 (require 'sethen-git-gutter)
 (require 'sethen-git-modes)
+(require 'sethen-magit)
 
 ;; Go
 (require 'sethen-go-mode)
+
+;; JSON
+(require 'sethen-json-mode)
 
 ;; LSP
 (require 'sethen-lsp-mode)
@@ -82,6 +89,9 @@
 ;; Typescript
 (require 'sethen-typescript-mode)
 
+;; YAML
+(require 'sethen-yaml-mode)
+
 ;; Preferences
 (require 'sethen-electric-pair-mode)
 (require 'sethen-fonts)
@@ -92,13 +102,16 @@
 
 ;; Hooks
 (require 'sethen-css-mode-hook)
+(require 'sethen-dockerfile-mode-hook)
 (require 'sethen-go-mode-hook)
 (require 'sethen-js-mode-hook)
+(require 'sethen-json-mode-hook)
 (require 'sethen-prog-mode-hook)
 (require 'sethen-python-mode-hook)
 (require 'sethen-ruby-mode-hook)
 (require 'sethen-rust-mode-hook)
 (require 'sethen-sh-mode-hook)
 (require 'sethen-typescript-mode-hook)
+(require 'sethen-yaml-mode-hook)
 
 (provide 'sethen-init)

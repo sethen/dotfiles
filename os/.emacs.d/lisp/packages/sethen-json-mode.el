@@ -1,4 +1,4 @@
-;;; sethen-git-gutter.el --- Git Gutter settings -*- lexical-binding: t -*-
+;;; sethen-json-mode.el --- JSON Mode settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,16 +22,14 @@
 
 ;;; Commentary:
 
-;; Git Gutter package for git signs
+;; JSON Mode package for json major mode
 
 ;;; Code:
 
 (require 'use-package)
 
-(use-package git-gutter
-  :commands (global-git-gutter-mode)
-  :init (global-git-gutter-mode))
+(use-package json-mode)
 
-(provide 'sethen-git-gutter)
+(provide 'sethen-json-mode)
 
-;;; sethen-git-gutter.el ends here
+;;; sethen-json-mode.el ends here

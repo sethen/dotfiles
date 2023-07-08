@@ -1,4 +1,4 @@
-;;; sethen-git-gutter.el --- Git Gutter settings -*- lexical-binding: t -*-
+;;; sethen-yaml-mode.el --- Yaml Mode settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,16 +22,14 @@
 
 ;;; Commentary:
 
-;; Git Gutter package for git signs
+;; Yaml Mode package for yaml major mode
 
 ;;; Code:
 
 (require 'use-package)
 
-(use-package git-gutter
-  :commands (global-git-gutter-mode)
-  :init (global-git-gutter-mode))
+(use-package yaml-mode)
 
-(provide 'sethen-git-gutter)
+(provide 'sethen-yaml-mode)
 
-;;; sethen-git-gutter.el ends here
+;;; sethen-yaml-mode.el ends here

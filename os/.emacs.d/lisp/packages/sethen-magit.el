@@ -1,4 +1,4 @@
-;;; sethen-git-gutter.el --- Git Gutter settings -*- lexical-binding: t -*-
+;;; sethen-magit.el --- Magit Mode settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,16 +22,14 @@
 
 ;;; Commentary:
 
-;; Git Gutter package for git signs
+;; Magit package for git interface
 
 ;;; Code:
 
 (require 'use-package)
 
-(use-package git-gutter
-  :commands (global-git-gutter-mode)
-  :init (global-git-gutter-mode))
+(use-package magit)
 
-(provide 'sethen-git-gutter)
+(provide 'sethen-magit)
 
-;;; sethen-git-gutter.el ends here
+;;; sethen-magit.el ends here

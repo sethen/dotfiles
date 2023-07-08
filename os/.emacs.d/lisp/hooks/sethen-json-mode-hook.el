@@ -1,4 +1,4 @@
-;;; sethen-git-gutter.el --- Git Gutter settings -*- lexical-binding: t -*-
+;;; sethen-json-mode-hook.el --- JSON Mode hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,16 +22,20 @@
 
 ;;; Commentary:
 
-;; Git Gutter package for git signs
+;; JSON Mode Hook for json
 
 ;;; Code:
 
-(require 'use-package)
+(require 'lsp)
+(require 'tree-sitter)
 
-(use-package git-gutter
-  :commands (global-git-gutter-mode)
-  :init (global-git-gutter-mode))
+(defun sethen-json-mode-hook ()
+  "Prod Mode hook settings!"
+  (lsp-deferred)
+  (tree-sitter-hl-mode))
 
-(provide 'sethen-git-gutter)
+(add-hook 'json-mode-hook 'sethen-json-mode-hook)
 
-;;; sethen-git-gutter.el ends here
+(provide 'sethen-json-mode-hook)
+
+;;; sethen-json-mode-hook.el ends here

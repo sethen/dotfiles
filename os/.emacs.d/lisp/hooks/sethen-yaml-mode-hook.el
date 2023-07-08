@@ -1,4 +1,4 @@
-;;; sethen-git-gutter.el --- Git Gutter settings -*- lexical-binding: t -*-
+;;; sethen-yaml-mode-hook.el --- YAML Mode hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,16 +22,20 @@
 
 ;;; Commentary:
 
-;; Git Gutter package for git signs
+;; YAML Mode Hook for yaml
 
 ;;; Code:
 
-(require 'use-package)
+(require 'lsp)
+(require 'tree-sitter)
 
-(use-package git-gutter
-  :commands (global-git-gutter-mode)
-  :init (global-git-gutter-mode))
+(defun sethen-yaml-mode-hook ()
+  "Prod Mode hook settings!"
+  (lsp-deferred)
+  (tree-sitter-hl-mode))
 
-(provide 'sethen-git-gutter)
+(add-hook 'yaml-mode-hook 'sethen-yaml-mode-hook)
 
-;;; sethen-git-gutter.el ends here
+(provide 'sethen-yaml-mode-hook)
+
+;;; sethen-yaml-mode-hook.el ends here

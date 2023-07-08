@@ -1,4 +1,4 @@
-;;; sethen-git-gutter.el --- Git Gutter settings -*- lexical-binding: t -*-
+;;; sethen-dockerfile-mode.el --- Dockerfile Mode settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,16 +22,14 @@
 
 ;;; Commentary:
 
-;; Git Gutter package for git signs
+;; Dockerfile Mode package for dockerfile major mode
 
 ;;; Code:
 
 (require 'use-package)
 
-(use-package git-gutter
-  :commands (global-git-gutter-mode)
-  :init (global-git-gutter-mode))
+(use-package dockerfile-mode)
 
-(provide 'sethen-git-gutter)
+(provide 'sethen-dockerfile-mode)
 
-;;; sethen-git-gutter.el ends here
+;;; sethen-dockerfile-mode.el ends here
