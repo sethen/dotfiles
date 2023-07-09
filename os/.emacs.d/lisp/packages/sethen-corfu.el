@@ -29,14 +29,12 @@
 (require 'use-package)
 
 (use-package corfu
-  :config
-  (setq corfu-auto t
-        corfu-auto-delay 0
-        corfu-auto-prefix 0
-		corfu-separator ?\s)
   :custom
   (corfu-preselect 'prompt)
   :init
+  (setq corfu-auto t
+        corfu-auto-delay 0
+        corfu-auto-prefix 0)
   (corfu-popupinfo-mode)
   (global-corfu-mode))
 

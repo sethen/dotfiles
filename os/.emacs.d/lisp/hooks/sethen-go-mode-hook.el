@@ -1,4 +1,4 @@
-;;; sethen-go-mode-hook.el --- Go Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-go-mode-hook.el --- Go Mode Hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -29,7 +29,7 @@
 (require 'tree-sitter)
 
 (defun sethen-go-mode-hook ()
-  "Prod Mode hook settings!"
+  "Go Mode Hook settings!"
   (tree-sitter-hl-mode))
 
 (add-hook 'go-mode-hook 'sethen-go-mode-hook)

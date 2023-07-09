@@ -1,4 +1,4 @@
-;;; sethen-python-mode-hook.el --- Python Mode Hook settings -*- lexical-binding: t -*-
+;;; sethen-lsp-completion-mode-hook.el --- LSP Mode Hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,18 +22,17 @@
 
 ;;; Commentary:
 
-;; Python Mode Hook for python
+;; LSP Completion Mode Hook for lsp matching
 
 ;;; Code:
 
-(require 'tree-sitter)
+(defun sethen-lsp-completion-mode-hook ()
+  "LSP Completion Mode Hook settings!"
+  (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+		'(orderless)))
 
-(defun sethen-python-mode-hook ()
-  "Python Mode Hook settings!"
-  (tree-sitter-hl-mode))
+(add-hook 'lsp-completion-mode-hook 'sethen-lsp-completion-mode-hook)
 
-(add-hook 'python-mode-hook 'sethen-python-mode-hook)
+(provide 'sethen-lsp-completion-mode-hook)
 
-(provide 'sethen-python-mode-hook)
-
-;;; sethen-python-mode-hook.el ends here
+;;; sethen-lsp-completion-mode-hook.el ends here

@@ -1,4 +1,4 @@
-;;; sethen-yaml-mode-hook.el --- YAML Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-yaml-mode-hook.el --- YAML Mode Hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -30,7 +30,7 @@
 (require 'tree-sitter)
 
 (defun sethen-yaml-mode-hook ()
-  "Prod Mode hook settings!"
+  "YAML Mode Hook settings!"
   (lsp-deferred)
   (tree-sitter-hl-mode))
 

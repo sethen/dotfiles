@@ -1,4 +1,4 @@
-;;; sethen-js-mode-hook.el --- JS Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-js-mode-hook.el --- JS Mode Hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -30,7 +30,7 @@
 (require 'tree-sitter)
 
 (defun sethen-js-mode-hook ()
-  "Prod Mode hook settings!"
+  "Prod Mode Hook settings!"
   (lsp-mode)
   (tree-sitter-hl-mode))
 

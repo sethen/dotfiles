@@ -1,4 +1,4 @@
-;;; sethen-dockerfile-mode-hook.el --- Dockerfile Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-dockerfile-mode-hook.el --- Dockerfile Mode Hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -30,7 +30,7 @@
 (require 'tree-sitter)
 
 (defun sethen-dockerfile-mode-hook ()
-  "Prod Mode hook settings!"
+  "Dockerfile Mode Hook settings!"
   (lsp-deferred)
   (tree-sitter-hl-mode))
 

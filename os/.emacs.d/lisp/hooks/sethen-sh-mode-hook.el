@@ -1,4 +1,4 @@
-;;; sethen-sh-mode-hook.el --- Sh Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-sh-mode-hook.el --- Sh Mode Hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -30,7 +30,7 @@
 (require 'tree-sitter)
 
 (defun sethen-sh-mode-hook ()
-  "Prod Mode hook settings!"
+  "Sh Mode Hook settings!"
   (lsp-deferred)
   (tree-sitter-hl-mode))
 

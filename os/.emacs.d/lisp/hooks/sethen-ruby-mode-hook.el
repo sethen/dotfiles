@@ -1,4 +1,4 @@
-;;; sethen-ruby-mode-hook.el --- Ruby Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-ruby-mode-hook.el --- Ruby Mode Hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -30,7 +30,7 @@
 (require 'tree-sitter)
 
 (defun sethen-ruby-mode-hook ()
-  "Prod Mode hook settings!"
+  "Prod Mode Hook settings!"
   (lsp-deferred)
   (tree-sitter-hl-mode))
 

@@ -1,4 +1,4 @@
-;;; sethen-json-mode-hook.el --- JSON Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-json-mode-hook.el --- JSON Mode Hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -30,7 +30,7 @@
 (require 'tree-sitter)
 
 (defun sethen-json-mode-hook ()
-  "Prod Mode hook settings!"
+  "JSON Mode Hook settings!"
   (lsp-deferred)
   (tree-sitter-hl-mode))
 

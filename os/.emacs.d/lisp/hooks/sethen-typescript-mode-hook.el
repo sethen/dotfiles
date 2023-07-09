@@ -1,4 +1,4 @@
-;;; sethen-typescript-mode-hook.el --- Typescript Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-typescript-mode-hook.el --- Typescript Mode Hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -29,7 +29,7 @@
 (require 'tree-sitter)
 
 (defun sethen-typescript-mode-hook ()
-  "Prod Mode hook settings!"
+  "Typescript Mode Hook settings!"
   (tree-sitter-hl-mode))
 
 (add-hook 'typescript-mode-hook 'sethen-typescript-mode-hook)

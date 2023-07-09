@@ -45,7 +45,9 @@
   (lsp-ensure-server 'ts-ls)
   (lsp-ensure-server 'yamlls)
   :commands (lsp-ensure-server)
+  :custom (lsp-completion-provider :none)
   :defines (lsp-eslint-auto-fix-on-save))
+
 
 (provide 'sethen-lsp-mode)
 

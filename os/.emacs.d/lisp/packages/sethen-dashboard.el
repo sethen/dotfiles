@@ -30,6 +30,8 @@
 
 (use-package dashboard
   :bind (:map dashboard-mode-map
+			  ("M-j" . widget-forward)
+			  ("M-k" . widget-backward)
 			  ("M-l" . evil-ret))
   :commands
   (dashboard-setup-startup-hook widget-backward widget-forward)

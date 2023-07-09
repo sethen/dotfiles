@@ -1,4 +1,4 @@
-;;; sethen-prog-mode-hook.el --- Prog Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-prog-mode-hook.el --- Prog Mode Hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,7 +22,7 @@
 
 ;;; Commentary:
 
-;; Prog Mode hook
+;; Prog Mode Hook
 
 ;;; Code:
 
@@ -31,7 +31,7 @@
 (require 'rainbow-mode)
 
 (defun sethen-prog-mode-hook ()
-  "Prod Mode hook settings!"
+  "Prog Mode Hook settings!"
   (display-line-numbers-mode)
   (global-ligature-mode)
   (rainbow-delimiters-mode)

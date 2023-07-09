@@ -105,6 +105,7 @@
 (require 'sethen-go-mode-hook)
 (require 'sethen-js-mode-hook)
 (require 'sethen-json-mode-hook)
+(require 'sethen-lsp-completion-mode-hook)
 (require 'sethen-prog-mode-hook)
 (require 'sethen-python-mode-hook)
 (require 'sethen-ruby-mode-hook)

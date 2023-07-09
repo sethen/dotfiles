@@ -1,4 +1,4 @@
-;;; sethen-rust-mode-hook.el --- Rust Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-rust-mode-hook.el --- Rust Mode Hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -30,7 +30,7 @@
 (require 'tree-sitter)
 
 (defun sethen-rust-mode-hook ()
-  "Prod Mode hook settings!"
+  "Rust Mode Hook settings!"
   (lsp-deferred)
   (tree-sitter-hl-mode))
 

@@ -1,4 +1,4 @@
-;;; sethen-css-mode-hook.el --- CSS Mode hook settings -*- lexical-binding: t -*-
+;;; sethen-css-mode-hook.el --- CSS Mode Hook settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -30,7 +30,7 @@
 (require 'tree-sitter)
 
 (defun sethen-css-mode-hook ()
-  "Prod Mode hook settings!"
+  "CSS Mode Hook settings!"
   (lsp-deferred)
   (tree-sitter-hl-mode))
 

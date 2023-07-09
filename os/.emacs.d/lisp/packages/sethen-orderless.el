@@ -22,15 +22,18 @@
 
 ;;; Commentary:
 
-;; Orderless package to divide mini buffer searches into sub patterns
+;; Orderless package to divide corfu and mini buffer searches into sub patterns
 
 ;;; Code:
 
 (require 'use-package)
 
 (use-package orderless
-  :custom
-  (completion-styles '(orderless basic)))
+  :init
+  (setq completion-styles '(orderless partial-completion basic)
+		completion-category-defaults nil
+		completion-category-overrides nil
+		orderless-component-separator "[ &]"))
 
 (provide 'sethen-orderless)
 
