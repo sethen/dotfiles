@@ -1,4 +1,4 @@
-;;; sethen-tide-mode.el --- Tide Mode settings -*- lexical-binding: t -*-
+;;; sethen-flycheck.el --- Flycheck settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,19 +22,16 @@
 
 ;;; Commentary:
 
-;; Tide Mode package for typescript modes
+;; Flycheck for error reporting
 
 ;;; Code:
 
 (require 'use-package)
 
-(use-package tide
-  :ensure t
-  :after (typescript-mode corfu flycheck)
-  :hook ((typescript-mode . tide-setup)
-         (typescript-mode . tide-hl-identifier-mode)
-         (before-save . tide-format-before-save)))
+(use-package flycheck
+  :commands (global-flycheck-mode)
+  :init (global-flycheck-mode))
 
-(provide 'sethen-tide-mode)
+(provide 'sethen-flycheck)
 
-;;; sethen-tide-mode.el ends here
+;;; sethen-flycheck.el ends here

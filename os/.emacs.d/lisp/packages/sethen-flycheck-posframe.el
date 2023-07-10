@@ -1,4 +1,4 @@
-;;; sethen-tide-mode.el --- Tide Mode settings -*- lexical-binding: t -*-
+;;; sethen-flycheck-posframe.el --- Flycheck Posframe settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,19 +22,20 @@
 
 ;;; Commentary:
 
-;; Tide Mode package for typescript modes
+;; Flycheck Posframe for flycheck errors in a pretty box
 
 ;;; Code:
 
+(require 'corfu)
 (require 'use-package)
 
-(use-package tide
-  :ensure t
-  :after (typescript-mode corfu flycheck)
-  :hook ((typescript-mode . tide-setup)
-         (typescript-mode . tide-hl-identifier-mode)
-         (before-save . tide-format-before-save)))
+(use-package flycheck-posframe
+  :after (corfu flycheck)
+  :config
+  (add-to-list 'flycheck-posframe-inhibit-functions #'(lambda () corfu--candidates))
+  :defines (flycheck-posframe-inhbit-functions)
+  :hook (flycheck-mode . flycheck-posframe-mode))
 
-(provide 'sethen-tide-mode)
+(provide 'sethen-flycheck-posframe)
 
-;;; sethen-tide-mode.el ends here
+;;; sethen-flycheck-posframe.el ends here

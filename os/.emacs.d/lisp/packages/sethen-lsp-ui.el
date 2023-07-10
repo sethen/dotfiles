@@ -22,6 +22,7 @@
 
 ;;; Commentary:
 
+;; LSP UI for additional features for lsp mode
 
 ;;; Code:
 
@@ -30,7 +31,7 @@
 (use-package lsp-ui
   :config
   (setq lsp-completion-provider :none
-		lsp-completion-show-detail nil
+		lsp-completion-show-detail t
 		lsp-completion-show-kind t
 		lsp-headerline-arrow ""
 		lsp-keep-workspace-alive nil

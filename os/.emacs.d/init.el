@@ -37,6 +37,10 @@
 ;; Documentation
 (require 'sethen-marginalia)
 
+;; Errors
+(require 'sethen-flycheck)
+(require 'sethen-flycheck-posframe)
+
 ;; Environment
 (require 'sethen-exec-path-from-shell)
 
