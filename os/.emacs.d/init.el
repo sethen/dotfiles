@@ -19,6 +19,7 @@
 
 ;; Auto Completion
 (require 'sethen-corfu)
+(require 'sethen-cape)
 
 ;; Buffer
 (require 'sethen-buffer)
@@ -87,6 +88,9 @@
 
 ;; Typescript
 (require 'sethen-typescript-mode)
+
+;; Web
+(require 'sethen-web-mode)
 
 ;; YAML
 (require 'sethen-yaml-mode)

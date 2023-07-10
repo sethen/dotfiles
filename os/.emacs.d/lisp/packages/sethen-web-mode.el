@@ -1,4 +1,4 @@
-;;; sethen-go-mode-hook.el --- Go Mode Hook settings -*- lexical-binding: t -*-
+;;; sethen-web-mode.el --- Web Mode settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,20 +22,17 @@
 
 ;;; Commentary:
 
-;; Go Mode Hook for golang
+;; Web Mode package for web major mode
+
 
 ;;; Code:
 
-(require 'lsp)
-(require 'tree-sitter)
+(require 'use-package)
 
-(defun sethen-go-mode-hook ()
-  "Go Mode Hook settings!"
-  (lsp-deferred)
-  (tree-sitter-hl-mode))
+(use-package web-mode
+  :mode (("\\.tsx\\'" . web-mode)
+         ("\\.jsx\\'" . web-mode)))
 
-(add-hook 'go-mode-hook 'sethen-go-mode-hook)
+(provide 'sethen-web-mode)
 
-(provide 'sethen-go-mode-hook)
-
-;;; sethen-go-mode-hook.el ends here
+;;; sethen-web-mode.el ends here

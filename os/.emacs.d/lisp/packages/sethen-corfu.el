@@ -29,12 +29,17 @@
 (require 'use-package)
 
 (use-package corfu
+  :bind (:map corfu-map
+			  ("M-l" . corfu-insert)
+			  ("M-j" . corfu-next)
+			  ("M-k" . corfu-previous))
   :custom
+  (corfu-cycle t)
   (corfu-preselect 'prompt)
   :init
   (setq corfu-auto t
         corfu-auto-delay 0
-        corfu-auto-prefix 0)
+        corfu-auto-prefix 1)
   (corfu-popupinfo-mode)
   (global-corfu-mode))
 

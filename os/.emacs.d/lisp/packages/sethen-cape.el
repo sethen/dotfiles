@@ -1,4 +1,4 @@
-;;; sethen-go-mode-hook.el --- Go Mode Hook settings -*- lexical-binding: t -*-
+;;; sethen-cape.el --- Cape settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,20 +22,20 @@
 
 ;;; Commentary:
 
-;; Go Mode Hook for golang
+;; Cape package for completion frameworks
 
 ;;; Code:
 
-(require 'lsp)
-(require 'tree-sitter)
+(require 'use-package)
 
-(defun sethen-go-mode-hook ()
-  "Go Mode Hook settings!"
-  (lsp-deferred)
-  (tree-sitter-hl-mode))
+(use-package cape
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-elisp-block)
+  (add-to-list 'completion-at-point-functions #'cape-keyword)
+  (add-to-list 'completion-at-point-functions #'cape-history))
 
-(add-hook 'go-mode-hook 'sethen-go-mode-hook)
+(provide 'sethen-cape)
 
-(provide 'sethen-go-mode-hook)
-
-;;; sethen-go-mode-hook.el ends here
+;;; sethen-cape.el ends here

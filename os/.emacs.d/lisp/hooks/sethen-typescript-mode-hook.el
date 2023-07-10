@@ -26,10 +26,12 @@
 
 ;;; Code:
 
+(require 'lsp)
 (require 'tree-sitter)
 
 (defun sethen-typescript-mode-hook ()
   "Typescript Mode Hook settings!"
+  (lsp-deferred)
   (tree-sitter-hl-mode))
 
 (add-hook 'typescript-mode-hook 'sethen-typescript-mode-hook)

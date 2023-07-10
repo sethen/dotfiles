@@ -30,7 +30,7 @@
 (require 'tree-sitter)
 
 (defun sethen-ruby-mode-hook ()
-  "Prod Mode Hook settings!"
+  "Ruby Mode Hook settings!"
   (lsp-deferred)
   (tree-sitter-hl-mode))
 
