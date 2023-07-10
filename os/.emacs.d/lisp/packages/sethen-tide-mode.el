@@ -1,4 +1,4 @@
-;;; sethen-web-mode.el --- Web Mode settings -*- lexical-binding: t -*-
+;;; sethen-tide-mode.el --- Tide Mode settings -*- lexical-binding: t -*-
 
 ;; Author: sethen
 ;; Maintainer: sethen
@@ -22,17 +22,19 @@
 
 ;;; Commentary:
 
-;; Web Mode package for web major mode
-
+;; Tide Mode package for typescript modes
 
 ;;; Code:
 
 (require 'use-package)
 
-(use-package web-mode
-  :mode (("\\.tsx\\'" . web-mode)
-         ("\\.jsx\\'" . web-mode)))
+(use-package tide
+  :ensure t
+  :after (typescript-mode company flycheck)
+  :hook ((typescript-mode . tide-setup)
+         (typescript-mode . tide-hl-identifier-mode)
+         (before-save . tide-format-before-save)))
 
-(provide 'sethen-web-mode)
+(provide 'sethen-tide-mode)
 
-;;; sethen-web-mode.el ends here
+;;; sethen-tide-mode.el ends here

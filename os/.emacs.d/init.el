@@ -88,9 +88,7 @@
 
 ;; Typescript
 (require 'sethen-typescript-mode)
-
-;; Web
-(require 'sethen-web-mode)
+(require 'sethen-tide-mode)
 
 ;; YAML
 (require 'sethen-yaml-mode)
