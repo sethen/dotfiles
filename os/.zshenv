@@ -14,7 +14,7 @@ export CARGO_BIN_DIRECTORY=~/.cargo/bin
 # emacs
 export EMACS_DIRECTORY=~/.emacs.d
 export EMACS_LIGATURE_DIRECTORY=$DEVELOPER_DIRECTORY/ligature.el
-export EMACS_VERSION=28.2
+export EMACS_VERSION=29.0.92
 export EMACS_DOWNLOAD_DIRECTORY=emacs-$EMACS_VERSION
 
 #go
