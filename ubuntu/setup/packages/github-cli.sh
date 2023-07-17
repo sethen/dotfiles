@@ -2,12 +2,12 @@
 
 apt_get_install_if_package_not_exists gh
 
-local id_pub=$(ls ~/.ssh/id_*.pub)
+local ID_PUB=$(ls ~/.ssh/id_*.pub)
 
-if [[ ! -n $id_pub ]]; then
-	information_message 'logging into to github'
+if [[ ! -n $ID_PUB ]]; then
+    information_message 'logging into to github'
 
-	gh auth login
+    gh auth login
 
-	echo ''
+    echo ''
 fi

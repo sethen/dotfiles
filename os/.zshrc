@@ -1,8 +1,3 @@
-# source globals
-GLOBALS=~/globals.sh
-
-[ -f $GLOBALS ] && source $GLOBALS
-
 # set options
 setopt AUTOCD
 setopt CORRECT
@@ -29,27 +24,27 @@ zstyle ':completion:*' menu select=2
 
 # set initial directory
 if [[ -d $DEVELOPER_DIRECTORY ]]; then
-	cd $DEVELOPER_DIRECTORY
+    cd $DEVELOPER_DIRECTORY
 fi
 
 # source chruby and switch to ruby version
 if [[ -f $CHRUBY_SHELL_FILE && -f $RUBY_BIN ]]; then
-	source $CHRUBY_SHELL_FILE
-	chruby ruby $RUBY_VERSION
-fi
-
-# set npm-packages in PATH if found
-if [[ -d $NPM_PACKAGES_DIRECTORY && -d $NPM_PACKAGES_BIN_DIRECTORY ]]; then
-	export PATH=$NPM_PACKAGES_BIN_DIRECTORY:$PATH
+    source $CHRUBY_SHELL_FILE
+    chruby ruby $RUBY_VERSION
 fi
 
 # set golang specific options and in PATH if found
 if [[ -d $GO_USR_LOCAL_BIN_DIRECTORY && -f $GO_BIN ]]; then
-	export PATH=$PATH:$GO_USR_LOCAL_BIN_DIRECTORY
-	export PATH=$PATH:$GO_BIN_DIRECTORY
+    export PATH=$PATH:$GO_USR_LOCAL_BIN_DIRECTORY
+    export PATH=$PATH:$GO_BIN_DIRECTORY
 fi
 
 # set rust specific options and in PATH if found
 if [[ -d $CARGO_BIN_DIRECTORY ]]; then
-	export PATH=$PATH:$CARGO_BIN_DIRECTORY
+    export PATH=$PATH:$CARGO_BIN_DIRECTORY
+fi
+
+# set volta specific options and in PATH if found
+if [[ -d $VOLTA_DIRECTORY ]]; then
+    export PATH=$PATH:$VOLTA_BIN_DIRECTORY
 fi

@@ -6,26 +6,26 @@ UBUNTU_ALIASES=$PRESENT_WORKING_DIRECTORY/ubuntu/.aliases
 UBUNTU_ZSH_FUNCTIONS=$PRESENT_WORKING_DIRECTORY/ubuntu/zsh_functions
 
 if [[ -a $UBUNTU_ALIASES ]]; then
-	echo "\n" >> ~/.aliases
-	cat $UBUNTU_ALIASES >> ~/.aliases
+    echo "\n" >> ~/.aliases
+    cat $UBUNTU_ALIASES >> ~/.aliases
 fi
 
 if [[ -d $UBUNTU_ZSH_FUNCTIONS ]]; then
-	information_message 'copying zsh functions'
+    information_message 'copying zsh functions'
 
-	for os_zsh_function in $UBUNTU_ZSH_FUNCTIONS/*; do
-		ln -sfv $os_zsh_function $ZSH_FUNCTIONS_DIRECTORY
+    for os_zsh_function in $UBUNTU_ZSH_FUNCTIONS/*; do
+	ln -sfv $os_zsh_function $ZSH_FUNCTIONS_DIRECTORY
 
-		FILENAME=$os_zsh_function:t
+	FILENAME=$os_zsh_function:t
 
-		echo "autoload -Uz $FILENAME" >> $ZSHENV
-	done
+	echo "autoload -Uz $FILENAME" >> ~/.zshenv
+    done
 fi
 
 FONTS_DIRECTORY=~/.fonts
 
 if [[ ! -d $FONTS_DIRECTORY ]]; then
-	mkdir $FONTS_DIRECTORY
+    mkdir $FONTS_DIRECTORY
 fi
 
 information_message 'copying fonts'

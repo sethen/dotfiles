@@ -1,13 +1,9 @@
 #!/bin/zsh
 
-if [[ -d $NPM_PACKAGES_DIRECTORY ]]; then
-	if [[ ! -a $NPM_PACKAGES_BIN_DIRECTORY/tsc ]]; then
-		information_message 'installing typescript'
-
-		npm install -g typescript typescript-language-server
-	else
-		success_message 'typescript installed'
-	fi
+if (( $+commands[tsc] )); then
+    success_message 'typescript installed'
 else
-	error_message 'npm does not exist'
+    information_message 'typescript installed'
+
+   npm install -g typescript
 fi

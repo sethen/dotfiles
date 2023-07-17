@@ -44,7 +44,7 @@ check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/zsh-autosuggestions.sh
 
 # node
-check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/nodejs.sh
+check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/volta.sh
 
 # npm packages
 check_if_file_exists_executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/typescript.sh
@@ -66,8 +66,8 @@ echo ''
 read 'UPGRADE?would you like to upgrade your existing packages? [Yy/Nn] '
 
 if [[ $UPGRADE =~ '[Yy]' ]]; then
-	information_message 'upgrading apt packages'
+    information_message 'upgrading apt packages'
 
-	sudo apt upgrade -y
-	sudo apt autoremove -y
+    sudo apt upgrade -y
+    sudo apt autoremove -y
 fi

@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+GO_DOWNLOAD_DIRECTORY=go-$GO_VERSION
+
 if (( $+commands[go] )); then
 	success_message "golang installed"
 else
