@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+RUBY_GEM_BIN=~/.rubies/ruby-$RUBY_VERSION/bin/gem
+
 if (( $+commands[solargraph] )); then
     success-message 'solargraph installed'
 else

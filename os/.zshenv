@@ -27,8 +27,6 @@ export GO_VERSION=1.20.2
 
 # ruby
 export RUBY_VERSION=3.2.2
-export RUBY_BIN=~/.rubies/ruby-$RUBY_VERSION/bin/ruby
-export RUBY_GEM_BIN=~/.rubies/ruby-$RUBY_VERSION/bin/gem
 
 # ruby-install
 export RUBY_INSTALL_VERSION=0.9.0

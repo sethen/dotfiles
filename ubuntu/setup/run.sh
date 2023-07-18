@@ -35,7 +35,6 @@ check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/moka-icon-theme.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/nginx.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/ripgrep.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/samba.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/spotify.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/virtualbox.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/visual-studio-code.sh
