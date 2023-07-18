@@ -3,7 +3,7 @@
 EMACS_DIRECTORY=~/.emacs.d
 HOME_ALIASES=~/.aliases
 OS_ALIASES=$PRESENT_WORKING_DIRECTORY/os/.aliases
-OS_ZSH_FUNCTIONS=$PRESENT_WORKING_DIRECTORY/os/zsh_functions
+OS_ZSH_FUNCTIONS=$PRESENT_WORKING_DIRECTORY/os/zsh-functions
 OS_ZSHENV=$PRESENT_WORKING_DIRECTORY/os/.zshenv
 
 if [[ -d $ZSH_FUNCTIONS_DIRECTORY ]]; then
@@ -20,6 +20,7 @@ else
     echo "$PRESENT_WORKING_DIRECTORY/os/.zshenv is not found"
 fi
 
+
 if [[ -d $OS_ZSH_FUNCTIONS ]]; then
     for os_zsh_function in $OS_ZSH_FUNCTIONS/*; do
 	ln -sfv $os_zsh_function $ZSH_FUNCTIONS_DIRECTORY
@@ -32,7 +33,7 @@ if [[ -d $OS_ZSH_FUNCTIONS ]]; then
     source ~/.zshenv
 fi
 
-header_message 'os bootstrap'
+header-message 'os bootstrap'
 
 if [[ -a $HOME_ALIASES ]]; then
     rm $HOME_ALIASES
@@ -49,9 +50,9 @@ if [[ ! -d $EMACS_DIRECTORY ]]; then
 fi
 
 for file in $PRESENT_WORKING_DIRECTORY/os/.emacs.d/*; do
-    symlink_file_to_dest $file $EMACS_DIRECTORY
+    symlink-file-to-dest $file $EMACS_DIRECTORY
 done
 
-symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.gitconfig ~
-symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.gitignore_global ~
-symlink_file_to_dest $PRESENT_WORKING_DIRECTORY/os/.zshrc ~
+symlink-file-to-dest $PRESENT_WORKING_DIRECTORY/os/.gitconfig ~
+symlink-file-to-dest $PRESENT_WORKING_DIRECTORY/os/.gitignore_global ~
+symlink-file-to-dest $PRESENT_WORKING_DIRECTORY/os/.zshrc ~

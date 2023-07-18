@@ -1,3 +1,3 @@
 #!/bin/zsh
 
-snap_install_if_package_not_exists spotify
+snap-install-if-package-not-exists spotify

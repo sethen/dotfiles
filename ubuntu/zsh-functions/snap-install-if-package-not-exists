@@ -1,10 +1,10 @@
 #!/bin/zsh
 
 if [[ ! -n $(snap list | grep -w $1) ]]; then
-    information_message "installing ${1}"
+    information-message "installing ${1}"
 
     sudo snap install $1
 else
-    success_message "${1} is installed"
+    success-message "${1} is installed"
 fi
 

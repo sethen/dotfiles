@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-function git_branch_name() {
-	GIT_BRANCH_NAME=$(git symbolic-ref --short HEAD)
-
-	echo $GIT_BRANCH_NAME
-}

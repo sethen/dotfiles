@@ -3,9 +3,9 @@
 EMACS_DOWNLOAD_DIRECTORY=emacs-$EMACS_VERSION
 
 if (( $+commands[emacs] )); then
-    success_message 'emacs installed'
+    success-message 'emacs installed'
 else
-    information_message 'installing emacs'
+    information-message 'installing emacs'
 
     sudo apt build-dep emacs
     sudo apt install gcc-12 libgccjit0 libgccjit-12-dev -y

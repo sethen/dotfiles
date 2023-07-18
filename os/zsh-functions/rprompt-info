@@ -1,0 +1,30 @@
+#!/bin/zsh
+
+function rprompt-info() {
+    if [[ -d "./.git" ]]; then
+	GIT_FILES_TRACKING=''
+	MODIFIED_FILES=$(git-modified-files-count)
+	STAGED_FILES=$(git-staged-files-count)
+	UNTRACKED_FILES=$(git-untracked-files-count)
+
+	if [[ $MODIFIED_FILES > 0 ]]; then
+	    GIT_FILES_TRACKING+="%K{2}%F{15} ${MODIFIED_FILES}m %f%k"
+	fi
+
+	if [[ $STAGED_FILES > 0 ]]; then
+	    GIT_FILES_TRACKING+="%K{4}%F{15} ${STAGED_FILES}s %f%k"
+	fi
+
+	if [[ $UNTRACKED_FILES > 0 ]]; then
+	    GIT_FILES_TRACKING+="%K{1}%F{15} ${UNTRACKED_FILES}un %f%k"
+	fi
+
+	GIT_INFO="%K{8} $(git-branch-name):$(git-sha) %k"
+
+	if [[ -n $GIT_FILES_TRACKING ]]; then
+	    echo "$GIT_FILES_TRACKING$GIT_INFO"
+	else
+	    echo "$GIT_INFO"
+	fi
+    fi
+}

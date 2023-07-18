@@ -1,3 +1,3 @@
 #!/bin/zsh
 
-apt_get_install_if_package_not_exists nginx
+apt-get-install-if-package-not-exists nginx

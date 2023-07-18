@@ -9,8 +9,8 @@ export HISTFILE=~/.zsh_history
 export SAVEHIST=1000
 
 # set right and left prompts
-PROMPT='$(prompt_info)'
-RPROMPT='$(rprompt_info)'
+PROMPT='$(prompt-info)'
+RPROMPT='$(rprompt-info)'
 
 # set styles
 zstyle ':completion:*' group-name ''
@@ -35,16 +35,16 @@ fi
 
 # set golang specific options and in PATH if found
 if [[ -d $GO_USR_LOCAL_BIN_DIRECTORY && -f $GO_BIN ]]; then
-    export PATH=$PATH:$GO_USR_LOCAL_BIN_DIRECTORY
-    export PATH=$PATH:$GO_BIN_DIRECTORY
+    export PATH=$GO_USR_LOCAL_BIN_DIRECTORY:$PATH
+    export PATH=$GO_BIN_DIRECTORY:$PATH
 fi
 
 # set rust specific options and in PATH if found
 if [[ -d $CARGO_BIN_DIRECTORY ]]; then
-    export PATH=$PATH:$CARGO_BIN_DIRECTORY
+    export PATH=$CARGO_BIN_DIRECTORY:$PATH
 fi
 
 # set volta specific options and in PATH if found
 if [[ -d $VOLTA_DIRECTORY ]]; then
-    export PATH=$PATH:$VOLTA_BIN_DIRECTORY
+    export PATH=$VOLTA_BIN_DIRECTORY:$PATH
 fi

@@ -1,3 +1,3 @@
 #!/bin/zsh
 
-apt_get_install_if_package_not_exists google-chrome-stable
+apt-get-install-if-package-not-exists google-chrome-stable

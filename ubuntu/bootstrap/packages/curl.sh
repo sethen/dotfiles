@@ -1,3 +1,3 @@
 #!/bin/zsh
 
-apt_get_install_if_package_not_exists curl
+apt-get-install-if-package-not-exists curl
