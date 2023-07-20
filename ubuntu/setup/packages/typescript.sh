@@ -3,7 +3,7 @@
 if (( $+commands[tsc] )); then
     success-message 'typescript installed'
 else
-    information-message 'typescript installed'
+    information-message 'installing typescript'
 
-   npm install -g typescript
+    npm install -g typescript
 fi

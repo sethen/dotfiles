@@ -131,7 +131,9 @@
 (add-to-list 'load-path (concat user-emacs-directory "elisp/layers/hooks"))
 
 (require 'layer-css-mode-hook)
+(require 'layer-js-mode-hook)
 (require 'layer-markdown-mode-hook)
 (require 'layer-ruby-mode-hook)
 (require 'layer-rust-mode-hook)
 (require 'layer-web-mode-hook)
+(require 'layer-yaml-mode-hook)

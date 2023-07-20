@@ -2,7 +2,10 @@
 
 export PRESENT_WORKING_DIRECTORY="$(cd "$(dirname "$0")"; pwd)"
 
+# switch shell to zsh
 $PRESENT_WORKING_DIRECTORY/lib/switch-shell-to-zsh.sh
+
+# determine current os and export distro
 . $PRESENT_WORKING_DIRECTORY/lib/determine-os.sh
 
 # run os and distro specific files
@@ -16,4 +19,6 @@ $PRESENT_WORKING_DIRECTORY/$DISTRO/preferences.sh
 $PRESENT_WORKING_DIRECTORY/lib/reboot-system-prompt.sh
 
 echo "\nthanks for using sethen's dotfiles\n"
+
 exec zsh
+source ~/.zshrc

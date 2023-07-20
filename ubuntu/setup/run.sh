@@ -42,8 +42,11 @@ check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/zoom.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/zsh-autosuggestions.sh
 
-# node
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/volta.sh
+# node manager & node
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/nvm.sh
+
+# source nvm
+. $NVM_DIRECTORY/nvm.sh
 
 # npm packages
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/typescript.sh
@@ -55,6 +58,11 @@ check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages
 # ruby
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/chruby.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/ruby-install.sh
+
+# source chruby
+. $CHRUBY_SHELL_FILE
+chruby $RUBY_VERSION
+
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/ruby.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/solargraph.sh
 

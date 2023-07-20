@@ -25,15 +25,15 @@ export GO_USR_LOCAL_BIN_DIRECTORY=/usr/local/go/bin
 export GO_BIN=$GO_USR_LOCAL_BIN_DIRECTORY/go
 export GO_VERSION=1.20.2
 
+# nvm
+export NVM_VERSION=0.39.3
+export NVM_DIRECTORY=~/.nvm
+
 # ruby
 export RUBY_VERSION=3.2.2
 
 # ruby-install
 export RUBY_INSTALL_VERSION=0.9.0
-
-# volta
-export VOLTA_DIRECTORY=~/.volta
-export VOLTA_BIN_DIRECTORY=$VOLTA_DIRECTORY/bin
 
 # zsh-autosuggestions
 export ZSH_AUTOSUGGESTIONS_DIRECTORY=~/.zsh/zsh-autosuggestions

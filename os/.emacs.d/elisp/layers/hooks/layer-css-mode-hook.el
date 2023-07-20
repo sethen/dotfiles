@@ -1,7 +1,6 @@
 (defun layer/css-mode-hook ()
   "Layer CSS Mode Hook settings!"
-  (lsp-deferred)
-  (set (make-local-variable 'company-backends) '(company-capf)))
+  (lsp-deferred))
 
 (add-hook 'css-mode-hook 'layer/css-mode-hook)
 
