@@ -4,7 +4,7 @@
       (display-line-numbers-mode 0)
     (display-line-numbers-mode 1))
 
-  (global-ligature-mode)
+  (ligature-mode)
   (hl-block-mode)
   (rainbow-delimiters-mode)
   (rainbow-mode))
