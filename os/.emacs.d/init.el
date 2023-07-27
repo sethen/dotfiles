@@ -1,139 +1,141 @@
-;;;
-;;; Cores
-;;;
-
 ;; Package Managers
-(add-to-list 'load-path (concat user-emacs-directory "elisp/cores/package-managers"))
+(add-to-list 'load-path (concat user-emacs-directory "elisp/packages/package-managers"))
 
-(require 'core-elpaca)
-(require 'core-elpaca-use-package)
+(require 'sethen-elpaca)
+(require 'sethen-elpaca-use-package)
 
 ;; Themes
-(add-to-list 'load-path (concat user-emacs-directory "elisp/cores/themes"))
+;;; Load themes early
+(add-to-list 'load-path (concat user-emacs-directory "elisp/packages/themes"))
 
-(require 'core-doom-modeline)
-(require 'core-doom-themes)
-
-;; Colors
-(add-to-list 'load-path (concat user-emacs-directory "elisp/cores/colors"))
-
-(require 'core-material)
-(require 'core-rainbow-delimiters)
-(require 'core-rainbow-mode)
-
-;; Documentation
-(add-to-list 'load-path (concat user-emacs-directory "elisp/cores/documentation"))
-
-(require 'core-helpful)
-(require 'core-marginalia)
-
-;; Errors
-(add-to-list 'load-path (concat user-emacs-directory "elisp/cores/errors"))
-
-(require 'core-flycheck)
-(require 'core-flycheck-posframe)
-
-;; Environment
-(add-to-list 'load-path (concat user-emacs-directory "elisp/cores/environment"))
-
-(require 'core-exec-path-from-shell)
-
-;; Fonts
-(add-to-list 'load-path (concat user-emacs-directory "elisp/cores/fonts"))
-
-(require 'core-ligature)
-
-;; Git
-(add-to-list 'load-path (concat user-emacs-directory "elisp/cores/git"))
-
-(require 'core-git-gutter)
+(require 'sethen-doom-modeline)
+(require 'sethen-doom-themes)
 
 ;; Navigation
-(add-to-list 'load-path (concat user-emacs-directory "elisp/cores/navigation"))
+;;; Load navigation early
+(add-to-list 'load-path (concat user-emacs-directory "elisp/packages/navigation"))
 
-(require 'core-evil)
-(require 'core-evil-collection)
-(require 'core-hl-block-mode)
-(require 'core-treemacs)
-(require 'core-treemacs-evil)
-(require 'core-vertico)
+(require 'sethen-evil)
+(require 'sethen-evil-collection)
+(require 'sethen-dashboard)
 
-;; Preferences
-(add-to-list 'load-path (concat user-emacs-directory "elisp/cores/preferences"))
+;; Tree
+;;; Load tree early
+(add-to-list 'load-path (concat user-emacs-directory "elisp/packages/tree"))
 
-(require 'core-buffer)
-(require 'core-electric-pair-mode)
-(require 'core-file)
-(require 'core-fonts)
-(require 'core-gui)
-(require 'core-line-numbers)
-(require 'core-whitespace)
-
-;; Hooks
-(add-to-list 'load-path (concat user-emacs-directory "elisp/cores/hooks"))
-
-(require 'core-prog-mode-hook)
-(require 'core-window-setup-hook)
-
-;;;
-;;; Layers
-;;;
+(require 'sethen-treemacs)
+(require 'sethen-treemacs-evil)
 
 ;; Autocomplete
-(add-to-list 'load-path (concat user-emacs-directory "elisp/layers/autocomplete"))
+(add-to-list 'load-path (concat user-emacs-directory "elisp/packages/autocomplete"))
 
-(require 'layer-company)
-(require 'layer-company-posframe)
-(require 'layer-company-nginx)
-(require 'layer-company-web)
+(require 'sethen-cape)
+(require 'sethen-corfu)
+(require 'sethen-company-web)
+(require 'sethen-company-nginx)
+(require 'sethen-orderless)
+(require 'sethen-vertico)
+
+;; Colors
+(add-to-list 'load-path (concat user-emacs-directory "elisp/packages/colors"))
+
+(require 'sethen-material)
+(require 'sethen-rainbow-delimiters)
+(require 'sethen-rainbow-mode)
+
+;; Documentation
+(add-to-list 'load-path (concat user-emacs-directory "elisp/packages/documentation"))
+
+(require 'sethen-helpful)
+(require 'sethen-marginalia)
+
+;; Environment
+(add-to-list 'load-path (concat user-emacs-directory "elisp/packages/environment"))
+
+(require 'sethen-exec-path-from-shell)
+
+;; Errors
+(add-to-list 'load-path (concat user-emacs-directory "elisp/packages/errors"))
+
+(require 'sethen-flycheck)
+(require 'sethen-flycheck-posframe)
+
+;; Fonts
+(add-to-list 'load-path (concat user-emacs-directory "elisp/packages/fonts"))
+
+(require 'sethen-ligature)
 
 ;; Git
-(add-to-list 'load-path (concat user-emacs-directory "elisp/layers/git"))
+(add-to-list 'load-path (concat user-emacs-directory "elisp/packages/git"))
 
-(require 'layer-magit)
+(require 'sethen-git-gutter)
+(require 'sethen-magit)
 
 ;; Langs
-(add-to-list 'load-path (concat user-emacs-directory "elisp/layers/langs"))
+(add-to-list 'load-path (concat user-emacs-directory "elisp/packages/langs"))
 
-(require 'layer-dockerfile-mode)
-(require 'layer-git-modes)
-(require 'layer-json-mode)
-(require 'layer-nginx-mode)
-(require 'layer-rust-mode)
-(require 'layer-web-mode)
-(require 'layer-yaml-mode)
+(require 'sethen-dockerfile-mode)
+(require 'sethen-git-modes)
+(require 'sethen-go-mode)
+(require 'sethen-json-mode)
+(require 'sethen-nginx-mode)
+(require 'sethen-rust-mode)
+(require 'sethen-tide-mode)
+(require 'sethen-typescript-mode)
+(require 'sethen-web-mode)
+(require 'sethen-yaml-mode)
 
 ;; LSP
-(add-to-list 'load-path (concat user-emacs-directory "elisp/layers/lsp"))
+(add-to-list 'load-path (concat user-emacs-directory "elisp/packages/lsp"))
 
-(require 'layer-lsp-mode)
-(require 'layer-lsp-ui)
+(require 'sethen-lsp-mode)
+(require 'sethen-lsp-ui)
 
-;; Navigation
-(add-to-list 'load-path (concat user-emacs-directory "elisp/layers/navigation"))
+;; Preferences
+(add-to-list 'load-path (concat user-emacs-directory "elisp/packages/preferences"))
 
-(require 'layer-dashboard)
-(require 'layer-which-key)
+(require 'sethen-buffer)
+(require 'sethen-electric-pair-mode)
+(require 'sethen-file)
+(require 'sethen-fonts)
+(require 'sethen-gui)
+(require 'sethen-line-numbers)
+(require 'sethen-whitespace)
+
+;; Syntax
+(add-to-list 'load-path (concat user-emacs-directory "elisp/packages/syntax"))
+
+(require 'sethen-hl-block-mode)
 
 ;; Text
-(add-to-list 'load-path (concat user-emacs-directory "elisp/layers/text"))
+(add-to-list 'load-path (concat user-emacs-directory "elisp/packages/text"))
 
-(require 'layer-gh-md)
-(require 'layer-markdown-mode)
+(require 'sethen-gh-md)
+(require 'sethen-markdown-mode)
 
 ;; Tools
-(add-to-list 'load-path (concat user-emacs-directory "elisp/layers/tools"))
+(add-to-list 'load-path (concat user-emacs-directory "elisp/packages/tools"))
 
-(require 'layer-chruby)
-(require 'layer-json-reformat)
+(require 'sethen-chruby)
+(require 'sethen-json-reformat)
+(require 'sethen-which-key)
 
 ;; Hooks
-(add-to-list 'load-path (concat user-emacs-directory "elisp/layers/hooks"))
+(add-to-list 'load-path (concat user-emacs-directory "elisp/hooks"))
 
-(require 'layer-css-mode-hook)
-(require 'layer-js-mode-hook)
-(require 'layer-markdown-mode-hook)
-(require 'layer-ruby-mode-hook)
-(require 'layer-rust-mode-hook)
-(require 'layer-web-mode-hook)
-(require 'layer-yaml-mode-hook)
+(require 'sethen-css-mode-hook)
+(require 'sethen-dockerfile-mode-hook)
+(require 'sethen-go-mode-hook)
+(require 'sethen-js-mode-hook)
+(require 'sethen-json-mode-hook)
+(require 'sethen-markdown-mode-hook)
+(require 'sethen-prog-mode-hook)
+(require 'sethen-ruby-mode-hook)
+(require 'sethen-rust-mode-hook)
+(require 'sethen-sh-mode-hook)
+(require 'sethen-typescript-mode-hook)
+(require 'sethen-web-mode-hook)
+(require 'sethen-window-setup-hook)
+(require 'sethen-yaml-mode-hook)
+
+(setq company-format-margin-function 'company-text-icons-margin)

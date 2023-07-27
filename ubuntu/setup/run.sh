@@ -49,7 +49,12 @@ check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages
 . $NVM_DIRECTORY/nvm.sh
 
 # npm packages
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/bash-language-server.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/dockerfile-language-server.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/typescript.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/typescript-language-server.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/vscode-langservers-extracted.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/yaml-language-server.sh
 
 # golang
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/go.sh
@@ -68,6 +73,7 @@ check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages
 
 # rust
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/rust.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/rust-analyzer.sh
 
 echo ''
 read 'UPGRADE?would you like to upgrade your existing packages? [Yy/Nn] '

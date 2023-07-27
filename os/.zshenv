@@ -14,7 +14,7 @@ export DEVELOPER_DIRECTORY=~/Developer
 export ZSH_FUNCTIONS_DIRECTORY=~/.zsh/functions
 
 # emacs
-export EMACS_VERSION=29.0.92
+export EMACS_VERSION=29.1-rc1
 
 # files
 export ALIASES=~/.aliases
