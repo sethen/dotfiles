@@ -2,8 +2,6 @@
 
 (use-package treemacs
   :config
-  (setq treemacs-width 30
-	treemacs-file-event-delay 0)
   (set-face-background 'treemacs-window-background-face "#1c262b")
   (set-face-background 'treemacs-hl-line-face "#263238")
   (treemacs-modify-theme "Default"
@@ -191,6 +189,9 @@
        :extensions ("lock"))
       (treemacs-create-icon
        :icon " "
-       :extensions (fallback)))))
+       :extensions (fallback))))
+  :custom
+  (treemacs-width 30)
+  (treemacs-file-event-delay 0))
 
 (provide 'sethen-treemacs)

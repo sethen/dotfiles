@@ -9,6 +9,7 @@
   (corfu-auto t)
   (corfu-auto-delay 0)
   (corfu-auto-prefix 1)
+  (corfu-separator "[ &]")
   (corfu-preselect 'prompt)
   :elpaca (:files (:defaults "extensions/*"))
   :init

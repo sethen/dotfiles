@@ -33,8 +33,6 @@
 (require 'sethen-corfu)
 (require 'sethen-company-web)
 (require 'sethen-company-nginx)
-(require 'sethen-orderless)
-(require 'sethen-vertico)
 
 ;; Colors
 (add-to-list 'load-path (concat user-emacs-directory "elisp/packages/colors"))
@@ -102,6 +100,13 @@
 (require 'sethen-line-numbers)
 (require 'sethen-whitespace)
 
+;; Search
+(add-to-list 'load-path (concat user-emacs-directory "elisp/packages/search"))
+
+(require 'sethen-consult)
+(require 'sethen-orderless)
+(require 'sethen-vertico)
+
 ;; Syntax
 (add-to-list 'load-path (concat user-emacs-directory "elisp/packages/syntax"))
 
@@ -117,6 +122,7 @@
 (add-to-list 'load-path (concat user-emacs-directory "elisp/packages/tools"))
 
 (require 'sethen-chruby)
+(require 'sethen-general)
 (require 'sethen-json-reformat)
 (require 'sethen-which-key)
 
@@ -128,6 +134,7 @@
 (require 'sethen-go-mode-hook)
 (require 'sethen-js-mode-hook)
 (require 'sethen-json-mode-hook)
+(require 'sethen-lsp-completion-mode-hook)
 (require 'sethen-markdown-mode-hook)
 (require 'sethen-prog-mode-hook)
 (require 'sethen-ruby-mode-hook)
