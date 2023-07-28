@@ -144,5 +144,3 @@
 (require 'sethen-web-mode-hook)
 (require 'sethen-window-setup-hook)
 (require 'sethen-yaml-mode-hook)
-
-(setq company-format-margin-function 'company-text-icons-margin)
