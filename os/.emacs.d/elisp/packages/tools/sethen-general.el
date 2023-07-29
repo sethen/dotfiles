@@ -16,10 +16,11 @@
    "hv" 'helpful-variable
    "im" 'consult-imenu
    "mg" 'magit
-   "nt" 'smudge-controller-next-track
    "pd" 'package-delete
-   "pt" 'smudge-controller-previous-track
    "rg" 'consult-ripgrep
+   "sn" 'smudge-controller-next-track
+   "sp" 'smudge-controller-previous-track
+   "stp" 'smudge-controller-toggle-play
    "ss" 'smudge-controller-toggle-shuffle
    "t" 'treemacs))
 

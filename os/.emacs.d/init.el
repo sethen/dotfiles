@@ -1,3 +1,5 @@
+(toggle-frame-maximized)
+
 ;; Package Managers
 (add-to-list 'load-path (concat user-emacs-directory "elisp/packages/package-managers"))
 
@@ -17,12 +19,8 @@
 
 (require 'sethen-evil)
 (require 'sethen-evil-collection)
+(require 'sethen-centaur-tabs)
 (require 'sethen-dashboard)
-
-;; Tree
-;;; Load tree early
-(add-to-list 'load-path (concat user-emacs-directory "elisp/packages/tree"))
-
 (require 'sethen-treemacs)
 (require 'sethen-treemacs-evil)
 
@@ -107,6 +105,11 @@
 (require 'sethen-orderless)
 (require 'sethen-vertico)
 
+;; Sound
+(add-to-list 'load-path (concat user-emacs-directory "elisp/packages/sound"))
+
+(require 'sethen-smudge)
+
 ;; Syntax
 (add-to-list 'load-path (concat user-emacs-directory "elisp/packages/syntax"))
 
@@ -142,5 +145,6 @@
 (require 'sethen-sh-mode-hook)
 (require 'sethen-typescript-mode-hook)
 (require 'sethen-web-mode-hook)
-(require 'sethen-window-setup-hook)
 (require 'sethen-yaml-mode-hook)
+
+(require 'use-package)
