@@ -6,11 +6,14 @@
   (:map evil-normal-state-map
 	("g l" . centaur-tabs-forward)
         ("g h" . centaur-tabs-backward))
+  :config
+  (custom-set-faces
+   `(centaur-tabs-selected-modified ((t (:foreground "#ffcb6b" :weight bold))))
+   `(centaur-tabs-unselected-modified ((t (:foreground "#ffcb6b")))))
   :custom
-  (centaur-tabs-style "bar")
   (centaur-tabs-height 32)
-  (centaur-tabs-set-bar 'under)
-  (x-underline-at-descent-line t)
+  (centaur-tabs-set-bar 'left)
+  (centaur-tabs-style "bar")
   :init
   (centaur-tabs-mode t))
 

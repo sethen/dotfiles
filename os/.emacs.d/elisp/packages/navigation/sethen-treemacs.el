@@ -177,7 +177,7 @@
        :extensions ("vim"))
       (treemacs-create-icon
        :icon " "
-       :extensions (".aliases" "ps1" ".zshenv" ".zshrc" "xml"))
+       :extensions (".aliases" "ps1" ".zshenv" ".zshrc" "xml" ".bashrc" ".profile"))
       (treemacs-create-icon
        :icon " "
        :extensions ("zip"))
