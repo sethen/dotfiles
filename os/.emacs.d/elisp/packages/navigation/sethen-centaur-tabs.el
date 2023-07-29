@@ -14,6 +14,8 @@
   (centaur-tabs-height 32)
   (centaur-tabs-set-bar 'left)
   (centaur-tabs-style "bar")
+  (centaur-tabs-set-modified-marker t)
+  (centaur-tabs-modified-marker "")
   :init
   (centaur-tabs-mode t))
 
