@@ -6,6 +6,7 @@
 	      ("M-j" . corfu-next)
 	      ("M-k" . corfu-previous))
   :custom
+  (corfu-popupinfo-delay 0)
   (corfu-auto t)
   (corfu-auto-delay 0)
   (corfu-auto-prefix 1)
