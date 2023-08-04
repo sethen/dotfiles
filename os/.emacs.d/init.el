@@ -34,7 +34,8 @@
 
 ;; Autocomplete
 (require 'sethen-cape)
-(require 'sethen-corfu)
+(require 'sethen-company)
+(require 'sethen-company-posframe)
 (require 'sethen-company-web)
 (require 'sethen-company-nginx)
 
@@ -112,5 +113,3 @@
 (require 'sethen-typescript-mode-hook)
 (require 'sethen-web-mode-hook)
 (require 'sethen-yaml-mode-hook)
-
-(require 'use-package)

@@ -1,6 +1,6 @@
 (defun sethen/sh-mode-hook ()
   "Sethen Sh Mode Hook settings!"
-  (lsp-deferred))
+  (eglot-ensure))
 
 (add-hook 'sh-mode-hook 'sethen/sh-mode-hook)
 
