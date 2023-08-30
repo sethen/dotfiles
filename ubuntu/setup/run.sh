@@ -42,19 +42,8 @@ check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/zoom.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/zsh-autosuggestions.sh
 
-# node manager & node
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/nvm.sh
-
-# source nvm
-. $NVM_DIRECTORY/nvm.sh
-
-# npm packages
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/bash-language-server.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/dockerfile-language-server.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/typescript.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/typescript-language-server.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/vscode-langservers-extracted.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/yaml-language-server.sh
+# nvm, node & node modules
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/node.sh
 
 # golang
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/go.sh
