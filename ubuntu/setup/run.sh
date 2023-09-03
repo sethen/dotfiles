@@ -45,13 +45,13 @@ check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages
 # nvm, node & node modules
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/node.sh
 
-# golang
+# golang & gopls
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/go.sh
 
 # chruby, ruby-install, ruby & solargraph gem
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/ruby.sh
 
-# rust
+# rust & rust-analyzer
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/rust.sh
 
 echo ''

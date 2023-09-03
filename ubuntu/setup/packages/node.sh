@@ -4,8 +4,7 @@ if [[ -d $NVM_DIRECTORY ]]; then
     success-message 'nvm installed'
 else
     information-message 'installing nvm'
-
-    PROFILE=/dev/null curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VERSION/install.sh | bash
+    PROFILE=/dev/null bash -c 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VERSION/install.sh | bash'
 
     . $NVM_DIRECTORY/nvm.sh
 fi

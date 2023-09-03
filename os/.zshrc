@@ -49,4 +49,3 @@ fi
 if [[ -d $CARGO_BIN_DIRECTORY ]]; then
     export PATH=$CARGO_BIN_DIRECTORY:$PATH
 fi
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
