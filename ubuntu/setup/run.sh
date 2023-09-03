@@ -47,22 +47,12 @@ check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages
 
 # golang
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/go.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/gopls.sh
 
-# ruby
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/chruby.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/ruby-install.sh
-
-# source chruby
-. $CHRUBY_SHELL_FILE
-chruby $RUBY_VERSION
-
+# chruby, ruby-install, ruby & solargraph gem
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/ruby.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/solargraph.sh
 
 # rust
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/rust.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/rust-analyzer.sh
 
 echo ''
 read 'UPGRADE?would you like to upgrade your existing packages? [Yy/Nn] '

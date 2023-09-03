@@ -191,7 +191,7 @@
        :icon " "
        :extensions (fallback))))
   :custom
-  (treemacs-width 30)
+  (treemacs-width 40)
   (treemacs-file-event-delay 0))
 
 (provide 'sethen-treemacs)

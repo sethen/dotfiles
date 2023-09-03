@@ -15,17 +15,7 @@ else
 
     cd ~/$EMACS_DOWNLOAD_DIRECTORY
 
-    CC='gcc-12' ./configure --with-native-compilation=aot \
-      --with-x-toolkit=gtk3 \
-      --with-json \
-      --with-tree-sitter \
-      --with-gif \
-      --with-png \
-      --with-jpeg \
-      --with-rsvg \
-      --with-tiff \
-      --with-imagemagick \
-      --with-xwidgets
+    CC='gcc-12' ./configure --with-native-compilation --with-tree-sitter 
 
     make -j$(nproc)
     sudo make install

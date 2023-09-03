@@ -14,7 +14,7 @@ export DEVELOPER_DIRECTORY=~/Developer
 export ZSH_FUNCTIONS_DIRECTORY=~/.zsh/functions
 
 # emacs
-export EMACS_VERSION=29.1-rc1
+export EMACS_VERSION=29.1
 
 # files
 export ALIASES=~/.aliases
@@ -31,6 +31,7 @@ export NVM_DIRECTORY=~/.nvm
 
 # ruby
 export RUBY_VERSION=3.2.2
+export RUBY_BIN=~/.rubies/ruby-$RUBY_VERSION/bin/ruby
 
 # ruby-install
 export RUBY_INSTALL_VERSION=0.9.0

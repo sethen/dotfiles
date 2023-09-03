@@ -86,6 +86,10 @@
 ;; Sound
 (require 'sethen-smudge)
 
+;; Syntax
+(require 'sethen-tree-sitter)
+(require 'sethen-tree-sitter-langs)
+
 ;; Text
 (require 'sethen-gh-md)
 (require 'sethen-markdown-mode)
