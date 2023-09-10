@@ -33,6 +33,9 @@ export NVM_DIRECTORY=~/.nvm
 export RUBY_VERSION=3.2.2
 export RUBY_BIN=~/.rubies/ruby-$RUBY_VERSION/bin/ruby
 
+# rust
+export CARGO_BIN_DIRECTORY=~/.cargo/bin
+
 # ruby-install
 export RUBY_INSTALL_VERSION=0.9.0
 

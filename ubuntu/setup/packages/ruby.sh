@@ -4,7 +4,6 @@ if [[ -a $CHRUBY_SHELL_FILE ]]; then
     success-message 'chruby installed'
 else
     CHRUBY_DOWNLOAD_DIRECTORY=chruby-$CHRUBY_VERSION
-    CHRUBY_VERSION=0.3.9
 
     information-message 'installing chruby'
 
