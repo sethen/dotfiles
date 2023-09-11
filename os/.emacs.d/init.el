@@ -78,9 +78,12 @@
 (require 'sethen-lsp-mode)
 (require 'sethen-lsp-ui)
 
+
+;; Project
+(require 'sethen-projectile)
+
 ;; Search
 (require 'sethen-consult)
-(require 'sethen-projectile)
 (require 'sethen-orderless)
 (require 'sethen-vertico)
 
