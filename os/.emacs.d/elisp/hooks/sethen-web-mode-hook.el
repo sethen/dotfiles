@@ -1,10 +1,9 @@
 (defun sethen/web-mode-hook ()
   "Sethen Web Mode Hook settings!"
   (lsp-deferred)
-  ;; Use Company backends as Capfs.
-  (setq-local completion-at-point-functions
-	      (mapcar #'cape-company-to-capf
-		      (list #'company-web-html))))
+  (when (and (stringp buffer-file-name)
+	     (string-match "\\.tsx$" buffer-file-name))
+    (tide-setup)))
 
 (add-hook 'web-mode-hook 'sethen/web-mode-hook)
 

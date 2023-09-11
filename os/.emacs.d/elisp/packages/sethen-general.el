@@ -6,7 +6,7 @@
   (general-define-key
    :prefix "C-c"
    "cb" 'consult-buffer
-   "cf" 'consult-find
+   "cf" 'consult-fd
    "cl" 'consult-line
    "cm" 'consult-man
    "df" 'describe-function
@@ -16,7 +16,6 @@
    "hv" 'helpful-variable
    "im" 'consult-imenu
    "mg" 'magit
-   "pd" 'package-delete
    "rg" 'consult-ripgrep
    "sn" 'smudge-controller-next-track
    "sp" 'smudge-controller-previous-track

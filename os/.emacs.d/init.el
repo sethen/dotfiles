@@ -80,6 +80,7 @@
 
 ;; Search
 (require 'sethen-consult)
+(require 'sethen-projectile)
 (require 'sethen-orderless)
 (require 'sethen-vertico)
 
