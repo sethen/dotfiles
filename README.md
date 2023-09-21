@@ -4,7 +4,9 @@ These are my dotfiles for setting up my environment from nothing. Take and use a
 
 # Quickstart
 
-To run these dotfiles quickly just execute the `run.sh` file.  This repository uses Emacs.
+1. Install `zsh` in your terminal by using `sudo apt install zsh`
+2. Modify the `.gitconfig` file in the `os` directory to have your name and email
+3. Execute the `run.sh` file while in `zsh`
 
 # Environments
 
