@@ -15,6 +15,8 @@ else
 
     cd ~/$EMACS_DOWNLOAD_DIRECTORY
 
+    ./autogen.sh
+
     CC='gcc-12' ./configure --with-native-compilation --with-tree-sitter 
 
     make -j$(nproc)
