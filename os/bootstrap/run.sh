@@ -6,20 +6,20 @@ OS_ALIASES=$PRESENT_WORKING_DIRECTORY/os/.aliases
 OS_ZSH_FUNCTIONS=$PRESENT_WORKING_DIRECTORY/os/zsh-functions
 OS_ZSHENV=$PRESENT_WORKING_DIRECTORY/os/.zshenv
 
-if [[ -d $ZSH_FUNCTIONS_DIRECTORY ]]; then
-    rm -rf $ZSH_FUNCTIONS_DIRECTORY
-fi
-
-mkdir -p $ZSH_FUNCTIONS_DIRECTORY
-
 if [[ -a $OS_ZSHENV ]]; then
     cp -f $OS_ZSHENV ~
+    . $OS_ZSHENV
 
     echo "\n# os zsh_functions\n" >> ~/.zshenv
 else
     echo "$PRESENT_WORKING_DIRECTORY/os/.zshenv is not found"
 fi
 
+if [[ -d $ZSH_FUNCTIONS_DIRECTORY ]]; then
+    rm -rf $ZSH_FUNCTIONS_DIRECTORY
+fi
+
+mkdir -p $ZSH_FUNCTIONS_DIRECTORY
 
 if [[ -d $OS_ZSH_FUNCTIONS ]]; then
     for os_zsh_function in $OS_ZSH_FUNCTIONS/*; do
