@@ -6,7 +6,8 @@ These are my dotfiles for setting up my environment from nothing. Take and use a
 
 1. Install `zsh` in your terminal by using `sudo apt install zsh`
 2. Modify the `.gitconfig` file in the `os` directory to have your name and email
-3. Execute the `run.sh` file while in `zsh`
+3. Open `Software & Updates` in Ubuntu and check `Source Code` or you will get errors with installations
+4. Execute the `run.sh` file while in `zsh`
 
 # Environments
 
