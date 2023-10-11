@@ -168,7 +168,7 @@
        :extensions ("ts" "tsbuildinfo"))
       (treemacs-create-icon
        :icon (propertize " " 'face '((:foreground "#ffcb6b")))
-       :extensions (".yarnrc" "yarn.lock" "yarn"))
+       :extensions (".yarnrc" ".yarnclean" "yarn.lock" "yarn"))
       (treemacs-create-icon
        :icon (propertize " " 'face '((:foreground "#ff5370")))
        :extensions ("yml" "yaml"))
