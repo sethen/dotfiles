@@ -1,6 +1,11 @@
 #!/bin/zsh
 
+
 header-message 'ubuntu bootstrap'
+
+# allow open source software installs
+sudo sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list
+
 
 UBUNTU_ALIASES=$PRESENT_WORKING_DIRECTORY/ubuntu/.aliases
 UBUNTU_ZSH_FUNCTIONS=$PRESENT_WORKING_DIRECTORY/ubuntu/zsh-functions

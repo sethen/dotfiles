@@ -78,12 +78,13 @@
 (require 'sethen-lsp-mode)
 (require 'sethen-lsp-ui)
 
-
 ;; Project
 (require 'sethen-projectile)
 
 ;; Search
 (require 'sethen-consult)
+(require 'sethen-embark)
+(require 'sethen-embark-consult)
 (require 'sethen-orderless)
 (require 'sethen-vertico)
 
