@@ -98,6 +98,7 @@
 ;; Text
 (require 'sethen-gh-md)
 (require 'sethen-markdown-mode)
+(require 'sethen-wgrep)
 
 ;; Tools
 (require 'sethen-chruby)
