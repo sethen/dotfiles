@@ -36,7 +36,6 @@
 (require 'sethen-cape)
 (require 'sethen-company)
 (require 'sethen-company-posframe)
-(require 'sethen-company-web)
 (require 'sethen-company-nginx)
 
 ;; Colors
@@ -62,16 +61,18 @@
 (require 'sethen-git-gutter)
 (require 'sethen-magit)
 
+(require 'sethen-coverlay)
+(require 'sethen-origami)
+
 ;; Langs
 (require 'sethen-dockerfile-mode)
 (require 'sethen-git-modes)
+(require 'sethen-css-in-js-mode)
 (require 'sethen-go-mode)
 (require 'sethen-json-mode)
 (require 'sethen-nginx-mode)
 (require 'sethen-rust-mode)
-(require 'sethen-tide-mode)
-(require 'sethen-typescript-mode)
-(require 'sethen-web-mode)
+(require 'sethen-tsx-mode)
 (require 'sethen-yaml-mode)
 
 ;; LSP
@@ -92,8 +93,8 @@
 (require 'sethen-smudge)
 
 ;; Syntax
-(require 'sethen-tree-sitter)
-(require 'sethen-tree-sitter-langs)
+;;(require 'sethen-tree-sitter)
+;;(require 'sethen-tree-sitter-langs)
 
 ;; Text
 (require 'sethen-gh-md)
@@ -121,5 +122,4 @@
 (require 'sethen-rust-mode-hook)
 (require 'sethen-sh-mode-hook)
 (require 'sethen-typescript-mode-hook)
-(require 'sethen-web-mode-hook)
 (require 'sethen-yaml-mode-hook)

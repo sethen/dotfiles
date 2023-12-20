@@ -17,7 +17,7 @@ else
 
     ./autogen.sh
 
-    CC='gcc-12' ./configure --with-native-compilation --with-tree-sitter 
+    CC='gcc-12' ./configure --with-tree-sitter --with-native-compilation
 
     make -j$(nproc)
     sudo make install

@@ -1,6 +1,5 @@
 (require 'use-package)
 
-
 (use-package consult
   :custom
   (consult-ripgrep-args "rg --hidden --null --line-buffered --color=never --max-columns=1000 --path-separator /\
