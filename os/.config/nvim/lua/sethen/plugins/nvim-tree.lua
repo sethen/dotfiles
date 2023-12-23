@@ -21,6 +21,13 @@ return {
 			on_attach = on_attach_change,
 			renderer = {
 				icons = {
+					glyphs = {
+						folder = {
+							default = "",
+							empty = "",
+							open = "",
+						},
+					},
 					show = {
 						folder_arrow = false
 					}

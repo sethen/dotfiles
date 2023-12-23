@@ -11,8 +11,8 @@ return {
 					right = ''
 				},
 				section_separators = {
-					left = '◤',
-					right = '◢'
+					left = '🭛',
+					right = '🭋'
 				},
 				globalstatus = true,
 				enable_icons = true,

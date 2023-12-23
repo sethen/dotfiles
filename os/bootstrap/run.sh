@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+CONFIG_DIRECTORY=~/.config
 EMACS_DIRECTORY=~/.emacs.d
 HOME_ALIASES=~/.aliases
 OS_ALIASES=$PRESENT_WORKING_DIRECTORY/os/.aliases
@@ -45,12 +46,20 @@ if [[ ! -d $DEVELOPER_DIRECTORY ]]; then
     mkdir -p $DEVELOPER_DIRECTORY
 fi
 
+if [[ ! -d $CONFIG_DIRECTORY ]]; then
+    mkdir -p $CONFIG_DIRECTORY
+fi
+
 if [[ ! -d $EMACS_DIRECTORY ]]; then
     mkdir -p $EMACS_DIRECTORY
 fi
 
 for file in $PRESENT_WORKING_DIRECTORY/os/.emacs.d/*; do
     symlink-file-to-dest $file $EMACS_DIRECTORY
+done
+
+for file in $PRESENT_WORKING_DIRECTORY/os/.config/*; do
+    symlink-file-to-dest $file $CONFIG_DIRECTORY
 done
 
 symlink-file-to-dest $PRESENT_WORKING_DIRECTORY/os/.gitconfig ~
