@@ -10,13 +10,33 @@ return {
 					icon = "",
 					name = "C"
 				},
+				cc = {
+					icon = "",
+					name = "Cc"
+				},
+				cpp = {
+					icon = "",
+					name = "Cpp"
+				},
 				conf = {
 					icon = "",
 					name = "Conf"
 				},
+				cs = {
+					icon = "",
+					name = "Cs"
+				},
 				css = {
 					icon = "",
 					name = "Css"
+				},
+				erb = {
+					icon = "",
+					name = "Erb"
+				},
+				gif = {
+					icon = "",
+					name = "Gif"
 				},
 				go = {
 					icon = "",
@@ -58,6 +78,10 @@ return {
 					icon = "",
 					name = "Lock"
 				},
+				kt = {
+					icon = "",
+					name = "Kt"
+				},
 				lua = {
 					icon = "",
 					name = "Lua"
@@ -65,6 +89,10 @@ return {
 				md = {
 					icon = "",
 					name = "Md"
+				},
+				ml = {
+					icon = "",
+					name = "Ml"
 				},
 				otf = {
 					icon = "",
@@ -80,7 +108,7 @@ return {
 				},
 				png = {
 					icon = "",
-					name = "Jpg"
+					name = "Png"
 				},
 				ps1 = {
 					icon = "",
@@ -175,11 +203,11 @@ return {
 					name = "Editorconfig"
 				},
 				[".gitignore"] = {
-					icon = "",
+					icon = "",
 					name = "Gitignore"
 				},
 				[".gitconfig"] = {
-					icon = "",
+					icon = "",
 					name = "Gitconfig"
 				},
 				[".zshrc"] = {
