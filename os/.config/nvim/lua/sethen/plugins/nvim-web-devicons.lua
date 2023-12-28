@@ -70,6 +70,10 @@ return {
 					icon = "",
 					name = "Otf"
 				},
+				pdf = {
+					icon = "",
+					name = "Pdf"
+				},
 				php = {
 					icon = "",
 					name = "Php"
@@ -81,6 +85,10 @@ return {
 				ps1 = {
 					icon = "",
 					name = "Ps1"
+				},
+				py = {
+					icon = "",
+					name = "Py"
 				},
 				ts = {
 					icon = "",
@@ -133,6 +141,10 @@ return {
 				toml = {
 					icon = "",
 					name = "Toml"
+				},
+				txt = {
+					icon = "",
+					name = "Txt"
 				},
 				woff = {
 					icon = "",
@@ -196,11 +208,15 @@ return {
 				},
 				["package-lock.json"] = {
 					icon = "",
-					name = "Package-lock.json"
+					name = "PackageLock.json"
 				},
 				["rakefile"] = {
 					icon = "",
 					name = "Rakefile"
+				},
+				["rake"] = {
+					icon = "",
+					name = "Rake"
 				},
 				["dockerfile"] = {
 					icon = "",
@@ -213,6 +229,10 @@ return {
 				["makefile"] = {
 					icon = "",
 					name = "Makefile"
+				},
+				["procfile"] = {
+					icon = "",
+					name = "Procfile"
 				},
 			},
 		})

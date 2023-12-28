@@ -10,4 +10,5 @@ opt.listchars = "tab:» ,space:·,nbsp:␣,eol:¬,trail:·"
 opt.relativenumber = true
 opt.scrolloff = 25
 opt.swapfile = false
-
+opt.undofile = true
+opt.undodir = "/tmp/nvim-undo"
