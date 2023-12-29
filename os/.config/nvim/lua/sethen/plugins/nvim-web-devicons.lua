@@ -99,7 +99,7 @@ return {
 					name = "Otf"
 				},
 				pdf = {
-					icon = "",
+					icon = "",
 					name = "Pdf"
 				},
 				php = {

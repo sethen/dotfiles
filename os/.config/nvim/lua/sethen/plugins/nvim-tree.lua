@@ -6,6 +6,7 @@ return {
 	config = function()
 		require("nvim-tree").setup({
 			renderer = {
+				highlight_git = true,
 				icons = {
 					glyphs = {
 						folder = {
@@ -15,7 +16,8 @@ return {
 						},
 					},
 					show = {
-						folder_arrow = false
+						folder_arrow = false,
+						git = false
 					}
 				}
 			}
