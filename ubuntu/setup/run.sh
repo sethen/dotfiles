@@ -22,8 +22,6 @@ check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages
 
 # setup/packages other packages
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/arc-theme.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/emacs.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/emacs-ligature.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/gnome-shell-extensions.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/gnome-tweaks.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/gnomeshell-extension-manage.sh
