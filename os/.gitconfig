@@ -1,5 +1,5 @@
 [core]
-	editor = emacsclient -c -a ''
+	editor = nvim 
 	excludesfile = ~/.gitignore_global
 [github]
 	user = sethen

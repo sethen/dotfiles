@@ -228,6 +228,10 @@ return {
                icon = "",
                name = "Zip"
             },
+            zsh = {
+               icon = "",
+               name = "Zsh"
+            },
             [".editorconfig"] = {
                icon = "",
                name = "Editorconfig"
