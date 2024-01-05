@@ -12,7 +12,7 @@ return {
             },
             section_separators = {
                left = '',
-               right = '' 
+               right = ''
             },
             globalstatus = true,
             enable_icons = true,
