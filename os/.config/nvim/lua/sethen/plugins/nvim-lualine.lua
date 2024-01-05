@@ -23,6 +23,9 @@ return {
             lualine_b = {
                {
                   'branch',
+                  color = {
+                     fg = '#CDD6F4'
+                  },
                   icon = {
                      ""
                   }
@@ -32,7 +35,14 @@ return {
             },
             lualine_c = {'filename'},
             lualine_x = {'filetype'},
-            lualine_y = {'progress'},
+            lualine_y = {
+               {
+                  'progress',
+                  color = {
+                     fg = '#CDD6F4'
+                  },
+               }
+            },
             lualine_z = {'location'}
          },
          inactive_sections = {

@@ -237,12 +237,12 @@ return {
                name = "Editorconfig"
             },
             [".gitignore"] = {
-               color = palette.flamingo,
+               color = palette.red,
                icon = "",
                name = "Gitignore"
             },
             [".gitconfig"] = {
-               color = palette.flamingo,
+               color = palette.red,
                icon = "",
                name = "Gitconfig"
             },
