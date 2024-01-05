@@ -1,5 +1,5 @@
 #!/bin/zsh
 
 function prompt-info() {
-    echo "%F{6}%n%f@%F{2}%m%f in %F{3}%~%f\n%F{2}↪%f "
+    echo " %F{6}%B->%b%f "
 }

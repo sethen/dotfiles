@@ -8,21 +8,21 @@ function rprompt-info() {
 	UNTRACKED_FILES=$(git-untracked-files-count)
 
 	if [[ $MODIFIED_FILES > 0 ]]; then
-	    GIT_FILES_TRACKING+="%K{2}%F{15} ${MODIFIED_FILES}m %f%k"
+	    GIT_FILES_TRACKING+="%K{2}%F{16} ${MODIFIED_FILES}m %f%k"
 	fi
 
 	if [[ $STAGED_FILES > 0 ]]; then
-	    GIT_FILES_TRACKING+="%K{4}%F{15} ${STAGED_FILES}s %f%k"
+	    GIT_FILES_TRACKING+="%K{4}%F{16} ${STAGED_FILES}s %f%k"
 	fi
 
 	if [[ $UNTRACKED_FILES > 0 ]]; then
-	    GIT_FILES_TRACKING+="%K{1}%F{15} ${UNTRACKED_FILES}un %f%k"
+	    GIT_FILES_TRACKING+="%K{1}%F{16} ${UNTRACKED_FILES}un %f%k"
 	fi
 
-	GIT_INFO="%K{8} $(git-branch-name):$(git-sha) %k"
+	GIT_INFO="%K{0} $(git-branch-name) %k"
 
 	if [[ -n $GIT_FILES_TRACKING ]]; then
-	    echo "$GIT_FILES_TRACKING$GIT_INFO"
+	    echo "$GIT_INFO$GIT_FILES_TRACKING"
 	else
 	    echo "$GIT_INFO"
 	fi

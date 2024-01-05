@@ -1,5 +1,7 @@
 These are my dotfiles for setting up my environment from nothing. Take and use anything you want.
 
+![image](images/neovim.png)
+
 # Quickstart
 
 1. Install `zsh` in your terminal by using `sudo apt install zsh`

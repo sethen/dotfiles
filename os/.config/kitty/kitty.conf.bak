@@ -1,4 +1,3 @@
-placement_strategy top-left
 bold_font SF Mono Bold
 bold_italic_font SF Mono Bold Italic
 font_family SF Mono Regular
@@ -10,8 +9,3 @@ tab_bar_edge bottom
 tab_bar_style powerline
 tab_powerline_style slanted
 tab_title_template {title}{' :{}:'.format(num_windows) if num_windows > 1 else
-
-# BEGIN_KITTY_THEME
-# Catppuccin-Mocha
-include current-theme.conf
-# END_KITTY_THEME
