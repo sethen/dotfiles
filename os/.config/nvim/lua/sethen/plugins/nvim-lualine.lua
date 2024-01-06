@@ -8,11 +8,11 @@ return {
          options = {
             component_separators = {
                left = '',
-               right = ''
+               right = '',
             },
             section_separators = {
                left = '',
-               right = ''
+               right = '',
             },
             globalstatus = true,
             enable_icons = true,
@@ -28,7 +28,7 @@ return {
                   },
                   icon = {
                      ""
-                  }
+                  },
                },
                'diff',
                'diagnostics',
@@ -41,7 +41,7 @@ return {
                   color = {
                      fg = '#CDD6F4'
                   },
-               }
+               },
             },
             lualine_z = {'location'}
          },
@@ -51,7 +51,7 @@ return {
             lualine_c = {'filename'},
             lualine_x = {'location'},
             lualine_y = {},
-            lualine_z = {}
+            lualine_z = {},
          },
       })
    end,

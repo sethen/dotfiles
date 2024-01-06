@@ -33,9 +33,9 @@ return {
                show = {
                   folder_arrow = false,
                   git = false
-               }
-            }
-         }
+               },
+            },
+         },
       })
    end
 }

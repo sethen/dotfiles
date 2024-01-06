@@ -1,5 +1,7 @@
 return {
    "catppuccin/nvim",
+   name = "catppuccin",
+   priority = 1000,
    config = function()
       require("catppuccin").setup({
          flavour = "mocha",
@@ -9,6 +11,4 @@ return {
       vim.cmd.colorscheme "catppuccin"
       vim.api.nvim_set_hl(0, "CursorLineNr", {fg=palette.lavender, bg=palette.mantle, bold = true})
    end,
-   name = "catppuccin",
-   priority = 1000
 }

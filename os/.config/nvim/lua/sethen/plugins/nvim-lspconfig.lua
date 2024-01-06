@@ -26,9 +26,9 @@ return {
                   Lua = {
                      completion = {
                         callSnippet = "Replace"
-                     }
-                  }
-               }
+                     },
+                  },
+               },
             })
          end
       }
