@@ -5,6 +5,7 @@ return {
    dependencies = {
       'nvim-lua/plenary.nvim',
       'ThePrimeagen/harpoon',
+      'nvim-telescope/telescope-project.nvim',
    },
    config = function()
       local telescope = require("telescope")
@@ -23,6 +24,15 @@ return {
                },
             },
          },
+         extensions = {
+            project = {
+               base_dirs = {
+                  "~/Developer",
+               },
+               hidden_files = true,
+               sync_with_nvim_tree = true,
+            },
+         },
       })
 
       telescope.load_extension('harpoon')
@@ -30,6 +40,7 @@ return {
    keys = {
       { "<Space>ff", "<cmd>Telescope find_files<CR>", desc = "Telescope find files" },
       { "<Space>fm", "<cmd>Telescope harpoon marks<CR>", desc = "Telescope show marks" },
+      { "<Space>fp", "<cmd>:lua require'telescope'.extensions.project.project{}<CR>", desc = "Telescope show projects" },
       { "<Space>fr", "<cmd>Telescope oldfiles<CR>", desc = "Telescope find recent files" },
       { "<Space>fs", "<cmd>Telescope live_grep<CR>", desc = "Telescope find string" },
    },
