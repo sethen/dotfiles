@@ -52,6 +52,8 @@ check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages
 
 # rust & rust-analyzer
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/rust.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/bob.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/setup/packages/neovim.sh
 
 echo ''
 read 'UPGRADE?would you like to upgrade your existing packages? [Yy/Nn] '

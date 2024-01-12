@@ -49,3 +49,7 @@ fi
 if [[ -d $CARGO_BIN_DIRECTORY ]]; then
     export PATH=$CARGO_BIN_DIRECTORY:$PATH
 fi
+
+if [[ -d $NVIM_BIN ]]; then
+    export PATH=$NVIM_BIN:$PATH
+fi

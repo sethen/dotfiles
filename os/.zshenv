@@ -13,9 +13,6 @@ export CHRUBY_SHELL_FILE=/usr/local/share/chruby/chruby.sh
 export DEVELOPER_DIRECTORY=~/Developer
 export ZSH_FUNCTIONS_DIRECTORY=~/.zsh/functions
 
-# emacs
-export EMACS_VERSION=29.1.90
-
 # files
 export ALIASES=~/.aliases
 
@@ -24,6 +21,9 @@ export GO_BIN_DIRECTORY=~/go/bin
 export GO_USR_LOCAL_BIN_DIRECTORY=/usr/local/go/bin
 export GO_BIN=$GO_USR_LOCAL_BIN_DIRECTORY/go
 export GO_VERSION=1.20.2
+
+# neovim
+export NVIM_BIN=/home/sethen/.local/share/bob/nvim-bin
 
 # nvm
 export NVM_VERSION=0.39.3
