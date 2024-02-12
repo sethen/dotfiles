@@ -6,7 +6,7 @@ return {
    config = function()
       local icons = require("nvim-web-devicons")
       local palette = require("catppuccin.palettes").get_palette("mocha")
-
+      
       icons.set_default_icon("")
       icons.setup({
          override = {

@@ -9,11 +9,6 @@ return {
       local dashboard = require("alpha.themes.dashboard")
 
       dashboard.section.header.val = {
-         "                                 ",
-         "                                 ",
-         "                                 ",
-         "                                 ",
-         "                                 ",
          "           ▄ ▄                   ",
          "       ▄   ▄▄▄     ▄ ▄▄▄ ▄ ▄     ",
          "       █ ▄ █▄█ ▄▄▄ █ █▄█ █ █     ",
@@ -36,8 +31,18 @@ return {
          dashboard.button("q", "  Quit", "<cmd>qa<CR>"),
       }
 
-      alpha.setup(dashboard.opts)
-
       vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
+
+      vim.api.nvim_create_autocmd('User', {
+         pattern = 'LazyVimStarted',
+         callback = function()
+            local stats = require('lazy').stats()
+            local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+            dashboard.section.footer.val = '  ' .. stats.count .. ' plugins in ' .. ms .. 'ms'
+            pcall(vim.cmd.AlphaRedraw)
+         end,
+      })
+
+      alpha.setup(dashboard.opts)
    end,
 }

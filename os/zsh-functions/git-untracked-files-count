@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 function git-untracked-files-count() {
-    GIT_UNTRACKED_FILES_COUNT=$(git ls-files --exclude-standard --others --directory | wc -l)
+    GIT_UNTRACKED_FILES_COUNT=$(git ls-files --exclude-standard --others | wc -l)
 
     echo $GIT_UNTRACKED_FILES_COUNT
 }
