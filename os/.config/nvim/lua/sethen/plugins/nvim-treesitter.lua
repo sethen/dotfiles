@@ -11,6 +11,7 @@ return {
          },
          ensure_installed = {
             "bash",
+            "c",
             "css",
             "dockerfile",
             "fish",
@@ -25,6 +26,7 @@ return {
             "tsx",
             "yaml",
             "vim",
+            "vimdoc",
             "zig"
          },
          highlight = {

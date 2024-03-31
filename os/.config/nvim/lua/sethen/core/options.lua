@@ -1,9 +1,11 @@
 local opt = vim.opt
 
+opt.autochdir = true
 opt.clipboard = "unnamedplus"
 opt.cursorline = true
 opt.fcs = "eob: "
 opt.hlsearch = true
+opt.ignorecase = true
 opt.linebreak = true
 opt.list = true
 opt.listchars = "tab:» ,space:·,nbsp:␣,eol:¬,trail:·"
