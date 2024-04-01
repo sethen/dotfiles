@@ -1,16 +1,16 @@
 local opt = vim.opt
 
 opt.autochdir = true
-opt.clipboard = "unnamedplus"
+opt.clipboard = 'unnamedplus'
 opt.cursorline = true
-opt.fcs = "eob: "
+opt.fcs = 'eob: '
 opt.hlsearch = true
 opt.ignorecase = true
 opt.linebreak = true
 opt.list = true
-opt.listchars = "tab:» ,space:·,nbsp:␣,eol:¬,trail:·"
+opt.listchars = 'tab:» ,space:·,nbsp:␣,eol:¬,trail:·'
 opt.relativenumber = true
 opt.scrolloff = 25
 opt.swapfile = false
 opt.undofile = true
-opt.undodir = "/tmp/nvim-undo"
+opt.undodir = '/tmp/nvim-undo'

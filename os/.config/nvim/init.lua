@@ -1,2 +1,2 @@
-require("sethen.core")
-require("sethen.lazy")
+require('sethen.core')
+require('sethen.lazy')

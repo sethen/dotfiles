@@ -1,18 +1,18 @@
 return {
-   "coffebar/neovim-project",
+   'coffebar/neovim-project',
    opts = {
       dashboard_mode = true,
       projects = {
-         "~/Developer/*",
+         '~/Developer/*',
       },
    },
    init = function()
-      vim.opt.sessionoptions:append("globals")
+      vim.opt.sessionoptions:append('globals')
    end,
    dependencies = {
-      { "nvim-lua/plenary.nvim" },
-      { "nvim-telescope/telescope.nvim" },
-      { "Shatur/neovim-session-manager" },
+      { 'nvim-lua/plenary.nvim' },
+      { 'nvim-telescope/telescope.nvim' },
+      { 'Shatur/neovim-session-manager' },
    },
    lazy = false,
    priority = 100,

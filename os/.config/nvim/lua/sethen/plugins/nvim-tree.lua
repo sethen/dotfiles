@@ -1,21 +1,21 @@
 return {
-   "nvim-tree/nvim-tree.lua",
+   'nvim-tree/nvim-tree.lua',
    dependencies = {
-      "nvim-tree/nvim-web-devicons"
+      'nvim-tree/nvim-web-devicons'
    },
    config = function()
-      local nvimtree = require("nvim-tree")
+      local nvimtree = require('nvim-tree')
 
       local function on_attach_change(bufnr)
-         local nvimtree_api = require("nvim-tree.api")
+         local nvimtree_api = require('nvim-tree.api')
          local function opts(desc)
-            return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+            return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
          end
 
          nvimtree_api.config.mappings.default_on_attach(bufnr)
 
-         vim.keymap.set('n', 'h', nvimtree_api.node.open.edit, opts("Close"))
-         vim.keymap.set('n', 'l', nvimtree_api.node.open.edit, opts("Open"))
+         vim.keymap.set('n', 'h', nvimtree_api.node.open.edit, opts('Close'))
+         vim.keymap.set('n', 'l', nvimtree_api.node.open.edit, opts('Open'))
       end
 
       nvimtree.setup({
@@ -25,9 +25,9 @@ return {
             icons = {
                glyphs = {
                   folder = {
-                     default = "",
-                     empty = "",
-                     open = "",
+                     default = '',
+                     empty = '',
+                     open = '',
                   },
                },
                show = {

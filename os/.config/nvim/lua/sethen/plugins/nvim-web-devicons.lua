@@ -1,323 +1,323 @@
 return {
-   "nvim-tree/nvim-web-devicons",
+   'nvim-tree/nvim-web-devicons',
    dependencies = {
-      "catppuccin/nvim",
+      'catppuccin/nvim',
    },
    config = function()
-      local icons = require("nvim-web-devicons")
-      local palette = require("catppuccin.palettes").get_palette("mocha")
+      local icons = require('nvim-web-devicons')
+      local palette = require('catppuccin.palettes').get_palette('mocha')
       
-      icons.set_default_icon("")
+      icons.set_default_icon('')
       icons.setup({
          override = {
             c = {
                color = palette.sapphire,
-               icon = "",
-               name = "C",
+               icon = '',
+               name = 'C',
             },
             cc = {
                color = palette.sapphire,
-               icon = "",
-               name = "Cc",
+               icon = '',
+               name = 'Cc',
             },
             cpp = {
                color = palette.sapphire,
-               icon = "",
-               name = "Cpp",
+               icon = '',
+               name = 'Cpp',
             },
             conf = {
-               icon = "",
-               name = "Conf",
+               icon = '',
+               name = 'Conf',
             },
             cs = {
                color = palette.lavender,
-               icon = "",
-               name = "Cs",
+               icon = '',
+               name = 'Cs',
             },
             css = {
                color = palette.blue,
-               icon = "",
-               name = "Css",
+               icon = '',
+               name = 'Css',
             },
             erb = {
                color = palette.red,
-               icon = "",
-               name = "Erb",
+               icon = '',
+               name = 'Erb',
             },
             gif = {
-               icon = "",
-               name = "Gif",
+               icon = '',
+               name = 'Gif',
             },
             go = {
                color = palette.teal,
-               icon = "",
-               name = "Go",
+               icon = '',
+               name = 'Go',
             },
             fish = {
-               icon = "",
-               name = "Fish",
+               icon = '',
+               name = 'Fish',
             },
             html = {
                color = palette.peach,
-               icon = "",
-               name = "Html",
+               icon = '',
+               name = 'Html',
             },
             java = {
                color = palette.maroon,
-               icon = "",
-               name = "Java",
+               icon = '',
+               name = 'Java',
             },
             jar = {
                color = palette.maroon,
-               icon = "",
-               name = "Jar",
+               icon = '',
+               name = 'Jar',
             },
             jpg = {
-               icon = "",
-               name = "Jpg",
+               icon = '',
+               name = 'Jpg',
             },
             json = {
                color = palette.green,
-               icon = "",
-               name = "Json",
+               icon = '',
+               name = 'Json',
             },
             js = {
                color = palette.yellow,
-               icon = "",
-               name = "Js",
+               icon = '',
+               name = 'Js',
             },
             jsx = {
                color = palette.sky,
-               icon = "",
-               name = "Jsx",
+               icon = '',
+               name = 'Jsx',
             },
             lock = {
-               icon = "",
-               name = "Lock",
+               icon = '',
+               name = 'Lock',
             },
             kt = {
                color = palette.mauve,
-               icon = "",
-               name = "Kt",
+               icon = '',
+               name = 'Kt',
             },
             lua = {
                color = palette.blue,
-               icon = "",
-               name = "Lua",
+               icon = '',
+               name = 'Lua',
             },
             md = {
-               icon = "",
-               name = "Md",
+               icon = '',
+               name = 'Md',
             },
             ml = {
                color = palette.peach,
-               icon = "",
-               name = "Ml",
+               icon = '',
+               name = 'Ml',
             },
             otf = {
-               icon = "",
-               name = "Otf",
+               icon = '',
+               name = 'Otf',
             },
             pdf = {
-               icon = "",
-               name = "Pdf",
+               icon = '',
+               name = 'Pdf',
             },
             php = {
                color = palette.mauve,
-               icon = "",
-               name = "Php",
+               icon = '',
+               name = 'Php',
             },
             png = {
-               icon = "",
-               name = "Png",
+               icon = '',
+               name = 'Png',
             },
             ps1 = {
-               icon = "",
-               name = "Ps1",
+               icon = '',
+               name = 'Ps1',
             },
             py = {
                color = palette.yellow,
-               icon = "",
-               name = "Py",
+               icon = '',
+               name = 'Py',
             },
             ts = {
                color = palette.blue,
-               icon = "",
-               name = "Ts",
+               icon = '',
+               name = 'Ts',
             },
             tsx = {
                color = palette.sky,
-               icon = "",
-               name = "Tsx",
+               icon = '',
+               name = 'Tsx',
             },
             ttf = {
-               icon = "",
-               name = "Ttf",
+               icon = '',
+               name = 'Ttf',
             },
             ru = {
-               icon = "",
-               name = "Ru",
+               icon = '',
+               name = 'Ru',
             },
             rb = {
                color = palette.red,
-               icon = "",
-               name = "Rb",
+               icon = '',
+               name = 'Rb',
             },
             rs = {
-               icon = "",
-               name = "Rs",
+               icon = '',
+               name = 'Rs',
             },
             sass = {
                color = palette.pink,
-               icon = "",
-               name = "Sass",
+               icon = '',
+               name = 'Sass',
             },
             scss = {
                color = palette.pink,
-               icon = "",
-               name = "Scss",
+               icon = '',
+               name = 'Scss',
             },
             sh = {
-               icon = "",
-               name = "Sh",
+               icon = '',
+               name = 'Sh',
             },
             swift = {
                color = palette.peach,
-               icon = "",
-               name = "Swift",
+               icon = '',
+               name = 'Swift',
             },
             sql = {
                color = palette.sky,
-               icon = "",
-               name = "Sql",
+               icon = '',
+               name = 'Sql',
             },
             svg = {
-               icon = "",
-               name = "Svg",
+               icon = '',
+               name = 'Svg',
             },
             tiff = {
-               icon = "",
-               name = "Tiff",
+               icon = '',
+               name = 'Tiff',
             },
             toml = {
-               icon = "",
-               name = "Toml",
+               icon = '',
+               name = 'Toml',
             },
             txt = {
-               icon = "",
-               name = "Txt",
+               icon = '',
+               name = 'Txt',
             },
             woff = {
-               icon = "",
-               name = "Woff",
+               icon = '',
+               name = 'Woff',
             },
             yaml = {
-               icon = "",
-               name = "Yaml",
+               icon = '',
+               name = 'Yaml',
             },
             yml = {
-               icon = "",
-               name = "Yml",
+               icon = '',
+               name = 'Yml',
             },
             zig = {
                color = palette.yellow,
-               icon = "",
-               name = "Zig",
+               icon = '',
+               name = 'Zig',
             },
             zip = {
-               icon = "",
-               name = "Zip",
+               icon = '',
+               name = 'Zip',
             },
             zsh = {
-               icon = "",
-               name = "Zsh",
+               icon = '',
+               name = 'Zsh',
             },
-            [".editorconfig"] = {
-               icon = "",
-               name = "Editorconfig",
+            ['.editorconfig'] = {
+               icon = '',
+               name = 'Editorconfig',
             },
-            [".gitignore"] = {
+            ['.gitignore'] = {
                color = palette.red,
-               icon = "",
-               name = "Gitignore",
+               icon = '',
+               name = 'Gitignore',
             },
-            [".gitconfig"] = {
+            ['.gitconfig'] = {
                color = palette.red,
-               icon = "",
-               name = "Gitconfig",
+               icon = '',
+               name = 'Gitconfig',
             },
-            [".zshrc"] = {
-               icon = "",
-               name = "Zshrc",
+            ['.zshrc'] = {
+               icon = '',
+               name = 'Zshrc',
             },
-            [".zshenv"] = {
-               icon = "",
-               name = "Zshenv",
+            ['.zshenv'] = {
+               icon = '',
+               name = 'Zshenv',
             },
-            ["commit_editmsg"] = {
-               icon = "",
-               name = "Commit_editmsg",
+            ['commit_editmsg'] = {
+               icon = '',
+               name = 'Commit_editmsg',
             },
-            ["license"] = {
-               icon = "",
-               name = "License",
+            ['license'] = {
+               icon = '',
+               name = 'License',
             },
-            ["log"] = {
-               icon = "",
-               name = "Log",
+            ['log'] = {
+               icon = '',
+               name = 'Log',
             },
-            ["package.json"] = {
+            ['package.json'] = {
                color = palette.red,
-               icon = "",
-               name = "Package.json",
+               icon = '',
+               name = 'Package.json',
             },
-            ["package-lock.json"] = {
+            ['package-lock.json'] = {
                color = palette.red,
-               icon = "",
-               name = "PackageLock.json",
+               icon = '',
+               name = 'PackageLock.json',
             },
-            ["rakefile"] = {
+            ['rakefile'] = {
                color = palette.red,
-               icon = "",
-               name = "Rakefile",
+               icon = '',
+               name = 'Rakefile',
             },
-            ["rake"] = {
+            ['rake'] = {
                color = palette.red,
-               icon = "",
-               name = "Rake",
+               icon = '',
+               name = 'Rake',
             },
-            ["config.ru"] = {
+            ['config.ru'] = {
                color = palette.red,
-               icon = "",
-               name = "Config.ru",
+               icon = '',
+               name = 'Config.ru',
             },
-            ["tsconfig.json"] = {
+            ['tsconfig.json'] = {
                color = palette.blue,
-               icon = "",
-               name = "TsConfig.json",
+               icon = '',
+               name = 'TsConfig.json',
             },
-            [".dockerignore"] = {
+            ['.dockerignore'] = {
                color = palette.blue,
-               icon = "",
-               name = "Dockerignore",
+               icon = '',
+               name = 'Dockerignore',
             },
-            ["dockerfile"] = {
+            ['dockerfile'] = {
                color = palette.blue,
-               icon = "",
-               name = "Dockerfile",
+               icon = '',
+               name = 'Dockerfile',
             },
-            ["docker-compose.yml"] = {
+            ['docker-compose.yml'] = {
                color = palette.blue,
-               icon = "",
-               name = "DockerCompose.yml",
+               icon = '',
+               name = 'DockerCompose.yml',
             },
-            ["makefile"] = {
-               icon = "",
-               name = "Makefile",
+            ['makefile'] = {
+               icon = '',
+               name = 'Makefile',
             },
-            ["procfile"] = {
-               icon = "",
-               name = "Procfile",
+            ['procfile'] = {
+               icon = '',
+               name = 'Procfile',
             },
          },
       })

@@ -1,7 +1,7 @@
 return {
-   "rcarriga/nvim-notify",
+   'rcarriga/nvim-notify',
    config = function()
-      require("notify").setup({
+      require('notify').setup({
          on_open = function(win)
             vim.api.nvim_win_set_config(win, { focusable = false })
          end,
