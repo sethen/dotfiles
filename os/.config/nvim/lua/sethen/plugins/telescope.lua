@@ -40,7 +40,7 @@ return {
    keys = {
       { "<Space>ff", "<cmd>Telescope find_files<CR>", desc = "Telescope find files" },
       { "<Space>fm", "<cmd>Telescope harpoon marks<CR>", desc = "Telescope show marks" },
-      { "<Space>fp", "<cmd>:lua require'telescope'.extensions.project.project{}<CR>", desc = "Telescope show projects" },
+      { "<Space>fp", "<cmd>Telescope neovim-project discover<CR>", desc = "Telescope show projects" },
       { "<Space>fr", "<cmd>Telescope oldfiles<CR>", desc = "Telescope find recent files" },
       { "<Space>fs", "<cmd>Telescope live_grep<CR>", desc = "Telescope find string" },
    },
