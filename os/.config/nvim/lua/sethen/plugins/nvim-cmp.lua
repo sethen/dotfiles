@@ -17,6 +17,9 @@ return {
       end
 
       cmp.setup({
+         completion = {
+            completeopt = "menu,menuone,noinsert"
+         },
          formatting = {
             format = lspkind.cmp_format({
                symbol_map = {
@@ -77,17 +80,10 @@ return {
                   fallback()
                end
             end, { 'i', 's' }),
-            ['<C-l>'] = cmp.mapping({
-               i = function(fallback)
-                  if cmp.visible() and cmp.get_active_entry() then
-                     cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-                  else
-                     fallback()
-                  end
-               end,
-               s = cmp.mapping.confirm({ select = true }),
-               c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-            }),
+            ['<C-l>'] = cmp.mapping.confirm({ select = true }),
+         },
+         matching = {
+            disallow_partial_matching = true,
          },
          sources = {
             { name = 'nvim_lsp' },
