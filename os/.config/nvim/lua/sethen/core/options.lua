@@ -1,6 +1,5 @@
 local opt = vim.opt
 
-opt.autochdir = true
 opt.clipboard = 'unnamedplus'
 opt.cursorline = true
 opt.fcs = 'eob: '

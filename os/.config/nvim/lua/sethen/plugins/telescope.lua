@@ -35,11 +35,31 @@ return {
          },
       })
 
-      telescope.load_extension('harpoon')
+      local harpoon = require('harpoon')
+
+      harpoon.setup({})
+
+      local conf = require("telescope.config").values
+      local function toggle_telescope(harpoon_files)
+         local file_paths = {}
+         for _, item in ipairs(harpoon_files.items) do
+            table.insert(file_paths, item.value)
+         end
+
+         require("telescope.pickers").new({}, {
+            prompt_title = "Harpoon",
+            finder = require("telescope.finders").new_table({
+               results = file_paths,
+            }),
+            previewer = conf.file_previewer({}),
+            sorter = conf.generic_sorter({})
+         }):find()
+      end
+
+      vim.keymap.set("n", "<Space>fm", function() toggle_telescope(harpoon:list()) end, { desc = "Telescope show marks" })
    end,
    keys = {
       { '<Space>ff', '<cmd>Telescope find_files<CR>', desc = 'Telescope find files' },
-      { '<Space>fm', '<cmd>Telescope harpoon marks<CR>', desc = 'Telescope show marks' },
       { '<Space>fp', '<cmd>Telescope neovim-project discover<CR>', desc = 'Telescope show projects' },
       { '<Space>fr', '<cmd>Telescope oldfiles<CR>', desc = 'Telescope find recent files' },
       { '<Space>fs', '<cmd>Telescope live_grep<CR>', desc = 'Telescope find string' },
