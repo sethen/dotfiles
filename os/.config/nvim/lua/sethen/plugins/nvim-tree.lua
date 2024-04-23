@@ -25,11 +25,14 @@ return {
             icons = {
                glyphs = {
                   default = '',
+                  symlink = '',
                   folder = {
                      default = '',
                      empty = '',
                      empty_open = '',
                      open = '',
+                     symlink = '',
+                     symlink_open = '',
                   },
                },
                show = {

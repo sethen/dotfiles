@@ -13,6 +13,10 @@ return {
                icon = '',
                name = 'Bak',
             },
+            bin = {
+               icon = '',
+               name = 'Bin',
+            },
             c = {
                color = palette.sapphire,
                icon = '',
@@ -46,6 +50,10 @@ return {
                color = palette.red,
                icon = '',
                name = 'Erb',
+            },
+            env = {
+               icon = '',
+               name = 'Env',
             },
             gif = {
                icon = '',
@@ -152,6 +160,10 @@ return {
                icon = '',
                name = 'Py',
             },
+            so = {
+               icon = '',
+               name = 'So',
+            },
             ts = {
                color = palette.blue,
                icon = '',
@@ -223,6 +235,18 @@ return {
                icon = '',
                name = 'Woff',
             },
+            xml = {
+               icon = '',
+               name = 'Xml',
+            },
+            xls = {
+               icon = '',
+               name = 'Xls',
+            },
+            xz = {
+               icon = '',
+               name = 'Xz',
+            },
             yaml = {
                icon = '',
                name = 'Yaml',
@@ -251,6 +275,10 @@ return {
             ['.editorconfig'] = {
                icon = '',
                name = 'Editorconfig',
+            },
+            ['.bashrc'] = {
+               icon = '',
+               name = 'Bashrc',
             },
             ['.gitignore'] = {
                color = palette.red,
