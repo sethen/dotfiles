@@ -24,9 +24,11 @@ return {
             highlight_git = true,
             icons = {
                glyphs = {
+                  default = '',
                   folder = {
                      default = '',
                      empty = '',
+                     empty_open = '',
                      open = '',
                   },
                },

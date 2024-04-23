@@ -7,9 +7,12 @@ return {
       local icons = require('nvim-web-devicons')
       local palette = require('catppuccin.palettes').get_palette('mocha')
 
-      icons.set_default_icon('')
       icons.setup({
          override = {
+            bak = {
+               icon = '',
+               name = 'Bak',
+            },
             c = {
                color = palette.sapphire,
                icon = '',
@@ -56,6 +59,10 @@ return {
             fish = {
                icon = '',
                name = 'Fish',
+            },
+            man = {
+               icon = '',
+               name = 'Man',
             },
             html = {
                color = palette.peach,
@@ -237,6 +244,10 @@ return {
                icon = '',
                name = 'Zsh',
             },
+            ['config'] = {
+               icon = '',
+               name = 'Config',
+            },
             ['.editorconfig'] = {
                icon = '',
                name = 'Editorconfig',
@@ -245,6 +256,11 @@ return {
                color = palette.red,
                icon = '',
                name = 'Gitignore',
+            },
+            ['.gitignore_global'] = {
+               color = palette.red,
+               icon = '',
+               name = 'Gitignore_global',
             },
             ['.gitconfig'] = {
                color = palette.red,
@@ -306,6 +322,14 @@ return {
                icon = '',
                name = 'TsConfig.json',
             },
+            ['.prettierrc'] = {
+               icon = '',
+               name = 'Prettierrc',
+            },
+            ['.aliases'] = {
+               icon = '',
+               name = 'Aliases',
+            },
             ['.dockerignore'] = {
                color = palette.blue,
                icon = '',
@@ -329,7 +353,8 @@ return {
                icon = '',
                name = 'Procfile',
             },
-         },
+         }
       })
+      icons.set_default_icon('')
    end,
 }
