@@ -30,7 +30,14 @@ return {
                      ''
                   },
                },
-               'diff',
+               {
+                  'diff',
+                  symbols = {
+                     added = '+',
+                     modified = '~',
+                     removed = '-'
+                  },
+               },
                'diagnostics',
             },
             lualine_c = {'filename'},
