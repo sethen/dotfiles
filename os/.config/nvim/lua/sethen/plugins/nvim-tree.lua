@@ -23,6 +23,7 @@ return {
          renderer = {
             highlight_git = true,
             icons = {
+               symlink_arrow = '  ',
                glyphs = {
                   default = '',
                   symlink = '',

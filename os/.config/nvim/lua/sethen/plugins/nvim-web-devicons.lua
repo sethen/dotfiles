@@ -164,6 +164,16 @@ return {
                icon = '',
                name = 'So',
             },
+            tf = {
+               color = palette.mauve,
+               icon = '',
+               name = 'Tf',
+            },
+            tfvars = {
+               color = palette.mauve,
+               icon = '',
+               name = 'Tfvars',
+            },
             ts = {
                color = palette.blue,
                icon = '',
