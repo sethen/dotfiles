@@ -9,6 +9,10 @@ return {
 
       icons.setup({
          override = {
+            ['alpha'] = {
+               icon = '',
+               name = 'Alpha',
+            },
             bak = {
                icon = '',
                name = 'Bak',
