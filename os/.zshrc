@@ -43,7 +43,7 @@ fi
 if [[ -d $NVIM_BIN ]]; then
     export PATH=$NVIM_BIN:$PATH
 fi
-#
+
 # set nvm
 if [[ -d $NVM_DIRECTORY ]]; then
     [ -s $NVM_DIRECTORY/nvm.sh ] && \. $NVM_DIRECTORY/nvm.sh

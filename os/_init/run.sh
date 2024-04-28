@@ -33,7 +33,9 @@ if [[ -d $OS_ZSH_FUNCTIONS ]]; then
     source ~/.zshenv
 fi
 
-header-message 'os bootstrap'
+echo ''
+header-message 'os init'
+echo ''
 
 if [[ -a $HOME_ALIASES ]]; then
     rm $HOME_ALIASES

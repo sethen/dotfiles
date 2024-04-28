@@ -13,7 +13,15 @@ return {
 
       telescope.setup({
          defaults = {
-            path_display = { 'truncate ' },
+            extensions = {
+               project = {
+                  base_dirs = {
+                     '~/Developer',
+                  },
+                  hidden_files = true,
+                  sync_with_nvim_tree = true,
+               },
+            },
             mappings = {
                i = {
                   ['<C-j>'] = actions.move_selection_next,
@@ -24,14 +32,21 @@ return {
                },
             },
          },
-         extensions = {
-            project = {
-               base_dirs = {
-                  '~/Developer',
-               },
-               hidden_files = true,
-               sync_with_nvim_tree = true,
+         path_display = { 'truncate ' },
+         pickers = {
+            find_files = {
+               hidden = true
             },
+         },
+         vimgrep_arguments = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--hidden",
          },
       })
 

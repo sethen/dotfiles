@@ -9,11 +9,13 @@ $PRESENT_WORKING_DIRECTORY/lib/switch-shell-to-zsh.sh
 . $PRESENT_WORKING_DIRECTORY/lib/determine-os.sh
 
 # run os and distro specific files
-$PRESENT_WORKING_DIRECTORY/os/bootstrap/run.sh
-$PRESENT_WORKING_DIRECTORY/$DISTRO/bootstrap/run.sh
-$PRESENT_WORKING_DIRECTORY/$DISTRO/setup/run.sh
-$PRESENT_WORKING_DIRECTORY/os/preferences.sh
-$PRESENT_WORKING_DIRECTORY/$DISTRO/preferences.sh
+# init
+$PRESENT_WORKING_DIRECTORY/os/_init/run.sh
+$PRESENT_WORKING_DIRECTORY/$DISTRO/_init/run.sh
+
+# setup
+$PRESENT_WORKING_DIRECTORY/os/_setup/run.sh
+$PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/run.sh
 
 # reboot system prompt
 $PRESENT_WORKING_DIRECTORY/lib/reboot-system-prompt.sh

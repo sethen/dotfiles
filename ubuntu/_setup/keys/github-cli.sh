@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 if [[ ! -a $ETC_APT_SOURCES_DIRECTORY/github-cli.list ]]; then
-    information-message 'adding github-cli'
+    information-message 'adding github-cli repository'
 
     curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
     sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg

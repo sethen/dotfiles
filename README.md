@@ -1,6 +1,6 @@
 These are my dotfiles for setting up my environment from nothing. Take and use anything you want.
 
-![image](images/neovim.png)
+![image](assets/images/neovim.png)
 
 # Quickstart
 

@@ -1,11 +1,11 @@
 #!/bin/zsh
 
-
-header-message 'ubuntu bootstrap'
+echo ''
+header-message 'ubuntu init'
+echo ''
 
 # allow open source software installs
 sudo sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list
-
 
 UBUNTU_ALIASES=$PRESENT_WORKING_DIRECTORY/ubuntu/.aliases
 UBUNTU_ZSH_FUNCTIONS=$PRESENT_WORKING_DIRECTORY/ubuntu/zsh-functions
@@ -33,10 +33,11 @@ if [[ ! -d $FONTS_DIRECTORY ]]; then
     mkdir $FONTS_DIRECTORY
 fi
 
+echo ''
 information-message 'copying fonts'
 
-cp -r $PRESENT_WORKING_DIRECTORY/os/media/fonts/. $FONTS_DIRECTORY
+cp -r $PRESENT_WORKING_DIRECTORY/assets/fonts/. $FONTS_DIRECTORY
 
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/bootstrap/packages/build-essential.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/bootstrap/packages/curl.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/bootstrap/packages/git.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_init/packages/build-essential.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_init/packages/curl.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_init/packages/git.sh
