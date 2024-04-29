@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 echo ''
-header-message 'os init'
+header-message 'os setup'
 echo ''
 
 information-message 'cloning repositories'

@@ -27,6 +27,7 @@ information-message 'installing packages'
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/github-cli.sh
 
 # _setup/packages other packages
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/discord.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/gnome-shell-extension-manager.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/google-chrome.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/gparted.sh
@@ -69,14 +70,19 @@ if [[ $UPGRADE =~ '[Yy]' ]]; then
     sudo apt autoremove -y
 fi
 
+information-message 'cloning repositories'
+
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/repositories/colloid-icon-theme.sh
+
 echo ''
-success-message 'enabling gnome extensions'
+information-message 'enabling gnome extensions'
 
 dconf write /org/gnome/shell/enabled-extensions "['openweather-extension@jenslody.de', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'ubuntu-dock@ubuntu.com', 'tiling-assistant@ubuntu.com', 'openweather-extension@penguin-teal.github.io']"
 
-success-message 'applying gnome extension tweaks'
+
+information-message 'applying gnome extension tweaks'
+echo ''
 
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/extensions/dash-to-dock.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/extensions/open-weather.sh
-
-echo ''
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/extensions/gnome-tweaks.sh
