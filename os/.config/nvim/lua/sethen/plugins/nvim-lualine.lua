@@ -10,6 +10,14 @@ return {
                left = '',
                right = '',
             },
+            disabled_filetypes = {     -- Filetypes to disable lualine for.
+               statusline = {
+                  "alpha",
+                  "lazy",
+                  "NvimTree",
+                  "TelescopePrompt"
+               },
+            },
             section_separators = {
                left = '',
                right = '',
@@ -49,9 +57,7 @@ return {
                },
             },
             lualine_c = {'filename'},
-            lualine_x = {
-               'filetype'
-            },
+            lualine_x = {'filetype'},
             lualine_y = {
                {
                   'progress',

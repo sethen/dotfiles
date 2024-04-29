@@ -242,7 +242,7 @@ return {
                name = 'Toml',
             },
             txt = {
-               icon = '',
+               icon = '',
                name = 'Txt',
             },
             woff = {
