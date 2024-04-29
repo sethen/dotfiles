@@ -342,7 +342,12 @@ return {
             ['package-lock.json'] = {
                color = palette.red,
                icon = '',
-               name = 'PackageLock.json',
+               name = 'ackageLock.json',
+            },
+            ['.npmignore'] = {
+               color = palette.red,
+               icon = '',
+               name = 'Npmignore',
             },
             ['rakefile'] = {
                color = palette.red,
@@ -394,6 +399,11 @@ return {
             ['procfile'] = {
                icon = '',
                name = 'Procfile',
+            },
+            ['.eslintrc'] = {
+               color = palette.lavender,
+               icon = '',
+               name = 'Eslintrc',
             },
          }
       })
