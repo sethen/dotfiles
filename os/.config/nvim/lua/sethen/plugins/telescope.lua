@@ -14,6 +14,12 @@ return {
       telescope.setup({
          defaults = {
             extensions = {
+               fzf = {
+                  fuzzy = true,
+                  override_generic_sorter = true,
+                  override_file_sorter = true,
+                  case_mode = "smart_case",
+               },
                project = {
                   base_dirs = {
                      '~/Developer',
@@ -49,6 +55,8 @@ return {
             "--hidden",
          },
       })
+
+      telescope.load_extension('fzf')
 
       local harpoon = require('harpoon')
 

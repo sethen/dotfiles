@@ -27,6 +27,7 @@ information-message 'installing packages'
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/github-cli.sh
 
 # _setup/packages other packages
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/cmake.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/discord.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/gnome-shell-extension-manager.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/google-chrome.sh
