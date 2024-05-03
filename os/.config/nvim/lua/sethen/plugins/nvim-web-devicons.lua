@@ -72,10 +72,6 @@ return {
                icon = '',
                name = 'Fish',
             },
-            man = {
-               icon = '',
-               name = 'Man',
-            },
             html = {
                color = palette.peach,
                icon = '',
