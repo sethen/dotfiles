@@ -12,4 +12,4 @@ These are my dotfiles for setting up my environment from nothing. Take and use a
 
 These dotfiles detect which environment they are in and run the appropriate commands.  The environments tested are:
 
-* Ubuntu 23.10 LTS (older versions not tested or supported)
+* Ubuntu 24.04 LTS (older versions not tested or supported)
