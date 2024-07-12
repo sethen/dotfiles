@@ -81,7 +81,6 @@ information-message 'enabling gnome extensions'
 
 dconf write /org/gnome/shell/enabled-extensions "['openweather-extension@jenslody.de', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'ubuntu-dock@ubuntu.com', 'tiling-assistant@ubuntu.com', 'openweather-extension@penguin-teal.github.io']"
 
-
 information-message 'applying gnome extension tweaks'
 echo ''
 
