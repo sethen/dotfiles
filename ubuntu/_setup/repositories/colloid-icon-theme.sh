@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-if [[ -z $(dconf read /org/gnome/desktop/interface/icon-theme | grep "'Colloid-dark'") ]]; then
+if [[ -z $(dconf read /org/gnome/desktop/interface/icon-theme | grep "'Colloid-Dark'") ]]; then
     information-message 'cloning colloid icon theme'
 
     cd $DEVELOPER_DIRECTORY

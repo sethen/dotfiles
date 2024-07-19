@@ -75,6 +75,7 @@ fi
 information-message 'cloning repositories'
 
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/repositories/colloid-icon-theme.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/repositories/sethen.sh
 
 echo ''
 information-message 'enabling gnome extensions'
