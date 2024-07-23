@@ -26,10 +26,20 @@ return {
                icon = '',
                name = 'C',
             },
+            h = {
+               color = palette.sapphire,
+               icon = '',
+               name = 'H',
+            },
             cc = {
                color = palette.sapphire,
                icon = '',
                name = 'Cc',
+            },
+            cgi = {
+               color = palette.sapphire,
+               icon = '',
+               name = 'Cgi',
             },
             cpp = {
                color = palette.sapphire,
@@ -101,7 +111,22 @@ return {
                icon = '',
                name = 'Js',
             },
+            ['js.map'] = {
+               color = palette.yellow,
+               icon = '',
+               name = 'Jsmap',
+            },
             jsx = {
+               color = palette.sky,
+               icon = '',
+               name = 'Jsx',
+            },
+            ['test.js'] = {
+               color = palette.sky,
+               icon = '',
+               name = 'Jsx',
+            },
+            ['test.jsx'] = {
                color = palette.sky,
                icon = '',
                name = 'Jsx',
@@ -174,12 +199,27 @@ return {
                icon = '',
                name = 'Tfvars',
             },
+            ['d.ts'] = {
+               color = palette.blue,
+               icon = '',
+               name = 'TypeScriptDeclaration',
+            },
             ts = {
                color = palette.blue,
                icon = '',
                name = 'Ts',
             },
             tsx = {
+               color = palette.sky,
+               icon = '',
+               name = 'Tsx',
+            },
+           ['test.ts'] = {
+               color = palette.sky,
+               icon = '',
+               name = 'Tsx',
+            },
+           ['test.tsx'] = {
                color = palette.sky,
                icon = '',
                name = 'Tsx',
@@ -314,6 +354,7 @@ return {
                name = 'Zshenv',
             },
             ['commit_editmsg'] = {
+               color = palette.red,
                icon = '',
                name = 'Commit_editmsg',
             },
@@ -403,6 +444,7 @@ return {
             },
          }
       })
-      icons.set_default_icon('')
+
+      icons.set_default_icon('', palette.text)
    end,
 }

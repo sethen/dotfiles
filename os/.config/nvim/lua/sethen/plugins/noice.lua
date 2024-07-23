@@ -15,7 +15,7 @@ return {
                help = { pattern = "^:%s*he?l?p?%s+", icon = " " },
                search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
                search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
-               input = {},
+               input = { view = "cmdline_input", icon = " " },
             },
          },
          lsp = {

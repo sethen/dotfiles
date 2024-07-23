@@ -6,9 +6,6 @@ return {
    build = ':TSUpdate',
    config = function()
       require('nvim-treesitter.configs').setup({
-         autotag = {
-            enable = true
-         },
          ensure_installed = {
             'bash',
             'c',
@@ -36,7 +33,10 @@ return {
             enable = true,
          },
          indent = {
-            enable = true
+            enable = true,
+         },
+         matchup = {
+            enable = true,
          },
       })
    end,
