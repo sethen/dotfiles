@@ -82,7 +82,9 @@ return {
       vim.keymap.set("n", "<Space>fm", function() toggle_telescope(harpoon:list()) end, { desc = "Telescope show marks" })
    end,
    keys = {
+      { '<Space>fc', '<cmd>Telescope commands<CR>', desc = 'Telescope find commands' },
       { '<Space>ff', '<cmd>Telescope find_files<CR>', desc = 'Telescope find files' },
+      { '<Space>fk', '<cmd>Telescope keymaps<CR>', desc = 'Telescope find keymaps' },
       { '<Space>flr', '<cmd>Telescope lsp_references<CR>', desc = 'Telescope find lsp references' },
       { '<Space>fls', '<cmd>Telescope lsp_document_symbols<CR>', desc = 'Telescope find lsp document symbols' },
       { '<Space>fp', '<cmd>Telescope neovim-project discover<CR>', desc = 'Telescope show projects' },
