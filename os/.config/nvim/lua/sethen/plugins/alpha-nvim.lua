@@ -9,8 +9,6 @@ return {
       local dashboard = require('alpha.themes.dashboard')
 
       dashboard.section.header.val = {
-         '                                 ',
-         '                                 ',
          '           ▄ ▄                   ',
          '       ▄   ▄▄▄     ▄ ▄▄▄ ▄ ▄     ',
          '       █ ▄ █▄█ ▄▄▄ █ █▄█ █ █     ',
@@ -25,6 +23,7 @@ return {
       dashboard.section.buttons.val = {
          dashboard.button('n', '  New File', '<cmd>ene<CR>'),
          dashboard.button('SPC l', '  Lazy', '<cmd>Lazy<CR>'),
+         dashboard.button('SPC o', '  File Path Buffer', '<cmd>Oil --float<CR>'),
          dashboard.button('SPC t', '  File Tree', '<cmd>NvimTreeToggle<CR>'),
          dashboard.button('SPC fc', '  Find Command(s)', '<cmd>Telescope commands<CR>'),
          dashboard.button('SPC ff', '  Find File(s)', '<cmd>Telescope find_files<CR>'),
