@@ -1,5 +1,6 @@
 local opt = vim.opt
 
+opt.autoindent = true
 opt.clipboard = 'unnamedplus'
 opt.cursorline = true
 opt.fcs = 'eob: '
