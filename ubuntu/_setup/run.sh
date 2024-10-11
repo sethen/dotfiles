@@ -6,6 +6,7 @@ echo ''
 
 information-message 'adding keys'
 
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/keys/docker.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/keys/github-cli.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/keys/google-chrome.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/keys/visual-studio-code.sh
@@ -29,6 +30,7 @@ check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/package
 # _setup/packages other packages
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/cmake.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/discord.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/docker.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/gnome-shell-extension-manager.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/google-chrome.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/gparted.sh
