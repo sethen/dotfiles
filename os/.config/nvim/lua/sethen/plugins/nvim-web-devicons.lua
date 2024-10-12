@@ -55,6 +55,11 @@ return {
                icon = '',
                name = 'Cs',
             },
+            csproj = {
+               color = palette.lavender,
+               icon = '',
+               name = 'Csproj',
+            },
             css = {
                color = palette.blue,
                icon = '',
@@ -254,6 +259,11 @@ return {
             sh = {
                icon = '',
                name = 'Sh',
+            },
+            sln = {
+               color = palette.lavender,
+               icon = '',
+               name = 'Sln',
             },
             swift = {
                color = palette.peach,

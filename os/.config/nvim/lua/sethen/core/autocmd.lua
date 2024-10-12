@@ -1,0 +1,19 @@
+-- vim.api.nvim_create_autocmd('ModeChanged', {
+--    callback = function()
+--       require('catppuccin').setup({
+--          flavour = 'mocha',
+--       });
+--       local palette = require('catppuccin.palettes').get_palette('mocha')
+--       local new_mode = vim.v.event.new_mode
+--       local bg_color = ''
+--
+--       print(new_mode)
+--       if (new_mode == 'i') then
+--          bg_color = palette.green
+--       end
+--
+--
+--       vim.api.nvim_set_hl(0, 'CursorLineNr', {fg=palette.mantle, bg=bg_color, bold=true})
+--    end
+-- })
+
