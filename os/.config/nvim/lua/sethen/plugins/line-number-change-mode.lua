@@ -11,31 +11,43 @@ return {
       end
 
       require("line-number-change-mode").setup({
-         i = {
-            bg = palette.green,
-            fg = palette.mantle,
-            bold = true,
-         },
-         n = {
-            bg = palette.blue,
-            fg = palette.mantle,
-            bold = true,
-         },
-         R = {
-            bg = palette.maroon,
-            fg = palette.mantle,
-            bold = true,
-         },
-         v = {
-            bg = palette.mauve,
-            fg = palette.mantle,
-            bold = true,
-         },
-         V = {
-            bg = palette.mauve,
-            fg = palette.mantle,
-            bold = true,
-         },
+         mode = {
+            c = {
+               bg = palette.peach,
+               fg = palette.mantle,
+               bold = true,
+            },
+            i = {
+               bg = palette.green,
+               fg = palette.mantle,
+               bold = true,
+            },
+            n = {
+               bg = palette.blue,
+               fg = palette.mantle,
+               bold = true,
+            },
+            nt = {
+               bg = palette.yellow,
+               fg = palette.mantle,
+               bold = true,
+            },
+            R = {
+               bg = palette.maroon,
+               fg = palette.mantle,
+               bold = true,
+            },
+            v = {
+               bg = palette.mauve,
+               fg = palette.mantle,
+               bold = true,
+            },
+            V = {
+               bg = palette.mauve,
+               fg = palette.mantle,
+               bold = true,
+            },
+         }
       })
    end
 }

@@ -164,6 +164,10 @@ return {
                icon = '',
                name = 'Mjs',
             },
+            mp4 = {
+               icon = '',
+               name = 'Mp4',
+            },
             otf = {
                icon = '',
                name = 'Otf',

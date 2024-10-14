@@ -44,7 +44,7 @@ return {
             'lua_ls',
             'solargraph',
             'sqlls',
-            'tsserver',
+            'ts_ls',
             'zls'
          },
       })
