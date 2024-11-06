@@ -36,7 +36,6 @@ check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/package
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/gparted.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/gpick.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/font-manager.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/kazam.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/kitty.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/mdadm.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/ubuntu/_setup/packages/nginx.sh

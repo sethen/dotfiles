@@ -41,6 +41,11 @@ return {
                icon = '',
                name = 'Cgi',
             },
+            cjs = {
+               color = palette.yellow,
+               icon = '',
+               name = 'Cjs',
+            },
             cpp = {
                color = palette.sapphire,
                icon = '',
@@ -83,6 +88,16 @@ return {
                icon = '',
                name = 'Go',
             },
+            ["go.mod"] = {
+               color = palette.teal,
+               icon = '',
+               name = 'Go',
+            },
+            ["go.sum"] = {
+               color = palette.teal,
+               icon = '',
+               name = 'Go',
+            },
             fish = {
                icon = '',
                name = 'Fish',
@@ -116,10 +131,20 @@ return {
                icon = '',
                name = 'Js',
             },
+            mjs = {
+               color = palette.yellow,
+               icon = '',
+               name = 'Mjs',
+            },
             ['js.map'] = {
                color = palette.yellow,
                icon = '',
                name = 'Jsmap',
+            },
+            ['.prettierrc.mjs'] = {
+               color = palette.yellow,
+               icon = '',
+               name = 'Prettierrc.mjs',
             },
             jsx = {
                color = palette.sky,
@@ -400,6 +425,11 @@ return {
                icon = '',
                name = 'Npmignore',
             },
+            ['.nvmrc'] = {
+               color = palette.red,
+               icon = '',
+               name = 'Nvmrc',
+            },
             ['rakefile'] = {
                color = palette.red,
                icon = '',
@@ -450,6 +480,11 @@ return {
             ['procfile'] = {
                icon = '',
                name = 'Procfile',
+            },
+            ['eslint.config.js'] = {
+               color = palette.lavender,
+               icon = '',
+               name = 'Eslint.config.js',
             },
             ['.eslintrc'] = {
                color = palette.lavender,
