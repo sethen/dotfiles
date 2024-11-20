@@ -4,7 +4,7 @@ CONFIG_DIRECTORY=~/.config
 HOME_ALIASES=~/.aliases
 OS_ALIASES=$PRESENT_WORKING_DIRECTORY/os/.aliases
 OS_ZSH_FUNCTIONS=$PRESENT_WORKING_DIRECTORY/os/zsh-functions
-OS_ZSHENV=$PRESENT_WORKING_DIRECTORY/os/.zshenv
+OS_ZSHENV=$PRESENT_WORKING_DIRECTORY/$DISTRO/.zshenv
 
 if [[ -a $OS_ZSHENV ]]; then
     cp -f $OS_ZSHENV ~
@@ -57,4 +57,4 @@ done
 
 symlink-file-to-dest $PRESENT_WORKING_DIRECTORY/os/.gitconfig ~
 symlink-file-to-dest $PRESENT_WORKING_DIRECTORY/os/.gitignore_global ~
-symlink-file-to-dest $PRESENT_WORKING_DIRECTORY/os/.zshrc ~
+symlink-file-to-dest $PRESENT_WORKING_DIRECTORY/$DISTRO/.zshrc ~
