@@ -10,6 +10,7 @@ information-message 'installing packages'
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/darwin/_setup/packages/github-cli.sh
 
 # _setup/packages other packages
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/darwin/_setup/packages/cmake.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/darwin/_setup/packages/docker.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/darwin/_setup/packages/google-chrome.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/darwin/_setup/packages/kitty.sh
@@ -36,3 +37,14 @@ check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/darwin/_setup/package
 # neovim
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/darwin/_setup/packages/bob.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/darwin/_setup/packages/neovim.sh
+
+echo ''
+read 'UPGRADE?would you like to upgrade your existing packages? [Yy/Nn] '
+echo ''
+
+if [[ $UPGRADE =~ '[Yy]' ]]; then
+    success-message 'updating homebrew and upgrading homebrew packages'
+
+
+    brew update && brew upgrade
+fi

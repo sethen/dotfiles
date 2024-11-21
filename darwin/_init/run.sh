@@ -24,7 +24,7 @@ if [[ -d $DARWIN_ZSH_FUNCTIONS ]]; then
     done
 fi
 
-FONTS_DIRECTORY=~/.fonts
+FONTS_DIRECTORY=~/Library/Fonts
 
 if [[ ! -d $FONTS_DIRECTORY ]]; then
     mkdir $FONTS_DIRECTORY
