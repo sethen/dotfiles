@@ -10,7 +10,9 @@ export CHRUBY_VERSION=0.3.9
 export CHRUBY_SHELL_FILE=/usr/local/share/chruby/chruby.sh
 
 # directories
+export CONFIG_DIRECTORY=~/.config
 export DEVELOPER_DIRECTORY=~/Developer
+export HOME_ALIASES=~/.aliases
 export ZSH_FUNCTIONS_DIRECTORY=~/.zsh/functions
 
 # files

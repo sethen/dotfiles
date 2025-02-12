@@ -6,8 +6,11 @@ autoload -Uz compinit && compinit
 export CHRUBY_SHELL_FILE=/opt/homebrew/opt/chruby/share/chruby/chruby.sh
 
 # directories
+export CONFIG_DIRECTORY=~/.config
 export DEVELOPER_DIRECTORY=~/Developer
+export HOME_ALIASES=~/.aliases
 export ZSH_FUNCTIONS_DIRECTORY=~/.zsh/functions
+
 
 # files
 export ALIASES=~/.aliases

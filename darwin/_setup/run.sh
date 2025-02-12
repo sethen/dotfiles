@@ -45,6 +45,5 @@ echo ''
 if [[ $UPGRADE =~ '[Yy]' ]]; then
     success-message 'updating homebrew and upgrading homebrew packages'
 
-
     brew update && brew upgrade
 fi

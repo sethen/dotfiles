@@ -1,10 +1,11 @@
 #!/bin/zsh
 
-CONFIG_DIRECTORY=~/.config
-HOME_ALIASES=~/.aliases
-OS_ALIASES=$PRESENT_WORKING_DIRECTORY/os/.aliases
-OS_ZSH_FUNCTIONS=$PRESENT_WORKING_DIRECTORY/os/zsh-functions
-OS_ZSHENV=$PRESENT_WORKING_DIRECTORY/$DISTRO/.zshenv
+header-message 'os init'
+echo ''
+
+local OS_ALIASES=$PRESENT_WORKING_DIRECTORY/os/.aliases
+local OS_ZSH_FUNCTIONS=$PRESENT_WORKING_DIRECTORY/os/zsh-functions
+local OS_ZSHENV=$PRESENT_WORKING_DIRECTORY/$DISTRO/.zshenv
 
 if [[ -d $ZSH_FUNCTIONS_DIRECTORY ]]; then
     rm -rf $ZSH_FUNCTIONS_DIRECTORY
@@ -22,17 +23,13 @@ if [[ -d $OS_ZSH_FUNCTIONS ]]; then
     for os_zsh_function in $OS_ZSH_FUNCTIONS/*; do
 	ln -sfv $os_zsh_function $ZSH_FUNCTIONS_DIRECTORY
 
-	FILENAME=$os_zsh_function:t
+	local FILENAME=$os_zsh_function:t
 
 	echo "autoload -Uz $FILENAME" >> ~/.zshenv
     done
 fi
 
 source ~/.zshenv
-
-echo ''
-header-message 'os init'
-echo ''
 
 if [[ -a $HOME_ALIASES ]]; then
     rm $HOME_ALIASES
