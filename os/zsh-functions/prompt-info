@@ -1,5 +1,3 @@
 #!/bin/zsh
 
-function prompt-info() {
-    echo "%K{6}%F{#11111B}%B $ %b%f%k%K{#1E1E2E}%F{6}%f%k "
-}
+echo "%K{6}%F{#11111B}%B $ %b%f%k%K{#1E1E2E}%F{6}%f%k "

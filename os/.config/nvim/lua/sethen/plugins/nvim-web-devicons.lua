@@ -184,11 +184,6 @@ return {
                icon = '',
                name = 'Ml',
             },
-            mjs = {
-               color = palette.yellow,
-               icon = '',
-               name = 'Mjs',
-            },
             mp4 = {
                icon = '',
                name = 'Mp4',
@@ -490,7 +485,7 @@ return {
                color = palette.lavender,
                icon = '',
                name = 'Eslintrc',
-            },
+            }
          }
       })
 

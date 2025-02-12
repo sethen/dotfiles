@@ -3,7 +3,7 @@ fpath=( ~/.zsh/functions "${fpath[@]}" )
 autoload -Uz compinit && compinit
 
 # chruby
-export CHRUBY_SHELL_FILE=$HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh
+export CHRUBY_SHELL_FILE=/opt/homebrew/opt/chruby/share/chruby/chruby.sh
 
 # directories
 export DEVELOPER_DIRECTORY=~/Developer
