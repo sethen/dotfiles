@@ -1,41 +1,35 @@
 #!/bin/zsh
 
-header-message 'os init'
-echo ''
+cp -f $PRESENT_WORKING_DIRECTORY/os/.zshenv ~ && . ~/.zshenv
+cp -f $PRESENT_WORKING_DIRECTORY/os/.zshrc ~
 
-local OS_ALIASES=$PRESENT_WORKING_DIRECTORY/os/.aliases
-local OS_ZSH_FUNCTIONS=$PRESENT_WORKING_DIRECTORY/os/zsh-functions
-local OS_ZSHENV=$PRESENT_WORKING_DIRECTORY/$DISTRO/.zshenv
-
-if [[ -d $ZSH_FUNCTIONS_DIRECTORY ]]; then
-    rm -rf $ZSH_FUNCTIONS_DIRECTORY
+if [[ -d $HOME_ZSH_FUNCTIONS_DIRECTORY ]]; then
+    rm -rf $HOME_ZSH_FUNCTIONS_DIRECTORY
 fi
 
-mkdir -p $ZSH_FUNCTIONS_DIRECTORY
+mkdir -p $HOME_ZSH_FUNCTIONS_DIRECTORY
 
-if [[ -a ~/.zshenv ]]; then
-    rm -rf ~/.zshenv
-fi
+if [[ -d $OS_ZSH_FUNCTIONS_DIRECTORY ]]; then
+    for OS_ZSH_FUNCTION in $OS_ZSH_FUNCTIONS_DIRECTORY/*; do
+	ln -sfv $OS_ZSH_FUNCTION $HOME_ZSH_FUNCTIONS_DIRECTORY
 
-cp -f $OS_ZSHENV ~
+	local FILENAME=$OS_ZSH_FUNCTION:t
 
-if [[ -d $OS_ZSH_FUNCTIONS ]]; then
-    for os_zsh_function in $OS_ZSH_FUNCTIONS/*; do
-	ln -sfv $os_zsh_function $ZSH_FUNCTIONS_DIRECTORY
-
-	local FILENAME=$os_zsh_function:t
-
-	echo "autoload -Uz $FILENAME" >> ~/.zshenv
+	echo "autoload -Uz $FILENAME" >> $HOME_ZSHENV_FILE
     done
 fi
 
-source ~/.zshenv
+source $HOME_ZSHENV_FILE
 
-if [[ -a $HOME_ALIASES ]]; then
-    rm $HOME_ALIASES
+echo ''
+header-message 'os init'
+echo ''
+
+if [[ -a $HOME_ALIASES_FILE ]]; then
+    rm $HOME_ALIASES_FILE
 fi
 
-cp -f $OS_ALIASES ~
+cp -f $OS_ALIASES_FILE ~
 
 if [[ ! -d $DEVELOPER_DIRECTORY ]]; then
     mkdir -p $DEVELOPER_DIRECTORY
@@ -45,10 +39,9 @@ if [[ ! -d $CONFIG_DIRECTORY ]]; then
     mkdir -p $CONFIG_DIRECTORY
 fi
 
-for file in $PRESENT_WORKING_DIRECTORY/os/.config/*; do
-    symlink-file-to-dest $file $CONFIG_DIRECTORY
+for FILE in $PRESENT_WORKING_DIRECTORY/os/.config/*; do
+    symlink-file-to-dest $FILE $CONFIG_DIRECTORY
 done
 
 symlink-file-to-dest $PRESENT_WORKING_DIRECTORY/os/.gitconfig ~
 symlink-file-to-dest $PRESENT_WORKING_DIRECTORY/os/.gitignore_global ~
-symlink-file-to-dest $PRESENT_WORKING_DIRECTORY/$DISTRO/.zshrc ~

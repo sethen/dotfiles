@@ -41,6 +41,7 @@ return {
             'gopls',
             'html',
             'jsonls',
+            'lemminx',
             'lua_ls',
             'solargraph',
             'sqlls',

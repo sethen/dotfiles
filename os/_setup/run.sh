@@ -2,7 +2,6 @@
 
 echo ''
 header-message 'os setup'
-echo ''
 
 # if [ $(getent group docker) ]; then
 #    success-message "docker group exists"

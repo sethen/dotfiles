@@ -27,6 +27,7 @@ return {
             'yaml',
             'vim',
             'vimdoc',
+            'xml',
             'zig'
          },
          highlight = {

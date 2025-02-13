@@ -13,7 +13,7 @@ else
     # set ruby
     information-message 'setting ruby version'
 
-    source $CHRUBY_SHELL_FILE
+    . $CHRUBY_SHELL_FILE
     chruby $RUBY_VERSION
 fi
 

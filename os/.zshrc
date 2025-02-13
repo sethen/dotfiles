@@ -19,16 +19,8 @@ zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*' menu select=2
 
 # source if found
-[ -f $ALIASES ] && source $ALIASES
-[ -f $ZSH_AUTOSUGGESTIONS ] && source $ZSH_AUTOSUGGESTIONS
+[ -f $HOME_ALIASES_FILE ] && . $HOME_ALIASES_FILE
+[ -f $ZSH_AUTOSUGGESTIONS_FILE ] && . $ZSH_AUTOSUGGESTIONS_FILE
 
 # set initial directory
-if [[ -d $DEVELOPER_DIRECTORY ]]; then
-    cd $DEVELOPER_DIRECTORY
-fi
-
-# source chruby and switch to ruby version
-if [[ -f $CHRUBY_SHELL_FILE && -f $RUBY_BIN ]]; then
-  source $HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh
-  chruby $RUBY_VERSION
-fi
+[ -d $DEVELOPER_DIRECTORY ] && cd $DEVELOPER_DIRECTORY
