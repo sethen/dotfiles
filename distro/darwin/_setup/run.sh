@@ -43,7 +43,7 @@ read 'UPGRADE?would you like to upgrade your existing packages? [Yy/Nn] '
 echo ''
 
 if [[ $UPGRADE =~ '[Yy]' ]]; then
-    success-message 'updating homebrew and upgrading homebrew packages'
+  success-message 'updating homebrew and upgrading homebrew packages'
 
-    brew update && brew upgrade
+  brew update && brew upgrade
 fi

@@ -4,11 +4,11 @@ brew-install-if-package-not-exists chruby
 brew-install-if-package-not-exists ruby-install
 
 if [[ $(ruby -v) =~ $RUBY_VERSION ]]; then
-    success-message 'ruby installed'
+  success-message 'ruby installed'
 else
-    information-message 'installing ruby'
+  information-message 'installing ruby'
 
-    ruby-install $RUBY_VERSION
+  ruby-install $RUBY_VERSION
 
     # set ruby
     information-message 'setting ruby version'
@@ -18,9 +18,9 @@ else
 fi
 
 if (( $+commands[solargraph] )); then
-    success-message 'solargraph installed'
+  success-message 'solargraph installed'
 else
-    information-message 'installing solargraph'
+  information-message 'installing solargraph'
 
-    gem install solargraph
+  gem install solargraph
 fi

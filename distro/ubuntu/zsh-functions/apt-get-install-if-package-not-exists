@@ -1,12 +1,12 @@
 #!/bin/zsh
 
 if [[ ! -n $(dpkg --get-selections | grep -w $1) ]]; then
-    information-message "installing ${1}"
+  information-message "installing ${1}"
 
-    sudo apt-get install $1 -y
+  sudo apt-get install $1 -y
 
     # do anything you want after install
     $2
-else
+  else
     success-message "${1} installed"
 fi

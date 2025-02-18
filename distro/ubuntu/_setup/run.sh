@@ -67,10 +67,10 @@ read 'UPGRADE?would you like to upgrade your existing packages? [Yy/Nn] '
 echo ''
 
 if [[ $UPGRADE =~ '[Yy]' ]]; then
-    success-message 'upgrading apt packages'
+  success-message 'upgrading apt packages'
 
-    sudo apt upgrade -y
-    sudo apt autoremove -y
+  sudo apt upgrade -y
+  sudo apt autoremove -y
 fi
 
 information-message 'cloning repositories'

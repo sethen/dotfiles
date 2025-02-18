@@ -20,14 +20,14 @@ zstyle ':completion:*' menu select=2
 
 # source if found
 if [[ -f $HOME_ALIASES_FILE ]]; then
-    . $HOME_ALIASES_FILE
+  . $HOME_ALIASES_FILE
 fi
 
 if [[ -f $ZSH_AUTOSUGGESTIONS_FILE ]]; then
-    . $ZSH_AUTOSUGGESTIONS_FILE
+  . $ZSH_AUTOSUGGESTIONS_FILE
 fi
 
 # set initial directory
 if [[ -d $DEVELOPER_DIRECTORY ]]; then
-    cd $DEVELOPER_DIRECTORY
+  cd $DEVELOPER_DIRECTORY
 fi
