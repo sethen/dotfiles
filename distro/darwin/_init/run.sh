@@ -11,3 +11,6 @@ FONTS_DIRECTORY=~/Library/Fonts
 information-message 'copying fonts'
 
 cp -r $PRESENT_WORKING_DIRECTORY/assets/fonts/. $FONTS_DIRECTORY
+
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/_init/packages/curl.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/_init/packages/git.sh

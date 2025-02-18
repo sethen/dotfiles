@@ -11,7 +11,9 @@ if [[ -d $GO_USR_LOCAL_BIN_DIRECTORY && -f $GO_BIN ]]; then
 fi
 
 # set neovim
-if [ -d $NVIM_BIN ] && export PATH=$NVIM_BIN:$PATH
+if [[ -d $NVIM_BIN ]]; then
+    export PATH=$NVIM_BIN:$PATH
+fi
 
 # set nvm
 if [[ -d $NVM_DIRECTORY ]]; then
@@ -20,4 +22,6 @@ if [[ -d $NVM_DIRECTORY ]]; then
 fi
 
 # set rust
-if [ -d $CARGO_BIN_DIRECTORY ]] && export PATH=$CARGO_BIN_DIRECTORY:$PATH
+if [[ -d $CARGO_BIN_DIRECTORY ]]; then
+  export PATH=$CARGO_BIN_DIRECTORY:$PATH
+fi

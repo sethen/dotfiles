@@ -6,10 +6,10 @@ echo ''
 
 information-message 'adding keys'
 
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/keys/docker.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/keys/github-cli.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/keys/google-chrome.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/keys/visual-studio-code.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/keys/docker.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/keys/github-cli.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/keys/google-chrome.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/keys/visual-studio-code.sh
 
 echo ''
 information-message 'updating packages'
@@ -25,42 +25,42 @@ echo ''
 information-message 'installing packages'
 
 # login to github first
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/github-cli.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/github-cli.sh
 
 # _setup/packages other packages
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/cmake.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/discord.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/docker.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/gnome-shell-extension-manager.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/google-chrome.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/gparted.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/gpick.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/font-manager.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/kitty.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/mdadm.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/nginx.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/ripgrep.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/spotify.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/virtualbox.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/visual-studio-code.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/vlc.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/zoom.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/zsh-autosuggestions.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/cmake.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/discord.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/docker.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/gnome-shell-extension-manager.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/google-chrome.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/gparted.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/gpick.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/font-manager.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/kitty.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/mdadm.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/nginx.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/ripgrep.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/spotify.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/virtualbox.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/visual-studio-code.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/vlc.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/zoom.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/zsh-autosuggestions.sh
 
 # nvm, node & node modules
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/node.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/node.sh
 
 # golang & gopls
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/go.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/go.sh
 
 # chruby, ruby-install, ruby & solargraph gem
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/ruby.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/ruby.sh
 
 # rust & rust-analyzer
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/rust.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/bob.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/neovim.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/packages/xsel.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/rust.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/bob.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/neovim.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/xsel.sh
 
 echo ''
 read 'UPGRADE?would you like to upgrade your existing packages? [Yy/Nn] '
@@ -75,17 +75,17 @@ fi
 
 information-message 'cloning repositories'
 
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/repositories/colloid-icon-theme.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/repositories/sethen.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/repositories/colloid-icon-theme.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/repositories/sethen.sh
 
 echo ''
 information-message 'enabling gnome extensions'
 
-dconf write /org/gnome/shell/enabled-extensions "['openweather-extension@jenslody.de', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com', '$DISTRO-dock@$DISTRO.com', 'tiling-assistant@$DISTRO.com', 'openweather-extension@penguin-teal.github.io']"
+dconf write /org/gnome/shell/enabled-extensions "['openweather-extension@jenslody.de', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'ubuntu-dock@ubuntu.com', 'tiling-assistant@ubuntu.com', 'openweather-extension@penguin-teal.github.io']"
 
 information-message 'applying gnome extension tweaks'
 echo ''
 
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/extensions/dash-to-dock.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/extensions/open-weather.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/$DISTRO/_setup/extensions/gnome-tweaks.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/extensions/dash-to-dock.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/extensions/open-weather.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/extensions/gnome-tweaks.sh

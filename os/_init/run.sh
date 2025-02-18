@@ -19,7 +19,7 @@ if [[ -d $OS_ZSH_FUNCTIONS_DIRECTORY ]]; then
     done
 fi
 
-source $HOME_ZSHENV_FILE
+. $HOME_ZSHENV_FILE
 
 echo ''
 header-message 'os init'
