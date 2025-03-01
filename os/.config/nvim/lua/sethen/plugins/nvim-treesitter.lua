@@ -21,6 +21,7 @@ return {
             'markdown',
             'php',
             'python',
+            'svelte',
             'toml',
             'typescript',
             'tsx',

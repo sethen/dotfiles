@@ -233,6 +233,11 @@ return {
                icon = '',
                name = 'TypeScriptDeclaration',
             },
+            ['spec.ts'] = {
+               color = palette.blue,
+               icon = '',
+               name = 'Tsx',
+            },
             ts = {
                color = palette.blue,
                icon = '',
@@ -243,12 +248,12 @@ return {
                icon = '',
                name = 'Tsx',
             },
-           ['test.ts'] = {
+            ['test.ts'] = {
                color = palette.sky,
                icon = '',
                name = 'Tsx',
             },
-           ['test.tsx'] = {
+            ['test.tsx'] = {
                color = palette.sky,
                icon = '',
                name = 'Tsx',
@@ -298,6 +303,11 @@ return {
                color = palette.sky,
                icon = '',
                name = 'Sql',
+            },
+            svelte = {
+               color = palette.peach,
+               icon = '',
+               name = 'Svelte',
             },
             svg = {
                icon = '',
@@ -420,6 +430,11 @@ return {
                icon = '',
                name = 'Npmignore',
             },
+            ['.npmrc'] = {
+               color = palette.red,
+               icon = '',
+               name = 'Npmrc',
+            },
             ['.nvmrc'] = {
                color = palette.red,
                icon = '',
@@ -435,6 +450,11 @@ return {
                icon = '',
                name = 'Rake',
             },
+            ['svelte.config.js'] = {
+               color = palette.peach,
+               icon = '',
+               name = 'Svelte.Config.js',
+            },
             ['config.ru'] = {
                color = palette.red,
                icon = '',
@@ -444,6 +464,10 @@ return {
                color = palette.blue,
                icon = '',
                name = 'TsConfig.json',
+            },
+            ['.prettierignore'] = {
+               icon = '',
+               name = 'Prettierignore',
             },
             ['.prettierrc'] = {
                icon = '',

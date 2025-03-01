@@ -32,10 +32,10 @@ return {
 
       local function is_any_ignored_file_type()
          if is_alpha_file_type()
-            or is_help_file_type()
-            or is_lazy_file_type()
-            or is_nvim_tree_file_type()
-            or is_telescope_file_type() then
+             or is_help_file_type()
+             or is_lazy_file_type()
+             or is_nvim_tree_file_type()
+             or is_telescope_file_type() then
             return false
          end
 
@@ -86,7 +86,7 @@ return {
             },
             lualine_b = {},
             lualine_c = {
-               {filename},
+               { filename },
                '%=',
                {
                   'branch',
@@ -117,7 +117,7 @@ return {
                   },
                },
             },
-            lualine_x = {'encoding'},
+            lualine_x = { 'encoding' },
             lualine_y = {},
             lualine_z = {
                {
@@ -131,8 +131,8 @@ return {
          inactive_sections = {
             lualine_a = {},
             lualine_b = {},
-            lualine_c = {'filename'},
-            lualine_x = {'location'},
+            lualine_c = { filename },
+            lualine_x = { 'location' },
             lualine_y = {},
             lualine_z = {},
          },

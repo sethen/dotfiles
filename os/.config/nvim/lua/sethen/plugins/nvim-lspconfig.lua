@@ -12,15 +12,14 @@ return {
       require('mason').setup()
 
       local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+      local lspconfig = require('lspconfig')
       local handlers = {
-         function (server_name)
+         function(server_name)
             require('lspconfig')[server_name].setup({
                capabilities = lsp_capabilities,
             })
          end,
          ['lua_ls'] = function()
-            local lspconfig = require('lspconfig')
-
             lspconfig.lua_ls.setup({
                settings = {
                   Lua = {
@@ -30,6 +29,13 @@ return {
                   },
                },
             })
+         end,
+         ['eslint'] = function()
+            lspconfig.eslint.setup({
+               format = {
+                  enable = true
+               }
+            })
          end
       }
 
@@ -38,6 +44,7 @@ return {
       mason_lspconfig.setup({
          ensure_installed = {
             'cssls',
+            'eslint',
             'gopls',
             'html',
             'jsonls',
@@ -69,6 +76,7 @@ return {
             vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
             vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
             vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
+            vim.api.nvim_create_autocmd("BufWritePre", { callback = function() vim.lsp.buf.format() end })
          end,
       })
 
