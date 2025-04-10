@@ -75,8 +75,12 @@ return {
                icon = '',
                name = 'Erb',
             },
+            ['.env'] = {
+               icon = '',
+               name = 'Env',
+            },
             env = {
-               icon = '',
+               icon = '',
                name = 'Env',
             },
             gif = {
@@ -250,8 +254,8 @@ return {
             },
             ['test.ts'] = {
                color = palette.sky,
-               icon = '',
-               name = 'Tsx',
+               icon = '',
+               name = 'Ts',
             },
             ['test.tsx'] = {
                color = palette.sky,
@@ -322,7 +326,7 @@ return {
                name = 'Toml',
             },
             txt = {
-               icon = '',
+               icon = '',
                name = 'Txt',
             },
             woff = {

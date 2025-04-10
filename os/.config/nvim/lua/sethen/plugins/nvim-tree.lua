@@ -19,6 +19,9 @@ return {
       end
 
       nvimtree.setup({
+         filters = {
+            git_ignored = false,
+         },
          on_attach = on_attach_change,
          renderer = {
             highlight_git = true,

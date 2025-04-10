@@ -30,13 +30,6 @@ return {
                },
             })
          end,
-         ['eslint'] = function()
-            lspconfig.eslint.setup({
-               format = {
-                  enable = true
-               }
-            })
-         end
       }
 
       local mason_lspconfig = require('mason-lspconfig')
@@ -52,6 +45,7 @@ return {
             'lua_ls',
             'solargraph',
             'sqlls',
+            'svelte',
             'ts_ls',
             'zls'
          },
@@ -62,6 +56,10 @@ return {
          desc = 'LSP actions',
          callback = function(event)
             local opts = { buffer = event.buf }
+
+            vim.api.nvim_create_autocmd("BufWritePre", {
+               callback = function() vim.lsp.buf.format() end
+            })
 
             vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
             vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
@@ -76,7 +74,6 @@ return {
             vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
             vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
             vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
-            vim.api.nvim_create_autocmd("BufWritePre", { callback = function() vim.lsp.buf.format() end })
          end,
       })
 
