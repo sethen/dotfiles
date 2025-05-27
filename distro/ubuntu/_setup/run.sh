@@ -41,6 +41,7 @@ check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/nginx.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/ripgrep.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/spotify.sh
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/tmux.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/virtualbox.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/visual-studio-code.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/vlc.sh

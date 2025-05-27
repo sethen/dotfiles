@@ -218,6 +218,14 @@ return {
                icon = '',
                name = 'Py',
             },
+            ['LICENSE.md'] = {
+               icon = '',
+               name = 'License.md',
+            },
+            ['README.md'] = {
+               icon = '',
+               name = 'Readme.md',
+            },
             so = {
                icon = '',
                name = 'So',
@@ -240,9 +248,19 @@ return {
             ['spec.ts'] = {
                color = palette.blue,
                icon = '',
-               name = 'Tsx',
+               name = 'Spec.ts',
+            },
+            ['tailwind.config.ts'] = {
+               color = palette.blue,
+               icon = '',
+               name = 'Tailwind.config.ts',
             },
             ts = {
+               color = palette.blue,
+               icon = '',
+               name = 'Ts',
+            },
+            ['test.ts'] = {
                color = palette.blue,
                icon = '',
                name = 'Ts',
@@ -251,11 +269,6 @@ return {
                color = palette.sky,
                icon = '',
                name = 'Tsx',
-            },
-            ['test.ts'] = {
-               color = palette.sky,
-               icon = '',
-               name = 'Ts',
             },
             ['test.tsx'] = {
                color = palette.sky,
