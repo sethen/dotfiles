@@ -19,6 +19,7 @@ return {
             'javascript',
             'lua',
             'markdown',
+            'markdown_inline',
             'php',
             'python',
             'svelte',

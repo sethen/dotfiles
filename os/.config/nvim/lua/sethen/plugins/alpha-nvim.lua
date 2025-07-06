@@ -22,6 +22,7 @@ return {
 
       dashboard.section.buttons.val = {
          dashboard.button('n', '  New File', '<cmd>ene<CR>'),
+         dashboard.button('SPC a', '  Code Companion Chat', '<cmd>CodeCompanionChat<CR>'),
          dashboard.button('SPC l', '  Lazy', '<cmd>Lazy<CR>'),
          dashboard.button('SPC o', '  File Path Buffer', '<cmd>Oil --float<CR>'),
          dashboard.button('SPC t', '  File Tree', '<cmd>NvimTreeToggle<CR>'),
