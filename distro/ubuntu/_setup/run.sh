@@ -6,6 +6,7 @@ echo ''
 
 information-message 'adding keys'
 
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/keys/brave-browser.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/keys/docker.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/keys/github-cli.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/keys/visual-studio-code.sh
@@ -27,6 +28,7 @@ information-message 'installing packages'
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/github-cli.sh
 
 # _setup/packages other packages
+check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/brave-browser.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/cmake.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/discord.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/docker.sh

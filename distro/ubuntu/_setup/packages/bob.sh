@@ -5,7 +5,7 @@ if (( $+commands[bob] )); then
 elif (( $+commands[cargo] )); then
   information-message 'installing bob'
 
-  cargo install --git https://github.com/MordechaiHadad/bob.git
+  cargo install --git https://github.com/MordechaiHadad/bob --locked
 else
   error-message 'cargo not found'
 fi

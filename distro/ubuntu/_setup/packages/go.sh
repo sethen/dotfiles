@@ -13,25 +13,13 @@ else
   rm -rf ~/$GO_DOWNLOAD_DIRECTORY.tar.gz
 fi
 
-if (( $+commands[gopls] )); then
-  success-message 'gopls installed'
-else
-  if [[ -f $GO_BIN ]]; then
-    information-message 'installing gopls'
-
-    $GO_BIN install golang.org/x/tools/gopls@latest
-  else
-    error-message 'golang binary not found'
-  fi
-fi
-
 if (( $+commands[lazydocker] )); then
   success-message 'lazydocker installed'
 else
   if [[ -f $GO_BIN ]]; then
     information-message 'installing lazydocker'
 
-    $GO_BIN install go install github.com/jesseduffield/lazydocker@latest
+    $GO_BIN install github.com/jesseduffield/lazydocker@latest
   else
     error-message 'golang binary not found'
   fi

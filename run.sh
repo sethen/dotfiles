@@ -2,7 +2,6 @@
 
 export PRESENT_WORKING_DIRECTORY="$(cd "$(dirname "$0")"; pwd)"
 
-
 # switch shell to zsh
 $PRESENT_WORKING_DIRECTORY/lib/switch-shell-to-zsh.sh
 
@@ -21,8 +20,8 @@ $PRESENT_WORKING_DIRECTORY/os/_setup/run.sh
 $PRESENT_WORKING_DIRECTORY/distro/_setup/run.sh
 $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/run.sh
 
-# reboot system prompt
-$PRESENT_WORKING_DIRECTORY/lib/reboot-system-prompt.sh
+# finalize
+$PRESENT_WORKING_DIRECTORY/os/_finalize/run.sh
 
 echo "\nthanks for using sethen's dotfiles\n"
 
