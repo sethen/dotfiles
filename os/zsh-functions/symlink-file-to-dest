@@ -1,5 +1,5 @@
 #!/bin/zsh
 
 if [[ -a $1 ]]; then
-    sudo ln -sfFv $1 $2
+  sudo ln -sfFv $1 $2
 fi

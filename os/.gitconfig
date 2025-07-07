@@ -1,10 +1,10 @@
 [core]
-	editor = nvim 
-	excludesfile = ~/.gitignore_global
+  editor = nvim 
+  excludesfile = ~/.gitignore_global
 [github]
-	user = sethen
+  user = sethen
 [push]
-	default = simple
+  default = simple
 [user]
-	name = Sethen Maleno
-	email = sethen@github.com
+  name = Sethen Maleno
+  email = sethen@github.com

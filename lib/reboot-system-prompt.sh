@@ -4,8 +4,8 @@ echo ''
 read "REBOOT?would you like to reboot the system? [Yy/Nn] "
 
 if [[ $REBOOT =~ '[Yy]' ]]; then
-    echo "\nrebooting ..."
+  echo "\nrebooting ..."
 
-    sleep 5
-    reboot
+  sleep 5
+  reboot
 fi

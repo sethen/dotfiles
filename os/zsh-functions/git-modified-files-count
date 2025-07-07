@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-function git-modified-files-count() {
-    GIT_MODIFIED_FILES_COUNT=$(git ls-files -m | wc -l)
+GIT_MODIFIED_FILES_COUNT=$(git ls-files -m | wc -l)
 
-    echo $GIT_MODIFIED_FILES_COUNT
-}
+echo $GIT_MODIFIED_FILES_COUNT

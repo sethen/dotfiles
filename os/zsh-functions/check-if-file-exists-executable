@@ -3,11 +3,11 @@
 FILENAME=$(echo $1)
 
 if [[ -e $1 ]]; then
-    if [[ -x $1 ]]; then
-	$1
-    else
-	error-message "${FILENAME:t} is not executable"
-    fi
+  if [[ -x $1 ]]; then
+    $1
+  else
+    error-message "${FILENAME:t} is not executable"
+  fi
 else
-    error-message "${FILENAME:t} is not found"
+  error-message "${FILENAME:t} is not found"
 fi
