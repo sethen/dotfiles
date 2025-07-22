@@ -79,5 +79,20 @@ return {
       vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
       vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo' })
       vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint' })
+
+      vim.diagnostic.config({
+         virtual_text = true, -- shows inline error text
+         signs = true,        -- shows icons in the sign column
+         underline = true,    -- underlines the problematic code
+         update_in_insert = false,
+         float = {
+            focusable = false,
+            style = "minimal",
+            border = "rounded",
+            source = "always",
+            header = "",
+            prefix = "",
+         },
+      })
    end,
 }

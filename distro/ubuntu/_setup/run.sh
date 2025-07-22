@@ -32,7 +32,6 @@ check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/cmake.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/discord.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/docker.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/gnome-shell-extension-manager.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/gparted.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/gpick.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/packages/font-manager.sh
@@ -76,17 +75,4 @@ fi
 
 information-message 'cloning repositories'
 
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/repositories/colloid-icon-theme.sh
 check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/repositories/sethen.sh
-
-echo ''
-information-message 'enabling gnome extensions'
-
-dconf write /org/gnome/shell/enabled-extensions "['openweather-extension@jenslody.de', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'ubuntu-dock@ubuntu.com', 'tiling-assistant@ubuntu.com', 'openweather-extension@penguin-teal.github.io']"
-
-information-message 'applying gnome extension tweaks'
-echo ''
-
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/extensions/dash-to-dock.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/extensions/open-weather.sh
-check-if-file-exists-executable $PRESENT_WORKING_DIRECTORY/distro/$DISTRO/_setup/extensions/gnome-tweaks.sh

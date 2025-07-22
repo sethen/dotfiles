@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+echo ''
+header-message "$DISTRO finalize"
+echo ''
+
 if [[ -d $DEVELOPER_DIRECTORY/dotfiles ]]; then
   success-message 'dotfiles already in developer directory'
 else
