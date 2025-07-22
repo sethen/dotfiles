@@ -2,7 +2,7 @@
 
 if [[ `echo $XDG_CURRENT_DESKTOP | grep 'GNOME'` ]]; then
   export DESKTOP='gnome'
-elif [[ -n `$XDG_CURRENT_DESKTOP | grep 'KDE'` ]]; then
+elif [[ `echo $XDG_CURRENT_DESKTOP | grep 'KDE'` ]]; then
   export DESKTOP='kde'
 else
   echo 'desktop could not be determined'
