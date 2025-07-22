@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-echo ''
 header-message "$DISTRO finalize"
 echo ''
 
