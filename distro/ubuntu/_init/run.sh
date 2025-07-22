@@ -4,7 +4,7 @@ echo ''
 header-message "$DISTRO init"
 
 # allow open source software installs
-sudo sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list
+# sudo sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list
 
 FONTS_DIRECTORY=~/.fonts
 
