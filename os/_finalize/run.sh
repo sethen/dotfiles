@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+echo ''
 header-message "$DISTRO finalize"
 echo ''
 
@@ -8,7 +9,8 @@ if [[ -d $DEVELOPER_DIRECTORY/dotfiles ]]; then
 else
   information-message 'cloning dotfiles into developer directory'
 
-  git clone git@github.com:sethen/dotfiles.git $DEVELOPER_DIRECTORY
+  cd $DEVELOPER_DIRECTORY
+  git clone git@github.com:sethen/dotfiles.git
 fi
 
 # reboot system prompt
