@@ -1,5 +1,9 @@
 local opt = vim.opt
+local o = vim.o
 
+o.winborder = 'rounded'
+
+-- options
 opt.autoindent = true
 opt.completeopt = 'menu,noinsert'
 opt.clipboard = 'unnamedplus'
