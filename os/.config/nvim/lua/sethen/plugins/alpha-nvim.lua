@@ -1,3 +1,5 @@
+-- dashboard plugin
+
 return {
    'goolord/alpha-nvim',
    event = 'VimEnter',
@@ -29,7 +31,7 @@ return {
          dashboard.button('SPC fc', '  Find Command(s)', '<cmd>Telescope commands<CR>'),
          dashboard.button('SPC ff', '  Find File(s)', '<cmd>Telescope find_files<CR>'),
          dashboard.button('SPC fk', '  Find Keymap(s)', '<cmd>Telescope keymaps<CR>'),
-         dashboard.button('SPC fp', '  Find Project(s)', "<cmd>Telescope neovim-project discover<CR>"),
+         dashboard.button('SPC fp', '  Find Project(s)', '<cmd>Telescope neovim-project discover<CR>'),
          dashboard.button('SPC fr', '  Find Recent File(s)', '<cmd>Telescope oldfiles<CR>'),
          dashboard.button('SPC fs', '  Live Grep', '<cmd>Telescope live_grep<CR>'),
          dashboard.button('q', '  Quit', '<cmd>qa<CR>'),

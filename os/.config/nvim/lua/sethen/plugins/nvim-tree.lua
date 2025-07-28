@@ -1,3 +1,5 @@
+-- directory tree
+
 return {
    'nvim-tree/nvim-tree.lua',
    dependencies = {

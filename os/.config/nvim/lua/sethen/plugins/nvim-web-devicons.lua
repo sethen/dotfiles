@@ -1,3 +1,5 @@
+-- icons for literally everything
+
 return {
    'nvim-tree/nvim-web-devicons',
    dependencies = {

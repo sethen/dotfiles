@@ -1,3 +1,5 @@
+-- ai completion that works with github copilot and others
+
 return {
    "olimorris/codecompanion.nvim",
    dependencies = {

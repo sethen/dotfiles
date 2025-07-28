@@ -1,3 +1,5 @@
+-- switches between projects quickly
+
 return {
    'coffebar/neovim-project',
    opts = {

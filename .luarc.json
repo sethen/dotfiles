@@ -1,0 +1,6 @@
+{
+    "workspace.library": [
+        "/home/sethen/.local/share/bob/nightly/share/nvim/runtime",
+        "${3rd}/luv/library"
+    ]
+}

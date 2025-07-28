@@ -1,9 +1,12 @@
+-- telescope fitder
+
 return {
    'nvim-telescope/telescope.nvim',
    event = 'VimEnter',
    branch = '0.1.x',
    dependencies = {
       'nvim-lua/plenary.nvim',
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
       'ThePrimeagen/harpoon',
       'nvim-telescope/telescope-project.nvim',
    },
@@ -28,6 +31,12 @@ return {
                   sync_with_nvim_tree = true,
                },
             },
+            layout_strategy = 'bottom_pane',
+            layout_config = {
+               height = 0.4,
+            },
+            sorting_strategy = 'ascending',
+            prompt_position = 'top',
             mappings = {
                i = {
                   ['<C-j>'] = actions.move_selection_next,
@@ -38,10 +47,10 @@ return {
                },
             },
          },
-         path_display = { 'truncate ' },
+         path_display = { 'truncate' },
          pickers = {
             find_files = {
-               hidden = true
+               hidden = true,
             },
          },
          vimgrep_arguments = {
@@ -57,38 +66,15 @@ return {
       })
 
       telescope.load_extension('fzf')
-
-      local harpoon = require('harpoon')
-
-      harpoon.setup({})
-
-      local conf = require("telescope.config").values
-      local function toggle_telescope(harpoon_files)
-         local file_paths = {}
-         for _, item in ipairs(harpoon_files.items) do
-            table.insert(file_paths, item.value)
-         end
-
-         require("telescope.pickers").new({}, {
-            prompt_title = "Harpoon",
-            finder = require("telescope.finders").new_table({
-               results = file_paths,
-            }),
-            previewer = conf.file_previewer({}),
-            sorter = conf.generic_sorter({})
-         }):find()
-      end
-
-      vim.keymap.set("n", "<Space>fm", function() toggle_telescope(harpoon:list()) end, { desc = "Telescope show marks" })
    end,
    keys = {
-      { '<Space>fc', '<cmd>Telescope commands<CR>', desc = 'Telescope find commands' },
-      { '<Space>ff', '<cmd>Telescope find_files<CR>', desc = 'Telescope find files' },
-      { '<Space>fk', '<cmd>Telescope keymaps<CR>', desc = 'Telescope find keymaps' },
-      { '<Space>flr', '<cmd>Telescope lsp_references<CR>', desc = 'Telescope find lsp references' },
-      { '<Space>fls', '<cmd>Telescope lsp_document_symbols<CR>', desc = 'Telescope find lsp document symbols' },
-      { '<Space>fp', '<cmd>Telescope neovim-project discover<CR>', desc = 'Telescope show projects' },
-      { '<Space>fr', '<cmd>Telescope oldfiles<CR>', desc = 'Telescope find recent files' },
-      { '<Space>fs', '<cmd>Telescope live_grep<CR>', desc = 'Telescope find string' },
+      { '<Space>fc',  '<cmd>Telescope commands<CR>',                desc = 'Telescope find commands' },
+      { '<Space>ff',  '<cmd>Telescope find_files<CR>',              desc = 'Telescope find files' },
+      { '<Space>fk',  '<cmd>Telescope keymaps<CR>',                 desc = 'Telescope find keymaps' },
+      { '<Space>flr', '<cmd>Telescope lsp_references<CR>',          desc = 'Telescope find lsp references' },
+      { '<Space>fls', '<cmd>Telescope lsp_document_symbols<CR>',    desc = 'Telescope find lsp document symbols' },
+      { '<Space>fp',  '<cmd>Telescope neovim-project discover<CR>', desc = 'Telescope show projects' },
+      { '<Space>fr',  '<cmd>Telescope oldfiles<CR>',                desc = 'Telescope find recent files' },
+      { '<Space>fs',  '<cmd>Telescope live_grep<CR>',               desc = 'Telescope find string' },
    },
 }

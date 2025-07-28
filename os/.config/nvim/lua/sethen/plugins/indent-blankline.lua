@@ -1,6 +1,14 @@
+-- indent guidelines for buffers
+
 return {
    "lukas-reineke/indent-blankline.nvim",
-   config = function ()
+   config = function()
+      local palette = require('catppuccin.palettes').get_palette('mocha')
+
+      if (palette == nil) then
+         return nil
+      end
+
       local highlight = {
          "RainbowRed",
          "RainbowYellow",
@@ -13,13 +21,13 @@ return {
       local hooks = require "ibl.hooks"
 
       hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-         vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
-         vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
-         vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
-         vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
-         vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
-         vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
-         vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+         vim.api.nvim_set_hl(0, "RainbowRed", { fg = palette.red })
+         vim.api.nvim_set_hl(0, "RainbowYellow", { fg = palette.yellow })
+         vim.api.nvim_set_hl(0, "RainbowBlue", { fg = palette.blue })
+         vim.api.nvim_set_hl(0, "RainbowOrange", { fg = palette.peach })
+         vim.api.nvim_set_hl(0, "RainbowGreen", { fg = palette.green })
+         vim.api.nvim_set_hl(0, "RainbowViolet", { fg = palette.mauve })
+         vim.api.nvim_set_hl(0, "RainbowCyan", { fg = palette.teal })
       end)
 
       vim.g.rainbow_delimiters = { highlight = highlight }

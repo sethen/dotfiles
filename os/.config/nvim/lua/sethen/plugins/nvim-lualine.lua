@@ -1,3 +1,5 @@
+-- task bar at the bottom
+
 return {
    'nvim-lualine/lualine.nvim',
    dependencies = {

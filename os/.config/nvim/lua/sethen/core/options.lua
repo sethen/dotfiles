@@ -1,6 +1,7 @@
 local opt = vim.opt
 
 opt.autoindent = true
+opt.completeopt = 'menu,noinsert'
 opt.clipboard = 'unnamedplus'
 opt.cursorline = true
 opt.fcs = 'eob: '
@@ -16,3 +17,4 @@ opt.splitright = true
 opt.swapfile = false
 opt.undofile = true
 opt.undodir = '/tmp/nvim-undo'
+opt.updatetime = 1000

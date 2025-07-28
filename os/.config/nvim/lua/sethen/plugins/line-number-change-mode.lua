@@ -1,9 +1,8 @@
+-- shows color when switching mode in number line
+
 return {
    'sethen/line-number-change-mode.nvim',
    config = function()
-      require('catppuccin').setup({
-         flavour = 'mocha',
-      });
       local palette = require('catppuccin.palettes').get_palette('mocha')
 
       if (palette == nil) then

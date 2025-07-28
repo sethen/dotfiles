@@ -1,3 +1,5 @@
+-- matches matching text in blocks like if/else
+
 return {
    'andymass/vim-matchup',
    config = function()
