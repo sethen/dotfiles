@@ -7,12 +7,10 @@ return {
    dependencies = {
       'nvim-lua/plenary.nvim',
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-      'ThePrimeagen/harpoon',
       'nvim-telescope/telescope-project.nvim',
    },
    config = function()
       local telescope = require('telescope')
-      local actions = require('telescope.actions')
 
       telescope.setup({
          defaults = {
@@ -34,18 +32,10 @@ return {
             layout_strategy = 'bottom_pane',
             layout_config = {
                height = 0.4,
+               prompt_position = 'bottom'
             },
             sorting_strategy = 'ascending',
-            prompt_position = 'top',
-            mappings = {
-               i = {
-                  ['<C-j>'] = actions.move_selection_next,
-                  ['<C-k>'] = actions.move_selection_previous,
-                  ['<C-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
-                  ['<C-l>'] = actions.toggle_selection + actions.move_selection_better,
-                  ['<C-h>'] = actions.toggle_selection + actions.move_selection_worse,
-               },
-            },
+            prompt_position = 'top'
          },
          path_display = { 'truncate' },
          pickers = {
@@ -70,6 +60,7 @@ return {
    keys = {
       { '<Space>fc',  '<cmd>Telescope commands<CR>',                desc = 'Telescope find commands' },
       { '<Space>ff',  '<cmd>Telescope find_files<CR>',              desc = 'Telescope find files' },
+      { '<Space>fh',  '<cmd>Telescope help_tags<CR>',               desc = 'Telescope find help' },
       { '<Space>fk',  '<cmd>Telescope keymaps<CR>',                 desc = 'Telescope find keymaps' },
       { '<Space>flr', '<cmd>Telescope lsp_references<CR>',          desc = 'Telescope find lsp references' },
       { '<Space>fls', '<cmd>Telescope lsp_document_symbols<CR>',    desc = 'Telescope find lsp document symbols' },
