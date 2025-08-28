@@ -44,6 +44,38 @@ return {
          return true
       end
 
+      local function mode()
+         local mode_info = vim.api.nvim_get_mode().mode
+
+         if mode_info == 'n' then
+            return 'N'
+         elseif mode_info == 'i' then
+            return 'I'
+         elseif mode_info == 'v' then
+            return 'V'
+         elseif mode_info == 'V' then
+            return 'VL'
+         elseif mode_info == '\22' then
+            return 'VB'
+         elseif mode_info == 'R' then
+            return 'R'
+         elseif mode_info == 'r' then
+            return 'RO'
+         elseif mode_info == 's' then
+            return 'S'
+         elseif mode_info == 'S' then
+            return 'SL'
+         elseif mode_info == 'c' then
+            return 'C'
+         elseif mode_info == 't' then
+            return 'T'
+         elseif mode_info == 'no' then
+            return 'OP'
+         else
+            return '?'
+         end
+      end
+
       local function filename()
          if is_alpha_file_type() then
             return ' dashboard'
@@ -82,7 +114,7 @@ return {
          sections = {
             lualine_a = {
                {
-                  'mode',
+                  mode,
                   cond = is_any_ignored_file_type,
                },
             },

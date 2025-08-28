@@ -1,3 +1,5 @@
+-- automatically installs language servers
+
 return {
    'WhoIsSethDaniel/mason-tool-installer.nvim',
    dependencies = {

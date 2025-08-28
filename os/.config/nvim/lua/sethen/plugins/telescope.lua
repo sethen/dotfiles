@@ -1,4 +1,4 @@
--- telescope fitder
+-- telescope finder
 
 return {
    'nvim-telescope/telescope.nvim',
