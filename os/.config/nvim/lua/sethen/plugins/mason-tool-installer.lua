@@ -9,7 +9,6 @@ return {
       require('mason-tool-installer').setup {
          ensure_installed = {
             'bash-language-server',
-            'csharp-language-server',
             'css-lsp',
             'dockerfile-language-server',
             'eslint-lsp',
