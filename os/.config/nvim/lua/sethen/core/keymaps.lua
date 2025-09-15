@@ -1,7 +1,9 @@
-local keymap = vim.keymap
-
-keymap.set('n', '<Space>l', '<cmd>Lazy<CR>', { desc = 'Toggle Lazy' })
-keymap.set('n', '<Space>o', '<cmd>Oil --float<CR>', { desc = 'Toggle File Buffer Path' })
-keymap.set('n', '<Space>t', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle Nvim Tree' })
-keymap.set('n', '<Space>d', '<cmd>NoiceDismiss<CR>', { desc = 'Dismiss Noice Notifications' })
-keymap.set('n', '<Space>a', '<cmd>CodeCompanionChat<CR>', { desc = 'Code Companion Chat' })
+return {
+   accept = '<CR>',
+   left = 'h',
+   right = 'l',
+   select_next = '<C-n>',
+   select_previous = '<C-p>',
+   unselect = '<C-h>',
+   select = '<C-l>',
+}

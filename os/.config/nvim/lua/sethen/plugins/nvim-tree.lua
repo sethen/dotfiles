@@ -7,6 +7,7 @@ return {
    },
    config = function()
       local nvimtree = require('nvim-tree')
+      local keymaps = require('sethen.core.keymaps')
 
       local function on_attach_change(bufnr)
          local nvimtree_api = require('nvim-tree.api')
@@ -16,8 +17,8 @@ return {
 
          nvimtree_api.config.mappings.default_on_attach(bufnr)
 
-         vim.keymap.set('n', 'h', nvimtree_api.node.open.edit, opts('Close'))
-         vim.keymap.set('n', 'l', nvimtree_api.node.open.edit, opts('Open'))
+         vim.keymap.set('n', keymaps.right, nvimtree_api.node.open.edit, opts('Close'))
+         vim.keymap.set('n', keymaps.left, nvimtree_api.node.open.edit, opts('Open'))
       end
 
       nvimtree.setup({

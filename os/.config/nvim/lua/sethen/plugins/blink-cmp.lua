@@ -1,5 +1,7 @@
 -- auto completion for lsp
 
+local keymaps = require('sethen.core.keymaps')
+
 return {
    'saghen/blink.cmp',
    dependencies = {
@@ -51,7 +53,9 @@ return {
          }
       },
       signature = { enabled = true },
-      keymap = { preset = 'default' },
+      keymap = {
+         [keymaps.accept] = { 'accept', 'fallback' }
+      },
       sources = {
          default = { 'lsp', 'path', 'snippets', 'buffer' },
       },
