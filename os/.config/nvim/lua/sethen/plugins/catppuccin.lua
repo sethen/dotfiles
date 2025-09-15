@@ -10,8 +10,8 @@ return {
          custom_highlights = function(colors)
             return {
                NormalFloat = { bg = colors.mantle, fg = colors.text },
-               Pmenu = { fg = colors.text, bg = colors.mantle },
-               PmenuSel = { fg = colors.mantle, bg = colors.green }
+               Pmenu = { bg = colors.mantle, fg = colors.text, },
+               PmenuSel = { bg = colors.green, fg = colors.mantle }
             }
          end
       });

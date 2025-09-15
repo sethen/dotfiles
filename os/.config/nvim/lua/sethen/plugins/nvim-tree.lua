@@ -28,6 +28,9 @@ return {
          on_attach = on_attach_change,
          renderer = {
             highlight_git = true,
+            indent_markers = {
+               enable = true
+            },
             icons = {
                symlink_arrow = '  ',
                glyphs = {
