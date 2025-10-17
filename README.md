@@ -4,8 +4,11 @@ These are my dotfiles for setting up my environment from nothing. Take and use a
 
 These dotfiles are a bit different in that they use something I call a `dot-launcher`.  This is a fish script that runs other fish scripts.  The main script is `run.fish`.  Each script is called a `dot-function` and they are located in the `.config/fish/functions/dot` directory.  Each dot-function does one thing, like install neovim or set up git.  You can run them every doc-function individually or run them all with the `run-all` dot-function.
 
+## Neovim
 ![image](assets/images/neovim.png)
-![video](assets/video/dotfiles.webm)
+
+## Ghostty with Starlight & Fish
+![video](assets/video/terminal.png)
 
 # Quickstart
 
