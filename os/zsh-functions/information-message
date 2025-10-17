@@ -1,3 +1,0 @@
-#!/bin/zsh
-
-print -P "%F{3}! $1%f"

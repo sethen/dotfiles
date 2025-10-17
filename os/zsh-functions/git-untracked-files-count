@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-GIT_UNTRACKED_FILES_COUNT=$(git ls-files --exclude-standard --others | wc -l)
-
-echo $GIT_UNTRACKED_FILES_COUNT

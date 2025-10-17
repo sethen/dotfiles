@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-GIT_SHA=$(git rev-parse --short HEAD)
-
-echo $GIT_SHA

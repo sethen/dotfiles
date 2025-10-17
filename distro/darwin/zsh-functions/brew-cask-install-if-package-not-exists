@@ -1,9 +1,0 @@
-#!/bin/zsh
-
-if brew list $1 &>/dev/null; then
-  success-message "${1} installed"
-else
-  information-message "installing ${1}"
-
-  brew install --cask $1
-fi

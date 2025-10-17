@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-GIT_STAGED_FILES_COUNT=$(git diff --name-only --cached | wc -l)
-
-echo $GIT_STAGED_FILES_COUNT

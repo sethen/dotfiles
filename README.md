@@ -1,15 +1,18 @@
 These are my dotfiles for setting up my environment from nothing. Take and use anything you want.
 
+# Intro
+
+These dotfiles are a bit different in that they use something I call a `dot-launcher`.  This is a fish script that runs other fish scripts.  The main script is `run.fish`.  Each script is called a `dot-function` and they are located in the `.config/fish/functions/dot` directory.  Each dot-function does one thing, like install neovim or set up git.  You can run them every doc-function individually or run them all with the `run-all` dot-function.
+
 ![image](assets/images/neovim.png)
 
 # Quickstart
 
-1. Install `zsh` in your terminal by using `sudo apt install zsh`
+1. Install `fish` in your terminal by using `sudo apt install fish`
 2. Modify the `.gitconfig` file in the `os` directory to have your name and email
-3. Execute the `run.sh` file while in `zsh`
+3. Execute the `run.fish` file while in `fish`
+4. Pick the `run-all` dot function
 
 # Environments
-
-These dotfiles detect which environment they are in and run the appropriate commands.  The environments tested are:
 
 * Ubuntu 25.04 (older versions not tested or supported)
