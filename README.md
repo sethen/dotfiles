@@ -8,7 +8,7 @@ These dotfiles are a bit different in that they use something I call a `dot-laun
 ![image](assets/images/neovim.png)
 
 ## Ghostty with Starlight & Fish
-![video](assets/video/terminal.png)
+![image](assets/images/terminal.png)
 
 # Quickstart
 
