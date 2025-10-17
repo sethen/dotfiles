@@ -8,7 +8,8 @@ These dotfiles are a bit different in that they use something I call a `dot-laun
 ![image](assets/images/terminal.png)
 
 ## Dot Launcher
-A customer launcher for all of your dotfiles.  Run them all or one at a time.
+A custom launcher for all of your dotfiles.  Run them all or one at a time.
+
 ![image](assets/images/dot-launcher.png)
 
 ## Neovim
