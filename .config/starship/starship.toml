@@ -1,11 +1,12 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-(sapphire)\
 $username\
-[](fg:sapphire bg:yellow)\
+[](fg:blue bg:yellow)\
 $directory\
-[](fg:yellow)\
+[](fg:yellow bg:mauve)\
+$git_branch\
+[](fg:mauve bg:mantle)\
 $line_break$character
 """
 
@@ -40,20 +41,21 @@ mantle = "#181825"
 crust = "#11111b"
 
 [character]
-success_symbol = "[ % ](bold bg:green fg:base)[](fg:green bg:base)"
-error_symbol = "[ % ](bold bg:red fg:base)[](fg:red bg:base)"
+success_symbol = "[ % ](bg:green fg:base)[](fg:green bg:base)"
+error_symbol = "[ % ](bg:red fg:base)[](fg:red bg:base)"
+
+[directory]
+format = '[ $path ](bg:yellow fg:mantle)'
+truncation_length = 3
+truncation_symbol = "../"
+
+[git_branch]
+symbol = ""
+format = '[ $symbol $branch ](fg:mantle bg:mauve)'
 
 [username]
 show_always = true
-style_user = "bold bg:sapphire fg:mantle"
-style_root = "bold bg:sapphire fg:mantle"
-format = '[ $user ]($style)'
-
-[directory]
-style = "bold bg:yellow fg:mantle"
-format = "[ $path ]($style)"
-truncation_length = 3
-truncation_symbol = "../"
+format = '[ $user ](bold bg:blue fg:mantle)'
 
 [package]
 disabled = true
