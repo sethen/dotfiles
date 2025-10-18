@@ -129,7 +129,7 @@ return {
                   },
                   cond = is_any_ignored_file_type,
                   icon = {
-                     ''
+                     ' '
                   },
                },
                {
@@ -144,10 +144,10 @@ return {
                {
                   'diagnostics',
                   symbols = {
-                     error = ' ',
-                     warn = ' ',
-                     info = ' ',
-                     hint = ' ',
+                     error = '  ',
+                     warn = '  ',
+                     info = '  ',
+                     hint = '  ',
                   },
                },
             },
