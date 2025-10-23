@@ -59,8 +59,8 @@ symbol = '  '
 format = '[$symbol($version )(🎯 $tfm )]($style)'
 
 [character]
-success_symbol = "[ ➜ ](fg:lavender)"
-error_symbol   = "[ ➜ ](fg:red)"
+success_symbol = "[➜](fg:lavender)"
+error_symbol   = "[➜](fg:red)"
 
 [directory]
 format = '[at]()[ $path ](fg:blue)'
