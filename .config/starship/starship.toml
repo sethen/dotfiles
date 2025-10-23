@@ -2,12 +2,22 @@
 
 format = """
 $username\
-[](fg:blue bg:yellow)\
 $directory\
-[](fg:yellow bg:mauve)\
-$git_branch\
-[](fg:mauve bg:mantle)\
+(with \
+$c\
+$dotnet\
+$golang\
+$nodejs\
+$python\
+$ruby\
+$rust)\
 $line_break$character
+"""
+
+right_format = """
+$git_status\
+$git_branch\
+$git_commit\
 """
 
 palette = "catppuccin_mocha"
@@ -40,22 +50,69 @@ base = "#1e1e2e"
 mantle = "#181825"
 crust = "#11111b"
 
+[c]
+format = '[$name $version ](fg:green)'
+symbol = "  "
+
+[dotnet]
+symbol = '  '
+format = '[$symbol($version )(🎯 $tfm )]($style)'
+
 [character]
-success_symbol = "[ % ](bg:green fg:base)[](fg:green bg:base)"
-error_symbol = "[ % ](bg:red fg:base)[](fg:red bg:base)"
+success_symbol = "[ ➜ ](fg:lavender)"
+error_symbol   = "[ ➜ ](fg:red)"
 
 [directory]
-format = '[ $path ](bg:yellow fg:mantle)'
+format = '[at]()[ $path ](fg:blue)'
 truncation_length = 3
 truncation_symbol = "../"
 
 [git_branch]
+format = '[ $symbol $branch:](fg:lavender bg:base)'
 symbol = ""
-format = '[ $symbol $branch ](fg:mantle bg:mauve)'
+
+[git_commit]
+format = '[$hash](fg:lavender bg:base)'
+only_detached = false
+
+[git_metrics]
+disabled = false
+format = '([](bg:green fg:lavender)[ +$added ](fg:base bg:green))([ -$deleted](fg:base bg:red))'
+
+[git_status]
+format = '([$ahead_behind $all_status]($style))'
+ahead = '[](fg:white bg:base)'
+conflicted = '[](fg:white bg:base)'
+behind = '[](fg:white bg:base)'
+diverged = '[](fg:red bg:base)'
+up_to_date = '[](fg:green bg:base)'
+untracked = '[ $count](fg:blue bg:base)[un](fg:blue bg:base)'
+stashed = '[ $count](fg:maroon bg:base)[sts](fg:maroon bg:base)'
+modified = '[ $count](fg:yellow bg:base)[m](fg:yellow bg:base)'
+staged = '[ $count](fg:green bg:base)[stg](fg:green bg:base)'
+renamed = '[ $count](fg:mauve bg:base)[rn](fg:mauve bg:base)'
+deleted = '[ $count](fg:red bg:base)[d](fg:red bg:base)'
+
+[golang]
+format = '[$symbol($version )]($style)'
+symbol = "  "
+
+[nodejs]
+format = '[$symbol($version )]($style)'
+symbol = "  "
+
+[python]
+format = '[$symbol($version )](fg:yellow)'
+symbol = "  "
+
+[ruby]
+format = '[$symbol($version )](fg:red)'
+symbol = "  "
+
+[rust]
+format = '[$symbol($version )](fg:maroon)'
+symbol = "  "
 
 [username]
 show_always = true
-format = '[ $user ](bold bg:blue fg:mantle)'
-
-[package]
-disabled = true
+format = '[$user ](bold fg:yellow)'
