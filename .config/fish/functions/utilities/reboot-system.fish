@@ -1,6 +1,6 @@
 #!/bin/fish
 
-function reboot-computer
+function reboot-system
     information-message "rebooting in 3 seconds"
 
     sleep 3
