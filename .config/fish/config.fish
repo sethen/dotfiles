@@ -35,4 +35,6 @@ set -l dev_paths \
   $NVM_BIN_DIRECTORY \
   /usr/bin
 
+cd ~/Developer
+
 starship init fish | source
