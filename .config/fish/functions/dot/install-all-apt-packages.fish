@@ -23,6 +23,7 @@ function install-all-apt-packages
   install-mdadm
   install-nginx
   install-ripgrep
+  install-signal
   install-starship
   install-tmux
   install-virtualbox
