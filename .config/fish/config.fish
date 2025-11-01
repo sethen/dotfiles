@@ -11,6 +11,7 @@ set -gx NVIM_BIN_DIRECTORY $HOME/.local/share/bob/nvim-bin
 
 # golang
 set -gx GO_BIN_DIRECTORY $HOME/go/bin
+set -gx GO_VERSION 1.25.3
 
 # npm
 set -gx NVM_DIRECTORY $HOME/.nvm
@@ -27,13 +28,12 @@ set -gx GEM_BIN_DIRECTORY $HOME/.gem/ruby/3.3.0/bin
 # rust
 set -gx CARGO_BIN_DIRECTORY $HOME/.cargo/bin
 
-set -l dev_paths \
+set -gx PATH /usr/bin $PATH \
   $CARGO_BIN_DIRECTORY \
   $GO_BIN_DIRECTORY \
   $GEM_BIN_DIRECTORY \
   $NVIM_BIN_DIRECTORY \
-  $NVM_BIN_DIRECTORY \
-  /usr/bin
+  $NVM_BIN_DIRECTORY
 
 cd ~/Developer
 
