@@ -1,0 +1,7 @@
+.config/functions/_nvim_index_update
+.config/functions/_nvm_list.fish
+.config/functions/_nvm_version_activate.fish
+.config/functions/_nvm_version_deactivate.fish
+.config/functions/fish_prompt.fish
+.config/functions/fisher.fish
+.config/functions/nvm.fish

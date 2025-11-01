@@ -10,7 +10,6 @@ function install-all-apt-packages
 
   # packages
   install-brave-browser
-  install-docker
   install-dotnet
   install-font-manager
   install-gh
