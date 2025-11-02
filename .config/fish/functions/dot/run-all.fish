@@ -3,6 +3,9 @@
 function run-all
   running-message "run-all"
 
+  # update and upgrade
+  update-and-upgrade-all-apt-packages
+
   # init
   dot-init
 
@@ -26,9 +29,6 @@ function run-all
 
   # golang
   install-all-golang-packages
-
-  # update and upgrade
-  update-and-upgrade-all-apt-packages
 
   # clone repos
   clone-all-repos

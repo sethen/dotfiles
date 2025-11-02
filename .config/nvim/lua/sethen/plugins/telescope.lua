@@ -18,12 +18,6 @@ return {
          defaults = {
             extensions = {
                advanced_git_search = {},
-               fzf = {
-                  fuzzy = true,
-                  override_generic_sorter = true,
-                  override_file_sorter = true,
-                  case_mode = "smart_case",
-               },
                project = {
                   base_dirs = {
                      '~/Developer',
@@ -64,7 +58,6 @@ return {
          },
       })
 
-      telescope.load_extension('fzf')
       telescope.load_extension("advanced_git_search")
    end,
    keys = {

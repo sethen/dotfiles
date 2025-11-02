@@ -1,4 +1,4 @@
-font-size = 11
+font-size = 13
 adjust-cell-height = 15%
 theme = catppuccin-mocha.conf
 font-codepoint-map = U+E900-U+EA75=Sethens-Unicode

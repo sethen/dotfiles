@@ -15,6 +15,7 @@ function install-all-apt-packages
   install-gh
   install-ghostty
   install-git
+  install-gnome-tweaks
   install-gparted
   install-gpick
   install-fortune-mod
