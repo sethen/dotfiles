@@ -23,7 +23,7 @@ set -gx NVM_BIN_DIRECTORY $HOME/.local/share/nvm/v24.9.0/bin
 set --universal nvm_default_version latest
 
 # ruby
-set -gx GEM_BIN_DIRECTORY $HOME/.gem/ruby/3.3.0/bin
+set -gx GEM_BIN_DIRECTORY (gem env user_gemhome | string match -r '/home/[^/]+/\.local/share/gem/ruby/[^/]+')/bin
 
 # rust
 set -gx CARGO_BIN_DIRECTORY $HOME/.cargo/bin
@@ -35,6 +35,8 @@ set -gx PATH /usr/bin $PATH \
   $NVIM_BIN_DIRECTORY \
   $NVM_BIN_DIRECTORY
 
-cd ~/Developer
+if status is-interactive
+    cd ~/Developer
+end
 
 starship init fish | source
