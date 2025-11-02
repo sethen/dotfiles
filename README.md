@@ -24,4 +24,4 @@ A custom launcher for all of your dotfiles.  Run them all or one at a time.
 
 # Environments
 
-* Ubuntu 25.04 (older versions not tested or supported)
+* Ubuntu 2.10 (older versions not tested or supported)

@@ -4,7 +4,7 @@ function set-gnome-preferences
   running-message "set-gnome-preferences"
 
   # settings
-  dconf write /org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size 48
+  dconf write /org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size 82
   dconf write /org/gnome/shell/extensions/dash-to-dock/dock-fixed false
   dconf write /org/gnome/shell/extensions/dash-to-dock/dock-position "'BOTTOM'"
   dconf write /org/gnome/shell/extensions/dash-to-dock/extend-height false
