@@ -1,73 +1,66 @@
 #!/usr/bin/fish
 
 function dot-launcher
-  # install fzf if not present
   if not type -q fzf
-    information-message "installing fzf"
+    echo "installing fzf"
+
     sudo apt update
     sudo apt install -y fzf
   end
 
-  # collect files safely (handle case where glob matches nothing)
-  set ALL_DOT_FUNCTIONS
-  for DOT_FUNCTION in $HOME_FISH_DOT_FUNCTIONS_DIRECTORY/*.fish
-    if test -e "$DOT_FUNCTION"
-      set ALL_DOT_FUNCTIONS $ALL_DOT_FUNCTIONS $DOT_FUNCTION
-    end
+  set FUNCTION_DIRS \
+  $HOME_FISH_DOT_FUNCTIONS_DIRECTORY \
+  $HOME_FISH_GIT_FUNCTIONS_DIRECTORY \
+  $HOME_FISH_UTILITIES_FUNCTIONS_DIRECTORY
+
+  if test "$SYSTEM_OS" = "darwin"
+    set -a FUNCTION_DIRS $HOME_FISH_DARWIN_FUNCTIONS_DIRECTORY
+  else if test "$SYSTEM_OS" = "ubuntu"
+    set -a FUNCTION_DIRS $HOME_FISH_UBUNTU_FUNCTIONS_DIRECTORY
   end
 
-  set DOT_FUNCTIONS ()
+  set ALL_FUNCTIONS
+  set FUNCTION_NAMES
 
-  # collect function names
-  for DOT_FUNCTION in $ALL_DOT_FUNCTIONS
-    if test -f "$DOT_FUNCTION"
-      set DOT_FUNCTION_NAME (basename $DOT_FUNCTION .fish)
+  for DIR in $FUNCTION_DIRS
+    if test -d "$DIR"
+      for FILE in $DIR/*.fish
+        if test -f "$FILE"
+          source "$FILE"
 
-      # ignore the launcher itself
-      if test "$DOT_FUNCTION_NAME" != "dot-launcher"
-        set DOT_FUNCTIONS $DOT_FUNCTIONS $DOT_FUNCTION_NAME
+          set ALL_FUNCTIONS $ALL_FUNCTIONS $FILE
+          set NAME (basename $FILE .fish)
+
+          if test "$NAME" != "dot-launcher"
+            set FUNCTION_NAMES $FUNCTION_NAMES $NAME
+          end
+        end
       end
     end
   end
 
-  # if no functions found, exit
-  if test (count $DOT_FUNCTIONS) -eq 0
-    echo "no dot functions found"
+  if test (count $FUNCTION_NAMES) -eq 0
+    echo "no functions found in: $FUNCTION_DIRS"
     return
   end
 
-  # pick function with fzf
-  set SELECTED_DOT_FUNCTION (printf "%s\n" $DOT_FUNCTIONS | fzf --height 15 --reverse --preview "type {}" --prompt "pick a dot function: ")
+  set SELECTED (printf "%s\n" $FUNCTION_NAMES | fzf --height 15 --reverse --preview "type {}" --prompt "Pick a function: ")
 
-  if test -n "$SELECTED_DOT_FUNCTION"
-    set -l SELECTED_PATH "$HOME_FISH_DOT_FUNCTIONS_DIRECTORY/$SELECTED_DOT_FUNCTION.fish"
+  if test -z "$SELECTED"
+    return
+  end
 
-    # Only source the function file if needed and it exists
-    if not functions -q $SELECTED_DOT_FUNCTION
-      if test -f "$SELECTED_PATH"
-        source "$SELECTED_PATH"
-      else
-        echo "function file not found: $SELECTED_PATH"
-        return 1
-      end
-    end
+  set DEF (functions $SELECTED)
+  if string match -q '*argv*' "$DEF"
+    read -P "enter arguments for $SELECTED: " ARGS
+    set __args (string split " " -- $ARGS)
+  else
+    set __args
+  end
 
-    # heuristic: check if function contains 'argv' or parameters
-    set DOT_FUNCTION_DEFINITION (functions $SELECTED_DOT_FUNCTION)
-
-    if string match -q '*argv*' "$DOT_FUNCTION_DEFINITION"; or string match -q '*$argv*' "$DOT_FUNCTION_DEFINITION"
-      read -P "enter arguments for $SELECTED_DOT_FUNCTION: " DOT_FUNCTION_ARGUMENTS
-      set -l __args (string split " " -- $DOT_FUNCTION_ARGUMENTS)
-    else
-      set DOT_FUNCTION_ARGUMENTS ""
-      set -l __args
-    end
-
-    # run function with arguments if any
-    if test (count $__args) -gt 0
-      $SELECTED_DOT_FUNCTION $__args
-    else
-      $SELECTED_DOT_FUNCTION
-    end
+  if test (count $__args) -gt 0
+    $SELECTED $__args
+  else
+    $SELECTED
   end
 end

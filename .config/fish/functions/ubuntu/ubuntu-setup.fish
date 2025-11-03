@@ -1,6 +1,6 @@
 #!/usr/bin/fish
 
-function dot-setup
+function ubuntu-setup
   switch-shell-to-fish
   make-developer-directory
   add-user-to-docker-group

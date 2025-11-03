@@ -1,16 +1,16 @@
 #!/bin/fish
 
-function run-all
+function ubuntu-run-all
   running-message "run-all"
 
   # update and upgrade
   update-and-upgrade-all-apt-packages
 
   # init
-  dot-init
+  ubuntu-init
 
   # setup
-  dot-setup
+  ubuntu-setup
 
   # packages install via apt
   install-all-apt-packages

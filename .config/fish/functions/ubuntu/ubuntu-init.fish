@@ -1,6 +1,6 @@
 #!/usr/bin/fish
 
-function dot-init
+function ubuntu-init
   install-build-essential
   install-curl
   install-gh
