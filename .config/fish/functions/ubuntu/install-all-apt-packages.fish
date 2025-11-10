@@ -11,6 +11,7 @@ function install-all-apt-packages
   # packages
   install-brave-browser
   install-dotnet
+  install-fd-find
   install-font-manager
   install-gh
   install-ghostty

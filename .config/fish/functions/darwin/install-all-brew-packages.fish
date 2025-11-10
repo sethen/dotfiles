@@ -10,6 +10,7 @@ function install-all-brew-packages
   install-bob
   install-brave-browser
   install-dotnet
+  install-fd
   install-ghostty
   install-gh
   install-git

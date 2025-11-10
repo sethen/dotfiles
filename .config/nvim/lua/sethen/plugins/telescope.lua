@@ -16,6 +16,16 @@ return {
 
       telescope.setup({
          defaults = {
+            vimgrep_arguments = {
+               "rg",
+               "--color=never",
+               "--no-heading",
+               "--with-filename",
+               "--line-number",
+               "--column",
+               "--smart-case",
+               "--hidden"
+            },
             extensions = {
                advanced_git_search = {},
                project = {
@@ -43,18 +53,9 @@ return {
          path_display = { 'truncate' },
          pickers = {
             find_files = {
-               hidden = true,
+               find_command = { "fd", "--type", "f", "--hidden", "--follow" },
+               hidden = true
             },
-         },
-         vimgrep_arguments = {
-            "rg",
-            "--color=never",
-            "--no-heading",
-            "--with-filename",
-            "--line-number",
-            "--column",
-            "--smart-case",
-            "--hidden",
          },
       })
 
