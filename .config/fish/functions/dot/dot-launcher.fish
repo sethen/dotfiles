@@ -1,11 +1,16 @@
-#!/usr/bin/fish
+#!/usr/bin/env fish
 
 function dot-launcher
   if not type -q fzf
     echo "installing fzf"
 
-    sudo apt update
-    sudo apt install -y fzf
+    if test "$SYSTEM_OS" = "darwin"
+      brew install fzf
+    else if test "$SYSTEM_OS" = "ubuntu"
+
+      sudo apt update
+      sudo apt install -y fzf
+    end
   end
 
   set FUNCTION_DIRS \

@@ -2,12 +2,13 @@ set -U fish_greeting (fortune || "Only worry about the things that you can contr
 
 # directories
 set -gx DEVELOPER_DIRECTORY $HOME/Developer
-set -gx ETC_APT_SOURCES_DIRECTORY /etc/apt/sources.list.d
-set -gx FONTS_DIRECTORY $HOME/.fonts
 set -gx STARSHIP_CONFIG $HOME/.config/starship/starship.toml
 
 # bob
 set -gx NVIM_BIN_DIRECTORY $HOME/.local/share/bob/nvim-bin
+
+# darwin
+set -gx DARWIN_FONTS_DIRECTORY $HOME/Library/Fonts
 
 # golang
 set -gx GO_BIN_DIRECTORY $HOME/go/bin
@@ -27,6 +28,10 @@ set -gx GEM_BIN_DIRECTORY (gem env user_gemhome | string match -r '/home/[^/]+/\
 
 # rust
 set -gx CARGO_BIN_DIRECTORY $HOME/.cargo/bin
+
+# ubuntu
+set -gx ETC_APT_SOURCES_DIRECTORY /etc/apt/sources.list.d
+set -gx UBUNTU_FONTS_DIRECTORY $HOME/.fonts
 
 set -gx PATH /usr/bin $PATH \
   $CARGO_BIN_DIRECTORY \

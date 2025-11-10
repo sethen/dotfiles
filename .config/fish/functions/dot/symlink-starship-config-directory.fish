@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function symlink-starship-config-directory
   running-message "symlink-starship-config-directory"

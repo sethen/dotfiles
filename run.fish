@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 if string match -q "*Ubuntu*" (uname -a)
   set -gx SYSTEM_OS "ubuntu"
