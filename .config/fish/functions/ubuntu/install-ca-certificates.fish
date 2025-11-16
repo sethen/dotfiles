@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function install-ca-certificates
   running-message "install-ca-certificates"

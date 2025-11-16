@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function install-all-node-packages
   running-message "install-all-node-packages"

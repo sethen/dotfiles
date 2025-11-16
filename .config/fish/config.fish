@@ -24,7 +24,7 @@ set -gx NVM_BIN_DIRECTORY $HOME/.local/share/nvm/v24.9.0/bin
 set --universal nvm_default_version latest
 
 # ruby
-set -gx GEM_BIN_DIRECTORY (gem env user_gemhome | string match -r '/home/[^/]+/\.local/share/gem/ruby/[^/]+')/bin
+set -gx GEM_BIN_DIRECTORY (ruby -e 'require "rubygems"; print Gem.user_dir')/bin
 
 # rust
 set -gx CARGO_BIN_DIRECTORY $HOME/.cargo/bin

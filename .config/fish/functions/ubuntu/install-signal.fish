@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env fish
 
 function install-signal
   running-message "install-signal"

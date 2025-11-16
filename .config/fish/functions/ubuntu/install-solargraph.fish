@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function install-solargraph
   running-message "install-solargraph"

@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function install-gnome-tweaks
   running-message "install-gnome-tweaks"

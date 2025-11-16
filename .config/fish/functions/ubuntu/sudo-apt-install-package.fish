@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function sudo-apt-install-package
   running-message "sudo-apt-install-package"

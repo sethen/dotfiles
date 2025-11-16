@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function add-user-to-docker-group
   running-message "add-user-to-docker-group"

@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function upgrade-all-apt-packages
   running-message "upgrade-all-apt-packages"

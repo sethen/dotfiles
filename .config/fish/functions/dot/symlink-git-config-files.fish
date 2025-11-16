@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function symlink-git-config-files
   running-message "symlink-git-config-files"

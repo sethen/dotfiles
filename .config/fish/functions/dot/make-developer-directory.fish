@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function make-developer-directory
   running-message "make-developer-directory"

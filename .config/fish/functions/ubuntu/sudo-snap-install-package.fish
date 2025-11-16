@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function sudo-snap-install-package
   running-message "sudo-snap-install-package"

@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function install-all-brew-packages
   running-message "install-all-brew-packages"
@@ -23,6 +23,8 @@ function install-all-brew-packages
   install-lazygit
   install-nginx
   install-ripgrep
+  install-rust
+  install-spotify
   install-starship
   install-tmux
   install-virtualbox

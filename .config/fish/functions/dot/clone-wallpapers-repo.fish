@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function clone-wallpapers-repo
   running-message "clone-wallpapers-repo"

@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function ubuntu-run-all
   running-message "run-all"

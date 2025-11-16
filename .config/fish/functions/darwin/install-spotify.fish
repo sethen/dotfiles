@@ -3,5 +3,5 @@
 function install-spotify
   running-message "install-spotify"
 
-  sudo-snap-install-package spotify
+  brew-cask-install-package spotify
 end

@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function symlink-ghostty-config-directory
   running-message "symlink-ghostty-config-directory"

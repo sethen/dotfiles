@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function install-typescript-language-server
   running-message "install-typescript-language-server"

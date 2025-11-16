@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function install-all-apt-packages
   running-message "install-all-apt-packages"

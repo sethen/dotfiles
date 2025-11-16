@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function install-bash-language-server
   running-message "install-bash-language-server"

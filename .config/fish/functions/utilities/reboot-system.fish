@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function reboot-system
     information-message "rebooting in 3 seconds"

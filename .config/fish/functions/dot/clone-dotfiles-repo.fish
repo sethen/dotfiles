@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function clone-dotfiles-repo
   running-message "install-dotfiles-repo"

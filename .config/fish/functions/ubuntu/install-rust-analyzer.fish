@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function install-rust-analyzer
   running-message "install-rust-analzyer"

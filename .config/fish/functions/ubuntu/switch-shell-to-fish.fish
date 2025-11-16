@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function switch-shell-to-fish
   running-message "switch-shell-to-fish"

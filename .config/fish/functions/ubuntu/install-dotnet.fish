@@ -1,4 +1,4 @@
-#!/bin/fsh
+#!/usr/bin/env fish
 
 function install-dotnet
   running-message "install-dotnet"

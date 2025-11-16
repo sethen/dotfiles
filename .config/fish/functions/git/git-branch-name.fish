@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function git-branch-name
   if not git rev-parse --is-inside-work-tree > /dev/null 2>&1

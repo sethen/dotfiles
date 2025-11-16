@@ -1,4 +1,4 @@
-#!/bin/fish
+#!/usr/bin/env fish
 
 function symlink-neovim-config-directory
   running-message "symlink-neovim-config-directory"
