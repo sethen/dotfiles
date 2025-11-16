@@ -2,6 +2,7 @@
 
 function darwin-setup
   switch-shell-to-fish
+  touch-hushlogin
   make-developer-directory
   copy-fonts
   symlink-git-config-files

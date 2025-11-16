@@ -1,5 +1,6 @@
 return {
    "jackplus-xyz/player-one.nvim",
+   enabled = false,
    opts = {
       master_volume = 0.1,
       theme = "crystal",
