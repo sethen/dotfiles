@@ -11,6 +11,7 @@ function install-all-brew-packages
   install-brave-browser
   install-dotnet
   install-fd
+  install-fish-lsp
   install-ghostty
   install-gh
   install-git
@@ -21,6 +22,7 @@ function install-all-brew-packages
   install-fortune
   install-lazydocker
   install-lazygit
+  install-mysql
   install-nginx
   install-ripgrep
   install-rust
@@ -28,4 +30,5 @@ function install-all-brew-packages
   install-starship
   install-tmux
   install-virtualbox
+  install-virtualenv
 end

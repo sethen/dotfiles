@@ -47,6 +47,7 @@ vim.lsp.enable({
    'css-lsp',
    'dockerfile-language-server',
    'eslint-lsp',
+   'fish-lsp',
    'gopls',
    'html-lsp', 'json-lsp',
    'lua-language-server',
