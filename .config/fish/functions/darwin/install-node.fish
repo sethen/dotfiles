@@ -3,7 +3,8 @@
 function install-node
   running-message "install-node"
 
-  if command -s node > /dev/null
+
+  if string length (asdf list nodejs) > 0
     success-message "node already installed"
   else
     asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git

@@ -3,7 +3,7 @@
 function install-all-golang-packages
   running-message "install-all-golang-packages"
 
-  install-go
+  install-golang
   install-lazydocker
   install-lazygit
 end

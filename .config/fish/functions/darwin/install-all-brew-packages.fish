@@ -16,7 +16,6 @@ function install-all-brew-packages
   install-ghostty
   install-gh
   install-git
-  install-go
   install-ruby
   install-git
   install-ghostty
