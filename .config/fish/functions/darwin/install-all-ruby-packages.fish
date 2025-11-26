@@ -3,7 +3,9 @@
 function install-all-ruby-packages
   running-message "install-all-ruby-packages"
 
-  # ruby installed via apt
+  # dependencies
+  install-libyaml
+
+  # ruby
   install-ruby
-  install-solargraph
 end

@@ -7,6 +7,7 @@ function install-all-brew-packages
   install-cmake
 
   # packages
+  install-asdf
   install-bob
   install-brave-browser
   install-dotnet

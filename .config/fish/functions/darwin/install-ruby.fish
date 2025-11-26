@@ -3,5 +3,11 @@
 function install-ruby
   running-message "install-ruby"
 
-  brew-install-package ruby
+  if command -s ruby > /dev/null
+    success-message "ruby already installed"
+  else
+    asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+    asdf install ruby latest
+    asdf set ruby latest
+  end
 end

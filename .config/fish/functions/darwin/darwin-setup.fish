@@ -6,6 +6,7 @@ function darwin-setup
   make-developer-directory
   copy-fonts
   symlink-git-config-files
+  symlink-asdf-config-files
   make-config-directory
 
   # symlink config directories
