@@ -3,7 +3,7 @@
 function install-neovim
   running-message "install-neovim"
 
-  if string match -q '*' (asdf list neovim)
+  if asdf which nvim >/dev/null 2>/dev/null
     success-message "neovim already installed"
   else
     asdf plugin add neovim
@@ -11,4 +11,3 @@ function install-neovim
     asdf set neovim stable
   end
 end
-
