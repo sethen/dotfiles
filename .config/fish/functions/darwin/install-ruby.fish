@@ -3,7 +3,7 @@
 function install-ruby
   running-message "install-ruby"
 
-  if test (string length (asdf list ruby)) -gt 0
+  if string match -q '*' (asdf list ruby)
     success-message "ruby already installed"
   else
     asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git

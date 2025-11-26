@@ -3,7 +3,8 @@
 function install-rust
   running-message "install-rust"
 
-  if test (string length (asdf list rust)) -gt 0
+
+  if string match -q '*' (asdf list rust)
     success-message "rust already installed"
   else
     asdf plugin add rust https://github.com/asdf-community/asdf-rust.git

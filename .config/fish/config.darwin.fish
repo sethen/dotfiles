@@ -1,11 +1,9 @@
 set -U fish_greeting (fortune || "Only worry about the things that you can control.")
 
 # directories
+set -gx DARWIN_FONTS_DIRECTORY $HOME/Library/Fonts
 set -gx DEVELOPER_DIRECTORY $HOME/Developer
 set -gx STARSHIP_CONFIG $HOME/.config/starship/starship.toml
-
-# darwin
-set -gx DARWIN_FONTS_DIRECTORY $HOME/Library/Fonts
 
 # set path
 set -gx PATH /usr/bin $PATH
