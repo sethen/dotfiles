@@ -1,5 +1,6 @@
 #!/usr/bin/env fish
 
+# determine os
 if string match -q "*Ubuntu*" (uname -a)
   set -gx SYSTEM_OS "ubuntu"
 else if string match -q "*Darwin*" (uname -a)
@@ -12,7 +13,7 @@ end
 set -gx DOTFILES_DIRECTORY (pwd)
 set -gx DOTFILES_CONFIG_DIRECTORY $DOTFILES_DIRECTORY/.config
 set -gx DOTFILES_FISH_DIRECTORY $DOTFILES_CONFIG_DIRECTORY/fish
-set -gx DOTFILES_FISH_CONFIG_FILE $DOTFILES_FISH_DIRECTORY/config.fish
+set -gx DOTFILES_FISH_CONFIG_FILE $DOTFILES_FISH_DIRECTORY/config.$SYSTEM_OS.fish
 set -gx DOTFILES_FISH_FUNCTIONS_DIRECTORY $DOTFILES_FISH_DIRECTORY/functions
 
 # home level directories and files
