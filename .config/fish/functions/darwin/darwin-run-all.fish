@@ -12,14 +12,17 @@ function darwin-run-all
   # packages install via brew
   install-all-brew-packages
 
+  # golang
+  install-all-golang-packages
+
+  # neovim
+  install-neovim
+
   # node
   install-all-node-packages
 
   # ruby
   install-all-ruby-packages
-
-  # golang
-  install-all-golang-packages
 
   # clone repos
   clone-all-repos

@@ -4,9 +4,6 @@ set -U fish_greeting (fortune || "Only worry about the things that you can contr
 set -gx DEVELOPER_DIRECTORY $HOME/Developer
 set -gx STARSHIP_CONFIG $HOME/.config/starship/starship.toml
 
-# bob
-set -gx NVIM_BIN_DIRECTORY $HOME/.local/share/bob/nvim-bin
-
 # darwin
 set -gx DARWIN_FONTS_DIRECTORY $HOME/Library/Fonts
 
@@ -14,8 +11,8 @@ set -gx DARWIN_FONTS_DIRECTORY $HOME/Library/Fonts
 set -gx ETC_APT_SOURCES_DIRECTORY /etc/apt/sources.list.d
 set -gx UBUNTU_FONTS_DIRECTORY $HOME/.fonts
 
-set -gx PATH /usr/bin $PATH \
-  $NVIM_BIN_DIRECTORY
+# set path
+set -gx PATH /usr/bin $PATH
 
 # asdf
 if test -z $ASDF_DATA_DIR

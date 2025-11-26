@@ -3,7 +3,6 @@
 function install-node
   running-message "install-node"
 
-
   if string length (asdf list nodejs) > 0
     success-message "node already installed"
   else

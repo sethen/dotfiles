@@ -8,7 +8,6 @@ function install-all-brew-packages
 
   # packages
   install-asdf
-  install-bob
   install-brave-browser
   install-dotnet
   install-fd
