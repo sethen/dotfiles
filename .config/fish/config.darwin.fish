@@ -10,20 +10,20 @@ set -gx PATH /usr/bin $PATH
 
 # asdf
 if test -z $ASDF_DATA_DIR
-    set _asdf_shims "$HOME/.asdf/shims"
+  set _asdf_shims "$HOME/.asdf/shims"
 else
-    set _asdf_shims "$ASDF_DATA_DIR/shims"
+  set _asdf_shims "$ASDF_DATA_DIR/shims"
 end
 
 if not contains $_asdf_shims $PATH
-    set -gx --prepend PATH $_asdf_shims
+  set -gx --prepend PATH $_asdf_shims
 end
 
 set --erase _asdf_shims
 
 # start in ~/Developer
 if status is-interactive
-    cd ~/Developer
+  cd ~/Developer
 end
 
 starship init fish | source
