@@ -8,7 +8,6 @@ function darwin-setup
 
   # directory creation
   make-developer-directory
-  copy-fonts
   make-config-directory
 
   # file creation

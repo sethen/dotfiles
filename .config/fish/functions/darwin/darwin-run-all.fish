@@ -24,6 +24,9 @@ function darwin-run-all
   # ruby
   install-all-ruby-packages
 
+  # rust
+  install-all-rust-packages
+
   # clone repos
   clone-all-repos
 

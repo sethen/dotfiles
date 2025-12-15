@@ -15,8 +15,17 @@ function ubuntu-run-all
   # packages install via apt
   install-all-apt-packages
 
+  # packages install via brew
+  install-all-brew-packages
+
   # packages installed via snap
   install-all-snap-packages
+
+  # golang
+  install-all-golang-packages
+
+  # neovim
+  install-neovim
 
   # node
   install-all-node-packages
@@ -24,8 +33,8 @@ function ubuntu-run-all
   # ruby
   install-all-ruby-packages
 
-  # golang
-  install-all-golang-packages
+  # rust
+  install-all-rust-packages
 
   # clone repos
   clone-all-repos

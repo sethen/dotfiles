@@ -3,8 +3,10 @@
 function install-all-node-packages
   running-message "install-all-node-packages"
 
-  install-nvm
+  # node
   install-node
+
+  # npm modules
   install-bash-language-server
   install-typescript
   install-typescript-language-server

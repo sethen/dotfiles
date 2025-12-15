@@ -6,6 +6,9 @@ function install-all-brew-packages
   # dependencies
   install-cmake
 
+  # install homebrew
+  install-homebrew
+
   # packages
   install-asdf
   install-brave-browser
@@ -24,7 +27,6 @@ function install-all-brew-packages
   install-mysql
   install-nginx
   install-ripgrep
-  install-rust
   install-spotify
   install-starship
   install-tmux

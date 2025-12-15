@@ -3,11 +3,11 @@
 function install-node
   running-message "install-node"
 
-  if type -q node
-    success-message 'node already installed'
+  if asdf which node >/dev/null 2>/dev/null
+    success-message "node already installed"
   else
-    information-message 'installing node'
-
-    nvm install latest
+    asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+    asdf install nodejs lts
+    asdf set nodejs lts
   end
 end

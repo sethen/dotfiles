@@ -2,43 +2,33 @@ set -U fish_greeting (fortune || "Only worry about the things that you can contr
 
 # directories
 set -gx DEVELOPER_DIRECTORY $HOME/Developer
-set -gx STARSHIP_CONFIG $HOME/.config/starship/starship.toml
-
-# bob
-set -gx NVIM_BIN_DIRECTORY $HOME/.local/share/bob/nvim-bin
-
-# golang
-set -gx GO_BIN_DIRECTORY $HOME/go/bin
-set -gx GO_VERSION 1.25.3
-
-# npm
-set -gx NVM_DIRECTORY $HOME/.nvm
-set -gx NVM_VERSION 0.39.3
-
-# nvm
-set -gx NVM_FISH_FILE $HOME/.config/fish/functions/nvm.fish
-set -gx NVM_BIN_DIRECTORY $HOME/.local/share/nvm/v24.9.0/bin
-set --universal nvm_default_version latest
-
-# ruby
-set -gx GEM_BIN_DIRECTORY (ruby -e 'require "rubygems"; print Gem.user_dir')/bin
-
-# rust
-set -gx CARGO_BIN_DIRECTORY $HOME/.cargo/bin
-
-# ubuntu
 set -gx ETC_APT_SOURCES_DIRECTORY /etc/apt/sources.list.d
+set -gx STARSHIP_CONFIG $HOME/.config/starship/starship.toml
 set -gx UBUNTU_FONTS_DIRECTORY $HOME/.fonts
 
 set -gx PATH /usr/bin $PATH \
-  $CARGO_BIN_DIRECTORY \
-  $GO_BIN_DIRECTORY \
-  $GEM_BIN_DIRECTORY \
-  $NVIM_BIN_DIRECTORY \
-  $NVM_BIN_DIRECTORY
+/home/linuxbrew/.linuxbrew/bin
+
+# asdf
+if test -z $ASDF_DATA_DIR
+  set _asdf_shims "$HOME/.asdf/shims"
+else
+  set _asdf_shims "$ASDF_DATA_DIR/shims"
+end
+
+if not contains $_asdf_shims $PATH
+  set -gx --prepend PATH $_asdf_shims
+end
+
+set --erase _asdf_shims
+
+# start in ~/Developer
+if status is-interactive
+  cd ~/Developer
+end
 
 if status is-interactive
-    cd ~/Developer
+  cd ~/Developer
 end
 
 starship init fish | source

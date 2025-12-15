@@ -2,14 +2,18 @@
 
 function ubuntu-setup
   switch-shell-to-fish
-  make-developer-directory
+
   add-user-to-docker-group
+  # copying
   copy-fonts
-  symlink-git-config-files
-  make-config-directory
+
+  # directory creation
+  make-developer-directory
 
   # symlink config directories
+  symlink-asdf-config-files
   symlink-ghostty-config-directory
+  symlink-git-config-files
   symlink-neovim-config-directory
   symlink-starship-config-directory
 
