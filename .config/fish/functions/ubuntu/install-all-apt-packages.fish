@@ -23,6 +23,7 @@ function install-all-apt-packages
   install-lazygit
   install-mdadm
   install-nginx
+  install-postgresql
   install-ripgrep
   install-signal
   install-starship

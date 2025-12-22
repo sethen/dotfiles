@@ -27,8 +27,4 @@ if status is-interactive
   cd ~/Developer
 end
 
-if status is-interactive
-  cd ~/Developer
-end
-
 starship init fish | source
