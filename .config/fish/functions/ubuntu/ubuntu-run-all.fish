@@ -18,6 +18,9 @@ function ubuntu-run-all
   # packages install via brew
   install-all-brew-packages
 
+  # packages install via flatpak
+  install-all-flatpak-packages
+
   # packages installed via snap
   install-all-snap-packages
 
