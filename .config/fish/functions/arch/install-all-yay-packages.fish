@@ -7,8 +7,7 @@ function install-all-yay-packages
   install-base-devel
 
   # packages
-  install-spotify
-  install-starship
+  install-brave
   install-dotnet-sdk
   install-fd
   install-font-manager
@@ -18,11 +17,13 @@ function install-all-yay-packages
   install-gparted
   install-gpick
   install-fortune-mod
+  install-lsb-release
   install-mdadm
   install-nginx
   install-postgresql
   install-ripgrep
   install-signal-desktop
+  install-spotify
   install-starship
   install-tmux
   install-virtualbox

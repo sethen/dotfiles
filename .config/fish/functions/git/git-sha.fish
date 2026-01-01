@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 function git-sha
-  if not git rev-parse --is-inside-work-tree > /dev/null 2>&1
+  if not git rev-parse --is-inside-work-tree >/dev/null 2>&1
     echo "currently not in a git repository"
 
     return 2

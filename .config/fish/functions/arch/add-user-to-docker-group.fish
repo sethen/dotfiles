@@ -3,7 +3,7 @@
 function add-user-to-docker-group
   running-message "add-user-to-docker-group"
 
-  if not getent group docker > /dev/null
+  if not getent group docker >/dev/null
     sudo groupadd docker
   end
 

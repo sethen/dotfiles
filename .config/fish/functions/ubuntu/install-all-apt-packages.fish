@@ -20,7 +20,6 @@ function install-all-apt-packages
   install-gparted
   install-gpick
   install-fortune-mod
-  install-lazygit
   install-mdadm
   install-nginx
   install-postgresql

@@ -5,7 +5,7 @@ function brew-cask-install-package
 
   set CASK $argv[1]
 
-  if not brew list --cask | grep -w $CASK > /dev/null
+  if not brew list --cask | grep -w $CASK >/dev/null
     information-message "installing $CASK"
     brew install --cask $CASK
   else

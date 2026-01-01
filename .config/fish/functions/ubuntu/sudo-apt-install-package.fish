@@ -5,7 +5,7 @@ function sudo-apt-install-package
 
   set PACKAGE $argv[1]
 
-  if not dpkg --get-selections | awk '{print $1}' | grep -w $PACKAGE > /dev/null
+  if not dpkg --get-selections | awk '{print $1}' | grep -w $PACKAGE >/dev/null
     information-message "installing $PACKAGE"
 
     sudo apt-get install $PACKAGE -y

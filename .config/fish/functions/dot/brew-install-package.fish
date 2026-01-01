@@ -5,7 +5,7 @@ function brew-install-package
 
   set PACKAGE $argv[1]
 
-  if not brew list --formula | grep -w $PACKAGE > /dev/null
+  if not brew list --formula | grep -w $PACKAGE >/dev/null
     information-message "installing $PACKAGE"
 
     brew install $PACKAGE
