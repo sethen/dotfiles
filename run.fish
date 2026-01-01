@@ -5,6 +5,8 @@ if string match -q "*Ubuntu*" (uname -a)
   set -gx SYSTEM_OS "ubuntu"
 else if string match -q "*Darwin*" (uname -a)
   set -gx SYSTEM_OS "darwin"
+else if string match -q "*arch*" (uname -a)
+  set -gx SYSTEM_OS "arch"
 else
   set -gx SYSTEM_OS "unknown"
 end
@@ -19,6 +21,7 @@ set -gx DOTFILES_FISH_FUNCTIONS_DIRECTORY $DOTFILES_FISH_DIRECTORY/functions
 # home level directories and files
 set -gx HOME_CONFIG_DIRECTORY $HOME/.config
 set -gx HOME_FISH_DIRECTORY $HOME_CONFIG_DIRECTORY/fish
+set -gx HOME_FISH_ARCH_FUNCTIONS_DIRECTORY $HOME_FISH_DIRECTORY/functions/arch
 set -gx HOME_FISH_CONFIG_FILE $HOME_FISH_DIRECTORY/config.fish
 set -gx HOME_FISH_FUNCTIONS_DIRECTORY $HOME_FISH_DIRECTORY/functions
 set -gx HOME_FISH_DARWIN_FUNCTIONS_DIRECTORY $HOME_FISH_DIRECTORY/functions/darwin

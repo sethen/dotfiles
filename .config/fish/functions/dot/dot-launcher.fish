@@ -10,6 +10,8 @@ function dot-launcher
 
       sudo apt update
       sudo apt install -y fzf
+    else if test "$SYSTEM_OS" = "arch"
+      yay install -S fzf --noconfirm
     end
   end
 
@@ -22,6 +24,8 @@ function dot-launcher
     set -a FUNCTION_DIRS $HOME_FISH_DARWIN_FUNCTIONS_DIRECTORY
   else if test "$SYSTEM_OS" = "ubuntu"
     set -a FUNCTION_DIRS $HOME_FISH_UBUNTU_FUNCTIONS_DIRECTORY
+  else if test "$SYSTEM_OS" = "arch"
+    set -a FUNCTION_DIRS $HOME_FISH_ARCH_FUNCTIONS_DIRECTORY
   end
 
   set ALL_FUNCTIONS
@@ -46,6 +50,7 @@ function dot-launcher
 
   if test (count $FUNCTION_NAMES) -eq 0
     echo "no functions found in: $FUNCTION_DIRS"
+
     return
   end
 

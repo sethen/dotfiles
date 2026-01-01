@@ -5,3 +5,4 @@
 .config/functions/fish_prompt.fish
 .config/functions/fisher.fish
 .config/functions/nvm.fish
+.tool-versions
