@@ -53,7 +53,7 @@ return {
          path_display = { 'truncate' },
          pickers = {
             find_files = {
-               find_command = { "fd", "--type", "f", "--hidden", "--follow" },
+               find_command = { "fdfind", "--type", "f", "--hidden", "--follow" },
                hidden = true
             },
          },
