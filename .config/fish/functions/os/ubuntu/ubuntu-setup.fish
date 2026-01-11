@@ -13,6 +13,4 @@ function ubuntu-setup
   symlink-git-config-files
   symlink-neovim-config-directory
   symlink-starship-config-directory
-
-  install-fisher
 end

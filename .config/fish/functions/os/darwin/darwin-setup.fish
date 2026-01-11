@@ -19,7 +19,4 @@ function darwin-setup
   symlink-git-config-files
   symlink-neovim-config-directory
   symlink-starship-config-directory
-
-  # fish support
-  install-fisher
 end
