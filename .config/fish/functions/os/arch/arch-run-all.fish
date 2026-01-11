@@ -3,12 +3,6 @@
 function arch-run-all
   running-message "run-all"
 
-  # update and upgrade
-  update-and-upgrade-all-yay-packages
-
-  # init
-  arch-init
-
   # setup
   arch-setup
 

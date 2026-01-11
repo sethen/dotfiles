@@ -4,10 +4,7 @@ function ubuntu-setup
   switch-shell-to-fish
 
   add-user-to-docker-group
-  # copying
   copy-fonts
-
-  # directory creation
   make-developer-directory
 
   # symlink config directories

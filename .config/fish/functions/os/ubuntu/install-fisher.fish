@@ -3,6 +3,7 @@
 function install-fisher
   running-message "install-fisher"
 
+  echo type -q fisher
   if type -q fisher
     success-message "fisher already installed"
   else

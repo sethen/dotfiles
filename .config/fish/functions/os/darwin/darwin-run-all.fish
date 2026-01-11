@@ -1,28 +1,13 @@
 #!/usr/bin/env fish
 
-function ubuntu-run-all
+function darwin-run-all
   running-message "run-all"
 
-  # update and upgrade
-  update-and-upgrade-all-apt-packages
-
-  # init
-  ubuntu-init
-
   # setup
-  ubuntu-setup
-
-  # packages install via apt
-  install-all-apt-packages
+  darwin-setup
 
   # packages install via brew
   install-all-brew-packages
-
-  # packages install via flatpak
-  install-all-flatpak-packages
-
-  # packages installed via snap
-  install-all-snap-packages
 
   # golang
   install-all-golang-packages
@@ -41,9 +26,6 @@ function ubuntu-run-all
 
   # clone repos
   clone-all-repos
-
-  # preferences
-  set-gnome-preferences
 
   confirm-reboot-system
 end

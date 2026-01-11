@@ -3,7 +3,7 @@
 function install-golang
   running-message "install-golang"
 
-  if type -q go >/dev/null
+  if type -q go
     success-message "golang already installed"
   else
     asdf plugin add golang https://github.com/asdf-community/asdf-golang.git
