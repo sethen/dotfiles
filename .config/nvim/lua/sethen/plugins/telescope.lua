@@ -13,6 +13,7 @@ return {
       local keymaps = require('sethen.core.keymaps')
       local telescope = require('telescope')
       local actions = require('telescope.actions')
+      local fd_binary = vim.fn.executable('fdfind') == 1 and 'fdfind' or 'fd'
 
       telescope.setup({
          defaults = {
@@ -53,7 +54,7 @@ return {
          path_display = { 'truncate' },
          pickers = {
             find_files = {
-               find_command = { "fdfind", "--type", "f", "--hidden", "--follow" },
+               find_command = { fd_binary, "--type", "f", "--hidden", "--follow" },
                hidden = true
             },
          },
