@@ -18,7 +18,7 @@ A custom launcher for all of your dotfiles.  Run them all or one at a time.
 # Quickstart
 
 1. Install `fish` in your terminal using your package manager of choice
-2. Modify the `.gitconfig` file in the `os` directory to have your name and email
+2. Modify the `.gitconfig` file to have your name and email
 3. Execute the `run.fish` file while in `fish`
 4. Pick the `run-all` dot function
 
