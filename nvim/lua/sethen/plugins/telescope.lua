@@ -2,12 +2,11 @@
 
 return {
    'nvim-telescope/telescope.nvim',
-   event = 'VimEnter',
-   branch = '0.1.x',
    dependencies = {
       'nvim-lua/plenary.nvim',
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
       'nvim-telescope/telescope-project.nvim',
+      'nvim-treesitter/nvim-treesitter'
    },
    config = function()
       local keymaps = require('sethen.core.keymaps')
