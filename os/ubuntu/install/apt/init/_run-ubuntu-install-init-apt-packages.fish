@@ -3,6 +3,7 @@
 function run-ubuntu-install-init-apt-packages
   running-message "run-ubuntu-install-init-apt-packages"
 
+  install-bison
   install-build-essential
   install-ca-certificates
   install-cmake
@@ -10,4 +11,5 @@ function run-ubuntu-install-init-apt-packages
   install-git
   install-gnupg
   install-homebrew
+  install-ncurses
 end

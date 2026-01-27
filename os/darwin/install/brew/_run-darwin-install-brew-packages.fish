@@ -26,10 +26,8 @@ function install-all-brew-packages
   install-lazygit
   install-mysql
   install-nginx
-  install-ripgrep
   install-spotify
   install-starship
-  install-tmux
   install-virtualbox
   install-virtualenv
 end

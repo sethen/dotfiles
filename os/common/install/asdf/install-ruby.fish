@@ -7,7 +7,7 @@ function install-ruby
     success-message "ruby already installed"
   else
     asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
-    asdf install ruby latest
-    asdf set ruby latest
+    asdf install ruby 3.4.7
+    asdf set -u ruby 3.4.7
   end
 end

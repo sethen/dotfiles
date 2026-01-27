@@ -5,7 +5,6 @@ function run-arch-install-pacman-packages
 
   install-brave
   install-dotnet-sdk
-  install-fd
   install-font-manager
   install-gh
   install-ghostty
@@ -16,11 +15,9 @@ function run-arch-install-pacman-packages
   install-mdadm
   install-nginx
   install-postgresql
-  install-ripgrep
   install-signal-desktop
   install-spotify
   install-starship
-  install-tmux
   install-virtualbox
   install-vlc
 end

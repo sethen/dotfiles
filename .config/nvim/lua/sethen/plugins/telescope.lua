@@ -25,6 +25,10 @@ return {
 
       telescope.setup({
          defaults = {
+            file_ignore_patterns = {
+               "node_modules",
+               "%.git/"
+            },
             vimgrep_arguments = {
                "rg",
                "--color=never",

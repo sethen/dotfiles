@@ -7,7 +7,7 @@ function install-golang
     success-message "golang already installed"
   else
     asdf plugin add golang https://github.com/asdf-community/asdf-golang.git
-    asdf install golang latest
-    asdf set golang latest
+    asdf install golang 1.25.5
+    asdf set -u golang 1.25.5
   end
 end

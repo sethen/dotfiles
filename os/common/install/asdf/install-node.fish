@@ -8,6 +8,6 @@ function install-node
   else
     asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
     asdf install nodejs lts
-    asdf set nodejs lts
+    asdf set -u nodejs lts
   end
 end

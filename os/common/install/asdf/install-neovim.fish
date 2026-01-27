@@ -8,6 +8,6 @@ function install-neovim
   else
     asdf plugin add neovim
     asdf install neovim stable
-    asdf set neovim stable
+    asdf set -u neovim stable
   end
 end
