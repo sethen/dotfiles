@@ -8,6 +8,6 @@ function install-typescript-language-server
   else
     information-message "installing typescript-language-server"
 
-    npm install -g typescript-language-server
+    bun add -g typescript-language-server
   end
 end

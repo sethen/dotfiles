@@ -5,7 +5,6 @@ function run-ubuntu-install-apt-packages
 
   install-autoconf
   install-brave-browser
-  install-dotnet
   install-font-manager
   install-fortune-mod
   install-gh

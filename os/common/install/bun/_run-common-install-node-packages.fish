@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
-function run-common-install-node-packages
-  running-message "run-common-install-node-packages"
+function run-common-install-bun-packages
+  running-message "run-common-install-bun-packages"
 
   install-bash-language-server
   install-typescript

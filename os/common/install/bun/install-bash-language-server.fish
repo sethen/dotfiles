@@ -8,6 +8,6 @@ function install-bash-language-server
   else
     information-message "installing bash-language-server"
 
-    npm install -g bash-language-server
+    bun add -g bash-language-server
   end
 end

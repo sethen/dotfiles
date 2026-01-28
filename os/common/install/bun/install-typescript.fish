@@ -6,8 +6,8 @@ function install-typescript
   if type -q tsc 
     success-message "tsc installed"
   else
-    information-message 'installing tsc'
+    information-message "installing tsc"
 
-    npm install -g typescript
+    bun add -g typescript
   end
 end

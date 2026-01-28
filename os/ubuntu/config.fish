@@ -11,7 +11,7 @@ if test -f $MISE_BIN
   $MISE_BIN activate fish | source
 end
 
-set -gx PATH /usr/bin $PATH
+set -gx PATH /usr/bin $HOME/.bun/bin $PATH
 
 # start in ~/Developer
 if status is-interactive

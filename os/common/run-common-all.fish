@@ -7,7 +7,5 @@ function run-common-all
   run-common-install-git-packages
 
   run-common-install-mise-packages
-  run-common-install-golang-packages
-  run-common-install-node-packages
-  run-common-install-rust-packages
+  run-common-install-bun-packages
 end
