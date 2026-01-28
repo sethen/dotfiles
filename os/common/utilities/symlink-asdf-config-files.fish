@@ -3,6 +3,5 @@
 function symlink-asdf-config-files
   running-message "symlink-asdf-config-files"
 
-  ln -sfv $DOTFILES_CONFIG_DIRECTORY/asdf/.default-gems ~/.default-gems
-  ln -sfv $DOTFILES_CONFIG_DIRECTORY/asdf/.tool-versions ~/.tool-versions
+  ln -sfv $DOTFILES_DIRECTORY/asdf/.default-gems ~/.default-gems
 end

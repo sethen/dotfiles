@@ -7,7 +7,7 @@ function install-ripgrep
     success-message "ripgrep already installed"
   else
     asdf plugin add ripgrep
-    asdf install ripgrep 15.1.0
-    asdf set -u ripgrep 15.1.0
+    asdf install ripgrep latest
+    asdf set -u ripgrep latest
   end
 end

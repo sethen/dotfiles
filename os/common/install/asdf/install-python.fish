@@ -7,7 +7,7 @@ function install-python
     success-message "python already installed"
   else
     asdf plugin add python https://github.com/asdf-community/asdf-python.git
-    asdf install python 3.14.2t
-    asdf set -u python 3.14.2t
+    asdf install python latest
+    asdf set -u python latest
   end
 end

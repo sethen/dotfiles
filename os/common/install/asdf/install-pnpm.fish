@@ -1,5 +1,3 @@
-asdf plugin add pnpm
-
 #!/usr/bin/env fish
 
 function install-pnpm
@@ -9,7 +7,7 @@ function install-pnpm
     success-message "pnpm already installed"
   else
     asdf plugin add pnpm
-    asdf install pnpm 10.28.2
-    asdf set -u pnpm 10.28.2
+    asdf install pnpm latest
+    asdf set -u pnpm latest
   end
 end

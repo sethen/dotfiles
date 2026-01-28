@@ -3,11 +3,11 @@
 function install-golang
   running-message "install-golang"
 
-  if type -s go >/dev/null
+  if asdf which golang >/dev/null 2>/dev/null
     success-message "golang already installed"
   else
     asdf plugin add golang https://github.com/asdf-community/asdf-golang.git
-    asdf install golang 1.25.5
-    asdf set -u golang 1.25.5
+    asdf install golang latest
+    asdf set -u golang latest
   end
 end

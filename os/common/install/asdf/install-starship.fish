@@ -7,7 +7,7 @@ function install-starship
     success-message "starship already installed"
   else
     asdf plugin add starship
-    asdf install starship 1.24.2
-    asdf set -u starship 1.24.2
+    asdf install starship latest
+    asdf set -u starship latest
   end
 end

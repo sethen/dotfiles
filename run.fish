@@ -11,11 +11,9 @@ case "*Ubuntu*"
   set -gx SYSTEM_OS "ubuntu"
 end
 
-# --- dotfiles references ---
+# --- dotfiles paths ---
 set -gx DOTFILES_DIRECTORY (pwd)
-set -gx DOTFILES_CONFIG_DIRECTORY $DOTFILES_DIRECTORY/.config
-set -gx DOTFILES_FISH_DIRECTORY $DOTFILES_CONFIG_DIRECTORY/fish
-set -gx DOTFILES_FISH_FUNCTIONS_DIRECTORY $DOTFILES_FISH_DIRECTORY/functions
+set -gx DOTFILES_FISH_FUNCTIONS_DIRECTORY $DOTFILES_DIRECTORY/fish/functions
 set -gx DOTFILES_OS_DISTRO_DIRECTORY $DOTFILES_DIRECTORY/os/$SYSTEM_OS
 set -gx DOTFILES_OS_COMMON_DIRECTORY $DOTFILES_DIRECTORY/os/common
 # Fixed reference here:
@@ -58,7 +56,8 @@ header-message "welcome to sethen's dot-launcher for fish shell"
 if functions -q $HOME_OS_INIT
   $HOME_OS_INIT
 else
-  echo "$HOME_OS_INIT not found, skipping OS init step."
+  echo "$HOME_OS_INIT not found, exiting..."
+  exit
 end
 
 dot-launcher
