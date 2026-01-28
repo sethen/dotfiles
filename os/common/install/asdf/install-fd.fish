@@ -3,7 +3,7 @@
 function install-fd
   running-message "install-fd"
 
-  if type -s fd >/dev/null
+  if type -s fd >/dev/null 2>&1
     success-message "fd already installed"
   else
     asdf plugin add fd
