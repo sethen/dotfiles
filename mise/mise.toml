@@ -1,6 +1,7 @@
 [tools]
 bun = "latest"
 fd = "latest"
+fzf = "latest"
 go = "latest"
 neovim = "latest"
 node = "lts"

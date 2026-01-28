@@ -60,7 +60,7 @@ header-message "welcome to sethen's dot-launcher for fish shell"
 if functions -q $HOME_OS_INIT
   $HOME_OS_INIT
 else
-  echo "$HOME_OS_INIT not found, exiting..."
+  error-message "$HOME_OS_INIT was not found, exiting..."
   exit
 end
 
