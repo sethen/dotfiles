@@ -7,7 +7,7 @@ function run-common-setup
   add-user-to-docker-group 
   make-developer-directory
   make-config-directory
-  symlink-asdf-config-files
+  symlink-mise-config-files
   symlink-ghostty-config-directory
   symlink-git-config-files
   symlink-neovim-config-directory

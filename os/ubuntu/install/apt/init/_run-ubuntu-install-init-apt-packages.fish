@@ -10,6 +10,5 @@ function run-ubuntu-install-init-apt-packages
   install-curl
   install-git
   install-gnupg
-  install-homebrew
   install-ncurses
 end

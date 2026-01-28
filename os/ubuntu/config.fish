@@ -3,28 +3,21 @@ set -U fish_greeting (fortune || "Only worry about the things that you can contr
 # directories
 set -gx DEVELOPER_DIRECTORY $HOME/Developer
 set -gx ETC_APT_SOURCES_DIRECTORY /etc/apt/sources.list.d
+set -gx MISE_BIN $HOME/.local/bin/mise
 set -gx STARSHIP_CONFIG $HOME/.config/starship/starship.toml
 set -gx UBUNTU_FONTS_DIRECTORY $HOME/.fonts
 
-set -gx PATH /usr/bin $PATH \
-/home/linuxbrew/.linuxbrew/bin
-
-# asdf
-if test -z $ASDF_DATA_DIR
-  set _asdf_shims "$HOME/.asdf/shims"
-else
-  set _asdf_shims "$ASDF_DATA_DIR/shims"
+if test -f $MISE_BIN
+  $MISE_BIN activate fish | source
 end
 
-if not contains $_asdf_shims $PATH
-  set -gx --prepend PATH $_asdf_shims
-end
-
-set --erase _asdf_shims
+set -gx PATH /usr/bin $PATH
 
 # start in ~/Developer
 if status is-interactive
   cd ~/Developer
-end
 
-starship init fish | source
+  if type -q starship
+    starship init fish | source
+  end
+end

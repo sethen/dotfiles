@@ -1,0 +1,13 @@
+[tools]
+bun = "latest"
+fd = "latest"
+go = "latest"
+neovim = "latest"
+node = "lts"
+python = "latest"
+ripgrep = "latest"
+ruby = "latest"
+rust = "latest"
+starship = "latest"
+tmux = "latest"
+zig = "latest"

@@ -3,7 +3,6 @@
 function run-common-install-node-packages
   running-message "run-common-install-node-packages"
 
-  install-node
   install-bash-language-server
   install-typescript
   install-typescript-language-server
