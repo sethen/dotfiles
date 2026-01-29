@@ -11,6 +11,7 @@ switch $UNAME
     set -gx SYSTEM_OS "ubuntu"
 end
 
+# --- global dotfiles paths ---
 set -gx DOTFILES_DIRECTORY (pwd)
 set -gx DOTFILES_OS_DISTRO_DIRECTORY $DOTFILES_DIRECTORY/os/$SYSTEM_OS
 set -gx DOTFILES_OS_COMMON_DIRECTORY $DOTFILES_DIRECTORY/os/common
@@ -23,13 +24,11 @@ set -l OS_PATHS $DOTFILES_OS_DISTRO_DIRECTORY $DOTFILES_OS_DISTRO_DIRECTORY/**/ 
 
 for dir in $OS_PATHS
   if test -d $dir
-    set -gp fish_function_path $dir
-    for file in $dir/*.fish
-      source $file
+    if not contains $dir $fish_function_path
+      set -gp fish_function_path $dir
     end
   end
 end
-
 
 header-message "welcome to sethen's dot-launcher for fish shell"
 
