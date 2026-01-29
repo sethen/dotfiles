@@ -3,8 +3,8 @@
 function run-arch-setup
   running-message "run-arch-setup"
 
-
   # install
+
   ## pacman
   install-brave
   install-btrfs-progs

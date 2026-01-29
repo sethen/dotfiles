@@ -3,9 +3,9 @@
 function run-ubuntu-setup
   running-message "run-ubuntu-setup"
 
-  copy-fonts
+  # install
 
-  # apt
+  ## apt
   install-autoconf
   install-brave-browser
   install-font-manager
@@ -22,17 +22,17 @@ function run-ubuntu-setup
   install-virtualbox
   install-vlc
 
-  # curl
+  ## curl
   install-ghostty
 
-  # flatpak
+  ## flatpak
   install-flatpak
   install-zen
 
-  # git
+  ## git
   clone-white-sur-icon-theme-repo
 
-  #snap
+  ## snap
   install-discord
   install-spotify
 
