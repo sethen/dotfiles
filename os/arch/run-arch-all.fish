@@ -15,5 +15,3 @@ function run-arch-all
 
   confirm-reboot-system
 end
-
-end

@@ -3,27 +3,22 @@ set -U fish_greeting (fortune || "Only worry about the things that you can contr
 # directories
 set -gx DARWIN_FONTS_DIRECTORY $HOME/Library/Fonts
 set -gx DEVELOPER_DIRECTORY $HOME/Developer
-set -gx STARSHIP_CONFIG $HOME/.config/starship/starship.toml
 
-# set path
-set -gx PATH /usr/bin $PATH
+fish_add_path /usr/bin
 
-# asdf
-if test -z $ASDF_DATA_DIR
-  set _asdf_shims "$HOME/.asdf/shims"
-else
-  set _asdf_shims "$ASDF_DATA_DIR/shims"
+if test -f $MISE_BIN
+  $MISE_BIN activate fish | source
 end
 
-if not contains $_asdf_shims $PATH
-  set -gx --prepend PATH $_asdf_shims
+if test -f $BUN_BIN
+  fish_add_path -m $BUN_BIN
 end
-
-set --erase _asdf_shims
 
 # start in ~/Developer
 if status is-interactive
   cd ~/Developer
-end
 
-starship init fish | source
+  if type -q starship
+    starship init fish | source
+  end
+end

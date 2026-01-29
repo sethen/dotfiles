@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
-function install-vscode-langservers-extracted
-  running-message "install-vscode-langservers-extracted"
+function install-vscode
+  running-message "install-vscode"
 
   yay-install-package code
 end

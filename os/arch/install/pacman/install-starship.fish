@@ -3,11 +3,5 @@
 function install-starship
   running-message "install-starship"
 
-  if type -q starship
-    success-message "starship already installed"
-  else
-    information-message "installing starship"
-
-    yay-install-package starship
-  end
+  yay-install-package starship
 end

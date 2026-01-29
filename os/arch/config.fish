@@ -2,15 +2,19 @@ set -U fish_greeting (fortune || "Only worry about the things that you can contr
 
 # directories
 set -gx ARCH_FONTS_DIRECTORY ~/.local/share/fonts
+set -gx BUN_BIN $HOME/.bun/bin
 set -gx DEVELOPER_DIRECTORY $HOME/Developer
 set -gx MISE_BIN $HOME/.local/bin/mise
-set -gx STARSHIP_CONFIG $HOME/.config/starship/starship.toml
+
+fish_add_path /usr/bin
 
 if test -f $MISE_BIN
   $MISE_BIN activate fish | source
 end
 
-set -gx PATH /usr/bin $PATH
+if test -f $BUN_BIN
+  fish_add_path -m $BUN_BIN
+end
 
 # start in ~/Developer
 if status is-interactive

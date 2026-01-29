@@ -1,0 +1,5 @@
+neovim stable
+nodejs lts
+ruby 4.0.0
+golang 1.25.5
+rust 1.92.0
