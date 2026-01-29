@@ -3,6 +3,8 @@
 function copy-fonts
   running-message "copy-fonts"
 
+  set -l UBUNTU_FONTS_DIRECTORY $HOME/.fonts
+
   if not test -d $UBUNTU_FONTS_DIRECTORY
     information-message "making fonts directory"
 

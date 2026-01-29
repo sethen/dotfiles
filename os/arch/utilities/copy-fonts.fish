@@ -3,6 +3,8 @@
 function copy-fonts
   running-message "copy-fonts"
 
+  set -l ARCH_FONTS_DIRECTORY ~/.local/share/fonts
+
   if not test -d $ARCH_FONTS_DIRECTORY
     information-message "making fonts directory"
 

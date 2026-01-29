@@ -3,7 +3,7 @@
 function install-brave-browser
   running-message "install-brave-browser"
 
-  if not test -f "$ETC_APT_SOURCES_DIRECTORY/brave-browser-release.sources"
+  if not test -f "/etc/apt/sources.list.d/brave-browser-release.sources"
     information-message "adding brave-browser repository"
 
     sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
