@@ -3,8 +3,21 @@
 function run-ubuntu-init
   running-message "run-ubuntu-init"
 
-  update-and-upgrade-all-apt-packages
+  sudo apt-get update -y
+  sudo apt-get upgrade -y
+
+  # prep
+  copy-fonts
 
   # install
-  run-ubuntu-install-init
+
+  ## apt
+  install-bison
+  install-build-essential
+  install-ca-certificates
+  install-cmake
+  install-curl
+  install-git
+  install-gnupg
+  install-ncurses
 end

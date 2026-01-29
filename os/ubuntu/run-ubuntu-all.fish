@@ -3,13 +3,12 @@
 function run-ubuntu-all
   running-message "run-ubuntu-all"
 
-  # common
-  run-common-all
-
-  # ubuntu
+  # init
   run-ubuntu-init
+
+  # setup
+  run-common-setup
   run-ubuntu-setup
 
-  set-gnome-preferences
   confirm-reboot-system
 end

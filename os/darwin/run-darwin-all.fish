@@ -3,11 +3,11 @@
 function run-darwin-all
   running-message "run-darwin-all"
 
-  # common
-  run-common-all
-
   # darwin
   run-darwin-init
+
+  # setup
+  run-common-setup
   run-darwin-setup
 
   confirm-reboot-system

@@ -3,8 +3,23 @@
 function run-arch-init
   running-message "run-arch-init"
 
-  update-and-upgrade-all-yay-packages
+  yay --noconfirm
 
-  # install packages
-  run-arch-init-install
+  # prep
+  copy-fonts
+
+  # install
+
+  ## git
+  install-yay
+
+  ## pacman
+  install-base-devel
+  install-base
+  install-cmake
+  install-efibootmgr
+  install-git
+  install-linux-firmware
+  install-linux
+  install-sudo
 end
