@@ -4,7 +4,11 @@ function run-arch-pre
   running-message "run-arch-pre"
 
   # update & upgrade
-  yay --noconfirm
+  if test "$RUN_UPDATES" = "true"
+    yay --noconfirm
+  else
+    information-message "run updates flag not found, skipping updates"
+  end
 
   # prep
   copy-fonts

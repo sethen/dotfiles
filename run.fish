@@ -1,5 +1,12 @@
 #!/usr/bin/env fish
 
+argparse 'u/update' -- $argv
+or return
+
+if set -q _flag_update
+  set -gx RUN_UPDATES "true"
+end
+
 set -l UNAME (uname -a)
 
 switch $UNAME

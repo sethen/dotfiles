@@ -4,8 +4,12 @@ function run-ubuntu-pre
   running-message "run-ubuntu-pre"
 
   # update & upgrade
-  sudo apt-get update -y
-  sudo apt-get upgrade -y
+  if test "$RUN_UPDATES" = "true"
+    sudo apt-get update -y
+    sudo apt-get upgrade -y
+  else
+    information-message "run updates flag not found, skipping updates"
+  end
 
   # prep
   copy-fonts
