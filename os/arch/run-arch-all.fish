@@ -7,5 +7,6 @@ function run-arch-all
   run-common-main
   run-arch-main
 
-  confirm-reboot-system
+  # post
+  run-common-post
 end

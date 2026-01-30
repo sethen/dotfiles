@@ -22,12 +22,17 @@ set -gx HOME_CONFIG_DIRECTORY $HOME/.config
 set -gx HOME_FISH_DIRECTORY $HOME_CONFIG_DIRECTORY/fish
 
 # parse flags
-argparse 'u/update' 'l/launcher' -- $argv
+argparse 'l/launcher' 'r/reboot' 'u/update' -- $argv
 or return
+
+# set run reboot flag
+if set -q _flag_reboot
+  set -gx RUN_DOTFILES_REBOOT "true"
+end
 
 # set run update flag
 if set -q _flag_update
-  set -gx RUN_UPDATES "true"
+  set -gx RUN_DOTFILES_UPDATE "true"
 end
 
 # source fish functions
@@ -46,7 +51,7 @@ header-message "welcome to sethen's dot-launcher for fish shell"
 run-$SYSTEM_OS-pre
 run-common-pre
 
-if set -q _flag_launcher 
+if set -q _flag_launcher
   dot-launcher
 else
   run-$SYSTEM_OS-all

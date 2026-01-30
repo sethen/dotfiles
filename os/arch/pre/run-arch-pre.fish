@@ -4,10 +4,10 @@ function run-arch-pre
   running-message "run-arch-pre"
 
   # update & upgrade
-  if test "$RUN_UPDATES" = "true"
+  if test "$RUN_DOTFILES_UPDATE" = "true"
     yay --noconfirm
   else
-    information-message "run updates flag not found, skipping updates"
+    information-message "run dotfiles update flag not found, skipping update"
   end
 
   # prep

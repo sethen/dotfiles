@@ -7,5 +7,6 @@ function run-darwin-all
   run-common-main
   run-darwin-main
 
-  confirm-reboot-system
+  # post
+  run-common-post
 end

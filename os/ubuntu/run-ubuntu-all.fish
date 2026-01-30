@@ -7,5 +7,6 @@ function run-ubuntu-all
   run-common-main
   run-ubuntu-main
 
-  confirm-reboot-system
+  # post
+  run-common-post
 end

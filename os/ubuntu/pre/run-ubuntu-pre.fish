@@ -4,11 +4,11 @@ function run-ubuntu-pre
   running-message "run-ubuntu-pre"
 
   # update & upgrade
-  if test "$RUN_UPDATES" = "true"
+  if test "$RUN_DOTFILES_UPDATE" = "true"
     sudo apt-get update -y
     sudo apt-get upgrade -y
   else
-    information-message "run updates flag not found, skipping updates"
+    information-message "run dotfiles update flag not found, skipping update"
   end
 
   # prep
