@@ -1,12 +1,6 @@
 #!/usr/bin/env fish
 
-argparse 'u/update' -- $argv
-or return
-
-if set -q _flag_update
-  set -gx RUN_UPDATES "true"
-end
-
+# determine system operating system
 set -l UNAME (uname -a)
 
 switch $UNAME
@@ -18,15 +12,25 @@ switch $UNAME
     set -gx SYSTEM_OS "ubuntu"
 end
 
-# --- global dotfiles paths ---
+# set global dotfiles paths
 set -gx DOTFILES_DIRECTORY (pwd)
 set -gx DOTFILES_OS_DISTRO_DIRECTORY $DOTFILES_DIRECTORY/os/$SYSTEM_OS
 set -gx DOTFILES_OS_COMMON_DIRECTORY $DOTFILES_DIRECTORY/os/common
 
-# --- global home paths ---
+# set global home paths
 set -gx HOME_CONFIG_DIRECTORY $HOME/.config
 set -gx HOME_FISH_DIRECTORY $HOME_CONFIG_DIRECTORY/fish
 
+# parse flags
+argparse 'u/update' 'l/launcher' -- $argv
+or return
+
+# set run update flag
+if set -q _flag_update
+  set -gx RUN_UPDATES "true"
+end
+
+# source fish functions
 set -l OS_PATHS $DOTFILES_OS_DISTRO_DIRECTORY $DOTFILES_OS_DISTRO_DIRECTORY/**/ $DOTFILES_OS_COMMON_DIRECTORY $DOTFILES_OS_COMMON_DIRECTORY/**/
 
 for dir in $OS_PATHS
@@ -41,6 +45,11 @@ header-message "welcome to sethen's dot-launcher for fish shell"
 
 run-$SYSTEM_OS-pre
 run-common-pre
-dot-launcher
+
+if set -q _flag_launcher 
+  dot-launcher
+else
+  run-$SYSTEM_OS-all
+end
 
 header-message "thank you for using sethen's dot-launcher for fish shell"
