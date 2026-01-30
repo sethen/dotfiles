@@ -1,11 +1,10 @@
 #!/usr/bin/env fish
 
-function run-arch-setup
-  running-message "run-arch-setup"
+function run-arch-main
+  running-message "run-arch-main"
 
   # install
-
-  ## pacman
+  #-> pacman
   install-brave
   install-btrfs-progs
   install-ca-certificates

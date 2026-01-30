@@ -1,8 +1,9 @@
 #!/usr/bin/env fish
 
-function run-ubuntu-init
-  running-message "run-ubuntu-init"
+function run-ubuntu-pre
+  running-message "run-ubuntu-pre"
 
+  # update & upgrade
   sudo apt-get update -y
   sudo apt-get upgrade -y
 
@@ -10,8 +11,7 @@ function run-ubuntu-init
   copy-fonts
 
   # install
-
-  ## apt
+  #-> apt
   install-bison
   install-build-essential
   install-ca-certificates

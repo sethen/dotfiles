@@ -1,11 +1,10 @@
 #!/usr/bin/env fish
 
-function run-ubuntu-setup
-  running-message "run-ubuntu-setup"
+function run-ubuntu-main
+  running-message "run-ubuntu-main"
 
   # install
-
-  ## apt
+  #-> apt
   install-autoconf
   install-brave-browser
   install-font-manager
@@ -21,18 +20,14 @@ function run-ubuntu-setup
   install-postgresql
   install-virtualbox
   install-vlc
-
-  ## curl
+  #-> curl
   install-ghostty
-
-  ## flatpak
+  #-> flatpak
   install-flatpak
   install-zen
-
-  ## git
+  #-> git
   clone-white-sur-icon-theme-repo
-
-  ## snap
+  #-> snap
   install-discord
   install-spotify
 

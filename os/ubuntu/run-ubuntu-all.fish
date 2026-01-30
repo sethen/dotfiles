@@ -3,12 +3,9 @@
 function run-ubuntu-all
   running-message "run-ubuntu-all"
 
-  # init
-  run-ubuntu-init
-
-  # setup
-  run-common-setup
-  run-ubuntu-setup
+  # main
+  run-common-main
+  run-ubuntu-main
 
   confirm-reboot-system
 end

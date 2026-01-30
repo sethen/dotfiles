@@ -1,16 +1,16 @@
 #!/usr/bin/env fish
 
-function run-common-setup
-  running-message "run-common-setup"
+function run-common-main
+  running-message "run-common-main"
 
-  # bun
+  # install
+  #-> bun
   install-bash-language-server
   install-typescript
   install-typescript-language-server
   install-vscode-langservers-extracted
   install-yaml-language-server
-
-  # git
+  #-> git
   clone-dotfiles-repo
   clone-wallpapers-repo
 end

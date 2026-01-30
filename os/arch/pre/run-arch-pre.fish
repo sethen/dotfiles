@@ -1,19 +1,18 @@
 #!/usr/bin/env fish
 
-function run-arch-init
-  running-message "run-arch-init"
+function run-arch-pre
+  running-message "run-arch-pre"
 
+  # update & upgrade
   yay --noconfirm
 
   # prep
   copy-fonts
 
   # install
-
-  ## git
+  #-> git
   install-yay
-
-  ## pacman
+  #-> pacman
   install-base-devel
   install-base
   install-cmake

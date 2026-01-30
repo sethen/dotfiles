@@ -32,7 +32,8 @@ end
 
 header-message "welcome to sethen's dot-launcher for fish shell"
 
-run-common-init
+run-$SYSTEM_OS-pre
+run-common-pre
 dot-launcher
 
 header-message "thank you for using sethen's dot-launcher for fish shell"

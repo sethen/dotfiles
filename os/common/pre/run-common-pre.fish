@@ -1,13 +1,13 @@
 #!/usr/bin/env fish
 
-function run-common-init
-  running-message "run-common-init"
+function run-common-pre
+  running-message "run-common-pre"
 
   # global
   switch-shell-to-fish
 
   # prep
-  ## files
+  #-> files
   make-config-directory
   make-developer-directory
   make-mise-directory
@@ -18,14 +18,13 @@ function run-common-init
   symlink-mise-config-files
   symlink-neovim-config-directory
   symlink-starship-config-directory
-
-  ## permissions
+  #-> permissions
   add-user-to-docker-group 
 
   # install
+  #-> curl
   install-mise
-
-  # mise
+  #-> mise
   mise install
   mise env fish | source
 end

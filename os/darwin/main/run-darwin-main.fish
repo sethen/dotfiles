@@ -3,10 +3,10 @@
 function run-darwin-setup
   running-message "run-darwin-setup"
 
-  # install homebrew
+  ## install
+  #-> homebrew
   install-homebrew
-
-  # brew
+  #-> brew
   install-brave-browser
   install-cmake
   install-fish-lsp
