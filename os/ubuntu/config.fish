@@ -15,7 +15,9 @@ if test -f $HOME_LOCAL_MISE_BIN
 end
 
 if status is-interactive
-  cd $DEVELOPER_DIRECTORY
+  if type -q zoxide
+    zoxide init fish | source
+  end
 
   if type -q starship
     starship init fish | source

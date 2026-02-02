@@ -17,7 +17,9 @@ function run-common-pre
   symlink-git-config-files
   symlink-mise-config-files
   symlink-neovim-config-directory
+  symlink-sesh-config-directory
   symlink-starship-config-directory
+  symlink-tmux-config-directory
   #-> permissions
   add-user-to-docker-group 
 
@@ -27,4 +29,6 @@ function run-common-pre
   #-> mise
   mise install
   mise env fish | source
+  #-> go
+  install-sesh
 end

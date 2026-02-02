@@ -18,12 +18,8 @@ function dot-launcher
     return
   end
 
-  set -l SELECTED (printf "%s\n" $TARGET_FUNCTIONS | fzf \
-  --height 20 \
-  --reverse \
-  --border \
-  --prompt="🚀 Select Task: " \
-  --preview 'set_color yellow; type {}')
+  set -l SELECTED (printf "%s\n" $TARGET_FUNCTIONS | gum filter \
+  --header "Dot Launcher")
 
   if test -z "$SELECTED"
     return
