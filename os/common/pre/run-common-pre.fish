@@ -18,6 +18,7 @@ function run-common-pre
   symlink-git-config-files
   symlink-mise-config-files
   symlink-neovim-config-directory
+  symlink-opencode-config-directory
   symlink-sesh-config-directory
   symlink-starship-config-directory
   symlink-tmux-config-file
