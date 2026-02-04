@@ -1,17 +1,17 @@
 #!/usr/bin/env fish
 
 function copy-fonts
-  running-message "copy-fonts"
+    running-message copy-fonts
 
-  set -l DARWIN_FONTS_DIRECTORY $HOME/Library/Fonts
+    set -l DARWIN_FONTS_DIRECTORY $HOME/Library/Fonts
 
-  if not test -d $DARWIN_FONTS_DIRECTORY
-    information-message "creating fonts directory"
+    if not test -d $DARWIN_FONTS_DIRECTORY
+        information-message "creating fonts directory"
 
-    mkdir -p $DARWIN_FONTS_DIRECTORY
-  end
+        mkdir -p $DARWIN_FONTS_DIRECTORY
+    end
 
-  information-message "copying fonts"
+    information-message "copying fonts"
 
-  cp -r $DOTFILES_DIRECTORY/assets/fonts/. $DARWIN_FONTS_DIRECTORY
+    cp -r $DOTFILES_DIRECTORY/assets/fonts/. $DARWIN_FONTS_DIRECTORY
 end

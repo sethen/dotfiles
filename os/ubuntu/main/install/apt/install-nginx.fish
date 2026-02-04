@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 function install-nginx
-  running-message "install-nginx"
+    running-message install-nginx
 
-  sudo-apt-install-package nginx
+    sudo-apt-install-package nginx
 end

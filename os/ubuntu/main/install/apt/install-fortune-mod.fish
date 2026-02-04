@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 function install-fortune-mod
-  running-message "install-fortune-mod"
+    running-message install-fortune-mod
 
-  sudo-apt-install-package fortune-mod
+    sudo-apt-install-package fortune-mod
 end

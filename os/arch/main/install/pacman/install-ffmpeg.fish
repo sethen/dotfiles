@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 function install-ffmpeg
-  running-message "install-ffmpeg"
+    running-message install-ffmpeg
 
-  yay-install-package ffmpeg
+    yay-install-package ffmpeg
 end

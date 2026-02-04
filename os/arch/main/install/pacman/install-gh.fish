@@ -1,15 +1,15 @@
 #!/usr/bin/env fish
 
 function install-gh
-  running-message "install-gh"
+    running-message install-gh
 
-  yay-install-package gh
+    yay-install-package gh
 
-  if test -e $HOME/.ssh/id_*.pub
-    success-message "public key found"
-  else
-    information-message "no public key found, logging into github"
+    if test -e $HOME/.ssh/id_*.pub
+        success-message "public key found"
+    else
+        information-message "no public key found, logging into github"
 
-    gh auth login
-  end
+        gh auth login
+    end
 end

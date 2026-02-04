@@ -1,5 +1,6 @@
 [tools]
 bun = "latest"
+cmake = "latest"
 docker-cli = "latest"
 docker-compose = "latest"
 dotnet = "latest"

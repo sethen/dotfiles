@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 function install-brave
-  running-message "install-brave"
+    running-message install-brave
 
-  yay-install-package brave-bin
+    yay-install-package brave-bin
 end

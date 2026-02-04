@@ -11,13 +11,13 @@ fish_add_path -m $HOME_LOCAL_BIN_DIRECTORY
 fish_add_path -m $USR_BIN_DIRECTORY
 
 if test -f $HOME_LOCAL_MISE_BIN
-  $HOME_LOCAL_MISE_BIN activate fish | source
+    $HOME_LOCAL_MISE_BIN activate fish | source
 end
 
 if status is-interactive
-  cd $DEVELOPER_DIRECTORY
+    cd $DEVELOPER_DIRECTORY
 
-  if type -q starship
-    starship init fish | source
-  end
+    if type -q starship
+        starship init fish | source
+    end
 end

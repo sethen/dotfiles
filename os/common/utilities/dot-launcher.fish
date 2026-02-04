@@ -1,34 +1,34 @@
 #!/usr/bin/env fish
 
 function dot-launcher
-  set -l TARGET_FUNCTIONS
+    set -l TARGET_FUNCTIONS
 
-  for func in (functions -n)
-    set -l func_info (functions -v $func | string collect)
+    for func in (functions -n)
+        set -l func_info (functions -v $func | string collect)
 
-    if string match -q "*$DOTFILES_DIRECTORY*" "$func_info"
-      if test "$func" != "dot-launcher"
-        set -a TARGET_FUNCTIONS $func
-      end
+        if string match -q "*$DOTFILES_DIRECTORY*" "$func_info"
+            if test "$func" != dot-launcher
+                set -a TARGET_FUNCTIONS $func
+            end
+        end
     end
-  end
 
-  if test (count $TARGET_FUNCTIONS) -eq 0
-    echo "No local functions found in: $DOTFILES_DIRECTORY"
-    return
-  end
+    if test (count $TARGET_FUNCTIONS) -eq 0
+        echo "No local functions found in: $DOTFILES_DIRECTORY"
+        return
+    end
 
-  set -l SELECTED (printf "%s\n" $TARGET_FUNCTIONS | gum filter \
-  --header "Dot Launcher")
+    set -l SELECTED (printf "%s\n" $TARGET_FUNCTIONS | gum filter \
+        --header "Dot Launcher")
 
-  if test -z "$SELECTED"
-    return
-  end
+    if test -z "$SELECTED"
+        return
+    end
 
-  if functions $SELECTED | grep -q "argv"
-    read -P "⌨️  Enter arguments for $SELECTED: " ARGS
-    $SELECTED (string split ' ' -- $ARGS)
-  else
-    $SELECTED
-  end
+    if functions $SELECTED | grep -q argv
+        read -P "⌨️  Enter arguments for $SELECTED: " ARGS
+        $SELECTED (string split ' ' -- $ARGS)
+    else
+        $SELECTED
+    end
 end
