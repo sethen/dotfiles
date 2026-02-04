@@ -121,17 +121,6 @@ return {
             lualine_b = {},
             lualine_c = {
                { filename },
-               '%=',
-               {
-                  'branch',
-                  color = {
-                     fg = '#CDD6F4'
-                  },
-                  cond = is_any_ignored_file_type,
-                  icon = {
-                     ' '
-                  },
-               },
                {
                   'diff',
                   cond = is_any_ignored_file_type,
@@ -139,6 +128,18 @@ return {
                      added = '+',
                      modified = '~',
                      removed = '-'
+                  },
+               },
+            },
+            lualine_x = {
+               {
+                  'branch',
+                  color = {
+                     fg = '#CDD6F4'
+                  },
+                  cond = is_any_ignored_file_type,
+                  icon = {
+                     ''
                   },
                },
                {
@@ -151,7 +152,6 @@ return {
                   },
                },
             },
-            lualine_x = { 'encoding' },
             lualine_y = {},
             lualine_z = {
                {
