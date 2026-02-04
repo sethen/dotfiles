@@ -11,6 +11,7 @@ function run-common-pre
   make-config-directory
   make-developer-directory
   make-mise-directory
+  make-tmux-directory
   symlink-fish-config-file
   symlink-fish-functions-directory
   symlink-ghostty-config-directory
@@ -19,7 +20,7 @@ function run-common-pre
   symlink-neovim-config-directory
   symlink-sesh-config-directory
   symlink-starship-config-directory
-  symlink-tmux-config-directory
+  symlink-tmux-config-file
   #-> permissions
   add-user-to-docker-group 
 

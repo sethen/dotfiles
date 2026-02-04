@@ -13,4 +13,5 @@ function run-common-main
   #-> git
   clone-dotfiles-repo
   clone-wallpapers-repo
+  install-tmux-plugin-manager
 end
