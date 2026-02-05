@@ -47,11 +47,13 @@ vim.lsp.enable({
    'css-lsp',
    'dockerfile-language-server',
    'eslint-lsp',
+   'fish-lsp',
    'gopls',
    'html-lsp', 'json-lsp',
    'lua-language-server',
    'solargraph',
    'sqlls',
    'tailwindcss-language-server',
+   'ts-ls',
    'typescript-language-server'
 })
