@@ -87,6 +87,7 @@ return {
          },
 
          override_by_filename = {
+
             ['.aliases'] = { icon = ' ', name = 'Aliases' },
             ['.bashrc'] = { icon = ' ', name = 'Bashrc' },
             ['.dockerignore'] = { color = palette.blue, icon = ' ', name = 'Dockerignore' },
@@ -102,6 +103,7 @@ return {
             ['.prettierignore'] = { icon = ' ', name = 'Prettierignore' },
             ['.prettierrc'] = { icon = ' ', name = 'Prettierrc' },
             ['.prettierrc.mjs'] = { color = palette.yellow, icon = ' ', name = 'Prettierrc' },
+            ['tmux.conf'] = { icon = ' ', name = 'TmuxConf' },
             ['.zshenv'] = { icon = ' ', name = 'Zshenv' },
             ['.zshrc'] = { icon = ' ', name = 'Zshrc' },
 
