@@ -11,7 +11,6 @@ return {
       'onsails/lspkind.nvim',
       'nvim-tree/nvim-web-devicons',
    },
-
    opts = function()
       local lspkind = require('lspkind')
 
@@ -25,36 +24,11 @@ return {
             },
             menu = {
                draw = {
-                  components = {
-                     kind_icon = {
-                        text = function(ctx)
-                           local icon = ctx.kind_icon
-
-                           if ctx.source_name == 'Path' then
-                              local dev_icon =
-                                  require('nvim-web-devicons').get_icon(ctx.label)
-                              if dev_icon then
-                                 icon = dev_icon
-                              end
-                           end
-
-                           return icon .. ctx.icon_gap
-                        end,
-
-                        highlight = function(ctx)
-                           local hl = ctx.kind_hl
-
-                           if ctx.source_name == 'Path' then
-                              local _, dev_hl =
-                                  require('nvim-web-devicons').get_icon(ctx.label)
-                              if dev_hl then
-                                 hl = dev_hl
-                              end
-                           end
-
-                           return hl
-                        end,
-                     },
+                  columns = {
+                     { 'label' },
+                     { 'source_name', gap = 1 },
+                     { 'kind_icon',   gap = 1 },
+                     { 'kind' },
                   },
                },
             },

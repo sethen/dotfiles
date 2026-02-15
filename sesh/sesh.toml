@@ -2,3 +2,8 @@
 name = "dotfiles"
 path = "~/Developer/dotfiles"
 startup_command = "nvim"
+
+[[session]]
+name = "opencode"
+path = "~/Developer/"
+startup_command = "opencode"
