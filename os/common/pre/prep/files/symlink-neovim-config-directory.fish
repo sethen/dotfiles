@@ -3,5 +3,9 @@
 function symlink-neovim-config-directory
     running-message symlink-neovim-config-directory
 
-    ln -sfv $DOTFILES_DIRECTORY/nvim $HOME_CONFIG_DIRECTORY
+    set -l HOME_CONFIG_NEOVIM_DIRECTORY $HOME_CONFIG_DIRECTORY/nvim
+
+    delete-if-exists $HOME_CONFIG_NEOVIM_DIRECTORY
+
+    ln -sfnv $DOTFILES_DIRECTORY/nvim $HOME_CONFIG_DIRECTORY
 end
