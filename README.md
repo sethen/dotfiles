@@ -7,7 +7,7 @@ These are my dotfiles for setting up my environment from nothing. Take and use a
 # ✨ Features
 
 - **🐟 Fish-Powered**: Modern shell scripting with Fish's clean syntax and powerful features
-- **🌍 Cross-Platform**: Supports Arch Linux, macOS (Darwin), and Ubuntu 24.10+
+- **🌍 Cross-Platform**: Supports Omarchy (Hyprland), macOS (Darwin), and Ubuntu 24.10+
 - **🎯 Modular Design**: Each script does one thing well - install Neovim, configure Git, set up tools, etc.
 - **🚀 Interactive Launcher**: Beautiful gum-powered interface for selecting what to install
 - **⚡ Idempotent**: Safe to run multiple times without breaking things
@@ -54,7 +54,7 @@ fish run.fish --launcher
 
 | Platform | Status | Notes |
 |----------|--------|-------|
-| **Arch Linux** | ✅ Full Support | Can be run before desktop environment setup |
+| **Omarchy (Hyprland)** | ✅ Full Support | Modern Wayland compositor with sensible defaults |
 | **macOS** | ✅ Full Support | Tested on latest macOS versions |
 | **Ubuntu 24.10+** | ✅ Full Support | Works on recent Ubuntu releases |
 
@@ -100,54 +100,18 @@ fish run.fish --launcher
 
 ### Desktop Applications & System Components
 
-## **Arch Linux**
-**Package Manager:** pacman + yay (AUR)
+## **Omarchy (Hyprland)**
+**Window Manager:** Hyprland with Omarchy configuration
 
-**System & Development:**
-- **base & base-devel** - Core system and development tools
-- **btrfs-progs** - BTRFS filesystem utilities
-- **ca-certificates** - SSL certificates
-- **cmake & autoconf & bison** - Build tools
-- **curl** - Data transfer utility
-- **dotnet-sdk** - .NET development SDK
-- **efibootmgr** - EFI boot manager
-- **ffmpeg** - Multimedia framework
-- **gh** - GitHub CLI
-- **git** - Version control
-- **gnupg** - Encryption tools
-- **linux & linux-firmware** - Kernel and firmware
-- **lsb-release & man** - System info and documentation
-- **mdadm** - Software RAID tools
-- **networkmanager** - Network management
-- **openssh** - SSH client/server
-- **postgresql** - PostgreSQL database
-- **sesh** - Tmux session manager
-- **sudo** - Privilege escalation
-- **vscode-langservers-extracted** - VSCode language servers
-
-**Desktop & GUI:**
-- **discord** - Communication platform
-- **font-manager** - Font management
-- **fortune-mod** - Random fortunes
-- **ghostty** - Modern terminal
-- **gparted** - Partition editor
-- **gpick** - Color picker
-- **grub** - Bootloader
-- **hyprland** - Wayland compositor
-- **signal-desktop** - Secure messaging
-- **sddm** - Display manager
-- **spotify** - Music streaming
-- **starship** - Shell prompt
-- **systemsettings** - KDE settings
-- **virtualbox** - Virtualization
-- **vlc** - Media player
-
-**Audio System:**
-- **pipewire** (plus alsa, jack, pulse) - Multimedia framework
-- **wireplumber** - Session manager
-
-**Web Server:**
-- **nginx** - High-performance web server
+Omarchy provides a pre-configured Hyprland Wayland setup with sensible defaults. The dotfiles integrate with Omarchy for:
+- **Window Management**: Smart window rules, gaps, borders, and animations
+- **Bar**: Waybar with system info, workspaces, and status
+- **Terminal**: Ghostty configuration with custom theming
+- **Launcher**: Walker - fuzzy app launcher
+- **Notifications**: Mako - lightweight notification daemon
+- **Lock Screen**: swaylock-effects with blur and effects
+- **Themes**: Consistent GTK, Qt, and icon theming
+- **Keybindings**: Full keyboard-driven workflow
 
 ## **Darwin/macOS**
 **Package Manager:** Homebrew (formulae + casks)
@@ -208,9 +172,9 @@ fish run.fish --launcher
 ### Run Individual Components
 ```bash
 # Run specific setup phases
-fish -c "source run.fish; run-arch-pre"      # Pre-installation setup
-fish -c "source run.fish; run-arch-main"     # Main installations
-fish -c "source run.fish; run-arch-post"     # Post-configuration
+fish -c "source run.fish; run-omarchy-pre"      # Pre-installation setup
+fish -c "source run.fish; run-omarchy-main"     # Main installations
+fish -c "source run.fish; run-omarchy-post"     # Post-configuration
 ```
 
 ### Update Existing Setup
@@ -230,7 +194,7 @@ dotfiles/
 ├── run.fish                    # Main entry point - detects OS and launches setup
 ├── fish/functions/             # Reusable Fish shell functions
 ├── os/
-│   ├── arch/                   # Arch Linux specific scripts
+│   ├── omarchy/                # Omarchy/Hyprland specific scripts
 │   ├── darwin/                 # macOS specific scripts
 │   ├── ubuntu/                 # Ubuntu specific scripts
 │   └── common/                 # Cross-platform utilities
@@ -238,7 +202,8 @@ dotfiles/
 ├── mise/                       # Development tool versions
 ├── starship/                   # Shell prompt configuration
 ├── ghostty/                    # Terminal emulator settings
-└── tmux/                       # Terminal multiplexer configuration
+├── tmux/                       # Terminal multiplexer configuration
+└── sesh/                       # Tmux session manager configuration
 ```
 
 ## 🤝 Contributing

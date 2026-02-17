@@ -6,8 +6,6 @@ set -l UNAME (uname -a)
 switch $UNAME
     case "*omarchy*"
         set -gx SYSTEM_OS omarchy
-    case "*arch*"
-        set -gx SYSTEM_OS arch
     case "*Darwin*"
         set -gx SYSTEM_OS darwin
     case "*Ubuntu*"

@@ -3,14 +3,14 @@
 function copy-fonts
     running-message copy-fonts
 
-    set -l ARCH_FONTS_DIRECTORY ~/.local/share/fonts
+    set -l OMARCHY_FONTS_DIRECTORY ~/.local/share/fonts
 
-    if not test -d $ARCH_FONTS_DIRECTORY
+    if not test -d $OMARCHY_FONTS_DIRECTORY
         information-message "making fonts directory"
 
-        mkdir -p $ARCH_FONTS_DIRECTORY
+        mkdir -p $OMARCHY_FONTS_DIRECTORY
     end
 
     information-message "copying fonts"
-    cp -r $DOTFILES_DIRECTORY/assets/fonts/. $ARCH_FONTS_DIRECTORY
+    cp -r $DOTFILES_DIRECTORY/assets/fonts/. $OMARCHY_FONTS_DIRECTORY
 end

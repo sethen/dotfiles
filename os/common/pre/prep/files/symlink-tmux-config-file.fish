@@ -5,7 +5,5 @@ function symlink-tmux-config-file
 
     set -l HOME_TMUX_DIRECTORY $HOME_CONFIG_DIRECTORY/tmux
 
-    delete-if-exists $HOME_TMUX_DIRECTORY
-
     ln -sfv $DOTFILES_DIRECTORY/tmux/tmux.conf $HOME_CONFIG_DIRECTORY/tmux
 end
