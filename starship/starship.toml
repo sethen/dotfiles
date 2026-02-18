@@ -56,7 +56,7 @@ symbol = "  "
 
 [dotnet]
 symbol = '  '
-format = '[$symbol($version )(🎯 $tfm )]($style)'
+format = '[$symbol($version )]($style)'
 
 [character]
 success_symbol = "[➜](fg:lavender)"
