@@ -12,4 +12,5 @@ function run-omarchy-pre
 
     # prep
     copy-fonts
+    symlink-waybar-config-directory
 end
