@@ -6,6 +6,7 @@ function run-common-main
     # install
     #-> bun
     install-bash-language-server
+    install-fish-lsp
     install-typescript
     install-typescript-language-server
     install-vscode-langservers-extracted

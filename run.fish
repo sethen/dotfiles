@@ -46,10 +46,10 @@ for dir in $OS_PATHS
     end
 end
 
-header-message "welcome to sethen's dot-launcher for fish shell"
-
 run-$SYSTEM_OS-pre
 run-common-pre
+
+header-message "welcome to sethen's dot-launcher for fish shell"
 
 if set -q _flag_launcher
     dot-launcher
