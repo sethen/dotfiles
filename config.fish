@@ -4,6 +4,7 @@ set -gx DEVELOPER_DIRECTORY $HOME/Developer
 set -gx BUN_INSTALL $HOME/.bun
 
 fish_add_path -m $BUN_INSTALL/bin
+fish_add_path -m $MISE_INSTALL_PATH
 
 mise activate fish | source
 

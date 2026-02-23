@@ -16,7 +16,6 @@ function run-common-pre
     symlink-fish-functions-directory
     symlink-ghostty-config-directory
     symlink-git-config-files
-    symlink-hyprland-config-files
     symlink-mise-config-files
     symlink-neovim-config-directory
     symlink-opencode-config-directory

@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
-function run-darwin-setup
-    running-message run-darwin-setup
+function run-darwin-main
+    running-message run-darwin-main
 
     ## install
     #-> homebrew
