@@ -1,4 +1,5 @@
-font-size = 13
 adjust-cell-height = 15%
-theme = catppuccin-mocha.conf
+async-backend = epoll
 font-codepoint-map = U+E900-U+EA75=Sethens-Unicode
+font-size = 13
+theme = catppuccin-mocha.conf

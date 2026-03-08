@@ -28,3 +28,6 @@ tmux = "latest"
 tree-sitter = "latest"
 zig = "latest"
 zoxide = "latest"
+
+[settings.ruby]
+compile = false

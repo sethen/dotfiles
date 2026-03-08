@@ -87,7 +87,6 @@ return {
          },
 
          override_by_filename = {
-
             ['.aliases'] = { icon = ' ', name = 'Aliases' },
             ['.bashrc'] = { icon = ' ', name = 'Bashrc' },
             ['.dockerignore'] = { color = palette.blue, icon = ' ', name = 'Dockerignore' },
@@ -113,7 +112,10 @@ return {
             ['config.ru'] = { color = palette.red, icon = ' ', name = 'Config.ru' },
             ['docker-compose.yml'] = { color = palette.blue, icon = ' ', name = 'DockerCompose' },
             ['dockerfile'] = { color = palette.blue, icon = ' ', name = 'Dockerfile' },
+            ['dockerfile.dev'] = { color = palette.blue, icon = ' ', name = 'Dockerfile' },
+            ['dockerfile.prod'] = { color = palette.blue, icon = ' ', name = 'Dockerfile' },
             ['eslint.config.js'] = { color = palette.lavender, icon = ' ', name = 'Eslint' },
+            ['eslint.config.mjs'] = { color = palette.lavender, icon = ' ', name = 'Eslint' },
             ['favicon.ico'] = { color = palette.yellow, icon = ' ', name = 'Favicon' },
             ['go.mod'] = { color = palette.teal, icon = ' ', name = 'Go' },
             ['go.sum'] = { color = palette.teal, icon = ' ', name = 'Go' },
@@ -122,7 +124,7 @@ return {
             ['log'] = { icon = ' ', name = 'Log' },
             ['makefile'] = { icon = ' ', name = 'Makefile' },
             ['package-lock.json'] = { color = palette.red, icon = ' ', name = 'PackageLock' },
-            ['pnpm-lock.yaml'] = { color = palette.white, icon = ' ', name = 'DevIconPNPMLock' },
+            ['pnpm-lock.yaml'] = { color = palette.red, icon = ' ', name = 'PNPMLock' },
             ['package.json'] = { color = palette.red, icon = ' ', name = 'Package' },
             ['procfile'] = { icon = ' ', name = 'Procfile' },
             ['rake'] = { color = palette.red, icon = ' ', name = 'Rake' },
