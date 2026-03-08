@@ -12,6 +12,6 @@ function run-omarchy-pre
 
     # prep
     copy-fonts
-    symlink-hyprland-config-directory
+    symlink-hyprland-config-files
     symlink-waybar-config-directory
 end
