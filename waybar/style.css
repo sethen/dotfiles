@@ -33,7 +33,6 @@
 #cpu,
 #pulseaudio,
 #custom-omarchy,
-
 #custom-update,
 #mpris,
 #bluetooth,
@@ -46,10 +45,6 @@
 
 tooltip {
   padding: 2px;
-}
-
-#custom-update {
-  font-size: 10px;
 }
 
 #clock {

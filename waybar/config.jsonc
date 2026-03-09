@@ -60,14 +60,13 @@
     "tooltip-format": "Omarchy Menu\n\nSuper + Alt + Space"
   },
   "custom/update": {
-    "format": "󰀡",
+    "format": " ",
     "exec": "omarchy-update-available",
     "on-click": "omarchy-launch-floating-terminal-with-presentation omarchy-update",
     "tooltip-format": "Omarchy update available",
     "signal": 7,
     "interval": 21600
   },
-
   "cpu": {
     "interval": 5,
     "format": "",
@@ -127,7 +126,7 @@
     "on-click-right": "pamixer -t",
     "tooltip-format": "Playing at {volume}%",
     "scroll-step": 5,
-    "format-muted": "󰝟",
+    "format-muted": "",
     "format-icons": {
       "headphone": "󰋋",
       "headset": "",
