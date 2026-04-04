@@ -10,6 +10,6 @@ function success-message
     set message $argv
 
     set_color green --bold
-    echo "  $message" >&2
+    echo "  $message" >&2
     set_color normal
 end

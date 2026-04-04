@@ -10,6 +10,6 @@ function error-message
     set message $argv
 
     set_color red --bold
-    echo "  $message" >&2
+    echo "  $message" >&2
     set_color normal
 end

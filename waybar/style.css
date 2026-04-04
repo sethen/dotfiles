@@ -29,6 +29,7 @@
   opacity: 0.5;
 }
 
+
 #battery,
 #cpu,
 #pulseaudio,
@@ -38,7 +39,7 @@
 #bluetooth,
 #network,
 #tray,
-#custom-expand-icon {
+#language {
   min-width: 12px;
   margin: 0 8px;
 }

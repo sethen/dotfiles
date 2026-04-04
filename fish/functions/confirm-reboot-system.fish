@@ -2,7 +2,7 @@
 
 function confirm-reboot-system
     while true
-        read -l -P (set_color --bold yellow)"  do you want to reboot the system? [Yy/Nn]: "(set_color normal) answer
+        read -l -P (set_color --bold yellow)"  do you want to reboot the system? [Yy/Nn]: "(set_color normal) answer
 
         switch $answer
             case y Y

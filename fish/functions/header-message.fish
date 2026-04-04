@@ -10,6 +10,6 @@ function header-message
     set message $argv
 
     set_color blue --bold
-    echo "  $message" >&2
+    echo "  $message" >&2
     set_color normal
 end

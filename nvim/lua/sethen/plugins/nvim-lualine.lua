@@ -48,45 +48,45 @@ return {
          local mode_info = vim.api.nvim_get_mode().mode
 
          if mode_info == 'n' then
-            return 'N'
+            return ' '
          elseif mode_info == 'i' then
-            return 'I'
+            return ' '
          elseif mode_info == 'v' then
-            return 'V'
+            return ' '
          elseif mode_info == 'V' then
-            return 'VL'
+            return ' '
          elseif mode_info == '\22' then
-            return 'VB'
+            return ' '
          elseif mode_info == 'R' then
-            return 'R'
+            return ' '
          elseif mode_info == 'r' then
-            return 'RO'
+            return ' '
          elseif mode_info == 's' then
-            return 'S'
+            return ' '
          elseif mode_info == 'S' then
-            return 'SL'
+            return ' '
          elseif mode_info == 'c' then
-            return 'C'
+            return ' '
          elseif mode_info == 't' then
-            return 'T'
+            return ' '
          elseif mode_info == 'no' then
-            return 'OP'
+            return ' '
          else
-            return '?'
+            return ' '
          end
       end
 
       local function filename()
          if is_alpha_file_type() then
-            return '  dashboard'
+            return '  dashboard'
          elseif is_lazy_file_type() then
-            return '  lazy'
+            return '  lazy'
          elseif is_help_file_type() then
-            return '  help'
+            return '  help'
          elseif is_nvim_tree_file_type() then
-            return '  nvimtree'
+            return '  nvimtree'
          elseif is_telescope_file_type() then
-            return '  telescope'
+            return '  telescope'
          end
 
          local _, devicons = pcall(require, 'nvim-web-devicons')
@@ -109,7 +109,7 @@ return {
             },
             globalstatus = true,
             enable_icons = true,
-            theme = 'catppuccin',
+            theme = 'catppuccin-nvim',
          },
          sections = {
             lualine_a = {

@@ -51,8 +51,8 @@ mantle = "#181825"
 crust = "#11111b"
 
 [c]
-format = '[$name $version ](fg:green)'
-symbol = "  "
+format = '[$name $version ](fg:blue)'
+symbol = "  "
 
 [dotnet]
 symbol = '  '
@@ -68,8 +68,7 @@ truncation_length = 3
 truncation_symbol = "../"
 
 [git_branch]
-format = '[ $symbol $branch:](fg:lavender bg:base)'
-symbol = ""
+format = '[ $branch:](fg:lavender bg:base)'
 
 [git_commit]
 format = '[$hash](fg:lavender bg:base)'
@@ -81,11 +80,11 @@ format = '([](bg:green fg:lavender)[ +$added ](fg:base bg:green))([ -$deleted
 
 [git_status]
 format = '([$ahead_behind $all_status]($style))'
-ahead = '[](fg:white bg:base)'
-conflicted = '[](fg:white bg:base)'
-behind = '[](fg:white bg:base)'
-diverged = '[](fg:red bg:base)'
-up_to_date = '[](fg:green bg:base)'
+ahead = '[](fg:white bg:base)'
+conflicted = '[](fg:white bg:base)'
+behind = '[](fg:white bg:base)'
+diverged = '[](fg:red bg:base)'
+up_to_date = '[](fg:green bg:base)'
 untracked = '[ $count](fg:blue bg:base)[un](fg:blue bg:base)'
 stashed = '[ $count](fg:maroon bg:base)[sts](fg:maroon bg:base)'
 modified = '[ $count](fg:yellow bg:base)[m](fg:yellow bg:base)'
@@ -95,23 +94,23 @@ deleted = '[ $count](fg:red bg:base)[d](fg:red bg:base)'
 
 [golang]
 format = '[$symbol($version )]($style)'
-symbol = "  "
+symbol = "  "
 
 [nodejs]
 format = '[$symbol($version )]($style)'
-symbol = "  "
+symbol = "  "
 
 [python]
 format = '[$symbol($version )](fg:yellow)'
-symbol = "  "
+symbol = "  "
 
 [ruby]
 format = '[$symbol($version )](fg:red)'
-symbol = "  "
+symbol = "  "
 
 [rust]
-format = '[$symbol($version )](fg:maroon)'
-symbol = "  "
+format = '[$symbol($version )](fg:peach)'
+symbol = "  "
 
 [username]
 show_always = true

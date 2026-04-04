@@ -32,17 +32,17 @@ return {
                enable = true
             },
             icons = {
-               symlink_arrow = '   ',
+               symlink_arrow = '  ',
                glyphs = {
-                  default = ' ',
-                  symlink = ' ',
+                  default = ' ',
+                  symlink = ' ',
                   folder = {
-                     default = ' ',
-                     empty = ' ',
-                     empty_open = ' ',
-                     open = ' ',
-                     symlink = ' ',
-                     symlink_open = ' ',
+                     default = ' ',
+                     empty = ' ',
+                     empty_open = ' ',
+                     open = ' ',
+                     symlink = ' ',
+                     symlink_open = ' ',
                   },
                },
                show = {
