@@ -1,8 +1,11 @@
 local palette = require('catppuccin.palettes').get_palette('mocha')
 
+local binIcon = ' '
+local binColor = palette.overlay2
+
 return {
-    so = { icon = ' ', name = 'So', color = palette.overlay2 },
-    bin = { icon = ' ', name = 'Bin', color = palette.overlay2 },
-    exe = { icon = ' ', name = 'Exe', color = palette.overlay2 },
-    dll = { icon = ' ', name = 'Dll', color = palette.overlay2 },
+    so = { icon = binIcon, name = 'So', color = binColor },
+    bin = { icon = binIcon, name = 'Bin', color = binColor },
+    exe = { icon = binIcon, name = 'Exe', color = binColor },
+    dll = { icon = binIcon, name = 'Dll', color = binColor },
 }

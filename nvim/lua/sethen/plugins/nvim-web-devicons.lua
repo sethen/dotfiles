@@ -61,6 +61,7 @@ return {
                 require('sethen.plugins.nvim-web-devicons-types.toml'),
                 require('sethen.plugins.nvim-web-devicons-types.typescript'),
                 require('sethen.plugins.nvim-web-devicons-types.vim'),
+                require('sethen.plugins.nvim-web-devicons-types.xml'),
                 require('sethen.plugins.nvim-web-devicons-types.yaml'),
                 require('sethen.plugins.nvim-web-devicons-types.zig'),
                 require('sethen.plugins.nvim-web-devicons-types.zip')
@@ -85,10 +86,11 @@ return {
                 require('sethen.plugins.nvim-web-devicons-types.svelte'),
                 require('sethen.plugins.nvim-web-devicons-types.text'),
                 require('sethen.plugins.nvim-web-devicons-types.typescript'),
-                require('sethen.plugins.nvim-web-devicons-types.tmux')
+                require('sethen.plugins.nvim-web-devicons-types.tmux'),
+                require('sethen.plugins.nvim-web-devicons-types.xml')
             ),
         })
 
-        icons.set_default_icon(' ', palette.text)
+        icons.set_default_icon(' ', palette.overlay2)
     end,
 }

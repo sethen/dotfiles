@@ -1,5 +1,8 @@
 local palette = require('catppuccin.palettes').get_palette('mocha')
 
+local tmuxIcon = ' '
+local tmuxColor = palette.green
+
 return {
-    ['tmux.conf'] = { icon = ' ', name = 'Tmux', color = palette.green },
+    ['tmux.conf'] = { icon = tmuxIcon, name = 'Tmux', color = tmuxColor },
 }

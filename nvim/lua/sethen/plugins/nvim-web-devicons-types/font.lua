@@ -1,8 +1,11 @@
 local palette = require('catppuccin.palettes').get_palette('mocha')
 
+local fontIcon = ' '
+local fontColor = palette.peach
+
 return {
-    otf = { icon = ' ', name = 'Otf', color = palette.peach },
-    ttf = { icon = ' ', name = 'Ttf', color = palette.peach },
-    woff = { icon = ' ', name = 'Woff', color = palette.peach },
-    woff2 = { icon = ' ', name = 'Woff2', color = palette.peach },
+    otf = { icon = fontIcon, name = 'Otf', color = fontColor },
+    ttf = { icon = fontIcon, name = 'Ttf', color = fontColor },
+    woff = { icon = fontIcon, name = 'Woff', color = fontColor },
+    woff2 = { icon = fontIcon, name = 'Woff2', color = fontColor },
 }

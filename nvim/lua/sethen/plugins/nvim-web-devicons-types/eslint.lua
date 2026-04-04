@@ -1,9 +1,12 @@
 local palette = require('catppuccin.palettes').get_palette('mocha')
 
+local eslintIcon = ' '
+local eslintColor = palette.lavender
+
 return {
-    ['eslint.config.js'] = { icon = ' ', name = 'Eslint', color = palette.lavender },
-    ['eslint.config.mjs'] = { icon = ' ', name = 'Eslint', color = palette.lavender },
-    ['.eslintrc'] = { icon = ' ', name = 'Eslintrc', color = palette.lavender },
-    ['.eslintrc.js'] = { icon = ' ', name = 'Eslintrc', color = palette.lavender },
-    ['.eslintrc.json'] = { icon = ' ', name = 'Eslintrc', color = palette.lavender },
+    ['eslint.config.js'] = { icon = eslintIcon, name = 'Eslint', color = eslintColor },
+    ['eslint.config.mjs'] = { icon = eslintIcon, name = 'Eslint', color = eslintColor },
+    ['.eslintrc'] = { icon = eslintIcon, name = 'Eslintrc', color = eslintColor },
+    ['.eslintrc.js'] = { icon = eslintIcon, name = 'Eslintrc', color = eslintColor },
+    ['.eslintrc.json'] = { icon = eslintIcon, name = 'Eslintrc', color = eslintColor },
 }

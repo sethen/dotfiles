@@ -1,5 +1,8 @@
 local palette = require('catppuccin.palettes').get_palette('mocha')
 
+local dartIcon = ' '
+local dartColor = palette.teal
+
 return {
-    dart = { icon = ' ', name = 'Dart', color = palette.teal },
+    dart = { icon = dartIcon, name = 'Dart', color = dartColor },
 }

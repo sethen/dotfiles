@@ -1,5 +1,8 @@
 local palette = require('catppuccin.palettes').get_palette('mocha')
 
+local mlIcon = ' '
+local mlColor = palette.peach
+
 return {
-    ml = { icon = ' ', name = 'Ml', color = palette.peach },
+    ml = { icon = mlIcon, name = 'Ml', color = mlColor },
 }

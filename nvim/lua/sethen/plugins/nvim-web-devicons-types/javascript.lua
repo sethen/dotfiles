@@ -5,7 +5,8 @@ local jsxIcon = ' '
 local jsColor = palette.yellow
 local jsxColor = palette.blue
 local jsTestColor = palette.sky
-local pkgColor = palette.blue
+local pkgColor = palette.red
+local prettierColor = palette.mauve
 
 return {
     js = { icon = jsIcon, name = 'Js', color = jsColor },
@@ -15,10 +16,10 @@ return {
     ['js.map'] = { icon = jsIcon, name = 'Jsmap', color = jsColor },
     ['test.js'] = { icon = jsIcon, name = 'TestJs', color = jsTestColor },
     ['test.jsx'] = { icon = jsIcon, name = 'TestJsx', color = jsTestColor },
-    ['.prettierrc.mjs'] = { icon = jsIcon, name = 'Prettierrc', color = jsColor },
+    ['.prettierrc.mjs'] = { icon = jsIcon, name = 'Prettierrc', color = prettierColor },
     ['test.js'] = { icon = jsIcon, name = 'TestJs', color = jsTestColor },
     ['test.jsx'] = { icon = jsIcon, name = 'TestJsx', color = jsTestColor },
-    ['package.json'] = { icon = ' ', name = 'Package', color = pkgColor },
-    ['package-lock.json'] = { icon = ' ', name = 'PackageLock', color = pkgColor },
-    ['pnpm-lock.yaml'] = { icon = ' ', name = 'PNPMLock', color = pkgColor },
+    ['package.json'] = { icon = jsIcon, name = 'Package', color = pkgColor },
+    ['package-lock.json'] = { icon = jsIcon, name = 'PackageLock', color = pkgColor },
+    ['pnpm-lock.yaml'] = { icon = jsIcon, name = 'PNPMLock', color = pkgColor },
 }

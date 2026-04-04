@@ -1,5 +1,8 @@
 local palette = require('catppuccin.palettes').get_palette('mocha')
 
+local swiftIcon = ' '
+local swiftColor = palette.peach
+
 return {
-    swift = { icon = ' ', name = 'Swift', color = palette.peach },
+    swift = { icon = swiftIcon, name = 'Swift', color = swiftColor },
 }
