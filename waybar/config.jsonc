@@ -135,7 +135,7 @@
     "format-icons": {
       "headphone": "<span font='SethensSuperCode'></span>",
       "headset": "<span font='SethensSuperCode'></span>",
-      "default": ""
+      "default": "<span font='SethensSuperCode'></span>"
     }
   },
   "custom/screenrecording-indicator": {
