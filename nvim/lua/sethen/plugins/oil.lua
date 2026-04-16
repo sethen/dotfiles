@@ -4,7 +4,7 @@ return {
    'stevearc/oil.nvim',
    opts = {
       columns = {
-         { "icon", directory = " " },
+         { "icon", directory = " " },
       },
    },
    dependencies = { "nvim-tree/nvim-web-devicons" }

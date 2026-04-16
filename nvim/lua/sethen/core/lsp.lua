@@ -33,10 +33,10 @@ vim.api.nvim_create_autocmd('CursorHold', {
 vim.diagnostic.config({
    signs = {
       text = {
-         [vim.diagnostic.severity.WARN] = ' ',
-         [vim.diagnostic.severity.ERROR] = ' ',
-         [vim.diagnostic.severity.HINT] = ' ',
-         [vim.diagnostic.severity.INFO] = ' ',
+         [vim.diagnostic.severity.WARN] = '',
+         [vim.diagnostic.severity.ERROR] = '',
+         [vim.diagnostic.severity.HINT] = '',
+         [vim.diagnostic.severity.INFO] = '',
       }
    }
 })
@@ -46,7 +46,22 @@ vim.lsp.enable({
    'csharp-language-server',
    'css-lsp',
    'dockerfile-language-server',
-   'eslint-lsp',
+   ['eslint-lsp'] = {
+      settings = {
+         workingDirectories = { mode = 'auto' },
+      },
+      root_dir = vim.fs.root(0, {
+         '.eslintrc',
+         '.eslintrc.js',
+         '.eslintrc.cjs', 
+         '.eslintrc.yaml',
+         '.eslintrc.yml',
+         '.eslintrc.json', 
+         'eslint.config.js',
+         'eslint.config.mjs',
+         'package.json'
+      }),
+   },
    'fish-lsp',
    'gopls',
    'html-lsp', 'json-lsp',
