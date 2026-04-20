@@ -26,6 +26,7 @@ starship = "latest"
 terraform = "latest"
 tmux = "latest"
 tree-sitter = "latest"
+zellij = "latest"
 zig = "latest"
 zoxide = "latest"
 

@@ -1,0 +1,11 @@
+default_mode "locked"
+
+plugins {
+    zjstatus location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm"
+}
+
+load_plugins {
+    zjstatus
+}
+
+theme "catppuccin-mocha"

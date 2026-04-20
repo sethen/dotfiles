@@ -22,6 +22,7 @@ function run-common-pre
     symlink-sesh-config-directory
     symlink-starship-config-directory
     symlink-tmux-config-file
+    symlink-zellij-config-file
     #-> permissions
     add-user-to-docker-group
 
