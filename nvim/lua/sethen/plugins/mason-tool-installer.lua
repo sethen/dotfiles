@@ -3,7 +3,8 @@
 return {
    'WhoIsSethDaniel/mason-tool-installer.nvim',
    dependencies = {
-      'mason-org/mason.nvim'
+      'mason-org/mason.nvim',
+      'jay-babu/mason-nvim-dap.nvim',
    },
    config = function()
       require('mason-tool-installer').setup {

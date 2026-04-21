@@ -1,3 +1,5 @@
+-- make the cursor animate when moving
+--
 return {
    "sphamba/smear-cursor.nvim",
    opts = {

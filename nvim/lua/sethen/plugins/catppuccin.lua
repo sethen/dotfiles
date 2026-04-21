@@ -1,4 +1,4 @@
--- theme plugin
+-- color theme plugin
 
 return {
    'catppuccin/nvim',

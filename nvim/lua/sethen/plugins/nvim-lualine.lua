@@ -1,4 +1,4 @@
--- task bar at the bottom
+-- status bar at the bottom
 
 return {
    'nvim-lualine/lualine.nvim',

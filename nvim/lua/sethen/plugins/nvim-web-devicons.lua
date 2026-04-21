@@ -1,3 +1,5 @@
+-- icons for everything
+
 local icons = require('nvim-web-devicons')
 local palette = require('catppuccin.palettes').get_palette('mocha')
 

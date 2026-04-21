@@ -4,6 +4,10 @@ return {
    'folke/which-key.nvim',
    event = 'VeryLazy',
    opts = {
+      preset = "helix",
+      spec = {
+         { " ", name = "Leader" },
+      },
       delay = function(ctx)
          return ctx.plugin and 0 or 1500
       end,
@@ -40,5 +44,11 @@ return {
          },
          mappings = false,
       },
+   },
+   keys = {
+      { "<leader>l", "<cmd>Lazy<CR>", { desc = 'Toggle Lazy' } },
+      { "<leader>o", "<cmd>Oil --float<CR>", { desc = 'Toggle File Buffer Path' } },
+      { "<leader>t", "<cmd>NvimTreeToggle<CR>", { desc = 'Toggle Nvim Tree' } },
+      { "<leader>a", "<cmd>CodeCompanionActions<CR>", { desc = 'Code Companion Actions' } },
    },
 }
