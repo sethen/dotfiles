@@ -77,6 +77,6 @@ return {
          ),
       })
 
-      icons.set_default_icon('')
+      icons.set_default_icon(' ')
    end,
 }
