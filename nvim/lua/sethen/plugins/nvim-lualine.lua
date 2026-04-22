@@ -2,9 +2,6 @@
 
 return {
    'nvim-lualine/lualine.nvim',
-   dependencies = {
-      'nvim-tree/nvim-web-devicons'
-   },
    config = function()
       local function is_file_type(ft)
          local file_type = vim.fn.expand(vim.bo.filetype)

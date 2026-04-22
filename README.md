@@ -303,6 +303,7 @@ When running on Omarchy (Hyprland), these components are configured:
 #### Ubuntu (APT + Snap + Flatpak)
 
 **APT Packages:**
+
 | Package | Description |
 |--------|-------------|
 | brave-browser | Privacy-focused browser |
@@ -325,18 +326,21 @@ When running on Omarchy (Hyprland), these components are configured:
 | gh | GitHub CLI |
 
 **Snap Packages:**
+
 | Package | Description |
 |--------|-------------|
 | discord | Communication |
 | spotify | Music streaming |
 
 **Flatpak Packages:**
+
 | Package | Description |
 |--------|-------------|
 | zen-browser | Privacy-focused browser |
 | flatpak | Package framework |
 
 **Custom Installations:**
+
 | Package | Description |
 |--------|-------------|
 | ghostty | Terminal emulator (via .deb) |
@@ -355,6 +359,7 @@ When running on Omarchy (Hyprland), these components are configured:
 | nginx | Web server |
 
 **GUI Applications:**
+
 | Package | Description |
 |--------|-------------|
 | brave-browser | Privacy-focused browser |

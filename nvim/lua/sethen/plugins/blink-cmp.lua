@@ -1,22 +1,43 @@
 -- auto completion for lsp
 
-local keymaps = require('sethen.core.keymaps')
+local keymaps = require('sethen.core.constants').keymaps
 
 return {
    'saghen/blink.cmp',
    version = '1.*',
-
    dependencies = {
       'rafamadriz/friendly-snippets',
-      'onsails/lspkind.nvim',
-      'nvim-tree/nvim-web-devicons',
    },
    opts = function()
-      local lspkind = require('lspkind')
-
       return {
          appearance = {
-            kind_icons = lspkind.symbol_map,
+            kind_icons = {
+               Class = " ",
+               Color = " ",
+               Constant = " ",
+               Constructor = " ",
+               Enum = " ",
+               EnumMember = " ",
+               Event = " ",
+               Field = " ",
+               File = " ",
+               Folder = " ",
+               Function = " ",
+               Interface = " ",
+               Keyword = " ",
+               Method = " ",
+               Module = " ",
+               Operator = " ",
+               Property = " ",
+               Reference = " ",
+               Snippet = " ",
+               Struct = " ",
+               Text = " ",
+               TypeParameter = " ",
+               Unit = " ",
+               Value = " ",
+               Variable = " ",
+            },
          },
          completion = {
             documentation = {
@@ -25,25 +46,25 @@ return {
             menu = {
                draw = {
                   columns = {
+                     { 'kind' },
+                     { 'kind_icon', gap = 1 },
                      { 'label' },
                      { 'source_name', gap = 1 },
-                     { 'kind_icon',   gap = 1 },
-                     { 'kind' },
                   },
                },
             },
          },
-         signature = {
-            enabled = true,
+         fuzzy = {
+            implementation = 'prefer_rust_with_warning',
          },
          keymap = {
             [keymaps.accept] = { 'accept', 'fallback' },
          },
-         sources = {
-            default = { 'lsp', 'path', 'snippets', 'buffer' },
+         signature = {
+            enabled = true,
          },
-         fuzzy = {
-            implementation = 'prefer_rust_with_warning',
+         sources = {
+            default = { 'buffer', 'lsp', 'path', 'snippets' },
          },
       }
    end,

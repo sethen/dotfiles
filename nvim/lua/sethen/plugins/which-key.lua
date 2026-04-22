@@ -5,13 +5,8 @@ return {
    event = 'VeryLazy',
    opts = {
       preset = "helix",
-      spec = {
-         { " ", name = "Leader" },
-      },
-      delay = function(ctx)
-         return ctx.plugin and 0 or 1500
-      end,
       icons = {
+         mappings = false,
          keys = {
             Up = " ",
             Down = " ",
@@ -42,13 +37,10 @@ return {
             F11 = "F11",
             F12 = "F12",
          },
-         mappings = false,
       },
-   },
-   keys = {
-      { "<leader>l", "<cmd>Lazy<CR>", { desc = 'Toggle Lazy' } },
-      { "<leader>o", "<cmd>Oil --float<CR>", { desc = 'Toggle File Buffer Path' } },
-      { "<leader>t", "<cmd>NvimTreeToggle<CR>", { desc = 'Toggle Nvim Tree' } },
-      { "<leader>a", "<cmd>CodeCompanionActions<CR>", { desc = 'Code Companion Actions' } },
+      spec = {
+         { " ", name = "Leader" },
+         { "<leader>f", name = "Find" },
+      },
    },
 }

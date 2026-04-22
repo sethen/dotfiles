@@ -2,12 +2,9 @@
 
 return {
    'nvim-tree/nvim-tree.lua',
-   dependencies = {
-      'nvim-tree/nvim-web-devicons'
-   },
    config = function()
       local nvimtree = require('nvim-tree')
-      local keymaps = require('sethen.core.keymaps')
+      local keymaps = require('sethen.core.constants').keymaps
 
       local function on_attach_change(bufnr)
          local nvimtree_api = require('nvim-tree.api')

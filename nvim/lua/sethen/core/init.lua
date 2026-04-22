@@ -1,3 +1,4 @@
-require('sethen.core.global-keymaps')
+require('sethen.core.keymaps')
+require('sethen.core.constants')
 require('sethen.core.options')
 require('sethen.core.lsp')
