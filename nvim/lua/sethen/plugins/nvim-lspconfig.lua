@@ -8,25 +8,41 @@ return {
       require('mason').setup()
       require('mason-lspconfig').setup({
          ensure_installed = {
+            'bashls',
             'biome',
+            'clangd',
             'cssls',
             'docker_language_server',
             'eslint',
+            'elixirls',
             'fish_lsp',
             'html',
+            'jdtls',
             'jsonls',
+            'kotlin_lsp',
             'lua_ls',
             'gopls',
             'rust_analyzer',
             'solargraph',
+            'tailwindcss',
+            'taplo',
+            'terraformls',
             'ts_ls',
             'yamlls',
          },
       })
 
+      -- bash
+      vim.lsp.config('bashls', {})
+      vim.lsp.enable('bashls')
+
       -- biome
       vim.lsp.config('biome', {})
       vim.lsp.enable('biome')
+
+      -- c/c++
+      vim.lsp.config('clangd', {})
+      vim.lsp.enable('clangd')
 
       -- css
       vim.lsp.config('cssls', {})
@@ -40,6 +56,10 @@ return {
       vim.lsp.config('eslint', {})
       vim.lsp.enable('eslint')
 
+      -- exilir
+      vim.lsp.config('elixirls', {})
+      vim.lsp.enable('elixirls')
+
       -- fish
       vim.lsp.config('fish_lsp', {})
       vim.lsp.enable('fish_lsp')
@@ -51,6 +71,10 @@ return {
       -- html
       vim.lsp.config('html', {})
       vim.lsp.enable('html')
+
+      -- java
+      vim.lsp.config('jdtls', {})
+      vim.lsp.enable('jdtls')
 
       -- jsonls
       vim.lsp.config('jsonls', {})
@@ -81,6 +105,10 @@ return {
       })
       vim.lsp.enable('lua_ls')
 
+      -- kotlin
+      vim.lsp.config('kotlin_lsp', {})
+      vim.lsp.enable('kotlin_lsp')
+
       -- rust
       vim.lsp.config('rust_analyzer', {})
       vim.lsp.enable('rust_analyzer')
@@ -88,6 +116,18 @@ return {
       -- rust
       vim.lsp.config('solargraph', {})
       vim.lsp.enable('solargraph')
+
+      -- tailwind
+      vim.lsp.config('tailwindcss', {})
+      vim.lsp.enable('tailwindcss')
+
+      -- terraform
+      vim.lsp.config('terraformls', {})
+      vim.lsp.enable('terraformls')
+
+      -- toml
+      vim.lsp.config('taplo', {})
+      vim.lsp.enable('taplo')
 
       -- typescript
       vim.lsp.config('ts_ls', {})

@@ -39,11 +39,27 @@ layout {
     }
   }
 
-  tab name="nvim" focus=true {
-    pane command="nvim"
+  tab name="nvim" focus=true cwd="~/Developer" {
+    pane command="nvim" {
+      args "-c" "NvimTreeToggle"
+    }
   }
 
-  tab name="opencode" {
+  tab name="dotfiles" cwd="~/Developer/dotfiles" {
+    pane command="nvim" {
+      args "-c" "NvimTreeToggle"
+    }
+  }
+
+  tab name="opencode" cwd="~/Developer" {
     pane command="opencode"
+  }
+
+  tab name="yazi" cwd="~/Developer" {
+    pane command="yazi"
+  }
+
+  tab name="lazygit" cwd="~/Developer/dotfiles" {
+    pane command="lazygit"
   }
 }

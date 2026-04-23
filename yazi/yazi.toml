@@ -1,0 +1,4 @@
+[mgr]
+linemode = "permissions"
+show_hidden = true
+show_symlink = true
