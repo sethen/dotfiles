@@ -9,9 +9,7 @@ function run-ubuntu-main
     install-brave-browser
     install-font-manager
     install-fortune-mod
-    install-gh
     install-gnome-tweaks
-    install-ghostty
     install-gparted
     install-gpick
     install-lsb-release

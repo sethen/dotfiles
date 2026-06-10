@@ -4,9 +4,14 @@ set -gx DEVELOPER_DIRECTORY $HOME/Developer
 set -gx BUN_INSTALL $HOME/.bun
 
 fish_add_path -m $BUN_INSTALL/bin
-fish_add_path -m $MISE_INSTALL_PATH
+fish_add_path -m $HOME/.local/bin
 
-mise activate fish | source
+test -x /opt/homebrew/bin/brew; and fish_add_path -m /opt/homebrew/bin
+test -x /usr/local/bin/brew; and fish_add_path -m /usr/local/bin
+
+if type -q mise
+    mise activate fish | source
+end
 
 if status is-interactive
     if type -q zoxide

@@ -11,7 +11,6 @@ function run-omarchy-main
     install-ffmpeg
     install-font-manager
     install-fortune-mod
-    install-gh
     install-gparted
     install-gpick
     install-grub

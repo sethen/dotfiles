@@ -1,9 +1,7 @@
 #!/usr/bin/env fish
 
-function install-gh
-    running-message install-gh
-
-    yay-install-package gh
+function authenticate-github
+    running-message authenticate-github
 
     if test -e $HOME/.ssh/id_*.pub
         success-message "public key found"

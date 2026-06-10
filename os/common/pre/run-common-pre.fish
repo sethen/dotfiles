@@ -30,9 +30,14 @@ function run-common-pre
     # install
     #-> curl
     install-mise
+    # add mise to PATH for this run; installer doesn't touch the live shell
+    test -x $HOME/.local/bin/mise; and fish_add_path -m $HOME/.local/bin
     #-> mise
     mise install
     mise env fish | source
     #-> go
     install-sesh
+
+    # github
+    authenticate-github
 end

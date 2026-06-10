@@ -1,0 +1,8 @@
+# Logs
+*.log
+tea_debug.log
+
+# OS / editor cruft
+.DS_Store
+*.swp
+*~

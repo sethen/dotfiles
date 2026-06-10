@@ -1,4 +1,4 @@
-theme = catppuccin-mocha.conf
+theme = Catppuccin Mocha
 font-size = 13
 adjust-cell-height = 3
 async-backend = epoll
