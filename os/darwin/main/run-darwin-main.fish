@@ -11,7 +11,6 @@ function run-darwin-main
     install-ghostty
     install-git
     install-gnupg
-    install-libyaml
     install-nginx
     install-spotify
     install-virtualbox

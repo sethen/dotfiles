@@ -1,139 +1,263 @@
 # Sethen's Dotfiles
 
-> A comprehensive, cross-platform development environment setup powered by Fish shell scripts
+> One Fish-powered installer that bootstraps a complete development environment on macOS, Arch (Omarchy/Hyprland), and Ubuntu.
 
-These are my dotfiles for setting up a complete development environment from scratch. Take and use anything you want.
+These are my personal dotfiles. They take a bare machine and turn it into a fully configured development environment: shell, prompt, terminal, editor, language toolchains, and desktop apps. Everything is driven by a single `run.fish` entry point that detects your OS and runs the right steps. Take and use anything you want.
+
+## Table of Contents
+
+- [Highlights](#highlights)
+- [Supported Platforms](#supported-platforms)
+- [Prerequisites](#prerequisites)
+- [Quick Start](#quick-start)
+- [How It Works](#how-it-works)
+- [What Gets Installed](#what-gets-installed)
+- [Configuration Tour](#configuration-tour)
+- [Symlink Map](#symlink-map)
+- [Desktop Environment (Omarchy/Hyprland)](#desktop-environment-omarchyhyprland)
+- [Custom Fish Functions](#custom-fish-functions)
+- [Environment Variables](#environment-variables)
+- [Advanced Usage](#advanced-usage)
+- [Customization](#customization)
+- [Project Structure](#project-structure)
+- [Troubleshooting](#troubleshooting)
+
+## Highlights
+
+- **One installer, three operating systems.** A single `fish run.fish` detects macOS, Omarchy (Arch/Hyprland), or Ubuntu and runs the matching scripts. Shared steps live in `os/common`; platform-specific steps live under `os/darwin`, `os/omarchy`, and `os/ubuntu`.
+- **Phase-based and idempotent.** Setup runs in `pre`, `main`, and `post` phases. Re-running is safe: symlinks use `ln -sfv`, and installers check before reinstalling.
+- **One toolchain manager.** Almost every CLI tool and language runtime is pinned in `mise/mise.toml` and installed by [mise](https://mise.jdx.dev), so the same versions land on every machine.
+- **Catppuccin Mocha everywhere.** Ghostty, Starship, Neovim, Zellij, Yazi, and Opencode all share the same palette.
+- **A custom Nerd Font.** `SethensSuperCode.ttf` carries the icon glyphs used across the terminal, prompt, and editor.
+- **Interactive or hands-off.** Run the whole thing automatically, or use `--launcher` to pick individual steps from a filterable menu.
+
+## Supported Platforms
+
+| Platform | Base requirement |
+|----------|------------------|
+| **macOS (Darwin)** | A working macOS install. Homebrew is installed for you if missing. |
+| **Omarchy (Hyprland)** | A base Arch Linux system with Hyprland installed via [Omarchy](https://github.com/basecamp/omarchy). |
+| **Ubuntu** | Ubuntu 24.10+ with an internet connection. |
 
 ## Prerequisites
-
-Before running the dotfiles, ensure you have the following installed:
 
 | Requirement | Installation |
 |------------|--------------|
 | **Fish Shell** | Arch: `sudo pacman -S fish` <br> macOS: `brew install fish` <br> Ubuntu: `sudo apt install fish` |
-| **Git** | Usually pre-installed, otherwise use your package manager |
-
-### OS-Specific Base Requirements
-
-- **Omarchy (Hyprland)**: A base Arch Linux system with Hyprland installed via Omarchy
-- **Ubuntu**: Ubuntu 24.10+ with internet connection
-- **Darwin**: macOS with Homebrew installed
+| **Git** | Usually pre-installed; otherwise use your package manager. |
 
 ## Quick Start
 
 ```bash
 # 1. Clone the repository
-git clone <your-repo-url> ~/dotfiles
-cd ~/dotfiles
+git clone <your-repo-url> ~/Developer/dotfiles
+cd ~/Developer/dotfiles
 
-# 2. Configure git identity (required!)
+# 2. Set your git identity (required for commits)
 git config user.name "Your Name"
 git config user.email "your.email@example.com"
 
 # 3. Run the setup
-fish run.fish              # Automated full setup
-fish run.fish --launcher   # Interactive mode with gum
+fish run.fish              # Full automated setup
+fish run.fish --launcher   # Interactive menu (pick individual steps)
 ```
+
+Flags can be combined:
+
+| Flag | Effect |
+|------|--------|
+| `-l`, `--launcher` | Open the interactive `gum` menu instead of running everything. |
+| `-u`, `--update` | Run an update pass (e.g. `brew update && brew upgrade` on macOS). |
+| `-r`, `--reboot` | Reboot after setup completes. |
+
+## How It Works
+
+### Entry point: `run.fish`
+
+`run.fish` is the single entry point. It:
+
+1. **Detects the OS** from `uname` and sets `SYSTEM_OS` to `darwin`, `omarchy`, or `ubuntu`.
+2. **Sets global paths** (`DOTFILES_DIRECTORY`, `HOME_CONFIG_DIRECTORY`, and friends).
+3. **Loads Fish functions** by adding every `os/<platform>` and `os/common` subdirectory to `fish_function_path`, so each `install-*` / `symlink-*` / helper function becomes callable.
+4. **Runs the phases** for your platform.
+
+### Setup phases
+
+The installer is organized into three phases so that prerequisites are always in place before the things that depend on them:
+
+```
+run.fish
+├── Pre Phase (os/common/pre, os/<platform>/pre)
+│   ├── Switch the login shell to fish
+│   ├── Create directories (~/.config, ~/Developer, ~/.config/mise, ...)
+│   ├── Symlink every config file/directory into place
+│   ├── Install mise (curl) and add it to PATH for the run
+│   ├── mise install   → installs all tools from mise/mise.toml
+│   ├── Install sesh (go)
+│   └── Authenticate with GitHub (ssh key check, else `gh auth login`)
+├── Main Phase (os/common/main, os/<platform>/main)
+│   ├── Install OS packages (brew / pacman / apt / snap / flatpak)
+│   ├── Install language servers (via bun)
+│   └── Clone repositories (dotfiles, wallpapers, tmux plugin manager)
+└── Post Phase (os/common/post)
+    └── Final configuration
+```
+
+Why this shape? The phase split keeps ordering correct (mise exists before `mise install`, configs are symlinked before tools read them), and the `common` vs per-platform split means a tool only needs documenting once while platform quirks stay isolated.
 
 ## What Gets Installed
 
-### Development Tools (via Mise)
+### Development tools (via mise)
 
-Mise manages tool versions. The following are installed:
+`mise/mise.toml` is the source of truth for tool versions. `mise install` reads it and installs everything below.
 
-#### Runtimes
+**Languages & runtimes**
 
 | Tool | Description |
 |------|-------------|
 | bun | JavaScript/TypeScript runtime |
-| node | Node.js LTS |
-| python | Python latest |
-| ruby | Ruby latest |
+| node | Node.js (LTS) |
+| python | Python |
+| ruby | Ruby (uses precompiled binaries; `compile = false`) |
 | go | Go toolchain |
-| java | Java JDK |
 | rust | Rust toolchain with cargo |
+| java | Java JDK |
 | dotnet | .NET SDK |
 | zig | Zig compiler |
+| clojure | Clojure |
+| erlang | Erlang/OTP |
 
-#### Build & Development Tools
+**Build & parsing**
 
 | Tool | Description |
 |------|-------------|
 | cmake | Cross-platform build system |
-| tree-sitter | Parser generator tool |
+| tree-sitter | Incremental parser toolkit |
 
-#### Container & Infrastructure Tools
+**Containers & infrastructure**
 
 | Tool | Description |
 |------|-------------|
 | docker-cli | Docker CLI |
 | docker-compose | Docker Compose |
 | kubectl | Kubernetes CLI |
-| terraform | Infrastructure as Code |
+| terraform | Infrastructure as code |
 
-#### CLI Utilities
+**CLI utilities**
 
 | Tool | Description |
 |------|-------------|
-| fzf | Fuzzy finder |
 | fd | Fast file finder |
-| ripgrep | Line-oriented search tool |
-| gum | CLI framework for prettier scripts |
+| fzf | Fuzzy finder |
+| ripgrep | Fast line-oriented search |
+| gum | Pretty interactive shell scripts |
 | zoxide | Smart directory jumper |
 | starship | Shell prompt |
 | tmux | Terminal multiplexer |
 | zellij | Terminal workspace |
-| lazygit | Terminal UI for Git |
-| lazydocker | Terminal UI for Docker |
-| lazyssh | SSH manager |
+| yazi | Terminal file manager |
+| neovim | Modern Vim editor |
 | gh | GitHub CLI |
 | mysql | MySQL client |
-| neovim | Modern Vim editor |
+
+**Terminal UIs & AI**
+
+| Tool | Description |
+|------|-------------|
+| lazygit | TUI for Git |
+| lazydocker | TUI for Docker |
+| lazyssh | SSH manager |
+| crush | AI coding agent |
 | opencode | AI coding assistant |
 
-### Shell & Terminal Configuration
+### Language servers (via bun)
 
-#### Fish Shell
+Installed during the main phase for editor LSP support: `bash-language-server`, `fish-lsp`, `typescript` + `typescript-language-server`, `vscode-langservers-extracted`, and `yaml-language-server`.
 
-The dotfiles configure Fish shell with:
-- Custom configuration in `config.fish`
-- Interactive features: zoxide init, starship init, mise activate
-- Path management for bun and mise
+### Platform packages
 
-#### Starship Prompt
+Cross-platform apps appear in more than one table on purpose: each OS installs them through its native package manager.
 
-Minimal, fast, and customizable prompt with:
-- Catppuccin-mocha color palette
-- Shows: username, directory, language versions (c, dotnet, golang, nodejs, python, ruby, rust)
-- Git status, branch, and commit info
+**macOS (Homebrew)**
 
-#### Ghostty Terminal
+| CLI (`brew`) | GUI (`brew --cask`) |
+|--------------|---------------------|
+| git, gnupg, nginx | brave-browser, ghostty, spotify, virtualbox |
 
-Modern terminal emulator configured with:
-- Catppuccin-mocha theme
-- 13pt font with custom codepoint mapping (see Fonts below)
-- Async backend (epoll)
+**Omarchy (pacman / yay)**
 
-#### Fonts
+brave, vlc, virtualbox, postgresql, nginx, ffmpeg, gparted, gpick, font-manager, grub, mdadm, openssh, ca-certificates, curl, fortune-mod
 
-A custom coding font is included and installed:
+**Ubuntu (apt / snap / flatpak)**
 
-| Font | Description |
-|------|-------------|
-| SethensSuperCode.ttf | Custom Nerd Font-style font with icon codepoints (U+F000-U+F1B2) |
+| Source | Packages |
+|--------|----------|
+| apt | brave-browser, vlc, virtualbox, postgresql, nginx, gparted, gpick, font-manager, autoconf, bison, build-essential, ca-certificates, gnupg, gnome-tweaks, lsb-release, mdadm, ncurses, fortune-mod |
+| snap | discord, spotify |
+| flatpak | zen-browser, flatpak |
+| custom | ghostty (`.deb`), White Sur icon theme (git) |
 
-This font provides terminal icons (nerd font symbols) mapped to private use area codepoints. It's used by:
-- Ghostty terminal for icons
-- Starship prompt for git/symbol indicators
-- Any terminal application needing Nerd Font-style symbols
+> The GitHub CLI (`gh`) is installed through mise, not a system package manager, so it is the same version on every platform.
 
-Copied to platform-specific locations:
-- Omarchy/Ubuntu: `~/.local/share/fonts/`
-- Darwin: `~/Library/Fonts/`
+## Configuration Tour
 
-### Opencode Configuration
+### Fish shell
 
-AI coding assistant configured in `opencode/opencode.json`:
+`config.fish` sets up the interactive shell:
+
+- Exports `DEVELOPER_DIRECTORY` and `BUN_INSTALL`, and puts `~/.bun/bin`, `~/.local/bin`, and Homebrew on `PATH`.
+- Activates mise when present (`if type -q mise`).
+- For interactive sessions, initializes `zoxide` and `starship` (each guarded by `type -q`).
+- Greeting comes from `fortune`.
+
+### Starship prompt
+
+Minimal, fast prompt using the Catppuccin Mocha palette. Shows user, directory, language versions (c, dotnet, golang, nodejs, python, ruby, rust), and git branch/status.
+
+### Ghostty terminal
+
+`ghostty/config` is a single file:
+
+- `theme = Catppuccin Mocha` (Ghostty's built-in theme)
+- 13pt font with `adjust-cell-height = 3`
+- `async-backend = epoll`
+- `font-codepoint-map` routes the icon range `U+F000-U+F1B2` to `SethensSuperCode`
+
+### Yazi file manager
+
+Config in `yazi/`:
+
+- `yazi.toml`: manager settings (permission line mode, show hidden, show symlinks)
+- `theme.toml`: selects the `catppuccin-mocha` flavor and defines a large icon table (per-extension glyphs and colors)
+- `flavors/catppuccin-mocha.yazi/`: the installed flavor package: `flavor.toml` (UI colors) and `tmtheme.xml` (syntax highlighting for the preview pane)
+
+### Zellij workspace
+
+- `zellij/config.kdl`: default mode `locked`, `zjstatus` status bar plugin, Catppuccin Mocha theme.
+- `zellij/layouts/default.kdl`: custom status bar with per-mode indicators, opening two tabs: `nvim` and `opencode`.
+
+### tmux
+
+`tmux/tmux.conf`, with plugins managed by TPM (cloned during the main phase).
+
+### sesh
+
+`sesh/sesh.toml` configures the [sesh](https://github.com/joshmedeski/sesh) tmux session manager.
+
+### Neovim
+
+A full Lua configuration under `nvim/lua/sethen/` using `lazy.nvim`:
+
+- **Core** (`core/`): options, keymaps, LSP setup, autocommands, constants.
+- **Plugins** (`plugins/`): one file per plugin area.
+
+Highlights: catppuccin theme, lualine, nvim-tree, telescope (+ fzf-native), treesitter, blink-cmp completion, mason, gitsigns, oil, which-key, todo-comments, and AI integrations (copilot, opencode).
+
+On first launch, Mason installs language servers including: bash-language-server, dockerfile-language-server, gopls, html/css, json-lsp, lua-lsp, pyright, ruby-lsp, rust-analyzer, sqlls, tailwindcss-language-server, typescript-language-server, and yaml-language-server.
+
+### Opencode
+
+AI coding assistant config in `opencode/`:
 
 | Setting | Value |
 |---------|-------|
@@ -141,467 +265,124 @@ AI coding assistant configured in `opencode/opencode.json`:
 | Model | opencode/big-pickle |
 | Auto-update | enabled |
 
-The dotfiles also include:
-- Custom Neovim plugin for Opencode integration
-- Zellij layout with "opencode" tab
-- Catppuccin-mocha theme in `opencode/themes/`
+`opencode/opencode.json` and `opencode/themes/` are symlinked into `~/.config/opencode/`. See [opencode.ai](https://opencode.ai).
 
-See [opencode.ai](https://opencode.ai) for more information.
+### Fonts
 
-### Zellij Terminal Workspace
+| Font | Description |
+|------|-------------|
+| `SethensSuperCode.ttf` | Custom Nerd Font-style font with icon glyphs (`U+F000-U+F1B2`) |
 
-Terminal multiplexer and workspace manager:
+Installed to `~/.local/share/fonts/` (Omarchy/Ubuntu) or `~/Library/Fonts/` (macOS), and used by Ghostty, Starship, and Neovim for symbols.
 
-**Configuration** (`zellij/config.kdl`):
-- Default mode: locked
-- Plugin: zjstatus (status bar)
-- Theme: catppuccin-mocha
+## Symlink Map
 
-**Default Layout** (`zellij/layouts/default.kdl`):
-- Custom status bar with mode indicators (normal, locked, resize, pane, tab, scroll, search, rename, session, move, tmux)
-- Catppuccin color scheme for all modes
-- Default tabs: "nvim" and "opencode"
+Config lives in this repo and is symlinked into place, so edits here are live everywhere.
 
-```
-Tab: nvim    → Opens Neovim
-Tab: opencode → Opens Opencode AI assistant
-```
+| Source | Destination | Platforms |
+|--------|-------------|-----------|
+| `config.fish` | `~/.config/fish/config.fish` | all |
+| `fish/functions/` | `~/.config/fish/functions/` | all |
+| `nvim/` | `~/.config/nvim/` | all |
+| `starship/starship.toml` | `~/.config/starship.toml` | all |
+| `ghostty/` | `~/.config/ghostty/` | all |
+| `yazi/` | `~/.config/yazi/` | all |
+| `zellij/config.kdl` | `~/.config/zellij/config.kdl` | all |
+| `zellij/layouts/` | `~/.config/zellij/layouts/` | all |
+| `tmux/tmux.conf` | `~/.config/tmux/tmux.conf` | all |
+| `sesh/` | `~/.config/sesh/` | all |
+| `opencode/opencode.json` | `~/.config/opencode/opencode.json` | all |
+| `opencode/themes/` | `~/.config/opencode/themes/` | all |
+| `mise/mise.toml` | `~/.config/mise/mise.toml` | all |
+| `mise/.default-gems` | `~/.default-gems` | all |
+| `.gitconfig` | `~/.gitconfig` | all |
+| `.gitignore_global` | `~/.gitignore_global` | all |
+| `hypr/monitors.conf` | `~/.config/hypr/monitors.conf` | Omarchy |
+| `waybar/` | `~/.config/waybar/` | Omarchy |
 
-The status bar shows current mode on the left, tabs in the center, and session name on the right.
+## Desktop Environment (Omarchy/Hyprland)
 
-### Neovim Configuration
+On Omarchy, the base Wayland desktop is provided by [Omarchy](https://github.com/basecamp/omarchy); these dotfiles layer config on top:
 
-Fully configured Neovim setup using Lua with lazy.nvim plugin management.
+- **Hyprland**: monitor layout in `hypr/monitors.conf`.
+- **Waybar**: status bar (`waybar/config.jsonc`, `waybar/style.css`).
+- **Mako**, **Walker**, **Ghostty**: notifications, launcher, and terminal.
 
-#### Plugin Manager
-- **lazy.nvim** - Modern plugin manager with lazy loading
-
-#### UI & Appearance
-
-| Plugin | Description |
-|--------|-------------|
-| catppuccin | Catppuccin-mocha theme |
-| nvim-lualine | Statusline plugin |
-| nvim-tree | File tree explorer |
-| nvim-web-devicons | File icon support |
-| alpha-nvim | Start screen |
-| nvim-treesitter-context | Show context above functions |
-
-#### Fuzzy Finding
-
-| Plugin | Description |
-|--------|-------------|
-| telescope | Fuzzy finder |
-| telescope-fzf-native | FZF native support |
-
-#### Treesitter & Syntax
-
-| Plugin | Description |
-|--------|-------------|
-| nvim-treesitter | Syntax highlighting |
-| indent-blankline | Indentation guides |
-| nvim-ts-autotag | Auto-close HTML/XML tags |
-| rainbow-delimiters | Rainbow parentheses |
-
-#### LSP & Completion
-
-| Plugin | Description |
-|--------|-------------|
-| blink-cmp | Completion menu |
-| mason | LSP server manager |
-| lspkind | LSP icons |
-| smear-cursor | Cursor blending |
-
-#### Git Integration
-
-| Plugin | Description |
-|--------|-------------|
-| gitsigns | Git signs in gutter |
-| lazygit | Git TUI |
-| advanced-git-search | Enhanced git search |
-
-#### Editing Enhancements
-
-| Plugin | Description |
-|--------|-------------|
-| comment | Comment toggling |
-| todo-comments | TODO/FIXME highlighting |
-| vim-matchup | Match highlighting |
-| line-number-change-mode | Relative line numbers |
-| player-one | Code focus mode |
-| sunglasses | Dim unused code |
-
-#### Productivity
-
-| Plugin | Description |
-|--------|-------------|
-| oil | File explorer |
-| neovim-project | Project management |
-| markview | Markdown viewer |
-| which-key | Keybinding hints |
-| neovim-project | Project awareness |
-
-#### AI Assistance
-
-| Plugin | Description |
-|--------|-------------|
-| copilot | GitHub Copilot integration |
-| opencode | Opencode AI assistant |
-
-#### Mason-Managed LSP Servers
-
-On first Neovim launch, Mason installs these language servers:
-- bash-language-server
-- dockerfile-language-server
-- gopls
-- html-css-language-server
-- json-lsp
-- lua-lsp
-- pyright
-- ruby-lsp
-- rust-analyzer
-- sqlls
-- tailwindcss-language-server
-- typescript-language-server
-- yaml-language-server
-
-### Desktop Environment (Omarchy/Hyprland)
-
-When running on Omarchy (Hyprland), these components are configured:
-
-- **Hyprland** - Wayland compositor with custom monitor configuration (see [Omarchy](https://github.com/anomalyco/omarchy) for keybindings and window rules)
-- **Waybar** - Status bar with workspaces, system info, and status
-- **Mako** - Notification daemon
-- **Walker** - Application launcher
-- **Ghostty** - Terminal with custom theme
-
-> **Note:** Hyprland keybindings, window rules, animations, and Waybar configuration are managed by [Omarchy](https://github.com/anomalyco/omarchy). The dotfiles handle monitor configuration in `hypr/monitors.conf` and integration with the overall system.
-
-### Platform-Specific Packages
-
-#### Omarchy (Pacman)
-
-| Package | Description |
-|--------|-------------|
-| brave-browser | Privacy-focused browser |
-| vlc | Media player |
-| virtualbox | Virtualization |
-| postgresql | Database |
-| nginx | Web server |
-| ffmpeg | Multimedia framework |
-| gparted | Partition editor |
-| gpick | Color picker |
-| font-manager | Font management |
-| grub | Boot loader tools |
-| mdadm | RAID management |
-| openssh | SSH tools |
-| ca-certificates | SSL certificates |
-| curl | HTTP client |
-| fortune-mod | Random fortunes |
-| gh | GitHub CLI |
-
-#### Ubuntu (APT + Snap + Flatpak)
-
-**APT Packages:**
-
-| Package | Description |
-|--------|-------------|
-| brave-browser | Privacy-focused browser |
-| vlc | Media player |
-| virtualbox | Virtualization |
-| postgresql | Database |
-| nginx | Web server |
-| gparted | Partition editor |
-| gpick | Color picker |
-| font-manager | Font management |
-| autoconf | Build tool |
-| bison | Parser generator |
-| build-essential | Development tools |
-| ca-certificates | SSL certificates |
-| gnupg | Encryption |
-| gnome-tweaks | GNOME customization |
-| lsb-release | System info |
-| mdadm | RAID management |
-| fortune-mod | Random fortunes |
-| gh | GitHub CLI |
-
-**Snap Packages:**
-
-| Package | Description |
-|--------|-------------|
-| discord | Communication |
-| spotify | Music streaming |
-
-**Flatpak Packages:**
-
-| Package | Description |
-|--------|-------------|
-| zen-browser | Privacy-focused browser |
-| flatpak | Package framework |
-
-**Custom Installations:**
-
-| Package | Description |
-|--------|-------------|
-| ghostty | Terminal emulator (via .deb) |
-| White Sur icon theme | GNOME icons |
-
-#### Darwin/macOS (Homebrew)
-
-**CLI Tools:**
-| Package | Description |
-|--------|-------------|
-| curl | HTTP client |
-| gh | GitHub CLI |
-| git | Version control |
-| gnupg | Encryption |
-| libyaml | YAML library |
-| nginx | Web server |
-
-**GUI Applications:**
-
-| Package | Description |
-|--------|-------------|
-| brave-browser | Privacy-focused browser |
-| ghostty | Terminal emulator |
-| spotify | Music streaming |
-| virtualbox | Virtualization |
-
-## How It Works
-
-### Entry Point: run.fish
-
-The `run.fish` script is the main entry point:
-
-1. **OS Detection** - Detects the operating system (omarchy, darwin, ubuntu)
-2. **Path Setup** - Sets up dotfiles and home directory paths
-3. **Function Loading** - Loads Fish functions from OS directories
-4. **Phase Execution** - Runs pre, main, and post phases
-
-### Setup Phases
-
-```
-run.fish
-├── Pre Phase (pre/)
-│   ├── Create directories (~/.config, ~/Developer, etc.)
-│   ├── Symlink configuration files
-│   └── Install base dependencies (mise, curl, git)
-├── Main Phase (main/)
-│   ├── Install OS packages (pacman/apt/brew)
-│   ├── Install mise tools
-│   ├── Install language servers
-│   └── Clone repositories
-└── Post Phase (post/)
-    └── Final configuration
-```
-
-### Symlink Structure
-
-Configuration files are symlinked to `~/.config/`:
-
-| Source | Destination |
-|--------|-------------|
-| `config.fish` | `~/.config/fish/config.fish` |
-| `fish/functions/` | `~/.config/fish/functions/` |
-| `nvim/` | `~/.config/nvim/` |
-| `starship/starship.toml` | `~/.config/starship.toml` |
-| `ghostty/` | `~/.config/ghostty/` |
-| `hypr/` | `~/.config/hypr/` |
-| `waybar/` | `~/.config/waybar/` |
-| `tmux/tmux.conf` | `~/.config/tmux/tmux.conf` |
-| `zellij/` | `~/.config/zellij/` |
-| `sesh/sesh.toml` | `~/.config/sesh/config.toml` |
-| `.gitconfig` | `~/.gitconfig` |
+> Hyprland keybindings, window rules, animations, and the broader Waybar setup are managed by Omarchy itself. This repo only owns the monitor config and the per-app theming above.
 
 ## Custom Fish Functions
 
-The dotfiles include custom Fish functions for common operations:
+Functions live in `fish/functions/` (shared) and under each `os/<platform>` tree (install/symlink steps).
 
-### Messaging Functions
+**Messaging** (`header-message`, `success-message`, `error-message`, `running-message`, `information-message`): consistent status output during setup.
 
-| Function | Description |
-|----------|-------------|
-| `header-message` | Print header with formatting |
-| `success-message` | Print success message |
-| `error-message` | Print error message |
-| `running-message` | Print running status |
-| `information-message` | Print info message |
+**Git helpers** (`git-branch-name`, `git-sha`, `git-modified-files-count`, `git-staged-files-count`, `git-untracked-files-count`): used by the prompt and scripts.
 
-### Git Helper Functions
+**System** (`switch-shell-to-fish`, `reboot-system`, `confirm-reboot-system`, `create-directory-if-not-exists`, `delete-if-exists`).
 
-| Function | Description |
-|----------|-------------|
-| `git-branch-name` | Get current branch name |
-| `git-sha` | Get current commit SHA |
-| `git-modified-files-count` | Count modified files |
-| `git-staged-files-count` | Count staged files |
-| `git-untracked-files-count` | Count untracked files |
+**Setup helpers**:
 
-### System Functions
+- `install-sesh`: installs the sesh session manager via `go`.
+- `authenticate-github`: checks for an SSH public key (`~/.ssh/id_*.pub`); if none exists, runs `gh auth login`.
+- `install-tmux-plugin-manager`, `set-gnome-preferences` (Ubuntu), the `clone-*` repo functions, and the `symlink-*` / `make-*` functions.
 
-| Function | Description |
-|----------|-------------|
-| `reboot-system` | Reboot the system |
-| `confirm-reboot-system` | Reboot with confirmation |
-| `switch-shell-to-fish` | Switch default shell to fish |
-| `create-directory-if-not-exists` | Create directory safely |
-| `delete-if-exists` | Delete file/directory safely |
+**Package-manager wrappers** (in `os/<platform>/utilities/`): `brew-install-package`, `brew-cask-install-package`, `pacman-install-package`, `yay-install-package`, `sudo-apt-install-package`, `sudo-snap-install-package`, `flatpak-install-package`.
 
-### Interactive Launcher
+### Interactive launcher
 
-| Function | Description |
-|----------|-------------|
-| `dot-launcher` | Interactive menu to run individual functions |
-
-The interactive launcher (`--launcher` flag) uses gum to present a filterable list of all available functions. Available functions include:
-
-**Package Installation:**
-- `install-brave`, `install-brave-browser` - Brave browser
-- `install-curl`, `install-gh`, `install-git`, `install-nginx`, `install-openssh`
-- `install-vlc`, `install-virtualbox`, `install-postgresql`
-- `install-font-manager`, `install-ffmpeg`, `install-gparted`, `install-gpick`
-- `install-discord`, `install-spotify` - Snap packages (Ubuntu)
-- `install-flatpak`, `install-zen` - Flatpak packages (Ubuntu)
-- `install-ghostty` - Terminal emulator
-- `install-homebrew` - Package manager (Darwin)
-
-**Tool Installation (via Mise):**
-- `install-bash-language-server`, `install-fish-lsp`
-- `install-typescript`, `install-typescript-language-server`
-- `install-yaml-language-server`, `install-vscode-langservers-extracted`
-
-**Repository Cloning:**
-- `clone-dotfiles-repo` - Clones dotfiles to ~/dotfiles
-- `clone-wallpapers-repo` - Wallpapers repository
-- `clone-white-sur-icon-theme-repo` - Icon theme (Ubuntu)
-
-**Configuration:**
-- `install-tmux-plugin-manager` - TPM setup
-- `set-gnome-preferences` - GNOME settings (Ubuntu)
-- Various `symlink-*` functions - Create config symlinks
-- Various `make-*` functions - Create required directories
+`dot-launcher` (run via `fish run.fish --launcher`) uses `gum` to present a filterable list of every available function, so you can run individual steps instead of the full install.
 
 ## Environment Variables
 
-The dotfiles set the following environment variables:
+Set in `config.fish`:
 
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `DEVELOPER_DIRECTORY` | `$HOME/Developer` | Working directory for projects |
 | `BUN_INSTALL` | `$HOME/.bun` | Bun installation directory |
-| `DOTFILES_DIRECTORY` | (cwd) | Path to dotfiles repo |
-| `MISE_INSTALL_PATH` | (from mise) | Mise binary path |
+
+Set in `run.fish` during setup: `SYSTEM_OS`, `DOTFILES_DIRECTORY`, `DOTFILES_OS_DISTRO_DIRECTORY`, `DOTFILES_OS_COMMON_DIRECTORY`, `HOME_CONFIG_DIRECTORY`, `HOME_FISH_DIRECTORY`, plus `RUN_DOTFILES_REBOOT` / `RUN_DOTFILES_UPDATE` when the matching flags are passed.
 
 ## Advanced Usage
 
-### Run Individual Phases
+### Run individual phases
 
 ```bash
-# Pre-installation (create dirs, symlinks)
-fish -c "source run.fish; run-omarchy-pre"
-fish -c "source run.fish; run-ubuntu-pre"
-fish -c "source run.fish; run-darwin-pre"
-
-# Main installation (packages, tools)
-fish -c "source run.fish; run-omarchy-main"
-fish -c "source run.fish; run-ubuntu-main"
-fish -c "source run.fish; run-darwin-main"
-
-# Post-configuration
+fish -c "source run.fish; run-darwin-pre"    # or run-omarchy-pre / run-ubuntu-pre
+fish -c "source run.fish; run-darwin-main"   # or run-omarchy-main / run-ubuntu-main
 fish -c "source run.fish; run-common-post"
 ```
 
-### Run Specific Functions
+### Run a specific function
 
 ```bash
-# Using the interactive launcher
-fish run.fish --launcher
-
-# Or source and call functions directly
-fish -c "source run.fish; install-neovim"
+fish run.fish --launcher                     # pick from the menu
+fish -c "source run.fish; install-ghostty"   # or call directly
 ```
 
-### Update Existing Setup
+### Update or reboot
 
 ```bash
-fish run.fish --update
-```
-
-### Reboot After Setup
-
-```bash
-fish run.fish --reboot
-```
-
-## Project Structure
-
-```
-dotfiles/
-├── run.fish                    # Main entry point
-├── config.fish                 # Fish shell configuration
-├── .gitconfig                  # Git configuration
-├── AGENTS.md                   # Agent coding guidelines
-├── fish/
-│   └── functions/              # Custom Fish functions
-├── os/
-│   ├── omarchy/                # Arch/Hyprland specific
-│   │   ├── pre/               # Pre-installation
-│   │   ├── main/              # Package installation
-│   │   └── utilities/         # Helper functions
-│   ├── darwin/                # macOS specific
-│   ├── ubuntu/                # Ubuntu specific
-│   └── common/                # Cross-platform
-│       ├── pre/               # Common pre-scripts
-│       ├── main/              # Common install scripts
-│       ├── post/              # Post-configuration
-│       └── utilities/         # Shared utilities
-├── nvim/                       # Neovim configuration (Lua)
-├── opencode/                   # Opencode AI assistant config
-│   └── lua/sethen/
-│       ├── core/              # Core settings
-│       ├── plugins/           # Plugin configurations
-│       └── lazy.lua           # Plugin manager setup
-├── mise/
-│   └── mise.toml              # Tool versions
-├── starship/
-│   └── starship.toml          # Prompt configuration
-├── ghostty/
-│   ├── config                 # Terminal config
-│   └── themes/                # Terminal themes
-├── tmux/
-│   └── tmux.conf              # Terminal multiplexer
-├── hypr/
-│   └── monitors.conf          # Monitor configuration
-├── waybar/
-│   ├── config.jsonc           # Status bar config
-│   └── style.css             # Status bar styling
-├── zellij/
-│   ├── config.kdl             # Terminal workspace config
-│   └── layouts/              # Layout definitions
-├── sesh/
-│   └── sesh.toml              # Tmux session manager
-└── assets/
-    ├── fonts/
-    │   └── SethensSuperCode.ttf  # Custom coding font with nerd font icons
-    ├── icons/                 # 435 custom icons for nvim-web-devicons
-    ├── images/                # Screenshot images
-    └── videos/               # Demo videos
+fish run.fish --update    # update pass
+fish run.fish --reboot    # reboot when done
 ```
 
 ## Customization
 
-### Adding New Mise Tools
+### Add a mise tool
 
 Edit `mise/mise.toml`:
 
 ```toml
 [tools]
-your-tool = "latest"  # or specific version
+your-tool = "latest"  # or a specific version
 ```
 
-### Adding Neovim Plugins
+Then run `mise install`.
 
-Add to any file in `nvim/lua/sethen/plugins/`:
+### Add a Neovim plugin
+
+Add a file (or entry) under `nvim/lua/sethen/plugins/`:
 
 ```lua
 return {
@@ -613,51 +394,86 @@ return {
 }
 ```
 
-### Adding Platform-Specific Packages
+### Add a platform package
 
-**Arch (Omarchy):** Add to `os/omarchy/main/run-omarchy-main.fish`
+- **Omarchy:** add an `install-*` function and call it in `os/omarchy/main/run-omarchy-main.fish`.
+- **Ubuntu:** add it to `os/ubuntu/main/run-ubuntu-main.fish` (apt, snap, or flatpak).
+- **macOS:** add it to `os/darwin/main/run-darwin-main.fish`.
 
-**Ubuntu:** Add to `os/ubuntu/main/run-ubuntu-main.fish` (apt, snap, or flatpak)
+## Project Structure
 
-**Darwin:** Add to `os/darwin/main/run-darwin-main.fish`
-
-### Customizing Fish Functions
-
-Add new functions to `fish/functions/` or the appropriate OS directory.
+```
+dotfiles/
+├── run.fish                    # Main entry point
+├── config.fish                 # Fish shell configuration
+├── .gitconfig                  # Git configuration
+├── .gitignore_global           # Global gitignore
+├── AGENTS.md                   # Agent coding guidelines
+├── fish/
+│   └── functions/              # Shared Fish functions
+├── os/
+│   ├── common/                 # Cross-platform steps
+│   │   ├── pre/ main/ post/    # Phase scripts
+│   │   └── utilities/          # Shared helpers (dot-launcher)
+│   ├── darwin/                 # macOS (pre, main, utilities)
+│   ├── omarchy/                # Arch/Hyprland (pre, main, utilities)
+│   └── ubuntu/                 # Ubuntu (pre, main, utilities)
+├── mise/
+│   ├── mise.toml               # Tool versions (source of truth)
+│   └── .default-gems           # Default Ruby gems
+├── nvim/
+│   └── lua/sethen/
+│       ├── core/               # Options, keymaps, LSP, autocmds
+│       ├── plugins/            # Plugin configs
+│       └── lazy.lua            # lazy.nvim bootstrap
+├── opencode/
+│   ├── opencode.json           # Opencode config
+│   └── themes/                 # Opencode themes
+├── starship/
+│   └── starship.toml           # Prompt configuration
+├── ghostty/
+│   └── config                  # Terminal config
+├── yazi/
+│   ├── yazi.toml               # Manager settings
+│   ├── theme.toml              # Flavor selection + icon table
+│   └── flavors/                # Installed flavor package(s)
+├── zellij/
+│   ├── config.kdl              # Workspace config
+│   └── layouts/                # Layout definitions
+├── tmux/
+│   └── tmux.conf               # Terminal multiplexer
+├── sesh/
+│   └── sesh.toml               # tmux session manager
+├── hypr/
+│   └── monitors.conf           # Monitor configuration (Omarchy)
+├── waybar/
+│   ├── config.jsonc            # Status bar config (Omarchy)
+│   └── style.css               # Status bar styling (Omarchy)
+└── assets/
+    ├── fonts/                  # SethensSuperCode.ttf
+    ├── icons/                  # Custom icons for nvim-web-devicons
+    ├── images/                 # Screenshots
+    └── videos/                 # Demos
+```
 
 ## Troubleshooting
 
-### Common Issues
+**Symlink already exists.** Steps are idempotent and overwrite their own symlinks. To force a clean target, delete it first.
 
-**Symlink already exists:**
-The scripts are idempotent and will skip existing files. To force recreation, delete the target first.
+**`mise` not found after install.** Open a new shell so `config.fish` runs, or confirm `~/.local/bin` is on `PATH`. `config.fish` only activates mise when it is present.
 
-**Mise not found:**
-Ensure Fish is properly initialized with mise. The `config.fish` sources mise activation.
+**Neovim plugins not loading.** Run `:Lazy sync`.
 
-**Neovim plugins not loading:**
-Run `:Lazy sync` in Neovim to install/update plugins.
+**Language servers not starting.** Check Mason with `:Mason`, and ensure the servers installed on first launch.
 
-**Language servers not starting:**
-Run `:LspInstallLog` in Neovim to check for errors. Ensure Mason servers are installed with `:LspInstall`.
-
-### Verification Commands
+### Verification commands
 
 ```bash
-# Test Fish configuration
-fish -n run.fish
-
-# Verify Neovim loads
-nvim --headless -c "lua require('sethen')" -c "qa"
-
-# Check mise installation
-mise doctor
-
-# Validate starship config
-starship config validate
-
-# List installed mise tools
-mise ls
+fish -n run.fish                                   # syntax-check the installer
+nvim --headless -c "lua require('sethen')" -c "qa" # Neovim loads cleanly
+mise doctor                                         # mise health
+mise ls                                             # installed tools
+starship config validate                            # prompt config
 ```
 
 ---
