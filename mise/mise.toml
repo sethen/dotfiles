@@ -1,6 +1,7 @@
 [tools]
 bun = "latest"
 clojure = "latest"
+claude-code = "latest"
 cmake = "latest"
 crush = "latest"
 docker-cli = "latest"

@@ -62,4 +62,16 @@ layout {
   tab name="lazygit" cwd="~/Developer/dotfiles" {
     pane command="lazygit"
   }
+
+  tab name="shell" cwd="~/Developer/dotfiles"
+
+  tab name="claude" cwd="~/Developer" {
+    pane command="claude" {
+      args "code"
+    }
+  }
+
+  tab name="lazydocker" cwd="~/Developer" {
+    pane command="lazydocker"
+  }
 }
