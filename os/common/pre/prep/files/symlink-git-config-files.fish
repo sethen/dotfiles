@@ -3,6 +3,6 @@
 function symlink-git-config-files
     running-message symlink-git-config-files
 
-    ln -sfv $DOTFILES_DIRECTORY/.gitconfig ~/.gitconfig
-    ln -sfv $DOTFILES_DIRECTORY/.gitignore_global ~/.gitignore_global
+    make-symlink $DOTFILES_DIRECTORY/.gitconfig $HOME/.gitconfig
+    make-symlink $DOTFILES_DIRECTORY/.gitignore_global $HOME/.gitignore_global
 end

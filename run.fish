@@ -10,6 +10,10 @@ switch $UNAME
         set -gx SYSTEM_OS darwin
     case "*Ubuntu*"
         set -gx SYSTEM_OS ubuntu
+    case "*"
+        echo "Unsupported OS — uname reports: $UNAME" >&2
+        echo "Supported: Omarchy, macOS (Darwin), Ubuntu" >&2
+        exit 1
 end
 
 # set global dotfiles paths

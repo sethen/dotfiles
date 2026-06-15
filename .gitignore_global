@@ -1,3 +1,192 @@
+# === Secrets ===
+.env
+.env.*
+!.env.example
+!.env.sample
+credentials.json
+*.pem
+*.key
+*.p12
+*.pfx
+secrets.yml
+secrets.yaml
+.netrc
+
+# === OS: macOS ===
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+Icon?
+.fseventsd/
+.TemporaryItems/
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# === OS: Linux ===
+.directory
+.Trash-*
+.nfs*
+
+# === Editor: Vim/Neovim ===
+*.swp
+*.swo
+*.swn
+*~
+.netrwhist
+Session.vim
+.vim-bookmarks
+
+# === Editor: Emacs ===
 **/#*.*#
 .#*
+.dir-locals.el
+
+# === Editor: VS Code ===
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+.history/
+
+# === Editor: JetBrains ===
+.idea/
+*.iml
+*.iws
+
+# === Editor: Sublime ===
+*.sublime-workspace
+*.sublime-project
+
+# === AI tooling (per-repo local overrides) ===
+.claude/settings.local.json
+.aider*
+.cursor/
+.cursorrules.local
+
+# === Mise / direnv / asdf / local shell state ===
+.mise.local.toml
+.envrc.local
+.tool-versions.local
+
+# === ctags / cscope ===
+tags
+TAGS
+.tags
+.tags_sorted_by_file
+cscope.*
+
+# === Terraform (state often has secrets) ===
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# === Process / runtime artifacts ===
+*.pid
+*.pid.lock
+*.seed
+*.dmp
+replay_pid*
+
+# === Profiling / coverage artifacts ===
+*.profraw
+*.gcov
+*.gcda
+*.gcno
+perf.data
+perf.data.old
+*.lcov
+coverage/
+.nyc_output/
+
+# === Logs & dumps ===
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.stackdump
+core
+core.*
+
+# === Node / JS / TS ===
+node_modules/
+.npm/
+.yarn/
+.pnp.*
+.pnpm-store/
+bower_components/
+.next/
+.nuxt/
+.svelte-kit/
+.astro/
+.parcel-cache/
+.turbo/
+.cache/
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.coverage
+
+# === Ruby ===
+.bundle/
+vendor/bundle/
+.byebug_history
+
+# === Rust ===
+target/
+
+# === Go ===
+*.test
+*.prof
+coverage.out
+
+# === Java / Gradle / Maven ===
+*.class
+.gradle/
+.mvn/
+
+# === .NET ===
+obj/
+*.user
+
+# === C / C++ ===
+*.o
+*.a
+*.so
+*.dylib
+
+# === Generic build outputs ===
+dist/
+build/
+_build/
+out/
+
+# === Generic temp / backup ===
+*.tmp
+*.temp
+*.bak
+*.orig
+*.local
+
+# === Notes ===
+# Deliberately NOT included (commonly committed):
+#   - vendor/   (Go projects vendor here intentionally)
+#   - bin/      (script bins are often committed, e.g., this dotfiles repo)
+#   - lockfiles (package-lock.json, Cargo.lock, etc. — project decision)
+#   - Gemfile.lock, yarn.lock, pnpm-lock.yaml — same

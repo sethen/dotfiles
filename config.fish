@@ -1,4 +1,8 @@
-set -U fish_greeting (fortune || "Only worry about the things that you can control.")
+if type -q fortune
+    set -g fish_greeting (fortune)
+else
+    set -g fish_greeting "Only worry about the things that you can control."
+end
 
 set -gx DEVELOPER_DIRECTORY $HOME/Developer
 set -gx BUN_INSTALL $HOME/.bun

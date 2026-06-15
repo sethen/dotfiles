@@ -8,7 +8,10 @@ function delete-if-exists
 
     for path in $argv
         if test -e "$path" || test -L "$path"
-            rm -rf "$path"
+            if not rm -rf "$path"
+                error-message "failed to delete $path"
+                exit 1
+            end
         end
     end
 end
