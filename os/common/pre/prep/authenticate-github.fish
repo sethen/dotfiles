@@ -3,10 +3,15 @@
 function authenticate-github
     running-message authenticate-github
 
-    if test -e $HOME/.ssh/id_*.pub
-        success-message "public key found"
+    if not type -q gh
+        error-message "gh CLI not found in PATH"
+        exit 1
+    end
+
+    if gh auth status >/dev/null 2>&1
+        success-message "github already authenticated"
     else
-        information-message "no public key found, logging into github"
+        information-message "logging into github"
 
         gh auth login
     end

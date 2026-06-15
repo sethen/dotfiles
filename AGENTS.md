@@ -5,14 +5,20 @@ This repository contains personal dotfiles for setting up a development environm
 ## Repository Structure
 
 - **`run.fish`** - Main entry point that detects OS and launches appropriate setup scripts
-- **`os/{arch,darwin,ubuntu}/`** - OS-specific installation and configuration scripts
-- **`os/common/`** - Cross-platform utilities and shared functionality  
-- **`fish/functions/`** - Reusable Fish shell functions for messaging and git operations
+- **`os/{darwin,omarchy,ubuntu}/`** - OS-specific installation and configuration scripts
+- **`os/common/`** - Cross-platform utilities and shared functionality
+- **`fish/functions/`** - Reusable Fish shell functions for messaging, filesystem helpers (`make-symlink`, `create-directory-if-not-exists`, `delete-if-exists`), and git status helpers
 - **`nvim/`** - Neovim configuration using Lua with lazy.nvim plugin management
 - **`mise/`** - Development tool version management configuration
 - **`starship/`** - Shell prompt customization
 - **`ghostty/`** - Terminal emulator configuration
 - **`tmux/`** - Terminal multiplexer settings
+- **`zellij/`** - Alternate terminal multiplexer with custom layouts
+- **`sesh/`** - Session manager (integrates with tmux)
+- **`yazi/`** - Terminal file manager configuration
+- **`hypr/`** - Hyprland (Wayland compositor) overrides (Omarchy)
+- **`waybar/`** - Status bar configuration (Omarchy)
+- **`opencode/`** - opencode AI assistant configuration and themes
 
 ## Build/Test/Validation Commands
 
@@ -72,16 +78,16 @@ mise run --dry-run  # If available
 #!/usr/bin/env fish
 
 function function-name
-  # Argument validation
-  if test (count $argv) -eq 0
-    echo "usage: function-name <argument>" >&2
-    return 1
-  end
+    # Argument validation
+    if test (count $argv) -eq 0
+        error-message "usage: function-name <argument>"
+        return 1
+    end
 
-  set -l variable value  # Local variables
-  
-  # Main logic
-  # ...
+    set -l variable value  # Local variables
+
+    # Main logic
+    # ...
 end
 ```
 
@@ -153,7 +159,7 @@ return {
    - Validate Neovim configuration in headless mode
 
 2. **OS Compatibility:**
-   - Test changes on target OS (Arch, Darwin, Ubuntu)
+   - Test changes on target OS (Omarchy, Darwin, Ubuntu)
    - Use OS-specific directories for platform-dependent code
    - Common functionality should go in `os/common/`
 

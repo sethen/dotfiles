@@ -169,6 +169,7 @@ Why this shape? The phase split keeps ordering correct (mise exists before `mise
 | lazyssh | SSH manager |
 | crush | AI coding agent |
 | opencode | AI coding assistant |
+| claude-code | Anthropic's official CLI for Claude |
 
 ### Language servers (via bun)
 
@@ -298,17 +299,18 @@ Config lives in this repo and is symlinked into place, so edits here are live ev
 | `.gitconfig` | `~/.gitconfig` | all |
 | `.gitignore_global` | `~/.gitignore_global` | all |
 | `hypr/monitors.conf` | `~/.config/hypr/monitors.conf` | Omarchy |
+| `hypr/hyprlock.conf` | `~/.config/hypr/hyprlock.conf` | Omarchy |
 | `waybar/` | `~/.config/waybar/` | Omarchy |
 
 ## Desktop Environment (Omarchy/Hyprland)
 
 On Omarchy, the base Wayland desktop is provided by [Omarchy](https://github.com/basecamp/omarchy); these dotfiles layer config on top:
 
-- **Hyprland**: monitor layout in `hypr/monitors.conf`.
+- **Hyprland**: monitor layout in `hypr/monitors.conf`; lock screen font in `hypr/hyprlock.conf`.
 - **Waybar**: status bar (`waybar/config.jsonc`, `waybar/style.css`).
 - **Mako**, **Walker**, **Ghostty**: notifications, launcher, and terminal.
 
-> Hyprland keybindings, window rules, animations, and the broader Waybar setup are managed by Omarchy itself. This repo only owns the monitor config and the per-app theming above.
+> Hyprland keybindings, window rules, animations, and the broader Waybar setup are managed by Omarchy itself. This repo only owns the monitor config, the hyprlock font override, and the per-app theming above.
 
 ## Custom Fish Functions
 
@@ -316,14 +318,14 @@ Functions live in `fish/functions/` (shared) and under each `os/<platform>` tree
 
 **Messaging** (`header-message`, `success-message`, `error-message`, `running-message`, `information-message`): consistent status output during setup.
 
-**Git helpers** (`git-branch-name`, `git-sha`, `git-modified-files-count`, `git-staged-files-count`, `git-untracked-files-count`): used by the prompt and scripts.
+**Git helpers** (`git-branch-name`, `git-sha`, `git-modified-files-count`, `git-staged-files-count`, `git-untracked-files-count`): available for use in a custom prompt or scripts.
 
-**System** (`switch-shell-to-fish`, `reboot-system`, `confirm-reboot-system`, `create-directory-if-not-exists`, `delete-if-exists`).
+**System** (`switch-shell-to-fish`, `reboot-system`, `confirm-reboot-system`, `create-directory-if-not-exists`, `delete-if-exists`, `make-symlink`).
 
 **Setup helpers**:
 
 - `install-sesh`: installs the sesh session manager via `go`.
-- `authenticate-github`: checks for an SSH public key (`~/.ssh/id_*.pub`); if none exists, runs `gh auth login`.
+- `authenticate-github`: runs `gh auth status` to check whether the GitHub CLI is already authenticated; if not, runs `gh auth login`.
 - `install-tmux-plugin-manager`, `set-gnome-preferences` (Ubuntu), the `clone-*` repo functions, and the `symlink-*` / `make-*` functions.
 
 **Package-manager wrappers** (in `os/<platform>/utilities/`): `brew-install-package`, `brew-cask-install-package`, `pacman-install-package`, `yay-install-package`, `sudo-apt-install-package`, `sudo-snap-install-package`, `flatpak-install-package`.

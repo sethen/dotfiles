@@ -1,6 +1,11 @@
 #!/usr/bin/env fish
 
 function dot-launcher
+    if not type -q gum
+        error-message "gum not found in PATH; cannot run dot-launcher"
+        return 1
+    end
+
     set -l TARGET_FUNCTIONS
 
     for func in (functions -n)
@@ -25,7 +30,7 @@ function dot-launcher
         return
     end
 
-    if functions $SELECTED | grep -q argv
+    if functions $SELECTED | grep -qw '\$argv'
         read -P "⌨️  Enter arguments for $SELECTED: " ARGS
         $SELECTED (string split ' ' -- $ARGS)
     else
