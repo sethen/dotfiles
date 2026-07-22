@@ -12,13 +12,14 @@ function run-common-pre
     make-mise-directory
     symlink-mise-config-files
     install-mise
-    # config.fish adds mise to PATH for interactive shells, but that isn't loaded
-    # during a fresh run — so if mise isn't reachable yet, add it for this run
-    if not type -q mise; and test -x $HOME/.local/bin/mise
-        fish_add_path -m $HOME/.local/bin
+    # config.fish makes mise + its tools available in interactive shells, but a
+    # fresh run inherits none of that. If gum isn't reachable yet, bootstrap it:
+    # put mise on PATH, install gum, then activate the tool env for this run.
+    if not type -q gum
+        test -x $HOME/.local/bin/mise; and fish_add_path -m $HOME/.local/bin
+        mise install gum
+        mise env fish | source
     end
-    mise install gum
-    mise env fish | source
 
     # user — prompt for anything not yet configured before the steps below need it
     configure-user
