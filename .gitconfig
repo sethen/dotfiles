@@ -1,14 +1,13 @@
 [core]
-  editor = nvim 
+  editor = nvim
   excludesfile = ~/.gitignore_global
-[github]
-  user = sethen
 [push]
   default = simple
 [pull]
   rebase = true
 [init]
   defaultBranch = main
-[user]
-  name = Sethen Maleno
-  email = sethen@github.com
+# Personal identity (user name/email, github user) is generated per-machine by
+# configure-user and lives here; keeps this committed config identity-free.
+[include]
+  path = ~/.gitconfig.local

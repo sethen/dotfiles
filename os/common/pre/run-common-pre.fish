@@ -6,17 +6,31 @@ function run-common-pre
     # global
     switch-shell-to-fish
 
+    # bootstrap mise + gum before anything else: gum is a mise-managed tool (not a
+    # system package), and configure-user needs it to prompt on a fresh machine
+    make-config-directory
+    make-mise-directory
+    symlink-mise-config-files
+    install-mise
+    # config.fish adds mise to PATH for interactive shells, but that isn't loaded
+    # during a fresh run — so if mise isn't reachable yet, add it for this run
+    if not type -q mise; and test -x $HOME/.local/bin/mise
+        fish_add_path -m $HOME/.local/bin
+    end
+    mise install gum
+    mise env fish | source
+
+    # user — prompt for anything not yet configured before the steps below need it
+    configure-user
+
     # prep
     #-> files
-    make-config-directory
     make-developer-directory
-    make-mise-directory
     make-tmux-directory
     symlink-fish-config-file
     symlink-fish-functions-directory
     symlink-ghostty-config-directory
     symlink-git-config-files
-    symlink-mise-config-files
     symlink-opencode-config-files
     symlink-neovim-config-directory
     symlink-sesh-config-directory
@@ -28,11 +42,7 @@ function run-common-pre
     add-user-to-docker-group
 
     # install
-    #-> curl
-    install-mise
-    # add mise to PATH for this run; installer doesn't touch the live shell
-    test -x $HOME/.local/bin/mise; and fish_add_path -m $HOME/.local/bin
-    #-> mise
+    #-> mise (remaining tools)
     mise install
     mise env fish | source
     #-> go

@@ -40,7 +40,9 @@ if set -q _flag_update
 end
 
 # source fish functions
-set -l OS_PATHS $DOTFILES_OS_DISTRO_DIRECTORY $DOTFILES_OS_DISTRO_DIRECTORY/**/ $DOTFILES_OS_COMMON_DIRECTORY $DOTFILES_OS_COMMON_DIRECTORY/**/
+# include fish/functions so the shared helpers (messaging, configure-user, …) load
+# on a fresh machine, before ~/.config/fish/functions has been symlinked
+set -l OS_PATHS $DOTFILES_DIRECTORY/fish/functions $DOTFILES_OS_DISTRO_DIRECTORY $DOTFILES_OS_DISTRO_DIRECTORY/**/ $DOTFILES_OS_COMMON_DIRECTORY $DOTFILES_OS_COMMON_DIRECTORY/**/
 
 for dir in $OS_PATHS
     if test -d $dir
@@ -53,7 +55,7 @@ end
 run-$SYSTEM_OS-pre
 run-common-pre
 
-header-message "welcome to sethen's dot-launcher for fish shell"
+header-message "welcome to the dot-launcher for fish shell"
 
 if set -q _flag_launcher
     dot-launcher
@@ -61,4 +63,4 @@ else
     run-$SYSTEM_OS-all
 end
 
-header-message "thank you for using sethen's dot-launcher for fish shell"
+header-message "thank you for using the dot-launcher for fish shell"

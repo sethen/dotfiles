@@ -13,6 +13,7 @@ fzf = "latest"
 gh = "latest"
 go = "latest"
 gum = "latest"
+herdr = "latest"
 java = "latest"
 kubectl = "latest"
 lazydocker = "latest"
@@ -34,6 +35,8 @@ yazi = "latest"
 zellij = "latest"
 zig = "latest"
 zoxide = "latest"
+ollama = "0.30.9"
+claude = "latest"
 
 [settings.ruby]
 compile = false

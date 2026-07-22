@@ -6,3 +6,6 @@ tea_debug.log
 .DS_Store
 *.swp
 *~
+
+# Per-user values captured during setup (see configure-user)
+user.fish

@@ -31,7 +31,7 @@ function dot-launcher
     end
 
     if functions $SELECTED | grep -qw '\$argv'
-        read -P "⌨️  Enter arguments for $SELECTED: " ARGS
+        set -l ARGS (gum input --header "arguments for $SELECTED")
         $SELECTED (string split ' ' -- $ARGS)
     else
         $SELECTED
