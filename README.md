@@ -268,6 +268,20 @@ AI coding assistant config in `opencode/`:
 
 `opencode/opencode.json` and `opencode/themes/` are symlinked into `~/.config/opencode/`. See [opencode.ai](https://opencode.ai).
 
+### Herdr
+
+Agent multiplexer config in `herdr/`:
+
+| Setting | Value |
+|---------|-------|
+| Theme | catppuccin-mocha |
+| Shell | fish |
+| Prefix | ctrl+b |
+| Sidebar | agent state, workspace, tab |
+| Notifications | system toast |
+
+`herdr/config.toml` is symlinked into `~/.config/herdr/`. Herdr runs AI coding agents (Claude Code, OpenCode, etc.) in persistent panes with state tracking. Install integrations with `herdr integration install claude` and `herdr integration install opencode`. See [herdr.dev](https://herdr.dev).
+
 ### Fonts
 
 | Font | Description |
@@ -294,6 +308,7 @@ Config lives in this repo and is symlinked into place, so edits here are live ev
 | `sesh/` | `~/.config/sesh/` | all |
 | `opencode/opencode.json` | `~/.config/opencode/opencode.json` | all |
 | `opencode/themes/` | `~/.config/opencode/themes/` | all |
+| `herdr/config.toml` | `~/.config/herdr/config.toml` | all |
 | `mise/mise.toml` | `~/.config/mise/mise.toml` | all |
 | `mise/.default-gems` | `~/.default-gems` | all |
 | `.gitconfig` | `~/.gitconfig` | all |
@@ -327,6 +342,8 @@ Functions live in `fish/functions/` (shared) and under each `os/<platform>` tree
 - `install-sesh`: installs the sesh session manager via `go`.
 - `authenticate-github`: runs `gh auth status` to check whether the GitHub CLI is already authenticated; if not, runs `gh auth login`.
 - `install-tmux-plugin-manager`, `set-gnome-preferences` (Ubuntu), the `clone-*` repo functions, and the `symlink-*` / `make-*` functions.
+
+**AI agents** (`herdr-start`): starts the Herdr agent multiplexer, launches Claude and OpenCode if no agents are running, then attaches to the session.
 
 **Package-manager wrappers** (in `os/<platform>/utilities/`): `brew-install-package`, `brew-cask-install-package`, `pacman-install-package`, `yay-install-package`, `sudo-apt-install-package`, `sudo-snap-install-package`, `flatpak-install-package`.
 
@@ -431,6 +448,8 @@ dotfiles/
 ├── opencode/
 │   ├── opencode.json           # Opencode config
 │   └── themes/                 # Opencode themes
+├── herdr/
+│   └── config.toml             # Herdr agent multiplexer config
 ├── starship/
 │   └── starship.toml           # Prompt configuration
 ├── ghostty/

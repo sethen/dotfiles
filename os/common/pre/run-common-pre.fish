@@ -39,6 +39,7 @@ function run-common-pre
     symlink-tmux-config-file
     symlink-yazi-config-directory
     symlink-zellij-config-file
+    symlink-herdr-config
     #-> permissions
     add-user-to-docker-group
 

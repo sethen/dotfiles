@@ -1,0 +1,26 @@
+onboarding = false
+
+[theme]
+name = "catppuccin-mocha"
+
+[terminal]
+default_shell = "fish"
+
+[keys]
+prefix = "ctrl+b"
+
+[ui.sidebar.agents]
+rows = [
+  ["state_icon", "agent", "state_text"],
+  ["workspace", "tab"],
+]
+
+[ui.toast]
+delivery = "system"
+delay_seconds = 1
+
+[ui.sound]
+enabled = true
+
+[ui]
+agent_panel_sort = "spaces"

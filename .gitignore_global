@@ -190,3 +190,5 @@ out/
 #   - bin/      (script bins are often committed, e.g., this dotfiles repo)
 #   - lockfiles (package-lock.json, Cargo.lock, etc. — project decision)
 #   - Gemfile.lock, yarn.lock, pnpm-lock.yaml — same
+
+**/.claude/settings.local.json
