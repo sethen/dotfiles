@@ -46,6 +46,21 @@ function run-common-pre
     # install
     #-> mise (remaining tools)
     mise install
+    # `mise install` only fills in what's missing. An already-installed tool
+    # satisfies a `latest` spec forever, so versions never move on their own.
+    # Bumping them takes an explicit upgrade, gated behind the update flag to
+    # match brew/apt/pacman in the per-platform pre scripts.
+    if test "$RUN_DOTFILES_UPDATE" = true
+        # self-update is unavailable when mise came from a package manager
+        mise self-update --yes
+        or information-message "mise self-update unavailable, skipping"
+
+        # no --bump: this keeps the ranges in mise.toml, so `latest` specs move
+        # to newest and pinned versions stay pinned
+        mise upgrade
+    else
+        information-message "run dotfiles update flag not found, skipping mise upgrade"
+    end
     mise env fish | source
     #-> go
     install-sesh

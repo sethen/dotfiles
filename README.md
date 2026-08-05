@@ -67,7 +67,7 @@ Flags can be combined:
 | Flag | Effect |
 |------|--------|
 | `-l`, `--launcher` | Open the interactive `gum` menu instead of running everything. |
-| `-u`, `--update` | Run an update pass (e.g. `brew update && brew upgrade` on macOS). |
+| `-u`, `--update` | Run an update pass: the system package manager (e.g. `brew update && brew upgrade` on macOS) plus `mise self-update` and `mise upgrade`. Without it, tools are only installed when missing, never bumped. |
 | `-r`, `--reboot` | Reboot after setup completes. |
 
 ## How It Works
@@ -93,6 +93,7 @@ run.fish
 │   ├── Symlink every config file/directory into place
 │   ├── Install mise (curl) and add it to PATH for the run
 │   ├── mise install   → installs all tools from mise/mise.toml
+│   ├── mise upgrade   → only with --update; bumps `latest` specs to newest
 │   ├── Install sesh (go)
 │   └── Authenticate with GitHub (ssh key check, else `gh auth login`)
 ├── Main Phase (os/common/main, os/<platform>/main)
@@ -110,6 +111,8 @@ Why this shape? The phase split keeps ordering correct (mise exists before `mise
 ### Development tools (via mise)
 
 `mise/mise.toml` is the source of truth for tool versions. `mise install` reads it and installs everything below.
+
+Note that `mise install` is not an upgrade: a tool that is already installed satisfies a `latest` spec indefinitely, so re-running setup will never move it forward. Pass `-u` / `--update` (or run `mise upgrade` yourself) to bump versions. `mise outdated` shows what is behind.
 
 **Languages & runtimes**
 
@@ -169,7 +172,7 @@ Why this shape? The phase split keeps ordering correct (mise exists before `mise
 | lazyssh | SSH manager |
 | crush | AI coding agent |
 | opencode | AI coding assistant |
-| claude-code | Anthropic's official CLI for Claude |
+| claude | Anthropic's official CLI for Claude (registry alias of `claude-code`; declare only one of the two) |
 
 ### Language servers (via bun)
 
