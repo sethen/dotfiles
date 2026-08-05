@@ -67,7 +67,7 @@ Flags can be combined:
 | Flag | Effect |
 |------|--------|
 | `-l`, `--launcher` | Open the interactive `gum` menu instead of running everything. |
-| `-u`, `--update` | Run an update pass: the system package manager (e.g. `brew update && brew upgrade` on macOS) plus `mise self-update` and `mise upgrade`. Without it, tools are only installed when missing, never bumped. |
+| `-u`, `--update` | Run an update pass: the system package manager (e.g. `brew update && brew upgrade` on macOS) plus `mise upgrade`. Without it, tools are only installed when missing, never bumped. Note that `mise self-update` runs on every setup regardless of this flag. |
 | `-r`, `--reboot` | Reboot after setup completes. |
 
 ## How It Works
@@ -92,8 +92,11 @@ run.fish
 │   ├── Create directories (~/.config, ~/Developer, ~/.config/mise, ...)
 │   ├── Symlink every config file/directory into place
 │   ├── Install mise (curl) and add it to PATH for the run
+│   ├── mise self-update → always; refreshes the registry compiled into mise
 │   ├── mise install   → installs all tools from mise/mise.toml
 │   ├── mise upgrade   → only with --update; bumps `latest` specs to newest
+│   ├── verify-mise-tools → fails loudly if a requested tool never installed
+│   ├── Install herdr agent integrations (claude, opencode)
 │   ├── Install sesh (go)
 │   └── Authenticate with GitHub (ssh key check, else `gh auth login`)
 ├── Main Phase (os/common/main, os/<platform>/main)
@@ -113,6 +116,8 @@ Why this shape? The phase split keeps ordering correct (mise exists before `mise
 `mise/mise.toml` is the source of truth for tool versions. `mise install` reads it and installs everything below.
 
 Note that `mise install` is not an upgrade: a tool that is already installed satisfies a `latest` spec indefinitely, so re-running setup will never move it forward. Pass `-u` / `--update` (or run `mise upgrade` yourself) to bump versions. `mise outdated` shows what is behind.
+
+`mise self-update` runs on every setup, before anything installs through mise. This is not cosmetic: mise's tool registry is compiled into the mise binary, so a mise older than a tool's registry entry cannot resolve that tool by name and `mise install` fails identically on every run. `verify-mise-tools` runs after the install pass and reports anything in `mise.toml` that never landed, since `mise install` exits 0 even when a tool is missing.
 
 **Languages & runtimes**
 
@@ -153,6 +158,7 @@ Note that `mise install` is not an upgrade: a tool that is already installed sat
 | fd | Fast file finder |
 | fzf | Fuzzy finder |
 | ripgrep | Fast line-oriented search |
+| jq | JSON processor (required by `herdr-start` and `create-agent-workspace`) |
 | gum | Pretty interactive shell scripts |
 | zoxide | Smart directory jumper |
 | starship | Shell prompt |
@@ -186,7 +192,7 @@ Cross-platform apps appear in more than one table on purpose: each OS installs t
 
 | CLI (`brew`) | GUI (`brew --cask`) |
 |--------------|---------------------|
-| git, gnupg, nginx | brave-browser, ghostty, spotify, virtualbox |
+| fortune, git, gnupg, nginx | brave-browser, ghostty, spotify, virtualbox |
 
 **Omarchy (pacman / yay)**
 
@@ -283,7 +289,7 @@ Agent multiplexer config in `herdr/`:
 | Sidebar | agent state, workspace, tab |
 | Notifications | system toast |
 
-`herdr/config.toml` is symlinked into `~/.config/herdr/`. Herdr runs AI coding agents (Claude Code, OpenCode, etc.) in persistent panes with state tracking. Install integrations with `herdr integration install claude` and `herdr integration install opencode`. See [herdr.dev](https://herdr.dev).
+`herdr/config.toml` is symlinked into `~/.config/herdr/`. Herdr runs AI coding agents (Claude Code, OpenCode, etc.) in persistent panes with state tracking. The `claude` and `opencode` integrations are installed automatically by `install-herdr-integrations` during setup. They are what report agent state back to herdr; without them the sidebar state columns stay empty and `herdr agent wait --status idle` never resolves. The claude integration writes a hook to `~/.claude/hooks/` and registers a `SessionStart` entry in `~/.claude/settings.json`. Check with `herdr integration status`. See [herdr.dev](https://herdr.dev).
 
 ### Fonts
 

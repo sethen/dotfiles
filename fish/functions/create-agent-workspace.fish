@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 
-function create_agent_workspace --argument label command
+function create-agent-workspace --argument label command
     set -l ws (
         herdr workspace create --label $label --no-focus \
         | jq -r '.result.workspace.workspace_id'

@@ -8,6 +8,7 @@ function run-darwin-main
     install-homebrew
     #-> brew
     install-brave-browser
+    install-fortune
     install-ghostty
     install-git
     install-gnupg

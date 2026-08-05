@@ -6,17 +6,24 @@ function run-common-pre
     # global
     switch-shell-to-fish
 
-    # bootstrap mise + gum before anything else: gum is a mise-managed tool (not a
-    # system package), and configure-user needs it to prompt on a fresh machine
+    # bootstrap mise + gum before anything else
     make-config-directory
     make-mise-directory
     symlink-mise-config-files
     install-mise
-    # config.fish makes mise + its tools available in interactive shells, but a
-    # fresh run inherits none of that. If gum isn't reachable yet, bootstrap it:
-    # put mise on PATH, install gum, then activate the tool env for this run.
+    # config.fish puts mise on PATH for interactive shells, but a fresh run
+    # inherits none of that, and everything below needs mise reachable
+    test -x $HOME/.local/bin/mise; and fish_add_path -m $HOME/.local/bin
+    # mise's tool registry is compiled into the binary, so a mise older than a
+    # tool's registry entry cannot resolve that tool by name and `mise install`
+    # fails the same way on every run. Update mise before anything installs
+    # through it, not after. install-mise only fetches mise when absent, so this
+    # is the sole thing keeping a long-lived machine current.
+    mise self-update --yes
+    or information-message "mise self-update unavailable, skipping"
+    # gum is a mise-managed tool (not a system package) and configure-user needs
+    # it to prompt on a fresh machine, so bootstrap it before anything else
     if not type -q gum
-        test -x $HOME/.local/bin/mise; and fish_add_path -m $HOME/.local/bin
         mise install gum
         mise env fish | source
     end
@@ -51,10 +58,6 @@ function run-common-pre
     # Bumping them takes an explicit upgrade, gated behind the update flag to
     # match brew/apt/pacman in the per-platform pre scripts.
     if test "$RUN_DOTFILES_UPDATE" = true
-        # self-update is unavailable when mise came from a package manager
-        mise self-update --yes
-        or information-message "mise self-update unavailable, skipping"
-
         # no --bump: this keeps the ranges in mise.toml, so `latest` specs move
         # to newest and pinned versions stay pinned
         mise upgrade
@@ -62,6 +65,9 @@ function run-common-pre
         information-message "run dotfiles update flag not found, skipping mise upgrade"
     end
     mise env fish | source
+    verify-mise-tools
+    #-> herdr
+    install-herdr-integrations
     #-> go
     install-sesh
 
