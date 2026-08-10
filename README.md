@@ -97,12 +97,11 @@ run.fish
 │   ├── mise upgrade   → only with --update; bumps `latest` specs to newest
 │   ├── verify-mise-tools → fails loudly if a requested tool never installed
 │   ├── Install herdr agent integrations (claude, opencode)
-│   ├── Install sesh (go)
 │   └── Authenticate with GitHub (ssh key check, else `gh auth login`)
 ├── Main Phase (os/common/main, os/<platform>/main)
 │   ├── Install OS packages (brew / pacman / apt / snap / flatpak)
 │   ├── Install language servers (via bun)
-│   └── Clone repositories (dotfiles, wallpapers, tmux plugin manager)
+│   └── Clone repositories (dotfiles, wallpapers)
 └── Post Phase (os/common/post)
     └── Final configuration
 ```
@@ -160,9 +159,7 @@ Note that `mise install` is not an upgrade: a tool that is already installed sat
 | ripgrep | Fast line-oriented search |
 | jq | JSON processor (required by `herdr-start` and `create-agent-workspace`) |
 | gum | Pretty interactive shell scripts |
-| zoxide | Smart directory jumper |
 | starship | Shell prompt |
-| tmux | Terminal multiplexer |
 | yazi | Terminal file manager |
 | neovim | Modern Vim editor |
 | gh | GitHub CLI |
@@ -220,7 +217,7 @@ brave, vlc, virtualbox, postgresql, nginx, ffmpeg, gparted, gpick, font-manager,
 
 - Exports `DEVELOPER_DIRECTORY` and `BUN_INSTALL`, and puts `~/.bun/bin`, `~/.local/bin`, and Homebrew on `PATH`.
 - Activates mise when present (`if type -q mise`).
-- For interactive sessions, initializes `zoxide` and `starship` (each guarded by `type -q`).
+- For interactive sessions, initializes `starship` (guarded by `type -q`).
 - Greeting comes from `fortune`.
 
 ### Starship prompt
@@ -239,7 +236,7 @@ Keybindings are WezTerm's defaults; `wezterm/lua/keys.lua` only adds workspace s
 - `wezterm/lua/mux.lua`: the unix domain is configured but is deliberately *not* the default domain. Run `wezterm connect unix` when you want a session that outlives its window; Making it the default instead means closing a window only detaches it, the mux keeps that window forever, and every later launch re-materializes all of them before `wezterm start` adds the one you asked for, so `SUPER+RETURN` opens one window, then two, then three. Pointing the desktop entry at `wezterm connect` instead would stop that, but `connect` takes no `--cwd`, so `SUPER+RETURN` would stop opening in the focused terminal's directory. The domain deliberately omits `connect_automatically`: combined with the desktop entry's `wezterm connect unix` it attaches twice and panics the Wayland window code (`window.rs:1147`), leaving no window at all.
 - `wezterm/lua/status.lua`: bar pinned to the bottom - mode badge left, tab list centered, workspace right. The badge only appears in `copy_mode` and `search_mode`, WezTerm's only default key tables, so it never claims a mode that does not exist. Centering pads the left status by the measured width of the rendered tab titles; note that `format-tab-title` receives a `TabInformation` while `tabs_with_info()` returns `MuxTabInformation`, which carry different fields.
 - `wezterm/lua/workspaces.lua`: `dotfiles` and `worth-api` each get `nvim`, `lazygit`, `lazydocker` and one agent - `opencode` and `claude` respectively; `gem` spans both gem repos with `nvim-fe`, `nvim-be`, `dev-fe` (`npm run dev`), `compose-be` (`docker compose up --build`), `lazygit-fe`, `lazygit-be`, one `lazydocker` and one `opencode`; `main` holds what belongs to no project (`herdr`, `shell`, `yazi`). Tabs may carry their own `cwd`, which is what lets `gem` hold two codebases at once. The agents are plain tabs rather than herdr agents, so each is rooted in its own codebase; herdr is one global session with one shared agent list and no project in it, so routing them through it would give every workspace a view of the same agents. That is also why `herdr` is only in `main`. Built on `mux-startup` so it lands in `wezterm-mux-server` and survives closing the window; not `gui-startup`, which fires per GUI process and lets wezterm spawn a spare window alongside the layout. Each tab's command is the tab's own process via `exec`, run through a login `fish` so mise is on `PATH`. The command `cd`s itself because `spawn_tab` silently ignores its `cwd` when `args` is also given, while `spawn_window` honours it. A tab closes when its program exits. `wezterm-restart` tears down the mux server so the layout rebuilds.
-- `wezterm/desktop/xdg-terminals.list`: names WezTerm as the terminal `xdg-terminal-exec` should pick, which is what Omarchy's `SUPER+RETURN` and its launcher call. Without it the choice among the installed `TerminalEmulator` entries is unspecified.
+- `xdg/xdg-terminals.list`: names WezTerm as the terminal `xdg-terminal-exec` should pick, which is what Omarchy's `SUPER+RETURN` and its launcher call, with Alacritty second as the fallback. Without it the choice among the installed `TerminalEmulator` entries is unspecified. It sits outside `wezterm/` because it is a system-level choice of terminal rather than WezTerm configuration.
 - `wezterm/desktop/org.wezfurlong.wezterm.desktop`: shadows the packaged entry to run `wezterm connect unix` instead of `wezterm start --cwd .`. The packaged one always spawns a window of its own, which on top of the attached layout meant two windows every time. `connect` attaches without spawning. The cost: `wezterm connect` takes no `--cwd`, so `SUPER+RETURN` opens the session rather than the focused terminal's directory.
 
 ### Yazi file manager
@@ -249,14 +246,6 @@ Config in `yazi/`:
 - `yazi.toml`: manager settings (permission line mode, show hidden, show symlinks)
 - `theme.toml`: selects the `catppuccin-mocha` flavor and defines a large icon table (per-extension glyphs and colors)
 - `flavors/catppuccin-mocha.yazi/`: the installed flavor package: `flavor.toml` (UI colors) and `tmtheme.xml` (syntax highlighting for the preview pane)
-
-### tmux
-
-`tmux/tmux.conf`, with plugins managed by TPM (cloned during the main phase).
-
-### sesh
-
-`sesh/sesh.toml` configures the [sesh](https://github.com/joshmedeski/sesh) tmux session manager.
 
 ### Neovim
 
@@ -315,10 +304,8 @@ Config lives in this repo and is symlinked into place, so edits here are live ev
 | `starship/starship.toml` | `~/.config/starship.toml` | all |
 | `wezterm/` | `~/.config/wezterm/` | all |
 | `wezterm/desktop/org.wezfurlong.wezterm.desktop` | `~/.local/share/applications/org.wezfurlong.wezterm.desktop` | Omarchy |
-| `wezterm/desktop/xdg-terminals.list` | `~/.config/xdg-terminals.list` | Omarchy |
+| `xdg/xdg-terminals.list` | `~/.config/xdg-terminals.list` | Omarchy |
 | `yazi/` | `~/.config/yazi/` | all |
-| `tmux/tmux.conf` | `~/.config/tmux/tmux.conf` | all |
-| `sesh/` | `~/.config/sesh/` | all |
 | `opencode/opencode.json` | `~/.config/opencode/opencode.json` | all |
 | `opencode/themes/` | `~/.config/opencode/themes/` | all |
 | `herdr/config.toml` | `~/.config/herdr/config.toml` | all |
@@ -352,9 +339,8 @@ Functions live in `fish/functions/` (shared) and under each `os/<platform>` tree
 
 **Setup helpers**:
 
-- `install-sesh`: installs the sesh session manager via `go`.
 - `authenticate-github`: runs `gh auth status` to check whether the GitHub CLI is already authenticated; if not, runs `gh auth login`.
-- `install-tmux-plugin-manager`, `set-gnome-preferences` (Ubuntu), the `clone-*` repo functions, and the `symlink-*` / `make-*` functions.
+- `set-gnome-preferences` (Ubuntu), the `clone-*` repo functions, and the `symlink-*` / `make-*` functions.
 
 **AI agents** (`herdr-start`): starts the Herdr agent multiplexer, launches Claude and OpenCode if no agents are running, then attaches to the session.
 
@@ -468,15 +454,13 @@ dotfiles/
 ├── wezterm/
 │   ├── wezterm.lua             # Terminal entry point
 │   ├── lua/                    # theme, appearance, mux, status, keys, workspaces
-│   └── desktop/                # desktop entry + xdg-terminal-exec preference list
+│   └── desktop/                # wezterm's own desktop entry
+├── xdg/
+│   └── xdg-terminals.list      # xdg-terminal-exec preference order
 ├── yazi/
 │   ├── yazi.toml               # Manager settings
 │   ├── theme.toml              # Flavor selection + icon table
 │   └── flavors/                # Installed flavor package(s)
-├── tmux/
-│   └── tmux.conf               # Terminal multiplexer
-├── sesh/
-│   └── sesh.toml               # tmux session manager
 ├── hypr/
 │   └── monitors.conf           # Monitor configuration (Omarchy)
 ├── waybar/

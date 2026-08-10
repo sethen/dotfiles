@@ -2,9 +2,12 @@
 # SUPER+RETURN and the omarchy launcher call. the first entry that resolves to an
 # installed desktop file wins.
 #
-# it names the entry in this directory, which is our own rather than the packaged
-# one: ours runs `wezterm connect unix` so opening a terminal attaches the layout
-# instead of spawning a bare window beside it.
+# it names wezterm/desktop/org.wezfurlong.wezterm.desktop, which is our own entry
+# rather than the packaged one: ours runs `wezterm connect unix` so opening a
+# terminal attaches the layout instead of spawning a bare window beside it.
+#
+# this lives outside wezterm/ on purpose. it is a system-level choice of terminal,
+# not wezterm configuration, and it names alacritty too.
 #
 # without this file the choice among the installed TerminalEmulator entries is
 # unspecified, and alacritty is installed alongside wezterm on omarchy. it stays

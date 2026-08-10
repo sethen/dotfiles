@@ -12,8 +12,6 @@ This repository contains personal dotfiles for setting up a development environm
 - **`mise/`** - Development tool version management configuration
 - **`starship/`** - Shell prompt customization
 - **`wezterm/`** - Terminal emulator configuration (Lua); also covers multiplexing, panes, tabs and workspaces
-- **`tmux/`** - Terminal multiplexer settings
-- **`sesh/`** - Session manager (integrates with tmux)
 - **`yazi/`** - Terminal file manager configuration
 - **`hypr/`** - Hyprland (Wayland compositor) overrides (Omarchy)
 - **`waybar/`** - Status bar configuration (Omarchy)

@@ -34,15 +34,12 @@ function run-common-pre
     # prep
     #-> files
     make-developer-directory
-    make-tmux-directory
     symlink-fish-config-file
     symlink-fish-functions-directory
     symlink-git-config-files
     symlink-opencode-config-files
     symlink-neovim-config-directory
-    symlink-sesh-config-directory
     symlink-starship-config-directory
-    symlink-tmux-config-file
     symlink-wezterm-config-directory
     symlink-yazi-config-directory
     symlink-herdr-config
@@ -68,7 +65,6 @@ function run-common-pre
     #-> herdr
     install-herdr-integrations
     #-> go
-    install-sesh
 
     # github
     authenticate-github
