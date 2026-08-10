@@ -25,6 +25,22 @@ local M = {}
 -- growing the icons means growing the cell - font_size or line_height - which
 -- grows the text with it. the only bar-local escape is use_fancy_tab_bar with its
 -- own window_frame.font_size, which enlarges the whole bar rather than the icons.
+--
+-- one thing does make them bigger, and it is still not usable. these glyphs are
+-- square, so a single cell caps them by width rather than height, and declaring the
+-- range double-width lifts that cap - measured 11.11 -> 16.0 glyph height on U+F076,
+-- a 44% increase, without touching a letter:
+--
+--   config.cell_widths = { { first = 0xf000, last = 0xf1b2, width = 2 } }
+--
+-- but cell_widths is global rather than per-surface. those codepoints then take two
+-- columns inside every TUI as well, and neovim's icons stop rendering entirely. the
+-- status bar is not worth breaking the editor for.
+--
+-- also ruled out: lowering head.unitsPerEm, OS/2 sCapHeight, or the declared ascent
+-- all change nothing, because wezterm ignores a fallback font's declared metrics
+-- when sizing it. that is also why redrawing the glyphs larger in the font does not
+-- help - it is the same edit as lowering unitsPerEm, which measured +4%.
 local FONTS = {
    'JetBrains Mono',               -- unpatched; also sets the cell metrics
    'SethensSuperCode',             -- covers U+0020 and U+F000-U+F1B2, nothing else
@@ -36,6 +52,16 @@ local FONTS = {
 function M.apply(config)
    config.font = wezterm.font_with_fallback(FONTS)
    config.font_size = 13.0
+
+   -- the command palette (CTRL+SHIFT+P), the character picker and the pane selector
+   -- are gui overlays rather than terminal cells, so their font size is independent
+   -- of font_size above and of the cell. that also makes them the one place icons
+   -- can genuinely be drawn larger - see the note above ICON handling.
+   config.command_palette_font = wezterm.font_with_fallback(FONTS)
+   config.command_palette_font_size = 13.0
+   config.command_palette_bg_color = theme.ui.bg
+   config.command_palette_fg_color = theme.colors.foreground
+   config.command_palette_rows = 14
 
    -- wezterm only takes a multiplier for cell height. nudge this if the leading
    -- reads too tight or too loose.

@@ -32,7 +32,11 @@ local MODES = {
    search_mode = { label = 'SEARCH', color = ui.search, icon = '\u{f06e}' },
 }
 
-local WORKSPACE_ICON = ''
+-- swapping this for a nerd font icon outside the F000-F1B2 range is not worth it.
+-- cod-rocket (U+EB44), cod-terminal (U+EA85), oct-terminal (U+F489) and dev-terminal
+-- (U+E795) all rasterise to 11-12 against this one's 11.11, because the ceiling is
+-- the cell rather than the font, and the thinner outlines read worse at that size.
+local WORKSPACE_ICON = '\u{f076}'
 
 local function current_mode(window)
    local table_name = window:active_key_table()

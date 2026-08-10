@@ -69,8 +69,10 @@ local WORKSPACES = {
       name = 'main',
       cwd = DEVELOPER,
       tabs = {
+         -- shell first, not merely marked focus: activating a tab from mux-startup
+         -- does not survive a gui attaching, which lands on the first tab regardless.
+         { title = 'shell', focus = true },
          { title = 'herdr', cmd = 'herdr-start', shell_function = true },
-         { title = 'shell' },
          { title = 'yazi', cmd = 'yazi' },
       },
    },
@@ -115,6 +117,8 @@ local function build_workspace(spec)
 
    tab:set_title(first.title)
 
+   local spawned_tabs = { tab }
+
    for index = 2, #spec.tabs do
       local entry = spec.tabs[index]
       local entry_cwd = entry.cwd or spec.cwd
@@ -124,10 +128,21 @@ local function build_workspace(spec)
       })
 
       spawned:set_title(entry.title)
+
+      table.insert(spawned_tabs, spawned)
    end
 
-   -- spawn_tab leaves the last tab focused; open on the first instead
-   tab:activate()
+   -- spawn_tab leaves the last tab focused, so the tab to open on is always set
+   -- explicitly: whichever entry is marked focus, otherwise the first.
+   local focus = 1
+
+   for index, entry in ipairs(spec.tabs) do
+      if entry.focus then
+         focus = index
+      end
+   end
+
+   spawned_tabs[focus]:activate()
 end
 
 -- mux-startup, not gui-startup. gui-startup fires for every gui process and would
