@@ -8,6 +8,7 @@ function run-ubuntu-main
     install-autoconf
     install-brave-browser
     install-font-manager
+    install-fonts-jetbrains-mono
     install-fortune-mod
     install-gnome-tweaks
     install-gparted
@@ -19,7 +20,7 @@ function run-ubuntu-main
     install-virtualbox
     install-vlc
     #-> curl
-    install-ghostty
+    install-wezterm
     #-> flatpak
     install-flatpak
     install-zen

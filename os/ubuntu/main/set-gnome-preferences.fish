@@ -8,7 +8,7 @@ function set-gnome-preferences
     dconf write /org/gnome/shell/extensions/dash-to-dock/dock-fixed false
     dconf write /org/gnome/shell/extensions/dash-to-dock/dock-position "'BOTTOM'"
     dconf write /org/gnome/shell/extensions/dash-to-dock/extend-height false
-    dconf write /org/gnome/shell/favorite-apps "['org.gnome.Nautilus.desktop', 'brave-browser.desktop', 'org.gnome.Calculator.desktop', 'com.mitchellh.ghostty.desktop', 'gpick.desktop', 'gparted.desktop', 'google-chrome.desktop',  'vlc.desktop', 'org.gnome.Settings.desktop', 'org.gnome.tweaks.desktop']"
+    dconf write /org/gnome/shell/favorite-apps "['org.gnome.Nautilus.desktop', 'brave-browser.desktop', 'org.gnome.Calculator.desktop', 'org.wezfurlong.wezterm.desktop', 'gpick.desktop', 'gparted.desktop', 'google-chrome.desktop',  'vlc.desktop', 'org.gnome.Settings.desktop', 'org.gnome.tweaks.desktop']"
     dconf write /org/gnome/shell/extensions/dash-to-dock/show-mounts false
     dconf write /org/gnome/shell/extensions/dash-to-dock/show-show-apps-button false
     dconf write /org/gnome/shell/extensions/dash-to-dock/show-trash false

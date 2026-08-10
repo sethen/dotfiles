@@ -1,0 +1,14 @@
+# terminal preference order for xdg-terminal-exec, which is what omarchy's
+# SUPER+RETURN and the omarchy launcher call. the first entry that resolves to an
+# installed desktop file wins.
+#
+# it names the entry in this directory, which is our own rather than the packaged
+# one: ours runs `wezterm connect unix` so opening a terminal attaches the layout
+# instead of spawning a bare window beside it.
+#
+# without this file the choice among the installed TerminalEmulator entries is
+# unspecified, and alacritty is installed alongside wezterm on omarchy. it stays
+# second so a broken or missing wezterm still leaves a working terminal on the
+# keybind.
+org.wezfurlong.wezterm.desktop
+Alacritty.desktop

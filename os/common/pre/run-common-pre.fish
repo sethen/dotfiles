@@ -37,15 +37,14 @@ function run-common-pre
     make-tmux-directory
     symlink-fish-config-file
     symlink-fish-functions-directory
-    symlink-ghostty-config-directory
     symlink-git-config-files
     symlink-opencode-config-files
     symlink-neovim-config-directory
     symlink-sesh-config-directory
     symlink-starship-config-directory
     symlink-tmux-config-file
+    symlink-wezterm-config-directory
     symlink-yazi-config-directory
-    symlink-zellij-config-file
     symlink-herdr-config
     #-> permissions
     add-user-to-docker-group

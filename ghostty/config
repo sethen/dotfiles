@@ -1,7 +1,0 @@
-theme = Catppuccin Mocha
-font-size = 13
-adjust-cell-height = 3
-async-backend = epoll
-
-font-codepoint-map = U+F000-U+F1B2=SethensSuperCode
-

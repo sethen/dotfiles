@@ -1,0 +1,21 @@
+[Desktop Entry]
+# shadows the entry shipped by the wezterm package, which is Exec=wezterm start
+# --cwd . and always spawns a window of its own. with the development layout
+# attached from the unix domain that produced two windows every time: the layout,
+# plus a spare shell. `connect` attaches without spawning, so opening the terminal
+# gives exactly the layout.
+#
+# the cost is deliberate and worth knowing: `wezterm connect` takes no --cwd, so
+# there are no X-TerminalArg* keys here and SUPER+RETURN no longer opens in the
+# focused terminal's directory. it opens the session instead.
+Name=WezTerm
+Comment=Wez's Terminal Emulator
+Keywords=shell;prompt;command;commandline;cmd;terminal;tty;pty;
+Icon=org.wezfurlong.wezterm
+StartupWMClass=org.wezfurlong.wezterm
+StartupNotify=true
+TryExec=wezterm
+Exec=wezterm connect unix
+Type=Application
+Categories=System;TerminalEmulator;
+Terminal=false

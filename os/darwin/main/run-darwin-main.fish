@@ -8,11 +8,12 @@ function run-darwin-main
     install-homebrew
     #-> brew
     install-brave-browser
+    install-font-jetbrains-mono
     install-fortune
-    install-ghostty
     install-git
     install-gnupg
     install-nginx
     install-spotify
     install-virtualbox
+    install-wezterm
 end

@@ -18,6 +18,8 @@ function run-omarchy-main
     install-nginx
     install-openssh
     install-postgresql
+    install-ttf-jetbrains-mono
     install-virtualbox
     install-vlc
+    install-wezterm
 end

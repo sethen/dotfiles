@@ -27,7 +27,7 @@ These are my personal dotfiles. They take a bare machine and turn it into a full
 - **One installer, three operating systems.** A single `fish run.fish` detects macOS, Omarchy (Arch/Hyprland), or Ubuntu and runs the matching scripts. Shared steps live in `os/common`; platform-specific steps live under `os/darwin`, `os/omarchy`, and `os/ubuntu`.
 - **Phase-based and idempotent.** Setup runs in `pre`, `main`, and `post` phases. Re-running is safe: symlinks use `ln -sfv`, and installers check before reinstalling.
 - **One toolchain manager.** Almost every CLI tool and language runtime is pinned in `mise/mise.toml` and installed by [mise](https://mise.jdx.dev), so the same versions land on every machine.
-- **Catppuccin Mocha everywhere.** Ghostty, Starship, Neovim, Zellij, Yazi, and Opencode all share the same palette.
+- **Catppuccin Mocha everywhere.** WezTerm, Starship, Neovim, Yazi, and Opencode all share the same palette.
 - **A custom Nerd Font.** `SethensSuperCode.ttf` carries the icon glyphs used across the terminal, prompt, and editor.
 - **Interactive or hands-off.** Run the whole thing automatically, or use `--launcher` to pick individual steps from a filterable menu.
 
@@ -163,7 +163,6 @@ Note that `mise install` is not an upgrade: a tool that is already installed sat
 | zoxide | Smart directory jumper |
 | starship | Shell prompt |
 | tmux | Terminal multiplexer |
-| zellij | Terminal workspace |
 | yazi | Terminal file manager |
 | neovim | Modern Vim editor |
 | gh | GitHub CLI |
@@ -192,20 +191,24 @@ Cross-platform apps appear in more than one table on purpose: each OS installs t
 
 | CLI (`brew`) | GUI (`brew --cask`) |
 |--------------|---------------------|
-| fortune, git, gnupg, nginx | brave-browser, ghostty, spotify, virtualbox |
+| fortune, git, gnupg, nginx | brave-browser, wezterm, font-jetbrains-mono, spotify, virtualbox |
 
 **Omarchy (pacman / yay)**
 
-brave, vlc, virtualbox, postgresql, nginx, ffmpeg, gparted, gpick, font-manager, grub, mdadm, openssh, ca-certificates, curl, fortune-mod
+brave, vlc, virtualbox, postgresql, nginx, ffmpeg, gparted, gpick, font-manager, grub, mdadm, openssh, ca-certificates, curl, fortune-mod, wezterm-nightly-bin, ttf-jetbrains-mono
+
+> WezTerm is a system package rather than a mise tool on purpose: mise has no registry entry for it, and the `ubi`/`github` backends cannot install it either, because upstream publishes only per-distro debs, rpms and an AppImage with no generic Linux tarball. A real package also supplies the terminfo, the icon and `wezterm-mux-server`.
+>
+> On Omarchy it comes from `wezterm-nightly-bin` (AUR), not `extra/wezterm`. The repo package is pinned to `20240203`, upstream's last tagged release, and its Wayland backend never commits a buffer under Hyprland 0.56: the process starts, OpenGL initializes and the shell renders, but the surface is never mapped, so the terminal simply never appears. Reproducible with `wezterm-gui -n`, so it is the binary and not the config. `enable_wayland = false` and `front_end = "WebGpu"` do not work around it. The nightly provides/conflicts `wezterm`; if `extra/wezterm` is ever installed the run aborts, since pacman raises that conflict as a `y/N` prompt that `--noconfirm` answers with the default `N`. Remove it with `sudo pacman -R wezterm` and re-run.
 
 **Ubuntu (apt / snap / flatpak)**
 
 | Source | Packages |
 |--------|----------|
-| apt | brave-browser, vlc, virtualbox, postgresql, nginx, gparted, gpick, font-manager, autoconf, bison, build-essential, ca-certificates, gnupg, gnome-tweaks, lsb-release, mdadm, ncurses, fortune-mod |
+| apt | brave-browser, vlc, virtualbox, postgresql, nginx, gparted, gpick, font-manager, fonts-jetbrains-mono, autoconf, bison, build-essential, ca-certificates, gnupg, gnome-tweaks, lsb-release, mdadm, ncurses, fortune-mod |
 | snap | discord, spotify |
 | flatpak | zen-browser, flatpak |
-| custom | ghostty (`.deb`), White Sur icon theme (git) |
+| custom | wezterm (`.deb`), White Sur icon theme (git) |
 
 > The GitHub CLI (`gh`) is installed through mise, not a system package manager, so it is the same version on every platform.
 
@@ -224,14 +227,20 @@ brave, vlc, virtualbox, postgresql, nginx, ffmpeg, gparted, gpick, font-manager,
 
 Minimal, fast prompt using the Catppuccin Mocha palette. Shows user, directory, language versions (c, dotnet, golang, nodejs, python, ruby, rust), and git branch/status.
 
-### Ghostty terminal
+### WezTerm terminal
 
-`ghostty/config` is a single file:
+The primary terminal. WezTerm draws the windows and multiplexes panes, tabs, workspaces and detachable sessions in one process.
 
-- `theme = Catppuccin Mocha` (Ghostty's built-in theme)
-- 13pt font with `adjust-cell-height = 3`
-- `async-backend = epoll`
-- `font-codepoint-map` routes the icon range `U+F000-U+F1B2` to `SethensSuperCode`
+Keybindings are WezTerm's defaults; `wezterm/lua/keys.lua` only adds workspace switching, which has no default binding of any kind. `CTRL+SHIFT+O` lists the workspaces, `CTRL+SHIFT+[` and `]` step through them, and `CTRL+SHIFT+P` is the command palette. Run `wezterm show-keys` for the rest.
+
+- `wezterm/wezterm.lua`: entry point; puts `lua/` on `package.path` and applies each module
+- `wezterm/lua/theme.lua`: Catppuccin Mocha, pinned to an exact palette. WezTerm's bundled `Catppuccin Mocha` is a different port. It swaps normal and bright white, lightens brights 1-6, and inverts selection, so the scheme name is only the base and these values override it.
+- `wezterm/lua/appearance.lua`: font, theme and window chrome. The font stack leads with unpatched `JetBrains Mono` so the nerd font ranges fall through to `SethensSuperCode`; WezTerm has no codepoint-to-font map, so that ordering is what reserves U+F000-U+F1B2 for it.
+- `wezterm/lua/mux.lua`: the unix domain is configured but is deliberately *not* the default domain. Run `wezterm connect unix` when you want a session that outlives its window; Making it the default instead means closing a window only detaches it, the mux keeps that window forever, and every later launch re-materializes all of them before `wezterm start` adds the one you asked for, so `SUPER+RETURN` opens one window, then two, then three. Pointing the desktop entry at `wezterm connect` instead would stop that, but `connect` takes no `--cwd`, so `SUPER+RETURN` would stop opening in the focused terminal's directory. The domain deliberately omits `connect_automatically`: combined with the desktop entry's `wezterm connect unix` it attaches twice and panics the Wayland window code (`window.rs:1147`), leaving no window at all.
+- `wezterm/lua/status.lua`: bar pinned to the bottom - mode badge left, tab list centered, workspace right. The badge only appears in `copy_mode` and `search_mode`, WezTerm's only default key tables, so it never claims a mode that does not exist. Centering pads the left status by the measured width of the rendered tab titles; note that `format-tab-title` receives a `TabInformation` while `tabs_with_info()` returns `MuxTabInformation`, which carry different fields.
+- `wezterm/lua/workspaces.lua`: `dotfiles` and `worth-api` each get `nvim`, `lazygit`, `lazydocker` and one agent - `opencode` and `claude` respectively; `gem` spans both gem repos with `nvim-fe`, `nvim-be`, `dev-fe` (`npm run dev`), `compose-be` (`docker compose up --build`), `lazygit-fe`, `lazygit-be`, one `lazydocker` and one `opencode`; `main` holds what belongs to no project (`herdr`, `shell`, `yazi`). Tabs may carry their own `cwd`, which is what lets `gem` hold two codebases at once. The agents are plain tabs rather than herdr agents, so each is rooted in its own codebase; herdr is one global session with one shared agent list and no project in it, so routing them through it would give every workspace a view of the same agents. That is also why `herdr` is only in `main`. Built on `mux-startup` so it lands in `wezterm-mux-server` and survives closing the window; not `gui-startup`, which fires per GUI process and lets wezterm spawn a spare window alongside the layout. Each tab's command is the tab's own process via `exec`, run through a login `fish` so mise is on `PATH`. The command `cd`s itself because `spawn_tab` silently ignores its `cwd` when `args` is also given, while `spawn_window` honours it. A tab closes when its program exits. `wezterm-restart` tears down the mux server so the layout rebuilds.
+- `wezterm/desktop/xdg-terminals.list`: names WezTerm as the terminal `xdg-terminal-exec` should pick, which is what Omarchy's `SUPER+RETURN` and its launcher call. Without it the choice among the installed `TerminalEmulator` entries is unspecified.
+- `wezterm/desktop/org.wezfurlong.wezterm.desktop`: shadows the packaged entry to run `wezterm connect unix` instead of `wezterm start --cwd .`. The packaged one always spawns a window of its own, which on top of the attached layout meant two windows every time. `connect` attaches without spawning. The cost: `wezterm connect` takes no `--cwd`, so `SUPER+RETURN` opens the session rather than the focused terminal's directory.
 
 ### Yazi file manager
 
@@ -240,11 +249,6 @@ Config in `yazi/`:
 - `yazi.toml`: manager settings (permission line mode, show hidden, show symlinks)
 - `theme.toml`: selects the `catppuccin-mocha` flavor and defines a large icon table (per-extension glyphs and colors)
 - `flavors/catppuccin-mocha.yazi/`: the installed flavor package: `flavor.toml` (UI colors) and `tmtheme.xml` (syntax highlighting for the preview pane)
-
-### Zellij workspace
-
-- `zellij/config.kdl`: default mode `locked`, `zjstatus` status bar plugin, Catppuccin Mocha theme.
-- `zellij/layouts/default.kdl`: custom status bar with per-mode indicators, opening two tabs: `nvim` and `opencode`.
 
 ### tmux
 
@@ -297,7 +301,7 @@ Agent multiplexer config in `herdr/`:
 |------|-------------|
 | `SethensSuperCode.ttf` | Custom Nerd Font-style font with icon glyphs (`U+F000-U+F1B2`) |
 
-Installed to `~/.local/share/fonts/` (Omarchy/Ubuntu) or `~/Library/Fonts/` (macOS), and used by Ghostty, Starship, and Neovim for symbols.
+Installed to `~/.local/share/fonts/` (Omarchy/Ubuntu) or `~/Library/Fonts/` (macOS), and used by WezTerm, Starship, and Neovim for symbols.
 
 ## Symlink Map
 
@@ -309,10 +313,10 @@ Config lives in this repo and is symlinked into place, so edits here are live ev
 | `fish/functions/` | `~/.config/fish/functions/` | all |
 | `nvim/` | `~/.config/nvim/` | all |
 | `starship/starship.toml` | `~/.config/starship.toml` | all |
-| `ghostty/` | `~/.config/ghostty/` | all |
+| `wezterm/` | `~/.config/wezterm/` | all |
+| `wezterm/desktop/org.wezfurlong.wezterm.desktop` | `~/.local/share/applications/org.wezfurlong.wezterm.desktop` | Omarchy |
+| `wezterm/desktop/xdg-terminals.list` | `~/.config/xdg-terminals.list` | Omarchy |
 | `yazi/` | `~/.config/yazi/` | all |
-| `zellij/config.kdl` | `~/.config/zellij/config.kdl` | all |
-| `zellij/layouts/` | `~/.config/zellij/layouts/` | all |
 | `tmux/tmux.conf` | `~/.config/tmux/tmux.conf` | all |
 | `sesh/` | `~/.config/sesh/` | all |
 | `opencode/opencode.json` | `~/.config/opencode/opencode.json` | all |
@@ -332,7 +336,7 @@ On Omarchy, the base Wayland desktop is provided by [Omarchy](https://github.com
 
 - **Hyprland**: monitor layout in `hypr/monitors.conf`; lock screen font in `hypr/hyprlock.conf`.
 - **Waybar**: status bar (`waybar/config.jsonc`, `waybar/style.css`).
-- **Mako**, **Walker**, **Ghostty**: notifications, launcher, and terminal.
+- **Mako**, **Walker**: notifications and launcher.
 
 > Hyprland keybindings, window rules, animations, and the broader Waybar setup are managed by Omarchy itself. This repo only owns the monitor config, the hyprlock font override, and the per-app theming above.
 
@@ -385,7 +389,7 @@ fish -c "source run.fish; run-common-post"
 
 ```bash
 fish run.fish --launcher                     # pick from the menu
-fish -c "source run.fish; install-ghostty"   # or call directly
+fish -c "source run.fish; install-wezterm"   # or call directly
 ```
 
 ### Update or reboot
@@ -461,15 +465,14 @@ dotfiles/
 │   └── config.toml             # Herdr agent multiplexer config
 ├── starship/
 │   └── starship.toml           # Prompt configuration
-├── ghostty/
-│   └── config                  # Terminal config
+├── wezterm/
+│   ├── wezterm.lua             # Terminal entry point
+│   ├── lua/                    # theme, appearance, mux, status, keys, workspaces
+│   └── desktop/                # desktop entry + xdg-terminal-exec preference list
 ├── yazi/
 │   ├── yazi.toml               # Manager settings
 │   ├── theme.toml              # Flavor selection + icon table
 │   └── flavors/                # Installed flavor package(s)
-├── zellij/
-│   ├── config.kdl              # Workspace config
-│   └── layouts/                # Layout definitions
 ├── tmux/
 │   └── tmux.conf               # Terminal multiplexer
 ├── sesh/
