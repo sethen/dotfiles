@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# what the desktop entry runs, because opening a terminal and running a command in
+# one need different wezterm subcommands and a .desktop file has only one Exec.
+#
+#   no arguments  -> `wezterm connect unix`, which attaches the development layout
+#                    in lua/workspaces.lua. this is SUPER+RETURN and the launcher.
+#   arguments     -> `wezterm start`, a plain window running that command.
+#
+# omarchy is the reason for the split. omarchy-launch-tui and
+# omarchy-launch-floating-terminal-with-presentation both call
+# `xdg-terminal-exec --app-id=... -e <command>`, which is how the update prompt and
+# every other TUI menu appears. `wezterm connect` rejects -e outright ("unexpected
+# argument '-e' found") and takes no --cwd, while `wezterm start` accepts both, so
+# pointing the entry straight at connect meant those never opened at all.
+#
+# using connect for the command case instead would work but attaches the unix
+# domain, so a one-off update prompt would also re-materialise every workspace the
+# mux is holding, in a second set of windows.
+
+if [ "$#" -eq 0 ]; then
+    exec wezterm connect unix
+fi
+
+exec wezterm start "$@"

@@ -2,20 +2,28 @@
 # shadows the entry shipped by the wezterm package, which is Exec=wezterm start
 # --cwd . and always spawns a window of its own. with the development layout
 # attached from the unix domain that produced two windows every time: the layout,
-# plus a spare shell. `connect` attaches without spawning, so opening the terminal
-# gives exactly the layout.
+# plus a spare shell.
 #
-# the cost is deliberate and worth knowing: `wezterm connect` takes no --cwd, so
-# there are no X-TerminalArg* keys here and SUPER+RETURN no longer opens in the
-# focused terminal's directory. it opens the session instead.
+# Exec is the wezterm-open wrapper rather than wezterm itself: opened bare it
+# attaches the layout, handed a command it runs that command in a plain window. see
+# the comments in the script for why both are needed.
+#
+# X-TerminalArgExec is what makes omarchy's TUI menus work: without it
+# xdg-terminal-exec falls back to -e, which `wezterm connect` rejects, so nothing
+# opened at all. X-TerminalArgDir is deliberately absent - passing --cwd would make
+# every SUPER+RETURN look like a command invocation and skip the layout, and
+# xdg-terminal-exec chdirs before exec anyway.
 Name=WezTerm
 Comment=Wez's Terminal Emulator
 Keywords=shell;prompt;command;commandline;cmd;terminal;tty;pty;
 Icon=org.wezfurlong.wezterm
 StartupWMClass=org.wezfurlong.wezterm
 StartupNotify=true
-TryExec=wezterm
-Exec=wezterm connect unix
+TryExec=wezterm-open
+Exec=wezterm-open
 Type=Application
 Categories=System;TerminalEmulator;
 Terminal=false
+# wezterm takes the program after a bare --, not after -e
+X-TerminalArgExec=--
+X-TerminalArgAppId=--class=

@@ -26,8 +26,8 @@ local M = {}
 -- grows the text with it. the only bar-local escape is use_fancy_tab_bar with its
 -- own window_frame.font_size, which enlarges the whole bar rather than the icons.
 local FONTS = {
-   'JetBrains Mono', -- unpatched; also sets the cell metrics
-   'SethensSuperCode', -- covers U+0020 and U+F000-U+F1B2, nothing else
+   'JetBrains Mono',               -- unpatched; also sets the cell metrics
+   'SethensSuperCode',             -- covers U+0020 and U+F000-U+F1B2, nothing else
    'JetBrainsMono Nerd Font Mono', -- every other nerd font range
    'Symbols Nerd Font',
    'Noto Color Emoji',
@@ -75,7 +75,6 @@ function M.apply(config)
    -- login shell so config.fish runs and mise activates. lua/workspaces.lua sends
    -- mise-managed commands into these shells and depends on that.
    config.default_prog = { '/usr/bin/fish', '-l' }
-
 end
 
 return M

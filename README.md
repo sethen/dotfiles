@@ -237,7 +237,7 @@ Keybindings are WezTerm's defaults; `wezterm/lua/keys.lua` only adds workspace s
 - `wezterm/lua/status.lua`: bar pinned to the bottom - mode badge left, tab list centered, workspace right. The badge only appears in `copy_mode` and `search_mode`, WezTerm's only default key tables, so it never claims a mode that does not exist. Centering pads the left status by the measured width of the rendered tab titles; note that `format-tab-title` receives a `TabInformation` while `tabs_with_info()` returns `MuxTabInformation`, which carry different fields.
 - `wezterm/lua/workspaces.lua`: `dotfiles` and `worth-api` each get `nvim`, `lazygit`, `lazydocker` and one agent - `opencode` and `claude` respectively; `gem` spans both gem repos with `nvim-fe`, `nvim-be`, `dev-fe` (`npm run dev`), `compose-be` (`docker compose up --build`), `lazygit-fe`, `lazygit-be`, one `lazydocker` and one `opencode`; `main` holds what belongs to no project (`herdr`, `shell`, `yazi`). Tabs may carry their own `cwd`, which is what lets `gem` hold two codebases at once. The agents are plain tabs rather than herdr agents, so each is rooted in its own codebase; herdr is one global session with one shared agent list and no project in it, so routing them through it would give every workspace a view of the same agents. That is also why `herdr` is only in `main`. Built on `mux-startup` so it lands in `wezterm-mux-server` and survives closing the window; not `gui-startup`, which fires per GUI process and lets wezterm spawn a spare window alongside the layout. Each tab's command is the tab's own process via `exec`, run through a login `fish` so mise is on `PATH`. The command `cd`s itself because `spawn_tab` silently ignores its `cwd` when `args` is also given, while `spawn_window` honours it. A tab closes when its program exits. `wezterm-restart` tears down the mux server so the layout rebuilds.
 - `xdg/xdg-terminals.list`: names WezTerm as the terminal `xdg-terminal-exec` should pick, which is what Omarchy's `SUPER+RETURN` and its launcher call, with Alacritty second as the fallback. Without it the choice among the installed `TerminalEmulator` entries is unspecified. It sits outside `wezterm/` because it is a system-level choice of terminal rather than WezTerm configuration.
-- `wezterm/desktop/org.wezfurlong.wezterm.desktop`: shadows the packaged entry to run `wezterm connect unix` instead of `wezterm start --cwd .`. The packaged one always spawns a window of its own, which on top of the attached layout meant two windows every time. `connect` attaches without spawning. The cost: `wezterm connect` takes no `--cwd`, so `SUPER+RETURN` opens the session rather than the focused terminal's directory.
+- `wezterm/desktop/org.wezfurlong.wezterm.desktop` and `wezterm/desktop/wezterm-open`: the entry shadows the packaged one and runs the `wezterm-open` wrapper, symlinked into `~/.local/bin`. Opened bare the wrapper runs `wezterm connect unix`, attaching the layout; handed a command it runs `wezterm start`, a plain window. Both are needed because Omarchy's `omarchy-launch-tui` and `omarchy-launch-floating-terminal-with-presentation` call `xdg-terminal-exec --app-id=... -e <command>` for the update prompt and every TUI menu, and `wezterm connect` rejects `-e` outright, so pointing `Exec` straight at it meant those never opened. Using `connect` for the command case instead would attach the unix domain and re-materialize every workspace in a second set of windows. `X-TerminalArgDir` is deliberately absent: passing `--cwd` would make every `SUPER+RETURN` look like a command invocation and skip the layout, and `xdg-terminal-exec` chdirs before exec anyway.
 
 ### Yazi file manager
 
@@ -304,6 +304,7 @@ Config lives in this repo and is symlinked into place, so edits here are live ev
 | `starship/starship.toml` | `~/.config/starship.toml` | all |
 | `wezterm/` | `~/.config/wezterm/` | all |
 | `wezterm/desktop/org.wezfurlong.wezterm.desktop` | `~/.local/share/applications/org.wezfurlong.wezterm.desktop` | Omarchy |
+| `wezterm/desktop/wezterm-open` | `~/.local/bin/wezterm-open` | Omarchy |
 | `xdg/xdg-terminals.list` | `~/.config/xdg-terminals.list` | Omarchy |
 | `yazi/` | `~/.config/yazi/` | all |
 | `opencode/opencode.json` | `~/.config/opencode/opencode.json` | all |
@@ -454,7 +455,7 @@ dotfiles/
 ├── wezterm/
 │   ├── wezterm.lua             # Terminal entry point
 │   ├── lua/                    # theme, appearance, mux, status, keys, workspaces
-│   └── desktop/                # wezterm's own desktop entry
+│   └── desktop/                # desktop entry + wezterm-open wrapper
 ├── xdg/
 │   └── xdg-terminals.list      # xdg-terminal-exec preference order
 ├── yazi/

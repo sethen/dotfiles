@@ -14,6 +14,7 @@ function run-omarchy-pre
     copy-fonts
     symlink-hyprland-config-files
     symlink-waybar-config-directory
+    symlink-wezterm-open
     symlink-wezterm-desktop-entry
     symlink-xdg-terminals-list
 end
