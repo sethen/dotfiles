@@ -13,6 +13,7 @@ function run-omarchy-pre
     # prep
     copy-fonts
     symlink-hyprland-config-files
+    symlink-launch-screensaver
     symlink-waybar-config-directory
     symlink-wezterm-open
     symlink-wezterm-desktop-entry
