@@ -99,6 +99,18 @@
         "note": "draw the icon in SethensSuperCode; add hover text; icons at 19px",
         "find": "    text: root.icon\n    onPressed: function(b) {",
         "replace": "    text: root.icon\n    fontFamily: \"SethensSuperCode\"\n    fontSize: 17\n    tooltipText: !root.adapter ? \"Bluetooth unavailable\"\n      : !root.adapter.enabled ? \"Bluetooth off\"\n      : root.connectedDevices.length > 0\n        ? \"Bluetooth \\u00b7 \" + root.connectedDevices.length + \" connected\"\n        : \"Bluetooth on\"\n    onPressed: function(b) {"
+      },
+      {
+        "file": "Panel.qml",
+        "note": "bluetooth popup header uses the font too",
+        "find": "            text: root.icon\n            color: root.bar.foreground\n            font.family: root.bar.fontFamily",
+        "replace": "            text: root.icon\n            color: root.bar.foreground\n            font.family: \"SethensSuperCode\""
+      },
+      {
+        "file": "Panel.qml",
+        "note": "bluetooth device rows use the font too",
+        "find": "        color: row.statusColor\n        font.family: root.bar.fontFamily",
+        "replace": "        color: row.statusColor\n        font.family: \"SethensSuperCode\""
       }
     ]
   },
@@ -244,6 +256,12 @@
         "note": "draw the icon in SethensSuperCode; add hover text; icons at 19px",
         "find": "    bar: root.bar\n    text: root.icon\n\n    onPressed: function(b) {",
         "replace": "    bar: root.bar\n    text: root.icon\n    fontFamily: \"SethensSuperCode\"\n    fontSize: 17\n    tooltipText: root.kind === \"ethernet\" ? \"Ethernet\"\n      : root.kind === \"wifi\"\n        ? \"Wi-Fi\" + (root.connectedWifiNetwork && root.connectedWifiNetwork.ssid ? \" \\u00b7 \" + root.connectedWifiNetwork.ssid : \"\")\n                  + (root.signalStrength >= 0 ? \" \\u00b7 \" + root.signalStrength + \"%\" : \"\")\n        : \"Disconnected\"\n\n    onPressed: function(b) {"
+      },
+      {
+        "file": "Panel.qml",
+        "note": "network popup header uses the font too",
+        "find": "          text: root.icon\n          color: root.bar.foreground\n          font.family: root.bar.fontFamily",
+        "replace": "          text: root.icon\n          color: root.bar.foreground\n          font.family: \"SethensSuperCode\""
       }
     ]
   },
