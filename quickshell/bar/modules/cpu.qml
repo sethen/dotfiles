@@ -43,14 +43,12 @@ Item {
     id: glyph
     anchors.centerIn: parent
 
-    // lucide cpu, matching the rest of the bar.
-    text: "󲇺"
+    // the glyph the old waybar cpu module used, from SethensSuperCode.
+    text: ""
 
     color: bar ? bar.foreground : "white"
     font.family: "SethensSuperCode"
-    // matches the fontSize the cloned BarIconButton widgets are patched to;
-    // this module is ours outright so it does not inherit that.
-    font.pixelSize: 17
+    font.pixelSize: 14
   }
 
   // Two /proc/stat readings a moment apart give a real utilisation figure;

@@ -14,12 +14,12 @@
           "id": "omarchy.menu"
         },
         {
-          "id": "sethen.workspaces"
+          "id": "omarchy.workspaces"
         }
       ],
       "center": [
         {
-          "id": "sethen.indicators",
+          "id": "omarchy.indicators",
           "items": [
             "Dictation",
             "ScreenRecording",
@@ -34,15 +34,15 @@
           "verticalFormat": "hh\n—\nmm"
         },
         {
-          "id": "sethen.weather"
+          "id": "omarchy.weather"
         },
         {
-          "id": "sethen.system-update"
+          "id": "omarchy.system-update"
         }
       ],
       "right": [
         {
-          "id": "sethen.media"
+          "id": "omarchy.media"
         },
         {
           "id": "omarchy.keyboard-layout"
@@ -51,23 +51,23 @@
           "id": "omarchy.tray"
         },
         {
-          "id": "sethen.agents"
+          "id": "omarchy.agents"
         },
         {
-          "id": "sethen.bluetooth"
+          "id": "omarchy.bluetooth"
         },
         {
-          "id": "sethen.network"
+          "id": "omarchy.network"
         },
         {
           "id": "cpu",
           "type": "qml"
         },
         {
-          "id": "sethen.audio"
+          "id": "omarchy.audio"
         },
         {
-          "id": "sethen.monitor"
+          "id": "omarchy.monitor"
         },
         {
           "id": "omarchy.power"
@@ -75,11 +75,5 @@
       ]
     }
   },
-  "plugins": [],
-  "disabledPlugins": [
-    "omarchy.media"
-  ],
-  "cloneSourceRestores": [
-    "sethen.media"
-  ]
+  "plugins": []
 }

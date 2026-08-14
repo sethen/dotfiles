@@ -346,43 +346,22 @@ The `waybar`, `hyprlock`, and `hypridle` packages are no longer installed. The m
 
 **Bar font size.** Waybar ran 16px text. The shell derives every surface from one rem root (`[font] base-size` in `quickshell/shell.toml`), so raising it scales panels, notifications, and the menu too, and grows the bar past its stock 26px height. Set to 16 to match waybar; drop to 12 for omarchy's intended proportions.
 
-### Custom glyphs (`quickshell/plugins/`)
+### Icons
 
-Waybar pulled its icons from `assets/fonts/SethensSuperCode.ttf` through Pango markup. Quickshell widgets draw their icons as literals in QML and expose **no icon setting** — only four widgets ship a settings schema at all, and none has an icon key. The glyph literals live in `/usr/share/omarchy/shell/plugins/`, which is package-owned and overwritten on every `omarchy update`.
+The bar uses omarchy's own icons, untouched. Its widgets draw them as literals in QML
+and expose no icon setting, so changing one means cloning the widget into
+`~/.config/omarchy/plugins/` and owning a copy of its source — which then stops tracking
+upstream. That was tried and reverted: the maintenance is not worth it for a different
+glyph, and a font carrying both icon sets shadowed the nerd font ranges neovim's devicons
+use, changing every file icon in the editor.
 
-So the two edits that matter, the codepoint and the font family, have to live in a file we own. `omarchy plugin clone <id>` produces one, under `~/.config/omarchy/plugins/sethen.<widget>/`, and switches the bar to it. Those clones are tracked here and symlinked back into place:
+`assets/fonts/SethensSuperCode.ttf` is [nonicons](https://github.com/ya2s/nonicons) (MIT,
+© ya2s), covering `f000-f1b2`. `wezterm/lua/appearance.lua` puts it ahead of
+`JetBrainsMono Nerd Font Mono` in the fallback chain, so it answers for that range and
+nothing else — anything wider and it starts answering for glyphs the nerd font owns.
 
-| Clone | Codepoints | Replaces |
-| --- | --- | --- |
-| `sethen.workspaces` | `f145` active marker | Material `f117b` |
-| `sethen.system-update` | `f158` | Font Awesome `f021` |
-| `sethen.network` | `f178` up, `f177` down | Material wifi ramp |
-| `sethen.bluetooth` | `f0e4` on, `f0e6` connected, `f0e5` off | Material `f00af`/`f00b1`/`f00b2` |
-| `sethen.audio` | `f01d` normal, `f0b3` muted | Font Awesome `f026`-`f028`, `eee8` |
-
-`quickshell/bar/modules/cpu.qml` uses `f162` and needs no clone, since it is ours already.
-
-SethensSuperCode covers only `f000-f1b2` plus space, so it has **no digits or letters**. Any widget that mixes a glyph with text has to keep the bar font for the text — `sethen.workspaces` sets `fontFamily` only when a workspace is focused, so the numbers still render in JetBrainsMono.
-
-That is also why the clock and keyboard-layout prefix glyphs were dropped rather than ported. Both render through `WidgetButton`, which exposes a single `fontFamily` rather than a fallback list, so pointing it at SethensSuperCode would leave the time and the layout name without glyphs. Restoring those prefixes needs a separate `Text` element in the widget, not a font swap.
-
-**The clones are generated, not tracked.** `omarchy plugin clone` copies a whole plugin, but the edits are tiny — 28 substitutions across 14 files, nearly all a glyph literal plus a `fontFamily`. Storing those copies would freeze them at the version they were cloned from, so upstream fixes stop arriving silently.
-
-Instead the repo tracks only `quickshell/patches.json` (the 28 edits) and each `manifest.json` (the clone's id and name). The `regenerate-quickshell-plugins` fish function rebuilds every clone from whatever omarchy currently ships and re-applies the patches on top, so the widget code is current by construction rather than frozen at the version it was cloned from.
-
-It runs in three places:
-
-- `run.fish`, via `regenerate-quickshell-plugins` in the pre phase
-- after every `omarchy update`, via `os/omarchy/hooks/relink-dotfiles.hook`
-- by hand, whenever the clones look stale
-
-An edit whose anchor text no longer appears upstream is **reported and exits non-zero** rather than skipped quietly — that is the signal omarchy rewrote a line we patch, and the glyph would otherwise revert without warning.
-
-Why this shape? Omarchy's widgets bake their icons into the QML as literals, and QML has no partial override, so changing one glyph means owning the whole file. Editing the packaged files in `/usr/share/omarchy/` instead is not an option: `omarchy-update-system-pkgs` runs `pacman -Syu --overwrite '/usr/share/omarchy/*'`, which destroys anything put there, by design.
-
-> Do not clone `omarchy.media`. It declares `kinds: ["service", "bar-widget"]` with `keepLoaded: true`; cloning disables the built-in service without the clone taking it over, and the now-playing widget silently renders nothing.
-
-> `omarchy bar ...` commands, and dragging widgets on the bar, write `shell.json` by renaming a temp file over it — which **replaces the symlink with a plain file**. Re-run the setup to relink, or edit the repo copy directly, since the shell hot-reloads it on save.
+`quickshell/bar/modules/cpu.qml` is the one custom widget. Omarchy ships no cpu module, so
+there is nothing to clone; it is ours outright and needs no patching.
 
 ### Screensaver on wezterm
 
@@ -532,11 +511,9 @@ dotfiles/
 ├── quickshell/
 │   ├── shell.json              # Bar layout + idle timings (Omarchy)
 │   ├── shell.toml              # Shell color overrides (Omarchy)
-│   ├── bar/modules/            # Custom QML bar widgets (Omarchy)
-│   └── plugins/                # Cloned widgets using SethensSuperCode glyphs
+│   └── bar/modules/            # cpu.qml, the one custom bar widget (Omarchy)
 └── assets/
     ├── fonts/                  # SethensSuperCode.ttf
-    ├── icons/                  # Custom icons for nvim-web-devicons
     ├── images/                 # Screenshots
     └── videos/                 # Demos
 ```
