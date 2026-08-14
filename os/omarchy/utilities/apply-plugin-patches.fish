@@ -5,7 +5,7 @@ function apply-plugin-patches
     #
     # Re-applies our changes to a freshly copied clone, in two passes.
     #
-    #   glyphs  a codepoint map, substituted file-wide. Icon choices live here
+    #   glyphs  from/to codepoints, substituted file-wide. Icon choices live here
     #           rather than inside a context match, so no amount of upstream
     #           reformatting can break them and changing an icon is a one-line
     #           edit to the map.
@@ -36,7 +36,7 @@ function apply-plugin-patches
 
         set -l content (cat $target | string collect)
 
-        for pair in (jq -r --arg plugin $plugin --arg file $relative '.[$plugin].glyphs[$file] | to_entries[] | "\(.key) \(.value)"' $patches_file)
+        for pair in (jq -r --arg plugin $plugin --arg file $relative '.[$plugin].glyphs[$file][] | "\(.from) \(.to)"' $patches_file)
             set -l codepoints (string split ' ' $pair)
 
             # \u takes exactly four hex digits, and most of these icons are five

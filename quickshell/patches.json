@@ -1,13 +1,18 @@
 {
   "sethen.agents": {
     "glyphs": {
-      "Panel.qml": {
-        "f16a3": "f159"
-      }
+      "Panel.qml": [
+        {
+          "from": "f16a3",
+          "to": "f159",
+          "note": "robot (material) -> chat bubble"
+        }
+      ]
     },
     "edits": [
       {
         "file": "Panel.qml",
+        "note": "draw the icon in SethensSuperCode; add hover text",
         "find": "    active: root.alarming",
         "replace": "    fontFamily: \"SethensSuperCode\"\n    tooltipText: \"AI usage\"\n    active: root.alarming"
       }
@@ -15,22 +20,44 @@
   },
   "sethen.audio": {
     "glyphs": {
-      "Panel.qml": {
-        "eee8": "f0b3",
-        "f02cb": "f01d",
-        "f028": "f01d",
-        "f027": "f01d",
-        "f026": "f01d"
-      }
+      "Panel.qml": [
+        {
+          "from": "eee8",
+          "to": "f0b3",
+          "note": "no sink / muted (nerd font) -> speaker muted"
+        },
+        {
+          "from": "f02cb",
+          "to": "f01d",
+          "note": "headphones (material) -> speaker"
+        },
+        {
+          "from": "f028",
+          "to": "f01d",
+          "note": "volume high (font awesome) -> speaker"
+        },
+        {
+          "from": "f027",
+          "to": "f01d",
+          "note": "volume medium (font awesome) -> speaker"
+        },
+        {
+          "from": "f026",
+          "to": "f01d",
+          "note": "volume low (font awesome) -> speaker"
+        }
+      ]
     },
     "edits": [
       {
         "file": "Panel.qml",
+        "note": "draw the icon in SethensSuperCode; add hover text",
         "find": "    text: root.outputIcon()\n    onPressed: function(b) {",
         "replace": "    text: root.outputIcon()\n    fontFamily: \"SethensSuperCode\"\n    tooltipText: root.outputMuted\n      ? \"Audio muted\"\n      : \"Volume \" + Math.round(root.outputVolume * 100) + \"%\"\n    onPressed: function(b) {"
       },
       {
         "file": "Panel.qml",
+        "note": "draw the icon in SethensSuperCode",
         "find": "              color: root.bar.foreground\n              font.family: root.bar.fontFamily\n              font.pixelSize: Style.font.display",
         "replace": "              color: root.bar.foreground\n              font.family: \"SethensSuperCode\"\n              font.pixelSize: Style.font.display"
       }
@@ -38,15 +65,28 @@
   },
   "sethen.bluetooth": {
     "glyphs": {
-      "Panel.qml": {
-        "f00b2": "f0e5",
-        "f00b1": "f0e6",
-        "f00af": "f189"
-      }
+      "Panel.qml": [
+        {
+          "from": "f00b2",
+          "to": "f0e5",
+          "note": "bluetooth off (material) -> dashed circle"
+        },
+        {
+          "from": "f00b1",
+          "to": "f0e6",
+          "note": "bluetooth connected (material) -> check in circle"
+        },
+        {
+          "from": "f00af",
+          "to": "f189",
+          "note": "bluetooth on (material) -> cross-hatch"
+        }
+      ]
     },
     "edits": [
       {
         "file": "Panel.qml",
+        "note": "draw the icon in SethensSuperCode; add hover text",
         "find": "    text: root.icon\n    onPressed: function(b) {",
         "replace": "    text: root.icon\n    fontFamily: \"SethensSuperCode\"\n    tooltipText: !root.adapter ? \"Bluetooth unavailable\"\n      : !root.adapter.enabled ? \"Bluetooth off\"\n      : root.connectedDevices.length > 0\n        ? \"Bluetooth \\u00b7 \" + root.connectedDevices.length + \" connected\"\n        : \"Bluetooth on\"\n    onPressed: function(b) {"
       }
@@ -54,43 +94,68 @@
   },
   "sethen.indicators": {
     "glyphs": {
-      "indicators/Dictation.qml": {
-        "f036c": "f0c0",
-        "f051f": "f0f1"
-      },
-      "indicators/Dnd.qml": {
-        "f009b": "f19b"
-      },
-      "indicators/ScreenRecording.qml": {
-        "f0ec2": "f0e4"
-      },
-      "indicators/StayAwake.qml": {
-        "f0176": "f0dd"
-      }
+      "indicators/Dictation.qml": [
+        {
+          "from": "f036c",
+          "to": "f0c0",
+          "note": "microphone (material) -> megaphone"
+        },
+        {
+          "from": "f051f",
+          "to": "f0f1",
+          "note": "timer sand (material) -> hourglass"
+        }
+      ],
+      "indicators/Dnd.qml": [
+        {
+          "from": "f009b",
+          "to": "f19b",
+          "note": "bell off (material) -> bell"
+        }
+      ],
+      "indicators/ScreenRecording.qml": [
+        {
+          "from": "f0ec2",
+          "to": "f0e4",
+          "note": "record (material) -> dot in circle"
+        }
+      ],
+      "indicators/StayAwake.qml": [
+        {
+          "from": "f0176",
+          "to": "f0dd",
+          "note": "coffee (material) -> eye"
+        }
+      ]
     },
     "edits": [
       {
         "file": "Indicators.qml",
+        "note": "indicators/ moved inside the clone",
         "find": "      source: indicatorSlot.indicatorId ? Qt.resolvedUrl(\"../indicators/\" + indicatorSlot.indicatorId + \".qml\") : \"\"",
         "replace": "      source: indicatorSlot.indicatorId ? Qt.resolvedUrl(\"indicators/\" + indicatorSlot.indicatorId + \".qml\") : \"\""
       },
       {
         "file": "indicators/Dictation.qml",
+        "note": "draw the icon in SethensSuperCode",
         "find": "  active: state === \"recording\"\n  activeText: icon",
         "replace": "  active: state === \"recording\"\n  fontFamily: \"SethensSuperCode\"\n  activeText: icon"
       },
       {
         "file": "indicators/Dnd.qml",
+        "note": "draw the icon in SethensSuperCode",
         "find": "  active: dnd",
         "replace": "  active: dnd\n  fontFamily: \"SethensSuperCode\""
       },
       {
         "file": "indicators/ScreenRecording.qml",
+        "note": "draw the icon in SethensSuperCode",
         "find": "  active: recording",
         "replace": "  active: recording\n  fontFamily: \"SethensSuperCode\""
       },
       {
         "file": "indicators/StayAwake.qml",
+        "note": "draw the icon in SethensSuperCode",
         "find": "  active: idleService ? idleService.stayAwake : false",
         "replace": "  active: idleService ? idleService.stayAwake : false\n  fontFamily: \"SethensSuperCode\""
       }
@@ -98,34 +163,47 @@
   },
   "sethen.media": {
     "glyphs": {
-      "BarWidget.qml": {
-        "f03e4": "f09f",
-        "f040a": "f093"
-      }
+      "BarWidget.qml": [
+        {
+          "from": "f03e4",
+          "to": "f09f",
+          "note": "pause (material) -> pause bars"
+        },
+        {
+          "from": "f040a",
+          "to": "f093",
+          "note": "play (material) -> play in circle"
+        }
+      ]
     },
     "edits": [
       {
         "file": "BarWidget.qml",
+        "note": "point the clone at its own service, not the disabled built-in",
         "find": "  readonly property var mediaService: bar?.shell?.firstPartyServiceFor(\"omarchy.media\")",
         "replace": "  readonly property var mediaService: bar?.shell?.firstPartyServiceFor(\"sethen.media\")"
       },
       {
         "file": "BarWidget.qml",
+        "note": "draw the icon in SethensSuperCode",
         "find": "      color: activePlayer && activePlayer.isPlaying ? root.bar.barForeground : Qt.darker(root.bar.barForeground, 1.5)\n      font.family: root.bar.fontFamily\n      font.pixelSize: Style.font.body",
         "replace": "      color: activePlayer && activePlayer.isPlaying ? root.bar.barForeground : Qt.darker(root.bar.barForeground, 1.5)\n      font.family: \"SethensSuperCode\"\n      font.pixelSize: Style.font.body"
       },
       {
         "file": "BarWidget.qml",
+        "note": "side mouse buttons skip track",
         "find": "    acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton",
         "replace": "    // Side buttons (back/forward) drive prev/next, matching how the wheel\n    // already works. The packaged widget never accepted them.\n    acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton | Qt.BackButton | Qt.ForwardButton"
       },
       {
         "file": "BarWidget.qml",
+        "note": "side mouse buttons skip track",
         "find": "      if (mouse.button === Qt.MiddleButton) {",
         "replace": "      if (mouse.button === Qt.MiddleButton || mouse.button === Qt.ForwardButton) {"
       },
       {
         "file": "BarWidget.qml",
+        "note": "side mouse buttons skip track",
         "find": "        if (root.mediaService) root.mediaService.runAction(\"next\", false)\n      } else if (mouse.button === Qt.RightButton) {",
         "replace": "        if (root.mediaService) root.mediaService.runAction(\"next\", false)\n      } else if (mouse.button === Qt.BackButton) {\n        if (root.mediaService) root.mediaService.runAction(\"previous\", false)\n      } else if (mouse.button === Qt.RightButton) {"
       }
@@ -136,6 +214,7 @@
     "edits": [
       {
         "file": "Panel.qml",
+        "note": "draw the icon in SethensSuperCode; add hover text; one icon instead of one per screen count",
         "find": "    text: Quickshell.screens.length > 1 ? \"󰍺\" : \"󰍹\"",
         "replace": "    text: \"\"\n    fontFamily: \"SethensSuperCode\"\n    tooltipText: root.brightnessAvailable ? \"Brightness \" + root.brightnessPercent + \"%\" : \"Display\""
       }
@@ -146,11 +225,13 @@
     "edits": [
       {
         "file": "Panel.qml",
+        "note": "choose the icon here so Model.js stays untouched",
         "find": "  readonly property string icon: Model.connectionIcon(kind, signalStrength)",
         "replace": "  // Our glyphs, chosen here rather than inside Model.js so that file stays a\n  // symlink to omarchy's copy and keeps tracking upstream. Wi-Fi and\n  // ethernet share one glyph, matching the old waybar format-icons.\n  readonly property string icon: kind === \"disconnected\" ? \"\" : \"\""
       },
       {
         "file": "Panel.qml",
+        "note": "draw the icon in SethensSuperCode; add hover text",
         "find": "    bar: root.bar\n    text: root.icon\n\n    onPressed: function(b) {",
         "replace": "    bar: root.bar\n    text: root.icon\n    fontFamily: \"SethensSuperCode\"\n    tooltipText: root.kind === \"ethernet\" ? \"Ethernet\"\n      : root.kind === \"wifi\"\n        ? \"Wi-Fi\" + (root.connectedWifiNetwork && root.connectedWifiNetwork.ssid ? \" \\u00b7 \" + root.connectedWifiNetwork.ssid : \"\")\n                  + (root.signalStrength >= 0 ? \" \\u00b7 \" + root.signalStrength + \"%\" : \"\")\n        : \"Disconnected\"\n\n    onPressed: function(b) {"
       }
@@ -161,6 +242,7 @@
     "edits": [
       {
         "file": "SystemUpdate.qml",
+        "note": "draw the icon in SethensSuperCode",
         "find": "    text: \"\\uf021\"",
         "replace": "    text: \"\\uf158\"\n    fontFamily: \"SethensSuperCode\""
       }
@@ -171,6 +253,7 @@
     "edits": [
       {
         "file": "BarWidget.qml",
+        "note": "draw the icon in SethensSuperCode; replace the condition-driven icon with a fixed one",
         "find": "    text: panelLoader.item ? panelLoader.item.label : \"\"",
         "replace": "    text: \"\"\n    fontFamily: \"SethensSuperCode\""
       }
@@ -181,6 +264,7 @@
     "edits": [
       {
         "file": "Workspaces.qml",
+        "note": "draw the icon in SethensSuperCode; three workspace states: focused, occupied, empty",
         "find": "        text: focused ? \"\\uDB85\\uDCFB\" : (modelData === 10 ? \"0\" : String(modelData))",
         "replace": "        // Three states, three glyphs from SethensSuperCode: ringed square\n        // focused, filled occupied, hollow empty. No state renders a number\n        // any more, so the font needs no digit fallback and the old\n        // workspace-10 \"0\" case is gone with it.\n        text: focused ? \"\\uf04b\" : (occupied ? \"\\uf04a\" : \"\\uf04c\")\n        fontFamily: \"SethensSuperCode\""
       }
