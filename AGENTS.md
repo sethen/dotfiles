@@ -13,8 +13,8 @@ This repository contains personal dotfiles for setting up a development environm
 - **`starship/`** - Shell prompt customization
 - **`wezterm/`** - Terminal emulator configuration (Lua); also covers multiplexing, panes, tabs and workspaces
 - **`yazi/`** - Terminal file manager configuration
-- **`hypr/`** - Hyprland (Wayland compositor) overrides (Omarchy)
-- **`waybar/`** - Status bar configuration (Omarchy)
+- **`hypr/`** - Hyprland (Wayland compositor) overrides, in Lua (Omarchy)
+- **`omarchy/`** - Omarchy shell: bar layout, idle timings, color overrides, custom QML bar widgets (Omarchy 4+; replaces `waybar/`)
 - **`opencode/`** - opencode AI assistant configuration and themes
 
 ## Build/Test/Validation Commands

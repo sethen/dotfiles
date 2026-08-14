@@ -169,6 +169,7 @@ Note that `mise install` is not an upgrade: a tool that is already installed sat
 
 | Tool | Description |
 |------|-------------|
+| btop | TUI for system resources |
 | lazygit | TUI for Git |
 | lazydocker | TUI for Docker |
 | lazyssh | SSH manager |
@@ -235,7 +236,7 @@ Keybindings are WezTerm's defaults; `wezterm/lua/keys.lua` only adds workspace s
 - `wezterm/lua/appearance.lua`: font, theme and window chrome. The font stack leads with unpatched `JetBrains Mono` so the nerd font ranges fall through to `SethensSuperCode`; WezTerm has no codepoint-to-font map, so that ordering is what reserves U+F000-U+F1B2 for it.
 - `wezterm/lua/mux.lua`: the unix domain is configured but is deliberately *not* the default domain. Run `wezterm connect unix` when you want a session that outlives its window; Making it the default instead means closing a window only detaches it, the mux keeps that window forever, and every later launch re-materializes all of them before `wezterm start` adds the one you asked for, so `SUPER+RETURN` opens one window, then two, then three. Pointing the desktop entry at `wezterm connect` instead would stop that, but `connect` takes no `--cwd`, so `SUPER+RETURN` would stop opening in the focused terminal's directory. The domain deliberately omits `connect_automatically`: combined with the desktop entry's `wezterm connect unix` it attaches twice and panics the Wayland window code (`window.rs:1147`), leaving no window at all.
 - `wezterm/lua/status.lua`: bar pinned to the bottom - mode badge left, tab list centered, workspace right. The badge only appears in `copy_mode` and `search_mode`, WezTerm's only default key tables, so it never claims a mode that does not exist. Centering pads the left status by the measured width of the rendered tab titles; note that `format-tab-title` receives a `TabInformation` while `tabs_with_info()` returns `MuxTabInformation`, which carry different fields.
-- `wezterm/lua/workspaces.lua`: `dotfiles` and `worth-api` each get `nvim`, `lazygit`, `lazydocker` and one agent - `opencode` and `claude` respectively; `gem` spans both gem repos with `nvim-fe`, `nvim-be`, `dev-fe` (`npm run dev`), `compose-be` (`docker compose up --build`), `lazygit-fe`, `lazygit-be`, one `lazydocker` and one `opencode`; `main` holds what belongs to no project (`herdr`, `shell`, `yazi`). Tabs may carry their own `cwd`, which is what lets `gem` hold two codebases at once. The agents are plain tabs rather than herdr agents, so each is rooted in its own codebase; herdr is one global session with one shared agent list and no project in it, so routing them through it would give every workspace a view of the same agents. That is also why `herdr` is only in `main`. Built on `mux-startup` so it lands in `wezterm-mux-server` and survives closing the window; not `gui-startup`, which fires per GUI process and lets wezterm spawn a spare window alongside the layout. Each tab's command is the tab's own process via `exec`, run through a login `fish` so mise is on `PATH`. The command `cd`s itself because `spawn_tab` silently ignores its `cwd` when `args` is also given, while `spawn_window` honours it. A tab closes when its program exits. `wezterm-restart` tears down the mux server so the layout rebuilds.
+- `wezterm/lua/workspaces.lua`: `dotfiles` and `worth-api` each get `nvim`, `lazydocker` and one agent - `opencode` and `claude` respectively - with `lazygit` split in beside that agent; `gem` spans both gem repos with `nvim-fe`, `nvim-be`, `dev-fe` (`npm run dev`), `compose-be` (`docker compose up --build`), one `lazydocker`, and an `opencode-fe` and `opencode-be` tab that each pair that repo's `opencode` with its own `lazygit` beside it; `main` holds what belongs to no project (`herdr`, `shell`, `yazi`, `btop`). Tabs may carry their own `cwd`, which is what lets `gem` hold two codebases at once. A tab entry may also carry `splits`, a list of programs placed beside it in the same tab, left to right; each takes the same fields as a tab plus an optional `size`, and each divides the pane made before it rather than the primary, so `size` is a fraction of what is left to the right. Splitting makes the new pane active, so the primary is reactivated afterwards and the tab opens on its own program. The agents are plain panes rather than herdr agents, so each is rooted in its own codebase; herdr is one global session with one shared agent list and no project in it, so routing them through it would give every workspace a view of the same agents. That is also why `herdr` is only in `main`. Built on `mux-startup` so it lands in `wezterm-mux-server` and survives closing the window; not `gui-startup`, which fires per GUI process and lets wezterm spawn a spare window alongside the layout. Each command is its pane's own process via `exec`, run through a login `fish` so mise is on `PATH`. The command `cd`s itself because `spawn_tab` silently ignores its `cwd` when `args` is also given, while `spawn_window` honours it. A pane closes when its program exits, and a tab closes with its last pane. `wezterm-restart` tears down the mux server so the layout rebuilds.
 - `xdg/xdg-terminals.list`: names WezTerm as the terminal `xdg-terminal-exec` should pick, which is what Omarchy's `SUPER+RETURN` and its launcher call, with Alacritty second as the fallback. Without it the choice among the installed `TerminalEmulator` entries is unspecified. It sits outside `wezterm/` because it is a system-level choice of terminal rather than WezTerm configuration.
 - `wezterm/desktop/org.wezfurlong.wezterm.desktop` and `wezterm/desktop/wezterm-open`: the entry shadows the packaged one and runs the `wezterm-open` wrapper, symlinked into `~/.local/bin`. Opened bare the wrapper runs `wezterm connect unix`, attaching the layout; handed a command it runs `wezterm start`, a plain window. Both are needed because Omarchy's `omarchy-launch-tui` and `omarchy-launch-floating-terminal-with-presentation` call `xdg-terminal-exec --app-id=... -e <command>` for the update prompt and every TUI menu, and `wezterm connect` rejects `-e` outright, so pointing `Exec` straight at it meant those never opened. Using `connect` for the command case instead would attach the unix domain and re-materialize every workspace in a second set of windows. `X-TerminalArgDir` is deliberately absent: passing `--cwd` would make every `SUPER+RETURN` look like a command invocation and skip the layout, and `xdg-terminal-exec` chdirs before exec anyway.
 
@@ -314,19 +315,82 @@ Config lives in this repo and is symlinked into place, so edits here are live ev
 | `mise/.default-gems` | `~/.default-gems` | all |
 | `.gitconfig` | `~/.gitconfig` | all |
 | `.gitignore_global` | `~/.gitignore_global` | all |
-| `hypr/monitors.conf` | `~/.config/hypr/monitors.conf` | Omarchy |
-| `hypr/hyprlock.conf` | `~/.config/hypr/hyprlock.conf` | Omarchy |
-| `waybar/` | `~/.config/waybar/` | Omarchy |
+| `hypr/monitors.lua` | `~/.config/hypr/monitors.lua` | Omarchy |
+| `hypr/omarchy-launch-screensaver` | `~/.local/bin/omarchy-launch-screensaver` | Omarchy |
+| `quickshell/shell.json` | `~/.config/omarchy/shell.json` | Omarchy |
+| `quickshell/shell.toml` | `~/.config/omarchy/shell.toml` | Omarchy |
+| `omarchy/bar/` | `~/.config/omarchy/bar/` | Omarchy |
 
 ## Desktop Environment (Omarchy/Hyprland)
 
 On Omarchy, the base Wayland desktop is provided by [Omarchy](https://github.com/basecamp/omarchy); these dotfiles layer config on top:
 
-- **Hyprland**: monitor layout in `hypr/monitors.conf`; lock screen font in `hypr/hyprlock.conf`.
-- **Waybar**: status bar (`waybar/config.jsonc`, `waybar/style.css`).
-- **Mako**, **Walker**: notifications and launcher.
+- **Hyprland**: monitor layout in `hypr/monitors.lua`.
+- **Omarchy shell**: bar layout and idle timings in `quickshell/shell.json`, theme overrides in `quickshell/shell.toml`, custom bar widgets in `quickshell/bar/modules/`.
+- **Screensaver**: `hypr/omarchy-launch-screensaver`, a PATH shim covered below.
 
-> Hyprland keybindings, window rules, animations, and the broader Waybar setup are managed by Omarchy itself. This repo only owns the monitor config, the hyprlock font override, and the per-app theming above.
+> Hyprland keybindings, window rules, and animations are managed by Omarchy itself, as are the stock bar widgets. This repo only owns the monitor config, the bar layout, the shell color overrides, and the per-app theming above.
+
+### Omarchy 4 (quattro) notes
+
+Omarchy 4 replaced the omarchy 3 desktop wholesale with a single long-running [Quickshell](https://quickshell.org/) process. Four things this repo used to own moved or disappeared:
+
+| Omarchy 3 | Omarchy 4 |
+| --- | --- |
+| `waybar/config.jsonc`, `waybar/style.css` | `quickshell/shell.json` (layout), `quickshell/shell.toml` (colors) |
+| `hypr/hypridle.conf` | `idle.screensaver` / `idle.lock` in `quickshell/shell.json` |
+| `hypr/hyprlock.conf` | the `omarchy.lock` Quickshell plugin, which takes no config |
+| `hypr/monitors.conf` | `hypr/monitors.lua` |
+
+The `waybar`, `hyprlock`, and `hypridle` packages are no longer installed. The monitor change is the one that fails quietly: Hyprland 0.56 reads Lua (`hyprctl systeminfo` reports `configProvider: lua`), so a leftover `monitors.conf` is simply never loaded and the display silently falls back to its preferred mode.
+
+**Bar font size.** Waybar ran 16px text. The shell derives every surface from one rem root (`[font] base-size` in `quickshell/shell.toml`), so raising it scales panels, notifications, and the menu too, and grows the bar past its stock 26px height. Set to 16 to match waybar; drop to 12 for omarchy's intended proportions.
+
+### Custom glyphs (`quickshell/plugins/`)
+
+Waybar pulled its icons from `assets/fonts/SethensSuperCode.ttf` through Pango markup. Quickshell widgets draw their icons as literals in QML and expose **no icon setting** — only four widgets ship a settings schema at all, and none has an icon key. The glyph literals live in `/usr/share/omarchy/shell/plugins/`, which is package-owned and overwritten on every `omarchy update`.
+
+So the two edits that matter, the codepoint and the font family, have to live in a file we own. `omarchy plugin clone <id>` produces one, under `~/.config/omarchy/plugins/sethen.<widget>/`, and switches the bar to it. Those clones are tracked here and symlinked back into place:
+
+| Clone | Codepoints | Replaces |
+| --- | --- | --- |
+| `sethen.workspaces` | `f145` active marker | Material `f117b` |
+| `sethen.system-update` | `f158` | Font Awesome `f021` |
+| `sethen.network` | `f178` up, `f177` down | Material wifi ramp |
+| `sethen.bluetooth` | `f0e4` on, `f0e6` connected, `f0e5` off | Material `f00af`/`f00b1`/`f00b2` |
+| `sethen.audio` | `f01d` normal, `f0b3` muted | Font Awesome `f026`-`f028`, `eee8` |
+
+`quickshell/bar/modules/cpu.qml` uses `f162` and needs no clone, since it is ours already.
+
+SethensSuperCode covers only `f000-f1b2` plus space, so it has **no digits or letters**. Any widget that mixes a glyph with text has to keep the bar font for the text — `sethen.workspaces` sets `fontFamily` only when a workspace is focused, so the numbers still render in JetBrainsMono.
+
+That is also why the clock and keyboard-layout prefix glyphs were dropped rather than ported. Both render through `WidgetButton`, which exposes a single `fontFamily` rather than a fallback list, so pointing it at SethensSuperCode would leave the time and the layout name without glyphs. Restoring those prefixes needs a separate `Text` element in the widget, not a font swap.
+
+**The clones are generated, not tracked.** `omarchy plugin clone` copies a whole plugin, but the edits are tiny — 28 substitutions across 14 files, nearly all a glyph literal plus a `fontFamily`. Storing those copies would freeze them at the version they were cloned from, so upstream fixes stop arriving silently.
+
+Instead the repo tracks only `quickshell/patches.json` (the 28 edits) and each `manifest.json` (the clone's id and name). The `regenerate-quickshell-plugins` fish function rebuilds every clone from whatever omarchy currently ships and re-applies the patches on top, so the widget code is current by construction rather than frozen at the version it was cloned from.
+
+It runs in three places:
+
+- `run.fish`, via `regenerate-quickshell-plugins` in the pre phase
+- after every `omarchy update`, via `os/omarchy/hooks/relink-dotfiles.hook`
+- by hand, whenever the clones look stale
+
+An edit whose anchor text no longer appears upstream is **reported and exits non-zero** rather than skipped quietly — that is the signal omarchy rewrote a line we patch, and the glyph would otherwise revert without warning.
+
+Why this shape? Omarchy's widgets bake their icons into the QML as literals, and QML has no partial override, so changing one glyph means owning the whole file. Editing the packaged files in `/usr/share/omarchy/` instead is not an option: `omarchy-update-system-pkgs` runs `pacman -Syu --overwrite '/usr/share/omarchy/*'`, which destroys anything put there, by design.
+
+> Do not clone `omarchy.media`. It declares `kinds: ["service", "bar-widget"]` with `keepLoaded: true`; cloning disables the built-in service without the clone taking it over, and the now-playing widget silently renders nothing.
+
+> `omarchy bar ...` commands, and dragging widgets on the bar, write `shell.json` by renaming a temp file over it — which **replaces the symlink with a plain file**. Re-run the setup to relink, or edit the repo copy directly, since the shell hot-reloads it on save.
+
+### Screensaver on wezterm
+
+Omarchy's screensaver only knows how to draw in Alacritty, Foot, Ghostty, or Kitty: it reads `xdg-terminal-exec --print-id` and refuses anything else. This repo points that at wezterm, so the stock launcher notifies and does nothing.
+
+`hypr/omarchy-launch-screensaver` fixes it by shadowing the packaged command on `PATH` (`~/.local/bin` precedes `/usr/bin`) and delegating to the real one with `XDG_CONFIG_HOME` pointed at a temp directory whose `xdg-terminals.list` names Alacritty. Nothing else reads that variable, `~/.config/xdg-terminals.list` is untouched, and every upstream fix to the real launcher still applies.
+
+Under omarchy 3 this file was called `launch-screensaver` because `hypridle.conf` invoked it by that name. Omarchy 4 runs the idle timer inside the shell, which calls `omarchy-launch-screensaver` by bare name, hence the rename.
 
 ## Custom Fish Functions
 
@@ -463,10 +527,13 @@ dotfiles/
 │   ├── theme.toml              # Flavor selection + icon table
 │   └── flavors/                # Installed flavor package(s)
 ├── hypr/
-│   └── monitors.conf           # Monitor configuration (Omarchy)
-├── waybar/
-│   ├── config.jsonc            # Status bar config (Omarchy)
-│   └── style.css               # Status bar styling (Omarchy)
+│   ├── monitors.lua            # Monitor configuration (Omarchy)
+│   └── omarchy-launch-screensaver  # PATH shim: screensaver under wezterm
+├── quickshell/
+│   ├── shell.json              # Bar layout + idle timings (Omarchy)
+│   ├── shell.toml              # Shell color overrides (Omarchy)
+│   ├── bar/modules/            # Custom QML bar widgets (Omarchy)
+│   └── plugins/                # Cloned widgets using SethensSuperCode glyphs
 └── assets/
     ├── fonts/                  # SethensSuperCode.ttf
     ├── icons/                  # Custom icons for nvim-web-devicons

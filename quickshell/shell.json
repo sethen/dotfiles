@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "idle": {
+    "screensaver": 150,
+    "lock": 300
+  },
+  "bar": {
+    "position": "top",
+    "transparent": false,
+    "centerAnchor": "omarchy.clock",
+    "layout": {
+      "left": [
+        {
+          "id": "omarchy.menu"
+        },
+        {
+          "id": "sethen.workspaces"
+        }
+      ],
+      "center": [
+        {
+          "id": "sethen.indicators",
+          "items": [
+            "Dictation",
+            "ScreenRecording",
+            "StayAwake",
+            "Dnd"
+          ]
+        },
+        {
+          "id": "omarchy.clock",
+          "format": "hh:mm:ss AP",
+          "formatAlt": "dddd MMMM dd, yyyy",
+          "verticalFormat": "hh\n—\nmm"
+        },
+        {
+          "id": "sethen.weather"
+        },
+        {
+          "id": "sethen.system-update"
+        }
+      ],
+      "right": [
+        {
+          "id": "sethen.media"
+        },
+        {
+          "id": "omarchy.keyboard-layout"
+        },
+        {
+          "id": "omarchy.tray"
+        },
+        {
+          "id": "sethen.agents"
+        },
+        {
+          "id": "sethen.bluetooth"
+        },
+        {
+          "id": "sethen.network"
+        },
+        {
+          "id": "cpu",
+          "type": "qml"
+        },
+        {
+          "id": "sethen.audio"
+        },
+        {
+          "id": "sethen.monitor"
+        },
+        {
+          "id": "omarchy.power"
+        }
+      ]
+    }
+  },
+  "plugins": [],
+  "disabledPlugins": [
+    "omarchy.media"
+  ],
+  "cloneSourceRestores": [
+    "sethen.media"
+  ]
+}

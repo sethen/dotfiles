@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# PATH shim for omarchy's screensaver launcher.
+#
+# the packaged omarchy-launch-screensaver asks `xdg-terminal-exec --print-id`
+# which terminal to draw in and hard-rejects anything that is not alacritty,
+# foot, ghostty or kitty. we point xdg-terminals.list at wezterm, so on this
+# machine it notifies "Screensaver only runs in Alacritty, Foot, Ghostty, or
+# Kitty" and does nothing.
+#
+# omarchy 4 moved the idle timer into the quickshell shell, and the idle service
+# invokes `omarchy-launch-screensaver` by bare name. so unlike the omarchy 3
+# version of this file — which hypridle.conf called by its own name — this has
+# to shadow the packaged command on PATH. ~/.local/bin precedes /usr/bin, and we
+# call the packaged copy by absolute path, so there is no recursion.
+#
+# rather than re-forking the launcher (it now opens hyprland's event stream and
+# waits for each screensaver window to map before moving focus, so that slow
+# terminals don't all pile onto the last monitor), this only overrides the one
+# thing that is wrong: it hands the real script a config home whose
+# xdg-terminals.list names alacritty. every upstream fix comes along for free.
+#
+# the override is scoped to this process. it never touches
+# ~/.config/xdg-terminals.list, so SUPER+RETURN still opens wezterm.
+
+set -euo pipefail
+
+readonly PACKAGED="${OMARCHY_PATH:-/usr/share/omarchy}/bin/omarchy-launch-screensaver"
+
+if [[ ! -x $PACKAGED ]]; then
+    echo "${0##*/}: packaged launcher not found at $PACKAGED" >&2
+    exit 1
+fi
+
+# the packaged script only knows how to spawn the four terminals above, and
+# alacritty is the one omarchy always installs. without it there is nothing to
+# fall back to, so say so rather than let the real script fail obscurely.
+if ! command -v alacritty >/dev/null 2>&1; then
+    echo "${0##*/}: alacritty is not installed; the screensaver has no terminal to run in" >&2
+    exit 1
+fi
+
+# xdg-terminal-exec reads $XDG_CONFIG_HOME/xdg-terminals.list before falling
+# back to ~/.config. a directory holding only that file is enough to change the
+# answer, and nothing else the launcher runs reads config from this variable.
+config_home=$(mktemp -d)
+trap 'rm -rf "$config_home"' EXIT
+
+printf 'Alacritty.desktop\n' >"$config_home/xdg-terminals.list"
+
+XDG_CONFIG_HOME="$config_home" "$PACKAGED" "$@"

@@ -1,0 +1,21 @@
+# Machine-level overrides for the omarchy shell surfaces.
+#
+# omarchy 4 replaced waybar's stylesheet with this file. keys here win over the
+# active theme's ~/.local/state/omarchy/current/theme/shell.toml, so only pin
+# what should survive a theme switch. everything left out keeps tracking the
+# theme, which is what the old waybar/style.css did by pulling @background and
+# @foreground from the theme's waybar.css.
+
+[bar]
+# modules calling attention to themselves: recording, dictation, stay-awake,
+# do-not-disturb, updates. this is the one color the old stylesheet hardcoded
+# rather than inheriting, so it is the one color pinned here.
+active = "#a55555"
+
+[font]
+# waybar ran the bar at 16px text, and this restores that. omarchy 4 derives
+# every shell surface from a single rem root, so this also scales panels,
+# notifications, and the menu, and with the theme's scale-with-font on it grows
+# the bar past its stock 26px height. that is the tradeoff for readable bar
+# text; drop back to 12 to return to omarchy's intended proportions.
+base-size = 16

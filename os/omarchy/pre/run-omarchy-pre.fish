@@ -14,7 +14,9 @@ function run-omarchy-pre
     copy-fonts
     symlink-hyprland-config-files
     symlink-launch-screensaver
-    symlink-waybar-config-directory
+    regenerate-quickshell-plugins
+    symlink-quickshell-config-files
+    symlink-omarchy-hooks
     symlink-wezterm-open
     symlink-wezterm-desktop-entry
     symlink-xdg-terminals-list

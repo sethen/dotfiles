@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# Runs after `omarchy update`, from ~/.config/omarchy/hooks/post-update.d/.
+#
+# An omarchy update can detach this repo from ~/.config in two ways:
+#
+#   1. Migrations call `cp packaged_file ~/.config/hypr/<name>.lua`. cp follows a
+#      symlink and writes through it, so a migration that ever targets a file we
+#      symlink would silently overwrite the copy inside the repo. Today only
+#      input.lua and bindings.lua are targeted and we symlink neither, but the
+#      quattro upgrade rewrote all four skeletons, so the list does change.
+#
+#   2. `omarchy bar ...`, and dragging widgets on the bar, write shell.json by
+#      renaming a temp file over it, which replaces the symlink with a plain
+#      file. The repo then silently stops being the source of truth.
+#
+# Re-running the symlink steps repairs case 2 outright. It cannot undo case 1 --
+# the content is already overwritten -- so this also reports a dirty repo, which
+# is the signal that a migration wrote through a link.
+
+set -uo pipefail
+
+DOTFILES="${DOTFILES_DIRECTORY:-$HOME/Developer/dotfiles}"
+
+if [[ ! -d $DOTFILES ]]; then
+  echo "relink-dotfiles: $DOTFILES not found; skipping" >&2
+  exit 0
+fi
+
+command -v fish >/dev/null 2>&1 || { echo "relink-dotfiles: fish not on PATH; skipping" >&2; exit 0; }
+
+# Report before relinking: once the symlinks are restored, a file that a
+# migration overwrote in the repo still shows up in git, but the connection to
+# this update is easier to see if we say so here.
+if git -C "$DOTFILES" rev-parse --git-dir >/dev/null 2>&1; then
+  changed=$(git -C "$DOTFILES" status --porcelain -- hypr quickshell 2>/dev/null)
+  if [[ -n $changed ]]; then
+    echo "relink-dotfiles: tracked desktop config changed during this update:" >&2
+    echo "$changed" >&2
+    echo "relink-dotfiles: review with: git -C $DOTFILES diff -- hypr quickshell" >&2
+  fi
+fi
+
+fish -c "
+    set -gx DOTFILES_DIRECTORY $DOTFILES
+    set -gx HOME_CONFIG_DIRECTORY \$HOME/.config
+    set -gp fish_function_path \$DOTFILES_DIRECTORY/fish/functions \$DOTFILES_DIRECTORY/os/omarchy/pre/prep
+
+    regenerate-quickshell-plugins
+    symlink-hyprland-config-files
+    symlink-launch-screensaver
+    symlink-quickshell-config-files
+" || { echo "relink-dotfiles: relink failed" >&2; exit 1; }
+
+exit 0
