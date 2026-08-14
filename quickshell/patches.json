@@ -362,6 +362,18 @@
         "note": "draw the icon in SethensSuperCode; icons at 19px",
         "find": "    text: panelLoader.item ? panelLoader.item.label : \"\"\n    slotSize: Style.bar.statusSlot",
         "replace": "    text: panelLoader.item ? panelLoader.item.label : \"\"\n    fontFamily: \"SethensSuperCode\"\n    fontSize: 17\n    slotSize: Style.bar.statusSlot"
+      },
+      {
+        "file": "Panel.qml",
+        "note": "weather popup hero condition icon uses the font too",
+        "find": "            text: root.label || \"—\"\n            color: root.bar.foreground\n            font.family: root.bar.fontFamily",
+        "replace": "            text: root.label || \"—\"\n            color: root.bar.foreground\n            font.family: \"SethensSuperCode\""
+      },
+      {
+        "file": "Panel.qml",
+        "note": "weather forecast day icons use the font too",
+        "find": "                text: root.dayIcon(modelData)\n                color: root.bar.foreground\n                font.family: root.bar.fontFamily",
+        "replace": "                text: root.dayIcon(modelData)\n                color: root.bar.foreground\n                font.family: \"SethensSuperCode\""
       }
     ]
   },
