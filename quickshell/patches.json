@@ -225,9 +225,9 @@
     "edits": [
       {
         "file": "Panel.qml",
-        "note": "choose the icon here so Model.js stays untouched",
+        "note": "choose the icon here so Model.js stays untouched; cloud when connected, struck cloud when not",
         "find": "  readonly property string icon: Model.connectionIcon(kind, signalStrength)",
-        "replace": "  // Our glyphs, chosen here rather than inside Model.js so that file stays a\n  // symlink to omarchy's copy and keeps tracking upstream. Wi-Fi and\n  // ethernet share one glyph, matching the old waybar format-icons.\n  readonly property string icon: kind === \"disconnected\" ? \"\" : \"\""
+        "replace": "  // Our glyphs, chosen here rather than inside Model.js so that file stays a\n  // symlink to omarchy's copy and keeps tracking upstream. Wi-Fi and\n  // ethernet share one glyph, matching the old waybar format-icons.\n  readonly property string icon: kind === \"disconnected\" ? \"\" : \"\""
       },
       {
         "file": "Panel.qml",
@@ -253,9 +253,9 @@
     "edits": [
       {
         "file": "BarWidget.qml",
-        "note": "draw the icon in SethensSuperCode; replace the condition-driven icon with a fixed one",
+        "note": "draw the icon in SethensSuperCode; replace the condition-driven icon with a fixed sun",
         "find": "    text: panelLoader.item ? panelLoader.item.label : \"\"",
-        "replace": "    text: \"\"\n    fontFamily: \"SethensSuperCode\""
+        "replace": "    text: \"\"\n    fontFamily: \"SethensSuperCode\""
       }
     ]
   },
