@@ -89,11 +89,16 @@ end
 -- lazygit sits beside the agent rather than in a tab of its own: the two are read
 -- together, since what the agent just changed is what lazygit is showing. nvim and
 -- lazydocker stay full-width tabs - neither is watched while the agent works.
+--
+-- the shell tab carries no cmd, so it is a plain login fish at the workspace's cwd.
+-- last rather than first: a gui attaching lands on the first tab regardless of what
+-- mux-startup activated, and landing on nvim is the point of opening a project.
 local function project_tabs(agent)
    return {
       { title = 'nvim', cmd = 'nvim -c NvimTreeToggle' },
       { title = 'lazydocker', cmd = 'lazydocker' },
       { title = agent, cmd = agent, splits = { { cmd = 'lazygit' } } },
+      { title = 'shell' },
    }
 end
 
@@ -152,6 +157,10 @@ local WORKSPACES = {
             cmd = 'opencode',
             splits = { { cmd = 'lazygit' } },
          },
+
+         -- spans two codebases, so the shell takes the workspace cwd (the backend)
+         -- like lazydocker does, rather than picking one of the two.
+         { title = 'shell' },
       },
    },
 

@@ -42,13 +42,13 @@
       ],
       "right": [
         {
-          "id": "omarchy.media"
-        },
-        {
           "id": "omarchy.keyboard-layout"
         },
         {
           "id": "omarchy.tray"
+        },
+        {
+          "id": "omarchy.media"
         },
         {
           "id": "omarchy.agents"
