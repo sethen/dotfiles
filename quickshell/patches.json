@@ -4,7 +4,7 @@
       "Panel.qml": [
         {
           "from": "f16a3",
-          "to": "f29d",
+          "to": "f20ea",
           "note": "robot (material) -> lucide brain"
         }
       ]
@@ -23,37 +23,37 @@
       "Panel.qml": [
         {
           "from": "eee8",
-          "to": "f85d",
+          "to": "f26aa",
           "note": "no sink / muted (nerd font) -> lucide volume-x"
         },
         {
           "from": "f02cb",
-          "to": "f85b",
+          "to": "f26a8",
           "note": "headphones (material) -> lucide volume-2"
         },
         {
           "from": "f028",
-          "to": "f85b",
+          "to": "f26a8",
           "note": "volume high (font awesome) -> lucide volume-2"
         },
         {
           "from": "f027",
-          "to": "f85b",
+          "to": "f26a8",
           "note": "volume medium (font awesome) -> lucide volume-2"
         },
         {
           "from": "f026",
-          "to": "f85b",
+          "to": "f26a8",
           "note": "volume low (font awesome) -> lucide volume-2"
         },
         {
           "from": "f036d",
-          "to": "f5b9",
+          "to": "f2406",
           "note": "mic muted (material) -> lucide mic-off"
         },
         {
           "from": "f036c",
-          "to": "f5bc",
+          "to": "f2409",
           "note": "mic live (material) -> lucide mic"
         }
       ]
@@ -78,17 +78,17 @@
       "Panel.qml": [
         {
           "from": "f00b2",
-          "to": "f269",
+          "to": "f20b6",
           "note": "bluetooth off (material) -> lucide bluetooth-off"
         },
         {
           "from": "f00b1",
-          "to": "f268",
+          "to": "f20b5",
           "note": "bluetooth connected (material) -> lucide bluetooth-connected"
         },
         {
           "from": "f00af",
-          "to": "f26b",
+          "to": "f20b8",
           "note": "bluetooth on (material) -> lucide bluetooth"
         }
       ]
@@ -107,33 +107,33 @@
       "indicators/Dictation.qml": [
         {
           "from": "f036c",
-          "to": "f5bc",
+          "to": "f2409",
           "note": "microphone (material) -> lucide mic"
         },
         {
           "from": "f051f",
-          "to": "f4f6",
+          "to": "f2343",
           "note": "timer sand (material) -> lucide hourglass"
         }
       ],
       "indicators/Dnd.qml": [
         {
           "from": "f009b",
-          "to": "f257",
+          "to": "f20a4",
           "note": "bell off (material) -> lucide bell"
         }
       ],
       "indicators/ScreenRecording.qml": [
         {
           "from": "f0ec2",
-          "to": "f32e",
+          "to": "f217b",
           "note": "record (material) -> lucide circle-dot"
         }
       ],
       "indicators/StayAwake.qml": [
         {
           "from": "f0176",
-          "to": "f388",
+          "to": "f21d5",
           "note": "coffee (material) -> lucide coffee"
         }
       ]
@@ -176,12 +176,12 @@
       "BarWidget.qml": [
         {
           "from": "f03e4",
-          "to": "f639",
+          "to": "f2486",
           "note": "pause (material) -> lucide pause"
         },
         {
           "from": "f040a",
-          "to": "f664",
+          "to": "f24b1",
           "note": "play (material) -> lucide play"
         }
       ]
@@ -226,7 +226,7 @@
         "file": "Panel.qml",
         "note": "draw the icon in SethensSuperCode; add hover text; one icon instead of one per screen count; lucide icons",
         "find": "    text: Quickshell.screens.length > 1 ? \"󰍺\" : \"󰍹\"",
-        "replace": "    text: \"\"\n    fontFamily: \"SethensSuperCode\"\n    tooltipText: root.brightnessAvailable ? \"Brightness \" + root.brightnessPercent + \"%\" : \"Display\""
+        "replace": "    text: \"󲐢\"\n    fontFamily: \"SethensSuperCode\"\n    tooltipText: root.brightnessAvailable ? \"Brightness \" + root.brightnessPercent + \"%\" : \"Display\""
       }
     ]
   },
@@ -237,7 +237,7 @@
         "file": "Panel.qml",
         "note": "choose the icon here so Model.js stays untouched; lucide wifi / wifi-off",
         "find": "  readonly property string icon: Model.connectionIcon(kind, signalStrength)",
-        "replace": "  // Our glyphs, chosen here rather than inside Model.js so that file stays a\n  // symlink to omarchy's copy and keeps tracking upstream. Wi-Fi and\n  // ethernet share one glyph, matching the old waybar format-icons.\n  readonly property string icon: kind === \"disconnected\" ? \"\" : \"\""
+        "replace": "  // Our glyphs, chosen here rather than inside Model.js so that file stays a\n  // symlink to omarchy's copy and keeps tracking upstream. Wi-Fi and\n  // ethernet share one glyph, matching the old waybar format-icons.\n  readonly property string icon: kind === \"disconnected\" ? \"󲛈\" : \"󲛌\""
       },
       {
         "file": "Panel.qml",
@@ -254,7 +254,7 @@
         "file": "SystemUpdate.qml",
         "note": "draw the icon in SethensSuperCode; lucide icons",
         "find": "    text: \"\\uf021\"",
-        "replace": "    text: \"\\uf69e\"\n    fontFamily: \"SethensSuperCode\""
+        "replace": "    text: \"󲓫\"\n    fontFamily: \"SethensSuperCode\""
       }
     ]
   },
@@ -263,77 +263,77 @@
       "Model.js": [
         {
           "from": "e30d",
-          "to": "f7b1",
+          "to": "f25fe",
           "note": "clear day -> lucide sun"
         },
         {
           "from": "e32b",
-          "to": "f5d7",
+          "to": "f2424",
           "note": "clear night -> lucide moon"
         },
         {
           "from": "e302",
-          "to": "f37f",
+          "to": "f21cc",
           "note": "partly cloudy day -> lucide cloud-sun"
         },
         {
           "from": "e32e",
-          "to": "f379",
+          "to": "f21c6",
           "note": "partly cloudy night -> lucide cloud-moon"
         },
         {
           "from": "e33d",
-          "to": "f382",
+          "to": "f21cf",
           "note": "cloudy / overcast -> lucide cloud"
         },
         {
           "from": "e313",
-          "to": "f375",
+          "to": "f21c2",
           "note": "fog day -> lucide cloud-fog"
         },
         {
           "from": "e346",
-          "to": "f375",
+          "to": "f21c2",
           "note": "fog night -> lucide cloud-fog"
         },
         {
           "from": "e308",
-          "to": "f374",
+          "to": "f21c1",
           "note": "light rain day -> lucide cloud-drizzle"
         },
         {
           "from": "e333",
-          "to": "f374",
+          "to": "f21c1",
           "note": "light rain night -> lucide cloud-drizzle"
         },
         {
           "from": "e30a",
-          "to": "f37d",
+          "to": "f21ca",
           "note": "snow showers day -> lucide cloud-snow"
         },
         {
           "from": "e327",
-          "to": "f37d",
+          "to": "f21ca",
           "note": "snow showers night -> lucide cloud-snow"
         },
         {
           "from": "e3ad",
-          "to": "f376",
+          "to": "f21c3",
           "note": "sleet / ice pellets -> lucide cloud-hail"
         },
         {
           "from": "e31d",
-          "to": "f377",
+          "to": "f21c4",
           "note": "thunderstorm -> lucide cloud-lightning"
         },
         {
           "from": "e318",
-          "to": "f37c",
+          "to": "f21c9",
           "note": "rain -> lucide cloud-rain"
         },
         {
           "from": "e31a",
-          "to": "f730",
+          "to": "f257d",
           "note": "snow -> lucide snowflake"
         }
       ]
@@ -354,7 +354,7 @@
         "file": "Workspaces.qml",
         "note": "three workspace states: focused, occupied, empty; lucide square-square / square / square-dashed",
         "find": "        text: focused ? \"\\uDB85\\uDCFB\" : (modelData === 10 ? \"0\" : String(modelData))",
-        "replace": "        // Three states, three glyphs from SethensSuperCode: ringed square\n        // focused, filled occupied, hollow empty. No state renders a number\n        // any more, so the font needs no digit fallback and the old\n        // workspace-10 \"0\" case is gone with it.\n        text: focused ? \"\\uf783\" : (occupied ? \"\\uf78b\" : \"\\uf766\")\n        fontFamily: \"SethensSuperCode\""
+        "replace": "        // Three states, three glyphs from SethensSuperCode: ringed square\n        // focused, filled occupied, hollow empty. No state renders a number\n        // any more, so the font needs no digit fallback and the old\n        // workspace-10 \"0\" case is gone with it.\n        text: focused ? \"󲗐\" : (occupied ? \"󲗘\" : \"󲖳\")\n        fontFamily: \"SethensSuperCode\""
       }
     ]
   }

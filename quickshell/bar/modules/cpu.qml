@@ -44,7 +44,7 @@ Item {
     anchors.centerIn: parent
 
     // lucide cpu, matching the rest of the bar.
-    text: ""
+    text: "󲇺"
 
     color: bar ? bar.foreground : "white"
     font.family: "SethensSuperCode"
