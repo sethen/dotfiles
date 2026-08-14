@@ -52,7 +52,7 @@ crust = "#11111b"
 
 [c]
 format = '[$name $version ](fg:blue)'
-symbol = "  "
+symbol = " "
 
 [dotnet]
 symbol = '  '
@@ -60,7 +60,7 @@ format = '[$symbol($version )]($style)'
 
 [character]
 success_symbol = "[➜](fg:lavender)"
-error_symbol   = "[➜](fg:red)"
+error_symbol = "[➜](fg:red)"
 
 [directory]
 format = '[at]()[ $path ](fg:blue)'
@@ -94,23 +94,23 @@ deleted = '[ $count](fg:red bg:base)[d](fg:red bg:base)'
 
 [golang]
 format = '[$symbol($version )]($style)'
-symbol = "  "
+symbol = " "
 
 [nodejs]
 format = '[$symbol($version )]($style)'
-symbol = "  "
+symbol = " "
 
 [python]
 format = '[$symbol($version )](fg:yellow)'
-symbol = "  "
+symbol = " "
 
 [ruby]
 format = '[$symbol($version )](fg:red)'
-symbol = "  "
+symbol = " "
 
 [rust]
 format = '[$symbol($version )](fg:peach)'
-symbol = "  "
+symbol = " "
 
 [username]
 show_always = true

@@ -1,4 +1,5 @@
 [tools]
+btop = "latest"
 bun = "latest"
 clojure = "latest"
 cmake = "latest"
@@ -12,7 +13,6 @@ fzf = "latest"
 gh = "latest"
 go = "latest"
 gum = "latest"
-herdr = "latest"
 java = "latest"
 jq = "latest"
 kubectl = "latest"
@@ -35,6 +35,7 @@ zig = "latest"
 ollama = "latest"
 claude = "latest"
 opencode = "latest"
+codex = "latest"
 
 [settings.ruby]
 compile = false

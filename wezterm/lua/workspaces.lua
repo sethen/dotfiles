@@ -42,6 +42,39 @@ local function command_args(spec, cwd)
    return { SHELL, '-l', '-c', string.format("cd '%s'; and %s", cwd, run) }
 end
 
+-- a tab entry may carry `splits`: further programs placed beside it in the same
+-- tab, left to right, rather than in tabs of their own. each split takes the same
+-- fields as a tab (cmd, cwd, shell_function) plus an optional `size`.
+--
+-- each split divides the pane made before it rather than the primary, so `size` is
+-- a fraction of whatever is left to the right, not of the tab. one split at the
+-- default 0.5 is an even half; a second at 0.5 halves that half, giving 50/25/25.
+-- pass explicit sizes for even thirds.
+--
+-- splitting is also what makes the new pane active, so the tab would open focused
+-- on the last split rather than on its primary program. the primary is reactivated
+-- afterwards to undo that.
+local function apply_splits(pane, entry, fallback_cwd)
+   if not entry.splits then
+      return
+   end
+
+   local previous = pane
+
+   for _, spec in ipairs(entry.splits) do
+      local cwd = spec.cwd or fallback_cwd
+
+      previous = previous:split({
+         direction = 'Right',
+         size = spec.size or 0.5,
+         cwd = cwd,
+         args = command_args(spec, cwd),
+      })
+   end
+
+   pane:activate()
+end
+
 -- herdr lives only in main. it is a single global session - one server, one shared
 -- agent list, no project anywhere in it - so a copy in every workspace would be the
 -- same session shown five times, and five copies of herdr-start would race on that
@@ -52,12 +85,15 @@ end
 -- in that project's own codebase; herdr drives one global agent list with no
 -- project in it, so routing these through it would give every workspace a view of
 -- the same agents.
+--
+-- lazygit sits beside the agent rather than in a tab of its own: the two are read
+-- together, since what the agent just changed is what lazygit is showing. nvim and
+-- lazydocker stay full-width tabs - neither is watched while the agent works.
 local function project_tabs(agent)
    return {
       { title = 'nvim', cmd = 'nvim -c NvimTreeToggle' },
-      { title = 'lazygit', cmd = 'lazygit' },
       { title = 'lazydocker', cmd = 'lazydocker' },
-      { title = agent, cmd = agent },
+      { title = agent, cmd = agent, splits = { { cmd = 'lazygit' } } },
    }
 end
 
@@ -74,14 +110,17 @@ local WORKSPACES = {
          { title = 'shell', focus = true },
          { title = 'herdr', cmd = 'herdr-start', shell_function = true },
          { title = 'yazi', cmd = 'yazi' },
+
+         -- btop watches the whole machine rather than any one project, which is what
+         -- puts it here rather than in each workspace.
+         { title = 'btop', cmd = 'btop' },
       },
    },
    { name = 'dotfiles', cwd = DEVELOPER .. '/dotfiles', tabs = project_tabs('opencode') },
 
    -- gem spans two codebases, so its tabs carry their own cwd rather than taking
    -- the workspace's. one lazydocker because the docker daemon is machine-wide, and
-   -- one opencode by request; both sit in the backend, which is where the compose
-   -- file lives. no claude here.
+   -- it sits in the backend, which is where the compose file lives. no claude here.
    {
       name = 'gem',
       cwd = DEVELOPER .. '/gem-backend',
@@ -96,10 +135,23 @@ local WORKSPACES = {
          -- tab down with it rather than leaving the error on screen.
          { title = 'dev-fe', cwd = DEVELOPER .. '/gem-frontend', cmd = 'npm run dev' },
          { title = 'compose-be', cwd = DEVELOPER .. '/gem-backend', cmd = 'docker compose up --build' },
-         { title = 'lazygit-fe', cwd = DEVELOPER .. '/gem-frontend', cmd = 'lazygit' },
-         { title = 'lazygit-be', cwd = DEVELOPER .. '/gem-backend', cmd = 'lazygit' },
          { title = 'lazydocker', cmd = 'lazydocker' },
-         { title = 'opencode', cmd = 'opencode' },
+
+         -- one agent per codebase now rather than the single backend one, because
+         -- each is paired with the lazygit for the repo it is editing and an agent
+         -- rooted in the backend would be sitting next to the frontend's diff.
+         {
+            title = 'opencode-fe',
+            cwd = DEVELOPER .. '/gem-frontend',
+            cmd = 'opencode',
+            splits = { { cmd = 'lazygit' } },
+         },
+         {
+            title = 'opencode-be',
+            cwd = DEVELOPER .. '/gem-backend',
+            cmd = 'opencode',
+            splits = { { cmd = 'lazygit' } },
+         },
       },
    },
 
@@ -109,13 +161,14 @@ local WORKSPACES = {
 local function build_workspace(spec)
    local first = spec.tabs[1]
    local first_cwd = first.cwd or spec.cwd
-   local tab, _, window = mux.spawn_window({
+   local tab, pane, window = mux.spawn_window({
       workspace = spec.name,
       cwd = first_cwd,
       args = command_args(first, first_cwd),
    })
 
    tab:set_title(first.title)
+   apply_splits(pane, first, first_cwd)
 
    local spawned_tabs = { tab }
 
@@ -128,6 +181,10 @@ local function build_workspace(spec)
       })
 
       spawned:set_title(entry.title)
+
+      -- spawn_tab returns only the tab, so the pane to split comes from the tab
+      -- itself. it has exactly one at this point, which is that pane.
+      apply_splits(spawned:active_pane(), entry, entry_cwd)
 
       table.insert(spawned_tabs, spawned)
    end
