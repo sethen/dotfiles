@@ -14,7 +14,7 @@ This repository contains personal dotfiles for setting up a development environm
 - **`wezterm/`** - Terminal emulator configuration (Lua); also covers multiplexing, panes, tabs and workspaces
 - **`yazi/`** - Terminal file manager configuration
 - **`hypr/`** - Hyprland (Wayland compositor) overrides, in Lua (Omarchy)
-- **`omarchy/`** - Omarchy shell: bar layout, idle timings, color overrides, custom QML bar widgets (Omarchy 4+; replaces `waybar/`)
+- **`quickshell/`** - Omarchy shell: bar layout, idle timings, color overrides, and cpu.qml, the one custom bar widget (Omarchy 4+; replaces `waybar/`)
 - **`opencode/`** - opencode AI assistant configuration and themes
 
 ## Build/Test/Validation Commands

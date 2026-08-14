@@ -319,7 +319,7 @@ Config lives in this repo and is symlinked into place, so edits here are live ev
 | `hypr/omarchy-launch-screensaver` | `~/.local/bin/omarchy-launch-screensaver` | Omarchy |
 | `quickshell/shell.json` | `~/.config/omarchy/shell.json` | Omarchy |
 | `quickshell/shell.toml` | `~/.config/omarchy/shell.toml` | Omarchy |
-| `omarchy/bar/` | `~/.config/omarchy/bar/` | Omarchy |
+| `quickshell/bar/` | `~/.config/omarchy/bar/` | Omarchy |
 
 ## Desktop Environment (Omarchy/Hyprland)
 
