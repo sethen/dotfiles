@@ -45,6 +45,16 @@
           "from": "f026",
           "to": "f01d",
           "note": "volume low (font awesome) -> speaker"
+        },
+        {
+          "from": "f036d",
+          "to": "f5b9",
+          "note": "mic muted (material) -> lucide mic-off"
+        },
+        {
+          "from": "f036c",
+          "to": "f5bc",
+          "note": "mic live (material) -> lucide mic"
         }
       ]
     },
@@ -68,18 +78,18 @@
       "Panel.qml": [
         {
           "from": "f00b2",
-          "to": "f0e5",
-          "note": "bluetooth off (material) -> dashed circle"
+          "to": "f269",
+          "note": "bluetooth off (material) -> lucide bluetooth-off"
         },
         {
           "from": "f00b1",
-          "to": "f0e6",
-          "note": "bluetooth connected (material) -> check in circle"
+          "to": "f268",
+          "note": "bluetooth connected (material) -> lucide bluetooth-connected"
         },
         {
           "from": "f00af",
-          "to": "f189",
-          "note": "bluetooth on (material) -> cross-hatch"
+          "to": "f26b",
+          "note": "bluetooth on (material) -> lucide bluetooth"
         }
       ]
     },
@@ -97,13 +107,13 @@
       "indicators/Dictation.qml": [
         {
           "from": "f036c",
-          "to": "f0c0",
-          "note": "microphone (material) -> megaphone"
+          "to": "f5bc",
+          "note": "microphone (material) -> lucide mic"
         },
         {
           "from": "f051f",
-          "to": "f0f1",
-          "note": "timer sand (material) -> hourglass"
+          "to": "f4f6",
+          "note": "timer sand (material) -> lucide hourglass"
         }
       ],
       "indicators/Dnd.qml": [
@@ -166,13 +176,13 @@
       "BarWidget.qml": [
         {
           "from": "f03e4",
-          "to": "f09f",
-          "note": "pause (material) -> pause bars"
+          "to": "f639",
+          "note": "pause (material) -> lucide pause"
         },
         {
           "from": "f040a",
-          "to": "f093",
-          "note": "play (material) -> play in circle"
+          "to": "f664",
+          "note": "play (material) -> lucide play"
         }
       ]
     },
@@ -225,9 +235,9 @@
     "edits": [
       {
         "file": "Panel.qml",
-        "note": "choose the icon here so Model.js stays untouched; cloud when connected, struck cloud when not",
+        "note": "choose the icon here so Model.js stays untouched; lucide wifi / wifi-off",
         "find": "  readonly property string icon: Model.connectionIcon(kind, signalStrength)",
-        "replace": "  // Our glyphs, chosen here rather than inside Model.js so that file stays a\n  // symlink to omarchy's copy and keeps tracking upstream. Wi-Fi and\n  // ethernet share one glyph, matching the old waybar format-icons.\n  readonly property string icon: kind === \"disconnected\" ? \"\" : \"\""
+        "replace": "  // Our glyphs, chosen here rather than inside Model.js so that file stays a\n  // symlink to omarchy's copy and keeps tracking upstream. Wi-Fi and\n  // ethernet share one glyph, matching the old waybar format-icons.\n  readonly property string icon: kind === \"disconnected\" ? \"\" : \"\""
       },
       {
         "file": "Panel.qml",
@@ -249,13 +259,91 @@
     ]
   },
   "sethen.weather": {
-    "glyphs": {},
+    "glyphs": {
+      "Model.js": [
+        {
+          "from": "e30d",
+          "to": "f7b1",
+          "note": "clear day -> lucide sun"
+        },
+        {
+          "from": "e32b",
+          "to": "f5d7",
+          "note": "clear night -> lucide moon"
+        },
+        {
+          "from": "e302",
+          "to": "f37f",
+          "note": "partly cloudy day -> lucide cloud-sun"
+        },
+        {
+          "from": "e32e",
+          "to": "f379",
+          "note": "partly cloudy night -> lucide cloud-moon"
+        },
+        {
+          "from": "e33d",
+          "to": "f382",
+          "note": "cloudy / overcast -> lucide cloud"
+        },
+        {
+          "from": "e313",
+          "to": "f375",
+          "note": "fog day -> lucide cloud-fog"
+        },
+        {
+          "from": "e346",
+          "to": "f375",
+          "note": "fog night -> lucide cloud-fog"
+        },
+        {
+          "from": "e308",
+          "to": "f374",
+          "note": "light rain day -> lucide cloud-drizzle"
+        },
+        {
+          "from": "e333",
+          "to": "f374",
+          "note": "light rain night -> lucide cloud-drizzle"
+        },
+        {
+          "from": "e30a",
+          "to": "f37d",
+          "note": "snow showers day -> lucide cloud-snow"
+        },
+        {
+          "from": "e327",
+          "to": "f37d",
+          "note": "snow showers night -> lucide cloud-snow"
+        },
+        {
+          "from": "e3ad",
+          "to": "f376",
+          "note": "sleet / ice pellets -> lucide cloud-hail"
+        },
+        {
+          "from": "e31d",
+          "to": "f377",
+          "note": "thunderstorm -> lucide cloud-lightning"
+        },
+        {
+          "from": "e318",
+          "to": "f37c",
+          "note": "rain -> lucide cloud-rain"
+        },
+        {
+          "from": "e31a",
+          "to": "f730",
+          "note": "snow -> lucide snowflake"
+        }
+      ]
+    },
     "edits": [
       {
         "file": "BarWidget.qml",
-        "note": "draw the icon in SethensSuperCode; replace the condition-driven icon with a fixed sun",
-        "find": "    text: panelLoader.item ? panelLoader.item.label : \"\"",
-        "replace": "    text: \"\"\n    fontFamily: \"SethensSuperCode\""
+        "note": "draw the icon in SethensSuperCode",
+        "find": "    text: panelLoader.item ? panelLoader.item.label : \"\"\n    slotSize: Style.bar.statusSlot",
+        "replace": "    text: panelLoader.item ? panelLoader.item.label : \"\"\n    fontFamily: \"SethensSuperCode\"\n    slotSize: Style.bar.statusSlot"
       }
     ]
   },

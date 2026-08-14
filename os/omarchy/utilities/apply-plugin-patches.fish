@@ -47,8 +47,19 @@ function apply-plugin-patches
             set -l to (printf "\\U"(printf '%08x' 0x$codepoints[2]))
 
             set -l updated (string replace --all -- $from $to $content | string collect)
+            set -l hit $pipestatus[1]
 
-            if test $pipestatus[1] -ne 0
+            # Some files carry the glyph as literal \uXXXX escape text rather
+            # than as the character itself, and omarchy's weather model mixes
+            # both in one file. Try the escape form before calling it missing.
+            if test $hit -ne 0
+                set -l from_escaped "\u$codepoints[1]"
+                set -l to_escaped "\u$codepoints[2]"
+                set updated (string replace --all -- $from_escaped $to_escaped $content | string collect)
+                set hit $pipestatus[1]
+            end
+
+            if test $hit -ne 0
                 error-message "$plugin/$relative: glyph U+$codepoints[1] not found"
                 set stale (math $stale + 1)
                 continue
