@@ -43,8 +43,8 @@ Item {
     id: glyph
     anchors.centerIn: parent
 
-    // the glyph the old waybar cpu module used, from SethensSuperCode.
-    text: ""
+    // lucide cpu, matching the rest of the bar.
+    text: ""
 
     color: bar ? bar.foreground : "white"
     font.family: "SethensSuperCode"
