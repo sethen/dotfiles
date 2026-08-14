@@ -12,9 +12,9 @@
     "edits": [
       {
         "file": "Panel.qml",
-        "note": "draw the icon in SethensSuperCode; add hover text",
+        "note": "draw the icon in SethensSuperCode; add hover text; icons at 21px",
         "find": "    active: root.alarming",
-        "replace": "    fontFamily: \"SethensSuperCode\"\n    tooltipText: \"AI usage\"\n    active: root.alarming"
+        "replace": "    fontFamily: \"SethensSuperCode\"\n    fontSize: 21\n    tooltipText: \"AI usage\"\n    active: root.alarming"
       }
     ]
   },
@@ -61,9 +61,9 @@
     "edits": [
       {
         "file": "Panel.qml",
-        "note": "draw the icon in SethensSuperCode; add hover text",
+        "note": "draw the icon in SethensSuperCode; add hover text; icons at 21px",
         "find": "    text: root.outputIcon()\n    onPressed: function(b) {",
-        "replace": "    text: root.outputIcon()\n    fontFamily: \"SethensSuperCode\"\n    tooltipText: root.outputMuted\n      ? \"Audio muted\"\n      : \"Volume \" + Math.round(root.outputVolume * 100) + \"%\"\n    onPressed: function(b) {"
+        "replace": "    text: root.outputIcon()\n    fontFamily: \"SethensSuperCode\"\n    fontSize: 21\n    tooltipText: root.outputMuted\n      ? \"Audio muted\"\n      : \"Volume \" + Math.round(root.outputVolume * 100) + \"%\"\n    onPressed: function(b) {"
       },
       {
         "file": "Panel.qml",
@@ -96,9 +96,9 @@
     "edits": [
       {
         "file": "Panel.qml",
-        "note": "draw the icon in SethensSuperCode; add hover text",
+        "note": "draw the icon in SethensSuperCode; add hover text; icons at 21px",
         "find": "    text: root.icon\n    onPressed: function(b) {",
-        "replace": "    text: root.icon\n    fontFamily: \"SethensSuperCode\"\n    tooltipText: !root.adapter ? \"Bluetooth unavailable\"\n      : !root.adapter.enabled ? \"Bluetooth off\"\n      : root.connectedDevices.length > 0\n        ? \"Bluetooth \\u00b7 \" + root.connectedDevices.length + \" connected\"\n        : \"Bluetooth on\"\n    onPressed: function(b) {"
+        "replace": "    text: root.icon\n    fontFamily: \"SethensSuperCode\"\n    fontSize: 21\n    tooltipText: !root.adapter ? \"Bluetooth unavailable\"\n      : !root.adapter.enabled ? \"Bluetooth off\"\n      : root.connectedDevices.length > 0\n        ? \"Bluetooth \\u00b7 \" + root.connectedDevices.length + \" connected\"\n        : \"Bluetooth on\"\n    onPressed: function(b) {"
       }
     ]
   },
@@ -224,9 +224,9 @@
     "edits": [
       {
         "file": "Panel.qml",
-        "note": "draw the icon in SethensSuperCode; add hover text; one icon instead of one per screen count; lucide icons",
+        "note": "draw the icon in SethensSuperCode; add hover text; one icon instead of one per screen count; lucide icons; icons at 21px",
         "find": "    text: Quickshell.screens.length > 1 ? \"󰍺\" : \"󰍹\"",
-        "replace": "    text: \"󲐢\"\n    fontFamily: \"SethensSuperCode\"\n    tooltipText: root.brightnessAvailable ? \"Brightness \" + root.brightnessPercent + \"%\" : \"Display\""
+        "replace": "    text: \"󲐢\"\n    fontFamily: \"SethensSuperCode\"\n    fontSize: 21\n    tooltipText: root.brightnessAvailable ? \"Brightness \" + root.brightnessPercent + \"%\" : \"Display\""
       }
     ]
   },
@@ -241,9 +241,9 @@
       },
       {
         "file": "Panel.qml",
-        "note": "draw the icon in SethensSuperCode; add hover text",
+        "note": "draw the icon in SethensSuperCode; add hover text; icons at 21px",
         "find": "    bar: root.bar\n    text: root.icon\n\n    onPressed: function(b) {",
-        "replace": "    bar: root.bar\n    text: root.icon\n    fontFamily: \"SethensSuperCode\"\n    tooltipText: root.kind === \"ethernet\" ? \"Ethernet\"\n      : root.kind === \"wifi\"\n        ? \"Wi-Fi\" + (root.connectedWifiNetwork && root.connectedWifiNetwork.ssid ? \" \\u00b7 \" + root.connectedWifiNetwork.ssid : \"\")\n                  + (root.signalStrength >= 0 ? \" \\u00b7 \" + root.signalStrength + \"%\" : \"\")\n        : \"Disconnected\"\n\n    onPressed: function(b) {"
+        "replace": "    bar: root.bar\n    text: root.icon\n    fontFamily: \"SethensSuperCode\"\n    fontSize: 21\n    tooltipText: root.kind === \"ethernet\" ? \"Ethernet\"\n      : root.kind === \"wifi\"\n        ? \"Wi-Fi\" + (root.connectedWifiNetwork && root.connectedWifiNetwork.ssid ? \" \\u00b7 \" + root.connectedWifiNetwork.ssid : \"\")\n                  + (root.signalStrength >= 0 ? \" \\u00b7 \" + root.signalStrength + \"%\" : \"\")\n        : \"Disconnected\"\n\n    onPressed: function(b) {"
       }
     ]
   },
@@ -252,9 +252,9 @@
     "edits": [
       {
         "file": "SystemUpdate.qml",
-        "note": "draw the icon in SethensSuperCode; lucide icons",
+        "note": "draw the icon in SethensSuperCode; lucide icons; icons at 21px",
         "find": "    text: \"\\uf021\"",
-        "replace": "    text: \"󲓫\"\n    fontFamily: \"SethensSuperCode\""
+        "replace": "    text: \"󲓫\"\n    fontFamily: \"SethensSuperCode\"\n    fontSize: 21"
       }
     ]
   },
@@ -341,9 +341,9 @@
     "edits": [
       {
         "file": "BarWidget.qml",
-        "note": "draw the icon in SethensSuperCode",
+        "note": "draw the icon in SethensSuperCode; icons at 21px",
         "find": "    text: panelLoader.item ? panelLoader.item.label : \"\"\n    slotSize: Style.bar.statusSlot",
-        "replace": "    text: panelLoader.item ? panelLoader.item.label : \"\"\n    fontFamily: \"SethensSuperCode\"\n    slotSize: Style.bar.statusSlot"
+        "replace": "    text: panelLoader.item ? panelLoader.item.label : \"\"\n    fontFamily: \"SethensSuperCode\"\n    fontSize: 21\n    slotSize: Style.bar.statusSlot"
       }
     ]
   },
