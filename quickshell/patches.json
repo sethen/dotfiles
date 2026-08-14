@@ -23,28 +23,28 @@
       "Panel.qml": [
         {
           "from": "eee8",
-          "to": "f0b3",
-          "note": "no sink / muted (nerd font) -> speaker muted"
+          "to": "f85d",
+          "note": "no sink / muted (nerd font) -> lucide volume-x"
         },
         {
           "from": "f02cb",
-          "to": "f01d",
-          "note": "headphones (material) -> speaker"
+          "to": "f85b",
+          "note": "headphones (material) -> lucide volume-2"
         },
         {
           "from": "f028",
-          "to": "f01d",
-          "note": "volume high (font awesome) -> speaker"
+          "to": "f85b",
+          "note": "volume high (font awesome) -> lucide volume-2"
         },
         {
           "from": "f027",
-          "to": "f01d",
-          "note": "volume medium (font awesome) -> speaker"
+          "to": "f85b",
+          "note": "volume medium (font awesome) -> lucide volume-2"
         },
         {
           "from": "f026",
-          "to": "f01d",
-          "note": "volume low (font awesome) -> speaker"
+          "to": "f85b",
+          "note": "volume low (font awesome) -> lucide volume-2"
         },
         {
           "from": "f036d",
