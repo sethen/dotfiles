@@ -4,8 +4,8 @@
       "Panel.qml": [
         {
           "from": "f16a3",
-          "to": "f159",
-          "note": "robot (material) -> chat bubble"
+          "to": "f29d",
+          "note": "robot (material) -> lucide brain"
         }
       ]
     },
