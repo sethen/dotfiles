@@ -48,7 +48,9 @@ Item {
 
     color: bar ? bar.foreground : "white"
     font.family: "SethensSuperCode"
-    font.pixelSize: 14
+    // matches the fontSize the cloned BarIconButton widgets are patched to;
+    // this module is ours outright so it does not inherit that.
+    font.pixelSize: 17
   }
 
   // Two /proc/stat readings a moment apart give a real utilisation figure;
