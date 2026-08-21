@@ -14,6 +14,7 @@ function run-ubuntu-main
     install-gparted
     install-gpick
     install-lsb-release
+    install-mariadb-client
     install-mdadm
     install-nginx
     install-postgresql

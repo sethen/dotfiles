@@ -14,6 +14,7 @@ function run-omarchy-main
     install-gparted
     install-gpick
     install-grub
+    install-mariadb-clients
     install-mdadm
     install-nginx
     install-openssh
