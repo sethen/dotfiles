@@ -18,9 +18,16 @@ function run-common-pre
     # tool's registry entry cannot resolve that tool by name and `mise install`
     # fails the same way on every run. Update mise before anything installs
     # through it, not after. install-mise only fetches mise when absent, so this
-    # is the sole thing keeping a long-lived machine current.
-    mise self-update --yes
-    or information-message "mise self-update unavailable, skipping"
+    # is the sole thing keeping a long-lived machine current. One exception: a
+    # mise from a system package manager (pacman on omarchy, apt, brew) is built
+    # with self-update compiled out, so calling it there only prints errors and
+    # the platform update in the per-platform pre script moves it instead.
+    if string match -q "$HOME/*" -- (command -v mise)
+        mise self-update --yes
+        or error-message "mise self-update failed"
+    else
+        information-message "mise is package-managed, platform update keeps it current"
+    end
     # gum is a mise-managed tool (not a system package) and configure-user needs
     # it to prompt on a fresh machine, so bootstrap it before anything else
     if not type -q gum
@@ -34,6 +41,12 @@ function run-common-pre
     # prep
     #-> files
     make-developer-directory
+    make-bun-directory
+    # bun reads its global root from BUN_INSTALL (set in run.fish), so its bin
+    # goes on the path here, once make-bun-directory has created it. Without
+    # this the `type -q` guards in run-common-main never see an install and
+    # every run reinstalls all of them
+    fish_add_path -m $BUN_INSTALL/bin
     symlink-fish-config-file
     symlink-fish-functions-directory
     symlink-git-config-files

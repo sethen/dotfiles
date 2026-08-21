@@ -17,7 +17,15 @@ function switch-shell-to-fish
     if test "$SHELL" != "$fish_path"
         information-message "switching shell to fish, you may need to re-login"
 
-        chsh -s "$fish_path"
+        # chsh prompts for a password and exits non-zero on a bad one. Without
+        # this check a failed authentication scrolls past and the login shell
+        # silently stays whatever it was
+        if not chsh -s "$fish_path"
+            error-message "chsh failed, login shell is still $SHELL"
+            error-message "rerun: chsh -s $fish_path"
+
+            return 1
+        end
     else
         success-message "shell is already fish"
     end

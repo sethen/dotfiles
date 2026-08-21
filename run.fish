@@ -25,6 +25,12 @@ set -gx DOTFILES_OS_COMMON_DIRECTORY $DOTFILES_DIRECTORY/os/common
 set -gx HOME_CONFIG_DIRECTORY $HOME/.config
 set -gx HOME_FISH_DIRECTORY $HOME_CONFIG_DIRECTORY/fish
 
+# bun falls back to $XDG_CACHE_HOME/.bun for global installs when BUN_INSTALL is
+# unset, which is not the path config.fish adds, so anything installed during a
+# run ends up unreachable and gets reinstalled next run. Pin it to the value
+# config.fish uses
+set -gx BUN_INSTALL $HOME/.bun
+
 # parse flags
 argparse l/launcher r/reboot u/update -- $argv
 or return
