@@ -11,13 +11,13 @@ function make-symlink
 
     if not test -e $src
         error-message "make-symlink: source does not exist: $src"
-        exit 1
+        return 1
     end
 
     delete-if-exists $dest
 
     if not ln -sfnv $src $dest
         error-message "failed to symlink $src -> $dest"
-        exit 1
+        return 1
     end
 end

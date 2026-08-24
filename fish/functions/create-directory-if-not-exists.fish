@@ -11,7 +11,7 @@ function create-directory-if-not-exists
     if not test -d $dir
         if not mkdir -p $dir
             error-message "failed to create $dir"
-            exit 1
+            return 1
         end
 
         information-message "created directory $dir"

@@ -5,7 +5,7 @@ function authenticate-github
 
     if not type -q gh
         error-message "gh CLI not found in PATH"
-        exit 1
+        return 1
     end
 
     if gh auth status >/dev/null 2>&1

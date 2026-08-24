@@ -10,7 +10,7 @@ function delete-if-exists
         if test -e "$path" || test -L "$path"
             if not rm -rf "$path"
                 error-message "failed to delete $path"
-                exit 1
+                return 1
             end
         end
     end
