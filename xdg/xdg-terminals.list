@@ -7,11 +7,11 @@
 # terminal attaches the layout instead of spawning a bare window beside it.
 #
 # this lives outside wezterm/ on purpose. it is a system-level choice of terminal,
-# not wezterm configuration, and it names alacritty too.
+# not wezterm configuration, and it names a fallback too.
 #
 # without this file the choice among the installed TerminalEmulator entries is
-# unspecified, and alacritty is installed alongside wezterm on omarchy. it stays
-# second so a broken or missing wezterm still leaves a working terminal on the
-# keybind.
+# unspecified. foot is second so a broken or missing wezterm still leaves a
+# working terminal on the keybind; it is foot rather than alacritty because
+# omarchy ships foot and no longer ships alacritty.
 org.wezfurlong.wezterm.desktop
-Alacritty.desktop
+foot.desktop

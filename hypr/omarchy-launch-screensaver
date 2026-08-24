@@ -8,6 +8,11 @@
 # machine it notifies "Screensaver only runs in Alacritty, Foot, Ghostty, or
 # Kitty" and does nothing.
 #
+# foot rather than alacritty: omarchy used to ship alacritty and no longer does,
+# while foot comes with the distro. omarchy carries a screensaver config for it
+# at default/foot/screensaver.ini, so the packaged launcher's foot branch needs
+# nothing extra from us.
+#
 # omarchy 4 moved the idle timer into the quickshell shell, and the idle service
 # invokes `omarchy-launch-screensaver` by bare name. so unlike the omarchy 3
 # version of this file — which hypridle.conf called by its own name — this has
@@ -18,7 +23,7 @@
 # waits for each screensaver window to map before moving focus, so that slow
 # terminals don't all pile onto the last monitor), this only overrides the one
 # thing that is wrong: it hands the real script a config home whose
-# xdg-terminals.list names alacritty. every upstream fix comes along for free.
+# xdg-terminals.list names foot. every upstream fix comes along for free.
 #
 # the override is scoped to this process. it never touches
 # ~/.config/xdg-terminals.list, so SUPER+RETURN still opens wezterm.
@@ -33,10 +38,10 @@ if [[ ! -x $PACKAGED ]]; then
 fi
 
 # the packaged script only knows how to spawn the four terminals above, and
-# alacritty is the one omarchy always installs. without it there is nothing to
-# fall back to, so say so rather than let the real script fail obscurely.
-if ! command -v alacritty >/dev/null 2>&1; then
-    echo "${0##*/}: alacritty is not installed; the screensaver has no terminal to run in" >&2
+# foot is the one omarchy installs. without it there is nothing to fall back
+# to, so say so rather than let the real script fail obscurely.
+if ! command -v foot >/dev/null 2>&1; then
+    echo "${0##*/}: foot is not installed; the screensaver has no terminal to run in" >&2
     exit 1
 fi
 
@@ -46,6 +51,6 @@ fi
 config_home=$(mktemp -d)
 trap 'rm -rf "$config_home"' EXIT
 
-printf 'Alacritty.desktop\n' >"$config_home/xdg-terminals.list"
+printf 'foot.desktop\n' >"$config_home/xdg-terminals.list"
 
 XDG_CONFIG_HOME="$config_home" "$PACKAGED" "$@"
