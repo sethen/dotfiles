@@ -39,8 +39,8 @@ return {
          },
       },
       spec = {
-         { " ", name = "Leader" },
-         { "<leader>f", name = "Find" },
+         { " ", group = "Leader" },
+         { "<leader>f", group = "Find" },
       },
    },
 }

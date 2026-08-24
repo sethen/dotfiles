@@ -37,18 +37,11 @@ return {
                "--smart-case",
                "--hidden"
             },
-            extensions = {
-               project = {
-                  base_dirs = {
-                     '~/Developer',
-                  },
-                  hidden_files = true,
-                  sync_with_nvim_tree = true,
-               },
-            },
             layout_strategy = 'bottom_pane',
             layout_config = {
                height = 0.4,
+               -- prompt_position belongs to layout_config; a defaults-level one
+               -- is not a recognised key and gets dropped
                prompt_position = 'bottom'
             },
             mappings = {
@@ -57,16 +50,33 @@ return {
                   [keymaps.select] = actions.toggle_selection + actions.move_selection_worse,
                },
             },
+            -- a defaults option, not a top-level one
+            path_display = { 'truncate' },
             sorting_strategy = 'ascending',
-            prompt_position = 'top'
          },
-         path_display = { 'truncate' },
          pickers = {
             find_files = {
                find_command = find_cmd,
                hidden = true
             },
          },
+         -- setup reads extensions at the top level, so nesting this under
+         -- defaults silently discarded every option in it
+         extensions = {
+            project = {
+               base_dirs = {
+                  '~/Developer',
+               },
+               hidden_files = true,
+               sync_with_nvim_tree = true,
+            },
+         },
       })
+
+      -- extensions do nothing until loaded, and both of these are declared as
+      -- dependencies above: fzf-native replaces the default sorter (it is the
+      -- reason for the cmake build step) and project reads the config above
+      telescope.load_extension('fzf')
+      telescope.load_extension('project')
    end
 }

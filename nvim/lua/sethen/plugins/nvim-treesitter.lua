@@ -2,6 +2,11 @@
 
 return {
    'nvim-treesitter/nvim-treesitter',
+   -- upstream made main the default branch, and it is an incompatible rewrite
+   -- with no nvim-treesitter.configs module: no ensure_installed, no highlight
+   -- or indent options, no matchup integration. master is locked but stays
+   -- available, so pin it rather than rebuild this config around the new API
+   branch = 'master',
    build = ':TSUpdate',
    config = function()
       require('nvim-treesitter.configs').setup({
@@ -35,9 +40,6 @@ return {
             enable = true,
          },
          indent = {
-            enable = true,
-         },
-         matchup = {
             enable = true,
          },
       })
