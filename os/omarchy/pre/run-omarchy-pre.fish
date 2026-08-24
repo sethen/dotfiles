@@ -5,7 +5,12 @@ function run-omarchy-pre
 
     # update & upgrade
     if test "$RUN_DOTFILES_UPDATE" = true
-        yay --noconfirm
+        # no --noconfirm: this is a full system upgrade, and pacman will happily
+        # replace a kernel or a bootloader in it. the run already prompts for
+        # chsh, sudo and gh auth, so there is nothing unattended to protect.
+        # the per-package --noconfirm in yay-install-package stays: those are
+        # idempotent single-package installs
+        yay
     else
         information-message "run dotfiles update flag not found, skipping update"
     end
