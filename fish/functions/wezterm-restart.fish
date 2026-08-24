@@ -11,6 +11,11 @@ function wezterm-restart
 
     sleep 1
 
+    # not a typo: -x matches /proc/comm, which linux caps at 15 characters, so
+    # the real name there is `wezterm-mux-ser`. spelling it out in full matches
+    # nothing at all (pkill even says so: "pattern that searches for process
+    # name longer than 15 characters will result in zero matches"), which would
+    # leave the mux up and the layout unrebuilt with no error
     pkill -x wezterm-mux-ser
 
     sleep 1

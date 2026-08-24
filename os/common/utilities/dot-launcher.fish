@@ -30,7 +30,9 @@ function dot-launcher
         return
     end
 
-    if functions $SELECTED | grep -qw '\$argv'
+    # strip comments first: a function that merely mentions $argv in a comment
+    # would otherwise prompt for arguments it never reads
+    if functions $SELECTED | string replace -r '#.*' '' | grep -qw '\$argv'
         set -l ARGS (gum input --header "arguments for $SELECTED")
         $SELECTED (string split ' ' -- $ARGS)
     else

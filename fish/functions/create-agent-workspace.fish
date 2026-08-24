@@ -40,7 +40,7 @@ function create-agent-workspace --argument label command
     end
 
     # Shell below the agent. --ratio is the share kept by the pane being split,
-    # not the share given to the new one, so this leaves the agent at 80% and
+    # not the share given to the new one, so 0.85 leaves the agent at 85% and
     # drops the shell into the remaining 15%. Lower it to give the shell more.
     herdr pane split --pane $pane --direction down --ratio 0.85 >/dev/null 2>&1
     herdr agent wait $label --status idle --timeout 10000 >/dev/null 2>&1
