@@ -102,6 +102,7 @@ run.fish
 │   ├── Install OS packages (brew / pacman / apt / snap / flatpak)
 │   ├── Install language servers (via bun)
 │   └── Clone repositories (dotfiles, wallpapers)
+│   └── Symlink wallpapers into every Omarchy theme (omarchy only)
 └── Post Phase (os/common/post)
     └── Final configuration
 ```
@@ -163,7 +164,7 @@ Note that `mise install` is not an upgrade: a tool that is already installed sat
 | yazi | Terminal file manager |
 | neovim | Modern Vim editor |
 | gh | GitHub CLI |
-| mysql | MySQL client |
+| herdr | Agent session manager (Omarchy ships it too; mise covers macOS and Ubuntu) |
 
 **Terminal UIs & AI**
 
@@ -193,7 +194,9 @@ Cross-platform apps appear in more than one table on purpose: each OS installs t
 
 **Omarchy (pacman / yay)**
 
-brave, vlc, virtualbox, postgresql, nginx, ffmpeg, gparted, gpick, font-manager, grub, mdadm, openssh, ca-certificates, curl, fortune-mod, wezterm-nightly-bin, ttf-jetbrains-mono
+> The MySQL client is `mariadb-clients` rather than a mise tool. mise installs MySQL's official glibc2.28 tarball, which links against `libncurses.so.6`; Arch ships only the wide-char `libncursesw.so.6`, so that binary cannot start at all. Ubuntu gets `mariadb-client` for the same reason of consistency, even though the tarball does work there.
+
+brave, vlc, virtualbox, postgresql, mariadb-clients, nginx, ffmpeg, gparted, gpick, font-manager, grub, mdadm, openssh, ca-certificates, curl, fortune-mod, spotify-launcher, discord, wezterm-nightly-bin, ttf-jetbrains-mono
 
 > WezTerm is a system package rather than a mise tool on purpose: mise has no registry entry for it, and the `ubi`/`github` backends cannot install it either, because upstream publishes only per-distro debs, rpms and an AppImage with no generic Linux tarball. A real package also supplies the terminfo, the icon and `wezterm-mux-server`.
 >
@@ -237,7 +240,7 @@ Keybindings are WezTerm's defaults; `wezterm/lua/keys.lua` only adds workspace s
 - `wezterm/lua/mux.lua`: the unix domain is configured but is deliberately *not* the default domain. Run `wezterm connect unix` when you want a session that outlives its window; Making it the default instead means closing a window only detaches it, the mux keeps that window forever, and every later launch re-materializes all of them before `wezterm start` adds the one you asked for, so `SUPER+RETURN` opens one window, then two, then three. Pointing the desktop entry at `wezterm connect` instead would stop that, but `connect` takes no `--cwd`, so `SUPER+RETURN` would stop opening in the focused terminal's directory. The domain deliberately omits `connect_automatically`: combined with the desktop entry's `wezterm connect unix` it attaches twice and panics the Wayland window code (`window.rs:1147`), leaving no window at all.
 - `wezterm/lua/status.lua`: bar pinned to the bottom - mode badge left, tab list centered, workspace right. The badge only appears in `copy_mode` and `search_mode`, WezTerm's only default key tables, so it never claims a mode that does not exist. Centering pads the left status by the measured width of the rendered tab titles; note that `format-tab-title` receives a `TabInformation` while `tabs_with_info()` returns `MuxTabInformation`, which carry different fields.
 - `wezterm/lua/workspaces.lua`: `dotfiles` and `worth-api` each get `nvim`, `lazydocker` and one agent - `opencode` and `claude` respectively - with `lazygit` split in beside that agent; `gem` spans both gem repos with `nvim-fe`, `nvim-be`, `dev-fe` (`npm run dev`), `compose-be` (`docker compose up --build`), one `lazydocker`, and an `opencode-fe` and `opencode-be` tab that each pair that repo's `opencode` with its own `lazygit` beside it; `main` holds what belongs to no project (`herdr`, `shell`, `yazi`, `btop`). Tabs may carry their own `cwd`, which is what lets `gem` hold two codebases at once. A tab entry may also carry `splits`, a list of programs placed beside it in the same tab, left to right; each takes the same fields as a tab plus an optional `size`, and each divides the pane made before it rather than the primary, so `size` is a fraction of what is left to the right. Splitting makes the new pane active, so the primary is reactivated afterwards and the tab opens on its own program. The agents are plain panes rather than herdr agents, so each is rooted in its own codebase; herdr is one global session with one shared agent list and no project in it, so routing them through it would give every workspace a view of the same agents. That is also why `herdr` is only in `main`. Built on `mux-startup` so it lands in `wezterm-mux-server` and survives closing the window; not `gui-startup`, which fires per GUI process and lets wezterm spawn a spare window alongside the layout. Each command is its pane's own process via `exec`, run through a login `fish` so mise is on `PATH`. The command `cd`s itself because `spawn_tab` silently ignores its `cwd` when `args` is also given, while `spawn_window` honours it. A pane closes when its program exits, and a tab closes with its last pane. `wezterm-restart` tears down the mux server so the layout rebuilds.
-- `xdg/xdg-terminals.list`: names WezTerm as the terminal `xdg-terminal-exec` should pick, which is what Omarchy's `SUPER+RETURN` and its launcher call, with Alacritty second as the fallback. Without it the choice among the installed `TerminalEmulator` entries is unspecified. It sits outside `wezterm/` because it is a system-level choice of terminal rather than WezTerm configuration.
+- `xdg/xdg-terminals.list`: names WezTerm as the terminal `xdg-terminal-exec` should pick, which is what Omarchy's `SUPER+RETURN` and its launcher call, with Foot second as the fallback. Without it the choice among the installed `TerminalEmulator` entries is unspecified. It sits outside `wezterm/` because it is a system-level choice of terminal rather than WezTerm configuration.
 - `wezterm/desktop/org.wezfurlong.wezterm.desktop` and `wezterm/desktop/wezterm-open`: the entry shadows the packaged one and runs the `wezterm-open` wrapper, symlinked into `~/.local/bin`. Opened bare the wrapper runs `wezterm connect unix`, attaching the layout; handed a command it runs `wezterm start`, a plain window. Both are needed because Omarchy's `omarchy-launch-tui` and `omarchy-launch-floating-terminal-with-presentation` call `xdg-terminal-exec --app-id=... -e <command>` for the update prompt and every TUI menu, and `wezterm connect` rejects `-e` outright, so pointing `Exec` straight at it meant those never opened. Using `connect` for the command case instead would attach the unix domain and re-materialize every workspace in a second set of windows. `X-TerminalArgDir` is deliberately absent: passing `--cwd` would make every `SUPER+RETURN` look like a command invocation and skip the layout, and `xdg-terminal-exec` chdirs before exec anyway.
 
 ### Yazi file manager
@@ -255,7 +258,7 @@ A full Lua configuration under `nvim/lua/sethen/` using `lazy.nvim`:
 - **Core** (`core/`): options, keymaps, LSP setup, autocommands, constants.
 - **Plugins** (`plugins/`): one file per plugin area.
 
-Highlights: catppuccin theme, lualine, nvim-tree, telescope (+ fzf-native), treesitter, blink-cmp completion, mason, gitsigns, oil, which-key, todo-comments, and AI integrations (copilot, opencode).
+Highlights: catppuccin theme, lualine, nvim-tree, telescope (+ fzf-native), treesitter (pinned to `master`; `main` is an incompatible rewrite), blink-cmp completion, mason, gitsigns, oil, which-key, and todo-comments. The agents run as their own wezterm tabs rather than as nvim plugins, so there is no copilot or opencode integration in here.
 
 On first launch, Mason installs language servers including: bash-language-server, dockerfile-language-server, gopls, html/css, json-lsp, lua-lsp, pyright, ruby-lsp, rust-analyzer, sqlls, tailwindcss-language-server, typescript-language-server, and yaml-language-server.
 
@@ -367,7 +370,9 @@ there is nothing to clone; it is ours outright and needs no patching.
 
 Omarchy's screensaver only knows how to draw in Alacritty, Foot, Ghostty, or Kitty: it reads `xdg-terminal-exec --print-id` and refuses anything else. This repo points that at wezterm, so the stock launcher notifies and does nothing.
 
-`hypr/omarchy-launch-screensaver` fixes it by shadowing the packaged command on `PATH` (`~/.local/bin` precedes `/usr/bin`) and delegating to the real one with `XDG_CONFIG_HOME` pointed at a temp directory whose `xdg-terminals.list` names Alacritty. Nothing else reads that variable, `~/.config/xdg-terminals.list` is untouched, and every upstream fix to the real launcher still applies.
+Foot is the one it borrows, because Omarchy lists `foot` in `omarchy-base.packages` and no longer lists `alacritty`. Omarchy also ships `default/foot/screensaver.ini`, which the launcher's foot branch expects, so nothing extra is needed here.
+
+`hypr/omarchy-launch-screensaver` fixes it by shadowing the packaged command on `PATH` (`~/.local/bin` precedes `/usr/bin`) and delegating to the real one with `XDG_CONFIG_HOME` pointed at a temp directory whose `xdg-terminals.list` names Foot. Nothing else reads that variable, `~/.config/xdg-terminals.list` is untouched, and every upstream fix to the real launcher still applies.
 
 Under omarchy 3 this file was called `launch-screensaver` because `hypridle.conf` invoked it by that name. Omarchy 4 runs the idle timer inside the shell, which calls `omarchy-launch-screensaver` by bare name, hence the rename.
 
