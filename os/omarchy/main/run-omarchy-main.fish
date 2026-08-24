@@ -19,8 +19,13 @@ function run-omarchy-main
     install-nginx
     install-openssh
     install-postgresql
+    install-spotify
     install-ttf-jetbrains-mono
     install-virtualbox
     install-vlc
     install-wezterm
+
+    # defined in pre/prep with the other symlink steps, but it has to run here:
+    # clone-wallpapers-repo does not fetch the repo until run-common-main
+    symlink-wallpapers
 end
