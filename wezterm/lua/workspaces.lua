@@ -6,7 +6,11 @@ local mux = wezterm.mux
 
 local M = {}
 
-local DEVELOPER = wezterm.home_dir .. '/Developer'
+-- configure-user captures this and config.fish exports it, so honour the answer
+-- rather than assuming ~/Developer. the mux server inherits hyprland's
+-- environment, which will not have it, so the fallback is what usually applies
+-- here; without it a missing value would build the whole layout under nil.
+local DEVELOPER = os.getenv('DEVELOPER_DIRECTORY') or (wezterm.home_dir .. '/Developer')
 
 -- each command is the tab's process, not text typed into a shell, so the tab is the
 -- program rather than a prompt that happens to be running it.

@@ -65,7 +65,7 @@ return {
          extensions = {
             project = {
                base_dirs = {
-                  '~/Developer',
+                  require('sethen.core.constants').developer_directory,
                },
                hidden_files = true,
                sync_with_nvim_tree = true,

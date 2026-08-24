@@ -5,7 +5,7 @@ return {
    opts = {
       dashboard_mode = true,
       projects = {
-         '~/Developer/*',
+         require('sethen.core.constants').developer_directory .. '/*',
       },
    },
    init = function()
