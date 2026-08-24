@@ -8,6 +8,7 @@ function run-omarchy-main
     install-brave
     install-ca-certificates
     install-curl
+    install-discord
     install-ffmpeg
     install-font-manager
     install-fortune-mod
