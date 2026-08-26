@@ -67,7 +67,7 @@ Flags can be combined:
 | Flag | Effect |
 |------|--------|
 | `-l`, `--launcher` | Open the interactive `gum` menu instead of running everything. |
-| `-u`, `--update` | Run an update pass: the system package manager (e.g. `brew update && brew upgrade` on macOS) plus `mise upgrade`. Without it, tools are only installed when missing, never bumped. Note that `mise self-update` runs on every setup regardless of this flag. |
+| `-u`, `--update` | Run an update pass: the system package manager plus `mise upgrade`. That means `omarchy update` on Omarchy, `brew update && brew upgrade` on macOS, and `apt-get update && apt-get upgrade` on Ubuntu. Without it, tools are only installed when missing, never bumped. |
 | `-r`, `--reboot` | Reboot after setup completes. |
 
 ## How It Works
@@ -92,7 +92,7 @@ run.fish
 │   ├── Create directories (~/.config, ~/Developer, ~/.config/mise, ...)
 │   ├── Symlink every config file/directory into place
 │   ├── Install mise (curl) and add it to PATH for the run
-│   ├── mise self-update → always; refreshes the registry compiled into mise
+│   ├── mise self-update → only a self-managed mise; a packaged one moves with the OS
 │   ├── mise install   → installs all tools from mise/mise.toml
 │   ├── mise upgrade   → only with --update; bumps `latest` specs to newest
 │   ├── verify-mise-tools → fails loudly if a requested tool never installed
@@ -115,9 +115,11 @@ Why this shape? The phase split keeps ordering correct (mise exists before `mise
 
 `mise/mise.toml` is the source of truth for tool versions. `mise install` reads it and installs everything below.
 
+> Omarchy takes `omarchy update` rather than a bare `yay`. Omarchy 4 ships a pacman `PreTransaction` hook, `omarchy-update-pacman-guard`, that aborts any transaction carrying both `-S` and `-u`, so a direct full upgrade fails with `failed to run transaction hooks` and upgrades nothing. Single-package installs are untouched, which is why `yay-install-package` still works. `omarchy update` is also a superset: cache prune, snapshot, keyring refresh, repo upgrade, migrations, then `omarchy-update-aur-pkgs`.
+
 Note that `mise install` is not an upgrade: a tool that is already installed satisfies a `latest` spec indefinitely, so re-running setup will never move it forward. Pass `-u` / `--update` (or run `mise upgrade` yourself) to bump versions. `mise outdated` shows what is behind.
 
-`mise self-update` runs on every setup, before anything installs through mise. This is not cosmetic: mise's tool registry is compiled into the mise binary, so a mise older than a tool's registry entry cannot resolve that tool by name and `mise install` fails identically on every run. `verify-mise-tools` runs after the install pass and reports anything in `mise.toml` that never landed, since `mise install` exits 0 even when a tool is missing.
+`mise self-update` runs before anything installs through mise, but only when mise lives under `$HOME`. This is not cosmetic: mise's tool registry is compiled into the mise binary, so a mise older than a tool's registry entry cannot resolve that tool by name and `mise install` fails identically on every run. A mise from a system package manager (`omarchy/mise-bin` here) is built with self-update compiled out and only prints errors when asked, so those installs move with the platform upgrade instead. `verify-mise-tools` runs after the install pass and reports anything in `mise.toml` that never landed, since `mise install` exits 0 even when a tool is missing.
 
 **Languages & runtimes**
 
