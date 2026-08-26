@@ -67,7 +67,7 @@ Flags can be combined:
 | Flag | Effect |
 |------|--------|
 | `-l`, `--launcher` | Open the interactive `gum` menu instead of running everything. |
-| `-u`, `--update` | Run an update pass: the system package manager plus `mise upgrade`. That means `omarchy update` on Omarchy, `brew update && brew upgrade` on macOS, and `apt-get update && apt-get upgrade` on Ubuntu. Without it, tools are only installed when missing, never bumped. |
+| `-u`, `--update` | Run an update pass: the system package manager plus `mise upgrade`. That means `brew update && brew upgrade` on macOS and `apt-get update && apt-get upgrade` on Ubuntu, both followed by `mise upgrade`; on Omarchy it is `omarchy update` alone, which upgrades mise tools itself. Without it, tools are only installed when missing, never bumped. |
 | `-r`, `--reboot` | Reboot after setup completes. |
 
 ## How It Works
@@ -116,6 +116,8 @@ Why this shape? The phase split keeps ordering correct (mise exists before `mise
 `mise/mise.toml` is the source of truth for tool versions. `mise install` reads it and installs everything below.
 
 > Omarchy takes `omarchy update` rather than a bare `yay`. Omarchy 4 ships a pacman `PreTransaction` hook, `omarchy-update-pacman-guard`, that aborts any transaction carrying both `-S` and `-u`, so a direct full upgrade fails with `failed to run transaction hooks` and upgrades nothing. Single-package installs are untouched, which is why `yay-install-package` still works. `omarchy update` is also a superset: cache prune, snapshot, keyring refresh, repo upgrade, migrations, then `omarchy-update-aur-pkgs`.
+
+> On Omarchy the shared `mise upgrade` is skipped, because `omarchy update` ends with `MISE_MINIMUM_RELEASE_AGE=0 mise up` against this same `mise.toml` and runs first. Worth knowing what that costs: mise's 24-hour release cooldown is effectively gone there, since the pass that bypasses it happens before the pass that respects it. That is what makes a publisher who tags a version before uploading its binaries, as HashiCorp did with terraform 1.16.0, fail the whole update.
 
 Note that `mise install` is not an upgrade: a tool that is already installed satisfies a `latest` spec indefinitely, so re-running setup will never move it forward. Pass `-u` / `--update` (or run `mise upgrade` yourself) to bump versions. `mise outdated` shows what is behind.
 

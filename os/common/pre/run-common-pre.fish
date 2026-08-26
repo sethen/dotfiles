@@ -10,7 +10,17 @@ function run-common-pre
     make-config-directory
     make-mise-directory
     symlink-mise-config-files
-    install-mise
+    # omarchy ships mise as mise-bin (omarchy-base.packages) and omarchy update
+    # upgrades it, so install-mise is not called there. curling mise.run would
+    # put a second copy in ~/.local/bin that shadows the packaged one on PATH
+    # and then drifts from what the distro manages, so a missing mise there is
+    # recovered with the package manager rather than reinstalled underneath it.
+    if test "$SYSTEM_OS" = omarchy
+        type -q mise
+        or error-message "mise missing on omarchy, reinstall with: yay -S mise-bin"
+    else
+        install-mise
+    end
     # config.fish puts mise on PATH for interactive shells, but a fresh run
     # inherits none of that, and everything below needs mise reachable
     test -x $HOME/.local/bin/mise; and fish_add_path -m $HOME/.local/bin
@@ -67,9 +77,19 @@ function run-common-pre
     # Bumping them takes an explicit upgrade, gated behind the update flag to
     # match brew/apt/pacman in the per-platform pre scripts.
     if test "$RUN_DOTFILES_UPDATE" = true
-        # no --bump: this keeps the ranges in mise.toml, so `latest` specs move
-        # to newest and pinned versions stay pinned
-        mise upgrade
+        # omarchy update already did this. its last step is
+        # `MISE_MINIMUM_RELEASE_AGE=0 mise up` against this same config, and
+        # run-omarchy-pre runs before this file, so a second pass here only ever
+        # reports everything already current. worth knowing what that means: on
+        # omarchy the cooldown is effectively gone, because the pass that
+        # bypasses it happens first and there is nothing left to hold back.
+        if test "$SYSTEM_OS" = omarchy
+            information-message "omarchy update already upgraded mise tools, skipping"
+        else
+            # no --bump: this keeps the ranges in mise.toml, so `latest` specs
+            # move to newest and pinned versions stay pinned
+            mise upgrade
+        end
     else
         information-message "run dotfiles update flag not found, skipping mise upgrade"
     end
