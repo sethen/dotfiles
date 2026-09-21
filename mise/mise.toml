@@ -39,3 +39,6 @@ codex = "latest"
 
 [settings.ruby]
 compile = false
+
+[settings.upgrade]
+auto_prune = false
