@@ -63,11 +63,13 @@ function run-common-pre
     symlink-opencode-config-files
     symlink-neovim-config-directory
     symlink-starship-config-directory
-    symlink-wezterm-config-directory
+    symlink-kitty-config-files
     symlink-yazi-config-directory
     symlink-herdr-config
     #-> permissions
     add-user-to-docker-group
+    #-> services
+    enable-docker-service
 
     # install
     #-> mise (remaining tools)

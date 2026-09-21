@@ -1,0 +1,31 @@
+# no new_os_window: sessions share one OS window and kitty's tab_bar_filter
+# (see kitty.conf) shows only the tabs of whichever session is active, so
+# switching sessions swaps the tab bar in place instead of opening a window.
+
+# the things that belong to no project. cwd comes from $DEVELOPER_DIRECTORY, so
+# this file works unchanged on any machine.
+#
+# shell is first and focused; keeping it first also fixes the tab order.
+
+new_tab shell
+cd $DEVELOPER_DIRECTORY
+launch
+focus
+
+new_tab herdr
+cd $DEVELOPER_DIRECTORY
+# no exec: exec only replaces the process with an external command, and
+# herdr-start is a fish function. the trailing `exec fish -l` is what keeps the
+# tab: herdr-start ends by running the herdr TUI, and without this the tab would
+# close the moment that TUI exits, the same way the stack tab handles it.
+launch fish -l -c "herdr-start; exec fish -l"
+
+new_tab yazi
+cd $DEVELOPER_DIRECTORY
+launch fish -l -c "exec yazi"
+
+# btop watches the whole machine rather than any one project, which is what puts
+# it here rather than in each project session.
+new_tab btop
+cd $DEVELOPER_DIRECTORY
+launch fish -l -c "exec btop"

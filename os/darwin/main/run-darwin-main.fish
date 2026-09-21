@@ -15,5 +15,5 @@ function run-darwin-main
     install-nginx
     install-spotify
     install-virtualbox
-    install-wezterm
+    install-kitty
 end

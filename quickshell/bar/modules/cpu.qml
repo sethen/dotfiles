@@ -101,7 +101,7 @@ Item {
 
       if (mouse.button === Qt.RightButton) {
         // waybar hardcoded alacritty here. going through omarchy-launch-terminal
-        // keeps it on whatever xdg-terminals.list names, which is wezterm.
+        // keeps it on whatever xdg-terminals.list names, which is kitty.
         bar.run("omarchy-launch-terminal")
       } else {
         bar.run("omarchy-launch-or-focus-tui btop")

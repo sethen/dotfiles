@@ -31,9 +31,6 @@ function run-omarchy-pre
     # prep
     copy-fonts
     symlink-hyprland-config-files
-    symlink-launch-screensaver
     symlink-quickshell-config-files
-    symlink-wezterm-open
-    symlink-wezterm-desktop-entry
     symlink-xdg-terminals-list
 end

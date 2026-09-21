@@ -21,7 +21,7 @@ function run-ubuntu-main
     install-virtualbox
     install-vlc
     #-> curl
-    install-wezterm
+    install-kitty
     #-> flatpak
     install-flatpak
     install-zen

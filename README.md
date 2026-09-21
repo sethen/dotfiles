@@ -27,7 +27,7 @@ These are my personal dotfiles. They take a bare machine and turn it into a full
 - **One installer, three operating systems.** A single `fish run.fish` detects macOS, Omarchy (Arch/Hyprland), or Ubuntu and runs the matching scripts. Shared steps live in `os/common`; platform-specific steps live under `os/darwin`, `os/omarchy`, and `os/ubuntu`.
 - **Phase-based and idempotent.** Setup runs in `pre`, `main`, and `post` phases. Re-running is safe: symlinks use `ln -sfv`, and installers check before reinstalling.
 - **One toolchain manager.** Almost every CLI tool and language runtime is pinned in `mise/mise.toml` and installed by [mise](https://mise.jdx.dev), so the same versions land on every machine.
-- **Catppuccin Mocha everywhere.** WezTerm, Starship, Neovim, Yazi, and Opencode all share the same palette.
+- **Catppuccin Mocha everywhere.** Kitty, Starship, Neovim, Yazi, and Opencode all share the same palette.
 - **A custom Nerd Font.** `SethensSuperCode.ttf` carries the icon glyphs used across the terminal, prompt, and editor.
 - **Interactive or hands-off.** Run the whole thing automatically, or use `--launcher` to pick individual steps from a filterable menu.
 
@@ -194,17 +194,17 @@ Cross-platform apps appear in more than one table on purpose: each OS installs t
 
 | CLI (`brew`) | GUI (`brew --cask`) |
 |--------------|---------------------|
-| fortune, git, gnupg, nginx | brave-browser, wezterm, font-jetbrains-mono, spotify, virtualbox |
+| fortune, git, gnupg, nginx | brave-browser, kitty, font-jetbrains-mono, spotify, virtualbox |
 
 **Omarchy (pacman / yay)**
 
 > The MySQL client is `mariadb-clients` rather than a mise tool. mise installs MySQL's official glibc2.28 tarball, which links against `libncurses.so.6`; Arch ships only the wide-char `libncursesw.so.6`, so that binary cannot start at all. Ubuntu gets `mariadb-client` for the same reason of consistency, even though the tarball does work there.
 
-brave, vlc, virtualbox, postgresql, mariadb-clients, nginx, ffmpeg, gparted, gpick, font-manager, grub, mdadm, openssh, ca-certificates, curl, fortune-mod, spotify-launcher, discord, wezterm-nightly-bin, ttf-jetbrains-mono
+brave, vlc, virtualbox, postgresql, mariadb-clients, nginx, ffmpeg, gparted, gpick, font-manager, grub, mdadm, openssh, ca-certificates, curl, fortune-mod, spotify-launcher, discord, kitty, ttf-jetbrains-mono
 
-> WezTerm is a system package rather than a mise tool on purpose: mise has no registry entry for it, and the `ubi`/`github` backends cannot install it either, because upstream publishes only per-distro debs, rpms and an AppImage with no generic Linux tarball. A real package also supplies the terminfo, the icon and `wezterm-mux-server`.
+> Kitty is a system package rather than a mise tool on purpose: it is a GUI application with an OpenGL renderer and a desktop entry, none of which mise's backends install. A real package also supplies the terminfo and the icon.
 >
-> On Omarchy it comes from `wezterm-nightly-bin` (AUR), not `extra/wezterm`. The repo package is pinned to `20240203`, upstream's last tagged release, and its Wayland backend never commits a buffer under Hyprland 0.56: the process starts, OpenGL initializes and the shell renders, but the surface is never mapped, so the terminal simply never appears. Reproducible with `wezterm-gui -n`, so it is the binary and not the config. `enable_wayland = false` and `front_end = "WebGpu"` do not work around it. The nightly provides/conflicts `wezterm`; if `extra/wezterm` is ever installed the run aborts, since pacman raises that conflict as a `y/N` prompt that `--noconfirm` answers with the default `N`. Remove it with `sudo pacman -R wezterm` and re-run.
+> On Omarchy and macOS it comes from the platform package manager. On Ubuntu it comes from upstream's installer into `~/.local/kitty.app` instead of apt, because the apt build lags behind the `goto_session` and `active_session_name` support the session config here depends on.
 
 **Ubuntu (apt / snap / flatpak)**
 
@@ -213,7 +213,7 @@ brave, vlc, virtualbox, postgresql, mariadb-clients, nginx, ffmpeg, gparted, gpi
 | apt | brave-browser, vlc, virtualbox, postgresql, nginx, gparted, gpick, font-manager, fonts-jetbrains-mono, autoconf, bison, build-essential, ca-certificates, gnupg, gnome-tweaks, lsb-release, mdadm, ncurses, fortune-mod |
 | snap | discord, spotify |
 | flatpak | zen-browser, flatpak |
-| custom | wezterm (`.deb`), White Sur icon theme (git) |
+| custom | kitty (upstream installer), White Sur icon theme (git) |
 
 > The GitHub CLI (`gh`) is installed through mise, not a system package manager, so it is the same version on every platform.
 
@@ -232,20 +232,20 @@ brave, vlc, virtualbox, postgresql, mariadb-clients, nginx, ffmpeg, gparted, gpi
 
 Minimal, fast prompt using the Catppuccin Mocha palette. Shows user, directory, language versions (c, dotnet, golang, nodejs, python, ruby, rust), and git branch/status.
 
-### WezTerm terminal
+### Kitty terminal
 
-The primary terminal. WezTerm draws the windows and multiplexes panes, tabs, workspaces and detachable sessions in one process.
+The primary terminal. Kitty draws the windows and multiplexes panes, tabs and named sessions. It has no server behind the GUI, so sessions do not outlive the kitty process; run tmux inside a tab if you need that.
 
-Keybindings are WezTerm's defaults; `wezterm/lua/keys.lua` only adds workspace switching, which has no default binding of any kind. `CTRL+SHIFT+O` lists the workspaces, `CTRL+SHIFT+[` and `]` step through them, and `CTRL+SHIFT+P` is the command palette. Run `wezterm show-keys` for the rest.
+Keybindings are Kitty's defaults. Everything this repo adds sits on `CTRL+SHIFT+ALT+*`, so no default is shadowed except `shift+insert`, which is deliberately the clipboard rather than the selection. `CTRL+SHIFT+SPACE` searches tabs by name, `CTRL+SHIFT+ALT+O` lists the sessions, `CTRL+SHIFT+ALT+1..4` jump to one directly. Run `kitty +list-keybinds` for the rest.
 
-- `wezterm/wezterm.lua`: entry point; puts `lua/` on `package.path` and applies each module
-- `wezterm/lua/theme.lua`: Catppuccin Mocha, pinned to an exact palette. WezTerm's bundled `Catppuccin Mocha` is a different port. It swaps normal and bright white, lightens brights 1-6, and inverts selection, so the scheme name is only the base and these values override it.
-- `wezterm/lua/appearance.lua`: font, theme and window chrome. The font stack leads with unpatched `JetBrains Mono` so the nerd font ranges fall through to `SethensSuperCode`; WezTerm has no codepoint-to-font map, so that ordering is what reserves U+F000-U+F1B2 for it.
-- `wezterm/lua/mux.lua`: the unix domain is configured but is deliberately *not* the default domain. Run `wezterm connect unix` when you want a session that outlives its window; Making it the default instead means closing a window only detaches it, the mux keeps that window forever, and every later launch re-materializes all of them before `wezterm start` adds the one you asked for, so `SUPER+RETURN` opens one window, then two, then three. Pointing the desktop entry at `wezterm connect` instead would stop that, but `connect` takes no `--cwd`, so `SUPER+RETURN` would stop opening in the focused terminal's directory. The domain deliberately omits `connect_automatically`: combined with the desktop entry's `wezterm connect unix` it attaches twice and panics the Wayland window code (`window.rs:1147`), leaving no window at all.
-- `wezterm/lua/status.lua`: bar pinned to the bottom - mode badge left, tab list centered, workspace right. The badge only appears in `copy_mode` and `search_mode`, WezTerm's only default key tables, so it never claims a mode that does not exist. Centering pads the left status by the measured width of the rendered tab titles; note that `format-tab-title` receives a `TabInformation` while `tabs_with_info()` returns `MuxTabInformation`, which carry different fields.
-- `wezterm/lua/workspaces.lua`: `dotfiles` and `worth-api` each get `nvim`, `lazydocker` and one agent - `opencode` and `claude` respectively - with `lazygit` split in beside that agent; `gem` spans both gem repos with `nvim-fe`, `nvim-be`, `dev-fe` (`npm run dev`), `compose-be` (`docker compose up --build`), one `lazydocker`, and an `opencode-fe` and `opencode-be` tab that each pair that repo's `opencode` with its own `lazygit` beside it; `main` holds what belongs to no project (`herdr`, `shell`, `yazi`, `btop`). Tabs may carry their own `cwd`, which is what lets `gem` hold two codebases at once. A tab entry may also carry `splits`, a list of programs placed beside it in the same tab, left to right; each takes the same fields as a tab plus an optional `size`, and each divides the pane made before it rather than the primary, so `size` is a fraction of what is left to the right. Splitting makes the new pane active, so the primary is reactivated afterwards and the tab opens on its own program. The agents are plain panes rather than herdr agents, so each is rooted in its own codebase; herdr is one global session with one shared agent list and no project in it, so routing them through it would give every workspace a view of the same agents. That is also why `herdr` is only in `main`. Built on `mux-startup` so it lands in `wezterm-mux-server` and survives closing the window; not `gui-startup`, which fires per GUI process and lets wezterm spawn a spare window alongside the layout. Each command is its pane's own process via `exec`, run through a login `fish` so mise is on `PATH`. The command `cd`s itself because `spawn_tab` silently ignores its `cwd` when `args` is also given, while `spawn_window` honours it. A pane closes when its program exits, and a tab closes with its last pane. `wezterm-restart` tears down the mux server so the layout rebuilds.
-- `xdg/xdg-terminals.list`: names WezTerm as the terminal `xdg-terminal-exec` should pick, which is what Omarchy's `SUPER+RETURN` and its launcher call, with Foot second as the fallback. Without it the choice among the installed `TerminalEmulator` entries is unspecified. It sits outside `wezterm/` because it is a system-level choice of terminal rather than WezTerm configuration.
-- `wezterm/desktop/org.wezfurlong.wezterm.desktop` and `wezterm/desktop/wezterm-open`: the entry shadows the packaged one and runs the `wezterm-open` wrapper, symlinked into `~/.local/bin`. Opened bare the wrapper runs `wezterm connect unix`, attaching the layout; handed a command it runs `wezterm start`, a plain window. Both are needed because Omarchy's `omarchy-launch-tui` and `omarchy-launch-floating-terminal-with-presentation` call `xdg-terminal-exec --app-id=... -e <command>` for the update prompt and every TUI menu, and `wezterm connect` rejects `-e` outright, so pointing `Exec` straight at it meant those never opened. Using `connect` for the command case instead would attach the unix domain and re-materialize every workspace in a second set of windows. `X-TerminalArgDir` is deliberately absent: passing `--cwd` would make every `SUPER+RETURN` look like a command invocation and skip the layout, and `xdg-terminal-exec` chdirs before exec anyway.
+Almost all of it is shared across every OS. Only `listen_on` and the window-decoration handling differ, and those live in one small per-platform file.
+
+- `kitty/kitty.conf`: fonts, the pinned Catppuccin Mocha palette, chrome and keys. Ends with `include os-local.conf`.
+- `kitty/os/linux.conf`, `kitty/os/darwin.conf`: the per-platform handful. `symlink-kitty-config-files` links one of them to `~/.config/kitty/os-local.conf` based on `$SYSTEM_OS`, because Kitty has no conditional include. macOS has no `XDG_RUNTIME_DIR`, which is why the control socket path is not in the shared file.
+- `kitty/tab_bar.py`: `tab_bar_style custom`. Bar at the bottom, tabs centered, session name pinned right. The centering is done here rather than with `tab_bar_align center`: Kitty centers in `align_with_factor()`, which runs after every tab is drawn and shifts the line with `insert_characters()`, which would carry a right-pinned badge off the edge.
+- `kitty/sessions/*.kitty-session`: one per project. `dotfiles` gets `nvim`, `lazydocker`, an `opencode` agent with `lazygit` split in beside it, and a shell; `gem` adds a `stack` tab that brings the compose stack up and tails it; `main` holds what belongs to no project (`shell`, `herdr`, `yazi`, `btop`). Sessions deliberately do *not* open their own OS window; they share one, and `tab_bar_filter` (see above) hides the tabs of whichever session is not active, so switching swaps the tab bar in place. Paths use `$DEVELOPER_DIRECTORY`, which session files expand, so they work unchanged on any machine. Each command runs through a login `fish` so mise is on `PATH`, and uses `exec` so the program becomes the window's own process and names the tab; the two that must not (a fish function, and the multi-statement `stack` command) deliberately skip it. The agents are plain panes rather than herdr agents, so each is rooted in its own codebase; herdr is one global session with one shared agent list and no project in it, which is also why `herdr` is only in `main`. `kitty-restart` kills kitty so the sessions rebuild.
+- `kitty/tab-search.sh`: `CTRL+SHIFT+SPACE`. Kitty's own `select_tab` renders a numbered list through the hints kitten rather than a filter, so this pipes `kitty @ ls` through fzf and focuses the result. Searches every session, not just the current window.
+- `xdg/xdg-terminals.list`: names Kitty as the terminal `xdg-terminal-exec` should pick, which is what Omarchy's `SUPER+RETURN` and its launcher call. Without it the choice among installed `TerminalEmulator` entries is unspecified. It sits outside `kitty/` because it is a system-level choice of terminal rather than Kitty configuration.
 
 ### Yazi file manager
 
@@ -262,7 +262,7 @@ A full Lua configuration under `nvim/lua/sethen/` using `lazy.nvim`:
 - **Core** (`core/`): options, keymaps, LSP setup, autocommands, constants.
 - **Plugins** (`plugins/`): one file per plugin area.
 
-Highlights: catppuccin theme, lualine, nvim-tree, telescope (+ fzf-native), treesitter (pinned to `master`; `main` is an incompatible rewrite), blink-cmp completion, mason, gitsigns, oil, which-key, and todo-comments. The agents run as their own wezterm tabs rather than as nvim plugins, so there is no copilot or opencode integration in here.
+Highlights: catppuccin theme, lualine, nvim-tree, telescope (+ fzf-native), treesitter (pinned to `master`; `main` is an incompatible rewrite), blink-cmp completion, mason, gitsigns, oil, which-key, and todo-comments. The agents run as their own kitty tabs rather than as nvim plugins, so there is no copilot or opencode integration in here.
 
 On first launch, Mason installs language servers including: bash-language-server, dockerfile-language-server, gopls, html/css, json-lsp, lua-lsp, pyright, ruby-lsp, rust-analyzer, sqlls, tailwindcss-language-server, typescript-language-server, and yaml-language-server.
 
@@ -298,7 +298,7 @@ Agent multiplexer config in `herdr/`:
 |------|-------------|
 | `SethensSuperCode.ttf` | Custom Nerd Font-style font with icon glyphs (`U+F000-U+F1B2`) |
 
-Installed to `~/.local/share/fonts/` (Omarchy/Ubuntu) or `~/Library/Fonts/` (macOS), and used by WezTerm, Starship, and Neovim for symbols.
+Installed to `~/.local/share/fonts/` (Omarchy/Ubuntu) or `~/Library/Fonts/` (macOS), and used by Kitty, Starship, and Neovim for symbols.
 
 ## Symlink Map
 
@@ -310,9 +310,11 @@ Config lives in this repo and is symlinked into place, so edits here are live ev
 | `fish/functions/` | `~/.config/fish/functions/` | all |
 | `nvim/` | `~/.config/nvim/` | all |
 | `starship/starship.toml` | `~/.config/starship.toml` | all |
-| `wezterm/` | `~/.config/wezterm/` | all |
-| `wezterm/desktop/org.wezfurlong.wezterm.desktop` | `~/.local/share/applications/org.wezfurlong.wezterm.desktop` | Omarchy |
-| `wezterm/desktop/wezterm-open` | `~/.local/bin/wezterm-open` | Omarchy |
+| `kitty/kitty.conf` | `~/.config/kitty/kitty.conf` | all |
+| `kitty/tab_bar.py` | `~/.config/kitty/tab_bar.py` | all |
+| `kitty/tab-search.sh` | `~/.config/kitty/tab-search.sh` | all |
+| `kitty/sessions/` | `~/.config/kitty/sessions/` | all |
+| `kitty/os/{linux,darwin}.conf` | `~/.config/kitty/os-local.conf` | all |
 | `xdg/xdg-terminals.list` | `~/.config/xdg-terminals.list` | Omarchy |
 | `yazi/` | `~/.config/yazi/` | all |
 | `opencode/opencode.json` | `~/.config/opencode/opencode.json` | all |
@@ -363,41 +365,12 @@ glyph, and a font carrying both icon sets shadowed the nerd font ranges neovim's
 use, changing every file icon in the editor.
 
 `assets/fonts/SethensSuperCode.ttf` is [nonicons](https://github.com/ya2s/nonicons) (MIT,
-© ya2s), covering `f000-f1b2`. `wezterm/lua/appearance.lua` puts it ahead of
+© ya2s), covering `f000-f1b2`. `kitty/kitty.conf` maps that range to it with
 `JetBrainsMono Nerd Font Mono` in the fallback chain, so it answers for that range and
 nothing else — anything wider and it starts answering for glyphs the nerd font owns.
 
 `quickshell/bar/modules/cpu.qml` is the one custom widget. Omarchy ships no cpu module, so
 there is nothing to clone; it is ours outright and needs no patching.
-
-### Screensaver on wezterm
-
-Omarchy's screensaver only knows how to draw in Alacritty, Foot, Ghostty, or Kitty: it reads `xdg-terminal-exec --print-id` and refuses anything else. This repo points that at wezterm, so the stock launcher notifies and does nothing.
-
-Foot is the one it borrows, because Omarchy lists `foot` in `omarchy-base.packages` and no longer lists `alacritty`. Omarchy also ships `default/foot/screensaver.ini`, which the launcher's foot branch expects, so nothing extra is needed here.
-
-`hypr/omarchy-launch-screensaver` fixes it by shadowing the packaged command on `PATH` (`~/.local/bin` precedes `/usr/bin`) and delegating to the real one with `XDG_CONFIG_HOME` pointed at a temp directory whose `xdg-terminals.list` names Foot. Nothing else reads that variable, `~/.config/xdg-terminals.list` is untouched, and every upstream fix to the real launcher still applies.
-
-Under omarchy 3 this file was called `launch-screensaver` because `hypridle.conf` invoked it by that name. Omarchy 4 runs the idle timer inside the shell, which calls `omarchy-launch-screensaver` by bare name, hence the rename.
-
-## Custom Fish Functions
-
-Functions live in `fish/functions/` (shared) and under each `os/<platform>` tree (install/symlink steps).
-
-**Messaging** (`header-message`, `success-message`, `error-message`, `running-message`, `information-message`): consistent status output during setup.
-
-**Git helpers** (`git-branch-name`, `git-sha`, `git-modified-files-count`, `git-staged-files-count`, `git-untracked-files-count`): available for use in a custom prompt or scripts.
-
-**System** (`switch-shell-to-fish`, `reboot-system`, `confirm-reboot-system`, `create-directory-if-not-exists`, `delete-if-exists`, `make-symlink`).
-
-**Setup helpers**:
-
-- `authenticate-github`: runs `gh auth status` to check whether the GitHub CLI is already authenticated; if not, runs `gh auth login`.
-- `set-gnome-preferences` (Ubuntu), the `clone-*` repo functions, and the `symlink-*` / `make-*` functions.
-
-**AI agents** (`herdr-start`): starts the Herdr agent multiplexer, launches Claude and OpenCode if no agents are running, then attaches to the session.
-
-**Package-manager wrappers** (in `os/<platform>/utilities/`): `brew-install-package`, `brew-cask-install-package`, `pacman-install-package`, `yay-install-package`, `sudo-apt-install-package`, `sudo-snap-install-package`, `flatpak-install-package`.
 
 ### Interactive launcher
 
@@ -428,7 +401,7 @@ fish -c "source run.fish; run-common-post"
 
 ```bash
 fish run.fish --launcher                     # pick from the menu
-fish -c "source run.fish; install-wezterm"   # or call directly
+fish -c "source run.fish; install-kitty"     # or call directly
 ```
 
 ### Update or reboot
@@ -504,10 +477,13 @@ dotfiles/
 │   └── config.toml             # Herdr agent multiplexer config
 ├── starship/
 │   └── starship.toml           # Prompt configuration
-├── wezterm/
-│   ├── wezterm.lua             # Terminal entry point
-│   ├── lua/                    # theme, appearance, mux, status, keys, workspaces
-│   └── desktop/                # desktop entry + wezterm-open wrapper
+├── kitty/
+│   ├── kitty.conf              # Shared terminal config
+│   ├── os/                     # linux.conf, darwin.conf (one is os-local.conf)
+│   ├── tab_bar.py              # Custom status bar
+│   ├── tab-search.sh           # fzf tab picker
+│   ├── sessions/               # main, dotfiles, gem (work sessions are gitignored)
+│   └── local/                  # gitignored: machine-local overrides
 ├── xdg/
 │   └── xdg-terminals.list      # xdg-terminal-exec preference order
 ├── yazi/
@@ -516,7 +492,6 @@ dotfiles/
 │   └── flavors/                # Installed flavor package(s)
 ├── hypr/
 │   ├── monitors.lua            # Monitor configuration (Omarchy)
-│   └── omarchy-launch-screensaver  # PATH shim: screensaver under wezterm
 ├── quickshell/
 │   ├── shell.json              # Bar layout + idle timings (Omarchy)
 │   ├── shell.toml              # Shell color overrides (Omarchy)

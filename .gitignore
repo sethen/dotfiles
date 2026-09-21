@@ -9,3 +9,18 @@ tea_debug.log
 
 # Per-user values captured during setup (see configure-user)
 user.fish
+
+# kitty compiles tab_bar.py on load
+__pycache__/
+
+# this repo is public, so kitty sessions are allow-listed rather than ignored by
+# name: anything new under sessions/ stays out until it is added here on purpose.
+# Work project names do not belong in a public repo, and neither does a pattern
+# that spells them out.
+kitty/sessions/*
+!kitty/sessions/main.kitty-session
+!kitty/sessions/dotfiles.kitty-session
+!kitty/sessions/gem.kitty-session
+
+# machine-local kitty config (keybinds for the sessions above)
+kitty/local/

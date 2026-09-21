@@ -2,16 +2,16 @@
 # SUPER+RETURN and the omarchy launcher call. the first entry that resolves to an
 # installed desktop file wins.
 #
-# it names wezterm/desktop/org.wezfurlong.wezterm.desktop, which is our own entry
-# rather than the packaged one: ours runs `wezterm connect unix` so opening a
-# terminal attaches the layout instead of spawning a bare window beside it.
-#
-# this lives outside wezterm/ on purpose. it is a system-level choice of terminal,
-# not wezterm configuration, and it names a fallback too.
+# this lives outside kitty/ on purpose: it is a system-level choice of terminal
+# rather than kitty configuration, and it names a fallback too.
 #
 # without this file the choice among the installed TerminalEmulator entries is
-# unspecified. foot is second so a broken or missing wezterm still leaves a
-# working terminal on the keybind; it is foot rather than alacritty because
-# omarchy ships foot and no longer ships alacritty.
-org.wezfurlong.wezterm.desktop
+# unspecified. foot is second so a broken or missing kitty still leaves a working
+# terminal on the keybind; it is foot rather than alacritty because omarchy ships
+# foot and no longer ships alacritty.
+#
+# the packaged kitty.desktop is used as-is. nothing needs to shadow it: kitty
+# takes a command after -e, which is what xdg-terminal-exec passes for omarchy's
+# TUI menus and the update prompt.
+kitty.desktop
 foot.desktop

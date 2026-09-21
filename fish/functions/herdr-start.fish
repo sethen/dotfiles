@@ -2,9 +2,9 @@
 
 function herdr-start
     # setsid, and only when no server answers. as a plain background job the server
-    # shared the pane's process group, so closing the tab - or restarting wezterm,
-    # which kills the mux and every pane with it - killed the server and took both
-    # agents down with it. the next herdr-start then found no agents and recreated
+    # shared the pane's process group, so closing the tab - or restarting kitty,
+    # which kills every window with it - killed the server and took both agents
+    # down with it. the next herdr-start then found no agents and recreated
     # them, which is why claude and opencode came back as new tabs every time.
     if not herdr agent list >/dev/null 2>&1
         setsid herdr server >/dev/null 2>&1 &

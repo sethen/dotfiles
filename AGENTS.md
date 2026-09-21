@@ -11,7 +11,7 @@ This repository contains personal dotfiles for setting up a development environm
 - **`nvim/`** - Neovim configuration using Lua with lazy.nvim plugin management
 - **`mise/`** - Development tool version management configuration
 - **`starship/`** - Shell prompt customization
-- **`wezterm/`** - Terminal emulator configuration (Lua); also covers multiplexing, panes, tabs and workspaces
+- **`kitty/`** - Terminal emulator configuration; also covers panes, tabs and named sessions
 - **`yazi/`** - Terminal file manager configuration
 - **`hypr/`** - Hyprland (Wayland compositor) overrides, in Lua (Omarchy)
 - **`quickshell/`** - Omarchy shell: bar layout, idle timings, color overrides, and cpu.qml, the one custom bar widget (Omarchy 4+; replaces `waybar/`)
@@ -184,6 +184,6 @@ The repository relies on these core tools:
 - `starship` for shell prompt
 - `git` for version control
 - `gum` for interactive CLI elements
-- `wezterm` terminal emulator (system package, not mise, because mise cannot install it; see `os/omarchy/main/install/pacman/install-wezterm.fish`)
+- `kitty` terminal emulator (system package, not mise, because it is a GUI app with a desktop entry; see `os/omarchy/main/install/pacman/install-kitty.fish`)
 
 Ensure all dependencies are installed before testing changes to the dotfiles setup.

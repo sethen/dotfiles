@@ -1,0 +1,37 @@
+# no new_os_window: sessions share one OS window and kitty's tab_bar_filter
+# (see kitty.conf) shows only the tabs of whichever session is active, so
+# switching sessions swaps the tab bar in place instead of opening a window.
+
+# a project workspace: editor, containers, agent beside lazygit, shell.
+#
+# exec so the program replaces the shell and becomes the window's own process,
+# which is what puts its name in the title rather than a generic fish. the login
+# shell is still needed: kitty inherits the desktop session's environment, where
+# none of these tools are on PATH until config.fish activates mise.
+
+new_tab nvim
+cd $DEVELOPER_DIRECTORY/dotfiles
+launch fish -l -c "exec nvim -c NvimTreeToggle"
+
+new_tab lazydocker
+cd $DEVELOPER_DIRECTORY/dotfiles
+launch fish -l -c "exec lazydocker"
+
+# lazygit sits beside the agent rather than in a tab of its own: what the agent
+# just changed is what lazygit is showing. `focus` after the agent's launch is
+# there to undo the split stealing focus.
+new_tab opencode
+cd $DEVELOPER_DIRECTORY/dotfiles
+layout splits
+launch fish -l -c "exec opencode"
+focus
+launch --location=vsplit fish -l -c "exec lazygit"
+
+# no cmd: a plain login fish at the project root.
+new_tab shell
+cd $DEVELOPER_DIRECTORY/dotfiles
+launch
+
+# landing on nvim is the point of opening a project, so the tab focus set
+# above for the split is overridden here.
+focus_tab title:nvim

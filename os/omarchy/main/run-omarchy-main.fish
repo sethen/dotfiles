@@ -24,7 +24,7 @@ function run-omarchy-main
     install-ttf-jetbrains-mono
     install-virtualbox
     install-vlc
-    install-wezterm
+    install-kitty
 
     # defined in pre/prep with the other symlink steps, but it has to run here:
     # clone-wallpapers-repo does not fetch the repo until run-common-main

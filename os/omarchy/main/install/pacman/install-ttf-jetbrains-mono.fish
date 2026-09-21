@@ -3,8 +3,8 @@
 function install-ttf-jetbrains-mono
     running-message install-ttf-jetbrains-mono
 
-    # the unpatched face. wezterm needs it as the primary font so the nerd font
-    # ranges fall through to SethensSuperCode. see wezterm/lua/appearance.lua.
+    # the unpatched face. kitty uses it as the primary font and routes the nerd
+    # font ranges with symbol_map instead. see kitty/kitty.conf.
     #
     # this does not go through pacman-install-package: that helper tests with
     # `pacman -Qs`, which is a substring search, so the already-installed
