@@ -3,5 +3,5 @@
 function install-nginx
     running-message install-nginx
 
-    yay-install-package nginx
+    yay-queue-package nginx
 end

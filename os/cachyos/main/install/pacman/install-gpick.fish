@@ -3,5 +3,5 @@
 function install-gpick
     running-message install-gpick
 
-    yay-install-package gpick
+    yay-queue-package gpick
 end

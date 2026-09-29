@@ -3,5 +3,5 @@
 function install-gparted
     running-message install-gparted
 
-    yay-install-package gparted
+    yay-queue-package gparted
 end

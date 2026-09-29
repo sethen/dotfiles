@@ -3,5 +3,5 @@
 function install-fortune-mod
     running-message install-fortune-mod
 
-    yay-install-package fortune-mod
+    yay-queue-package fortune-mod
 end

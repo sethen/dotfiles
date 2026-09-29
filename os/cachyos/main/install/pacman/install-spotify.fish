@@ -7,5 +7,5 @@ function install-spotify
     # and updates the real spotify build from spotify's own apt repo. the AUR
     # `spotify` package needs its signing key imported by hand, and this keeps
     # itself current, which the snap and brew cask on the other platforms do too
-    yay-install-package spotify-launcher
+    yay-queue-package spotify-launcher
 end

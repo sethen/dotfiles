@@ -3,5 +3,5 @@
 function install-discord
     running-message install-discord
 
-    yay-install-package discord
+    yay-queue-package discord
 end

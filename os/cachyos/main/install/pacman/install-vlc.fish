@@ -3,5 +3,5 @@
 function install-vlc
     running-message install-vlc
 
-    yay-install-package vlc
+    yay-queue-package vlc
 end

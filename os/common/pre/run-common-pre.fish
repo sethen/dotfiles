@@ -77,6 +77,7 @@ function run-common-pre
     end
     mise env fish | source
     verify-mise-tools
+    symlink-docker-compose-plugin
     #-> herdr
     install-herdr-integrations
     #-> go

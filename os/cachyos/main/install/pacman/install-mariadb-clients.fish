@@ -3,5 +3,5 @@
 function install-mariadb-clients
     running-message install-mariadb-clients
 
-    yay-install-package mariadb-clients
+    yay-queue-package mariadb-clients
 end

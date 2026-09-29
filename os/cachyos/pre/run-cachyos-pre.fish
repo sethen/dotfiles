@@ -22,6 +22,7 @@ function run-cachyos-pre
 
     #-> yay
     install-docker
+    yay-install-queued-packages
 
     # prep
     copy-fonts

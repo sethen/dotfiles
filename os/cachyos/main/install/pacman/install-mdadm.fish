@@ -3,5 +3,5 @@
 function install-mdadm
     running-message install-mdadm
 
-    yay-install-package mdadm
+    yay-queue-package mdadm
 end

@@ -6,8 +6,6 @@ function run-cachyos-main
     # install
     #-> pacman
     install-brave
-    install-ca-certificates
-    install-curl
     install-discord
     install-ffmpeg
     install-font-manager
@@ -23,5 +21,9 @@ function run-cachyos-main
     install-ttf-jetbrains-mono
     install-virtualbox
     install-vlc
-    install-kitty
+    yay-install-queued-packages
+
+    # prep
+    #-> permissions
+    add-user-to-vboxusers-group
 end

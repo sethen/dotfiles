@@ -3,5 +3,5 @@
 function install-brave
     running-message install-brave
 
-    yay-install-package brave-bin
+    yay-queue-package brave-bin
 end

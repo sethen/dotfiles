@@ -195,13 +195,15 @@ Cross-platform apps appear in more than one table on purpose: each OS installs t
 
 > The MySQL client is `mariadb-clients` rather than a mise tool. mise installs MySQL's official glibc2.28 tarball, which links against `libncurses.so.6`; Arch ships only the wide-char `libncursesw.so.6`, so that binary cannot start at all. Ubuntu gets `mariadb-client` for the same reason of consistency, even though the tarball does work there.
 
-brave, vlc, virtualbox, postgresql, mariadb-clients, nginx, ffmpeg, gparted, gpick, font-manager, mdadm, openssh, ca-certificates, curl, fortune-mod, spotify-launcher, discord, kitty, ttf-jetbrains-mono
+brave, vlc, virtualbox, postgresql, mariadb-clients, nginx, ffmpeg, gparted, gpick, font-manager, mdadm, openssh, fortune-mod, spotify-launcher, discord, ttf-jetbrains-mono
 
-> `virtualbox` is preceded by `virtualbox-host-dkms`, because the `linux-cachyos` kernel needs DKMS-built modules. `run-cachyos-pre` also installs `yay` from the CachyOS repo, plus `docker` and `docker-buildx`.
+> `virtualbox` is queued with `virtualbox-host-dkms`, because the `linux-cachyos` kernel needs DKMS-built modules. `run-cachyos-pre` also installs `yay` from the CachyOS repo, plus `docker` and `docker-buildx`.
+
+> CachyOS packages install in one transaction per stage, not one per package. Each `install-*` function calls `yay-queue-package`, which skips anything already installed (`pacman -Q`, exact name) and adds the rest to `DOTFILES_YAY_QUEUE`. `yay-install-queued-packages` then installs the whole queue with a single `yay -S`, once at the end of `run-cachyos-pre` and once at the end of `run-cachyos-main`. The reason is snapper: CachyOS takes a pre and post snapshot for every pacman transaction and waits on `limine-snapper-sync` each time, so installing package by package produced about 36 snapshots per run and buried the useful rollback points in the boot menu. The tradeoff is all or nothing: one package that fails to resolve aborts the transaction, and nothing in that stage installs until it is fixed. New CachyOS packages should use `yay-queue-package`; `pacman-install-package` is kept only for bootstrapping `yay` itself.
 
 > Kitty is a system package rather than a mise tool on purpose: it is a GUI application with an OpenGL renderer and a desktop entry, none of which mise's backends install. A real package also supplies the terminfo and the icon.
 >
-> On CachyOS and macOS it comes from the platform package manager. On Ubuntu it comes from upstream's installer into `~/.local/kitty.app` instead of apt, because the apt build lags behind the `goto_session` and `active_session_name` support the session config here depends on.
+> On CachyOS it is not installed here at all: CachyOS ships kitty preinstalled as its default terminal. On macOS it comes from Homebrew. On Ubuntu it comes from upstream's installer into `~/.local/kitty.app` instead of apt, because the apt build lags behind the `goto_session` and `active_session_name` support the session config here depends on.
 
 **Ubuntu (apt / snap / flatpak)**
 
@@ -395,7 +397,7 @@ return {
 
 ### Add a platform package
 
-- **CachyOS:** add an `install-*` function and call it in `os/cachyos/main/run-cachyos-main.fish`.
+- **CachyOS:** add an `install-*` function that calls `yay-queue-package`, and call it in `os/cachyos/main/run-cachyos-main.fish` before `yay-install-queued-packages`.
 - **Ubuntu:** add it to `os/ubuntu/main/run-ubuntu-main.fish` (apt, snap, or flatpak).
 - **macOS:** add it to `os/darwin/main/run-darwin-main.fish`.
 

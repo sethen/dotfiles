@@ -3,5 +3,5 @@
 function install-openssh
     running-message install-openssh
 
-    yay-install-package openssh
+    yay-queue-package openssh
 end
