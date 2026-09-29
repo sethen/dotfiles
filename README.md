@@ -1,6 +1,6 @@
 # Sethen's Dotfiles
 
-> One Fish-powered installer that bootstraps a complete development environment on macOS, Arch (Omarchy/Hyprland), and Ubuntu.
+> One Fish-powered installer that bootstraps a complete development environment on macOS, CachyOS (Arch/Hyprland), and Ubuntu.
 
 These are my personal dotfiles. They take a bare machine and turn it into a fully configured development environment: shell, prompt, terminal, editor, language toolchains, and desktop apps. Everything is driven by a single `run.fish` entry point that detects your OS and runs the right steps. Take and use anything you want.
 
@@ -14,7 +14,7 @@ These are my personal dotfiles. They take a bare machine and turn it into a full
 - [What Gets Installed](#what-gets-installed)
 - [Configuration Tour](#configuration-tour)
 - [Symlink Map](#symlink-map)
-- [Desktop Environment (Omarchy/Hyprland)](#desktop-environment-omarchyhyprland)
+- [Desktop Environment (CachyOS/Hyprland)](#desktop-environment-cachyoshyprland)
 - [Custom Fish Functions](#custom-fish-functions)
 - [Environment Variables](#environment-variables)
 - [Advanced Usage](#advanced-usage)
@@ -24,7 +24,7 @@ These are my personal dotfiles. They take a bare machine and turn it into a full
 
 ## Highlights
 
-- **One installer, three operating systems.** A single `fish run.fish` detects macOS, Omarchy (Arch/Hyprland), or Ubuntu and runs the matching scripts. Shared steps live in `os/common`; platform-specific steps live under `os/darwin`, `os/omarchy`, and `os/ubuntu`.
+- **One installer, three operating systems.** A single `fish run.fish` detects macOS, CachyOS (Arch/Hyprland), or Ubuntu and runs the matching scripts. Shared steps live in `os/common`; platform-specific steps live under `os/darwin`, `os/cachyos`, and `os/ubuntu`.
 - **Phase-based and idempotent.** Setup runs in `pre`, `main`, and `post` phases. Re-running is safe: symlinks use `ln -sfv`, and installers check before reinstalling.
 - **One toolchain manager.** Almost every CLI tool and language runtime is pinned in `mise/mise.toml` and installed by [mise](https://mise.jdx.dev), so the same versions land on every machine.
 - **Catppuccin Mocha everywhere.** Kitty, Starship, Neovim, Yazi, and Opencode all share the same palette.
@@ -36,7 +36,7 @@ These are my personal dotfiles. They take a bare machine and turn it into a full
 | Platform | Base requirement |
 |----------|------------------|
 | **macOS (Darwin)** | A working macOS install. Homebrew is installed for you if missing. |
-| **Omarchy (Hyprland)** | A base Arch Linux system with Hyprland installed via [Omarchy](https://github.com/basecamp/omarchy). |
+| **CachyOS (Hyprland)** | A CachyOS install with the Hyprland desktop (Noctalia shell). |
 | **Ubuntu** | Ubuntu 24.10+ with an internet connection. |
 
 ## Prerequisites
@@ -67,7 +67,7 @@ Flags can be combined:
 | Flag | Effect |
 |------|--------|
 | `-l`, `--launcher` | Open the interactive `gum` menu instead of running everything. |
-| `-u`, `--update` | Run an update pass: the system package manager plus `mise upgrade`. That means `brew update && brew upgrade` on macOS and `apt-get update && apt-get upgrade` on Ubuntu, both followed by `mise upgrade`; on Omarchy it is `omarchy update` alone, which upgrades mise tools itself. Without it, tools are only installed when missing, never bumped. |
+| `-u`, `--update` | Run an update pass: the system package manager plus `mise upgrade`. That means `brew update && brew upgrade` on macOS and `apt-get update && apt-get upgrade` on Ubuntu, and `yay -Syu --noconfirm` on CachyOS, all followed by `mise upgrade`. Without it, tools are only installed when missing, never bumped. |
 | `-r`, `--reboot` | Reboot after setup completes. |
 
 ## How It Works
@@ -76,7 +76,7 @@ Flags can be combined:
 
 `run.fish` is the single entry point. It:
 
-1. **Detects the OS** from `uname` and sets `SYSTEM_OS` to `darwin`, `omarchy`, or `ubuntu`.
+1. **Detects the OS** and sets `SYSTEM_OS` to `darwin`, `cachyos`, or `ubuntu`. macOS and Ubuntu come from `uname`; CachyOS is recognized by `ID=cachyos` in `/etc/os-release`.
 2. **Sets global paths** (`DOTFILES_DIRECTORY`, `HOME_CONFIG_DIRECTORY`, and friends).
 3. **Loads Fish functions** by adding every `os/<platform>` and `os/common` subdirectory to `fish_function_path`, so each `install-*` / `symlink-*` / helper function becomes callable.
 4. **Runs the phases** for your platform.
@@ -92,7 +92,7 @@ run.fish
 │   ├── Create directories (~/.config, ~/Developer, ~/.config/mise, ...)
 │   ├── Symlink every config file/directory into place
 │   ├── Install mise (curl) and add it to PATH for the run
-│   ├── mise self-update → only a self-managed mise; a packaged one moves with the OS
+│   ├── mise self-update → only a self-managed mise
 │   ├── mise install   → installs all tools from mise/mise.toml
 │   ├── mise upgrade   → only with --update; bumps `latest` specs to newest
 │   ├── verify-mise-tools → fails loudly if a requested tool never installed
@@ -102,7 +102,6 @@ run.fish
 │   ├── Install OS packages (brew / pacman / apt / snap / flatpak)
 │   ├── Install language servers (via bun)
 │   └── Clone repositories (dotfiles, wallpapers)
-│   └── Symlink wallpapers into every Omarchy theme (omarchy only)
 └── Post Phase (os/common/post)
     └── Final configuration
 ```
@@ -115,13 +114,9 @@ Why this shape? The phase split keeps ordering correct (mise exists before `mise
 
 `mise/mise.toml` is the source of truth for tool versions. `mise install` reads it and installs everything below.
 
-> Omarchy takes `omarchy update` rather than a bare `yay`. Omarchy 4 ships a pacman `PreTransaction` hook, `omarchy-update-pacman-guard`, that aborts any transaction carrying both `-S` and `-u`, so a direct full upgrade fails with `failed to run transaction hooks` and upgrades nothing. Single-package installs are untouched, which is why `yay-install-package` still works. `omarchy update` is also a superset: cache prune, snapshot, keyring refresh, repo upgrade, migrations, then `omarchy-update-aur-pkgs`.
-
-> On Omarchy the shared `mise upgrade` is skipped, because `omarchy update` ends with `MISE_MINIMUM_RELEASE_AGE=0 mise up` against this same `mise.toml` and runs first. Worth knowing what that costs: mise's 24-hour release cooldown is effectively gone there, since the pass that bypasses it happens before the pass that respects it. That is what makes a publisher who tags a version before uploading its binaries, as HashiCorp did with terraform 1.16.0, fail the whole update.
-
 Note that `mise install` is not an upgrade: a tool that is already installed satisfies a `latest` spec indefinitely, so re-running setup will never move it forward. Pass `-u` / `--update` (or run `mise upgrade` yourself) to bump versions. `mise outdated` shows what is behind.
 
-`mise self-update` runs before anything installs through mise, but only when mise lives under `$HOME`. This is not cosmetic: mise's tool registry is compiled into the mise binary, so a mise older than a tool's registry entry cannot resolve that tool by name and `mise install` fails identically on every run. A mise from a system package manager (`omarchy/mise-bin` here) is built with self-update compiled out and only prints errors when asked, so those installs move with the platform upgrade instead. `verify-mise-tools` runs after the install pass and reports anything in `mise.toml` that never landed, since `mise install` exits 0 even when a tool is missing.
+`mise self-update` runs before anything installs through mise, but only when mise lives under `$HOME`. This is not cosmetic: mise's tool registry is compiled into the mise binary, so a mise older than a tool's registry entry cannot resolve that tool by name and `mise install` fails identically on every run. A mise from a system package manager is built with self-update compiled out and only prints errors when asked, so those installs move with the platform upgrade instead. `verify-mise-tools` runs after the install pass and reports anything in `mise.toml` that never landed, since `mise install` exits 0 even when a tool is missing.
 
 **Languages & runtimes**
 
@@ -168,7 +163,7 @@ Note that `mise install` is not an upgrade: a tool that is already installed sat
 | yazi | Terminal file manager |
 | neovim | Modern Vim editor |
 | gh | GitHub CLI |
-| herdr | Agent session manager (Omarchy ships it too; mise covers macOS and Ubuntu) |
+| herdr | Agent session manager (installed via mise on every platform) |
 
 **Terminal UIs & AI**
 
@@ -196,15 +191,17 @@ Cross-platform apps appear in more than one table on purpose: each OS installs t
 |--------------|---------------------|
 | fortune, git, gnupg, nginx | brave-browser, kitty, font-jetbrains-mono, spotify, virtualbox |
 
-**Omarchy (pacman / yay)**
+**CachyOS (pacman / yay)**
 
 > The MySQL client is `mariadb-clients` rather than a mise tool. mise installs MySQL's official glibc2.28 tarball, which links against `libncurses.so.6`; Arch ships only the wide-char `libncursesw.so.6`, so that binary cannot start at all. Ubuntu gets `mariadb-client` for the same reason of consistency, even though the tarball does work there.
 
-brave, vlc, virtualbox, postgresql, mariadb-clients, nginx, ffmpeg, gparted, gpick, font-manager, grub, mdadm, openssh, ca-certificates, curl, fortune-mod, spotify-launcher, discord, kitty, ttf-jetbrains-mono
+brave, vlc, virtualbox, postgresql, mariadb-clients, nginx, ffmpeg, gparted, gpick, font-manager, mdadm, openssh, ca-certificates, curl, fortune-mod, spotify-launcher, discord, kitty, ttf-jetbrains-mono
+
+> `virtualbox` is preceded by `virtualbox-host-dkms`, because the `linux-cachyos` kernel needs DKMS-built modules. `run-cachyos-pre` also installs `yay` from the CachyOS repo, plus `docker` and `docker-buildx`.
 
 > Kitty is a system package rather than a mise tool on purpose: it is a GUI application with an OpenGL renderer and a desktop entry, none of which mise's backends install. A real package also supplies the terminfo and the icon.
 >
-> On Omarchy and macOS it comes from the platform package manager. On Ubuntu it comes from upstream's installer into `~/.local/kitty.app` instead of apt, because the apt build lags behind the `goto_session` and `active_session_name` support the session config here depends on.
+> On CachyOS and macOS it comes from the platform package manager. On Ubuntu it comes from upstream's installer into `~/.local/kitty.app` instead of apt, because the apt build lags behind the `goto_session` and `active_session_name` support the session config here depends on.
 
 **Ubuntu (apt / snap / flatpak)**
 
@@ -241,11 +238,10 @@ Keybindings are Kitty's defaults. Everything this repo adds sits on `CTRL+SHIFT+
 Almost all of it is shared across every OS. Only `listen_on` and the window-decoration handling differ, and those live in one small per-platform file.
 
 - `kitty/kitty.conf`: fonts, the pinned Catppuccin Mocha palette, chrome and keys. Ends with `include os-local.conf`.
-- `kitty/os/linux.conf`, `kitty/os/darwin.conf`: the per-platform handful. `symlink-kitty-config-files` links one of them to `~/.config/kitty/os-local.conf` based on `$SYSTEM_OS`, because Kitty has no conditional include. macOS has no `XDG_RUNTIME_DIR`, which is why the control socket path is not in the shared file.
+- `kitty/os/linux.conf`, `kitty/os/darwin.conf`: the per-platform handful. `symlink-kitty-config-files` links one of them to `~/.config/kitty/os-local.conf` based on `$SYSTEM_OS`, because Kitty has no conditional include. macOS has no `XDG_RUNTIME_DIR`, which is why the control socket path is not in the shared file. On Linux the socket is `${XDG_RUNTIME_DIR}/kitty-{kitty_pid}`.
 - `kitty/tab_bar.py`: `tab_bar_style custom`. Bar at the bottom, tabs centered, session name pinned right. The centering is done here rather than with `tab_bar_align center`: Kitty centers in `align_with_factor()`, which runs after every tab is drawn and shifts the line with `insert_characters()`, which would carry a right-pinned badge off the edge.
 - `kitty/sessions/*.kitty-session`: one per project. `dotfiles` gets `nvim`, `lazydocker`, an `opencode` agent with `lazygit` split in beside it, and a shell; `gem` adds a `stack` tab that brings the compose stack up and tails it; `main` holds what belongs to no project (`shell`, `herdr`, `yazi`, `btop`). Sessions deliberately do *not* open their own OS window; they share one, and `tab_bar_filter` (see above) hides the tabs of whichever session is not active, so switching swaps the tab bar in place. Paths use `$DEVELOPER_DIRECTORY`, which session files expand, so they work unchanged on any machine. Each command runs through a login `fish` so mise is on `PATH`, and uses `exec` so the program becomes the window's own process and names the tab; the two that must not (a fish function, and the multi-statement `stack` command) deliberately skip it. The agents are plain panes rather than herdr agents, so each is rooted in its own codebase; herdr is one global session with one shared agent list and no project in it, which is also why `herdr` is only in `main`. `kitty-restart` kills kitty so the sessions rebuild.
 - `kitty/tab-search.sh`: `CTRL+SHIFT+SPACE`. Kitty's own `select_tab` renders a numbered list through the hints kitten rather than a filter, so this pipes `kitty @ ls` through fzf and focuses the result. Searches every session, not just the current window.
-- `xdg/xdg-terminals.list`: names Kitty as the terminal `xdg-terminal-exec` should pick, which is what Omarchy's `SUPER+RETURN` and its launcher call. Without it the choice among installed `TerminalEmulator` entries is unspecified. It sits outside `kitty/` because it is a system-level choice of terminal rather than Kitty configuration.
 
 ### Yazi file manager
 
@@ -298,7 +294,7 @@ Agent multiplexer config in `herdr/`:
 |------|-------------|
 | `SethensSuperCode.ttf` | Custom Nerd Font-style font with icon glyphs (`U+F000-U+F1B2`) |
 
-Installed to `~/.local/share/fonts/` (Omarchy/Ubuntu) or `~/Library/Fonts/` (macOS), and used by Kitty, Starship, and Neovim for symbols.
+Installed to `~/.local/share/fonts/` (CachyOS/Ubuntu) or `~/Library/Fonts/` (macOS), and used by Kitty, Starship, and Neovim for symbols. The font is [nonicons](https://github.com/ya2s/nonicons) (MIT, (c) ya2s); `kitty/kitty.conf` maps `f000-f1b2` to it with `JetBrainsMono Nerd Font Mono` in the fallback chain, so it answers for that range and nothing else.
 
 ## Symlink Map
 
@@ -315,7 +311,6 @@ Config lives in this repo and is symlinked into place, so edits here are live ev
 | `kitty/tab-search.sh` | `~/.config/kitty/tab-search.sh` | all |
 | `kitty/sessions/` | `~/.config/kitty/sessions/` | all |
 | `kitty/os/{linux,darwin}.conf` | `~/.config/kitty/os-local.conf` | all |
-| `xdg/xdg-terminals.list` | `~/.config/xdg-terminals.list` | Omarchy |
 | `yazi/` | `~/.config/yazi/` | all |
 | `opencode/opencode.json` | `~/.config/opencode/opencode.json` | all |
 | `opencode/themes/` | `~/.config/opencode/themes/` | all |
@@ -324,53 +319,13 @@ Config lives in this repo and is symlinked into place, so edits here are live ev
 | `mise/.default-gems` | `~/.default-gems` | all |
 | `.gitconfig` | `~/.gitconfig` | all |
 | `.gitignore_global` | `~/.gitignore_global` | all |
-| `hypr/monitors.lua` | `~/.config/hypr/monitors.lua` | Omarchy |
-| `hypr/omarchy-launch-screensaver` | `~/.local/bin/omarchy-launch-screensaver` | Omarchy |
-| `quickshell/shell.json` | `~/.config/omarchy/shell.json` | Omarchy |
-| `quickshell/shell.toml` | `~/.config/omarchy/shell.toml` | Omarchy |
-| `quickshell/bar/` | `~/.config/omarchy/bar/` | Omarchy |
+| `hypr/monitors.lua` | `~/.config/hypr/config/monitors.lua` | CachyOS |
 
-## Desktop Environment (Omarchy/Hyprland)
+## Desktop Environment (CachyOS/Hyprland)
 
-On Omarchy, the base Wayland desktop is provided by [Omarchy](https://github.com/basecamp/omarchy); these dotfiles layer config on top:
+On CachyOS, the base Wayland desktop is Hyprland with the [Noctalia](https://github.com/noctalia-dev/noctalia-shell) shell, as shipped by CachyOS. Keybindings, window rules, and the bar, launcher, lock screen, and notifications come from CachyOS itself (`~/.config/hypr/config/*.lua` and `~/.config/noctalia`). This repo owns only the monitor layout, in `hypr/monitors.lua`.
 
-- **Hyprland**: monitor layout in `hypr/monitors.lua`.
-- **Omarchy shell**: bar layout and idle timings in `quickshell/shell.json`, theme overrides in `quickshell/shell.toml`, custom bar widgets in `quickshell/bar/modules/`.
-- **Screensaver**: `hypr/omarchy-launch-screensaver`, a PATH shim covered below.
-
-> Hyprland keybindings, window rules, and animations are managed by Omarchy itself, as are the stock bar widgets. This repo only owns the monitor config, the bar layout, the shell color overrides, and the per-app theming above.
-
-### Omarchy 4 (quattro) notes
-
-Omarchy 4 replaced the omarchy 3 desktop wholesale with a single long-running [Quickshell](https://quickshell.org/) process. Four things this repo used to own moved or disappeared:
-
-| Omarchy 3 | Omarchy 4 |
-| --- | --- |
-| `waybar/config.jsonc`, `waybar/style.css` | `quickshell/shell.json` (layout), `quickshell/shell.toml` (colors) |
-| `hypr/hypridle.conf` | `idle.screensaver` / `idle.lock` in `quickshell/shell.json` |
-| `hypr/hyprlock.conf` | the `omarchy.lock` Quickshell plugin, which takes no config |
-| `hypr/monitors.conf` | `hypr/monitors.lua` |
-
-The `waybar`, `hyprlock`, and `hypridle` packages are no longer installed. The monitor change is the one that fails quietly: Hyprland 0.56 reads Lua (`hyprctl systeminfo` reports `configProvider: lua`), so a leftover `monitors.conf` is simply never loaded and the display silently falls back to its preferred mode.
-
-**Bar font size.** Waybar ran 16px text. The shell derives every surface from one rem root (`[font] base-size` in `quickshell/shell.toml`), so raising it scales panels, notifications, and the menu too, and grows the bar past its stock 26px height. Set to 16 to match waybar; drop to 12 for omarchy's intended proportions.
-
-### Icons
-
-The bar uses omarchy's own icons, untouched. Its widgets draw them as literals in QML
-and expose no icon setting, so changing one means cloning the widget into
-`~/.config/omarchy/plugins/` and owning a copy of its source — which then stops tracking
-upstream. That was tried and reverted: the maintenance is not worth it for a different
-glyph, and a font carrying both icon sets shadowed the nerd font ranges neovim's devicons
-use, changing every file icon in the editor.
-
-`assets/fonts/SethensSuperCode.ttf` is [nonicons](https://github.com/ya2s/nonicons) (MIT,
-© ya2s), covering `f000-f1b2`. `kitty/kitty.conf` maps that range to it with
-`JetBrainsMono Nerd Font Mono` in the fallback chain, so it answers for that range and
-nothing else — anything wider and it starts answering for glyphs the nerd font owns.
-
-`quickshell/bar/modules/cpu.qml` is the one custom widget. Omarchy ships no cpu module, so
-there is nothing to clone; it is ours outright and needs no patching.
+`run-cachyos-pre` symlinks it to `~/.config/hypr/config/monitors.lua`, replacing CachyOS's stock catch-all monitor rule. CachyOS's `hyprland.lua` requires `config.monitors`, so the file has to live at that path. Hyprland reads Lua, so a legacy `monitors.conf` is never loaded.
 
 ### Interactive launcher
 
@@ -392,8 +347,8 @@ Set in `run.fish` during setup: `SYSTEM_OS`, `DOTFILES_DIRECTORY`, `DOTFILES_OS_
 ### Run individual phases
 
 ```bash
-fish -c "source run.fish; run-darwin-pre"    # or run-omarchy-pre / run-ubuntu-pre
-fish -c "source run.fish; run-darwin-main"   # or run-omarchy-main / run-ubuntu-main
+fish -c "source run.fish; run-darwin-pre"    # or run-cachyos-pre / run-ubuntu-pre
+fish -c "source run.fish; run-darwin-main"   # or run-cachyos-main / run-ubuntu-main
 fish -c "source run.fish; run-common-post"
 ```
 
@@ -440,7 +395,7 @@ return {
 
 ### Add a platform package
 
-- **Omarchy:** add an `install-*` function and call it in `os/omarchy/main/run-omarchy-main.fish`.
+- **CachyOS:** add an `install-*` function and call it in `os/cachyos/main/run-cachyos-main.fish`.
 - **Ubuntu:** add it to `os/ubuntu/main/run-ubuntu-main.fish` (apt, snap, or flatpak).
 - **macOS:** add it to `os/darwin/main/run-darwin-main.fish`.
 
@@ -460,7 +415,7 @@ dotfiles/
 │   │   ├── pre/ main/ post/    # Phase scripts
 │   │   └── utilities/          # Shared helpers (dot-launcher)
 │   ├── darwin/                 # macOS (pre, main, utilities)
-│   ├── omarchy/                # Arch/Hyprland (pre, main, utilities)
+│   ├── cachyos/                # Arch/Hyprland (pre, main, utilities)
 │   └── ubuntu/                 # Ubuntu (pre, main, utilities)
 ├── mise/
 │   ├── mise.toml               # Tool versions (source of truth)
@@ -484,18 +439,12 @@ dotfiles/
 │   ├── tab-search.sh           # fzf tab picker
 │   ├── sessions/               # main, dotfiles, gem (work sessions are gitignored)
 │   └── local/                  # gitignored: machine-local overrides
-├── xdg/
-│   └── xdg-terminals.list      # xdg-terminal-exec preference order
 ├── yazi/
 │   ├── yazi.toml               # Manager settings
 │   ├── theme.toml              # Flavor selection + icon table
 │   └── flavors/                # Installed flavor package(s)
 ├── hypr/
-│   ├── monitors.lua            # Monitor configuration (Omarchy)
-├── quickshell/
-│   ├── shell.json              # Bar layout + idle timings (Omarchy)
-│   ├── shell.toml              # Shell color overrides (Omarchy)
-│   └── bar/modules/            # cpu.qml, the one custom bar widget (Omarchy)
+│   └── monitors.lua            # Monitor configuration (CachyOS)
 └── assets/
     ├── fonts/                  # SethensSuperCode.ttf
     ├── images/                 # Screenshots

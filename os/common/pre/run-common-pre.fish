@@ -10,17 +10,7 @@ function run-common-pre
     make-config-directory
     make-mise-directory
     symlink-mise-config-files
-    # omarchy ships mise as mise-bin (omarchy-base.packages) and omarchy update
-    # upgrades it, so install-mise is not called there. curling mise.run would
-    # put a second copy in ~/.local/bin that shadows the packaged one on PATH
-    # and then drifts from what the distro manages, so a missing mise there is
-    # recovered with the package manager rather than reinstalled underneath it.
-    if test "$SYSTEM_OS" = omarchy
-        type -q mise
-        or error-message "mise missing on omarchy, reinstall with: yay -S mise-bin"
-    else
-        install-mise
-    end
+    install-mise
     # config.fish puts mise on PATH for interactive shells, but a fresh run
     # inherits none of that, and everything below needs mise reachable
     test -x $HOME/.local/bin/mise; and fish_add_path -m $HOME/.local/bin
@@ -29,7 +19,7 @@ function run-common-pre
     # fails the same way on every run. Update mise before anything installs
     # through it, not after. install-mise only fetches mise when absent, so this
     # is the sole thing keeping a long-lived machine current. One exception: a
-    # mise from a system package manager (pacman on omarchy, apt, brew) is built
+    # mise from a system package manager (pacman, apt, brew) is built
     # with self-update compiled out, so calling it there only prints errors and
     # the platform update in the per-platform pre script moves it instead.
     if string match -q "$HOME/*" -- (command -v mise)
@@ -79,19 +69,9 @@ function run-common-pre
     # Bumping them takes an explicit upgrade, gated behind the update flag to
     # match brew/apt/pacman in the per-platform pre scripts.
     if test "$RUN_DOTFILES_UPDATE" = true
-        # omarchy update already did this. its last step is
-        # `MISE_MINIMUM_RELEASE_AGE=0 mise up` against this same config, and
-        # run-omarchy-pre runs before this file, so a second pass here only ever
-        # reports everything already current. worth knowing what that means: on
-        # omarchy the cooldown is effectively gone, because the pass that
-        # bypasses it happens first and there is nothing left to hold back.
-        if test "$SYSTEM_OS" = omarchy
-            information-message "omarchy update already upgraded mise tools, skipping"
-        else
-            # no --bump: this keeps the ranges in mise.toml, so `latest` specs
-            # move to newest and pinned versions stay pinned
-            mise upgrade
-        end
+        # no --bump: this keeps the ranges in mise.toml, so `latest` specs
+        # move to newest and pinned versions stay pinned
+        mise upgrade
     else
         information-message "run dotfiles update flag not found, skipping mise upgrade"
     end

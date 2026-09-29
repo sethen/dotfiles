@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
-function run-omarchy-main
-    running-message run-omarchy-main
+function run-cachyos-main
+    running-message run-cachyos-main
 
     # install
     #-> pacman
@@ -14,7 +14,6 @@ function run-omarchy-main
     install-fortune-mod
     install-gparted
     install-gpick
-    install-grub
     install-mariadb-clients
     install-mdadm
     install-nginx
@@ -25,8 +24,4 @@ function run-omarchy-main
     install-virtualbox
     install-vlc
     install-kitty
-
-    # defined in pre/prep with the other symlink steps, but it has to run here:
-    # clone-wallpapers-repo does not fetch the repo until run-common-main
-    symlink-wallpapers
 end

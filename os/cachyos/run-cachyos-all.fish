@@ -1,11 +1,11 @@
 #!/usr/bin/env fish
 
-function run-omarchy-all
-    running-message run-omarchy-all
+function run-cachyos-all
+    running-message run-cachyos-all
 
     # main
     run-common-main
-    run-omarchy-main
+    run-cachyos-main
 
     # post
     run-common-post

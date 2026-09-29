@@ -15,7 +15,7 @@ function enable-docker-service
     # the engine was never installed there is no unit to enable and `docker
     # compose` fails to connect no matter what the group says.
     if not systemctl list-unit-files docker.service >/dev/null 2>&1
-        error-message "no docker.service found; install the engine (omarchy: yay -S docker docker-buildx)"
+        error-message "no docker.service found; install the engine (cachyos: yay -S docker docker-buildx)"
 
         return 1
     end

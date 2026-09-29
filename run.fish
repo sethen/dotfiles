@@ -3,16 +3,23 @@
 # determine system operating system
 set -l UNAME (uname -a)
 
-switch $UNAME
-    case "*omarchy*"
-        set -gx SYSTEM_OS omarchy
+# uname only names cachyos through the kernel suffix, which a stock arch kernel
+# would drop, so linux distros are read from os-release instead
+set -l OS_RELEASE_ID
+if test -f /etc/os-release
+    set OS_RELEASE_ID (string replace -rf '^ID=' '' < /etc/os-release | string trim -c '"')
+end
+
+switch "$OS_RELEASE_ID $UNAME"
+    case "cachyos *"
+        set -gx SYSTEM_OS cachyos
     case "*Darwin*"
         set -gx SYSTEM_OS darwin
     case "*Ubuntu*"
         set -gx SYSTEM_OS ubuntu
     case "*"
-        echo "Unsupported OS — uname reports: $UNAME" >&2
-        echo "Supported: Omarchy, macOS (Darwin), Ubuntu" >&2
+        echo "Unsupported OS, uname reports: $UNAME" >&2
+        echo "Supported: CachyOS, macOS (Darwin), Ubuntu" >&2
         exit 1
 end
 

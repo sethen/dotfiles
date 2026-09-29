@@ -5,7 +5,7 @@ This repository contains personal dotfiles for setting up a development environm
 ## Repository Structure
 
 - **`run.fish`** - Main entry point that detects OS and launches appropriate setup scripts
-- **`os/{darwin,omarchy,ubuntu}/`** - OS-specific installation and configuration scripts
+- **`os/{darwin,cachyos,ubuntu}/`** - OS-specific installation and configuration scripts
 - **`os/common/`** - Cross-platform utilities and shared functionality
 - **`fish/functions/`** - Reusable Fish shell functions for messaging, filesystem helpers (`make-symlink`, `create-directory-if-not-exists`, `delete-if-exists`), and git status helpers
 - **`nvim/`** - Neovim configuration using Lua with lazy.nvim plugin management
@@ -13,8 +13,7 @@ This repository contains personal dotfiles for setting up a development environm
 - **`starship/`** - Shell prompt customization
 - **`kitty/`** - Terminal emulator configuration; also covers panes, tabs and named sessions
 - **`yazi/`** - Terminal file manager configuration
-- **`hypr/`** - Hyprland (Wayland compositor) overrides, in Lua (Omarchy)
-- **`quickshell/`** - Omarchy shell: bar layout, idle timings, color overrides, and cpu.qml, the one custom bar widget (Omarchy 4+; replaces `waybar/`)
+- **`hypr/`** - Hyprland (Wayland compositor) overrides, in Lua (CachyOS); currently only the monitor config
 - **`opencode/`** - opencode AI assistant configuration and themes
 
 ## Build/Test/Validation Commands
@@ -156,7 +155,7 @@ return {
    - Validate Neovim configuration in headless mode
 
 2. **OS Compatibility:**
-   - Test changes on target OS (Omarchy, Darwin, Ubuntu)
+   - Test changes on target OS (CachyOS, Darwin, Ubuntu)
    - Use OS-specific directories for platform-dependent code
    - Common functionality should go in `os/common/`
 
@@ -184,6 +183,6 @@ The repository relies on these core tools:
 - `starship` for shell prompt
 - `git` for version control
 - `gum` for interactive CLI elements
-- `kitty` terminal emulator (system package, not mise, because it is a GUI app with a desktop entry; see `os/omarchy/main/install/pacman/install-kitty.fish`)
+- `kitty` terminal emulator (system package, not mise, because it is a GUI app with a desktop entry; see `os/cachyos/main/install/pacman/install-kitty.fish`)
 
 Ensure all dependencies are installed before testing changes to the dotfiles setup.

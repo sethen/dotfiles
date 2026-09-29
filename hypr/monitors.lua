@@ -1,9 +1,9 @@
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 -- List current monitors and supported modes with: hyprctl monitors all
 --
--- omarchy 4 moved hyprland onto the lua config provider, so this replaces the
--- old hypr/monitors.conf. hyprland.lua requires this file after omarchy's
--- defaults, which is why the settings here win.
+-- cachyos runs hyprland on the lua config provider. this is symlinked over
+-- ~/.config/hypr/config/monitors.lua, which cachyos's hyprland.lua requires,
+-- replacing its single `preferred` catch-all.
 
 -- toolkit scale for GTK apps. hyprland scales per-monitor, but GTK reads this
 -- once at app start, so it stays global.
