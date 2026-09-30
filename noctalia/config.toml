@@ -12,6 +12,11 @@ shadow = false
 source = "community"
 community_palette = "Catppuccin Mocha Blue"
 
+# write the palette into gtk, qt and kde apps so they follow it (dark) instead
+# of their light defaults. kitty is left out: kitty.conf pins its own theme
+[theme.templates]
+builtin_ids = [ "gtk3", "gtk4", "qt", "kcolorscheme" ]
+
 [location]
 auto_locate = true
 
