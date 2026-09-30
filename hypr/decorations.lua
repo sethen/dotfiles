@@ -14,6 +14,10 @@ hl.config({
             inactive_border = "rgba(595959aa)",
         },
     },
+    -- no window or workspace slide animations; everything switches instantly
+    animations = {
+        enabled = false,
+    },
     decoration = {
         active_opacity = 0.95,
         inactive_opacity = 0.85,
