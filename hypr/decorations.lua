@@ -18,6 +18,12 @@ hl.config({
     animations = {
         enabled = false,
     },
+    -- adwaita only ships as an xcursor theme. with hyprcursor on, hyprland
+    -- can't find it as a hyprcursor theme and falls back to bibata, the only
+    -- one installed, so hyprcursor is off and XCURSOR_THEME below is used
+    cursor = {
+        enable_hyprcursor = false,
+    },
     decoration = {
         active_opacity = 0.95,
         inactive_opacity = 0.85,
@@ -28,3 +34,6 @@ hl.config({
         },
     },
 })
+
+-- plain adwaita arrow instead of cachyos's bibata (from ~/.config/uwsm/env)
+hl.env("XCURSOR_THEME", "Adwaita")
