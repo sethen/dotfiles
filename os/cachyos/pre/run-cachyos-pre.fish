@@ -28,4 +28,7 @@ function run-cachyos-pre
     copy-fonts
     symlink-hyprland-config-files
     symlink-noctalia-config-files
+    copy-noctalia-greeter-config
+    copy-noctalia-greeter-wallpaper
+    set-user-avatar
 end

@@ -328,10 +328,16 @@ Config lives in this repo and is symlinked into place, so edits here are live ev
 | `hypr/keybinds.lua` | `~/.config/hypr/config/keybinds.lua` | CachyOS |
 | `hypr/hyprland.lua` | `~/.config/hypr/hyprland.lua` | CachyOS |
 | `noctalia/config.toml` | `~/.config/noctalia/config.toml` | CachyOS |
+| `noctalia/greeter.toml` | `/var/lib/noctalia-greeter/greeter.toml` (copied, not linked) | CachyOS |
+| `avatars/$USER.jpg` | `/var/lib/AccountsService/icons/$USER` (via AccountsService) | CachyOS |
 
 ## Desktop Environment (CachyOS/Hyprland)
 
 On CachyOS, the base Wayland desktop is Hyprland with the [Noctalia](https://github.com/noctalia-dev/noctalia) shell, as shipped by CachyOS. Keybindings and window rules come from CachyOS itself (`~/.config/hypr/config/*.lua`). This repo owns the monitor layout, in `hypr/monitors.lua`, window decorations, in `hypr/decorations.lua` (CachyOS's stock file with square corners, wider gaps between windows, and Omarchy's Catppuccin border colors), the monitor names and per-monitor workspaces, in `hypr/variables.lua` and `hypr/workspaces.lua` (workspaces 1–5 on `HDMI-A-1`, 6–10 on `DP-2`), your own keybinds, in `hypr/keybinds.lua` (loaded last by `hypr/hyprland.lua`, CachyOS's stock file plus one `require`, so CachyOS's `binds.lua` stays stock and these add to it), and the Noctalia config, in `noctalia/config.toml`. It replaces the `config.toml` CachyOS installs; the stock copy stays in `/etc/skel/.config/noctalia/config.toml`.
+
+**Login screen.** CachyOS logs in through greetd and [noctalia-greeter](https://github.com/noctalia-dev/noctalia-greeter). `noctalia/greeter.toml` sets it to a wallpaper, the Catppuccin palette, JetBrains Mono, and the password box, with the logo, power buttons and scheme picker hidden. The greeter runs as its own user and cannot read the home directory, so `copy-noctalia-greeter-config` and `copy-noctalia-greeter-wallpaper` copy the file and the wallpaper into `/var/lib/noctalia-greeter/` with `sudo` rather than linking them; rerun `copy-noctalia-greeter-config` after editing `greeter.toml`. **If you are not me, edit `greeter.toml` first:** `[user] default` is my username and `[output] name` is my monitor.
+
+**Avatar.** `set-user-avatar` sets the login avatar from `avatars/$USER.jpg` through AccountsService. The only image in the repo is `avatars/sethen.jpg`, which is my face; a different username skips the step and keeps its current avatar. To use your own, add a square image named after your username (`avatars/<username>.jpg`). Greeter 1.5.0 renders avatars slightly soft on scaled monitors; 1.6.0 fixes it.
 
 `run-cachyos-pre` symlinks it to `~/.config/hypr/config/monitors.lua`, replacing CachyOS's stock catch-all monitor rule. CachyOS's `hyprland.lua` requires `config.monitors`, so the file has to live at that path. Hyprland reads Lua, so a legacy `monitors.conf` is never loaded.
 

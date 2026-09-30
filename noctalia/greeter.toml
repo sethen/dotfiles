@@ -1,0 +1,49 @@
+# noctalia-greeter's login screen: a wallpaper and the password box. copied to
+# /var/lib/noctalia-greeter/greeter.toml by symlink-noctalia-config-files, since
+# the greeter user cannot read anything under the home directory to follow a
+# symlink
+
+[session]
+# uwsm-managed, not plain Hyprland: the `uwsm app` binds depend on it
+default = "Hyprland (uwsm-managed)"
+
+[user]
+# skips the user list and opens on the password box
+default = "sethen"
+
+[appearance]
+# greeter 1.5.0 only shows the wallpaper below as part of the Synced scheme,
+# and only reads it from this file when the palette is complete
+scheme = "Synced"
+theme_mode = "dark"
+# the desktop's font; only fonts installed system-wide are visible to the greeter
+font_family = "JetBrains Mono"
+hide_logo = true
+power_buttons_position = "hidden"
+scheme_selector_position = "hidden"
+
+# catppuccin mocha blue, the palette noctalia uses on the desktop
+[appearance.palette]
+primary = "#89b4fa"
+on_primary = "#1e1e2e"
+secondary = "#b4befe"
+on_secondary = "#1e1e2e"
+tertiary = "#cba6f7"
+on_tertiary = "#1e1e2e"
+error = "#f38ba8"
+on_error = "#1e1e2e"
+surface = "#1e1e2e"
+on_surface = "#cdd6f4"
+surface_variant = "#313244"
+on_surface_variant = "#a6adc8"
+outline = "#6c7086"
+shadow = "#11111b"
+hover = "#45475a"
+on_hover = "#cdd6f4"
+
+[appearance.wallpaper]
+path = "/var/lib/noctalia-greeter/wallpaper.jpg"
+fill_mode = "crop"
+
+[output]
+name = "DP-2"
