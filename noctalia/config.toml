@@ -1,6 +1,13 @@
 [shell]
 font_family = "JetBrains Mono"
 
+[shell.launcher]
+categories = false
+show_icons = false
+
+[shell.panel]
+shadow = false
+
 [theme]
 source = "community"
 community_palette = "Catppuccin Mocha Blue"
