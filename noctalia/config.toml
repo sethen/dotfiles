@@ -7,6 +7,10 @@ show_icons = false
 
 [shell.panel]
 shadow = false
+# floating, not attached: attached panels never get a border
+control_center_placement = "floating"
+session_placement = "floating"
+wallpaper_placement = "floating"
 
 [theme]
 source = "community"
