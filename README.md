@@ -325,11 +325,13 @@ Config lives in this repo and is symlinked into place, so edits here are live ev
 | `hypr/decorations.lua` | `~/.config/hypr/config/decorations.lua` | CachyOS |
 | `hypr/variables.lua` | `~/.config/hypr/config/variables.lua` | CachyOS |
 | `hypr/workspaces.lua` | `~/.config/hypr/config/workspaces.lua` | CachyOS |
+| `hypr/keybinds.lua` | `~/.config/hypr/config/keybinds.lua` | CachyOS |
+| `hypr/hyprland.lua` | `~/.config/hypr/hyprland.lua` | CachyOS |
 | `noctalia/config.toml` | `~/.config/noctalia/config.toml` | CachyOS |
 
 ## Desktop Environment (CachyOS/Hyprland)
 
-On CachyOS, the base Wayland desktop is Hyprland with the [Noctalia](https://github.com/noctalia-dev/noctalia) shell, as shipped by CachyOS. Keybindings and window rules come from CachyOS itself (`~/.config/hypr/config/*.lua`). This repo owns the monitor layout, in `hypr/monitors.lua`, window decorations, in `hypr/decorations.lua` (CachyOS's stock file with square corners, wider gaps between windows, and Omarchy's Catppuccin border colors), the monitor names and per-monitor workspaces, in `hypr/variables.lua` and `hypr/workspaces.lua` (workspaces 1–5 on `HDMI-A-1`, 6–10 on `DP-2`), and the Noctalia config, in `noctalia/config.toml`. It replaces the `config.toml` CachyOS installs; the stock copy stays in `/etc/skel/.config/noctalia/config.toml`.
+On CachyOS, the base Wayland desktop is Hyprland with the [Noctalia](https://github.com/noctalia-dev/noctalia) shell, as shipped by CachyOS. Keybindings and window rules come from CachyOS itself (`~/.config/hypr/config/*.lua`). This repo owns the monitor layout, in `hypr/monitors.lua`, window decorations, in `hypr/decorations.lua` (CachyOS's stock file with square corners, wider gaps between windows, and Omarchy's Catppuccin border colors), the monitor names and per-monitor workspaces, in `hypr/variables.lua` and `hypr/workspaces.lua` (workspaces 1–5 on `HDMI-A-1`, 6–10 on `DP-2`), your own keybinds, in `hypr/keybinds.lua` (loaded last by `hypr/hyprland.lua`, CachyOS's stock file plus one `require`, so CachyOS's `binds.lua` stays stock and these add to it), and the Noctalia config, in `noctalia/config.toml`. It replaces the `config.toml` CachyOS installs; the stock copy stays in `/etc/skel/.config/noctalia/config.toml`.
 
 `run-cachyos-pre` symlinks it to `~/.config/hypr/config/monitors.lua`, replacing CachyOS's stock catch-all monitor rule. CachyOS's `hyprland.lua` requires `config.monitors`, so the file has to live at that path. Hyprland reads Lua, so a legacy `monitors.conf` is never loaded.
 
@@ -452,6 +454,8 @@ dotfiles/
 │   ├── theme.toml              # Flavor selection + icon table
 │   └── flavors/                # Installed flavor package(s)
 ├── hypr/
+│   ├── hyprland.lua            # CachyOS's entry file plus require("config.keybinds")
+│   ├── keybinds.lua            # Your keybinds, on top of CachyOS's binds.lua
 │   ├── decorations.lua         # Window borders, rounding, gaps, blur (CachyOS)
 │   ├── monitors.lua            # Monitor configuration (CachyOS)
 │   ├── variables.lua           # Default apps and monitor names (CachyOS)

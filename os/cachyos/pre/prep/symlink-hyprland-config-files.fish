@@ -21,4 +21,10 @@ function symlink-hyprland-config-files
     # monitor's bar shows its own workspaces
     make-symlink $DOTFILES_DIRECTORY/hypr/variables.lua $HOME_CONFIG_DIRECTORY/hypr/config/variables.lua
     make-symlink $DOTFILES_DIRECTORY/hypr/workspaces.lua $HOME_CONFIG_DIRECTORY/hypr/config/workspaces.lua
+
+    # keybinds.lua holds binds added on top of cachyos's stock binds.lua.
+    # hyprland.lua is cachyos's stock file plus the require that loads it, so
+    # keybinds.lua has to be linked first or hyprland.lua requires a missing file
+    make-symlink $DOTFILES_DIRECTORY/hypr/keybinds.lua $HOME_CONFIG_DIRECTORY/hypr/config/keybinds.lua
+    make-symlink $DOTFILES_DIRECTORY/hypr/hyprland.lua $HOME_CONFIG_DIRECTORY/hypr/hyprland.lua
 end

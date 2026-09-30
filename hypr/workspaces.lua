@@ -12,11 +12,5 @@ for index, monitor in ipairs({ MONITOR1, MONITOR2 }) do
     end
 end
 
--- ALT + 1-NUM_WPM jumps to that workspace on the focused monitor (m~N is the
--- Nth workspace of the current monitor)
-for n = 1, NUM_WPM do
-    hl.bind("ALT + " .. (n % 10), hl.dsp.focus({ workspace = "m~" .. n }))
-end
-
 -- For other layouts such as scrolling, see example below
 -- hl.workspace_rule({ workspace = "1", monitor = MONITOR1, default = true, persistent = true, layout = "scrolling" })
