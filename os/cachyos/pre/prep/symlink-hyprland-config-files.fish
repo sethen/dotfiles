@@ -15,4 +15,10 @@ function symlink-hyprland-config-files
     # and omarchy's catppuccin border colors. the stock copy stays in
     # /etc/skel/.config/hypr/config.
     make-symlink $DOTFILES_DIRECTORY/hypr/decorations.lua $HOME_CONFIG_DIRECTORY/hypr/config/decorations.lua
+
+    # variables.lua and workspaces.lua are cachyos's stock files with the
+    # monitors named and five workspaces pinned to each (1-5 and 6-10), so each
+    # monitor's bar shows its own workspaces
+    make-symlink $DOTFILES_DIRECTORY/hypr/variables.lua $HOME_CONFIG_DIRECTORY/hypr/config/variables.lua
+    make-symlink $DOTFILES_DIRECTORY/hypr/workspaces.lua $HOME_CONFIG_DIRECTORY/hypr/config/workspaces.lua
 end
