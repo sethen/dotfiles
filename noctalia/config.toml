@@ -11,6 +11,9 @@ auto_locate = true
 [weather]
 unit = "imperial"
 
+[wallpaper]
+directory = "~/Developer/wallpapers"
+
 [bar.default]
 start = [ "workspaces" ]
 center = [ "clock", "weather" ]
