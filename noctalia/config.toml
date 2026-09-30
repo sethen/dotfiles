@@ -1,0 +1,44 @@
+[shell]
+font_family = "JetBrains Mono"
+
+[theme]
+source = "community"
+community_palette = "Catppuccin Mocha Blue"
+
+[location]
+auto_locate = true
+
+[weather]
+unit = "imperial"
+
+[bar.default]
+start = [ "workspaces" ]
+center = [ "clock", "weather" ]
+end = [ "media", "volume", "bluetooth", "network", "session" ]
+margin_ends = 0
+radius = 0
+widget_spacing = 12
+
+[widget.workspaces]
+show_labels = false
+active_pill_size = 2.2
+pill_scale = 0.7
+show_tooltip = false
+
+[widget.network]
+show_label = false
+
+[widget.volume]
+show_label = false
+
+[widget.media]
+hide_album_art = true
+title_scroll = "always"
+
+[widget.clock]
+format = "{:%A %-I:%M %p}"
+tooltip_format = "{:%-d %B W%V %Y}"
+
+[widget.weather]
+show_condition = false
+show_temperature = false

@@ -322,10 +322,12 @@ Config lives in this repo and is symlinked into place, so edits here are live ev
 | `.gitconfig` | `~/.gitconfig` | all |
 | `.gitignore_global` | `~/.gitignore_global` | all |
 | `hypr/monitors.lua` | `~/.config/hypr/config/monitors.lua` | CachyOS |
+| `hypr/decorations.lua` | `~/.config/hypr/config/decorations.lua` | CachyOS |
+| `noctalia/config.toml` | `~/.config/noctalia/config.toml` | CachyOS |
 
 ## Desktop Environment (CachyOS/Hyprland)
 
-On CachyOS, the base Wayland desktop is Hyprland with the [Noctalia](https://github.com/noctalia-dev/noctalia-shell) shell, as shipped by CachyOS. Keybindings, window rules, and the bar, launcher, lock screen, and notifications come from CachyOS itself (`~/.config/hypr/config/*.lua` and `~/.config/noctalia`). This repo owns only the monitor layout, in `hypr/monitors.lua`.
+On CachyOS, the base Wayland desktop is Hyprland with the [Noctalia](https://github.com/noctalia-dev/noctalia) shell, as shipped by CachyOS. Keybindings and window rules come from CachyOS itself (`~/.config/hypr/config/*.lua`). This repo owns the monitor layout, in `hypr/monitors.lua`, window decorations, in `hypr/decorations.lua` (CachyOS's stock file with square corners, wider gaps between windows, and Omarchy's Catppuccin border colors), and the Noctalia config, in `noctalia/config.toml`. It replaces the `config.toml` CachyOS installs; the stock copy stays in `/etc/skel/.config/noctalia/config.toml`.
 
 `run-cachyos-pre` symlinks it to `~/.config/hypr/config/monitors.lua`, replacing CachyOS's stock catch-all monitor rule. CachyOS's `hyprland.lua` requires `config.monitors`, so the file has to live at that path. Hyprland reads Lua, so a legacy `monitors.conf` is never loaded.
 
@@ -427,6 +429,8 @@ dotfiles/
 │       ├── core/               # Options, keymaps, LSP, autocmds
 │       ├── plugins/            # Plugin configs
 │       └── lazy.lua            # lazy.nvim bootstrap
+├── noctalia/
+│   └── config.toml             # Noctalia shell config (CachyOS)
 ├── opencode/
 │   ├── opencode.json           # Opencode config
 │   └── themes/                 # Opencode themes
@@ -446,6 +450,7 @@ dotfiles/
 │   ├── theme.toml              # Flavor selection + icon table
 │   └── flavors/                # Installed flavor package(s)
 ├── hypr/
+│   ├── decorations.lua         # Window borders, rounding, gaps, blur (CachyOS)
 │   └── monitors.lua            # Monitor configuration (CachyOS)
 └── assets/
     ├── fonts/                  # SethensSuperCode.ttf

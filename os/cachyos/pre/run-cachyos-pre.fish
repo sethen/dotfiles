@@ -27,4 +27,5 @@ function run-cachyos-pre
     # prep
     copy-fonts
     symlink-hyprland-config-files
+    symlink-noctalia-config-files
 end
