@@ -8,6 +8,12 @@ BROWSER      = "firefox"
 EDITOR       = TERMINAL .. " fish -c nvim"
 CALCULATOR   = "gnome-calculator"
 
+-- config.fish sets DEVELOPER_DIRECTORY, but the greeter starts hyprland without
+-- a fish login shell, so apps it launches (kitty, whose session files need it)
+-- only see it if it is set here. asking fish keeps config.fish the one place
+-- it is defined
+hl.env("DEVELOPER_DIRECTORY", io.popen("fish -c 'echo $DEVELOPER_DIRECTORY'"):read("l"))
+
 -- Monitors
 MONITOR1 = "HDMI-A-1"
 MONITOR2 = "DP-2"
