@@ -14,6 +14,15 @@ function make-symlink
         return 1
     end
 
+    # leave a link that is already right alone. deleting and recreating it on
+    # every run leaves a moment where the file is missing, and hyprland, which
+    # reloads when a config file changes, reloads in that gap and reports the
+    # file as not found
+    if test -L $dest; and test (readlink $dest) = $src
+        success-message "$dest already linked"
+        return
+    end
+
     delete-if-exists $dest
 
     if not ln -sfnv $src $dest

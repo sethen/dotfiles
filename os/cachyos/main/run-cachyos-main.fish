@@ -14,6 +14,7 @@ function run-cachyos-main
     install-gpick
     install-mariadb-clients
     install-mdadm
+    install-nautilus
     install-nginx
     install-openssh
     install-postgresql

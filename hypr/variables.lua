@@ -1,7 +1,7 @@
 -- Hyprland default apps
 
 TERMINAL     = "kitty"
-FILE_MANAGER = "dolphin"
+FILE_MANAGER = "nautilus"
 BROWSER      = "firefox"
 -- nvim comes from mise, which hyprland's PATH does not include, so launch it
 -- through fish, whose config.fish activates mise
