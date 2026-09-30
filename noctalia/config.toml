@@ -51,6 +51,8 @@ show_label = false
 show_label = false
 
 [widget.media]
+# no "nothing playing" placeholder; the widget only shows while something plays
+hide_when_no_media = true
 hide_album_art = true
 title_scroll = "always"
 
