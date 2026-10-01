@@ -339,6 +339,8 @@ On CachyOS, the base Wayland desktop is Hyprland with the [Noctalia](https://git
 
 **Avatar.** `set-user-avatar` sets the login avatar from `avatars/$USER.jpg` through AccountsService. The only image in the repo is `avatars/sethen.jpg`, which is my face; a different username skips the step and keeps its current avatar. To use your own, add a square image named after your username (`avatars/<username>.jpg`). Greeter 1.5.0 renders avatars slightly soft on scaled monitors; 1.6.0 fixes it.
 
+**Keyring.** greetd's PAM file, unlike SDDM's or GDM's, does not pass the login password to gnome-keyring, so the keyring asks for a password on every login. `enable-greetd-keyring-unlock` adds `pam_gnome_keyring.so` to `/etc/pam.d/greetd` (as `optional`, so it cannot block login), which unlocks the keyring named `login` when you sign in. A keyring an app created before this ran (usually `Default_keyring`) is not unlocked; give it your login password and rename it to `login`, or delete it and let the next login create one.
+
 `run-cachyos-pre` symlinks it to `~/.config/hypr/config/monitors.lua`, replacing CachyOS's stock catch-all monitor rule. CachyOS's `hyprland.lua` requires `config.monitors`, so the file has to live at that path. Hyprland reads Lua, so a legacy `monitors.conf` is never loaded.
 
 ### Interactive launcher

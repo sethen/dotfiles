@@ -27,8 +27,11 @@ function run-cachyos-pre
     # prep
     copy-fonts
     symlink-hyprland-config-files
+    set-default-cursor-theme
+    set-gtk-cursor-theme
     symlink-noctalia-config-files
     copy-noctalia-greeter-config
     copy-noctalia-greeter-wallpaper
+    enable-greetd-keyring-unlock
     set-user-avatar
 end

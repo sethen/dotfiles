@@ -12,3 +12,8 @@ end
 -- region, P for the whole screen. SUPER + P is cachyos's color picker
 hl.bind("SUPER + SHIFT + O", hl.dsp.exec_cmd("noctalia msg screenshot-region"))
 hl.bind("SUPER + SHIFT + P", hl.dsp.exec_cmd("noctalia msg screenshot-fullscreen"))
+
+-- force-kill the focused window's app, for ones SUPER + Q (cachyos's polite
+-- close) leaves running in the background, like spotify. it kills the whole
+-- process: every window of a single-process app goes with it, kitty included
+hl.bind("SUPER + SHIFT + Q", hl.dsp.window.kill())

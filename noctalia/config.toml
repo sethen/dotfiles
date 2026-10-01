@@ -21,6 +21,10 @@ community_palette = "Catppuccin Mocha Blue"
 [theme.templates]
 builtin_ids = [ "gtk3", "gtk4", "qt", "kcolorscheme" ]
 
+[audio]
+# no sound on notifications (or any other noctalia event)
+enable_sounds = false
+
 [location]
 auto_locate = true
 
