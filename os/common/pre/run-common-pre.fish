@@ -55,6 +55,7 @@ function run-common-pre
     symlink-starship-config-directory
     symlink-kitty-config-files
     symlink-yazi-config-directory
+    symlink-btop-config-directory
     symlink-herdr-config
     #-> permissions
     add-user-to-docker-group

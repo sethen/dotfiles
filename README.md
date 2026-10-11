@@ -253,6 +253,13 @@ Config in `yazi/`:
 - `theme.toml`: selects the `catppuccin-mocha` flavor and defines a large icon table (per-extension glyphs and colors)
 - `flavors/catppuccin-mocha.yazi/`: the installed flavor package: `flavor.toml` (UI colors) and `tmtheme.xml` (syntax highlighting for the preview pane)
 
+### btop system monitor
+
+Config in `btop/`:
+
+- `btop.conf`: btop's settings, with `color_theme = "catppuccin_mocha"` to match kitty. `save_config_on_exit` is off: btop otherwise rewrites the whole file on every quit, which would undo edits made here. Change settings in this file, not btop's options menu.
+- `themes/catppuccin_mocha.theme`: the official theme from [catppuccin/btop](https://github.com/catppuccin/btop)
+
 ### Neovim
 
 A full Lua configuration under `nvim/lua/sethen/` using `lazy.nvim`:
@@ -314,6 +321,7 @@ Config lives in this repo and is symlinked into place, so edits here are live ev
 | `kitty/sessions/` | `~/.config/kitty/sessions/` | all |
 | `kitty/os/{linux,darwin}.conf` | `~/.config/kitty/os-local.conf` | all |
 | `yazi/` | `~/.config/yazi/` | all |
+| `btop/` | `~/.config/btop/` | all |
 | `opencode/opencode.json` | `~/.config/opencode/opencode.json` | all |
 | `opencode/themes/` | `~/.config/opencode/themes/` | all |
 | `herdr/config.toml` | `~/.config/herdr/config.toml` | all |
@@ -461,6 +469,9 @@ dotfiles/
 │   ├── yazi.toml               # Manager settings
 │   ├── theme.toml              # Flavor selection + icon table
 │   └── flavors/                # Installed flavor package(s)
+├── btop/
+│   ├── btop.conf               # Settings, theme selection
+│   └── themes/                 # Catppuccin Mocha theme
 ├── hypr/
 │   ├── hyprland.lua            # CachyOS's entry file plus require("config.keybinds")
 │   ├── keybinds.lua            # Your keybinds, on top of CachyOS's binds.lua
