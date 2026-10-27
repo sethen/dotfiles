@@ -9,4 +9,5 @@ function symlink-opencode-config-files
 
     make-symlink $DOTFILES_DIRECTORY/opencode/themes $HOME_OPENCODE_DIRECTORY/themes
     make-symlink $DOTFILES_DIRECTORY/opencode/opencode.json $HOME_OPENCODE_DIRECTORY/opencode.json
+    make-symlink $DOTFILES_DIRECTORY/opencode/cli.json $HOME_OPENCODE_DIRECTORY/cli.json
 end

@@ -281,7 +281,7 @@ AI coding assistant config in `opencode/`:
 | Model | opencode/big-pickle |
 | Auto-update | enabled |
 
-`opencode/opencode.json` and `opencode/themes/` are symlinked into `~/.config/opencode/`. See [opencode.ai](https://opencode.ai).
+`opencode/opencode.json`, `opencode/cli.json` and `opencode/themes/` are symlinked into `~/.config/opencode/`. Since opencode 2, terminal client settings, the theme among them, live in `cli.json`; `theme` in `opencode.json` and the old `tui.json` are not read. opencode only migrates `tui.json` when `cli.json` is absent, and the herdr integration creates `cli.json` with its plugin first, so the theme has to be set here directly. `cli.json` therefore also carries the `./herdr-opencode` plugin entry. `catppuccin-mocha` uses Mocha for dark terminals and Latte for light ones. See [opencode.ai](https://opencode.ai).
 
 ### Herdr
 
@@ -323,6 +323,7 @@ Config lives in this repo and is symlinked into place, so edits here are live ev
 | `yazi/` | `~/.config/yazi/` | all |
 | `btop/` | `~/.config/btop/` | all |
 | `opencode/opencode.json` | `~/.config/opencode/opencode.json` | all |
+| `opencode/cli.json` | `~/.config/opencode/cli.json` | all |
 | `opencode/themes/` | `~/.config/opencode/themes/` | all |
 | `herdr/config.toml` | `~/.config/herdr/config.toml` | all |
 | `mise/mise.toml` | `~/.config/mise/mise.toml` | all |
@@ -453,6 +454,7 @@ dotfiles/
 │   └── config.toml             # Noctalia shell config (CachyOS)
 ├── opencode/
 │   ├── opencode.json           # Opencode config
+│   ├── cli.json                # Opencode terminal client config (theme, plugins)
 │   └── themes/                 # Opencode themes
 ├── herdr/
 │   └── config.toml             # Herdr agent multiplexer config
